@@ -1,0 +1,29 @@
+@@include('include/head.tpl', {
+	"title": "Главная",
+	"pageClass": "home-page"
+})
+<div class="content">
+	@@include('include/header.tpl', {
+		"active": "index"
+	})
+	@@include('include/view.tpl')
+	@@include('include/var.tpl', {
+		"name": "haoxin",
+		"age": 12345,
+		"socials": {
+			"fb": "facebook.com/include",
+			"tw": "twitter.com/include"
+		}
+	})
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consequuntur cupiditate deleniti dolorum eius exercitationem, fugiat impedit in minima molestiae necessitatibus nemo odit quos saepe tempora tenetur veniam vitae!</p>
+	<div class="images">
+		@@loop('include/images.tpl', [
+			{ "src": "img/img-jpg-01.jpg", "caption": "Картинка 01" },
+			{ "src": "img/img-jpg-02.jpg", "caption": "Картинка 02" },
+			{ "src": "img/img-jpg-03.jpg", "caption": "Картинка 03" }
+		])
+	</div>
+	<hr>
+	<hr>
+</div>
+@@include('include/footer.tpl')

@@ -1,0 +1,20 @@
+{
+	"name": "application-name",
+	"version": "0.0.1",
+	"minify": true,
+	"options": [
+		"domPrefixes",
+		"prefixed",
+		"testAllProps",
+		"testProp",
+		"html5shiv",
+		"setClasses"
+	],
+	"feature-detects": [
+		"test/svg",
+		"test/touchevents",
+		"test/css/backgroundsize",
+		"test/css/gradients",
+		"test/css/transitions"
+	]
+}

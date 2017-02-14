@@ -1,0 +1,66 @@
+// Default Variables and Maps
+$font-size: 1.8rem
+$line-height: 1.7
+$space-bottom: $font-size * $line-height
+
+$space-bottom-form: 3rem
+
+$color-bg: #f8ecc2
+$color-text: #262626
+$color-text-alt: #d32e2e
+$color-link: #0017ff
+
+$color-nav: #bbff2a
+$color-nav-active: #ffd038
+
+$color-form-text: #333
+$color-form-placeholder: #ccc
+$color-form-bg: #fff
+$color-form-border: #ccc
+$color-form-border-focus: #989898
+$color-form-error: #d32e2e
+$color-form-success: #056e41
+
+$color-btn-bg: #d32e2e
+$color-btn-bg-hover: #b41e18
+$color-btn-text: #fff
+
+$font-normal: 'Roboto', sans-serif
+$font-bold: 'Roboto', sans-serif
+$font-italic: 'Roboto', sans-serif
+$font-bold-italic: 'Roboto', sans-serif
+
+@mixin font-reset
+	font:
+		weight: normal
+		style: normal
+
+@mixin font-normal
+	font:
+		family: $font-normal
+	@include font-reset
+
+@mixin font-bold
+	font:
+		family: $font-bold
+		weight: 700
+	//@include font-reset
+
+@mixin font-italic
+	font:
+		family: $font-italic
+		style: italic
+	//@include font-reset
+
+@mixin font-bold-italic
+	font:
+		family: $font-bold-italic
+		weight: bold
+		style: italic
+	//@include font-reset
+
+@mixin font-title
+	font:
+		family: 'Roboto Slab', sans-serif
+	//@include font-reset
+
