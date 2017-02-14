@@ -1,7 +1,7 @@
 <!--|-- >>> footer.tpl <<< --|-->
 <!--footer-->
 <footer class="footer">
-	<div class="max-wrap">
+	<div class="layout">
 		<div class="footer-holder">
 			<p>FOOTER <br /> Lorem ipsum <a href="#">link text</a> dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 		</div>

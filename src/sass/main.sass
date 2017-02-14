@@ -29,6 +29,15 @@
 	overflow: hidden
 	position: relative
 
+	&:after
+		content: ''
+		position: absolute
+		left: $layout-width
+		top: 0
+		height: 100%
+		width: 9999px
+		background: #004d85
+
 .main
 	padding: 30px 0 130px
 	position: relative
@@ -51,11 +60,11 @@
 	width: 100%
 
 .content
-	margin: 0 260px 0 340px
+	margin: 0 450px 0 330px
 	min-height: 50px
 
-	.home-page &
-		margin: 0
+.sheet
+	background: $color-bg-alt
 
 .header
 	position: relative
@@ -65,13 +74,15 @@
 	display: inline
 	float: left
 	margin: 0 0 0 -100%
-	width: 320px
+	width: 270px
+	background: $color-bg-alt
 
 .aside
 	display: inline
 	float: right
-	margin: 0 0 0 -240px
-	width: 240px
+	margin: 0 0 0 -270px
+	width: 270px
+	background: $color-bg-alt
 
 .footer
 	margin: -100px auto 0
@@ -80,16 +91,55 @@
 	clear: both
 	z-index: 5
 
-.max-wrap
-	max-width: 1920px
+%layout-space
+	padding-left: $layout-space-horizontal
+	padding-right: $layout-space-horizontal
+
+%article-layout-space
+	padding-left: $article-layout-space-horizontal
+	padding-right: $article-layout-space-horizontal
+	padding-top: $article-layout-space-horizontal - 2px
+	padding-bottom: $article-layout-space-horizontal - 2px
+
+%article-layout-full-width
+	margin-left: -$article-layout-space-horizontal
+	margin-right: -$article-layout-space-horizontal
+
+%text-layout-space
+	padding-left: $text-layout-space-horizontal
+	padding-right: $text-layout-space-horizontal
+
+.layout
+	@extend %layout-space
+	max-width: $layout-width
+
+.article-layout
+	@extend %article-layout-space
+	max-width: $article-layout-width
 	margin: 0 auto
-	padding: 0 5px
+
+	.full-width
+		@extend %article-layout-full-width
+
+	p, ul, ol
+		@extend .text-layout
+
+.text-layout
+	@extend %text-layout-space
+	max-width: $text-layout-width
+	margin-left: auto
+	margin-right: auto
 
 /*MAIN BLOCKS end*/
+
+/*WIDGETS*/
+@import "sliders"
+/*WIDGETS end*/
 
 /*HEADER*/
 .header-holder
 	padding: 10px 0
+	background: $color-header-bg
 
 	&:before,
 	&:after
@@ -161,23 +211,86 @@
 
 /*breadcrumbs end*/
 
-/*datetime*/
+// article meta
+@mixin article-meta-text
+	font-size: 1.2rem
+	line-height: 1.4
+	color: $color-text-light
+
+.article-meta
+	@include article-meta-text
+	margin-bottom: $space-bottom-md
+
+	&:before, &:after
+		content: ""
+		display: table
+
+	&:after
+		clear: both
+
+// date
 .datetime
+	float: left
 	display: block
-	font-size: 14px
-	color: #ccc
-	padding: 0 0 20px
+	margin-bottom: $space-bottom
+	@include article-meta-text
+	font-style: normal
 
-/*datetime */
+	.article-meta &
+		margin-right: 20px
+		margin-bottom: 0
 
-.images
-	padding: 0 0 30px
+// visit
+.visit
+	overflow: hidden
+	margin-left: 20px
+	text-align: right
+	@include article-meta-text
 
 	&__item
 		display: inline-block
 		vertical-align: top
-		width: 20%
+		margin-left: 30px
 
+	&__inner
+		display: inline-block
+		text-decoration: none
+		color: $color-text-light
+
+		svg, .depict-visit-share
+			display: inline-block
+			vertical-align: middle
+			width: 18px
+			height: 18px
+			margin-right: 10px
+
+			path
+				fill: $color-text-light
+				-webkit-transition-property: fill
+				transition-property: fill
+				-webkit-transition-duration: $animation-speed
+				transition-duration: $animation-speed
+
+		.depict-visit-share
+			width: 12px
+			height: 12px
+
+		& > em
+			display: inline-block
+			vertical-align: middle
+			font-style: normal
+			-webkit-transition-property: color
+			transition-property: color
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+
+		.no-touchevents &:hover path
+			fill: $color-text
+
+		.no-touchevents &:hover > em
+			color: $color-text
+
+// main nav
 .main-nav
 	padding: 20px
 

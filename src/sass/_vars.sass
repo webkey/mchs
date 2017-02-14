@@ -1,14 +1,28 @@
-// Default Variables and Maps
-$font-size: 1.8rem
-$line-height: 1.7
+//==|== Default Variables and Maps
+
+// font
+$font-norm: 'Roboto', sans-serif
+$font-b: 'Roboto', sans-serif
+$font-i: 'Roboto', sans-serif
+$font-bi: 'Roboto', sans-serif
+$font-size: 1.6rem
+$line-height: 3.0rem/$font-size
 $space-bottom: $font-size * $line-height
+$space-bottom-md: $space-bottom * 1.5
+$space-bottom-lg: $space-bottom * 2
 
-$space-bottom-form: 3rem
-
-$color-bg: #f8ecc2
+// color
+$color-bg: #e5e5e5
+$color-bg-alt: #fff
 $color-text: #262626
-$color-text-alt: #d32e2e
-$color-link: #0017ff
+$color-text-light: #999
+$color-text-alt: #006ab8
+$color-text-mark: #ec3c01
+$color-title: #010101
+$color-link: #006ab8
+$color-border: #d9d9d9
+
+$color-header-bg: #f7f7f7
 
 $color-nav: #bbff2a
 $color-nav-active: #ffd038
@@ -18,17 +32,31 @@ $color-form-placeholder: #ccc
 $color-form-bg: #fff
 $color-form-border: #ccc
 $color-form-border-focus: #989898
-$color-form-error: #d32e2e
+$color-form-error: #ec3c01
 $color-form-success: #056e41
 
-$color-btn-bg: #d32e2e
-$color-btn-bg-hover: #b41e18
+$space-bottom-form: 3rem
+
+$color-btn-bg: #006ab8
+$color-btn-bg-hover: #004c92
 $color-btn-text: #fff
 
-$font-normal: 'Roboto', sans-serif
-$font-bold: 'Roboto', sans-serif
-$font-italic: 'Roboto', sans-serif
-$font-bold-italic: 'Roboto', sans-serif
+$color-table-text: #262626
+$color-table-text-alt: #fff
+$color-table-bg: #fff
+$color-table-bg-alt: #006ab8
+$color-table-bg-row: #fafafa
+
+// layout
+$layout-width: 1920px
+$layout-space-horizontal: 0
+$article-layout-width: none
+$article-layout-space-horizontal: 50px
+$text-layout-width: 640px
+$text-layout-space-horizontal: 0
+
+// animation
+$animation-speed: 0.2s
 
 @mixin font-reset
 	font:
@@ -37,30 +65,34 @@ $font-bold-italic: 'Roboto', sans-serif
 
 @mixin font-normal
 	font:
-		family: $font-normal
-	@include font-reset
+		family: $font-norm
+		weight: 300
+	//@include font-reset
 
 @mixin font-bold
 	font:
-		family: $font-bold
+		family: $font-b
 		weight: 700
 	//@include font-reset
 
 @mixin font-italic
 	font:
-		family: $font-italic
+		family: $font-i
+		weight: 300
 		style: italic
 	//@include font-reset
 
 @mixin font-bold-italic
 	font:
-		family: $font-bold-italic
-		weight: bold
+		family: $font-bi
+		weight: 700
 		style: italic
 	//@include font-reset
 
 @mixin font-title
 	font:
 		family: 'Roboto Slab', sans-serif
+		weight: 700
+		style: normal
 	//@include font-reset
 

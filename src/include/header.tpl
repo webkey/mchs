@@ -1,8 +1,8 @@
 <header class="header">
-	<div class="max-wrap">
+	<div class="layout">
 		<div class="header-holder">
 			<!--logo-->
-			<strong class="logo"><a href="#">WebSite</a><img style="display: none;" src="img/logo.png" alt="logo"></strong>
+			<strong class="logo"><a href="index.html">Министерство по чрезвычайным ситуациям Республики Беларусь</a><img style="display: none;" src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь"></strong>
 			<!--logo end-->
 			<!--main navigation-->
 			<nav class="main-nav">

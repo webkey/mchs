@@ -11,6 +11,7 @@
 	<link href="favicon.ico" rel="shortcut icon">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!--Style-->
+	<link rel="stylesheet" href="css/libs.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	<!--Modernizr-->
 	<script src="js/modernizr.min.js"></script>

@@ -1,5 +1,7 @@
 npm i
-npm bower
+npm i bower
+bower i
+gulp
 
 In modernizr-config.json store custom configuration for modernizr.js
 https://modernizr.com/
@@ -23,4 +25,4 @@ return gulp.src([
 
 Gulp task "css-libs"
 1) add plugin's css to libs.sass with @import
-2) check correct path to files
+2) check correct path to filesnp

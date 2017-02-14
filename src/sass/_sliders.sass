@@ -1,0 +1,237 @@
+/*slider*/
+.slick-arrow
+	width: 60px
+	height: 60px
+	display: block
+	position: absolute
+	border: none
+	border-radius: 0
+	background: #f30
+	outline: none
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1)
+	box-sizing: border-box
+	opacity: 0.9
+	z-index: 6
+	-webkit-transition-property: background, opacity, visibility
+	transition-property: background, opacity, visibility
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+.slick-prev
+	left: 0
+
+.slick-next
+	right: 0
+
+.no-touchevents .slick-arrow:hover
+	opacity: 1
+
+.slick-arrow.slick-disabled,
+.no-touchevents .slick-arrow.slick-disabled
+	opacity: 0.25
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
+
+.no-touchevents .slick-arrow:hover
+	opacity: 1
+
+.slick-arrow:hover
+	background: #e52e00
+
+.slick-arrow:before,
+.slick-arrow:after
+	top: 50%
+	content: ""
+	position: absolute
+	opacity: 1
+	pointer-events: none
+	box-sizing: border-box
+
+.slick-arrow:before
+	left: 50%
+	width: 22px
+	height: 2px
+	margin: -1px 0 0 -11px
+	background: #fff
+
+.slick-arrow:after
+	width: 8px
+	height: 8px
+	-webkit-transform: rotate(45deg)
+	-ms-transform: rotate(45deg)
+	transform: rotate(45deg)
+	border: 0 solid #fff
+
+.slick-prev:after
+	left: 50%
+	border-width: 0 0 2px 2px
+	margin: -4px 0 0 -10px
+
+.slick-next:after
+	right: 50%
+	border-width: 2px 2px 0 0
+	margin: -4px -10px 0 0
+
+.slick-arrow.slick-disabled:before
+	opacity: 1
+
+.slick-dots
+	padding: 0
+	line-height: 0
+
+.slick-dots li,
+.user-content .slick-dots li,
+.user-content .slick-dots li:first-child
+	vertical-align: top
+	padding: 4px 10px
+	width: auto
+	height: auto
+	margin: 0
+
+.user-content .slick-dots li:before
+	content: none
+
+.slick-dots li button
+	width: 12px
+	height: 12px
+	padding: 0
+	border-radius: 50%
+	background: #008acf
+	position: relative
+	-webkit-transition-property: background, border, box-shadow, -webkit-transform
+	transition-property: background, border, box-shadow, transform
+	-webkit-transition-duration: 0.6s
+	transition-duration: 0.6s
+	box-sizing: border-box
+
+.slick-dots li button:before
+	content: ''
+	position: absolute
+	left: 2px
+	top: 2px
+	height: 8px
+	width: 8px
+	background: #fff
+	border-radius: 50%
+	opacity: 1
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.20)
+	-webkit-transition-property: -webkit-transform, opacity
+	transition-property: transform, opacity
+	-webkit-transition-duration: 0.6s
+	transition-duration: 0.6s
+
+.no-touchevents .slick-dots li:hover button:before
+	-webkit-transform: scale(0.9, 0.9)
+	-ms-transform: scale(0.9, 0.9)
+	transform: scale(0.9, 0.9)
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+.slick-dots li.slick-active button:before,
+.no-touchevents .slick-dots li.slick-active:hover button:before
+	-webkit-transform: scale(0, 0)
+	-ms-transform: scale(0, 0)
+	transform: scale(0, 0)
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+/*slider end*/
+
+/*images slider*/
+.images-slider
+	position: relative
+
+.images-slider__list,
+.images-slider__list.slick-dotted
+	position: relative
+	margin-bottom: 0
+
+.images-slider__item
+	float: none
+	display: inline-block
+	vertical-align: top
+	opacity: 0
+	white-space: normal
+	overflow: hidden
+	position: relative
+	background: #494949
+
+.slick-initialized .images-slider__item
+	display: block
+	float: left
+	opacity: 1
+
+.no-js .images-slider__item
+	display: block
+	width: 100%
+	opacity: 1
+
+.images-slider__item:before
+	content: ''
+	display: block
+	height: 0
+	padding-top: 62.5%
+
+.images-slider__item img
+	position: absolute
+	top: -2px
+	left: 50%
+	text-align: center
+	max-width: none
+	height: calc(100% + 4px)
+	-webkit-transform: translate(-50%, 0)
+	-ms-transform: translate(-50%, 0)
+	transform: translate(-50%, 0)
+
+.images-slider .slider__counter
+	position: absolute
+	left: 50%
+	bottom: 35px
+	font-family: 'lato-heavy', sans-serif
+	font-size: 14px
+	line-height: 20px
+	color: #fff
+	-webkit-transform: translate(-50%, 0)
+	-ms-transform: translate(-50%, 0)
+	transform: translate(-50%, 0)
+
+/*images slider end*/
+
+/*flashes*/
+.flashes
+	padding: 0 0 50px
+
+.flashes__item
+	overflow: hidden
+	display: none
+
+.flashes__item:first-child
+	display: block
+
+.flashes__label
+	float: left
+	width: 180px
+	box-sizing: border-box
+	padding-right: 20px
+	margin-top: -4px
+
+.flashes__date
+	font-family: 'lato-heavy', sans-serif
+	font-size: 14px
+	line-height: 24px
+	text-transform: uppercase
+	color: #000
+
+.flashes__content
+	overflow: hidden
+	font-size: 14px
+	line-height: 24px
+	min-height: 24px
+	box-sizing: border-box
+
+.flashes__content > p:last-child,
+.flashes__content > ul:last-child,
+.flashes__content > ol:last-child
+	margin-bottom: 0
+	padding-bottom: 0
+/*flashes end*/
