@@ -98,8 +98,8 @@
 %article-layout-space
 	padding-left: $article-layout-space-horizontal
 	padding-right: $article-layout-space-horizontal
-	padding-top: $article-layout-space-horizontal - 2px
-	padding-bottom: $article-layout-space-horizontal - 2px
+	padding-top: $article-layout-space-vertical
+	padding-bottom: $article-layout-space-vertical
 
 %article-layout-full-width
 	margin-left: -$article-layout-space-horizontal
@@ -134,6 +134,70 @@
 
 /*WIDGETS*/
 @import "sliders"
+
+/*user form*/
+.form-title
+	display: block
+	@include font-title
+	padding-bottom: $space-bottom
+	color: $color-text-alt
+	font-size: 2.4rem
+	line-height: 1.2
+	text-align: center
+
+.user-form
+	background: #fafafa
+	padding: $article-layout-space-horizontal
+	border: 1px solid $color-border
+	margin-bottom: $space-bottom
+
+	form
+		display: block
+
+	textarea
+		height: 152px
+		max-height: 152px
+		resize: none
+	
+	.form-footer
+
+		&:before,
+		&:after
+			content: ""
+			display: table
+
+		&:after
+			clear: both
+
+	.form-buttons
+		float: left
+		margin-right: 30px
+	
+		.btn-submit
+			width: 200px
+	
+	.form-note
+		overflow: hidden
+		min-height: 50px
+		font-size: 0
+		letter-spacing: -4px
+		line-height: 25px
+	
+		&:before
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			min-height: inherit
+
+		&__item
+			display: inline-block
+			vertical-align: middle
+			width: calc(100% - 6px)
+			font-size: 1.4rem
+			line-height: 1.5
+			letter-spacing: normal
+
+/*user form end*/
 /*WIDGETS end*/
 
 /*HEADER*/
@@ -169,10 +233,12 @@
 /*MAIN*/
 /*breadcrumbs*/
 .breadcrumbs
-	font-size: 12px
-	line-height: 14px
-	color: #000
-	padding: 0 0 20px
+	font-size: 1.4rem
+	line-height: 1.5
+	color: $color-text
+	margin: 0
+	padding-bottom: $space-bottom
+	cursor: default
 
 	&__list,
 	.content &__list
@@ -182,18 +248,22 @@
 		margin: 0
 	
 		li
-			padding: 0 10px 10px 12px
+			padding: 0 10px 10px 18px
+			margin: 0
 			float: left
 			position: relative
 
 			&:before
-				content: '/'
+				content: ''
 				position: absolute
 				left: 0
-				top: 0
+				top: 7px
 				height: 0
 				width: 0
-				border: none
+				border: solid transparent
+				border-width: 4px 7px
+				border-left-color: $color-text-mark
+				box-sizing: border-box
 
 			&:first-child
 				padding-left: 0
@@ -203,15 +273,26 @@
 				content: none
 
 		a
-			color: #3262c2
-			text-decoration: underline
+			color: $color-text
+			text-decoration: none
+			cursor: pointer
 
 			.no-touchevents &:hover
 				text-decoration: none
 
+			span
+				border-bottom: 1px solid $color-text-light
+				-webkit-transition-property: border-color
+				transition-property: border-color
+				-webkit-transition-duration: $animation-speed
+				transition-duration: $animation-speed
+
+				.no-touchevents &:hover
+					border-color: transparent
+
 /*breadcrumbs end*/
 
-// article meta
+/*article meta*/
 @mixin article-meta-text
 	font-size: 1.2rem
 	line-height: 1.4
@@ -228,7 +309,9 @@
 	&:after
 		clear: both
 
-// date
+/*article meta end*/
+
+/*date*/
 .datetime
 	float: left
 	display: block
@@ -240,7 +323,9 @@
 		margin-right: 20px
 		margin-bottom: 0
 
-// visit
+/*date end*/
+
+/*visit*/
 .visit
 	overflow: hidden
 	margin-left: 20px
@@ -290,6 +375,76 @@
 		.no-touchevents &:hover > em
 			color: $color-text
 
+/*visit end*/
+
+/*tags*/
+.tags
+	.article-layout &
+		margin-bottom: -$article-layout-space-vertical
+
+	h3
+		margin-bottom: $space-bottom - ($space-bottom/2)
+
+	&__list
+		font-size: 0
+		letter-spacing: -4px
+		
+		li
+			display: inline-block
+			vertical-align: top
+			white-space: nowrap
+			font-family: $font-alt
+			font-weight: 400
+			font-size: 1.4rem
+			line-height: 2
+			letter-spacing: normal
+			text-transform: uppercase
+
+			a
+				display: inline-block
+				padding: 0 16px
+				text-decoration: none
+				color: #000
+				border: solid #ff9a09
+				border-width: 1px 1px 4px
+				background: #fff
+				-webkit-transition-property: box-shadow, -webkit-transform
+				transition-property: box-shadow, transform
+				-webkit-transition-duration: $animation-speed
+				transition-duration: $animation-speed
+
+				&:before
+					content: '#'
+
+				.no-touchevents &:hover
+					box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2)
+					-webkit-transform: translate(0, -4px)
+					-ms-transform: translate(0, -4px)
+					transform: translate(0, -4px)
+
+				&:active
+					box-shadow: 0 0 0 rgba(0, 0, 0, 0)
+					-webkit-transition-duration: 0.1s
+					transition-duration: 0.1s
+					-webkit-transform: translate(0, 0)
+					-ms-transform: translate(0, 0)
+					transform: translate(0, 0)
+
+	&__list
+	.content &__list
+		margin: 0 -10px
+		max-width: none
+
+		li
+			margin-bottom: 0
+			margin-top: $space-bottom/2
+			padding: 0 10px
+
+			&:before
+				content: none
+
+/*tags end*/
+
 // main nav
 .main-nav
 	padding: 20px
@@ -320,6 +475,8 @@
 /*FOOTER*/
 .footer-holder
 	padding: 10px 0 0
+	background: #1a1a1a
+
 /*FOOTER end*/
 
 /*======================================================*/
