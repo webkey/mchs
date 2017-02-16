@@ -39,28 +39,31 @@
 		background: #004d85
 
 .main
-	padding: 30px 0 130px
 	position: relative
 	clear: both
 	z-index: 4
 
 .main-holder
 	width: 100%
+	padding-right: 60px
+	+clear
 
-	&:before,
-	&:after
-		content: ""
-		display: table
-	
-	&:after
-		clear: both
-	
-.content-wrap
+.main-frame
 	float: left
 	width: 100%
 
+.main-inside
+	margin: 0 0 0 270px
+	padding: 60px
+	min-height: 50px
+	+clear
+
+.content-wrap
+	@extend .main-frame
+
 .content
-	margin: 0 450px 0 330px
+	margin: 0 270px 0 0
+	padding-right: 60px
 	min-height: 50px
 
 .sheet
@@ -80,9 +83,8 @@
 .aside
 	display: inline
 	float: right
-	margin: 0 0 0 -355px
-	width: 355px
-	padding-right: 120px
+	margin: 0 0 0 -270px
+	width: 270px
 
 .footer
 	margin: -100px auto 0
@@ -175,14 +177,7 @@
 		resize: none
 	
 	.form-footer
-
-		&:before,
-		&:after
-			content: ""
-			display: table
-
-		&:after
-			clear: both
+		+clear
 
 	.form-buttons
 		float: left
@@ -264,6 +259,12 @@
 			-webkit-transition-duration: 0.1s
 			transition-duration: 0.1s
 
+		span
+			display: block
+			font-size: 0
+			line-height: 0
+			opacity: 0
+
 		svg
 			position: absolute
 			left: 50%
@@ -312,17 +313,78 @@ $class-banners: banners
 		line-height: $line-height
 		letter-spacing: normal
 
+		.#{$class-banners} &
+			display: inline-block
+			vertical-align: top
+			padding: 0 $grid-space/2 $grid-space
+
+		.aside &
+			+grid-item(1)
+
+		.banners-panel &
+			+grid-item(4)
+
 		a
 			display: block
 			text-decoration: none
 
-		.#{$class-banners} &
-			display: inline-block
-			vertical-align: top
-			+grid-item(1)
-			padding: 0 $grid-space/2 $grid-space
+			img
+				width: 100%
 
 /*banners end*/
+
+/* news read*/
+.news-read
+	margin: 0 -#{$grid-space/2} $space-bottom
+	+grid-parent
+
+	&__item
+		display: inline-block
+		vertical-align: top
+		+grid-item(1)
+		padding: 0 $grid-space/2 $space-bottom
+		font-size: $font-size-small
+		line-height: $line-height-small
+		letter-spacing: normal
+
+	&__inner
+		display: block
+		position: relative
+		text-decoration: none
+		color: $color-text
+
+		&:before
+			content: ''
+			position: absolute
+			$left: 18px
+			$top: 12px
+			left: -#{$left}
+			top: -#{$top}
+			width: calc(100% + #{$left}*2)
+			height: calc(100% + #{$top}*2)
+			-webkit-transition-property: background-color
+			transition-property: background-color
+			-webkit-transition-duration: $animation-speed-mouseleave
+			transition-duration: $animation-speed-mouseleave
+			-webkit-transition-timing-function: ease-in-out
+			transition-timing-function: ease-in-out
+			z-index: -1
+
+		.no-touchevents &:hover:before
+			background-color: #fff
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+
+	&__text
+		margin-bottom: 12px
+
+	&__meta
+		display: block
+		font-size: 1.2rem
+		line-height: 1.4
+		color: $color-text-light
+
+/*news read end*/
 
 /*news links*/
 .news-links
@@ -333,7 +395,7 @@ $class-banners: banners
 		display: inline-block
 		vertical-align: top
 		+grid-item(1)
-		padding: 0 $grid-space/2 $grid-space
+		padding: 0 $grid-space/2 $space-bottom
 		font-size: $font-size-small
 		line-height: $line-height-small
 		letter-spacing: normal
@@ -382,14 +444,7 @@ $class-banners: banners
 .header-holder
 	padding: 10px 0
 	background: $color-header-bg
-
-	&:before,
-	&:after
-		content: ""
-		display: table
-
-	&:after
-		clear: both
+	+clear
 
 /*logo*/
 .logo
@@ -411,10 +466,10 @@ $class-banners: banners
 /*MAIN*/
 /*breadcrumbs*/
 .breadcrumbs
+	@extend .content
 	font-size: 1.4rem
 	line-height: 1.5
 	color: $color-text
-	margin: 0
 	padding-bottom: $space-bottom
 	cursor: default
 
@@ -478,13 +533,7 @@ $class-banners: banners
 .article-meta
 	@include article-meta-text
 	margin-bottom: $space-bottom-md
-
-	&:before, &:after
-		content: ""
-		display: table
-
-	&:after
-		clear: both
+	+clear
 
 /*article meta end*/
 
@@ -731,6 +780,9 @@ $class-news-previews: news-previews
 		min-height: $padding-vertical
 		margin: -#{$padding-vertical} -#{$padding-horizontal} $padding-vertical
 
+		img
+			width: 100%
+
 	&__text
 		margin-bottom: $padding-vertical
 
@@ -739,6 +791,68 @@ $class-news-previews: news-previews
 		font-size: 1.2rem
 		line-height: 1.4
 		color: $color-text-light
+		
+	&__footer
+		position: relative
+		
+.more
+	text-align: center
+
+	.btn-more
+		display: inline-block
+		text-decoration: none
+		font: 400 #{$font-size}/#{$line-height} $font-alt
+		color: $color-text-alt
+		padding-bottom: 15px
+		-webkit-transition-property: -webkit-transform
+		transition-property: transform
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+
+		.no-touchevents &:hover
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+			-webkit-transform: translate(0, -4px)
+			-ms-transform: translate(0, -4px)
+			transform: translate(0, -4px)
+
+		i
+			position: absolute
+			left: 50%
+			bottom: 0
+			width: 17px
+			height: 16px
+			font-size: 1px
+			z-index: 2
+			pointer-events: none
+			-webkit-backface-visibility: hidden
+			backface-visibility: hidden
+			-webkit-transform: translate(-50%, 0)
+			-ms-transform: translate(-50%, 0)
+			transform: translate(-50%, 0)
+
+		i:before, i:after
+			content: ''
+			position: absolute
+			left: 50%
+			top: 50%
+			height: 2em
+			width: 12em
+			border-radius: 2em
+			background: $color-text-alt
+
+		i:before
+			margin: -1em 0 0 -10em
+			-webkit-transform: rotate(45deg)
+			-ms-transform: rotate(45deg)
+			transform: rotate(45deg)
+
+		i:after
+			margin: -1em 0 0 -3em
+			-webkit-transform: rotate(-45deg)
+			-ms-transform: rotate(-45deg)
+			transform: rotate(-45deg)
+
 
 /*news previews end*/
 
@@ -764,6 +878,15 @@ $class-news-previews: news-previews
 /*MAIN end*/
 
 /*SIDEBAR*/
+.sidebar-add
+	overflow-x: hidden
+	overflow-y: auto
+	-webkit-overflow-scrolling: touch
+
+	@at-root
+	&__holder
+		padding: 36px 40px
+
 /*SIDEBAR end*/
 
 /*ASIDE*/

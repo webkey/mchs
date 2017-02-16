@@ -97,7 +97,7 @@ img
 	table &
 		max-width: none
 
-.table_auto
+.table-auto
 	overflow: auto
 	max-width: 100%
 	-webkit-overflow-scrolling: touch
@@ -124,20 +124,6 @@ table
 	th
 		font-size: 1.6rem
 
-.mark
-	color: $color-text-mark
-	font-style: inherit
-	font-weight: inherit
-
-.text-color-alt
-	color: $color-text-alt
-
-.align-center
-	text-align: center
-
-.nobr
-	white-space: nowrap
-
 b, strong, th
 	@include font-bold
 	//font-family: 'fontNameBold'
@@ -160,6 +146,24 @@ strong em
 	//font-family: 'fontNameBoldItalic'
 	//font-weight: normal
 	//font-style: normal
+
+.mark
+	color: $color-text-mark
+	font-style: inherit
+	font-weight: inherit
+
+.text-color-alt
+	color: $color-text-alt
+
+.align-center
+	text-align: center
+
+.nobr
+	white-space: nowrap
+
+.hide
+	font-size: 0
+	line-height: 0
 
 /*btn*/
 [class|="btn"],
@@ -414,7 +418,7 @@ button
 	table
 		margin-bottom: $space-bottom
 
-	.table_auto table
+	.table-auto table
 		margin-bottom: 0
 
 	.tbl

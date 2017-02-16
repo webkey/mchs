@@ -45,3 +45,28 @@
 // =============================================================================
 =grid-item($length-in-row)
 	width: 100%/$length-in-row - 0.02
+
+// =============================================================================
+// Text transform fix
+// =============================================================================
+=text-fix()
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	-webkit-touch-callout: none
+	-webkit-user-select: none
+	-khtml-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
+
+// =============================================================================
+// Grid Item
+// =============================================================================
+=clear()
+	&:before,
+	&:after
+		content: ""
+		display: table
+
+	&:after
+		clear: both

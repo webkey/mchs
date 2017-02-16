@@ -1,11 +1,11 @@
 @@include('include/head.tpl', {
-	"title": "Главная",
+	"title": "Новости",
 	"pageClass": ""
 })
 <div class="wrapper">
 	<!--HEADER-->
 	@@include('include/header.tpl', {
-		"active": "index"
+		"active": "typography"
 	})
 	<!--HEADER end-->
 
@@ -16,16 +16,21 @@
 				<!--CONTENT-->
 				<div class="content-wrap">
 					<div class="content">
-						@@include('include/view.tpl')
-						@@include('include/var.tpl', {
-							"name": "haoxin",
-							"age": 12345,
-							"socials": {
-								"fb": "facebook.com/include",
-								"tw": "twitter.com/include"
-							}
-						})
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consequuntur cupiditate deleniti dolorum eius exercitationem, fugiat impedit in minima molestiae necessitatibus nemo odit quos saepe tempora tenetur veniam vitae!</p>
+						<!--breadcrumbs-->
+						<div class="breadcrumbs">
+							<ul class="breadcrumbs__list">
+								<li><a href="index.html" title="Главная"><span>Главная</span></a></li>
+								<li><a href="news.html" title="Новости"><span>Новости</span></a></li>
+								<li><a href="news-inner.html" title="Новости Минской области"><span>Новости Минской области</span></a></li>
+								<li><span>В гаражах в Мачулищах произошёл взрыв – трое пострадавших, разрушены 6 гаражей.</span></li>
+							</ul>
+						</div>
+						<!--breadcrumbs end-->
+						<div class="sheet">
+							<div class="article-layout">
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi aperiam doloremque incidunt, obcaecati odio officiis possimus quis. Ab ad in incidunt nemo nisi, ratione vel velit! Cupiditate expedita, repellendus.
+							</div>
+						</div>
 					</div>
 				</div>
 				<!--CONTENT end-->
