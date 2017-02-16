@@ -80,9 +80,9 @@
 .aside
 	display: inline
 	float: right
-	margin: 0 0 0 -270px
-	width: 270px
-	background: $color-bg-alt
+	margin: 0 0 0 -355px
+	width: 355px
+	padding-right: 120px
 
 .footer
 	margin: -100px auto 0
@@ -239,23 +239,6 @@
 		font-size: $font-size
 		letter-spacing: normal
 
-	.fb a
-		background-color: #3a589e
-
-	.vk a
-		background-color: #4b73a4
-
-	.twitter a
-		background-color: #1da0f2
-
-	.ok a
-		background-color: #f2822e
-
-	.instagram a
-		background-image: -moz-linear-gradient( 45deg, rgb(222,79,90) 0%, rgb(164,59,151) 100%)
-		background-image: -webkit-linear-gradient( 45deg, rgb(222,79,90) 0%, rgb(164,59,151) 100%)
-		background-image: -ms-linear-gradient( 45deg, rgb(222,79,90) 0%, rgb(164,59,151) 100%)
-
 	a
 		display: block
 		position: relative
@@ -299,7 +282,100 @@
 			-webkit-transition-duration: $animation-speed
 			transition-duration: $animation-speed
 
+	.fb a
+		background-color: #3a589e
+
+	.vk a
+		background-color: #4b73a4
+
+	.twitter a
+		background-color: #1da0f2
+
+	.ok a
+		background-color: #f2822e
+
+	.instagram a
+		background-image: -moz-linear-gradient( 45deg, rgb(222,79,90) 0%, rgb(164,59,151) 100%)
+		background-image: -webkit-linear-gradient( 45deg, rgb(222,79,90) 0%, rgb(164,59,151) 100%)
+		background-image: -ms-linear-gradient( 45deg, rgb(222,79,90) 0%, rgb(164,59,151) 100%)
+
 /*social networks end*/
+
+/*banners*/
+$class-banners: banners
+.#{$class-banners}
+	margin: 0 -#{$grid-space/2} $space-bottom
+	+grid-parent
+
+	&__item
+		font-size: $font-size
+		line-height: $line-height
+		letter-spacing: normal
+
+		a
+			display: block
+			text-decoration: none
+
+		.#{$class-banners} &
+			display: inline-block
+			vertical-align: top
+			+grid-item(1)
+			padding: 0 $grid-space/2 $grid-space
+
+/*banners end*/
+
+/*news links*/
+.news-links
+	margin: 0 -#{$grid-space/2} $space-bottom
+	+grid-parent
+
+	&__item
+		display: inline-block
+		vertical-align: top
+		+grid-item(1)
+		padding: 0 $grid-space/2 $grid-space
+		font-size: $font-size-small
+		line-height: $line-height-small
+		letter-spacing: normal
+
+	&__inner
+		display: block
+		position: relative
+		text-decoration: none
+		color: $color-text
+
+		&:before
+			content: ''
+			position: absolute
+			$left: 18px
+			$top: 12px
+			left: -#{$left}
+			top: -#{$top}
+			width: calc(100% + #{$left}*2)
+			height: calc(100% + #{$top}*2)
+			-webkit-transition-property: background-color
+			transition-property: background-color
+			-webkit-transition-duration: $animation-speed-mouseleave
+			transition-duration: $animation-speed-mouseleave
+			-webkit-transition-timing-function: ease-in-out
+			transition-timing-function: ease-in-out
+			z-index: -1
+
+		.no-touchevents &:hover:before
+			background-color: #fff
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+
+	&__text
+		margin-bottom: 12px
+
+	&__meta
+		display: block
+		font-size: 1.2rem
+		line-height: 1.4
+		color: $color-text-light
+
+/*news links end*/
 /*WIDGETS end*/
 
 /*HEADER*/
@@ -342,8 +418,7 @@
 	padding-bottom: $space-bottom
 	cursor: default
 
-	&__list,
-	.content &__list
+	&__list, .content &__list
 		overflow: hidden
 		list-style: none
 		padding: 0
@@ -545,8 +620,8 @@
 				-ms-transform: translate(0, 0)
 				transform: translate(0, 0)
 
-	.tags &
-		margin-bottom: -$space-bottom/2
+.tags .tags__list
+	margin-bottom: -$space-bottom/2
 
 /*tags end*/
 
@@ -588,6 +663,85 @@
 
 /*ctrl end*/
 
+/*news previews*/
+$class-news-previews: news-previews
+.#{$class-news-previews}
+	$padding-vertical: 26px
+	$padding-horizontal: 30px
+	&__list
+		margin: 0 -#{$grid-space/2} $space-bottom
+		+grid-parent
+
+	&__item
+		font-size: $font-size-small
+		line-height: $line-height-small
+		letter-spacing: normal
+
+		.#{$class-news-previews} &
+			display: inline-block
+			vertical-align: top
+			+grid-item(4)
+			padding: 0 $grid-space/2 $grid-space
+
+	&__inner
+		$shadow-color: $color-text-mark
+		display: block
+		position: relative
+		padding: $padding-vertical $padding-horizontal
+		text-decoration: none
+		color: $color-text
+		background: #fff
+		box-shadow: inset 0 0 0 2px transparentize($shadow-color, 1)
+		-webkit-transition-property: box-shadow
+		transition-property: box-shadow
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
+
+		.no-touchevents &:hover
+			box-shadow: inset 0 0 0 2px transparentize($shadow-color, 0)
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+
+	&__label
+		position: absolute
+		left: 0
+		top: 0
+		width: 60px
+		height: 60px
+		text-indent: -9999px
+		overflow: hidden
+
+		.no-img &
+			position: relative
+			left: auto
+			top: auto
+			margin: -#{$padding-vertical} $padding-vertical $padding-vertical -#{$padding-horizontal}
+
+		&_none
+			display: none
+
+		&_video
+			background: $color-text-mark url(../img/depict-video.svg) no-repeat center
+			-webkit-background-size: 26px
+			background-size: 26px
+
+	&__img
+		min-height: $padding-vertical
+		margin: -#{$padding-vertical} -#{$padding-horizontal} $padding-vertical
+
+	&__text
+		margin-bottom: $padding-vertical
+
+	&__meta
+		display: block
+		font-size: 1.2rem
+		line-height: 1.4
+		color: $color-text-light
+
+/*news previews end*/
+
 // main nav
 .main-nav
 	padding: 20px
@@ -613,6 +767,14 @@
 /*SIDEBAR end*/
 
 /*ASIDE*/
+.aside__widget
+	margin: 0 0 $space-bottom
+
+	h3
+		font: 400 1.2rem/1.4 $font-alt
+		color: $color-text-light
+		text-transform: uppercase
+
 /*ASIDE end*/
 
 /*FOOTER*/

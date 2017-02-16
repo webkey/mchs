@@ -1137,27 +1137,25 @@ div.cselect
 	.ui-multiselect-checkboxes li:last-child
 		border-radius: 0 0 4px 4px
 	
-	.ui-multiselect-checkboxes label input
-		position: absolute
-		left: -9999px
-	
 	.ui-multiselect-checkboxes label
 		display: block
-		cursor: pointer
+		padding: 13px 18px
 		@include font-normal
-		font: 16px/22px 'Roboto', sans-serif
 		font-size: 16px
 		line-height: 22px
 		text-transform: none
 		color: $color-form-text
-		font-weight: normal
-		padding: 13px 18px
+		cursor: pointer
 		border: none
 		background-color: $color-form-bg
 		-webkit-transition-property: background, color
 		transition-property: background, color
 		-webkit-transition-duration: 0.2s
 		transition-duration: 0.2s
+
+		input
+			position: absolute
+			left: -9999px
 	
 	.desktop .ui-multiselect-checkboxes label:hover
 		background-color: #eaeaea
@@ -1179,90 +1177,89 @@ div.cselect
 /*FORM STYLE end*/
 
 /*download files items*/
-/*depict files*/
-[class|="depict-files"],
-[class*=" depict-files-"]
-	background: url(../img/sprite-files.png) 0 0 no-repeat
-	display: inline-block
-	vertical-align: top
-
-.depict-files
-	&-pdf
-		background-position: 0 0
-		width: 39px
-		height: 46px
-
-	&-xls
-		background-position: 0 -66px
-		width: 39px
-		height: 46px
-
-	&-doc
-		background-position: 0 -132px
-		width: 39px
-		height: 46px
-
-	&-zip
-		background-position: 0 -198px
-		width: 39px
-		height: 46px
-
-	&-jpg
-		background-position: 0 -264px
-		width: 39px
-		height: 46px
-
-/*depict files end*/
-
 /*files item*/
-.files
-	margin-bottom: $space-bottom
-	margin-left: -30px
-	font-size: 0
-	line-height: 1
-	letter-spacing: -4px
+$class-files: files
+.#{$class-files}
+	margin: 0 -#{$grid-space/2} $space-bottom
+	+grid-parent
 
-	&-item
-		font-size: $font-size
-		line-height: $line-height
+	&__item
+		font-size: $font-size-small
+		line-height: $line-height-small
 		letter-spacing: normal
 
-	& .files-item
-		display: inline-block
-		vertical-align: top
-		width: 33.29%
-		padding: 0 0 48px 30px
+		.#{$class-files} &
+			display: inline-block
+			vertical-align: top
+			+grid-item(2)
+			padding: 0 $grid-space/2 $grid-space
 
-.file
-	font-size: 14px
-	line-height: 18px
-	padding: 0 0 0 53px
-	position: relative
-	min-height: 46px
+	&__inner
+		$shadow-color: $color-text-mark
+		display: block
+		padding: 26px 30px
+		text-decoration: none
+		color: $color-text
+		background: #fff
+		box-shadow: inset 0 0 0 2px transparentize($shadow-color, 1)
+		-webkit-transition-property: box-shadow
+		transition-property: box-shadow
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
+		width: 100%
+
+		.#{$class-files} &
+			height: 100%
+
+		&:after
+			content: ''
+			display: block
+			clear: both
+
+		.no-touchevents &:hover
+			box-shadow: inset 0 0 0 2px transparentize($shadow-color, 0)
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+
+	&__depict
+		float: left
+		width: 38px
+		height: 50px
+		margin-right: 30px
+
+	&__description
+		overflow: hidden
+		position: relative
+		padding-bottom: 30px
+		height: 100%
 
 	&__title
-		padding: 5px 0 7px
+		margin-bottom: 10px
 
-	&__title a
-		text-decoration: none
-		margin: 0 0 0 -53px
-		display: inline-block
-		padding: 0 0 0 53px
-
-	&__title a span
-		padding-top: 5px
-		text-decoration: underline
-
-	.no-touchevents & a:hover span
-		text-decoration: none
-
-	& [class*="depict-files-"]
+	&__meta
+		$space: 30px
 		position: absolute
-		left: 0
-		top: 0
+		bottom: 0
+		margin-left: -$space
 
-	&__info
-		color: #666
+		& > span
+			display: inline-block
+			vertical-align: top
+			padding-left: 26px
+			margin-left: $space
+			-webkit-background-size: 15px
+			background-size: 15px
+			color: $color-text-light
+
+	&__size
+		background: url(../img/save.svg) no-repeat
+
+	&__date
+		-webkit-background-size: 15px
+		background-size: 15px
+		background: url(../img/date.svg) no-repeat
 
 /*files item end*/
 /*download files items end*/

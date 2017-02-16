@@ -203,6 +203,35 @@ function slidersInit() {
 /*sliders end*/
 
 /**
+ * equal height
+ * */
+function equalHeightInit() {
+	var $files = $('.files');
+
+	if ($files.length) {
+		$files.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+}
+/*equal height end*/
+
+/**
+ * masonry
+ * */
+function masonryInit() {
+	var $newsPreviews = $('.news-previews__list');
+	if ($newsPreviews.length) {
+		$newsPreviews.masonry({
+			// options
+			itemSelector: '.news-previews__item',
+			percentPosition: true
+		});
+	}
+}
+/*masonry*/
+
+/**
  * form success for example
  * */
 function formSuccessExample() {
@@ -265,5 +294,7 @@ $(document).ready(function(){
 	inputFilledClass();
 	printShow();
 	slidersInit();
+	equalHeightInit();
+	masonryInit();
 	formSuccessExample();
 });

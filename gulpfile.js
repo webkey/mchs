@@ -75,7 +75,9 @@ gulp.task('scripts', function () {
 		'src/libs/jquery-smartresize/jquery.debouncedresize.js',
 		'src/libs/jquery-placeholder/jquery.placeholder.min.js',
 		'src/libs/magnific-popup/dist/jquery.magnific-popup.js',
-		'src/libs/slick-carousel/slick/slick.min.js'
+		'src/libs/slick-carousel/slick/slick.min.js',
+		'src/libs/matchHeight/dist/jquery.matchHeight-min.js',
+		'src/libs/masonry/dist/masonry.pkgd.min.js  '
 	])
 		.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 		//.pipe(uglify()) // Сжимаем JS файл

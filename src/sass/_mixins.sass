@@ -14,7 +14,7 @@
 // Font Face
 // =============================================================================
 
-@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg)
+=font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg)
 	$src: null
 
 	$extmods: (eot: "?", svg: "#" + str-replace($name, " ", "_"))
@@ -31,3 +31,17 @@
 		font-style: $style
 		font-weight: $weight
 		src: $src
+
+// =============================================================================
+// Grid Parent
+// =============================================================================
+=grid-parent
+	font-size: 0
+	line-height: 1
+	letter-spacing: -4px
+
+// =============================================================================
+// Grid Item
+// =============================================================================
+=grid-item($length-in-row)
+	width: 100%/$length-in-row - 0.02
