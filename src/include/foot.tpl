@@ -1,4 +1,4 @@
-<!-- >>> footer.tpl <<< -->
+<!-- >>> foot.tpl <<< -->
 <!--footer-->
 <footer class="footer">
 	<div class="layout">

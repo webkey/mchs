@@ -14,98 +14,47 @@
 		<div class="layout">
 			<div class="main-holder">
 				<!--CONTENT-->
-				<div class="content-wrap">
-					<div class="content">
-						@@include('include/view.tpl')
-						@@include('include/var.tpl', {
-							"name": "haoxin",
-							"age": 12345,
-							"socials": {
-								"fb": "facebook.com/include",
-								"tw": "twitter.com/include"
-							}
-						})
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur consequuntur cupiditate deleniti dolorum eius exercitationem, fugiat impedit in minima molestiae necessitatibus nemo odit quos saepe tempora tenetur veniam vitae!</p>
+				<div class="main-frame">
+					<div class="main-inside">
+						<!--breadcrumbs-->
+						<div class="breadcrumbs">
+							<ul class="breadcrumbs__list">
+								<li><a href="index.html" title="Главная"><span>Главная</span></a></li>
+								<li><a href="news.html" title="Новости"><span>Новости</span></a></li>
+								<li><a href="news-inner.html" title="Новости Минской области"><span>Новости Минской области</span></a></li>
+								<li><span>В гаражах в Мачулищах произошёл взрыв – трое пострадавших, разрушены 6 гаражей.</span></li>
+							</ul>
+						</div>
+						<!--breadcrumbs end-->
+						<div class="content-wrap">
+							<div class="content">
+								<div class="sheet">
+									<div class="article-layout">
+										Здесь будет контент страницы
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--ASIDE-->
+						@@include('include/aside.tpl')
+						<!--ASIDE end-->
+
+						<!--SIDE-->
+						@@include('include/side.tpl')
+						<!--SIDE end-->
 					</div>
 				</div>
 				<!--CONTENT end-->
 
 				<!--SIDEBAR-->
-				@@include('include/sidebar-start.tpl')
-				<h3>Новости дня</h3>
-				<div class="news-links">
-					@@loop('include/news-links.tpl', [
-						{
-							"text": "Женщина получила ожоги отдыхая под Витебском.",
-							"meta": "Витебск, 11:30"
-						},
-						{
-							"text": "В Островецком районе работники МЧС спасли тонувшего мужчину.",
-							"meta": "Гродно, 11:30"
-						},
-						{
-							"text": "Самые читаемые материалы сайта МЧС за 2016 год.",
-							"meta": "Гомель, 10:30"
-						},
-						{
-							"text": "В Островецком районе работники МЧС спасли тонувшего мужчину.",
-							"meta": "Гродно, 11:30"
-						}
-					])
-				</div>
-				@@include('include/sidebar-end.tpl')
+				@@include('include/sidebar.tpl')
 				<!--SIDEBAR-->
-
-				<!--ASIDE-->
-				@@include('include/aside-start.tpl')
-				<div class="aside__widget">
-					<!--banners-->
-					<div class="banners">
-						@@loop('include/banners.tpl', [
-							{ "src": "img/img-banner-01.jpg" },
-							{ "src": "img/img-banner-02.jpg" },
-							{ "src": "img/img-banner-03.jpg" },
-							{ "src": "img/img-banner-04.jpg" },
-							{ "src": "img/img-banner-05.jpg" }
-						])
-					</div>
-					<!--banners end-->
-				</div>
-				<div class="aside__widget">
-					<h3>сейчас читают</h3>
-					<!--news read-->
-					<div class="news-read">
-						@@loop('include/news-read-list.tpl', [
-							{
-								"text": "Профессиональный праздник на уходящей неделе отметили белорусские спасатели (Центральный регион).",
-								"meta": "03.01.2017, 10:30"
-							},
-							{
-								"text": "Новогоднее поздравление Министра по чрезвычайным ситуациям Владимира Ващенко.",
-								"meta": "03.01.2017, 10:30"
-							},
-							{
-								"text": "Задачы на 2017 год: якасць, эфектыўнасць, аператыўнасць!",
-								"meta": "03.01.2017, 10:30"
-							},
-							{
-								"text": "Профессиональный праздник на уходящей неделе отметили белорусские спасатели (Центральный регион).",
-								"meta": "03.01.2017, 10:30"
-							},
-							{
-								"text": "Задачы на 2017 год: якасць, эфектыўнасць, аператыўнасць!",
-								"meta": "03.01.2017, 10:30"
-							}
-						])
-					</div>
-					<!--news links end-->
-				</div>
-				@@include('include/aside-end.tpl')
-				<!--ASIDE end-->
 			</div>
 		</div>
 	</div>
 	<!--MAIN end-->
 </div>
+<!--POPUPS-->
 @@include('include/popups.tpl')
-@@include('include/footer.tpl')
+<!--POPUPS end-->
+@@include('include/foot.tpl')

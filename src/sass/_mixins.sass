@@ -58,7 +58,7 @@
 // =============================================================================
 // Text transform fix
 // =============================================================================
-=text-fix()
+=text-transform-fix()
 	-webkit-font-smoothing: antialiased
 	-moz-osx-font-smoothing: grayscale
 	-webkit-touch-callout: none
@@ -79,3 +79,11 @@
 
 	&:after
 		clear: both
+
+// =============================================================================
+// Grid Item
+// =============================================================================
+=transform($param...)
+	-webkit-transform: $param
+	-ms-transform: $param
+	transform: $param

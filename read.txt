@@ -26,3 +26,27 @@ return gulp.src([
 Gulp task "css-libs"
 1) add plugin's css to libs.sass with @import
 2) check correct path to filesnp
+
+==== task "include" ====
+
+Важно правильно расставлять одинарные и двойные кавычки
+Важно правильно задавать путь ко включаемому файлу
+
+page.html
+@@include('includes/sidebar.tpl') // sidebar.tpl лежит в папке "includes"
+
+ - путь к файлу в одинарных
+ - в объекте ключи и значения в двойных
+ - в значениях не должно быть двойных кавычек
+includes/exampl.tpl
+@@loop('include.tpl', [ // include.tpl лежит в той же папке, что и exampl.tpl
+	{
+		"text": "Главные 'новости' МЧС",
+		"active": true
+	}
+])
+
+includes/include.tpl
+<li><a href="#" @@if (active) {class="active"}><span>@@text</span></a></li>
+
+==== task "include" end ====
