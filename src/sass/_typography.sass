@@ -1184,8 +1184,8 @@ div.cselect
 /*files item*/
 $class-files: files
 .#{$class-files}
-	margin: 0 -#{$grid-space/2} $space-bottom
 	+grid-parent
+	margin-bottom: $space-bottom
 
 	&__item
 		font-size: $font-size-small
@@ -1193,10 +1193,8 @@ $class-files: files
 		letter-spacing: normal
 
 		.#{$class-files} &
-			display: inline-block
-			vertical-align: top
 			+grid-item(2)
-			padding: 0 $grid-space/2 $grid-space
+			margin-bottom: $grid-space
 
 	&__inner
 		$shadow-color: $color-text-mark

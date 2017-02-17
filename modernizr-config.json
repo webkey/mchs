@@ -1,6 +1,4 @@
 {
-	"name": "application-name",
-	"version": "0.0.1",
 	"minify": true,
 	"options": [
 		"domPrefixes",
@@ -15,6 +13,7 @@
 		"test/touchevents",
 		"test/css/backgroundsize",
 		"test/css/gradients",
+		"test/css/multiplebgs",
 		"test/css/transitions"
 	]
 }

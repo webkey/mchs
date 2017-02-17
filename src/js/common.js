@@ -243,6 +243,32 @@ function sidebarLayout() {
 }
 /*sidebar layout end*/
 
+/**!
+ * footer at bottom
+ * */
+function footerBottom(){
+	var $footer = $('.footer');
+	if($footer.length){
+		var $tplSpacer = $('<div />', {
+			class: 'spacer'
+		});
+
+		$('.main').after($tplSpacer.clone());
+
+		$(window).on('load resizeByWidth', function () {
+			var footerOuterHeight = $footer.find('.footer__holder').outerHeight();
+			$footer.css({
+				// 'margin-top': -footerOuterHeight
+			});
+
+			$('.spacer').css({
+				'height': footerOuterHeight
+			});
+		})
+	}
+}
+/*footer at bottom end*/
+
 /**
  * form success for example
  * */
@@ -309,5 +335,6 @@ $(document).ready(function(){
 	equalHeightInit();
 	masonryInit();
 	// sidebarLayout();
+	footerBottom();
 	formSuccessExample();
 });

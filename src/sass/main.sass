@@ -23,9 +23,10 @@
 /*MAIN BLOCKS*/
 .wrapper
 	margin: 0 auto
-	min-height: 100%
-	height: auto !important
-	height: 100%
+	//min-height: 100%
+	//height: auto !important
+	//height: 100%
+	min-height: 100vh
 	overflow: hidden
 	position: relative
 
@@ -45,7 +46,7 @@
 
 .main-holder
 	width: 100%
-	padding-right: $layout-grid-space-lg
+	padding-right: $layout-grid-space
 	+clear
 
 .main-frame
@@ -53,8 +54,8 @@
 	width: 100%
 
 .main-inside
-	margin: 0 0 0 270px
-	padding: $layout-grid-space-lg
+	margin: 0 0 0 $sidebar-left-width
+	padding: $layout-grid-space
 	min-height: 50px
 	+clear
 
@@ -62,8 +63,8 @@
 	@extend .main-frame
 
 .content
-	margin: 0 270px 0 0
-	padding-right: $layout-grid-space-lg
+	margin: 0 $sidebar-right-width 0 0
+	padding-right: $layout-grid-space
 	min-height: 50px
 
 .sheet
@@ -76,17 +77,16 @@
 .sidebar
 	float: left
 	margin: 0 0 0 -100%
-	width: 270px
+	width: $sidebar-left-width
 	background: $color-bg-alt
 
 .aside
 	float: right
-	margin: 0 0 0 -270px
-	width: 270px
+	margin: 0 0 0 -#{$sidebar-right-width}
+	width: $sidebar-right-width
 
 .footer
-	margin: -100px auto 0
-	height: 100px
+	height: 0
 	position: relative
 	clear: both
 	z-index: 5
@@ -96,10 +96,7 @@
 	padding-right: $layout-space-horizontal
 
 %article-layout-space
-	padding-left: $article-layout-space-horizontal
-	padding-right: $article-layout-space-horizontal
-	padding-top: $article-layout-space-vertical
-	padding-bottom: $article-layout-space-vertical
+	padding: $article-layout-space-vertical $article-layout-space-horizontal
 
 %article-layout-full-width
 	margin-left: -$article-layout-space-horizontal
@@ -212,27 +209,30 @@
 
 /*social networks*/
 .social-networks
-	list-style: none
-	padding: 0
-	margin: 0
-	font-size: 0
-	letter-spacing: -4px
 
-	.content &
-		margin: 0 0 $space-bottom - 1
-		max-width: none
+	=transition
+		-webkit-transition-property: -webkit-transform, box-shadow, fill
+		transition-property: transform, box-shadow, fill
+		-webkit-transition-duration: 0.3s
+		transition-duration: 0.3s
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
 
-	li, .content & li
-		padding: 0
-		margin: 0 10px 10px 0
+	=transition-duration // on mouseenter
+		-webkit-transition-duration: 0.2s
+		transition-duration: 0.2s
 
-		&:before
-			content: none
+	&__list
+		font-size: 0
+		line-height: 0
+		letter-spacing: -4px
 
-	li
+	&__item
 		display: inline-block
 		vertical-align: top
-		font-size: $font-size
+		margin: 0 10px 10px 0
+		font-size: 14px
+		line-height: 1.4
 		letter-spacing: normal
 
 	a
@@ -240,19 +240,17 @@
 		position: relative
 		width: 40px
 		height: 40px
-		background: $color-text-alt
-		-webkit-transition-property: -webkit-transform, box-shadow
-		transition-property: transform, box-shadow
-		-webkit-transition-duration: $animation-speed
-		transition-duration: $animation-speed
+		background: #fff
+		+transition
 
 		.no-touchevents &:hover
 			box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2)
 			-webkit-transform: translate(0, -4px)
 			-ms-transform: translate(0, -4px)
 			transform: translate(0, -4px)
+			+transition-duration
 
-		&:active
+		&:active, .no-touchevents &:active
 			box-shadow: 0 0 0 rgba(0, 0, 0, 0)
 			-webkit-transform: translate(0, 0)
 			-ms-transform: translate(0, 0)
@@ -261,10 +259,7 @@
 			transition-duration: 0.1s
 
 		span
-			display: block
-			font-size: 0
-			line-height: 0
-			opacity: 0
+			+hide-text
 
 		svg
 			position: absolute
@@ -279,10 +274,7 @@
 
 		path
 			fill: #fff
-			-webkit-transition-property: fill
-			transition-property: fill
-			-webkit-transition-duration: $animation-speed
-			transition-duration: $animation-speed
+			+transition
 
 	.fb a
 		background-color: #3a589e
@@ -297,27 +289,19 @@
 		background-color: #f2822e
 
 	.instagram a
-		background-image: -moz-linear-gradient( 45deg, rgb(222,79,90) 0%, rgb(164,59,151) 100%)
-		background-image: -webkit-linear-gradient( 45deg, rgb(222,79,90) 0%, rgb(164,59,151) 100%)
-		background-image: -ms-linear-gradient( 45deg, rgb(222,79,90) 0%, rgb(164,59,151) 100%)
+		+linear-gradient(to right, #de4f5a 0%, #a43b97 100%)
 
 /*social networks end*/
 
 /*banners*/
-$class-banners: banners
-.#{$class-banners}
-	margin: 0 -#{$grid-space/2} $space-bottom
+.banners
 	+grid-parent
+	margin-bottom: $space-bottom
 
 	&__item
 		font-size: $font-size
 		line-height: $line-height
 		letter-spacing: normal
-
-		.#{$class-banners} &
-			display: inline-block
-			vertical-align: top
-			padding: 0 $grid-space/2 $grid-space
 
 		.aside &
 			+grid-item(1)
@@ -336,8 +320,8 @@ $class-banners: banners
 
 /* news links*/
 .news-links
-	margin: 0 -#{$grid-space/2} $space-bottom
 	+grid-parent
+	margin-bottom: $space-bottom
 
 	=transition
 		-webkit-transition-property: background-color, color
@@ -360,7 +344,6 @@ $class-banners: banners
 		display: inline-block
 		vertical-align: top
 		+grid-item(1)
-		padding: 0 $grid-space/2
 		margin-bottom: $space-bottom
 		font-size: $font-size-small
 		line-height: $line-height-small
@@ -412,8 +395,8 @@ $class-banners: banners
 
 /*news read*/
 .news-read
-	margin: 0 -#{$grid-space/2} $space-bottom
 	+grid-parent
+	margin-bottom: $space-bottom
 
 	=transition
 			-webkit-transition-property: background-color, color
@@ -428,13 +411,14 @@ $class-banners: banners
 			transition-duration: $animation-speed
 
 	&__item
-		display: inline-block
-		vertical-align: top
 		+grid-item(1)
-		padding: 0 $grid-space/2 $space-bottom
+		margin-bottom: $space-bottom
 		font-size: $font-size-small
 		line-height: $line-height-small
 		letter-spacing: normal
+
+		&:last-child
+			padding-bottom: 0
 
 	&__inner
 		display: block
@@ -474,7 +458,7 @@ $class-banners: banners
 .header__holder
 	position: relative
 	background: $color-header-bg
-	padding-left: $left-space
+	padding-left: $sidebar-left-width
 	min-height: $header-height
 	+clear
 
@@ -482,13 +466,11 @@ $class-banners: banners
 	+clear
 
 .header__top
-	background-image: -moz-linear-gradient( 0deg, rgb(0,106,184) 0%, rgb(0,72,124) 100%)
-	background-image: -webkit-linear-gradient( 0deg, rgb(0,106,184) 0%, rgb(0,72,124) 100%)
-	background-image: -ms-linear-gradient( 0deg, rgb(0,106,184) 0%, rgb(0,72,124) 100%)
+	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
 	+clear
 
 .header__content
-	padding: 28px $layout-grid-space-lg
+	padding: 28px $layout-grid-space
 	+clear
 
 .header__contacts
@@ -581,7 +563,7 @@ $class-banners: banners
 	background: #fff url(../img/logo.png) no-repeat center
 	-webkit-background-size: 120px
 	background-size: 120px
-	width: $left-space
+	width: $sidebar-left-width
 	text-indent: -9999px
 	overflow: hidden
 	margin: 0
@@ -596,7 +578,7 @@ $class-banners: banners
 .user-options
 	float: right
 	font-size: 0
-	line-height: 1
+	line-height: 0
 	letter-spacing: -4px
 
 	$color: #80a7c4
@@ -676,11 +658,7 @@ $class-banners: banners
 				+transition-duration
 
 			& > span
-				display: block
-				height: 0
-				width: 0
-				font-size: 0
-				line-height: 0
+				+hide-text
 
 /*user options end*/
 
@@ -691,7 +669,7 @@ $class-banners: banners
 	&__list
 		font-size: $font-size-small
 		line-height: $line-height
-		padding: 17px $layout-grid-space-lg
+		padding: 17px $layout-grid-space
 
 	@at-root
 	&__item
@@ -775,13 +753,13 @@ $class-banners: banners
 /*breadcrumbs end*/
 
 /*article meta*/
-@mixin article-meta-text
+=article-meta-text
 	font-size: 1.2rem
 	line-height: 1.4
 	color: $color-text-light
 
 .article-meta
-	@include article-meta-text
+	+article-meta-text
 	margin-bottom: $space-bottom-md
 	+clear
 
@@ -792,7 +770,7 @@ $class-banners: banners
 	float: left
 	display: block
 	margin-bottom: $space-bottom
-	@include article-meta-text
+	+article-meta-text
 	font-style: normal
 
 	.article-meta &
@@ -806,7 +784,7 @@ $class-banners: banners
 	overflow: hidden
 	margin-left: 20px
 	text-align: right
-	@include article-meta-text
+	+article-meta-text
 
 	&__item
 		display: inline-block
@@ -968,8 +946,8 @@ $class-news-previews: news-previews
 	$padding-vertical: 26px
 	$padding-horizontal: 30px
 	&__list
-		margin: 0 -#{$grid-space/2} $space-bottom
 		+grid-parent
+		margin-bottom: $space-bottom
 
 	&__item
 		font-size: $font-size-small
@@ -977,10 +955,8 @@ $class-news-previews: news-previews
 		letter-spacing: normal
 
 		.#{$class-news-previews} &
-			display: inline-block
-			vertical-align: top
 			+grid-item(4)
-			padding: 0 $grid-space/2 $grid-space
+			margin-bottom: $grid-space
 
 	&__inner
 		$shadow-color: $color-text-mark
@@ -1044,7 +1020,10 @@ $class-news-previews: news-previews
 		
 	&__footer
 		position: relative
-		
+
+/*news previews end*/
+
+/*more button*/
 .more
 	text-align: center
 
@@ -1102,10 +1081,7 @@ $class-news-previews: news-previews
 			-webkit-transform: rotate(-45deg)
 			-ms-transform: rotate(-45deg)
 			transform: rotate(-45deg)
-
-
-/*news previews end*/
-
+/*more button end*/
 /*MAIN end*/
 
 /*SIDEBAR*/
@@ -1154,9 +1130,9 @@ $class-news-previews: news-previews
 			opacity: 1
 			visibility: visible
 
-
 /*sidebar-menu end*/
 
+/*sidebar bottom*/
 .sidebar-bottom
 	width: 100%
 
@@ -1174,17 +1150,27 @@ $class-news-previews: news-previews
 
 		& > *:last-child
 			margin-bottom: 0
-
+/*sidebar bottom end*/
 /*SIDEBAR end*/
 
 /*ASIDE*/
-.aside__widget
-	margin: 0 0 $space-bottom
+.aside
+	@at-root
+	&__holder
+		& > *:last-child
+			margin-bottom: 0
 
-	h3
-		font: 400 1.2rem/1.4 $font-alt
-		color: $color-text-light
-		text-transform: uppercase
+	@at-root
+	&__widget
+		margin: 0 0 $space-bottom
+
+		& > *:last-child
+			margin-bottom: 0
+
+		h3
+			font: 400 1.2rem/1.4 $font-alt
+			color: $color-text-light
+			text-transform: uppercase
 
 /*ASIDE end*/
 
@@ -1195,7 +1181,7 @@ $class-news-previews: news-previews
 	$fz: 14px
 	$lh: $fz*1.3
 	float: right
-	margin: 0 #{-$layout-grid-space-lg*2} 0 #{-$width}
+	margin: 0 #{-$layout-grid-space*2} 0 #{-$width}
 	width: $width
 
 	=font
@@ -1310,10 +1296,338 @@ $class-news-previews: news-previews
 /*SIDE end*/
 
 /*FOOTER*/
-.footer-holder
-	padding: 10px 0 0
-	background: #1a1a1a
+.footer
+	color: #b2b2b2
 
+	@at-root
+	.footer__holder
+		position: absolute
+		overflow: hidden
+		cursor: default
+		left: $sidebar-left-width
+		bottom: 0
+		width: calc(100% - #{$sidebar-left-width})
+		top: auto
+		right: auto
+
+
+/*footer common*/
+.footer-common
+	padding: $layout-grid-space
+	position: relative
+	overflow: hidden
+	background: #001e33
+
+	$bottom-space: 24px
+
+	=link
+		& > span
+			border-bottom: 1px solid transparent
+			-webkit-transition-property: border-color
+			transition-property: border-color
+			-webkit-transition-duration: 0.2s
+			transition-duration: 0.2s
+
+		&:hover > span
+			border-bottom-color: rgba(255, 255, 255, 0.30)
+
+	// footer nav
+	@at-root
+	.footer-nav
+		$grid-space: 15px
+		margin: 0 -#{$grid-space}
+		font-size: 0
+		line-height: 0
+		letter-spacing: -4px
+
+		&__col
+			position: relative
+			display: inline-block
+			vertical-align: top
+			padding: 0 $grid-space
+			$width: 19.98%
+			width: $width
+			font-size: 14px
+			line-height: 1.4
+			color: #fff
+			letter-spacing: normal
+
+			&:nth-child(2)
+				width: $width*3
+
+			& > *:last-child
+				margin-bottom: 0
+
+		&__title
+			display: block
+			font: 400 12px/1.4 $font-alt
+			text-transform: uppercase
+			color: #999
+			margin-bottom: $bottom-space
+
+			a
+				color: inherit
+				text-decoration: none
+				+link
+
+		&__links
+			margin: 0 0 30px
+
+			li
+				display: inline-block
+				vertical-align: top
+				margin: 0 30px 10px 0
+
+			a
+				color: inherit
+				font-size: inherit
+				line-height: inherit
+				text-decoration: none
+				list-style: none
+				+link
+
+		p
+			margin-bottom: $bottom-space
+
+/*footer common end*/
+
+/*footer bottom*/
+.footer-bottom
+	$color: #b2b2b2
+	$font-size: $font-size-small
+	$line-height: 24px
+	padding: 0 $layout-grid-space
+	background: #001e33
+	color: $color
+	border-top: 1px solid $color-text-alt
+	font-size: $font-size
+	line-height: $line-height
+
+	@at-root
+	&__holder
+		position: relative
+		text-align: justify
+		overflow: hidden
+		cursor: default
+		padding-top: 19px
+		padding-bottom: 19px
+		box-sizing: border-box
+
+		font-size: 1px
+		line-height: 0
+		letter-spacing: -4px
+
+		&:after
+			content: "1"
+			margin-left: 100%
+			height: 1px
+			overflow: hidden
+			display: inline-block
+
+	@at-root
+	&__col
+		display: inline-block
+		vertical-align: middle
+		font-size: $font-size
+		line-height: $line-height
+		padding: 0
+		letter-spacing: normal
+
+	a
+		color: $color
+		text-decoration: none
+
+		.no-touchevents &:hover
+			text-decoration: underline
+
+	.copyright
+		display: inline-block
+		vertical-align: middle
+		padding-right: 45px
+
+/*footer bottom end*/
+
+/*developer*/
+.developer
+	display: inline-block
+
+	a
+		text-decoration: none
+
+		.no-touchevents &:hover
+			text-decoration: none
+
+	&__logo
+		display: inline-block
+		vertical-align: top
+		position: relative
+		top: 3px
+		width: 154px
+		height: 20px
+		text-align: left
+		text-indent: -9999px
+		padding-right: 3px
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			width: 149px
+			height: 16px
+
+		&:before
+			content: ''
+			position: absolute
+			left: 4px
+			top: 4px
+			background-color: transparent
+			background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black)
+			background-size: 2px 2px
+			background-position: 0 0, 1px 1px
+
+			.no-cssgradient &,
+			.no-multiplebgs &
+				background: #000
+				opacity: 0.5
+				-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50)
+				filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50)
+
+		&:after
+			content: ''
+			position: absolute
+			background: #00ef85 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=') no-repeat center center
+			-webkit-background-size: auto 16px
+			background-size: auto 16px
+
+	.no-touchevents a:hover &__logo:before
+		-webkit-transform: translate(1px, 2px)
+		-ms-transform: translate(1px, 2px)
+		transform: translate(1px, 2px)
+
+	.no-touchevents a:hover &__logo:after
+		-webkit-transform: translate(0, -3px)
+		-ms-transform: translate(0, -2px)
+		transform: translate(0, -2px)
+
+/*developer end*/
+
+/*button menu*/
+.btn-map-site
+	//<a href="#" class="btn-map-site"><i></i><span>Карта сайта</span></a>
+	$btn-bg: $color-btn-bg
+	$btn-color: #fff
+	$btn-height: 40px
+	$btn-space: 12px
+	$btn-lines-width: 22px
+	$btn-lines-height: 3px
+	$btn-lines-space: 5px
+	$btn-lines-color: $btn-color
+
+	=line-style
+		height: $btn-lines-height
+		width: $btn-lines-width
+		background: $btn-lines-color
+
+	=font
+		font: 300 14px/1.4 $font-norm
+		letter-spacing: normal
+
+	=transition
+		-webkit-transition-property: -webkit-transform, box-shadow, background-color
+		transition-property: transform, box-shadow, background-color
+		-webkit-transition-duration: $animation-speed
+		transition-duration: $animation-speed
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
+
+	display: inline-block
+	text-decoration: none
+	color: #fff
+	background: $btn-bg
+	font-size: 0
+	line-height: 0
+	letter-spacing: -4px
+	white-space: nowrap
+	+text-transform-fix
+	+transition
+
+	.no-touchevents &:hover
+		background-color: $color-btn-bg-hover
+		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2)
+		-webkit-transform: translate(0, -4px)
+		-ms-transform: translate(0, -4px)
+		transform: translate(0, -4px)
+
+	.no-touchevents &:active
+		box-shadow: 0 0 0 rgba(0, 0, 0, 0)
+		-webkit-transition-duration: 0.1s
+		transition-duration: 0.1s
+		-webkit-transform: translate(0, 0)
+		-ms-transform: translate(0, 0)
+		transform: translate(0, 0)
+
+	&:before
+		content: ''
+		display: inline-block
+		min-height: $btn-height
+		vertical-align: middle
+
+	&:active
+		+transform(scale(0.95))
+
+	> span
+		+font
+		display: inline-block
+		vertical-align: middle
+		position: relative
+		max-width: 98%
+		white-space: nowrap
+		margin: 0 $btn-space
+
+	> i
+		display: inline-block
+		vertical-align: middle
+		position: relative
+		margin-left: $btn-space
+		-webkit-backface-visibility: hidden
+		backface-visibility: hidden
+		+line-style
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			left: 0
+			-webkit-backface-visibility: hidden
+			backface-visibility: hidden
+			+line-style
+
+		//first line menu
+		&:before
+			top: -#{$btn-lines-height + $btn-lines-space}
+
+		//third line menu
+		&:after
+			top: #{$btn-lines-height + $btn-lines-space}
+
+/*button menu end*/
+
+/*button menu close*/
+.btn-menu-close
+	//<a href="#" class="btn-menu-close"><i></i><span>Закрыть</span></a>
+	@extend .btn-map-site
+	> i
+		background-color: transparent
+
+		&:before
+			top: 0
+			+transform(rotate(-45deg))
+
+		&:after
+			top: 0
+			+transform(rotate(45deg))
+
+/*button menu close end*/
 /*FOOTER end*/
 
 /*======================================================*/
