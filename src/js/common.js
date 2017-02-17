@@ -232,6 +232,18 @@ function masonryInit() {
 /*masonry*/
 
 /**
+ * sidebar layout
+ * */
+function sidebarLayout() {
+	$(window).on('load debouncedresize', function () {
+		$('.sidebar-bottom').css({
+			'height': $('.sidebar').outerHeight() - $('.sidebar-top').outerHeight(true)
+		})
+	})
+}
+/*sidebar layout end*/
+
+/**
  * form success for example
  * */
 function formSuccessExample() {
@@ -296,5 +308,6 @@ $(document).ready(function(){
 	slidersInit();
 	equalHeightInit();
 	masonryInit();
+	// sidebarLayout();
 	formSuccessExample();
 });

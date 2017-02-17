@@ -74,14 +74,12 @@
 	z-index: 5
 
 .sidebar
-	display: inline
 	float: left
 	margin: 0 0 0 -100%
 	width: 270px
 	background: $color-bg-alt
 
 .aside
-	display: inline
 	float: right
 	margin: 0 0 0 -270px
 	width: 270px
@@ -333,10 +331,98 @@ $class-banners: banners
 
 /*banners end*/
 
-/* news read*/
+/* news links*/
+.news-links
+	margin: 0 -#{$grid-space/2} $space-bottom
+	+grid-parent
+
+	=transition
+		-webkit-transition-property: background-color, color
+		transition-property: background-color, color
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
+
+	=transition-duration
+		-webkit-transition-duration: $animation-speed
+		transition-duration: $animation-speed
+
+	=hover
+		a:hover &
+			color: #fff
+			+transition-duration
+
+	&__item
+		display: inline-block
+		vertical-align: top
+		+grid-item(1)
+		padding: 0 $grid-space/2
+		margin-bottom: $space-bottom
+		font-size: $font-size-small
+		line-height: $line-height-small
+		letter-spacing: normal
+
+		&:last-child
+			margin-bottom: 0
+
+	&__inner
+		display: block
+		position: relative
+		text-decoration: none
+		color: $color-text
+		z-index: 1
+
+		&:before
+			content: ''
+			position: absolute
+			$left: 18px
+			$top: 12px
+			left: -#{$left}
+			top: -#{$top}
+			width: calc(100% + #{$left}*2)
+			height: calc(100% + #{$top}*2)
+			background: transparent
+			+transition
+			z-index: -1
+
+		.no-touchevents &:hover:before
+			background-color: $color-text-alt
+			+transition-duration
+
+	&__text
+		margin-bottom: 12px
+		+transition
+
+		+hover
+
+	&__meta
+		display: block
+		font-size: 1.2rem
+		line-height: 1.4
+		color: $color-text-light
+		+transition
+
+		+hover
+
+/*news links end*/
+
+/*news read*/
 .news-read
 	margin: 0 -#{$grid-space/2} $space-bottom
 	+grid-parent
+
+	=transition
+			-webkit-transition-property: background-color, color
+			transition-property: background-color, color
+			-webkit-transition-duration: $animation-speed-mouseleave
+			transition-duration: $animation-speed-mouseleave
+			-webkit-transition-timing-function: ease-in-out
+			transition-timing-function: ease-in-out
+
+	=transition-duration
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
 
 	&__item
 		display: inline-block
@@ -362,18 +448,12 @@ $class-banners: banners
 			top: -#{$top}
 			width: calc(100% + #{$left}*2)
 			height: calc(100% + #{$top}*2)
-			-webkit-transition-property: background-color
-			transition-property: background-color
-			-webkit-transition-duration: $animation-speed-mouseleave
-			transition-duration: $animation-speed-mouseleave
-			-webkit-transition-timing-function: ease-in-out
-			transition-timing-function: ease-in-out
+			+transition
 			z-index: -1
 
 		.no-touchevents &:hover:before
 			background-color: #fff
-			-webkit-transition-duration: $animation-speed
-			transition-duration: $animation-speed
+			+transition-duration
 
 	&__text
 		margin-bottom: 12px
@@ -385,73 +465,118 @@ $class-banners: banners
 		color: $color-text-light
 
 /*news read end*/
+/*WIDGETS end*/
 
-/*news links*/
-.news-links
-	margin: 0 -#{$grid-space/2} $space-bottom
-	+grid-parent
+/*HEADER*/
+.header__holder
+	position: relative
+	background: $color-header-bg
+	padding-left: $left-space
+	min-height: $header-height
+	+clear
 
-	&__item
+.header__frame
+	+clear
+
+.header__top
+	background-image: -moz-linear-gradient( 0deg, rgb(0,106,184) 0%, rgb(0,72,124) 100%)
+	background-image: -webkit-linear-gradient( 0deg, rgb(0,106,184) 0%, rgb(0,72,124) 100%)
+	background-image: -ms-linear-gradient( 0deg, rgb(0,106,184) 0%, rgb(0,72,124) 100%)
+	+clear
+
+.header__content
+	padding: 30px 60px
+	+clear
+
+.header__contacts
+	float: right
+	margin-left: 20px
+	font-size: $font-size-small
+	line-height: $line-height-small
+
+	li
 		display: inline-block
 		vertical-align: top
-		+grid-item(1)
-		padding: 0 $grid-space/2 $space-bottom
-		font-size: $font-size-small
-		line-height: $line-height-small
-		letter-spacing: normal
-
-	&__inner
-		display: block
 		position: relative
-		text-decoration: none
-		color: $color-text
+		padding: 0 30px
 
 		&:before
 			content: ''
 			position: absolute
-			$left: 18px
-			$top: 12px
-			left: -#{$left}
-			top: -#{$top}
-			width: calc(100% + #{$left}*2)
-			height: calc(100% + #{$top}*2)
-			-webkit-transition-property: background-color
-			transition-property: background-color
-			-webkit-transition-duration: $animation-speed-mouseleave
-			transition-duration: $animation-speed-mouseleave
-			-webkit-transition-timing-function: ease-in-out
-			transition-timing-function: ease-in-out
-			z-index: -1
+			left: 0
+			top: 50%
+			$height: 18px
+			height: $height
+			width: 0
+			margin-top: -($height/2)
+			border-left: 1px solid $color-border
 
-		.no-touchevents &:hover:before
-			background-color: #fff
-			-webkit-transition-duration: $animation-speed
-			transition-duration: $animation-speed
+		&:first-child:before
+			content: none
 
-	&__text
-		margin-bottom: 12px
+		&:after
+			+for-vertical-align
+			min-height: 65px
 
-	&__meta
-		display: block
-		font-size: 1.2rem
-		line-height: 1.4
-		color: $color-text-light
+		a
+			display: inline-block
+			text-decoration: none
+			color: $color-text
 
-/*news links end*/
-/*WIDGETS end*/
+			& > div
+				display: inline-block
+				vertical-align: middle
+				margin-right: 20px
 
-/*HEADER*/
-.header-holder
-	padding: 10px 0
-	background: $color-header-bg
-	+clear
+				& > em
+					font: normal bold 30px/1.2 $font-alt
+					color: $color-text-mark
 
+			& > span
+				display: inline-block
+				vertical-align: middle
+				max-width: 100px
+
+.header__title
+	font: 700 1.8rem/1.2 $font-alt
+	text-transform: uppercase
+	color: $color-text
+	padding-bottom: 10px
+
+.header__info
+	font-size: $font-size-small
+	line-height: $line-height-small
+	margin: 0 0 -10px
+
+	li
+		display: inline-block
+		vertical-align: top
+		margin-right: 20px
+		margin-bottom: 10px
+
+		a
+			text-decoration: none
+			color: $color-text-light
+
+		svg
+			width: 24px
+			height: 24px
+			display: inline-block
+			vertical-align: middle
+			margin-right: 12px
+
+			path
+				fill: $color-text-light
 /*logo*/
 .logo
-	float: left
-	background: url(../img/logo.png) no-repeat
-	width: 220px
-	height: 85px
+	position: absolute
+	left: 0
+	top: 0
+	bottom: 0
+	background: #fff url(../img/logo.png) no-repeat center
+	-webkit-background-size: 120px
+	background-size: 120px
+	width: $left-space
 	text-indent: -9999px
 	overflow: hidden
 	margin: 0
@@ -461,6 +586,126 @@ $class-banners: banners
 		height: 100%
 
 /*logo end*/
+
+/*user options*/
+.user-options
+	float: right
+	font-size: 0
+	line-height: 1
+	letter-spacing: -4px
+
+	$color: #80a7c4
+
+	=transition
+		-webkit-transition-property: background-color, color, fill
+		transition-property: background-color, color, fill
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
+
+	=transition-duration
+		-webkit-transition-duration: $animation-speed
+		transition-duration: $animation-speed
+
+	& > li
+		display: inline-block
+		vertical-align: top
+		position: relative
+		width: 60px
+
+		&:before
+			content: ''
+			display: block
+			height: 0
+			padding-top: 100%
+
+		& > a
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
+			background-color: transparent
+			box-shadow: -1px 0 0 $color
+			text-decoration: none
+			text-align: center
+			color: #fff
+			+transition
+
+			& > *
+				font-size: $font-size
+				line-height: $line-height
+				letter-spacing: normal
+
+			&:hover
+				background: #fff
+				+transition-duration
+
+			&:before
+				+for-vertical-align
+
+			& > div
+				display: inline-block
+				vertical-align: middle
+				color: $color
+				+transition
+
+			svg
+				width: 22px
+				height: 22px
+				display: inline-block
+				vertical-align: middle
+				+transition
+
+			.no-touchevents &:hover > div
+				color: $color-text-alt
+				+transition-duration
+
+			path
+				fill: $color
+				+transition
+
+			.no-touchevents &:hover path
+				fill: $color-text-alt
+				+transition-duration
+
+			& > span
+				display: block
+				height: 0
+				width: 0
+				font-size: 0
+				line-height: 0
+
+/*user options end*/
+
+/*main navigation*/
+.main-nav
+	position: relative
+
+	@at-root
+	&__list
+		font-size: $font-size-small
+		line-height: $line-height
+		padding: 17px 60px
+
+	@at-root
+	&__item
+		display: inline-block
+		vertical-align: top
+		margin-right: 20px
+
+		& > a
+			text-decoration: none
+			color: #fff
+
+			& > span
+				border-bottom: 1px solid transparent
+
+			.no-touchevents &:hover > span
+				border-bottom-color: #fff
+
+/*main navigation end*/
 /*HEADER end*/
 
 /*MAIN*/
@@ -856,36 +1101,74 @@ $class-news-previews: news-previews
 
 /*news previews end*/
 
-// main nav
-.main-nav
-	padding: 20px
-
-	&__item
-		display: inline-block
-		vertical-align: top
-
-		a
-			display: block
-			color: $color-link
-			text-decoration: none
-			border-radius: 4px
-			background:
-				color: $color-nav
-			padding: 8px 18px
-
-		&.active a
-			background: $color-nav-active
 /*MAIN end*/
 
 /*SIDEBAR*/
-.sidebar-add
-	overflow-x: hidden
-	overflow-y: auto
-	-webkit-overflow-scrolling: touch
+/*sidebar-menu*/
+.sidebar-menu
+	background: #001e33
+	padding: 28px 0
+
+	=transition
+		-webkit-transition-property: color, opacity, visibility
+		transition-property: color, opacity, visibility
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+
+	=transition-duration
+		-webkit-transition-duration: $animation-speed
+		transition-duration: $animation-speed
+
+	a
+		display: block
+		position: relative
+		padding: 8px 40px
+		text-decoration: none
+		font-size: $font-size-small
+		line-height: $line-height-small
+		color: #7d9cb2
+		+transition
+
+		.no-touchevents &:hover, .no-touchevents &.active, &.active
+			color: #fff
+			+transition-duration
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			height: 100%
+			width: 4px
+			background: $color-text-mark
+			opacity: 0
+			visibility: hidden
+			+transition
+
+		&.active:before
+			opacity: 1
+			visibility: visible
+
+
+/*sidebar-menu end*/
+
+.sidebar-bottom
+	width: 100%
 
 	@at-root
 	&__holder
+		height: 100%
+
+	@at-root
+	&__frame
+		overflow-x: hidden
+		overflow-y: auto
+		max-height: 100%
+		-webkit-overflow-scrolling: touch
 		padding: 36px 40px
+
+		& > *:last-child
+			margin-bottom: 0
 
 /*SIDEBAR end*/
 
