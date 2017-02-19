@@ -7,6 +7,7 @@ var gulp = require('gulp'), // Подключаем Gulp
 	concat = require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов)
 	uglify = require('gulp-uglifyjs'), // Подключаем gulp-uglifyjs (для сжатия JS)
 	cssnano = require('gulp-cssnano'), // Подключаем пакет для минификации CSS
+	concatCss = require('gulp-concat-css'),
 	rename = require('gulp-rename'), // Подключаем библиотеку для переименования файлов
 	del = require('del'), // Подключаем библиотеку для удаления файлов и папок
 	imagemin = require('gulp-imagemin'), // Подключаем библиотеку для работы с изображениями
@@ -19,7 +20,8 @@ var gulp = require('gulp'), // Подключаем Gulp
 	htmlbeautify = require('gulp-html-beautify'), // Причесываем
 	fs = require('fs'), // For compiling modernizr.min.js
 	modernizr = require('modernizr'), // For compiling modernizr.min.js
-	config = require('./modernizr-config') // Path to modernizr-config.json
+	config = require('./modernizr-config'), // Path to modernizr-config.json
+	pathRename = require('gulp-string-replace')
 	;
 
 gulp.task('include', function () {
@@ -27,6 +29,9 @@ gulp.task('include', function () {
 		.pipe(fileinclude({
 			filters: {
 				markdown: markdown.parse
+			},
+			context: {
+				arr: ['test1', 'test2']
 			}
 			// prefix: '@@',
 			// basepath: '@file'
@@ -61,7 +66,18 @@ gulp.task('sass', function () { // Создаем таск Sass
 		})); // Обновляем CSS на странице при изменении
 });
 
-gulp.task('css-libs', ['sass'], function () {
+gulp.task('css-libs', function () {
+	return gulp.src([
+			'src/libs/slick-carousel/slick/slick-theme.css',
+			'src/libs/slick-carousel/slick/slick.css'
+		])
+		.pipe(concatCss("src/css/libs.css"))
+		.pipe(cssnano()) // Сжимаем
+		.pipe(rename({suffix: '.min'})) // Добавляем суффикс .min
+		.pipe(gulp.dest('src/css')); // Выгружаем в папку src/css
+});
+
+gulp.task('css-libs2', ['sass'], function () {
 	return gulp.src('src/css/libs.css') // Выбираем файл для минификации
 		.pipe(cssnano()) // Сжимаем
 		.pipe(rename({suffix: '.min'})) // Добавляем суффикс .min
@@ -104,7 +120,8 @@ gulp.task('browser-sync', function () { // Создаем таск browser-sync
 	gulp.watch(['!src/__*.html', 'src/*.html']).on("change", reload);
 });
 
-gulp.task('watch', ['modernizr', 'browser-sync', 'include', 'css-libs', 'scripts'], function () {
+// gulp.task('watch', ['modernizr', 'browser-sync', 'include', 'css-libs', 'scripts'], function () {
+gulp.task('watch', function () {
 	gulp.watch(['src/include/', 'src/include/**/*.tpl', 'src/__*.html'], ['include']); // Наблюдение за tpl файлами в папке include
 	gulp.watch('src/sass/**/*.+(scss|sass)', ['sass']); // Наблюдение за sass файлами в папке sass
 	//gulp.watch('src/*.html', ['include', reload]); // Наблюдение за HTML файлами в корне проекта

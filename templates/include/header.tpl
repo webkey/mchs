@@ -36,13 +36,7 @@
 					<!--main navigation-->
 					<nav class="main-nav">
 						<div class="main-nav__list">
-							<div class="main-nav__item@@if (active === "about") { active}"><a href="index.html" title="Главная"><span>О министерстве</span></a></div>
-							<div class="main-nav__item@@if (active === "lead") { active}"><a href="typography.html" title="Типографика"><span>Руководителям и  ИП</span></a></div>
-							<div class="main-nav__item@@if (active === "legislation") { active}"><a href="typography.html" title="Типографика"><span>Законодательство</span></a></div>
-							<div class="main-nav__item@@if (active === "appeal") { active}"><a href="typography.html" title="Типографика"><span>Электронные обращения</span></a></div>
-							<div class="main-nav__item@@if (active === "faq") { active}"><a href="typography.html" title="Типографика"><span>Вопрос-ответ</span></a></div>
-							<div class="main-nav__item@@if (active === "contacts") { active}"><a href="typography.html" title="Типографика"><span>Контакты</span></a></div>
-							<div class="main-nav__item@@if (active === "more") { active}"><a href="typography.html" title="Типографика"><span>Еще</span></a></div>
+							@@loop('nav-items.tpl', 'include\include-json\nav-items.json')
 						</div>
 					</nav>
 					<!--main navigation end-->
