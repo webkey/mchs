@@ -148,7 +148,7 @@ function printShow() {
 /*print end*/
 
 /**
- * jquery.toggleHoverClass
+ * toggle hover class
  * */
 (function ($) {
 	var HoverClass = function (settings) {
@@ -264,11 +264,7 @@ function printShow() {
 	window.HoverClass = HoverClass;
 
 }(jQuery));
-/*jquery.toggleHoverClass end*/
 
-/**
- * toggle hover class
- * */
 function hoverClassInit(){
 	if($('.nav').length){
 		new HoverClass({
@@ -279,8 +275,9 @@ function hoverClassInit(){
 }
 /*toggle hover class end*/
 
-/*main navigation*/
-
+/**
+ * position drop menu
+ * */
 (function ($) {
 	// external js:
 	// 1) device.js 0.2.7 (widgets.js);
@@ -372,7 +369,38 @@ function addAlignClass(){
 		});
 	}
 }
-/*main navigation end*/
+/*position drop menu end*/
+
+/**!
+ * drop language
+ * */
+function languageEvents() {
+
+	$('.js-lang-open').on('click', function (e) {
+		e.preventDefault();
+
+		if ($('.search-form').length) {
+			$(document).trigger('closeSearchForm');
+		}
+
+		$(this).closest('.lang').toggleClass('lang-opened');
+
+		e.stopPropagation();
+	});
+
+	$(document).on('click closeDropLong', function () {
+		closeDropLong();
+	});
+
+	$('.lang__list').on('click', function (e) {
+		e.stopPropagation();
+	});
+
+	function closeDropLong() {
+		$('.lang').removeClass('lang-opened');
+	}
+}
+/*drop language end*/
 
 /**
  * sliders
@@ -560,6 +588,7 @@ $(document).ready(function(){
 	printShow();
 	hoverClassInit();
 	addAlignClass();
+	languageEvents();
 	slidersInit();
 	equalHeightInit();
 	masonryInit();

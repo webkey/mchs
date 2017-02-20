@@ -465,20 +465,27 @@
 	+clear
 
 .header__content
-	padding: 28px $layout-grid-space
+	padding: 0 $layout-grid-space
 	+clear
+
+	.holder
+		padding-top: 30px
+		padding-bottom: 20px
 
 .header__contacts
 	float: right
 	margin-left: 20px
-	font-size: $font-size-small
-	line-height: $line-height-small
+	margin-right: -28px
+	padding: 27px 0
+	font-size: 0
+	line-height: 0
+	letter-spacing: -4px
 
 	li
 		display: inline-block
 		vertical-align: top
 		position: relative
-		padding: 0 30px
+		padding: 0 28px
 
 		&:before
 			content: ''
@@ -511,17 +518,21 @@
 				& > em
 					font: normal bold 30px/1.2 $font-alt
 					color: $color-text-mark
+					letter-spacing: normal
 
 			& > span
 				display: inline-block
 				vertical-align: middle
-				max-width: 100px
+				max-width: 120px
+				font-size: $font-size-small
+				line-height: $line-height-small
+				letter-spacing: normal
 
 .header__title
 	font: 700 1.8rem/1.2 $font-alt
 	text-transform: uppercase
 	color: $color-text
-	padding-bottom: 15px
+	padding-bottom: 18px
 
 .header__info
 	font-size: $font-size-small
@@ -538,6 +549,17 @@
 		a
 			text-decoration: none
 			color: $color-text-light
+
+			& > span
+				display: inline-block
+				border-bottom: 1px solid transparent
+				-webkit-transition-property: border-color
+				transition-property: border-color
+				-webkit-transition-duration: $animation-speed
+				transition-duration: $animation-speed
+
+			.no-touchevents &:hover > span
+				border-color: lighten($color-text-light, 25%)
 
 		svg
 			width: 24px
@@ -578,21 +600,18 @@
 	letter-spacing: -4px
 	z-index: 10
 
-	$color: #80a7c4
+	$color-border: #035b9a
+	$color-text: #80a7c4
 
 	=transition
 		-webkit-transition-property: background-color, color, fill
 		transition-property: background-color, color, fill
-		-webkit-transition-duration: $animation-speed-mouseleave
-		transition-duration: $animation-speed-mouseleave
+		-webkit-transition-duration: $animation-speed
+		transition-duration: $animation-speed
 		-webkit-transition-timing-function: ease-in-out
 		transition-timing-function: ease-in-out
 
-	=transition-duration
-		-webkit-transition-duration: $animation-speed
-		transition-duration: $animation-speed
-
-	& > li
+	&__item
 		display: inline-block
 		vertical-align: top
 		position: relative
@@ -611,20 +630,21 @@
 			width: 100%
 			height: 100%
 			background-color: transparent
-			box-shadow: -1px 0 0 $color
+			box-shadow: -1px 0 0 $color-border
 			text-decoration: none
 			text-align: center
-			color: #fff
+			color: $color-text
 			+transition
 
+			&:hover
+				background-color: $color-border
+
 			& > *
+				display: inline-block
+				vertical-align: middle
 				font-size: $font-size
 				line-height: $line-height
 				letter-spacing: normal
-
-			&:hover
-				background: #fff
-				+transition-duration
 
 			&:before
 				+for-vertical-align
@@ -632,32 +652,107 @@
 			& > div
 				display: inline-block
 				vertical-align: middle
-				color: $color
+				color: $color-text
 				+transition
 
 			svg
 				width: 22px
 				height: 22px
 				display: inline-block
-				vertical-align: middle
 				+transition
 
-			.no-touchevents &:hover > div
+			.no-touchevents &:hover
 				color: $color-text-alt
-				+transition-duration
 
 			path
-				fill: $color
+				fill: $color-text
 				+transition
 
 			.no-touchevents &:hover path
-				fill: $color-text-alt
-				+transition-duration
+				fill: lighten($color-text, 30%)
 
 			& > span
+				display: inline-block
+
+			& > svg ~ span
 				+hide-text
 
 /*user options end*/
+
+/*lang*/
+.lang
+	position: relative
+
+	$color-border: #035b9a
+	$color-text: #80a7c4
+	$color-bg: #00497d
+
+	=transition
+		-webkit-transition-property: background-color, color, opacity, visibility
+		transition-property: background-color, color, opacity, visibility
+		-webkit-transition-duration: $animation-speed
+		transition-duration: $animation-speed
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
+
+	& > a
+		+transition
+
+		& > span
+			display: inline-block
+			font-family: $font-alt
+			font-weight: 700
+			font-size: 16px
+			line-height: 24px
+			letter-spacing: normal
+
+	.no-touchevents &:hover > a,
+	.no-touchevents & > a:hover,
+	&.lang-opened > a
+		color: lighten($color-text, 30%)
+		background-color: $color-border
+
+	@at-root
+	&__list
+		list-style: none
+		position: absolute
+		top: 100%
+		right: 0
+		margin: 0
+		padding: 0
+		font-size: 16px
+		letter-spacing: 0.05em
+		width: 100%
+		opacity: 0
+		visibility: hidden
+		box-shadow: -1px 0 0 $color-border
+		+transition
+
+		.lang-opened &
+			opacity: 1
+			visibility: visible
+
+		li
+			padding: 0
+
+		a
+			display: block
+			text-decoration: none
+			text-align: center
+			color: $color-text
+			background: $color-bg
+			padding: 12px 6px
+			font-size: 16px
+			line-height: 24px
+			letter-spacing: normal
+			border-top: 1px solid $color-border
+			+transition
+
+			.no-touchevents &:hover
+				background-color: $color-border
+				color: lighten($color-text, 30%)
+
+/*lang end*/
 
 /*main navigation*/
 .main-nav
@@ -1750,8 +1845,7 @@ $class-news-previews: news-previews
 	+transition
 
 	.no-touchevents &:hover
-		background-color: $color-btn-bg-hover
-		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2)
+		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4)
 		-webkit-transform: translate(0, -4px)
 		-ms-transform: translate(0, -4px)
 		transform: translate(0, -4px)
