@@ -337,4 +337,5 @@ $(document).ready(function(){
 	// sidebarLayout();
 	footerBottom();
 	formSuccessExample();
+	console.log(8);
 });

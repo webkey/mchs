@@ -38,7 +38,7 @@
 							<p>Следите за последними новостями в социальных сетях.</p>
 							<div class="social-networks">
 								<div class="social-networks__list">
-									@@loop('social-items.tpl', [
+									@@loop('_social-items.tpl', [
 										{
 											"class": "fb",
 											"title": "Facebook",
@@ -88,7 +88,7 @@
 						<!--developer-->
 						<div class="developer">
 							<a href="http://astronim.by/">
-								<span class="developer__label">Сделано командой &mdash;</span>
+								<span class="developer__label">Сделано 7 командой &mdash;</span>
 								<span class="developer__logo">Astronim*Support</span>
 							</a>
 						</div>
@@ -102,6 +102,7 @@
 </footer>
 <!--footer end-->
 
+<script src="js/jquery.min.js"></script>
 <script src="js/libs.min.js"></script>
 <script src="js/common.js"></script>
 </body>

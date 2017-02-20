@@ -1,10 +1,10 @@
-@@include('include/head.tpl', {
+@@include('_head.tpl', {
 	"title": "Новости",
 	"pageClass": ""
 })
 <div class="wrapper">
 	<!--HEADER-->
-	@@include('include/header.tpl', {
+	@@include('_header.tpl', {
 		"mainNavItemActive": "news"
 	})
 	<!--HEADER end-->
@@ -37,18 +37,18 @@
 						</div>
 
 						<!--ASIDE-->
-						@@include('include/aside.tpl')
+						@@include('_aside.tpl')
 						<!--ASIDE end-->
 
 						<!--SIDE-->
-						@@include('include/side.tpl')
+						@@include('_side.tpl')
 						<!--SIDE end-->
 					</div>
 				</div>
 				<!--CONTENT end-->
 
 				<!--SIDEBAR-->
-				@@include('include/sidebar.tpl')
+				@@include('_sidebar.tpl')
 				<!--SIDEBAR-->
 			</div>
 		</div>
@@ -56,6 +56,6 @@
 	<!--MAIN end-->
 </div>
 <!--POPUPS-->
-@@include('include/popups.tpl')
+@@include('_popups.tpl')
 <!--POPUPS end-->
-@@include('include/foot.tpl')
+@@include('_foot.tpl')

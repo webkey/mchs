@@ -15,23 +15,25 @@ gulp.task('css', function () {
 		'src/libs/slick-carousel/slick/slick.scss'
 	])
 	.pipe(sassVariables({
-		'$slick-font-path': '../fonts/slick/'
+		'$slick-font-path': '../fonts/slick/',
+		'$slick-loader-path': '../img/'
 	}))
 	.pipe(sass())
-	.pipe(concatCss("src/css/libs.css", {
-		rebaseUrls: false
-	}))
-	.pipe(gulp.dest('./'))
-	.pipe(cssnano()) // Сжимаем
-	.pipe(rename({suffix: '.min'})) // Добавляем суффикс .min
-	.pipe(gulp.dest('./')); // Выгружаем в папку src/css
+	.pipe(gulp.dest('src/css/temp')); // Выгружаем в папку src/css
 });
 
 gulp.task('build', function () {
 
-	var slickFiles = gulp.src([
+	gulp.src([
 		'src/libs/slick-carousel/slick/fonts/*'
 	])
 	.pipe(gulp.dest('src/fonts/slick'));
 
+	gulp.src([
+		'src/libs/slick-carousel/slick/ajax-loader.gif'
+	])
+	.pipe(gulp.dest('src/img'));
+
 });
+
+gulp.task('targetLibs', ['css', 'build']); // Назначаем таск watch дефолтным

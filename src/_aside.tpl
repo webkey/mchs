@@ -3,7 +3,7 @@
 		<div class="aside__widget">
 			<!--banners-->
 			<div class="banners">
-				@@loop('banners.tpl', [
+				@@loop('_banners.tpl', [
 					{ "src": "img/img-banner-01.jpg" },
 					{ "src": "img/img-banner-02.jpg" },
 					{ "src": "img/img-banner-03.jpg" },
@@ -18,7 +18,7 @@
 			<!--news read-->
 
 				<div class="news-read">
-					@@loop('news-read-list.tpl', [
+					@@loop('_news-read-list.tpl', [
 						{
 							"text": "Профессиональный праздник на уходящей неделе отметили белорусские спасатели (Центральный регион).",
 							"meta": "03.01.2017, 10:30"

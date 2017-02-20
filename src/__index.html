@@ -1,10 +1,10 @@
-@@include('include/head.tpl', {
+@@include('_head.tpl', {
 	"title": "Главная",
 	"pageClass": ""
 })
 <div class="wrapper">
 	<!--HEADER-->
-	@@include('include/header.tpl', {
+	@@include('_header.tpl', {
 		"mainNavItemActive": "index"
 	})
 	<!--HEADER end-->
@@ -30,24 +30,24 @@
 							<div class="content">
 								<div class="sheet">
 									<div class="article-layout">
-										Здесь будет контент страницы
+										9
 									</div>
 								</div>
 							</div>
 						</div>
 						<!--ASIDE-->
-						@@include('include/aside.tpl')
+						@@include('_aside.tpl')
 						<!--ASIDE end-->
 
 						<!--SIDE-->
-						@@include('include/side.tpl')
+						@@include('_side.tpl')
 						<!--SIDE end-->
 					</div>
 				</div>
 				<!--CONTENT end-->
 
 				<!--SIDEBAR-->
-				@@include('include/sidebar.tpl')
+				@@include('_sidebar.tpl')
 				<!--SIDEBAR-->
 			</div>
 		</div>
@@ -55,6 +55,6 @@
 	<!--MAIN end-->
 </div>
 <!--POPUPS-->
-@@include('include/popups.tpl')
+@@include('_popups.tpl')
 <!--POPUPS end-->
-@@include('include/foot.tpl')
+@@include('_foot.tpl')

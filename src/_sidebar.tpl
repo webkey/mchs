@@ -2,7 +2,7 @@
 	<div class="sidebar__holder">
 		<div class="sidebar-top">
 			<ul class="sidebar-menu">
-				@@loop('sidebar-menu-item.tpl', [
+				@@loop('_sidebar-menu-item.tpl', [
 					{
 						"text": "Главные новости МЧС",
 						"active": true
@@ -31,7 +31,7 @@
 				<div class="sidebar-bottom__frame">
 					<h3>Новости дня</h3>
 					<div class="news-links">
-						@@loop('news-links.tpl', [
+						@@loop('_news-links.tpl', [
 							{ "text": "Женщина получила ожоги отдыхая под Витебском.",
 								"meta": "Витебск, 11:30"
 							}, { "text": "В Островецком районе работники МЧС спасли тонувшего мужчину.",

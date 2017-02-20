@@ -36,7 +36,38 @@
 					<!--main navigation-->
 					<nav class="main-nav">
 						<div class="main-nav__list">
-							@@loop('nav-items.tpl', 'include\include-json\nav-items.json')
+							@@loop('_nav-items.tpl', [
+								{
+									"mainNavItem": "typography",
+									"mainNavItemText": "О министерстве",
+									"mainNavItemActive": "@@mainNavItemActive"
+								},
+								{
+									"mainNavItem": "news",
+									"mainNavItemText": "Руководителям и ИП",
+									"mainNavItemActive": "@@mainNavItemActive"
+								},
+								{
+									"mainNavItem": "news-inner",
+									"mainNavItemText": "Законодательство",
+									"mainNavItemActive": "@@mainNavItemActive"
+								},
+								{
+									"mainNavItem": "appeal",
+									"mainNavItemText": "Электронные обращения",
+									"mainNavItemActive": "@@mainNavItemActive"
+								},
+								{
+									"mainNavItem": "faq",
+									"mainNavItemText": "Вопрос-ответ",
+									"mainNavItemActive": "@@mainNavItemActive"
+								},
+								{
+									"mainNavItem": "contacts",
+									"mainNavItemText": "Контакты",
+									"mainNavItemActive": "@@mainNavItemActive"
+								}
+							])
 						</div>
 					</nav>
 					<!--main navigation end-->
