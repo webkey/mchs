@@ -88,7 +88,7 @@
 						<!--developer-->
 						<div class="developer">
 							<a href="http://astronim.by/">
-								<span class="developer__label">Сделано 7 командой &mdash;</span>
+								<span class="developer__label">Сделано командой &mdash;</span>
 								<span class="developer__logo">Astronim*Support</span>
 							</a>
 						</div>

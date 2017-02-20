@@ -7,6 +7,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<!--Theme color-->
+	<meta name="theme-color" content="#ca0503">
+	<!--The Open Graph protocol-->
+	<meta property="og:url" content="http://localhost:3000/">
+	<meta property="og:title" content="MCHS">
+	<meta property="og:image" content="http://localhost:3000/img/logo.png">
+	<meta property="og:description" content="Министерство по чрезвычайным ситуациям Республики Беларусь">
+	<meta property="og:site_name" content="http://localhost:3000/">
 	<!--Favicon-->
 	<link href="favicon.ico" rel="shortcut icon">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">

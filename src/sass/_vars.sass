@@ -18,39 +18,47 @@ $space-bottom-md: $space-bottom * 1.5
 $space-bottom-lg: $space-bottom * 2
 
 // color
+// base
+$color-base: #006ab8
+
+// main color
 $color-bg: #e5e5e5
 $color-bg-alt: #fff
 $color-text: #262626
 $color-text-light: #999
-$color-text-alt: #006ab8
+$color-text-alt: $color-base
 $color-text-mark: #ec3c01
 $color-title: #010101
-$color-link: #006ab8
+$color-link: $color-base
 $color-border: #d9d9d9
 
+// header color
 $color-header-bg: #f7f7f7
 
-$color-nav: #bbff2a
-$color-nav-active: #ffd038
+// nav color
+$color-nav-bg: $color-base
+$color-nav-bg-hover: #ff9a09
+$color-nav-active: #ff9a09
 
+// form color
 $color-form-text: #333
 $color-form-placeholder: #ccc
 $color-form-bg: #fff
 $color-form-border: #d9d9d9
-$color-form-border-focus: #006ab8
+$color-form-border-focus: $color-base
 $color-form-error: #ec3c01
 $color-form-success: #056e41
 
-$space-bottom-form: 3rem
-
-$color-btn-bg: #006ab8
-$color-btn-bg-hover: #004c92
+// btn color
+$color-btn-bg: $color-base
+$color-btn-bg-hover: darken($color-btn-bg, 20%)
 $color-btn-text: #fff
 
+// table color
 $color-table-text: #262626
 $color-table-text-alt: #fff
 $color-table-bg: #fff
-$color-table-bg-alt: #006ab8
+$color-table-bg-alt: $color-base
 $color-table-bg-row: #fafafa
 
 // layout
@@ -63,6 +71,9 @@ $article-layout-space-vertical: 48px
 $text-layout-width: 640px
 $text-layout-space-horizontal: 0
 $header-height: 182px
+
+// form
+$space-bottom-form: 3rem
 
 // sidebars
 $sidebar-left-width: 270px

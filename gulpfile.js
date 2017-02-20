@@ -2,8 +2,8 @@
 
 var gulp = require('gulp'), // Подключаем Gulp
 	sass = require('gulp-sass'), // Подключаем Sass пакет https://github.com/dlmanning/gulp-sass
-	// browserSync = require('browser-sync').create(), // Подключаем Browser Sync
-	// reload = browserSync.reload,
+	browserSync = require('browser-sync').create(), // Подключаем Browser Sync
+	reload = browserSync.reload,
 	concat = require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов)
 	uglify = require('gulp-uglifyjs'), // Подключаем gulp-uglifyjs (для сжатия JS)
 	cssnano = require('gulp-cssnano'), // Подключаем пакет для минификации CSS
@@ -21,10 +21,11 @@ var gulp = require('gulp'), // Подключаем Gulp
 	fs = require('fs'), // For compiling modernizr.min.js
 	modernizr = require('modernizr'), // For compiling modernizr.min.js
 	config = require('./modernizr-config'), // Path to modernizr-config.json
-	pathRename = require('gulp-string-replace')
+	pathRename = require('gulp-string-replace') //Replace strings in files by using string or regex patterns
 	;
-var browserSync = require('browser-sync').create();
-var reload      = browserSync.reload;
+
+// var browserSync = require('browser-sync').create();
+// var reload      = browserSync.reload;
 
 gulp.task('include', function () {
 	return gulp.src(['src/__*.html'])
@@ -117,7 +118,6 @@ gulp.task('browser-sync', function (done) { // Создаем таск browser-s
 	done();
 });
 
-// gulp.task('watch', ['modernizr', 'include', 'scripts', 'devBuild', 'browser-sync', 'sass', 'css-libs'], function () {
 gulp.task('watch', ['modernizr', 'browser-sync', 'include', 'sass', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
 	gulp.watch(['src/*.tpl', 'src/__*.html'], ['include']); // Наблюдение за tpl файлами в папке include
 	gulp.watch('src/sass/**/*.+(scss|sass)', ['sass']); // Наблюдение за sass файлами в папке sass
@@ -135,9 +135,11 @@ gulp.task('copyImgToDist', function () {
 	.pipe(gulp.dest('dist/img')); // Выгружаем на продакшен
 });
 
-gulp.task('clean', function () {
-	return del.sync('dist/*'); // Удаляем папку dist перед сборкой
-});
+gulp.task('default', ['watch']); // Назначаем таск watch дефолтным
+
+/************************************************************
+ * Create Distribution folder and and move files to it
+ ************************************************************/
 
 gulp.task('build', ['clean', 'copyImgToDist', 'sass', 'mergeCssLibs', 'modernizr', 'copyLibsScriptsToJs'], function () {
 
@@ -158,9 +160,11 @@ gulp.task('build', ['clean', 'copyImgToDist', 'sass', 'mergeCssLibs', 'modernizr
 
 });
 
+gulp.task('clean', function () {
+	return del.sync('dist/*'); // Удаляем папку dist перед сборкой
+});
+
 gulp.task('clear', function () { // Создаем такс для очистки кэша
 	return cache.clearAll();
 });
-
-gulp.task('default', ['watch']); // Назначаем таск watch дефолтным
 

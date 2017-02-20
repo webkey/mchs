@@ -34,42 +34,44 @@
 					</ul>
 					<!--user options end-->
 					<!--main navigation-->
-					<nav class="main-nav">
-						<div class="main-nav__list">
-							@@loop('_nav-items.tpl', [
-								{
-									"mainNavItem": "typography",
-									"mainNavItemText": "О министерстве",
-									"mainNavItemActive": "@@mainNavItemActive"
-								},
-								{
-									"mainNavItem": "news",
-									"mainNavItemText": "Руководителям и ИП",
-									"mainNavItemActive": "@@mainNavItemActive"
-								},
-								{
-									"mainNavItem": "news-inner",
-									"mainNavItemText": "Законодательство",
-									"mainNavItemActive": "@@mainNavItemActive"
-								},
-								{
-									"mainNavItem": "appeal",
-									"mainNavItemText": "Электронные обращения",
-									"mainNavItemActive": "@@mainNavItemActive"
-								},
-								{
-									"mainNavItem": "faq",
-									"mainNavItemText": "Вопрос-ответ",
-									"mainNavItemActive": "@@mainNavItemActive"
-								},
-								{
-									"mainNavItem": "contacts",
-									"mainNavItemText": "Контакты",
-									"mainNavItemActive": "@@mainNavItemActive"
-								}
-							])
-						</div>
-					</nav>
+					<div class="main-nav">
+						<nav class="nav">
+							<ul class="nav__list">
+								@@loop('_nav-items.tpl', [
+									{
+										"mainNavItem": "typography",
+										"mainNavItemText": "О министерстве",
+										"mainNavItemActive": "@@mainNavItemActive"
+									},
+									{
+										"mainNavItem": "news",
+										"mainNavItemText": "Руководителям и ИП",
+										"mainNavItemActive": "@@mainNavItemActive"
+									},
+									{
+										"mainNavItem": "news-inner",
+										"mainNavItemText": "Законодательство",
+										"mainNavItemActive": "@@mainNavItemActive"
+									},
+									{
+										"mainNavItem": "appeal",
+										"mainNavItemText": "Электронные обращения",
+										"mainNavItemActive": "@@mainNavItemActive"
+									},
+									{
+										"mainNavItem": "faq",
+										"mainNavItemText": "Вопрос-ответ",
+										"mainNavItemActive": "@@mainNavItemActive"
+									},
+									{
+										"mainNavItem": "contacts",
+										"mainNavItemText": "Контакты",
+										"mainNavItemActive": "@@mainNavItemActive"
+									}
+								])
+							</ul>
+						</nav>
+					</div>
 					<!--main navigation end-->
 				</div>
 				<div class="header__content">

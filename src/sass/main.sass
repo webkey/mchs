@@ -213,14 +213,10 @@
 	=transition
 		-webkit-transition-property: -webkit-transform, box-shadow, fill
 		transition-property: transform, box-shadow, fill
-		-webkit-transition-duration: 0.3s
-		transition-duration: 0.3s
-		-webkit-transition-timing-function: ease-in-out
-		transition-timing-function: ease-in-out
-
-	=transition-duration // on mouseenter
 		-webkit-transition-duration: 0.2s
 		transition-duration: 0.2s
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
 
 	&__list
 		font-size: 0
@@ -248,7 +244,6 @@
 			-webkit-transform: translate(0, -4px)
 			-ms-transform: translate(0, -4px)
 			transform: translate(0, -4px)
-			+transition-duration
 
 		&:active, .no-touchevents &:active
 			box-shadow: 0 0 0 rgba(0, 0, 0, 0)
@@ -577,9 +572,11 @@
 /*user options*/
 .user-options
 	float: right
+	position: relative
 	font-size: 0
 	line-height: 0
 	letter-spacing: -4px
+	z-index: 10
 
 	$color: #80a7c4
 
@@ -664,31 +661,231 @@
 
 /*main navigation*/
 .main-nav
+	position: relative
+	z-index: 5
 
-	@at-root
-	&__list
-		font-size: $font-size-small
-		line-height: $line-height
-		padding: 17px $layout-grid-space
-
-	@at-root
-	&__item
-		display: inline-block
-		vertical-align: top
-		margin-right: 20px
-
-		& > a
-			text-decoration: none
-			color: #fff
-
-			& > span
-				border-bottom: 1px solid transparent
-
-			.no-touchevents &:hover > span
-				border-bottom-color: #fff
+	nav
+		padding: 0 $layout-grid-space
 
 /*main navigation end*/
 /*HEADER end*/
+
+/*NAVIGATION*/
+// general styles main navigation
+.nav
+
+	//@at-root
+	//&__list,
+	//&__list ul
+	//	list-style: none
+	//	margin: 0
+	//	padding: 0
+	//	box-sizing: border-box
+
+	$nav-item-space: 17px
+
+	=transition
+		-webkit-transition-property: color, background-color, border-color
+		transition-property: color, background-color, border-color
+		-webkit-transition-duration: 0.2s
+		transition-duration: 0.2s
+
+	@at-root
+	&__list
+		position: relative
+		margin: 0 -#{$nav-item-space}
+		font-size: 0
+		line-height: 0
+		letter-spacing: -4px
+
+		li
+			position: relative
+			-webkit-perspective: 1500px
+			perspective: 1500px
+			//box-sizing: border-box
+
+			&.hover, .no-js &:hover, &.active
+				z-index: 2
+
+		a
+			display: block
+			position: relative
+			padding: 17px $nav-item-space
+			font-size: $font-size-small
+			font-weight: 400
+			line-height: 24px
+			color: #fff
+			letter-spacing: normal
+			text-decoration: none
+			+transition
+
+		@at-root
+			.nav__angle
+				position: absolute
+				right: 40px
+				top: 50%
+				width: 7px
+				height: 13px
+				margin-top: -6px
+
+				&:before,
+				&:after
+					content: ''
+					position: absolute
+					left: 0
+					top: 50%
+					height: 2px
+					width: 9px
+					border-radius: 4px
+					background: #262626
+					-webkit-transition-property: background
+					transition-property: background
+					-webkit-transition-duration: 0.2s
+					transition-duration: 0.2s
+
+				&:before
+					-webkit-transform: rotate(45deg)
+					-ms-transform: rotate(45deg)
+					transform: rotate(45deg)
+					margin: -4px 0 0 -1px
+
+				&:after
+					-webkit-transform: rotate(-45deg)
+					-ms-transform: rotate(-45deg)
+					transform: rotate(-45deg)
+					margin: 1px 0 0 -1px
+
+				//.nav__list li.hover > a > [class*="nav-depict-icons-angle"]:before,
+				//.nav__list li.active > a > [class*="nav-depict-icons-angle"]:before,
+				//.nav__list li.current > a > [class*="nav-depict-icons-angle"]:before,
+				//.nav__list li.hover > a > [class*="nav-depict-icons-angle"]:after,
+				//.nav__list li.active > a > [class*="nav-depict-icons-angle"]:after,
+				//.nav__list li.current > a > [class*="nav-depict-icons-angle"]:after
+				//	background: #fff
+
+	@at-root
+		[class*="nav__drop"]
+			position: absolute
+			left: 0
+			top: 100%
+			display: block
+			width: 320px
+			opacity: 0
+			visibility: hidden
+			border: 1px solid #d9d9d9
+			background: #f2f2f2
+			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15)
+			-webkit-transform-origin: center top
+			transform-origin: center top
+			-webkit-transform: rotateX(-30deg)
+			transform: rotateX(-30deg)
+			-webkit-transition-property: opacity, visibility, -webkit-transform
+			transition-property: opacity, visibility, transform
+			-webkit-transition-duration: 0.2s
+			transition-duration: 0.2s
+			-webkit-transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
+			transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
+			z-index: 5
+
+			a
+				color: #262626
+				text-transform: none
+				background: #fff
+				border-top: 1px solid #e0e0e0
+
+			li
+				&:first-child > a
+					border: none
+
+				&.has-drop > a
+					padding-right: 60px
+
+				&.hover > a,
+				.no-js &:hover > a
+					background: #f3f3f3
+
+				//[class*="nav__drop"] li.active > a,
+				//[class*="nav__drop"] li.current > a
+				//	color: #008acf;
+
+			$patentItem: nav__list li
+
+			.#{$patentItem}.hover > &, .no-js .#{$patentItem}:hover > &, .#{$patentItem}.active > &
+				opacity: 1
+				visibility: visible
+				-webkit-transform: rotateX(0deg)
+				transform: rotateX(0deg)
+
+			li.align-right > &
+				left: auto
+				right: 100%
+
+	@at-root
+		[class*="-nav__drop"]
+			top: 0
+			left: 100%
+			margin-top: 0
+			z-index: auto
+
+	// styles to menu level 1
+	@at-root
+	.nav__drop
+		min-width: 100%
+		border-top: none
+		margin-left: -1px
+
+		li.align-right > &
+			left: auto
+			right: 0
+
+		@at-root
+			.nav__list > li
+				display: inline-block
+				vertical-align: top
+
+				&.active
+					z-index: 1
+
+				& > a
+					padding: 17px $nav-item-space
+					font-size: $font-size-small
+					line-height: 26px
+					text-align: center
+					background: none
+					z-index: 2
+					//box-sizing: border-box
+
+				&.hover > a,
+				&.active > a,
+				&.current > a,
+				.no-js &:hover > a
+					background: $color-nav-bg-hover
+					color: $color-text
+
+/*styles to menu level 1 end*/
+
+/*styles to menu level 2*/
+//.sub1-nav__list
+//
+//.sub1-nav__list > li
+//
+//.sub1-nav__list > li > a
+//
+//.sub1-nav__drop
+
+/*styles to menu level 2 end*/
+
+/*styles to menu level 3*/
+//.sub2-nav__list
+//
+//.sub2-nav__list > li
+//
+//.sub2-nav__list > li > a
+//
+//.sub2-nav__drop
+
+/*styles to menu level 3 end*/
+/*NAVIGATION end*/
 
 /*MAIN*/
 /*breadcrumbs*/
@@ -723,7 +920,7 @@
 				border: solid transparent
 				border-width: 4px 7px
 				border-left-color: $color-text-mark
-				box-sizing: border-box
+				//box-sizing: border-box
 
 			&:first-child
 				padding-left: 0
@@ -1411,7 +1608,7 @@ $class-news-previews: news-previews
 		cursor: default
 		padding-top: 19px
 		padding-bottom: 19px
-		box-sizing: border-box
+		//box-sizing: border-box
 
 		font-size: 1px
 		line-height: 0
