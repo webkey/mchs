@@ -1,90 +1,100 @@
 //==|== Default Variables and Maps
+// medium query
+$desk-lg: 1919px
+$desk-md: 1599px
+$desk-sm: 1279px
+$tablet: 991px
+$mobile-lg: 767px
+$mobile-md: 639px
+$mobile-sm: 479px
 
 // user content class
-$user-content: content
+$user-content: content !default
 
 // font
-$font-norm: 'Roboto', sans-serif
-$font-b: 'Roboto', sans-serif
-$font-i: 'Roboto', sans-serif
-$font-bi: 'Roboto', sans-serif
-$font-alt: 'Roboto Slab', serif
-$font-size: 1.6rem
-$line-height: 3.0rem/$font-size
-$font-size-small: 1.4rem
-$line-height-small: 1.4
-$space-bottom: $font-size * $line-height
-$space-bottom-md: $space-bottom * 1.5
-$space-bottom-lg: $space-bottom * 2
+$font-norm: 'Roboto', sans-serif !default
+$font-b: 'Roboto', sans-serif !default
+$font-i: 'Roboto', sans-serif !default
+$font-bi: 'Roboto', sans-serif !default
+$font-alt: 'Roboto Slab', serif !default
+$font-size: 1.6rem !default
+$line-height: 3.0rem/$font-size !default
+$font-size-small: 1.4rem !default
+$line-height-small: 1.4 !default
+$space-bottom: $font-size * $line-height !default
+$space-bottom-md: $space-bottom * 1.5 !default
+$space-bottom-lg: $space-bottom * 2 !default
 
 // color
 // base
-$color-base: #006ab8
+$color-base: #006ab8 !default
 
 // main color
-$color-bg: #e5e5e5
-$color-bg-alt: #fff
-$color-text: #262626
-$color-text-light: #999
-$color-text-alt: $color-base
-$color-text-mark: #ec3c01
-$color-title: #010101
-$color-link: $color-base
-$color-border: #d9d9d9
+$color-bg: #e5e5e5 !default
+$color-bg-alt: #fff !default
+$color-text: #262626 !default
+$color-text-light: #999 !default
+$color-text-alt: $color-base !default
+$color-text-mark: #ec3c01 !default
+$color-title: #010101 !default
+$color-link: $color-base !default
+$color-border: #d9d9d9 !default
 
 // header color
-$color-header-bg: #f7f7f7
+$color-header-bg: #f7f7f7 !default
 
 // nav color
-$color-nav-bg: $color-base
-$color-nav-bg-hover: #ff9a09
-$color-nav-active: #ff9a09
+$color-nav-bg: $color-base !default
+$color-nav-bg-hover: #ff9a09 !default
+$color-nav-active: #ff9a09 !default
 
 // form color
-$color-form-text: #333
-$color-form-placeholder: #ccc
-$color-form-bg: #fff
-$color-form-border: #d9d9d9
-$color-form-border-focus: $color-base
-$color-form-error: #ec3c01
-$color-form-success: #056e41
+$color-form-text: #333 !default
+$color-form-placeholder: #ccc !default
+$color-form-bg: #fff !default
+$color-form-border: #d9d9d9 !default
+$color-form-border-focus: $color-base !default
+$color-form-error: #ec3c01 !default
+$color-form-success: #056e41 !default
 
 // btn color
-$color-btn-bg: $color-base
-$color-btn-bg-hover: darken($color-btn-bg, 20%)
-$color-btn-text: #fff
+$color-btn-bg: $color-base !default
+$color-btn-bg-hover: darken($color-btn-bg, 20%) !default
+$color-btn-text: #fff !default
 
 // table color
-$color-table-text: #262626
-$color-table-text-alt: #fff
-$color-table-bg: #fff
-$color-table-bg-alt: $color-base
-$color-table-bg-row: #fafafa
+$color-table-text: #262626 !default
+$color-table-text-alt: #fff !default
+$color-table-bg: #fff !default
+$color-table-bg-alt: $color-base !default
+$color-table-bg-row: #fafafa !default
 
 // layout
-$layout-grid-space: 60px
-$layout-width: 1920px
-$layout-space-horizontal: 0
-$article-layout-width: none
-$article-layout-space-horizontal: 50px
-$article-layout-space-vertical: 48px
-$text-layout-width: 640px
-$text-layout-space-horizontal: 0
-$header-height: 182px
+$layout-grid-space: 60px !default
+$layout-grid-space--desk-md: 40px !default
+$layout-width: 1920px !default
+$layout-space-horizontal: 0 !default
+$article-layout-width: none !default
+$article-layout-space-horizontal: 50px !default
+$article-layout-space-vertical: 48px !default
+$text-layout-width: 640px !default
+$text-layout-space-horizontal: 0 !default
+$header-height: 182px !default
 
 // form
-$space-bottom-form: 3rem
+$space-bottom-form: 3rem !default
 
 // sidebars
-$sidebar-left-width: 270px
-$sidebar-right-width: 270px
+$sidebar-left-width: 270px !default
+$sidebar-right-width: 270px !default
+$sidebar-right-width--desk-md: 160px !default
 
 // grid
-$grid-space: 20px
+$grid-space: 20px !default
 
 // animation
-$animation-speed: 0.2s
-$animation-speed-mouseleave: 0.35s
+$animation-speed: 0.2s !default
+$animation-speed-mouseleave: 0.35s !default
 
 @mixin font-reset
 	font:

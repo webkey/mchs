@@ -1,4 +1,4 @@
-<li class="@@if (mainNavItemActive === mainNavItem) {current}">
+<li class="has-drop@@if (mainNavItemActive === mainNavItem) { current}">
 	<a href="@@mainNavItem.html"><span>@@mainNavItemText</span></a>
 	<div class="nav__drop js-nav-drop">
 		<ul class="sub1-nav__list">

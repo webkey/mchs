@@ -46,7 +46,7 @@
 
 .main-holder
 	width: 100%
-	padding-right: $layout-grid-space
+	padding-right: 60px // width .side menu
 	+clear
 
 .main-frame
@@ -59,6 +59,9 @@
 	min-height: 50px
 	+clear
 
+	@media only screen and (max-width: $desk-md)
+		padding: $layout-grid-space--desk-md
+
 .content-wrap
 	@extend .main-frame
 
@@ -66,6 +69,10 @@
 	margin: 0 $sidebar-right-width 0 0
 	padding-right: $layout-grid-space
 	min-height: 50px
+
+	@media only screen and (max-width: $desk-md)
+		padding-right: $layout-grid-space--desk-md
+		margin: 0 $sidebar-right-width--desk-md 0 0
 
 .sheet
 	background: $color-bg-alt
@@ -84,6 +91,10 @@
 	float: right
 	margin: 0 0 0 -#{$sidebar-right-width}
 	width: $sidebar-right-width
+
+	@media only screen and (max-width: $desk-md)
+		margin: 0 0 0 -#{$sidebar-right-width--desk-md}
+		width: $sidebar-right-width--desk-md
 
 .footer
 	height: 0
@@ -465,112 +476,143 @@
 	+clear
 
 .header__content
+	$height-container: 122px
+
 	padding: 0 $layout-grid-space
-	+clear
+	height: $height-container
+	//+clear
+
+	@media only screen and (max-width: $desk-md)
+		padding: 0 $layout-grid-space--desk-md
 
 	.holder
-		padding-top: 30px
-		padding-bottom: 20px
-
-.header__contacts
-	float: right
-	margin-left: 20px
-	margin-right: -28px
-	padding: 27px 0
-	font-size: 0
-	line-height: 0
-	letter-spacing: -4px
-
-	li
-		display: inline-block
-		vertical-align: top
-		position: relative
-		padding: 0 28px
+		overflow: hidden
+		height: $height-container
+		font-size: 0
+		line-height: 0
+		letter-spacing: -4px
 
 		&:before
 			content: ''
-			position: absolute
-			left: 0
-			top: 50%
-			$height: 18px
-			height: $height
-			width: 0
-			margin-top: -($height/2)
-			border-left: 1px solid $color-border
-
-		&:first-child:before
-			content: none
-
-		&:after
-			+for-vertical-align
-			min-height: 65px
-
-		a
-			display: inline-block
-			text-decoration: none
-			color: $color-text
-
-			& > div
-				display: inline-block
-				vertical-align: middle
-				margin-right: 20px
-
-				& > em
-					font: normal bold 30px/1.2 $font-alt
-					color: $color-text-mark
-					letter-spacing: normal
-
-			& > span
-				display: inline-block
-				vertical-align: middle
-				max-width: 120px
-				font-size: $font-size-small
-				line-height: $line-height-small
-				letter-spacing: normal
-
-.header__title
-	font: 700 1.8rem/1.2 $font-alt
-	text-transform: uppercase
-	color: $color-text
-	padding-bottom: 18px
-
-.header__info
-	font-size: $font-size-small
-	line-height: $line-height-small
-	margin: -10px 0 0
-
-	li
-		display: inline-block
-		vertical-align: top
-		margin-top: 10px
-		margin-right: 30px
-		color: $color-text-light
-
-		a
-			text-decoration: none
-			color: $color-text-light
-
-			& > span
-				display: inline-block
-				border-bottom: 1px solid transparent
-				-webkit-transition-property: border-color
-				transition-property: border-color
-				-webkit-transition-duration: $animation-speed
-				transition-duration: $animation-speed
-
-			.no-touchevents &:hover > span
-				border-color: lighten($color-text-light, 25%)
-
-		svg
-			width: 24px
-			height: 24px
 			display: inline-block
 			vertical-align: middle
-			margin-right: 5px
+			height: 100%
 
-			path
-				//fill: $color-text-light
-				fill: lighten($color-text-light, 20%)
+		.frame
+			display: inline-block
+			vertical-align: middle
+			font-size: $font-size
+			line-height: $line-height
+			letter-spacing: normal
+
+	@at-root
+		.header__contacts
+			float: right
+			overflow: hidden
+			margin-left: 30px
+
+			$item-inside-space: 20px
+
+			ul
+				margin: 0 -#{$item-inside-space}
+				font-size: 0
+				line-height: 0
+				letter-spacing: -4px
+
+				&:before
+					content: ''
+					display: inline-block
+					vertical-align: middle
+					min-height: $height-container
+
+				li
+					display: inline-block
+					vertical-align: middle
+					position: relative
+					padding: 0 $item-inside-space
+
+					&:before
+						content: ''
+						position: absolute
+						left: 0
+						top: 50%
+						$height: 18px
+						height: $height
+						width: 0
+						margin-top: -($height/2)
+						border-left: 1px solid $color-border
+
+					&:after
+						+for-vertical-align
+						min-height: 65px
+
+					a
+						display: inline-block
+						text-decoration: none
+						color: $color-text
+
+						& > div
+							display: inline-block
+							vertical-align: middle
+							margin-right: 20px
+
+							& > em
+								font: normal bold 30px/1.2 $font-alt
+								color: $color-text-mark
+								letter-spacing: normal
+
+						& > span
+							display: inline-block
+							vertical-align: middle
+							max-width: 120px
+							font-size: $font-size-small
+							line-height: $line-height-small
+							letter-spacing: normal
+
+	@at-root
+		.header__title
+			font: 700 1.8rem/1.2 $font-alt
+			text-transform: uppercase
+			color: $color-text
+			padding-bottom: 18px
+
+		.header__info
+			font-size: $font-size-small
+			line-height: $line-height-small
+			margin: -10px 0 0
+
+			li
+				display: inline-block
+				vertical-align: top
+				margin-top: 10px
+				margin-right: 30px
+				color: $color-text-light
+
+				a
+					text-decoration: none
+					color: $color-text-light
+
+					& > span
+						display: inline-block
+						border-bottom: 1px solid transparent
+						-webkit-transition-property: border-color
+						transition-property: border-color
+						-webkit-transition-duration: $animation-speed
+						transition-duration: $animation-speed
+
+					.no-touchevents &:hover > span
+						border-color: lighten($color-text-light, 25%)
+
+				svg
+					width: 24px
+					height: 24px
+					display: inline-block
+					vertical-align: middle
+					margin-right: 5px
+
+					path
+						//fill: $color-text-light
+						fill: lighten($color-text-light, 20%)
 /*logo*/
 .logo
 	position: absolute
@@ -758,9 +800,11 @@
 .main-nav
 	position: relative
 	z-index: 5
+	margin-right: 240px
+	padding: 0 $layout-grid-space
 
-	nav
-		padding: 0 $layout-grid-space
+	@media only screen and (max-width: $desk-md)
+		padding: 0 $layout-grid-space--desk-md
 
 /*main navigation end*/
 /*HEADER end*/
@@ -768,7 +812,6 @@
 /*NAVIGATION*/
 // general styles main navigation
 .nav
-
 	//@at-root
 	//&__list,
 	//&__list ul
@@ -780,8 +823,8 @@
 	$nav-item-space: 17px
 
 	=transition
-		-webkit-transition-property: color, background-color, border-color
-		transition-property: color, background-color, border-color
+		-webkit-transition-property: color, background-color, border-color, opacity, visibility, -webkit-transform
+		transition-property: color, background-color, border-color, opacity, visibility, transform
 		-webkit-transition-duration: 0.2s
 		transition-duration: 0.2s
 
@@ -792,6 +835,7 @@
 		font-size: 0
 		line-height: 0
 		letter-spacing: -4px
+		white-space: normal
 
 		li
 			position: relative
@@ -802,17 +846,17 @@
 			&.hover, .no-js &:hover, &.active
 				z-index: 2
 
-		a
-			display: block
-			position: relative
-			padding: 17px $nav-item-space
-			font-size: $font-size-small
-			font-weight: 400
-			line-height: 24px
-			color: #fff
-			letter-spacing: normal
-			text-decoration: none
-			+transition
+	a
+		display: block
+		position: relative
+		padding: 17px $nav-item-space
+		font-size: $font-size-small
+		font-weight: 400
+		line-height: 24px
+		color: #fff
+		letter-spacing: normal
+		text-decoration: none
+		+transition
 
 		@at-root
 			.nav__angle
@@ -874,10 +918,7 @@
 			transform-origin: center top
 			-webkit-transform: rotateX(-30deg)
 			transform: rotateX(-30deg)
-			-webkit-transition-property: opacity, visibility, -webkit-transform
-			transition-property: opacity, visibility, transform
-			-webkit-transition-duration: 0.2s
-			transition-duration: 0.2s
+			+transition
 			-webkit-transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
 			transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
 			z-index: 5
@@ -892,8 +933,8 @@
 				&:first-child > a
 					border: none
 
-				&.has-drop > a
-					padding-right: 60px
+				//&.has-drop > a
+					//padding-right: 60px
 
 				&.hover > a,
 				.no-js &:hover > a
@@ -903,7 +944,7 @@
 				//[class*="nav__drop"] li.current > a
 				//	color: #008acf;
 
-			$patentItem: nav__list li
+			$patentItem: nav li
 
 			.#{$patentItem}.hover > &, .no-js .#{$patentItem}:hover > &, .#{$patentItem}.active > &
 				opacity: 1
@@ -914,79 +955,221 @@
 			li.align-right > &
 				left: auto
 				right: 100%
+				margin-left: auto
+				margin-right: -10px
 
 	@at-root
-		[class*="-nav__drop"]
+		div[class*="-nav__drop"]
 			top: 0
 			left: 100%
-			margin-top: 0
 			z-index: auto
+			margin-left: -5px
+			margin-top: 5px
 
 	// styles to menu level 1
 	@at-root
-	.nav__drop
-		min-width: 100%
-		border-top: none
-		margin-left: -1px
+		.nav__drop
+			min-width: 100%
+			border-top: none
+			white-space: normal
+			margin-left: -1px
 
-		li.align-right > &
-			left: auto
-			right: 0
+			li.align-right > &
+				left: auto
+				right: -1px
 
-		@at-root
-			.nav__list > li
+			@at-root
+				.nav__list > li, .priority-nav__dropdown > li
+					display: inline-block
+					vertical-align: top
+					position: relative
+
+					&.active
+						z-index: 1
+
+					& > a
+						display: block
+						padding: 17px $nav-item-space
+						font-size: $font-size-small
+						color: #fff
+						line-height: 26px
+						text-align: center
+						background: none
+						z-index: 2
+						//box-sizing: border-box
+
+					&.hover > a,
+					&.active > a,
+					&.current > a,
+					.no-js &:hover > a
+						background: $color-nav-bg-hover
+						color: $color-text
+
+	// styles to menu level 1 end
+
+	// styles to menu level 2
+	//.sub1-nav__list
+	//
+	//.sub1-nav__list > li
+	//
+	//.sub1-nav__list > li > a
+	//
+	//.sub1-nav__drop
+
+	// styles to menu level 2 end
+
+	// styles to menu level 3
+	//.sub2-nav__list
+	//
+	//.sub2-nav__list > li
+	//
+	//.sub2-nav__list > li > a
+	//
+	//.sub2-nav__drop
+
+	// styles to menu level 3 end
+	// style for priority nav
+	%resetStylePriorityNav
+		width: auto
+		top: auto
+		left: auto
+		display: inline-block
+		vertical-align: top
+		visibility: visible
+		opacity: 1
+		border: none
+		background: none
+		box-shadow: none
+		z-index: auto
+		-webkit-transform: rotateX(0)
+		transform: rotateX(0)
+
+	&.priority-nav-has-dropdown .priority-nav__dropdown-toggle, .priority-nav__wrapper
+		position: relative
+		@extend %resetStylePriorityNav
+
+	&.priority-nav
+		white-space: nowrap
+		margin: 0 -#{$nav-item-space}
+
+		> ul
+			display: inline-block
+			vertical-align: top
+			margin: 0
+
+			&:after
+				content: ''
+				position: absolute
+				right: 0
+				left: -#{$layout-grid-space - $nav-item-space}
+				top: 0
+				height: 100%
+				opacity: 0
+				visibility: hidden
+				box-shadow: 0 0 0 rgba(255, 255, 255, 0.5)
+				background: rgba(0, 0, 0, 0.31)
+				+transition
+
+				@media only screen and (max-width: $desk-md)
+					left: -#{$layout-grid-space--desk-md - $nav-item-space}
+
+		&.is-open.priority-nav-has-dropdown > ul:after
+			opacity: 1
+			visibility: visible
+
+			> li
 				display: inline-block
-				vertical-align: top
 
-				&.active
-					z-index: 1
+	&.priority-nav-has-dropdown .priority-nav__dropdown-toggle
+		position: relative
+		padding: 17px $nav-item-space
+		font-size: $font-size-small
+		line-height: 26px
+		color: #fff
+		text-align: center
+		background: none
+		z-index: 2
+		//box-sizing: border-box
 
-				& > a
-					padding: 17px $nav-item-space
-					font-size: $font-size-small
-					line-height: 26px
-					text-align: center
-					background: none
-					z-index: 2
-					//box-sizing: border-box
+		.no-touchevents &:hover, &.is-open
+			background: $color-nav-bg-hover
+			color: $color-text
 
-				&.hover > a,
-				&.active > a,
-				&.current > a,
-				.no-js &:hover > a
-					background: $color-nav-bg-hover
-					color: $color-text
+	.priority-nav__wrapper
+		position: relative
+		vertical-align: top
+		-webkit-perspective: 400px
+		perspective: 400px
 
-/*styles to menu level 1 end*/
+	.priority-nav__dropdown
+		position: absolute
+		visibility: hidden
+		opacity: 0
+		right: 100%
+		background: $color-text-alt
+		z-index: 15
+		+transition
+		+transform(translate(0, 0) rotateY(-30deg))
+		-webkit-transform-origin: 100% 0 0
+		transform-origin: 100% 0 0
+		@extend %resetStylePriorityNav
 
-/*styles to menu level 2*/
-//.sub1-nav__list
-//
-//.sub1-nav__list > li
-//
-//.sub1-nav__list > li > a
-//
-//.sub1-nav__drop
+		&.show
+			visibility: visible
+			opacity: 1
+			+transform(translate(0, 0) rotateY(0deg))
 
-/*styles to menu level 2 end*/
+		> li > a
+				border: none
 
-/*styles to menu level 3*/
-//.sub2-nav__list
-//
-//.sub2-nav__list > li
-//
-//.sub2-nav__list > li > a
-//
-//.sub2-nav__drop
+		li
+			position: relative
 
-/*styles to menu level 3 end*/
+			&.hover
+				z-index: 2
+
+	&.is-empty
+		.priority-nav__wrapper
+			-webkit-perspective: 1200px
+			perspective: 1200px
+
+		.priority-nav__dropdown
+			right: auto
+			left: 0
+			top: 100%
+			+transform(translate(0, 0) rotateX(-30deg))
+			-webkit-transform-origin: 0 0 0
+			transform-origin: 0 0 0
+
+			&.show
+				+transform(translate(0, 0) rotateY(0deg))
+
+			> li
+				display: block
+
+				> [class*="nav__drop"]
+					left: 100%
+					top: 0
+
+	.priority-nav__dropdown-toggle
+		visibility: hidden
+		position: absolute
+		@extend %resetStylePriorityNav
+
+	.priority-nav-is-visible
+		visibility: visible
+
+	.priority-nav-is-hidden
+		visibility: hidden
+
 /*NAVIGATION end*/
 
 /*MAIN*/
 /*breadcrumbs*/
 .breadcrumbs
-	@extend .content
-	@extend .main-frame
+	//@extend .content
+	//@extend .main-frame
+	float: left
 	font-size: 1.4rem
 	line-height: 1.5
 	color: $color-text
@@ -1041,6 +1224,15 @@
 
 				.no-touchevents &:hover
 					border-color: transparent
+
+		span
+			display: inline-block
+			vertical-align: middle
+			overflow: hidden
+			-ms-text-overflow: ellipsis
+			text-overflow: ellipsis
+			white-space: nowrap
+			max-width: 250px
 
 /*breadcrumbs end*/
 
@@ -1473,16 +1665,19 @@ $class-news-previews: news-previews
 	$fz: 14px
 	$lh: $fz*1.3
 	float: right
-	margin: 0 #{-$layout-grid-space*2} 0 #{-$width}
+	margin: 0 -#{$layout-grid-space + $width} 0 #{-$width}
 	width: $width
+
+	@media only screen and (max-width: $desk-md)
+		margin-right: -#{$layout-grid-space--desk-md + $width}
 
 	=font
 		font: 400 #{$fz}/#{$lh} $font-alt
 		letter-spacing: normal
 
 	=transition
-		-webkit-transition-property: background-color, -webkit-transform, border-color
-		transition-property: background-color, transform, box-shadow, border-color
+		-webkit-transition-property: background-color, -webkit-transform, border-color, opacity
+		transition-property: background-color, transform, box-shadow, border-color, opacity
 		-webkit-transition-duration: $animation-speed-mouseleave
 		transition-duration: $animation-speed-mouseleave
 		-webkit-transition-timing-function: cubic-bezier(0.61, 0.01, 0.41, 1)
@@ -1518,21 +1713,24 @@ $class-news-previews: news-previews
 
 	@at-root
 	&__inner
+		$translateX: calc(100% - #{$width})
 		background: #fff
 		position: absolute
 		top: 0
-		right: 0
+		left: 100%
+		//margin-left: -#{$width}
 		height: 100%
 		font-size: 0
 		line-height: 0
 		letter-spacing: -4px
 		white-space: nowrap
 		+text-transform-fix
-		+transform(translate(calc(100% - #{$width}), 0))
+		//+transform(translate(80%, 0))
+		+transform(translate(-#{$width}, 0))
 		+transition
 
 		.no-touchevents a:hover &
-			+transform(translate(0, 0))
+			+transform(translate(-100%, 0))
 			+transition-duration
 
 	@at-root
@@ -1578,12 +1776,15 @@ $class-news-previews: news-previews
 			display: block
 			overflow: hidden
 			max-height: $lh*2
+			opacity: 0
 			+transform(translate(20px, 0))
 			+transition
 
 			.no-touchevents a:hover &
 				+transform(translate(0, 0))
-				+transition-duration
+				opacity: 1
+				-webkit-transition-duration: 0.5s
+				transition-duration: 0.5s
 
 /*SIDE end*/
 
@@ -1610,6 +1811,9 @@ $class-news-previews: news-previews
 	overflow: hidden
 	background: #001e33
 
+	@media only screen and (max-width: $desk-md)
+		padding: $layout-grid-space--desk-md
+
 	$bottom-space: 24px
 
 	=link
@@ -1626,26 +1830,34 @@ $class-news-previews: news-previews
 	// footer nav
 	@at-root
 	.footer-nav
+		$nav-cols-length: 5 // length small columns
+
 		$grid-space: 15px
 		margin: 0 -#{$grid-space}
 		font-size: 0
 		line-height: 0
 		letter-spacing: -4px
 
+		// calculate width of columns
+		=layout
+			// width one column
+			$width: 100%/$nav-cols-length
+			width: $width - 0.02%
+
+			// width large column
+			&:nth-child(2)
+				width: $width*($nav-cols-length - 2) - 0.02%
+
 		&__col
 			position: relative
 			display: inline-block
 			vertical-align: top
 			padding: 0 $grid-space
-			$width: 19.98%
-			width: $width
 			font-size: 14px
 			line-height: 1.4
 			color: #fff
 			letter-spacing: normal
-
-			&:nth-child(2)
-				width: $width*3
+			+layout
 
 			& > *:last-child
 				margin-bottom: 0
@@ -1681,6 +1893,13 @@ $class-news-previews: news-previews
 		p
 			margin-bottom: $bottom-space
 
+		@media only screen and (max-width: $desk-md)
+			$nav-cols-length: 4
+
+			&__col
+				+layout
+
+
 /*footer common end*/
 
 /*footer bottom*/
@@ -1688,12 +1907,16 @@ $class-news-previews: news-previews
 	$color: #b2b2b2
 	$font-size: $font-size-small
 	$line-height: 24px
+
 	padding: 0 $layout-grid-space
 	background: #001e33
 	color: $color
 	border-top: 1px solid $color-text-alt
 	font-size: $font-size
 	line-height: $line-height
+
+	@media only screen and (max-width: $desk-md)
+		padding: 0 $layout-grid-space--desk-md
 
 	@at-root
 	&__holder

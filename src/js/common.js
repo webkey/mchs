@@ -312,7 +312,8 @@ function hoverClassInit(){
 			alightRightClass = self.modifiers.alignRight,
 			$navContainer = self.$navContainer;
 
-		var navContainerPosRight = $navContainer.offset().left + $navContainer.outerWidth();
+		// var navContainerPosRight = $navContainer.offset().left + $navContainer.outerWidth();
+		var navContainerPosRight = $('body').outerWidth();
 		var navDropPosRight = drop.offset().left + drop.outerWidth();
 
 		if(navContainerPosRight < navDropPosRight){
@@ -371,7 +372,19 @@ function addAlignClass(){
 }
 /*position drop menu end*/
 
-/**!
+/**
+ * nav expander
+ * */
+function navExpander() {
+	var nav = priorityNav.init({
+		navDropdownLabel: 'Eще...',
+		navDropdownBreakpointLabel: 'Меню',
+		breakPoint: 1262
+	});
+}
+/*nav expander end*/
+
+/**
  * drop language
  * */
 function languageEvents() {
@@ -588,6 +601,7 @@ $(document).ready(function(){
 	printShow();
 	hoverClassInit();
 	addAlignClass();
+	navExpander();
 	languageEvents();
 	slidersInit();
 	equalHeightInit();

@@ -27,7 +27,7 @@ var gulp = require('gulp'), // Подключаем Gulp
 // var browserSync = require('browser-sync').create();
 // var reload      = browserSync.reload;
 
-gulp.task('include', function () {
+gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
 	return gulp.src(['src/__*.html'])
 	.pipe(fileinclude({
 		filters: {
@@ -43,7 +43,7 @@ gulp.task('include', function () {
 	.pipe(gulp.dest('./src/'));
 });
 
-gulp.task('sass', function () { // Создаем таск Sass
+gulp.task('sassCompilation', function () { // Создаем таск для компиляции sass файлов
 	return gulp.src('src/sass/**/*.+(scss|sass)') // Берем источник
 		.pipe(sourcemaps.init())
 		.pipe(sass({
@@ -63,27 +63,28 @@ gulp.task('sass', function () { // Создаем таск Sass
 		})); // Обновляем CSS на странице при изменении
 });
 
-gulp.task('mergeCssLibs', function () {
-	return gulp.src([
-		'src/css/temp/*.css',
-		'src/libs/magnific-popup/dist/magnific-popup.css'
-	]) // Выбираем файл для минификации
-	.pipe(concatCss("src/css/libs.css", {
-		rebaseUrls: false
-	}))
-	.pipe(gulp.dest('./'))
-	.pipe(cssnano()) // Сжимаем
-	.pipe(rename({suffix: '.min'})) // Добавляем суффикс .min
-	.pipe(gulp.dest('./')); // Выгружаем в папку src/css
-});
-
-gulp.task( 'modernizr', function (done) { // Создаем кастомный modernizr
+gulp.task( 'createCustomModernizr', function (done) { // Таск для формирования кастомного modernizr
 	modernizr.build(config, function(code) {
 		fs.writeFile('src/js/modernizr.min.js', code, done);
 	});
 });
 
-gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
+gulp.task('mergeCssLibs', function () { // Таск для мержа css библиотек
+	return gulp.src([
+		'src/css/temp/*.css',
+		'src/libs/magnific-popup/dist/magnific-popup.css',
+		'src/libs/priority-nav/dist/priority-nav-core.css'
+	]) // Выбираем файлы для конкатенации
+	.pipe(concatCss("src/css/libs.css", {
+		rebaseUrls: false
+	}))
+	.pipe(gulp.dest('./')) // Выгружаем в папку src/css несжатую версию
+	.pipe(cssnano()) // Сжимаем
+	.pipe(rename({suffix: '.min'})) // Добавляем суффикс .min
+	.pipe(gulp.dest('./')); // Выгружаем в папку src/css сжатую версию
+});
+
+gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск для мераж js библиотек
 	return gulp.src([
 		'src/libs/device.js/lib/device.min.js',
 		'src/libs/jquery-smartresize/jquery.debouncedresize.js',
@@ -91,7 +92,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
 		'src/libs/magnific-popup/dist/jquery.magnific-popup.js',
 		'src/libs/slick-carousel/slick/slick.min.js',
 		'src/libs/matchHeight/dist/jquery.matchHeight-min.js',
-		'src/libs/masonry/dist/masonry.pkgd.min.js  '
+		'src/libs/masonry/dist/masonry.pkgd.min.js',
+		'src/libs/priority-nav/dist/priority-nav.min.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(gulp.dest('src/js'))
@@ -100,14 +102,14 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
 	.pipe(gulp.dest('src/js')); // Выгружаем в папку src/js
 });
 
-gulp.task('copyJqueryToJs', function () {
+gulp.task('copyJqueryToJs', function () { // Таск для копированя jquery в js папку
 	return gulp.src([
 		'src/libs/jquery/dist/jquery.min.js'
 	])
 	.pipe(gulp.dest('src/js'));
 });
 
-gulp.task('browser-sync', function (done) { // Создаем таск browser-sync
+gulp.task('browserSync', function (done) { // Таск browserSync
 	browserSync.init({
 		server: {
 			baseDir: "./src"
@@ -118,9 +120,9 @@ gulp.task('browser-sync', function (done) { // Создаем таск browser-s
 	done();
 });
 
-gulp.task('watch', ['modernizr', 'browser-sync', 'include', 'sass', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
-	gulp.watch(['src/*.tpl', 'src/__*.html'], ['include']); // Наблюдение за tpl файлами в папке include
-	gulp.watch('src/sass/**/*.+(scss|sass)', ['sass']); // Наблюдение за sass файлами в папке sass
+gulp.task('watch', ['createCustomModernizr', 'browserSync', 'htmlCompilation', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
+	gulp.watch(['src/*.tpl', 'src/__*.html'], ['htmlCompilation']); // Наблюдение за tpl файлами в папке include
+	gulp.watch('src/sass/**/*.+(scss|sass)', ['sassCompilation']); // Наблюдение за sass файлами в папке sass
 });
 
 gulp.task('copyImgToDist', function () {
@@ -141,7 +143,7 @@ gulp.task('default', ['watch']); // Назначаем таск watch дефол
  * Create Distribution folder and and move files to it
  ************************************************************/
 
-gulp.task('build', ['clean', 'copyImgToDist', 'sass', 'mergeCssLibs', 'modernizr', 'copyLibsScriptsToJs'], function () {
+gulp.task('build', ['clean', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
 	gulp.src([ // Переносим библиотеки в продакшен
 		'src/css/main.css',
