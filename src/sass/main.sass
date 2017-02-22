@@ -59,7 +59,7 @@
 	min-height: 50px
 	+clear
 
-	@media only screen and (max-width: $desk-md)
+	@media only screen and (max-width: $mq-desk-md)
 		padding: $layout-grid-space--desk-md
 
 .content-wrap
@@ -70,7 +70,7 @@
 	padding-right: $layout-grid-space
 	min-height: 50px
 
-	@media only screen and (max-width: $desk-md)
+	@media only screen and (max-width: $mq-desk-md)
 		padding-right: $layout-grid-space--desk-md
 		margin: 0 $sidebar-right-width--desk-md 0 0
 
@@ -92,7 +92,7 @@
 	margin: 0 0 0 -#{$sidebar-right-width}
 	width: $sidebar-right-width
 
-	@media only screen and (max-width: $desk-md)
+	@media only screen and (max-width: $mq-desk-md)
 		margin: 0 0 0 -#{$sidebar-right-width--desk-md}
 		width: $sidebar-right-width--desk-md
 
@@ -482,7 +482,7 @@
 	height: $height-container
 	//+clear
 
-	@media only screen and (max-width: $desk-md)
+	@media only screen and (max-width: $mq-desk-md)
 		padding: 0 $layout-grid-space--desk-md
 
 	.holder
@@ -803,7 +803,7 @@
 	margin-right: 240px
 	padding: 0 $layout-grid-space
 
-	@media only screen and (max-width: $desk-md)
+	@media only screen and (max-width: $mq-desk-md)
 		padding: 0 $layout-grid-space--desk-md
 
 /*main navigation end*/
@@ -1070,7 +1070,7 @@
 				background: rgba(0, 0, 0, 0.31)
 				+transition
 
-				@media only screen and (max-width: $desk-md)
+				@media only screen and (max-width: $mq-desk-md)
 					left: -#{$layout-grid-space--desk-md - $nav-item-space}
 
 		&.is-open.priority-nav-has-dropdown > ul:after
@@ -1264,6 +1264,45 @@
 /*date end*/
 
 /*visit*/
+.visit-view
+	svg
+		display: inline-block
+		vertical-align: middle
+		width: 18px
+		height: 18px
+		margin-right: 10px
+
+		path
+			fill: $color-text-light
+			-webkit-transition-property: fill
+			transition-property: fill
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+
+		&.depict-visit-share
+			width: 12px
+			height: 12px
+
+	& > em
+		display: inline-block
+		vertical-align: middle
+		font-style: normal
+
+	@at-root
+		a.visit-view > em
+			-webkit-transition-property: color
+			transition-property: color
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+
+	@at-root
+		.no-touchevents a.visit-view:hover path
+			fill: $color-text
+
+		.no-touchevents a.visit-view:hover > em
+			color: $color-text
+
+
 .visit
 	overflow: hidden
 	margin-left: 20px
@@ -1279,39 +1318,6 @@
 		display: inline-block
 		text-decoration: none
 		color: $color-text-light
-
-		svg, .depict-visit-share
-			display: inline-block
-			vertical-align: middle
-			width: 18px
-			height: 18px
-			margin-right: 10px
-
-			path
-				fill: $color-text-light
-				-webkit-transition-property: fill
-				transition-property: fill
-				-webkit-transition-duration: $animation-speed
-				transition-duration: $animation-speed
-
-		.depict-visit-share
-			width: 12px
-			height: 12px
-
-		& > em
-			display: inline-block
-			vertical-align: middle
-			font-style: normal
-			-webkit-transition-property: color
-			transition-property: color
-			-webkit-transition-duration: $animation-speed
-			transition-duration: $animation-speed
-
-		.no-touchevents &:hover path
-			fill: $color-text
-
-		.no-touchevents &:hover > em
-			color: $color-text
 
 /*visit end*/
 
@@ -1356,7 +1362,7 @@
 			padding: 0 16px
 			text-decoration: none
 			color: #000
-			border: solid #ff9a09
+			border: solid $color-text-mark-alt
 			border-width: 1px 1px 4px
 			background: #fff
 			-webkit-transition-property: box-shadow, -webkit-transform
@@ -1425,10 +1431,24 @@
 /*ctrl end*/
 
 /*news previews*/
-$class-news-previews: news-previews
-.#{$class-news-previews}
+.news-previews
+	$class: news-previews
 	$padding-vertical: 26px
 	$padding-horizontal: 30px
+	$label-size: 60px
+
+	=transition
+		-webkit-transition-property: -webkit-transform, color, fill
+		transition-property: transform, color, fill
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
+
+	=transition-duration
+		-webkit-transition-duration: $animation-speed
+		transition-duration: $animation-speed
+
 	&__list
 		+grid-parent
 		margin-bottom: $space-bottom
@@ -1438,45 +1458,31 @@ $class-news-previews: news-previews
 		line-height: $line-height-small
 		letter-spacing: normal
 
-		.#{$class-news-previews} &
+		.#{$class} &
 			+grid-item(4)
 			margin-bottom: $grid-space
+
+			@media only screen and (max-width: $mq-desk-md)
+				+grid-item(3)
 
 	&__inner
 		$shadow-color: $color-text-mark
 		display: block
 		position: relative
-		padding: $padding-vertical $padding-horizontal
 		text-decoration: none
 		color: $color-text
 		background: #fff
-		box-shadow: inset 0 0 0 2px transparentize($shadow-color, 1)
-		-webkit-transition-property: box-shadow
-		transition-property: box-shadow
-		-webkit-transition-duration: $animation-speed-mouseleave
-		transition-duration: $animation-speed-mouseleave
-		-webkit-transition-timing-function: ease-in-out
-		transition-timing-function: ease-in-out
-
-		.no-touchevents &:hover
-			box-shadow: inset 0 0 0 2px transparentize($shadow-color, 0)
-			-webkit-transition-duration: $animation-speed
-			transition-duration: $animation-speed
+		box-shadow: inset 0 -3px 0 $color-text-mark-alt
 
 	&__label
 		position: absolute
 		left: 0
 		top: 0
-		width: 60px
-		height: 60px
+		width: $label-size
+		height: $label-size
 		text-indent: -9999px
 		overflow: hidden
-
-		.no-img &
-			position: relative
-			left: auto
-			top: auto
-			margin: -#{$padding-vertical} $padding-vertical $padding-vertical -#{$padding-horizontal}
+		z-index: 5
 
 		&_none
 			display: none
@@ -1487,11 +1493,39 @@ $class-news-previews: news-previews
 			background-size: 26px
 
 	&__img
-		min-height: $padding-vertical
-		margin: -#{$padding-vertical} -#{$padding-horizontal} $padding-vertical
+		min-height: $label-size
 
 		img
 			width: 100%
+
+	&__content
+		position: relative
+		overflow: hidden
+		padding: $padding-vertical $padding-horizontal
+
+		.#{$class}__label + &
+			padding-top: $padding-vertical + $label-size
+
+		& > *
+			z-index: 2
+			position: relative
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			height: 100%
+			width: 100%
+			background: $color-text-mark-alt
+			+transform(translate(0, 100%))
+			+transition
+
+	@at-root
+		.no-touchevents a:hover .#{$class}__content
+			&:before
+				+transform(translate(0, 0))
+				+transition-duration
 
 	&__text
 		margin-bottom: $padding-vertical
@@ -1501,6 +1535,25 @@ $class-news-previews: news-previews
 		font-size: 1.2rem
 		line-height: 1.4
 		color: $color-text-light
+		+transition
+
+		time
+			font-style: normal
+
+		.visit-view
+			float: right
+
+			svg path
+				+transition
+
+	@at-root
+		.no-touchevents a:hover
+			.#{$class}__meta
+				color: $color-text
+
+				svg path
+					fill: $color-text
+					+transition-duration
 		
 	&__footer
 		position: relative
@@ -1668,7 +1721,7 @@ $class-news-previews: news-previews
 	margin: 0 -#{$layout-grid-space + $width} 0 #{-$width}
 	width: $width
 
-	@media only screen and (max-width: $desk-md)
+	@media only screen and (max-width: $mq-desk-md)
 		margin-right: -#{$layout-grid-space--desk-md + $width}
 
 	=font
@@ -1792,6 +1845,9 @@ $class-news-previews: news-previews
 .footer
 	color: #b2b2b2
 
+	.layout
+		position: relative
+
 	@at-root
 	.footer__holder
 		position: absolute
@@ -1804,6 +1860,36 @@ $class-news-previews: news-previews
 		right: auto
 
 
+/*footer gov*/
+.footer-gov
+	padding: $layout-grid-space
+	position: relative
+	background: #ffffff
+
+	.gov
+		position: relative
+
+		&__list
+			margin: 0 -$grid-space
+
+		&__item
+			padding: 0 $grid-space/2
+			font-size: $font-size-small
+			line-height: $line-height-small
+			letter-spacing: normal
+			color: $color-text
+
+			img
+				margin-bottom: $space-bottom/2
+
+			p
+				margin-bottom: $space-bottom/2
+
+			& > *:last-child
+				margin-bottom: 0
+
+/*footer gov end*/
+
 /*footer common*/
 .footer-common
 	padding: $layout-grid-space
@@ -1811,7 +1897,7 @@ $class-news-previews: news-previews
 	overflow: hidden
 	background: #001e33
 
-	@media only screen and (max-width: $desk-md)
+	@media only screen and (max-width: $mq-desk-md)
 		padding: $layout-grid-space--desk-md
 
 	$bottom-space: 24px
@@ -1893,7 +1979,7 @@ $class-news-previews: news-previews
 		p
 			margin-bottom: $bottom-space
 
-		@media only screen and (max-width: $desk-md)
+		@media only screen and (max-width: $mq-desk-md)
 			$nav-cols-length: 4
 
 			&__col
@@ -1911,11 +1997,11 @@ $class-news-previews: news-previews
 	padding: 0 $layout-grid-space
 	background: #001e33
 	color: $color
-	border-top: 1px solid $color-text-alt
+	border-top: 1px solid $color
 	font-size: $font-size
 	line-height: $line-height
 
-	@media only screen and (max-width: $desk-md)
+	@media only screen and (max-width: $mq-desk-md)
 		padding: 0 $layout-grid-space--desk-md
 
 	@at-root

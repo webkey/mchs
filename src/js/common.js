@@ -467,6 +467,54 @@ function slidersInit() {
 
 		});
 	}
+
+	/*gov slider*/
+	var $govSlider = $('.gov__list');
+
+	if($govSlider.length){
+
+		$govSlider.each(function () {
+			var $currentSlider = $(this);
+			var dur = 200;
+
+			$currentSlider.slick({
+				fade: false,
+				speed: dur  ,
+				slidesToShow: 7,
+				slidesToScroll: 1,
+				// initialSlide: 2,
+				// lazyLoad: 'ondemand',
+				infinite: false,
+				dots: true,
+				arrows: true
+			});
+
+		});
+	}
+
+	//banner slider
+	// var $bannersSlider = $('.banners__list');
+	//
+	// if($bannersSlider.length){
+	//
+	// 	$bannersSlider.each(function () {
+	// 		var $currentSlider = $(this);
+	// 		var dur = 200;
+	//
+	// 		$currentSlider.slick({
+	// 			fade: false,
+	// 			speed: dur  ,
+	// 			slidesToShow: 4,
+	// 			slidesToScroll: 4,
+	// 			// initialSlide: 2,
+	// 			// lazyLoad: 'ondemand',
+	// 			infinite: true,
+	// 			dots: false,
+	// 			arrows: true
+	// 		});
+	//
+	// 	});
+	// }
 }
 /*sliders end*/
 

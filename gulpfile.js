@@ -116,12 +116,13 @@ gulp.task('browserSync', function (done) { // Таск browserSync
 		},
 		notify: false // Отключаем уведомления
 	});
-	browserSync.watch(['src/*.html', 'src/js/**/*.js']).on("change", browserSync.reload);
+	browserSync.watch(['src/*.html', 'src/js/**/*.js', 'src/includes-json/**/*.json']).on("change", browserSync.reload);
 	done();
 });
 
 gulp.task('watch', ['createCustomModernizr', 'browserSync', 'htmlCompilation', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
-	gulp.watch(['src/*.tpl', 'src/__*.html'], ['htmlCompilation']); // Наблюдение за tpl файлами в папке include
+	gulp.watch(['src/*.tpl', 'src/__*.html', 'src/includes-json/**/*.json'], ['htmlCompilation']); // Наблюдение за tpl
+	// файлами в папке include
 	gulp.watch('src/sass/**/*.+(scss|sass)', ['sassCompilation']); // Наблюдение за sass файлами в папке sass
 });
 

@@ -1,4 +1,5 @@
 @import "vars"
+@import "mixins"
 
 html
 	font-size: 62.5%
@@ -208,27 +209,11 @@ button
 	padding: 11px 25px
 	border: 2px solid transparent
 	background: $color-btn-bg
-	box-shadow: 0 0 0 rgba(0, 0, 0, 0)
+	box-shadow: none
 	box-sizing: border-box
-	-webkit-transition-property: color, background, box-shadow, -webkit-transform
-	transition-property: color, background, box-shadow, transform
-	-webkit-transition-duration: $animation-speed
-	transition-duration: $animation-speed
 
 	.no-touchevents &:hover
-		background: $color-btn-bg-hover
-		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2)
-		-webkit-transform: translate(0, -4px)
-		-ms-transform: translate(0, -4px)
-		transform: translate(0, -4px)
-
-	&:active
-		box-shadow: 0 0 0 rgba(0, 0, 0, 0)
-		-webkit-transition-duration: 0.1s
-		transition-duration: 0.1s
-		-webkit-transform: translate(0, 0)
-		-ms-transform: translate(0, 0)
-		transform: translate(0, 0)
+		background: $color-text-mark-alt
 
 /*btn-default end*/
 
@@ -1197,21 +1182,26 @@ $class-files: files
 			+grid-item(2)
 			margin-bottom: $grid-space
 
+			@media only screen and (max-width: $mq-desk-md)
+				+grid-item(1)
+
 	&__inner
-		$shadow-color: $color-text-mark
 		display: block
+		position: relative
 		padding: 26px 30px
 		text-decoration: none
 		color: $color-text
 		background: #fff
-		box-shadow: inset 0 0 0 2px transparentize($shadow-color, 1)
+		width: 100%
+		box-shadow: inset 0 0 0 2px transparent
 		-webkit-transition-property: box-shadow
 		transition-property: box-shadow
 		-webkit-transition-duration: $animation-speed-mouseleave
 		transition-duration: $animation-speed-mouseleave
 		-webkit-transition-timing-function: ease-in-out
 		transition-timing-function: ease-in-out
-		width: 100%
+
+		$files-border-colors: (pdf: #a00, word: #2b5797, excel: #02723b)
 
 		.#{$class-files} &
 			height: 100%
@@ -1222,9 +1212,13 @@ $class-files: files
 			clear: both
 
 		.no-touchevents &:hover
-			box-shadow: inset 0 0 0 2px transparentize($shadow-color, 0)
 			-webkit-transition-duration: $animation-speed
 			transition-duration: $animation-speed
+
+		&
+			@each $files, $border-color in $files-border-colors
+				.no-touchevents &.files_#{$files}:hover
+					box-shadow: inset 0 0 0 2px $border-color
 
 	&__depict
 		float: left

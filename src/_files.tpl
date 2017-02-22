@@ -1,5 +1,5 @@
 <div class="files__item">
-	<a class="files__inner" href="#" title="@@title">
+	<a class="files__inner files_@@alt" href="#" title="@@title">
 		<div class="files__depict">
 			<img src="@@src" alt="@@alt" />
 		</div>
