@@ -486,7 +486,39 @@ function slidersInit() {
 				// lazyLoad: 'ondemand',
 				infinite: false,
 				dots: true,
-				arrows: true
+				arrows: false,
+				responsive: [
+					{
+						breakpoint: 1740,
+						settings: {
+							slidesToShow: 6
+						}
+					},
+					{
+						breakpoint: 1560,
+						settings: {
+							slidesToShow: 5
+						}
+					},
+					{
+						breakpoint: 1380,
+						settings: {
+							slidesToShow: 4
+						}
+					},
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 3
+						}
+					},
+					{
+						breakpoint: 1020,
+						settings: {
+							slidesToShow: 2
+						}
+					}
+				]
 			});
 
 		});

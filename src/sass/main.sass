@@ -74,8 +74,16 @@
 		padding-right: $layout-grid-space--desk-md
 		margin: 0 $sidebar-right-width--desk-md 0 0
 
+	@media only screen and (max-width: $mq-desk-sm)
+		margin-right: 0
+		padding-right: 0
+
 .sheet
 	background: $color-bg-alt
+	margin-bottom: $space-bottom-md
+
+	&:last-child
+		margin-bottom: 0
 
 .header
 	position: relative
@@ -95,6 +103,9 @@
 	@media only screen and (max-width: $mq-desk-md)
 		margin: 0 0 0 -#{$sidebar-right-width--desk-md}
 		width: $sidebar-right-width--desk-md
+
+	@media only screen and (max-width: $mq-desk-sm)
+		display: none
 
 .footer
 	height: 0
@@ -148,7 +159,10 @@
 
 /*section*/
 .section
-	margin: $space-bottom-md 0
+	margin-bottom: $space-bottom-md
+
+	* ~ &
+		margin-top: $space-bottom-md
 
 	@at-root
 	&__title
@@ -1866,27 +1880,54 @@
 	position: relative
 	background: #ffffff
 
-	.gov
-		position: relative
+	@at-root
+		.gov
+			position: relative
 
-		&__list
-			margin: 0 -$grid-space
+			&__list
+				margin: 0 -#{$grid-space}
 
-		&__item
-			padding: 0 $grid-space/2
-			font-size: $font-size-small
-			line-height: $line-height-small
-			letter-spacing: normal
-			color: $color-text
+				.slick-dots
+					bottom: 0
+					top: 100%
+					margin-top: 20px
 
-			img
-				margin-bottom: $space-bottom/2
+					li
 
-			p
-				margin-bottom: $space-bottom/2
+						button
+							width: 10px
+							height: 10px
+							border-radius: 0
+							background: #ccc
 
-			& > *:last-child
-				margin-bottom: 0
+							&:before
+								left: 0
+								top: 0
+								height: 10px
+								width: 10px
+								border-radius: 0
+								box-shadow: none
+								background: none
+
+						&.slick-active button:before
+							opacity: 1
+							background: $color-text-alt
+
+			&__item
+				padding: 0 $grid-space/2
+				font-size: $font-size-small
+				line-height: $line-height-small
+				letter-spacing: normal
+				color: $color-text
+
+				img
+					margin-bottom: $space-bottom/2
+
+				p
+					margin-bottom: $space-bottom/2
+
+				& > *:last-child
+					margin-bottom: 0
 
 /*footer gov end*/
 

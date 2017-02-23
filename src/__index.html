@@ -21,11 +21,23 @@
 						<!--breadcrumbs end-->
 						<div class="content-wrap">
 							<div class="content">
-								<div class="sheet">
-									<div class="article-layout">
-										Здесь будет контент
+								<section class="section">
+									<div class="section__title"><h2>Новости Минской области</h2></div>
+									<div class="section__holder">
+										<!--news previews-->
+										<div class="news-previews">
+											<div class="news-previews__list">
+												@@loop('_news-previews.tpl', 'includes-json/news-items.json')
+											</div>
+											<div class="news-previews__footer">
+												<div class="more">
+													<a href="#" class="btn-more"><span>Загрузить ещё</span><i></i></a>
+												</div>
+											</div>
+										</div>
+										<!--news previews end-->
 									</div>
-								</div>
+								</section>
 							</div>
 						</div>
 						<!--ASIDE-->
