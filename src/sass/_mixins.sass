@@ -45,25 +45,25 @@
 // =============================================================================
 // Grid Parent
 // =============================================================================
-=grid-parent()
+=grid-parent($this-grid-space: $grid-space)
 	font-size: 0
 	line-height: 1
 	letter-spacing: -4px
 	margin:
-		left: -#{$grid-space/2}
-		right: -#{$grid-space/2}
+		left: -#{$this-grid-space/2}
+		right: -#{$this-grid-space/2}
 
 // =============================================================================
 // Grid Item
 // =============================================================================
-=grid-item($length-in-row)
+=grid-item($length-in-row: 1, $this-grid-space: $grid-space, $margin-bottom: $this-grid-space)
 	display: inline-block
 	vertical-align: top
 	width: 100%/$length-in-row - 0.02
 	padding:
-		left: $grid-space/2
-		right: $grid-space/2
-	margin-bottom: $grid-space
+		left: $this-grid-space/2
+		right: $this-grid-space/2
+	margin-bottom: $margin-bottom
 
 // =============================================================================
 // Text transform fix
@@ -110,6 +110,32 @@
 	padding: 0
 	position: absolute
 	width: 1px
+
+// =============================================================================
+// Scroll lock
+// =============================================================================
+=scroll-lock
+	width: 100%!important
+	height: 100%!important
+	max-width: 100%!important
+	max-height: 100%!important
+	margin: 0!important
+	padding: 0!important
+	overflow: hidden!important
+
+// =============================================================================
+// button default hover state
+// =============================================================================
+=btn-hover()
+	.no-touchevents &:hover
+		background: $color-text-mark-alt
+
+// =============================================================================
+// button default active state
+// =============================================================================
+=btn-active()
+	&:active
+		+transform(scale(0.95))
 
 // =============================================================================
 // Leaner gradient -vendor

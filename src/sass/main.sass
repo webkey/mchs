@@ -234,7 +234,6 @@
 
 /*social networks*/
 .social-networks
-
 	=transition
 		-webkit-transition-property: -webkit-transform, box-shadow, fill
 		transition-property: transform, box-shadow, fill
@@ -472,6 +471,221 @@
 		color: $color-text-light
 
 /*news read end*/
+
+/*extra popup*/
+// fixed scroll after popup open
+html.nav-opened-before
+	+scroll-lock
+
+.extra-popup
+	$this-container-class: extra-popup
+	$header-height: 60px
+
+	=transition
+		-webkit-transition-property: opacity, visibility, box-shadow
+		transition-property: opacity, visibility, box-shadow
+		-webkit-transition-duration: 0.6s
+		transition-duration: 0.6s
+
+	=transition-duration-back
+		-webkit-transition-duration: 0.2s
+		transition-duration: 0.2s
+
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	z-index: 998
+	background: #fff
+	box-sizing: border-box
+	border: 1px solid $color-border
+	overflow: hidden
+
+	&.hide-before
+		opacity: 0
+		visibility: hidden
+
+	.layout
+		padding: 0 #{$layout-grid-space}
+		overflow: hidden
+
+	// for ios add bg after inertia scroll
+	&:after
+		content: ''
+		position: absolute
+		left: 0
+		top: 100%
+		height: 50%
+		width: 100%
+		background: inherit
+
+	@at-root
+		.#{$this-container-class}__head
+			position: relative
+			height: $header-height
+			border: solid #d9d9d9
+			border-width: 1px 0
+			box-sizing: border-box
+			+transition
+
+			.show-shadow &
+				box-shadow: 0 0 35px rgba(0, 0, 0, 0.2)
+				+transition-duration-back
+
+			.logo
+				display: block
+				position: absolute
+				left: 50%
+				top: 50%
+				$size: 50px
+				width: $size
+				height: $size
+				margin: -#{$size/2} 0 0 -#{$size/2}
+				padding: 0
+				font-size: 0
+				line-height: 0
+				-webkit-background-size: contain
+				background-size: contain
+				opacity: 0
+				visibility: hidden
+				+transition
+
+				.nav-opened-before &
+					opacity: 1
+					visibility: visible
+
+	.btn-popup-close
+		//<a href="#" class="btn-popup-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
+		$btn-bg: #fff
+		$btn-color: #000
+		$btn-size: 60px
+		$btn-space: 12px
+		$btn-lines-width: 30px
+		$btn-lines-height: 2px
+		$btn-lines-space: 5px
+		$btn-lines-color: $color-text-alt
+
+		=line-style
+			height: $btn-lines-height
+			width: $btn-lines-width
+
+		=font
+			font: 300 14px/1.4 $font-norm
+			letter-spacing: normal
+
+		=transition
+			-webkit-transition-property: -webkit-transform, box-shadow, background-color
+			transition-property: transform, box-shadow, background-color
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+			-webkit-transition-timing-function: ease-in-out
+			transition-timing-function: ease-in-out
+
+		&
+			position: absolute
+			right: 0
+			top: -1px
+			width: $btn-size
+			height: $btn-size
+			background: $btn-bg
+			border: 1px solid $color-border
+			color: #fff
+			text-decoration: none
+			background: $btn-bg
+			font-size: 0
+			line-height: 0
+			letter-spacing: -4px
+			white-space: nowrap
+
+			&:before
+				content: ''
+				display: inline-block
+				height: $btn-size
+				min-height: 100%
+				vertical-align: middle
+
+			> span
+				+hide-text
+
+			> i
+				display: inline-block
+				vertical-align: middle
+				position: relative
+				-webkit-backface-visibility: hidden
+				backface-visibility: hidden
+				background-color: transparent
+				+line-style
+
+				&:before, &:after
+					content: ''
+					position: absolute
+					left: 0
+					-webkit-backface-visibility: hidden
+					backface-visibility: hidden
+					+line-style
+					background: $btn-lines-color
+
+				//first line menu
+				&:before
+					top: 0
+					+transform(rotate(-45deg))
+
+				//third line menu
+				&:after
+					top: 0
+					+transform(rotate(45deg))
+
+		.no-touchevents &:hover > i:before, .no-touchevents &:hover > i:after
+			background-color: $color-text-mark-alt
+
+
+	@at-root
+		&__content
+			overflow-x: hidden
+			overflow-y: auto
+			position: relative
+			height: calc(100% - #{$header-height})
+			padding: #{$layout-grid-space - 10px} 0
+			box-sizing: border-box
+
+	@at-root
+		.nav-overlay
+			z-index: 99
+
+/*extra popup end*/
+
+/*site map menu*/
+.site-map
+	display: block
+
+	&__container
+		+grid-parent()
+
+	&__box
+		+grid-item(3, $grid-space, $space-bottom)
+		font-size: 16px
+		line-height: 20px
+		letter-spacing: normal
+
+		.site-map__heading
+			display: block
+			margin-bottom: $space-bottom
+			font-size: 14px
+			line-height: 24px
+			font-weight: bold
+			text-transform: uppercase
+
+		a
+			color: $color-text
+			text-decoration: none
+
+			.no-touchevents &:hover,
+			.no-touchevents .current > &,
+			.current > &
+				color: $color-text-alt
+
+/*site map menu end*/
 /*WIDGETS end*/
 
 /*HEADER*/
@@ -1106,8 +1320,8 @@
 		//box-sizing: border-box
 
 		.no-touchevents &:hover, &.is-open
-			background: $color-nav-bg-hover
-			color: $color-text
+			background: $color-text-mark
+			color: #fff
 
 	.priority-nav__wrapper
 		position: relative
@@ -2159,7 +2373,7 @@
 	//<a href="#" class="btn-map-site"><i></i><span>Карта сайта</span></a>
 	$btn-bg: $color-btn-bg
 	$btn-color: #fff
-	$btn-height: 40px
+	$btn-min-height: 40px
 	$btn-space: 12px
 	$btn-lines-width: 22px
 	$btn-lines-height: 3px
@@ -2192,30 +2406,15 @@
 	letter-spacing: -4px
 	white-space: nowrap
 	+text-transform-fix
-	+transition
-
-	.no-touchevents &:hover
-		box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4)
-		-webkit-transform: translate(0, -4px)
-		-ms-transform: translate(0, -4px)
-		transform: translate(0, -4px)
-
-	.no-touchevents &:active
-		box-shadow: 0 0 0 rgba(0, 0, 0, 0)
-		-webkit-transition-duration: 0.1s
-		transition-duration: 0.1s
-		-webkit-transform: translate(0, 0)
-		-ms-transform: translate(0, 0)
-		transform: translate(0, 0)
+	+btn-hover
+	+btn-active
 
 	&:before
 		content: ''
 		display: inline-block
-		min-height: $btn-height
+		height: $btn-min-height
+		min-height: 100%
 		vertical-align: middle
-
-	&:active
-		+transform(scale(0.95))
 
 	> span
 		+font

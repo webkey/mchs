@@ -211,9 +211,8 @@ button
 	background: $color-btn-bg
 	box-shadow: none
 	box-sizing: border-box
-
-	.no-touchevents &:hover
-		background: $color-text-mark-alt
+	+btn-hover
+	+btn-active
 
 /*btn-default end*/
 
@@ -290,13 +289,14 @@ button
 /*btn-arrow*/
 /*btn end*/
 
-.content
+.#{$user-content}
 	@each $tags in h2, h3, h4, h5
 		p + #{$tags},
 		ul + #{$tags},
 		ol + #{$tags}
 			margin-top: $space-bottom-md
 
+.#{$user-content}, .extra-popup // add list style for popup
 	//list
 	ul, ol
 		margin: $space-bottom 0
@@ -400,6 +400,7 @@ button
 				content: none
 	//list end
 
+.#{$user-content}
 	//table
 	table
 		margin-bottom: $space-bottom
@@ -450,6 +451,7 @@ button
 			border-top-width: 0
 	//table end
 
+.#{$user-content}
 	//blockquote
 	.blockquote
 		margin: $space-bottom-md 0

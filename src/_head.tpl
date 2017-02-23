@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ru">
+<!--<html lang="ru" class="nav-opened-before">-->
+<html lang="ru" class="nav-opened-before">
 <head>
 	<meta charset="UTF-8">
 	<title>@@title</title>
