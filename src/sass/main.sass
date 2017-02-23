@@ -1428,86 +1428,84 @@ html.nav-opened-before
 
 /*MAIN*/
 /*breadcrumbs*/
-.breadcrumbs
-	////@extend .content
-	////@extend .main-frame
-	//float: left
-	//font-size: 1.4rem
-	//line-height: 1.5
-	//color: $color-text
-	//padding-bottom: $space-bottom
-	//cursor: default
-	//
-	//&__list, .content &__list
-	//	overflow: hidden
-	//	list-style: none
-	//	padding: 0
-	//	margin: 0
-	//
-	//	li
-	//		padding: 0 10px 10px 18px
-	//		margin: 0
-	//		float: left
-	//		position: relative
-	//
-	//		&:before
-	//			content: ''
-	//			position: absolute
-	//			left: 0
-	//			top: 7px
-	//			height: 0
-	//			width: 0
-	//			border: solid transparent
-	//			border-width: 4px 7px
-	//			border-left-color: $color-text-mark
-	//			//box-sizing: border-box
-	//
-	//		&:first-child
-	//			padding-left: 0
-	//			background: none
-	//
-	//		&:first-child:before
-	//			content: none
-	//
-	//	a
-	//		color: $color-text
-	//		text-decoration: none
-	//		cursor: pointer
-	//
-	//		.no-touchevents &:hover
-	//			text-decoration: none
-	//
-	//		span
-	//			border-bottom: 1px solid $color-text-light
-	//			-webkit-transition-property: border-color
-	//			transition-property: border-color
-	//			-webkit-transition-duration: $animation-speed
-	//			transition-duration: $animation-speed
-	//
-	//			.no-touchevents &:hover
-	//				border-color: transparent
-	//
-	//	span
-	//		display: inline-block
-	//		vertical-align: middle
-	//		overflow: hidden
-	//		-ms-text-overflow: ellipsis
-	//		text-overflow: ellipsis
-	//		white-space: nowrap
-	//		max-width: 250px
+//.breadcrumbs
+//	//@extend .content
+//	//@extend .main-frame
+//	float: left
+//	font-size: 1.4rem
+//	line-height: 1.5
+//	color: $color-text
+//	padding-bottom: $space-bottom
+//	cursor: default
+//
+//	&__list, .content &__list
+//		overflow: hidden
+//		list-style: none
+//		padding: 0
+//		margin: 0
+//
+//		li
+//			padding: 0 10px 10px 18px
+//			margin: 0
+//			float: left
+//			position: relative
+//
+//			&:before
+//				content: ''
+//				position: absolute
+//				left: 0
+//				top: 7px
+//				height: 0
+//				width: 0
+//				border: solid transparent
+//				border-width: 4px 7px
+//				border-left-color: $color-text-mark
+//				//box-sizing: border-box
+//
+//			&:first-child
+//				padding-left: 0
+//				background: none
+//
+//			&:first-child:before
+//				content: none
+//
+//		a
+//			color: $color-text
+//			text-decoration: none
+//			cursor: pointer
+//
+//			.no-touchevents &:hover
+//				text-decoration: none
+//
+//			span
+//				border-bottom: 1px solid $color-text-light
+//				-webkit-transition-property: border-color
+//				transition-property: border-color
+//				-webkit-transition-duration: $animation-speed
+//				transition-duration: $animation-speed
+//
+//				.no-touchevents &:hover
+//					border-color: transparent
+//
+//		span
+//			display: inline-block
+//			vertical-align: middle
+//			overflow: hidden
+//			-ms-text-overflow: ellipsis
+//			text-overflow: ellipsis
+//			white-space: nowrap
+//			max-width: 250px
 
 .breadcrumbs
-	font: 12px/14px 'gothampro-regular', Arial, Helvetica, sans-serif
-	color: #333
-	padding: 0 0 44px
+	float: left
+	font-size: 1.4rem
+	line-height: 1.5
+	color: $color-text
+	margin-bottom: $space-bottom
+	cursor: default
+	+clear
 
-.breadcrumbs:before,
-.breadcrumbs:after
-	content: ""
-	display: table
-
-.breadcrumbs:after
-	clear: both
+	width: 100%
 
 .breadcrumbs__item
 	float: left
