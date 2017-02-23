@@ -1,0 +1,141 @@
+.upload-file
+	opacity: 0
+
+.jFiler
+	=transition
+		-webkit-transition-property: background-color, border-color, -webkit-transform
+		transition-property: background-color, border-color, transform
+		-webkit-transition-duration: 0.2s
+		transition-duration: 0.2s
+
+	position: relative
+
+	&-input-dragDrop
+		margin: 0
+		cursor: pointer
+		padding: 30px
+		background: #fff
+		border: 1px dashed $color-form-border
+		+transition
+
+		.no-touchevents &:hover
+			border-color: $color-form-border-focus
+
+		&.dragged .jFiler-input-icon i
+			+transform(translate(0, -8px))
+
+		.jFiler-input-icon
+			margin-top: 0
+			margin-bottom: 24px
+			text-align: center
+
+			i
+				display: inline-block
+				vertical-align: top
+				background: url(../img/attach.svg) no-repeat
+				-webkit-background-size: contain
+				background-size: contain
+				width: 50px
+				height: 50px
+				+transition
+
+		.jFiler-input-text strong
+			display: block
+			font-weight: normal
+			font-size: $font-size-small
+			line-height: $line-height-small
+			color: $color-text
+			text-align: center
+
+	&-items
+		margin: #{$space-bottom} 0 0
+
+	&-items-list, .#{$user-content} &-items-list
+		margin: #{$space-bottom-sm} 0
+
+	&-item
+		margin: #{$space-bottom-sm} 0
+		font-size: $font-size-small
+		line-height: $line-height-small
+		color: $color-text
+		overflow: hidden
+
+	&-item-icon
+		display: none
+
+	&-item-title
+		display: inline-block
+		vertical-align: top
+		+font-bold
+
+	&-item-others
+		display: inline-block
+		vertical-align: top
+		color: $color-text-light
+		position: relative
+
+		&:after
+			content: ''
+			position: absolute
+			left: 100%
+			bottom: 0
+			height: 0
+			width: 999px
+			border-bottom: 1px dotted $color-border
+			margin: 0 0 3px
+
+		span
+			padding-right: 5px
+
+	&-item-assets
+		position: absolute
+		right: 0
+		bottom: 0
+
+	&-item-assets ul,
+	.#{$user-content} ul &-item-assets ul
+		margin: 0
+
+		li
+			margin: 0
+			padding: 0 0 3px 8px !important
+			background: #fafafa
+
+	&-item-trash-action
+		display: block
+		position: relative
+		width: 12px
+		height: 12px
+		z-index: 2
+		cursor: pointer
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			left: 50%
+			top: 50%
+			height: 2px
+			width: 16px
+			border-radius: 2px
+			background: $color-text-mark
+			-webkit-transition-property: background
+			transition-property: background
+			-webkit-transition-duration: 0.2s
+			transition-duration: 0.2s
+			margin: -1px 0 0 -8px
+
+		&:before
+			-webkit-transform: rotate(-45deg)
+			-ms-transform: rotate(-45deg)
+			transform: rotate(-45deg)
+
+		&:after
+			-webkit-transform: rotate(45deg)
+			-ms-transform: rotate(45deg)
+			transform: rotate(45deg)
+
+		.no-touchevents &:hover:before,
+		.no-touchevents &:hover:after
+			background-color: $color-text-alt
+
+

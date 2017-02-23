@@ -1,5 +1,46 @@
 /**
- * resize only width
+ * !js scroll page lock
+ * */
+
+var docElem = window.document.documentElement,
+	didScroll,
+	scrollPosition;
+
+function noScrollFn() {
+	window.scrollTo( scrollPosition ? scrollPosition.x : 0, scrollPosition ? scrollPosition.y : 0 );
+}
+
+function noScroll() {
+	window.removeEventListener( 'scroll', scrollHandler );
+	window.addEventListener( 'scroll', noScrollFn );
+}
+
+function scrollFn() {
+	window.addEventListener( 'scroll', scrollHandler );
+}
+
+function canScroll() {
+	window.removeEventListener( 'scroll', noScrollFn );
+	scrollFn();
+}
+
+function scrollHandler() {
+	if( !didScroll ) {
+		didScroll = true;
+		setTimeout( function() { scrollPage(); }, 60 );
+	}
+}
+
+function scrollPage() {
+	scrollPosition = { x : window.pageXOffset || docElem.scrollLeft, y : window.pageYOffset || docElem.scrollTop };
+	didScroll = false;
+}
+
+scrollFn();
+/*js scroll page lock end*/
+
+/**
+ * !resize only width
  * */
 var resizeByWidth = true;
 
@@ -15,7 +56,7 @@ $(window).resize(function () {
 /*resize only width end*/
 
 /**
- * device detected
+ * !device detected
  * */
 var DESKTOP = device.desktop();
 //console.log('DESKTOP: ', DESKTOP);
@@ -26,15 +67,15 @@ var TABLET = device.tablet();
 /*device detected end*/
 
 /**
- *  placeholder
- *  */
+ * !placeholder
+ * */
 function placeholderInit(){
 	$('[placeholder]').placeholder();
 }
 /*placeholder end*/
 
 /**
- * toggle class for input on focus
+ * !toggle class for input on focus
  * */
 function inputToggleFocusClass() {
 	var $fieldWrap = $('.input-wrap');
@@ -137,7 +178,7 @@ function inputFilledClass() {
 /*toggle class for input on focus end*/
 
 /**
- * print
+ * !print
  * */
 function printShow() {
 	$('.view-print').on('click', function (e) {
@@ -148,7 +189,7 @@ function printShow() {
 /*print end*/
 
 /**
- * toggle hover class
+ * !toggle hover class
  * */
 (function ($) {
 	var HoverClass = function (settings) {
@@ -276,7 +317,7 @@ function hoverClassInit(){
 /*toggle hover class end*/
 
 /**
- * position drop menu
+ * !position drop menu
  * */
 (function ($) {
 	// external js:
@@ -373,7 +414,7 @@ function addAlignClass(){
 /*position drop menu end*/
 
 /**
- * nav expander
+ * !nav expander
  * */
 function navExpander() {
 	var nav = priorityNav.init({
@@ -385,7 +426,7 @@ function navExpander() {
 /*nav expander end*/
 
 /**
- * drop language
+ * !drop language
  * */
 function languageEvents() {
 
@@ -416,7 +457,7 @@ function languageEvents() {
 /*drop language end*/
 
 /**
- * sliders
+ * !sliders
  * */
 function slidersInit() {
 	//images slider
@@ -551,7 +592,7 @@ function slidersInit() {
 /*sliders end*/
 
 /**
- * equal height
+ * !equal height
  * */
 function equalHeightInit() {
 	var $files = $('.files');
@@ -565,7 +606,7 @@ function equalHeightInit() {
 /*equal height end*/
 
 /**
- * masonry
+ * !masonry
  * */
 function masonryInit() {
 	var $newsPreviews = $('.news-previews__list');
@@ -580,19 +621,436 @@ function masonryInit() {
 /*masonry*/
 
 /**
- * sidebar layout
+ * !extra popup jQuery plugin
  * */
-function sidebarLayout() {
-	$(window).on('load debouncedresize', function () {
-		$('.sidebar-bottom').css({
-			'height': $('.sidebar').outerHeight() - $('.sidebar-top').outerHeight(true)
-		})
-	})
-}
-/*sidebar layout end*/
+(function ($) {
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (libs);
+	// 2) device.js (libs);
+	// 3) resizeByWidth (resize only width);
 
-/**!
- * footer at bottom
+	// add css style
+	// .nav-opened-before{
+	// 	width: 100%!important;
+	// 	height: 100%!important;
+	// 	max-width: 100%!important;
+	// 	max-height: 100%!important;
+	// 	margin: 0!important;
+	// 	padding: 0!important;
+	// 	overflow: hidden!important;
+	// }
+
+	// .nav-opened-before .wrapper{ z-index: 99; } // z-index of header must be greater than footer
+	//
+	// if nav need to hide
+	// @media only screen and (min-width: [example: 1280px]){
+	// .nav{
+	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 	}
+	// .nav-list > li{
+	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
+	// 		opacity: 1 !important;
+	// 		visibility: visible !important;
+	// 	}
+	// }
+	var ExtraPopup = function (settings) {
+		var options = $.extend({
+			mainContainer: 'html', // container wrapping all elements
+			navContainer: null, // main navigation container
+			navMenu: null, // menu
+			btnMenu: null, // element which opens or switches menu
+			btnMenuClose: null, // element which closes a menu
+			navMenuItem: null,
+			navMenuAnchor: 'a',
+			staggerItems: null,
+			overlay: '.nav-overlay', // overlay's class
+			overlayAppendTo: 'body', // where to place overlay
+			overlayAlpha: 0.8,
+			classReturn: null,
+			overlayBoolean: true,
+			animationSpeed: 300,
+			animationSpeedOverlay: null,
+			minWidthItem: 100,
+			mediaWidth: null,
+			closeOnResize: true,
+			closeEsc: true // close popup on click Esc
+		}, settings || {});
+
+		var container = $(options.navContainer),
+			_animateSpeed = options.animationSpeed;
+
+		var self = this;
+		self.options = options;
+		self.$mainContainer = $(options.mainContainer);            // . по умолчанию <html></html>
+		self.$navMenu = $(options.navMenu);
+		self.$btnMenu = $(options.btnMenu);
+		self.$btnMenuClose = $(options.btnMenuClose);
+		self.$navContainer = container;
+		self.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации;
+		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
+		self.$staggerItems = options.staggerItems || self.$navMenuItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию navMenuItem;
+
+		self._animateSpeed = _animateSpeed;
+
+		// overlay
+		self.overlayBoolean = options.overlayBoolean;
+		self.overlayAppendTo = options.overlayAppendTo;
+		self.$overlay = $('<div class="' + options.overlay.substring(1) + '"></div>'); // Темплейт оверлея;
+		self._overlayAlpha = options.overlayAlpha;
+		self._animateSpeedOverlay = options.animationSpeedOverlay || _animateSpeed;
+		self._minWidthItem = options.minWidthItem;
+		self._mediaWidth = options.mediaWidth;
+		self.closeOnResize = options.closeOnResize;
+		self.closeEsc = options.closeEsc;
+
+		self.desktop = device.desktop();
+
+		self.modifiers = {
+			active: 'active',
+			opened: 'nav-opened',
+			openStart: 'nav-opened-before'
+		};
+
+		self.outsideClick();
+		if ( self._mediaWidth === null || window.innerWidth < self._mediaWidth ) {
+			self.preparationAnimation();
+		}
+		self.toggleMenu();
+		self.eventsBtnMenuClose();
+		self.clearStyles();
+		self.closeNavOnEsc();
+	};
+
+	ExtraPopup.prototype.navIsOpened = false;
+
+	// overlay append to "overlayAppendTo"
+	ExtraPopup.prototype.createOverlay = function () {
+		var self = this,
+			$overlay = self.$overlay;
+
+		$overlay.appendTo(self.overlayAppendTo);
+
+		TweenMax.set($overlay, {
+			autoAlpha: 0,
+			position: 'fixed',
+			width: '100%',
+			height: '100%',
+			left: 0,
+			top: 0,
+			background: '#000',
+			onComplete: function () {
+				TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {autoAlpha: self._overlayAlpha});
+			}
+		});
+	};
+
+	// toggle overlay
+	ExtraPopup.prototype.toggleOverlay = function (close) {
+		var self = this,
+			$overlay = self.$overlay;
+
+		if (close === false) {
+			TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {
+				autoAlpha: 0,
+				onComplete: function () {
+					$overlay.remove();
+				}
+			});
+			return false;
+		}
+
+		self.createOverlay();
+	};
+
+	// toggle menu
+	ExtraPopup.prototype.toggleMenu = function () {
+		var self = this,
+			$buttonMenu = self.$btnMenu;
+
+		$buttonMenu.on('click', function (e) {
+			e.preventDefault();
+
+			if (self.navIsOpened) {
+				self.closeNav();
+			} else {
+				self.openNav();
+			}
+
+			e.stopPropagation();
+		});
+	};
+
+	// events btn close menu
+	ExtraPopup.prototype.eventsBtnMenuClose = function () {
+
+		var self = this;
+
+		self.$btnMenuClose.on('click', function (e) {
+			e.preventDefault();
+
+			if ( self.navIsOpened ) {
+				self.closeNav();
+			}
+
+			e.stopPropagation();
+		});
+	};
+
+	// click outside menu
+	ExtraPopup.prototype.outsideClick = function () {
+		var self = this;
+
+		$(document).on('click', function () {
+			if ( self.navIsOpened ) {
+				self.closeNav();
+			}
+		});
+
+		self.$navContainer.on('click', function (e) {
+			if ( self.navIsOpened ) {
+				e.stopPropagation();
+			}
+		})
+	};
+
+	// close popup on click to "Esc" key
+	ExtraPopup.prototype.closeNavOnEsc = function () {
+		var self = this;
+
+		$(document).keyup(function(e) {
+			if (self.navIsOpened && self.closeEsc && e.keyCode == 27) {
+				self.closeNav();
+			}
+		});
+	};
+
+	// open nav
+	ExtraPopup.prototype.openNav = function() {
+		// console.log("openNav");
+
+		var self = this,
+			$html = self.$mainContainer,
+			$navContainer = self.$navContainer,
+			$buttonMenu = self.$btnMenu,
+			_animationSpeed = self._animateSpeedOverlay,
+			$staggerItems = self.$staggerItems;
+
+		$buttonMenu.addClass(self.modifiers.active);
+		$html.addClass(self.modifiers.openStart);
+
+		$navContainer.css({
+			'-webkit-transition-duration': '0s',
+			'transition-duration': '0s'
+		});
+
+		TweenMax.to($navContainer, _animationSpeed / 1000, {
+			xPercent: 0,
+			autoAlpha: 1,
+			ease: Cubic.easeOut,
+			onComplete: function () {
+				$html.addClass(self.modifiers.opened);
+
+				noScroll();
+			}
+		});
+
+		TweenMax.staggerTo($staggerItems, 0.85, {
+			// autoAlpha:1,
+			// scale:1,
+			// y: 0,
+			ease:Cubic.easeOut
+		}, 0.1);
+
+
+		if (self.overlayBoolean) {
+			self.toggleOverlay();
+		}
+
+		self.navIsOpened = true;
+	};
+
+	// close nav
+	ExtraPopup.prototype.closeNav = function() {
+		// console.log("closeNav");
+
+		var self = this,
+			$html = self.$mainContainer,
+			$navContainer = self.$navContainer,
+			$buttonMenu = self.$btnMenu,
+			_animationSpeed = self._animateSpeedOverlay,
+			_mediaWidth = self._mediaWidth;
+
+		$html.removeClass(self.modifiers.opened);
+		$html.removeClass(self.modifiers.openStart);
+		$buttonMenu.removeClass(self.modifiers.active);
+
+		if (self.overlayBoolean) {
+			self.toggleOverlay(false);
+		}
+
+		TweenMax.to($navContainer, _animationSpeed / 1000, {
+			xPercent: -100,
+			ease: Cubic.easeOut,
+			onComplete: function () {
+				if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+					self.preparationAnimation();
+				}
+
+				TweenMax.set($navContainer, {
+					autoAlpha: 0
+				});
+
+				canScroll();
+			}
+		});
+
+		self.navIsOpened = false;
+	};
+
+	// preparation element before animation
+	ExtraPopup.prototype.preparationAnimation = function() {
+		var self = this;
+
+		var $navContainer = self.$navContainer,
+			$staggerItems = self.$staggerItems;
+
+		// console.log('preparationAnimation');
+
+		TweenMax.set($navContainer, {
+			xPercent: -100,
+			autoAlpha: 0,
+			onComplete: function () {
+				$navContainer.show(0);
+			}
+		});
+		TweenMax.set($staggerItems, {
+			// autoAlpha: 0,
+			// scale: 0.6,
+			// y: 50
+		});
+	};
+
+	// clearing inline styles
+	ExtraPopup.prototype.clearStyles = function() {
+		var self = this,
+			$btnMenu = self.$btnMenu,
+			$navContainer = self.$navContainer,
+			$staggerItems = self.$staggerItems;
+
+		//clear on horizontal resize
+		if (self.closeOnResize === true) {
+
+			$(window).on('resizeByWidth', function () {
+				if (self.navIsOpened) {
+					if (!$btnMenu.is(':visible')) {
+						$navContainer.attr('style', '');
+						$staggerItems.attr('style', '');
+					} else {
+						self.closeNav();
+					}
+				}
+			});
+
+		}
+	};
+
+	window.ExtraPopup = ExtraPopup;
+
+}(jQuery));
+
+/**
+ * !extra popup site map
+ * */
+function siteMapPopup(){
+	var siteMapSelector = '.site-map-js';
+	if($(siteMapSelector).length){
+
+		new ExtraPopup({
+			navContainer: siteMapSelector,
+			navMenu: '.site-map__list',
+			btnMenu: '.btn-site-map-js',
+			btnMenuClose: '.btn-popup-close-js',
+			navMenuItem: '.site-map__box',
+			overlayAppendTo: 'body',
+			closeOnResize: true,
+			// mediaWidth: 1280,
+			animationSpeed: 300,
+			overlayAlpha: 0.35
+		});
+
+	}
+}
+/*main navigation for mobile end*/
+
+/**
+ * file input
+ * */
+function fileInput() {
+	$('.upload-file').each(function () {
+		$(this).filer({
+			// limit: 3,
+			changeInput: '' +
+			'<div class="jFiler-input-dragDrop">' +
+				'<div class="jFiler-input-inner">' +
+					'<div class="jFiler-input-icon">' +
+						'<i class="icon-jfi-cloud-up-o"></i>' +
+					'</div>' +
+					'<div class="jFiler-input-text">' +
+						'<strong>Кликните по полю или перетащите сюда файл</strong>' +
+					'</div>' +
+				'</div>' +
+			'</div>',
+			showThumbs: true,
+			theme: "dragdropbox",
+			captions: {
+				button: "Выберите файлы",
+				feedback: "Выберите файлы для загрузки",
+				feedback2: "Файлы выбраны",
+				drop: "Перетащите файлы в это поле для загрузки",
+				removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
+				errors: {
+					filesLimit: "Максиальное количество файлов: {{fi-limit}}",
+					filesType: "Загружать можно только изображения!",
+					filesSize: "{{fi-name}} слишком велик! Пожалуйста, загрузите файл до {{fi-maxSize}} MB.",
+					filesSizeAll: "Файлы, которые Вы выбрали слишком велики! Пожалуйста, загружайте файлы до {{fi-maxSize}} MB."
+				}
+			},
+			templates: {
+				box: '<ul class="jFiler-items-list jFiler-items-default list-reset"></ul>'
+			},
+			// captions: {
+			// 	button: "Choose Files",
+			// 	feedback: "Choose files To Upload",
+			// 	feedback2: "files were chosen",
+			// 	drop: "Drop file here to Upload",
+			// 	removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
+			// 	errors: {
+			// 		filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
+			// 		filesType: "Only Images are allowed to be uploaded.",
+			// 		filesSize: "{{fi-name}} is too large! Please upload file up to {{fi-maxSize}} MB.",
+			// 		filesSizeAll: "Files you've choosed are too large! Please upload files up to {{fi-maxSize}} MB."
+			// 	}
+			// },
+			addMore: true,
+			allowDuplicates: false,
+			clipBoardPaste: true,
+			dragDrop: {
+				dragEnter: null,
+				dragLeave: null,
+				drop: null,
+				dragContainer: null
+			}
+		});
+	});
+}
+/*file input end end*/
+
+/**
+ * !footer at bottom
  * */
 function footerBottom(){
 	var $footer = $('.footer');
@@ -618,7 +1076,7 @@ function footerBottom(){
 /*footer at bottom end*/
 
 /**
- * form success for example
+ * !form success for example
  * */
 function formSuccessExample() {
 	var $form = $('.user-form form');
@@ -686,7 +1144,8 @@ $(document).ready(function(){
 	slidersInit();
 	equalHeightInit();
 	masonryInit();
-	// sidebarLayout();
+	siteMapPopup();
+	fileInput();
 	footerBottom();
 	formSuccessExample();
 });

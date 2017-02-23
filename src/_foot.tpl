@@ -20,7 +20,7 @@
 					<div class="footer-nav__col">
 						<strong class="footer-nav__title"><span>МЧС Республики Беларусь</span></strong>
 						<p>Республиканский орган государственного управления Беларуси.</p>
-						<a href="#" class="btn-map-site"><i></i><span>Карта сайта</span></a>
+						<a href="#" class="btn-map-site btn-site-map-js"><i></i><span>Карта сайта</span></a>
 					</div>
 					<div class="footer-nav__col">
 						<strong class="footer-nav__title"><span>Популярные разделы</span></strong>

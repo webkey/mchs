@@ -93,7 +93,10 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/slick-carousel/slick/slick.min.js',
 		'src/libs/matchHeight/dist/jquery.matchHeight-min.js',
 		'src/libs/masonry/dist/masonry.pkgd.min.js',
-		'src/libs/priority-nav/dist/priority-nav.min.js'
+		'src/libs/priority-nav/dist/priority-nav.min.js',
+		'src/libs/gsap/src/minified/TweenMax.min.js',
+		'src/libs/gsap/src/minified/plugins/ScrollToPlugin.min.js',
+		'src/libs/jquery.filer/js/jquery.filer.min.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(gulp.dest('src/js'))
@@ -144,7 +147,7 @@ gulp.task('default', ['watch']); // Назначаем таск watch дефол
  * Create Distribution folder and and move files to it
  ************************************************************/
 
-gulp.task('build', ['clean', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
+gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
 	gulp.src([ // Переносим библиотеки в продакшен
 		'src/css/main.css',
@@ -161,13 +164,16 @@ gulp.task('build', ['clean', 'htmlCompilation', 'copyImgToDist', 'sassCompilatio
 	gulp.src(['!src/__*.html', 'src/*.html']) // Переносим HTML в продакшен
 		.pipe(gulp.dest('dist'));
 
+	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess']) // Переносим favicon и др. файлы в продакшин
+		.pipe(gulp.dest('dist'));
+
 });
 
-gulp.task('clean', function () {
-	return del.sync('dist/*'); // Удаляем папку dist перед сборкой
+gulp.task('cleanDistFolder', function () {
+	return del.sync(['dist/']); // Удаляем папку dist перед сборкой
 });
 
-gulp.task('clear', function () { // Создаем такс для очистки кэша
+gulp.task('clearCache', function () { // Создаем такс для очистки кэша
 	return cache.clearAll();
 });
 

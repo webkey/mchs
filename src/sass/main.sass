@@ -42,7 +42,7 @@
 .main
 	position: relative
 	clear: both
-	z-index: 4
+	z-index: 5
 
 .main-holder
 	width: 100%
@@ -87,7 +87,7 @@
 
 .header
 	position: relative
-	z-index: 5
+	z-index: 10
 
 .sidebar
 	float: left
@@ -111,7 +111,7 @@
 	height: 0
 	position: relative
 	clear: both
-	z-index: 5
+	z-index: 10
 
 %layout-space
 	padding-left: $layout-space-horizontal
@@ -198,7 +198,34 @@
 		height: 152px
 		max-height: 152px
 		resize: none
-	
+
+	.captcha
+		+clear
+
+		img
+			$margin-right: 20px
+			display: inline-block
+			vertical-align: middle
+			max-width: calc(50%)
+			margin-right: $margin-right
+
+			& + input
+				display: inline-block
+				vertical-align: middle
+				width: auto
+				max-width: calc(50% - #{$margin-right} - 10px)
+
+		@media only screen and (max-width: $mq-tablet)
+			img
+				display: block
+				max-width: none
+				margin-bottom: $space-bottom-sm
+
+				& + input
+					display: block
+					max-width: none
+					width: 100%
+
 	.form-footer
 		+clear
 
@@ -472,10 +499,17 @@
 
 /*news read end*/
 
+/*jFiler*/
+@import "j-filer"
+/*jFiler end*/
+
 /*extra popup*/
 // fixed scroll after popup open
 html.nav-opened-before
 	+scroll-lock
+
+	.wrapper
+		z-index: 100
 
 .extra-popup
 	$this-container-class: extra-popup
@@ -584,7 +618,7 @@ html.nav-opened-before
 
 		&
 			position: absolute
-			right: 0
+			right: -1px
 			top: -1px
 			width: $btn-size
 			height: $btn-size
@@ -664,8 +698,8 @@ html.nav-opened-before
 
 	&__box
 		+grid-item(3, $grid-space, $space-bottom)
-		font-size: 16px
-		line-height: 20px
+		font-size: $font-size
+		line-height: $line-height
 		letter-spacing: normal
 
 		.site-map__heading
