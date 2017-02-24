@@ -42,7 +42,7 @@
 .main
 	position: relative
 	clear: both
-	z-index: 5
+	z-index: 50
 
 .main-holder
 	width: 100%
@@ -52,6 +52,7 @@
 .main-frame
 	float: left
 	width: 100%
+	position: relative
 
 .main-inside
 	margin: 0 0 0 $sidebar-left-width
@@ -87,7 +88,7 @@
 
 .header
 	position: relative
-	z-index: 10
+	z-index: 100
 
 .sidebar
 	float: left
@@ -111,7 +112,7 @@
 	height: 0
 	position: relative
 	clear: both
-	z-index: 10
+	z-index: 100
 
 %layout-space
 	padding-left: $layout-space-horizontal
@@ -902,7 +903,7 @@ html.nav-opened-before
 	font-size: 0
 	line-height: 0
 	letter-spacing: -4px
-	z-index: 10
+	z-index: 100
 
 	$color-border: #035b9a
 	$color-text: #80a7c4
@@ -1061,7 +1062,7 @@ html.nav-opened-before
 /*main navigation*/
 .main-nav
 	position: relative
-	z-index: 5
+	z-index: 95
 	margin-right: 240px
 	padding: 0 $layout-grid-space
 
@@ -1183,7 +1184,7 @@ html.nav-opened-before
 			+transition
 			-webkit-transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
 			transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
-			z-index: 5
+			z-index: 100
 
 			a
 				color: #262626
@@ -1257,7 +1258,7 @@ html.nav-opened-before
 						line-height: 26px
 						text-align: center
 						background: none
-						z-index: 2
+						z-index: 95
 						//box-sizing: border-box
 
 					&.hover > a,
@@ -1363,6 +1364,11 @@ html.nav-opened-before
 		-webkit-perspective: 400px
 		perspective: 400px
 
+	&.is-open .priority-nav__dropdown
+		visibility: visible
+		opacity: 1
+		+transform(translate(0, 0) rotateY(0deg))
+
 	.priority-nav__dropdown
 		position: absolute
 		visibility: hidden
@@ -1376,11 +1382,6 @@ html.nav-opened-before
 		transform-origin: 100% 0 0
 		@extend %resetStylePriorityNav
 
-		&.show
-			visibility: visible
-			opacity: 1
-			+transform(translate(0, 0) rotateY(0deg))
-
 		> li > a
 				border: none
 
@@ -1388,7 +1389,7 @@ html.nav-opened-before
 			position: relative
 
 			&.hover
-				z-index: 2
+				z-index: 100
 
 	&.is-empty
 		.priority-nav__wrapper
@@ -1440,6 +1441,7 @@ html.nav-opened-before
 
 	&
 		float: left
+		position: relative
 		font-size: 1.4rem
 		line-height: 1.5
 		color: $color-text
@@ -1535,7 +1537,7 @@ html.nav-opened-before
 			position: absolute
 			top: -#{$space-vertical}
 			left: -#{$space-horizontal}
-			min-width: $item-min-width
+			//min-width: $item-min-width
 			max-width: $item-max-width + $space-horizontal*2
 			padding: 0 $space-horizontal
 			opacity: 0
@@ -1573,7 +1575,7 @@ html.nav-opened-before
 					border-bottom: 1px solid transparent
 					+transition()
 
-				&:hover > span
+				.no-touchevents &:hover > span
 					border-bottom-color: $color-text-light
 
 
@@ -2062,9 +2064,11 @@ html.nav-opened-before
 	$width: 60px
 	$fz: 14px
 	$lh: $fz*1.3
+	position: relative
 	float: right
 	margin: 0 -#{$layout-grid-space + $width} 0 #{-$width}
 	width: $width
+	z-index: 50
 
 	@media only screen and (max-width: $mq-desk-md)
 		margin-right: -#{$layout-grid-space--desk-md + $width}
