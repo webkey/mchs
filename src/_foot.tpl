@@ -110,6 +110,7 @@
 </footer>
 <!--footer end-->
 
+<!--[if lte IE 9]><script src="js/classList.min.js"></script><![endif]-->
 <script src="js/jquery.min.js"></script>
 <script src="js/libs.min.js"></script>
 <script src="js/common.js"></script>

@@ -105,7 +105,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 	.pipe(gulp.dest('src/js')); // Выгружаем в папку src/js
 });
 
-gulp.task('copyJqueryToJs', function () { // Таск для копированя jquery в js папку
+gulp.task('copyJqueryToJs', function () { // Таск для копирования jquery в js папку
 	return gulp.src([
 		'src/libs/jquery/dist/jquery.min.js'
 	])
@@ -149,7 +149,7 @@ gulp.task('default', ['watch']); // Назначаем таск watch дефол
 
 gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
-	gulp.src([ // Переносим библиотеки в продакшен
+	gulp.src([ // Переносим css в продакшен
 		'src/css/main.css',
 		'src/css/libs.min.css'
 	])
@@ -158,7 +158,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен
 		.pipe(gulp.dest('dist/fonts'));
 
-	gulp.src('src/js/**/*.js') // Переносим скрипты в продакшен
+	gulp.src(['src/js/**/*.min.js', 'src/js/common.js']) // Переносим скрипты в продакшен
 		.pipe(gulp.dest('dist/js'));
 
 	gulp.src(['!src/__*.html', 'src/*.html']) // Переносим HTML в продакшен
@@ -170,7 +170,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 });
 
 gulp.task('cleanDistFolder', function () {
-	return del.sync(['dist/']); // Удаляем папку dist перед сборкой
+	return del.sync(['dist/']); // Удаляем папку dist
 });
 
 gulp.task('clearCache', function () { // Создаем такс для очистки кэша
