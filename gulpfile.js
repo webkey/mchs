@@ -24,9 +24,6 @@ var gulp = require('gulp'), // Подключаем Gulp
 	pathRename = require('gulp-string-replace') //Replace strings in files by using string or regex patterns
 	;
 
-// var browserSync = require('browser-sync').create();
-// var reload      = browserSync.reload;
-
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
 	return gulp.src(['src/__*.html'])
 	.pipe(fileinclude({
@@ -144,7 +141,7 @@ gulp.task('copyImgToDist', function () {
 gulp.task('default', ['watch']); // Назначаем таск watch дефолтным
 
 /************************************************************
- * Create Distribution folder and and move files to it
+ * Create Distribution folder and move files to it
  ************************************************************/
 
 gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {

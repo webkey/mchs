@@ -14,6 +14,7 @@
 		"test/css/backgroundsize",
 		"test/css/gradients",
 		"test/css/multiplebgs",
+		"test/css/objectfit",
 		"test/css/transitions"
 	]
 }

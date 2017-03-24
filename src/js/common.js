@@ -1124,8 +1124,18 @@ function footerBottom(){
 
 		$('.main').after($tplSpacer.clone());
 
-		$(window).on('load resizeByWidth', function () {
-			var footerOuterHeight = $footer.find('.footer__holder').outerHeight();
+		$(window).on('load', function () {
+			setTimeout(function () {
+				layoutFooter();
+			}, 100)
+		});
+
+		$(window).on('debounsedresize', function () {
+			layoutFooter();
+		});
+
+		function layoutFooter() {
+			var footerOuterHeight = $('.footer__holder', $footer).outerHeight();
 			$footer.css({
 				// 'margin-top': -footerOuterHeight
 			});
@@ -1133,7 +1143,7 @@ function footerBottom(){
 			$('.spacer').css({
 				'height': footerOuterHeight
 			});
-		})
+		}
 	}
 }
 /*footer at bottom end*/

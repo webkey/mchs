@@ -5,7 +5,7 @@ html
 	font-size: 62.5%
 
 body
-	@include font-normal
+	+font-normal
 	font-size: $font-size
 	line-height: $line-height
 	height: 100%
@@ -16,7 +16,7 @@ body
 h1, h2, h3, h4, h5, h6
 	margin: 0
 	padding: 0
-	@include font-title
+	+font-title
 	color: $color-title
 
 h1
@@ -127,24 +127,17 @@ table
 		font-size: 1.6rem
 
 b, strong, th
-	@include font-bold
+	+font-bold
 	//font-family: 'fontNameBold'
 	//font-weight: normal
 
 i, em
-	@include font-italic
+	+font-italic
 	//font-family: 'fontNameItalic'
 	//font-style: normal
 
-i b,
-i strong,
-em b,
-em strong,
-b i,
-b em,
-strong i,
-strong em
-	@include font-bold-italic
+i b, i strong, em b, em strong, b i, b em, strong i, strong em
+	+font-bold-italic
 	//font-family: 'fontNameBoldItalic'
 	//font-weight: normal
 	//font-style: normal
@@ -496,8 +489,10 @@ button
 			text-align: right
 			display: block
 			margin-left: auto
-			font: italic 20px/24px 'Times New Roman', Times, serif
-			color: #333
+			+font-title
+			font-size: $font-size
+			line-height: $line-height
+			color: $color-text
 	// blockquote end
 
 //content img
@@ -557,8 +552,7 @@ button
 .label-holder
 	padding: 0 0 2px
 
-.label-holder,
-label
+.label-holder, label
 	@include font-bold
 	font-size: inherit
 	line-height: inherit
