@@ -246,9 +246,9 @@ function printShow() {
 					return;
 				}
 
-				$('.'+_hover+'').not($currentAnchor.parents('.'+_hover+''))
+				$('.'+_hover+' ').not($currentAnchor.parents('.'+_hover+''))
 					.removeClass(_hover)
-					.find('.'+_hover+'')
+					.find('.'+_hover+' ')
 					.removeClass(_hover);
 				currentItem.addClass(_hover);
 
