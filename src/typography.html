@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-<!--<html lang="ru" class="nav-opened-before">-->
 <html lang="ru">
+<!--[if lt IE 9]>      <html class="no-js old-ie" lang="ru"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9" lang="ru"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="ru">
+<!--<![endif]-->
 
 <head>
 	<meta charset="UTF-8">
 	<title>Типографика</title>
 	<!--Mobile optimized-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<!--Theme color-->
 	<meta name="theme-color" content="#ca0503">
+	<!--SEO-->
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="yandex-verification" content="">
+	<meta name="google-site-verification" content="">
 	<!--The Open Graph protocol-->
-	<meta property="og:url" content="http://localhost:3000/">
-	<meta property="og:title" content="MCHS">
-	<meta property="og:image" content="http://localhost:3000/img/logo.png">
-	<meta property="og:description" content="Министерство по чрезвычайным ситуациям Республики Беларусь">
-	<meta property="og:site_name" content="http://localhost:3000/">
+	<meta property="og:type" content="МЧС">
+	<meta property="og:locale" content="ru_RU">
+	<meta property="og:url" content="mchs.by">
+	<meta property="og:title" content="МЧС">
+	<meta property="og:image" content="mchs.by/img/logo.png">
+	<meta property="og:description" content="Портал Министерства по чрезвычайным ситуациям Республики Беларусь">
+	<meta property="og:site_name" content="Министерство по чрезвычайным ситуациям Республики Беларусь">
 	<!--Favicon-->
-	<link href="favicon.ico" rel="shortcut icon">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!--Style-->
 	<link rel="stylesheet" href="css/libs.min.css">
@@ -71,230 +81,710 @@
 									</ul>
 								</li>
 							</ul>
-							<!--user options end-->
-							<!--main navigation-->
+							<!--navigation-->
+							<!--  -->
+							<!--  -->
 							<div class="main-nav">
 								<nav class="nav">
 									<ul class="nav__list">
+										<!--nav item start-->
 										<li class="has-drop current">
-											<a href="typography.html"><span>О министерстве</span></a>
+											<a href="typography.html" title="Министерсто"><span>Министерсто</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
 											<div class="nav__drop js-nav-drop">
 												<ul class="sub1-nav__list">
-													<li><a href="#"><span>Министерство</span></a></li>
+													<li><a href="#" title="Цели и задачи"><span>Цели и задачи</span><i class="nav__angle"></i></a></li>
 													<li class="has-drop">
-														<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
+														<a href="#" title="Направления деятельности"><span>Направления деятельности</span><i class="nav__angle"></i></a>
+
+														<!--(2) START sub-menu SECOND level-->
 														<div class="sub1-nav__drop js-nav-drop">
 															<ul class="sub2-nav__list">
 																<li class="has-drop">
-																	<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
+																	<a href="#" title="Международное сотрудничество"><span>Международное сотрудничество</span><i class="nav__angle"></i></a>
+
+																	<!--(3) START sub-menu THIRD level-->
 																	<div class="sub2-nav__drop js-nav-drop">
 																		<ul class="sub3-nav__list">
-																			<li><a href="#"><span>Основные новости</span></a></li>
-																			<li><a href="#"><span>СМИ о нас</span></a></li>
-																			<li><a href="#"><span>Живой эфир</span></a></li>
-																			<li><a href="#"><span>Герои нашего времени</span></a></li>
-																			<li><a href="#"><span>Будь готов!</span></a></li>
-																			<li><a href="#"><span>История одной ЧС</span></a></li>
+																			<li><a href="#" title="Перечень международных договоров, реализация положений которых входит в компетенцию МЧС"><span>Перечень международных договоров, реализация положений которых входит в компетенцию МЧС</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Межгосударственный совет по черезвычайным ситуациям природного и техногенного характера (МГС по ЧС) и Корпус сил СНГ"><span>Межгосударственный совет по черезвычайным ситуациям природного и техногенного характера (МГС по ЧС) и Корпус сил СНГ</span><i class="nav__angle"></i></a></li>
 																		</ul>
 																	</div>
+																	<!--(3) END sub-menu THIRD level-->
 																</li>
-																<li><a href="#"><span>Сводки МЧС</span></a></li>
-																<li><a href="#"><span>Региональные СМИ</span></a></li>
-																<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
+
+																<li class="has-drop">
+																	<a href="#" title="Наука"><span>Наука</span><i class="nav__angle"></i></a>
+
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop js-nav-drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#" title="Инновационный фонд МЧС"><span>Инновационный фонд МЧС</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="ГНТП «Защита от черезвычайных ситуаций»"><span>ГНТП «Защита от черезвычайных ситуаций»</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="ГПНИ «Информатика и космос, научное обеспечение безопасности и защиты от чрезвычайных ситуаций»"><span>ГПНИ «Информатика и космос, научное обеспечение безопасности и защиты от чрезвычайных ситуаций»</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Государственная программа инновационного развития Республики Беларусь на 2011-20155 гг."><span>Государственная программа инновационного развития Республики Беларусь на 2011-20155 гг.</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Государственная программа по преодолению последствий катастрофы на Чернобыльской АЭС на 2011-2015 гг. и на период до 2020"><span>Государственная программа по преодолению последствий катастрофы на Чернобыльской АЭС на 2011-2015 гг. и на период до 2020</span><i class="nav__angle"></i></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+
+																<li><a href="#" title="Образование"><span>Образование</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="Работа с детьми и молодежью"><span>Работа с детьми и молодежью</span><i class="nav__angle"></i></a></li>
+																<li class="has-drop">
+																	<a href="#" title="История пожарного дела"><span>История пожарного дела</span><i class="nav__angle"></i></a>
+
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop js-nav-drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#" title="Музей МЧС"><span>Музей МЧС</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Хронология важнейших событий в истории пожарно-спасательной службы Беларуси"><span>Хронология важнейших событий в истории пожарно-спасательной службы Беларуси</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Архивариус"><span>Архивариус</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Фотоматериалы"><span>Фотоматериалы</span><i class="nav__angle"></i></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+
+																<li><a href="#" title="Спорт"><span>Спорт</span><i class="nav__angle"></i></a></li>
 															</ul>
 														</div>
+														<!--(2) END sub-menu SECOND level-->
 													</li>
-													<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
-													<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
-													<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
-													<li><a href="#"><span>История пожарного дела</span></a></li>
-													<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+
+													<li class="has-drop">
+														<a href="#" title="Руководство"><span>Руководство</span><i class="nav__angle"></i></a>
+
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop js-nav-drop">
+															<ul class="sub2-nav__list">
+																<li class="has-drop">
+																	<a href="#" title="Руководство МЧС"><span>Руководство МЧС</span><i class="nav__angle"></i></a>
+
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop js-nav-drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#" title="Биография Министра по ЧС РБ"><span>Биография Министра по ЧС РБ</span><i class="nav__angle"></i></a></li>
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+
+																<li><a href="#" title="График приема граждан"><span>График приема граждан</span><i class="nav__angle"></i></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+
+													<li><a href="#" title="Контактная информация"><span>Контактная информация</span><i class="nav__angle"></i></a></li>
+													<li class="has-drop">
+														<a href="#" title="Административные процедуры и дебюрократизация"><span>Административные процедуры и дебюрократизация</span><i class="nav__angle"></i></a>
+
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop js-nav-drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#" title="Работа с обращениями граждан"><span>Работа с обращениями граждан</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="Процедуры МЧС"><span>Процедуры МЧС</span><i class="nav__angle"></i></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+
+													<li><a href="#" title="Важнейшие мероприятия"><span>Важнейшие мероприятия</span><i class="nav__angle"></i></a></li>
+													<li class="has-drop">
+														<a href="#" title="Статистика"><span>Статистика</span><i class="nav__angle"></i></a>
+
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop js-nav-drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#" title="Боевая работа"><span>Боевая работа</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="Сведенья о ЧС"><span>Сведенья о ЧС</span><i class="nav__angle"></i></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+
 												</ul>
 											</div>
+											<!--(1) END sub-menu FIRST level-->
+
 										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
 										<li class="has-drop">
-											<a href="news.html"><span>Руководителям и ИП</span></a>
+											<a href="404.html" title="Структура"><span>Структура</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
 											<div class="nav__drop js-nav-drop">
 												<ul class="sub1-nav__list">
-													<li><a href="#"><span>Министерство</span></a></li>
+
 													<li class="has-drop">
-														<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
+														<a href="#" title="Департаметы"><span>Департаметы</span><i class="nav__angle"></i></a>
+
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop js-nav-drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#" title="Госпромнадзор"><span>Госпромнадзор</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="Госатомнадзор"><span>Госатомнадзор</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="Госчернобыль"><span>Госчернобыль</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="Госрезерв"><span>Госрезерв</span><i class="nav__angle"></i></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+
+													<li class="has-drop">
+														<a href="#" title="Областные урправления"><span>Областные урправления</span><i class="nav__angle"></i></a>
+
+														<!--(2) START sub-menu SECOND level-->
 														<div class="sub1-nav__drop js-nav-drop">
 															<ul class="sub2-nav__list">
 																<li class="has-drop">
-																	<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
+																	<a href="#" title="Брестское"><span>Брестское</span><i class="nav__angle"></i></a>
+
+																	<!--(3) START sub-menu THIRD level-->
 																	<div class="sub2-nav__drop js-nav-drop">
 																		<ul class="sub3-nav__list">
-																			<li><a href="#"><span>Основные новости</span></a></li>
-																			<li><a href="#"><span>СМИ о нас</span></a></li>
-																			<li><a href="#"><span>Живой эфир</span></a></li>
-																			<li><a href="#"><span>Герои нашего времени</span></a></li>
-																			<li><a href="#"><span>Будь готов!</span></a></li>
-																			<li><a href="#"><span>История одной ЧС</span></a></li>
+																			<li><a href="#" title="Новости"><span>Новости</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Об управлении"><span>Об управлении</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Руководство"><span>Руководство</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="График приема граждан"><span>График приема граждан</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Районные отделы МЧС"><span>Районные отделы МЧС</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Административные процедуры и дебюрократизация"><span>Административные процедуры и дебюрократизация</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Контактная информация"><span>Контактная информация</span><i class="nav__angle"></i></a></li>
+																			<li class="has-drop">
+																				<a href="#" title="Электронное обращение"><span>Электронное обращение</span><i class="nav__angle"></i></a>
+
+																				<!--(4) START sub-menu FOURTH level-->
+																				<div class="sub3-nav__drop js-nav-drop">
+																					<ul class="sub4-nav__list">
+																						<li><a href="#" title="Форма для обращения граждан в Брестское ОУМЧС"><span>Форма для обращения граждан в Брестское ОУМЧС</span><i class="nav__angle"></i></a></li>
+																						<li><a href="#" title="форма для обращения юрлица или ИП"><span>форма для обращения юрлица или ИП</span><i class="nav__angle"></i></a></li>
+																					</ul>
+																				</div>
+																				<!--(4) END sub-menu FOURTH level-->
+																			</li>
+
 																		</ul>
 																	</div>
+																	<!--(3) END sub-menu THIRD level-->
 																</li>
-																<li><a href="#"><span>Сводки МЧС</span></a></li>
-																<li><a href="#"><span>Региональные СМИ</span></a></li>
-																<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
+
+																<li class="has-drop">
+																	<a href="#" title="Витебское"><span>Витебское</span><i class="nav__angle"></i></a>
+
+																	<!--(3) START sub-menu THIRD level-->
+																	<div class="sub2-nav__drop js-nav-drop">
+																		<ul class="sub3-nav__list">
+																			<li><a href="#" title="Новости"><span>Новости</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Об управлении"><span>Об управлении</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Руководство"><span>Руководство</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="График приема граждан"><span>График приема граждан</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Районные отделы МЧС"><span>Районные отделы МЧС</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Административные процедуры и дебюрократизация"><span>Административные процедуры и дебюрократизация</span><i class="nav__angle"></i></a></li>
+																			<li><a href="#" title="Контактная информация"><span>Контактная информация</span><i class="nav__angle"></i></a></li>
+																			<li class="has-drop">
+																				<a href="#" title="Электронное обращение"><span>Электронное обращение</span><i class="nav__angle"></i></a>
+
+																				<!--(4) START sub-menu FOURTH level-->
+																				<div class="sub3-nav__drop js-nav-drop">
+																					<ul class="sub4-nav__list">
+																						<li><a href="#" title="Форма для обращения граждан в Витебское ОУМЧС"><span>Форма для обращения граждан в Витебское ОУМЧС</span><i class="nav__angle"></i></a></li>
+																						<li><a href="#" title="форма для обращения юрлица или ИП"><span>форма для обращения юрлица или ИП</span><i class="nav__angle"></i></a></li>
+																					</ul>
+																				</div>
+																				<!--(4) END sub-menu FOURTH level-->
+																			</li>
+
+																		</ul>
+																	</div>
+																	<!--(3) END sub-menu THIRD level-->
+																</li>
+
 															</ul>
 														</div>
+														<!--(2) END sub-menu SECOND level-->
 													</li>
-													<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
-													<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
-													<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
-													<li><a href="#"><span>История пожарного дела</span></a></li>
-													<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+
+													<li><a href="#" title="Университеты"><span>Университеты</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Лицей"><span>Лицей</span><i class="nav__angle"></i></a></li>
+													<li class="has-drop">
+														<a href="#" title="Другие ОПЧС"><span>Другие ОПЧС</span><i class="nav__angle"></i></a>
+
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop js-nav-drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#" title="НИИ ПБиЧС"><span>НИИ ПБиЧС</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="РЦСиЭЛВД"><span>РЦСиЭЛВД</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="РЦУРЧС"><span>РЦУРЧС</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="РОФСН"><span>РОФСН</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="Авиация МЧС"><span>Авиация МЧС</span><i class="nav__angle"></i></a></li>
+																<li><a href="#" title="ЦУПП"><span>ЦУПП</span><i class="nav__angle"></i></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+
+													<li class="has-drop">
+														<a href="#" title="центральный аппарат МЧС"><span>центральный аппарат МЧС</span><i class="nav__angle"></i></a>
+
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop js-nav-drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#" title="СББ"><span>СББ</span><i class="nav__angle"></i></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+
+													<li class="has-drop">
+														<a href="#" title="Перечень государственных организаций, подчененных МЧС"><span>Перечень государственных организаций, подчененных МЧС</span><i class="nav__angle"></i></a>
+
+														<!--(2) START sub-menu SECOND level-->
+														<div class="sub1-nav__drop js-nav-drop">
+															<ul class="sub2-nav__list">
+																<li><a href="#" title="ГИМС"><span>ГИМС</span><i class="nav__angle"></i></a></li>
+															</ul>
+														</div>
+														<!--(2) END sub-menu SECOND level-->
+													</li>
+
 												</ul>
 											</div>
+											<!--(1) END sub-menu FIRST level-->
+
 										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
 										<li class="has-drop">
-											<a href="news-inner.html"><span>Законодательство</span></a>
+											<a href="404.html" title="Электорнные обращения"><span>Электорнные обращения</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
 											<div class="nav__drop js-nav-drop">
 												<ul class="sub1-nav__list">
-													<li><a href="#"><span>Министерство</span></a></li>
-													<li class="has-drop">
-														<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
-														<div class="sub1-nav__drop js-nav-drop">
-															<ul class="sub2-nav__list">
-																<li class="has-drop">
-																	<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
-																	<div class="sub2-nav__drop js-nav-drop">
-																		<ul class="sub3-nav__list">
-																			<li><a href="#"><span>Основные новости</span></a></li>
-																			<li><a href="#"><span>СМИ о нас</span></a></li>
-																			<li><a href="#"><span>Живой эфир</span></a></li>
-																			<li><a href="#"><span>Герои нашего времени</span></a></li>
-																			<li><a href="#"><span>Будь готов!</span></a></li>
-																			<li><a href="#"><span>История одной ЧС</span></a></li>
-																		</ul>
-																	</div>
-																</li>
-																<li><a href="#"><span>Сводки МЧС</span></a></li>
-																<li><a href="#"><span>Региональные СМИ</span></a></li>
-																<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
-															</ul>
-														</div>
-													</li>
-													<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
-													<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
-													<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
-													<li><a href="#"><span>История пожарного дела</span></a></li>
-													<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+
+													<li><a href="#" title="aaaa"><span>aaaa</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="aaaa"><span>aaaa</span><i class="nav__angle"></i></a></li>
+
 												</ul>
 											</div>
+											<!--(1) END sub-menu FIRST level-->
+
 										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
 										<li class="has-drop">
-											<a href="appeal.html"><span>Электронные обращения</span></a>
+											<a href="404.html" title="Законодательство в сфере деятельности"><span>Законодательство в сфере деятельности</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
 											<div class="nav__drop js-nav-drop">
 												<ul class="sub1-nav__list">
-													<li><a href="#"><span>Министерство</span></a></li>
-													<li class="has-drop">
-														<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
-														<div class="sub1-nav__drop js-nav-drop">
-															<ul class="sub2-nav__list">
-																<li class="has-drop">
-																	<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
-																	<div class="sub2-nav__drop js-nav-drop">
-																		<ul class="sub3-nav__list">
-																			<li><a href="#"><span>Основные новости</span></a></li>
-																			<li><a href="#"><span>СМИ о нас</span></a></li>
-																			<li><a href="#"><span>Живой эфир</span></a></li>
-																			<li><a href="#"><span>Герои нашего времени</span></a></li>
-																			<li><a href="#"><span>Будь готов!</span></a></li>
-																			<li><a href="#"><span>История одной ЧС</span></a></li>
-																		</ul>
-																	</div>
-																</li>
-																<li><a href="#"><span>Сводки МЧС</span></a></li>
-																<li><a href="#"><span>Региональные СМИ</span></a></li>
-																<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
-															</ul>
-														</div>
-													</li>
-													<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
-													<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
-													<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
-													<li><a href="#"><span>История пожарного дела</span></a></li>
-													<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+
+													<li><a href="#" title="aaaa"><span>aaaa</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="aaaa"><span>aaaa</span><i class="nav__angle"></i></a></li>
+
 												</ul>
 											</div>
+											<!--(1) END sub-menu FIRST level-->
+
 										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
 										<li class="has-drop">
-											<a href="faq.html"><span>Вопрос-ответ</span></a>
+											<a href="404.html" title="Мультимедийные материалы ОБЖ"><span>Мультимедийные материалы ОБЖ</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
 											<div class="nav__drop js-nav-drop">
 												<ul class="sub1-nav__list">
-													<li><a href="#"><span>Министерство</span></a></li>
-													<li class="has-drop">
-														<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
-														<div class="sub1-nav__drop js-nav-drop">
-															<ul class="sub2-nav__list">
-																<li class="has-drop">
-																	<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
-																	<div class="sub2-nav__drop js-nav-drop">
-																		<ul class="sub3-nav__list">
-																			<li><a href="#"><span>Основные новости</span></a></li>
-																			<li><a href="#"><span>СМИ о нас</span></a></li>
-																			<li><a href="#"><span>Живой эфир</span></a></li>
-																			<li><a href="#"><span>Герои нашего времени</span></a></li>
-																			<li><a href="#"><span>Будь готов!</span></a></li>
-																			<li><a href="#"><span>История одной ЧС</span></a></li>
-																		</ul>
-																	</div>
-																</li>
-																<li><a href="#"><span>Сводки МЧС</span></a></li>
-																<li><a href="#"><span>Региональные СМИ</span></a></li>
-																<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
-															</ul>
-														</div>
-													</li>
-													<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
-													<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
-													<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
-													<li><a href="#"><span>История пожарного дела</span></a></li>
-													<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+
+													<li><a href="#" title="aaaa"><span>aaaa</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="aaaa"><span>aaaa</span><i class="nav__angle"></i></a></li>
+
 												</ul>
 											</div>
+											<!--(1) END sub-menu FIRST level-->
+
 										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
 										<li class="has-drop">
-											<a href="contacts.html"><span>Контакты</span></a>
+											<a href="404.html" title="Организациям и предпринимателям"><span>Организациям и предпринимателям</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
 											<div class="nav__drop js-nav-drop">
 												<ul class="sub1-nav__list">
-													<li><a href="#"><span>Министерство</span></a></li>
-													<li class="has-drop">
-														<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
-														<div class="sub1-nav__drop js-nav-drop">
-															<ul class="sub2-nav__list">
-																<li class="has-drop">
-																	<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
-																	<div class="sub2-nav__drop js-nav-drop">
-																		<ul class="sub3-nav__list">
-																			<li><a href="#"><span>Основные новости</span></a></li>
-																			<li><a href="#"><span>СМИ о нас</span></a></li>
-																			<li><a href="#"><span>Живой эфир</span></a></li>
-																			<li><a href="#"><span>Герои нашего времени</span></a></li>
-																			<li><a href="#"><span>Будь готов!</span></a></li>
-																			<li><a href="#"><span>История одной ЧС</span></a></li>
-																		</ul>
-																	</div>
-																</li>
-																<li><a href="#"><span>Сводки МЧС</span></a></li>
-																<li><a href="#"><span>Региональные СМИ</span></a></li>
-																<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
-															</ul>
-														</div>
-													</li>
-													<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
-													<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
-													<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
-													<li><a href="#"><span>История пожарного дела</span></a></li>
-													<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+
+													<li><a href="#" title="Руководителю о пожарной безопасности"><span>Руководителю о пожарной безопасности</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Лицензирование и сертификаты"><span>Лицензирование и сертификаты</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Оценка средств противопожарной защиты"><span>Оценка средств противопожарной защиты</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Системы мониторинга пожаров"><span>Системы мониторинга пожаров</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Расчетные программы для проектировщиков"><span>Расчетные программы для проектировщиков</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Практическое пособие"><span>Практическое пособие</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Чек-лист"><span>Чек-лист</span><i class="nav__angle"></i></a></li>
+
 												</ul>
 											</div>
+											<!--(1) END sub-menu FIRST level-->
+
 										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
+										<li class="has-drop">
+											<a href="404.html" title="Часто задаваемые вопросы и отзывы"><span>Часто задаваемые вопросы и отзывы</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
+											<div class="nav__drop js-nav-drop">
+												<ul class="sub1-nav__list">
+
+													<li><a href="#" title="Вопросы и ответы"><span>Вопросы и ответы</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Задать вопрос"><span>Задать вопрос</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Отзывы о работе"><span>Отзывы о работе</span><i class="nav__angle"></i></a></li>
+
+												</ul>
+											</div>
+											<!--(1) END sub-menu FIRST level-->
+
+										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
+										<li class="has-drop">
+											<a href="404.html" title="Главное"><span>Главное</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
+											<div class="nav__drop js-nav-drop">
+												<ul class="sub1-nav__list">
+
+													<li><a href="#" title="Новостной раздел"><span>Новостной раздел</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="СМИ о нас"><span>СМИ о нас</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Будь готов!"><span>Будь готов!</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Живой эфир"><span>Живой эфир</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="История одной ЧС"><span>История одной ЧС</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Колонка «все Новости Портала»"><span>Колонка «все Новости Портала»</span><i class="nav__angle"></i></a></li>
+
+												</ul>
+											</div>
+											<!--(1) END sub-menu FIRST level-->
+
+										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
+										<li class="has-drop">
+											<a href="404.html" title="Самое читаемое"><span>Самое читаемое</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
+											<div class="nav__drop js-nav-drop">
+												<ul class="sub1-nav__list">
+
+													<li><a href="#" title="Самое читаемое"><span>Самое читаемое</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Материалы предыдущих лет"><span>Материалы предыдущих лет</span><i class="nav__angle"></i></a></li>
+
+												</ul>
+											</div>
+											<!--(1) END sub-menu FIRST level-->
+
+										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
+										<li class="">
+											<a href="404.html" title="Интернет-газета «Спасатель»"><span>Интернет-газета «Спасатель»</span><i class="nav__angle"></i></a>
+										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
+										<li class="">
+											<a href="404.html" title="Прямые и горячие линии"><span>Прямые и горячие линии</span><i class="nav__angle"></i></a>
+										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
+										<li class="has-drop">
+											<a href="404.html" title="Оперативная информация и новости территориальных управлений"><span>Оперативная информация и новости территориальных управлений</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
+											<div class="nav__drop js-nav-drop">
+												<ul class="sub1-nav__list">
+
+													<li><a href="#" title="Суточные сводки МЧС"><span>Суточные сводки МЧС</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Карта неблагоприятных явлений"><span>Карта неблагоприятных явлений</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Новости Брестской области"><span>Новости Брестской области</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Новости Витебской области"><span>Новости Витебской области</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Новости Гомельской области"><span>Новости Гомельской области</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Новости Гродненской области"><span>Новости Гродненской области</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Новости Минска"><span>Новости Минска</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Новости Минской области"><span>Новости Минской области</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Новости Могилевской области"><span>Новости Могилевской области</span><i class="nav__angle"></i></a></li>
+
+												</ul>
+											</div>
+											<!--(1) END sub-menu FIRST level-->
+
+										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
+										<li class="has-drop">
+											<a href="404.html" title="Новости департаментов"><span>Новости департаментов</span><i class="nav__angle"></i></a>
+
+											<!--(1) START sub-menu FIRST level-->
+											<div class="nav__drop js-nav-drop">
+												<ul class="sub1-nav__list">
+
+													<li><a href="#" title="Новости Госатомнадзора"><span>Новости Госатомнадзора</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Новости Госпромнадзора"><span>Новости Госпромнадзора</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Новости Госчернобыля"><span>Новости Госчернобыля</span><i class="nav__angle"></i></a></li>
+													<li><a href="#" title="Госрезерв"><span>Госрезерв</span><i class="nav__angle"></i></a></li>
+
+												</ul>
+											</div>
+											<!--(1) END sub-menu FIRST level-->
+
+										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
+										<li class="has-drop">
+											<a href="404.html" title="Региональные СМИ"><span>Региональные СМИ</span><i class="nav__angle"></i></a>
+										</li>
+										<!--nav item end-->
+
+										<!--nav item start-->
+										<li class="has-drop">
+											<a href="404.html" title="Надзорная деятельность"><span>Надзорная деятельность</span><i class="nav__angle"></i></a>
+										</li>
+										<!--nav item end-->
 									</ul>
 								</nav>
 							</div>
+							<!--navigation end-->
+							<!--user options end-->
+							<!--main navigation-->
+							<!--<div class="main-nav">
+						<nav class="nav">
+							<ul class="nav__list">
+								<li class="has-drop">
+	<a href="typography.html"><span>О министерстве</span></a>
+	<div class="nav__drop js-nav-drop">
+		<ul class="sub1-nav__list">
+			<li><a href="#"><span>Министерство</span></a></li>
+			<li class="has-drop">
+				<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
+				<div class="sub1-nav__drop js-nav-drop">
+					<ul class="sub2-nav__list">
+						<li class="has-drop">
+							<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
+							<div class="sub2-nav__drop js-nav-drop">
+								<ul class="sub3-nav__list">
+									<li><a href="#"><span>Основные новости</span></a></li>
+									<li><a href="#"><span>СМИ о нас</span></a></li>
+									<li><a href="#"><span>Живой эфир</span></a></li>
+									<li><a href="#"><span>Герои нашего времени</span></a></li>
+									<li><a href="#"><span>Будь готов!</span></a></li>
+									<li><a href="#"><span>История одной ЧС</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="#"><span>Сводки МЧС</span></a></li>
+						<li><a href="#"><span>Региональные СМИ</span></a></li>
+						<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
+			<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
+			<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
+			<li><a href="#"><span>История пожарного дела</span></a></li>
+			<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+		</ul>
+	</div>
+</li><li class="has-drop">
+	<a href="news.html"><span>Руководителям и ИП</span></a>
+	<div class="nav__drop js-nav-drop">
+		<ul class="sub1-nav__list">
+			<li><a href="#"><span>Министерство</span></a></li>
+			<li class="has-drop">
+				<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
+				<div class="sub1-nav__drop js-nav-drop">
+					<ul class="sub2-nav__list">
+						<li class="has-drop">
+							<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
+							<div class="sub2-nav__drop js-nav-drop">
+								<ul class="sub3-nav__list">
+									<li><a href="#"><span>Основные новости</span></a></li>
+									<li><a href="#"><span>СМИ о нас</span></a></li>
+									<li><a href="#"><span>Живой эфир</span></a></li>
+									<li><a href="#"><span>Герои нашего времени</span></a></li>
+									<li><a href="#"><span>Будь готов!</span></a></li>
+									<li><a href="#"><span>История одной ЧС</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="#"><span>Сводки МЧС</span></a></li>
+						<li><a href="#"><span>Региональные СМИ</span></a></li>
+						<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
+			<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
+			<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
+			<li><a href="#"><span>История пожарного дела</span></a></li>
+			<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+		</ul>
+	</div>
+</li><li class="has-drop">
+	<a href="news-inner.html"><span>Законодательство</span></a>
+	<div class="nav__drop js-nav-drop">
+		<ul class="sub1-nav__list">
+			<li><a href="#"><span>Министерство</span></a></li>
+			<li class="has-drop">
+				<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
+				<div class="sub1-nav__drop js-nav-drop">
+					<ul class="sub2-nav__list">
+						<li class="has-drop">
+							<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
+							<div class="sub2-nav__drop js-nav-drop">
+								<ul class="sub3-nav__list">
+									<li><a href="#"><span>Основные новости</span></a></li>
+									<li><a href="#"><span>СМИ о нас</span></a></li>
+									<li><a href="#"><span>Живой эфир</span></a></li>
+									<li><a href="#"><span>Герои нашего времени</span></a></li>
+									<li><a href="#"><span>Будь готов!</span></a></li>
+									<li><a href="#"><span>История одной ЧС</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="#"><span>Сводки МЧС</span></a></li>
+						<li><a href="#"><span>Региональные СМИ</span></a></li>
+						<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
+			<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
+			<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
+			<li><a href="#"><span>История пожарного дела</span></a></li>
+			<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+		</ul>
+	</div>
+</li><li class="has-drop">
+	<a href="appeal.html"><span>Электронные обращения</span></a>
+	<div class="nav__drop js-nav-drop">
+		<ul class="sub1-nav__list">
+			<li><a href="#"><span>Министерство</span></a></li>
+			<li class="has-drop">
+				<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
+				<div class="sub1-nav__drop js-nav-drop">
+					<ul class="sub2-nav__list">
+						<li class="has-drop">
+							<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
+							<div class="sub2-nav__drop js-nav-drop">
+								<ul class="sub3-nav__list">
+									<li><a href="#"><span>Основные новости</span></a></li>
+									<li><a href="#"><span>СМИ о нас</span></a></li>
+									<li><a href="#"><span>Живой эфир</span></a></li>
+									<li><a href="#"><span>Герои нашего времени</span></a></li>
+									<li><a href="#"><span>Будь готов!</span></a></li>
+									<li><a href="#"><span>История одной ЧС</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="#"><span>Сводки МЧС</span></a></li>
+						<li><a href="#"><span>Региональные СМИ</span></a></li>
+						<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
+			<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
+			<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
+			<li><a href="#"><span>История пожарного дела</span></a></li>
+			<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+		</ul>
+	</div>
+</li><li class="has-drop">
+	<a href="faq.html"><span>Вопрос-ответ</span></a>
+	<div class="nav__drop js-nav-drop">
+		<ul class="sub1-nav__list">
+			<li><a href="#"><span>Министерство</span></a></li>
+			<li class="has-drop">
+				<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
+				<div class="sub1-nav__drop js-nav-drop">
+					<ul class="sub2-nav__list">
+						<li class="has-drop">
+							<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
+							<div class="sub2-nav__drop js-nav-drop">
+								<ul class="sub3-nav__list">
+									<li><a href="#"><span>Основные новости</span></a></li>
+									<li><a href="#"><span>СМИ о нас</span></a></li>
+									<li><a href="#"><span>Живой эфир</span></a></li>
+									<li><a href="#"><span>Герои нашего времени</span></a></li>
+									<li><a href="#"><span>Будь готов!</span></a></li>
+									<li><a href="#"><span>История одной ЧС</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="#"><span>Сводки МЧС</span></a></li>
+						<li><a href="#"><span>Региональные СМИ</span></a></li>
+						<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
+			<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
+			<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
+			<li><a href="#"><span>История пожарного дела</span></a></li>
+			<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+		</ul>
+	</div>
+</li><li class="has-drop">
+	<a href="contacts.html"><span>Контакты</span></a>
+	<div class="nav__drop js-nav-drop">
+		<ul class="sub1-nav__list">
+			<li><a href="#"><span>Министерство</span></a></li>
+			<li class="has-drop">
+				<a href="#" class="selected"><span>События</span><i class="nav__angle"></i></a>
+				<div class="sub1-nav__drop js-nav-drop">
+					<ul class="sub2-nav__list">
+						<li class="has-drop">
+							<a href="#" class="selected"><span>Новости</span><i class="nav__angle"></i></a>
+							<div class="sub2-nav__drop js-nav-drop">
+								<ul class="sub3-nav__list">
+									<li><a href="#"><span>Основные новости</span></a></li>
+									<li><a href="#"><span>СМИ о нас</span></a></li>
+									<li><a href="#"><span>Живой эфир</span></a></li>
+									<li><a href="#"><span>Герои нашего времени</span></a></li>
+									<li><a href="#"><span>Будь готов!</span></a></li>
+									<li><a href="#"><span>История одной ЧС</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li><a href="#"><span>Сводки МЧС</span></a></li>
+						<li><a href="#"><span>Региональные СМИ</span></a></li>
+						<li><a href="#"><span>Интерактивная карта неблагоприятных явлений</span></a> </li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#"><span>Законодательство в области безопасности</span></a></li>
+			<li><a href="#"><span>Вопрос-ответ и гостевая книга</span></a></li>
+			<li><a href="#"><span>Организациям и предпринимателям</span></a></li>
+			<li><a href="#"><span>История пожарного дела</span></a></li>
+			<li><a href="#"><span>Мультимедийные материалы по ОБЖ</span></a></li>
+		</ul>
+	</div>
+</li>
+							</ul>
+						</nav>
+					</div>-->
 							<!--main navigation end-->
 						</div>
 						<div class="header__content">

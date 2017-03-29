@@ -1115,33 +1115,29 @@ function breadcrumbsBehavior(){
 /**
  * !footer at bottom
  * */
-function footerBottom(){
-	var $footer = $('.footer');
-	if($footer.length){
-		var $tplSpacer = $('<div />', {
-			class: 'spacer'
-		});
+function footerBottom() {
+	var $footer = $('.footer__holder');
 
-		$('.main').after($tplSpacer.clone());
+	if ($footer.length) {
+		$('.main').after($('<div class="spacer"></div>'));
 
-		$(window).on('load', function () {
-			setTimeout(function () {
-				layoutFooter();
-			}, 100)
-		});
+		setTimeout(function () {
+			layoutFooter();
+		}, 50);
 
-		$(window).on('debounsedresize', function () {
+		$(window).on('resizeByWidth', function () {
 			layoutFooter();
 		});
 
 		function layoutFooter() {
-			var footerOuterHeight = $('.footer__holder', $footer).outerHeight();
-			$footer.css({
-				// 'margin-top': -footerOuterHeight
-			});
+			// var footerHeight = $('.footer__holder', $footer).outerHeight();
+			var footerHeight = $($footer).outerHeight();
+			// $footer.css({
+			// 	'margin-top': -footerHeight
+			// });
 
 			$('.spacer').css({
-				'height': footerOuterHeight
+				'height': footerHeight
 			});
 		}
 	}

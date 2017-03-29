@@ -1,23 +1,31 @@
 <!DOCTYPE html>
-<!--<html lang="ru" class="nav-opened-before">-->
 <html lang="ru">
+<!--[if lt IE 9]>      <html class="no-js old-ie" lang="ru"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9" lang="ru"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
 <head>
 	<meta charset="UTF-8">
 	<title>@@title</title>
 	<!--Mobile optimized-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<!--Theme color-->
 	<meta name="theme-color" content="#ca0503">
+	<!--SEO-->
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="yandex-verification" content="" >
+	<meta name="google-site-verification" content="">
 	<!--The Open Graph protocol-->
-	<meta property="og:url" content="http://localhost:3000/">
-	<meta property="og:title" content="MCHS">
-	<meta property="og:image" content="http://localhost:3000/img/logo.png">
-	<meta property="og:description" content="Министерство по чрезвычайным ситуациям Республики Беларусь">
-	<meta property="og:site_name" content="http://localhost:3000/">
+	<meta property="og:type" content="МЧС">
+	<meta property="og:locale" content="ru_RU">
+	<meta property="og:url" content="mchs.by">
+	<meta property="og:title" content="МЧС">
+	<meta property="og:image" content="mchs.by/img/logo.png">
+	<meta property="og:description" content="Портал Министерства по чрезвычайным ситуациям Республики Беларусь">
+	<meta property="og:site_name" content="Министерство по чрезвычайным ситуациям Республики Беларусь">
 	<!--Favicon-->
-	<link href="favicon.ico" rel="shortcut icon">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico">
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!--Style-->
 	<link rel="stylesheet" href="css/libs.min.css">

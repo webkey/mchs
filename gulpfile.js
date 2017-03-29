@@ -21,7 +21,7 @@ var gulp = require('gulp'), // Подключаем Gulp
 	fs = require('fs'), // For compiling modernizr.min.js
 	modernizr = require('modernizr'), // For compiling modernizr.min.js
 	config = require('./modernizr-config'), // Path to modernizr-config.json
-	pathRename = require('gulp-string-replace') //Replace strings in files by using string or regex patterns
+	replace = require('gulp-string-replace')
 	;
 
 gulp.task('htmlCompilation', function () { // Таск формирования ДОМ страниц
@@ -44,15 +44,16 @@ gulp.task('sassCompilation', function () { // Создаем таск для к�
 	return gulp.src('src/sass/**/*.+(scss|sass)') // Берем источник
 		.pipe(sourcemaps.init())
 		.pipe(sass({
-		outputStyle: 'expanded', // nested (default), expanded, compact, compressed
-		indentType: 'tab',
-		indentWidth: 1
-	}).on('error', sass.logError)) // Преобразуем Sass в CSS посредством gulp-sass
-	// .pipe(autoprefixer([
-	// 	'last 5 versions', '> 1%', 'ie 8', 'ie 7'
-	// ], {
-	// 	cascade: true
-	// })) // Создаем префиксы
+			outputStyle: 'expanded', // nested (default), expanded, compact, compressed
+			indentType: 'tab',
+			indentWidth: 1
+		}).on('error', sass.logError)) // Преобразуем Sass в CSS посредством gulp-sass
+		.pipe(replace('../../', '../')) /// в css файлах меняем пути к файлам с ../../ на ../
+		.pipe(autoprefixer([
+			'last 5 versions', '> 1%', 'ie >= 9', 'and_chr >= 2.3' //, 'ie 8', 'ie 7'
+		], {
+			cascade: true
+		})) // Создаем префиксы
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('./src/css')) // Выгружаем результата в папку src/css
 		.pipe(browserSync.reload({

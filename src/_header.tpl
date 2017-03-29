@@ -37,9 +37,10 @@
 							</ul>
 						</li>
 					</ul>
+					@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive" })
 					<!--user options end-->
 					<!--main navigation-->
-					<div class="main-nav">
+					<!--<div class="main-nav">
 						<nav class="nav">
 							<ul class="nav__list">
 								@@loop('_nav-items.tpl', [
@@ -76,7 +77,7 @@
 								])
 							</ul>
 						</nav>
-					</div>
+					</div>-->
 					<!--main navigation end-->
 				</div>
 				<div class="header__content">

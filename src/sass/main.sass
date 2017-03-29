@@ -1124,11 +1124,12 @@ html.nav-opened-before
 		@at-root
 			.nav__angle
 				position: absolute
-				right: 40px
+				right: 30px
 				top: 50%
 				width: 7px
 				height: 13px
 				margin-top: -6px
+				display: none
 
 				&:before,
 				&:after
@@ -1164,6 +1165,12 @@ html.nav-opened-before
 				//.nav__list li.active > a > [class*="nav-depict-icons-angle"]:after,
 				//.nav__list li.current > a > [class*="nav-depict-icons-angle"]:after
 				//	background: #fff
+
+	.nav__drop .has-drop > a
+		padding-right: 45px
+
+		.nav__angle
+			display: block
 
 	@at-root
 		[class*="nav__drop"]
@@ -1267,6 +1274,11 @@ html.nav-opened-before
 					.no-js &:hover > a
 						background: $color-nav-bg-hover
 						color: $color-text
+
+				.priority-nav__dropdown > li > a span
+					display: inline-block
+					vertical-align: top
+					+truncate(50px)
 
 	// styles to menu level 1 end
 
