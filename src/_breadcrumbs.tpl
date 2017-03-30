@@ -1,3 +1,4 @@
+<!--breadcrumbs-->
 <div class="breadcrumbs">
 	<div class="breadcrumbs__list">
 		<div class="breadcrumbs__item breadcrumbs__item_has-drop">
@@ -66,3 +67,4 @@
 		</div>
 	</div>
 </div>
+<!--breadcrumbs end-->

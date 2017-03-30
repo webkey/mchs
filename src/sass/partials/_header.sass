@@ -20,8 +20,12 @@
 	top: 0
 	width: 100%
 	z-index: 10
+	overflow: hidden
 	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
 	+clear
+
+	.no-js &, .page-loaded &
+		overflow: visible
 
 	.header-fixed &
 		position: fixed
@@ -128,12 +132,14 @@
 			font: 700 1.8rem/1.2 $font-alt
 			text-transform: uppercase
 			color: $text-color
-			padding-bottom: 18px
 
 		.header__info
 			font-size: $font-size-small
 			line-height: $line-height-small
-			margin: -10px 0 0
+			margin: 8px 0 0
+
+			+media('<desk-md')
+				display: none
 
 			li
 				display: inline-block
@@ -179,6 +185,9 @@
 
 	.header-fixed &
 		position: fixed
+
+	.header-fixed.touchevents &
+		height: $header-top-height
 
 .logo
 	display: block

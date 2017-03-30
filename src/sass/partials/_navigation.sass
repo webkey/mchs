@@ -203,7 +203,9 @@
 						text-align: center
 						background: none
 						z-index: 95
-					//box-sizing: border-box
+
+						+media('<desk-md')
+							text-align: left
 
 					&.hover > a,
 					&.active > a,
@@ -216,6 +218,9 @@
 					display: inline-block
 					vertical-align: top
 					+truncate(50px)
+
+					+media('<desk-md')
+						+truncate-reset
 
 	// styles to menu level 1 end
 
@@ -259,6 +264,10 @@
 	&.priority-nav-has-dropdown .priority-nav__dropdown-toggle, .priority-nav__wrapper
 		position: relative
 		@extend %resetStylePriorityNav
+
+	.priority-nav__wrapper
+		+media('<desk-md')
+			width: 320px
 
 	&.priority-nav
 		white-space: nowrap

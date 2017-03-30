@@ -19,6 +19,7 @@
 		height: 100%
 		width: 9999px
 		background: #004d85
+		z-index: 200
 
 .main
 	position: relative
@@ -39,6 +40,7 @@
 	margin: 0 0 0 $sidebar-left-width
 	padding: $layout-grid-space
 	min-height: 50px
+	position: relative
 	+clear
 
 	+media('<desk-lg')
@@ -53,10 +55,8 @@
 	min-height: 50px
 
 	+media('<desk-lg')
-		padding-right: $layout-grid-space--desk-md
-		margin: 0 $sidebar-right-width--desk-md 0 0
-
-	+media('<desk-md')
+		//padding-right: $layout-grid-space--desk-md
+		//margin: 0 $sidebar-right-width--desk-md 0 0
 		margin-right: 0
 		padding-right: 0
 
@@ -86,11 +86,9 @@
 	//position: relative // нельзя задавать position, кроме static. нужно для работы sticky-kit
 
 	+media('<desk-lg')
-		margin: 0 0 0 -#{$sidebar-right-width--desk-md}
-		width: $sidebar-right-width--desk-md
-
-	+media('<desk-md')
 		display: none
+		//margin: 0 0 0 -#{$sidebar-right-width--desk-md}
+		//width: $sidebar-right-width--desk-md
 
 .footer
 	height: 0

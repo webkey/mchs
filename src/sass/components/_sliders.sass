@@ -124,47 +124,49 @@
 	position: relative
 	margin-bottom: $bottom-space
 
-	&__list
-		padding-bottom: $bottom-space
-		position: relative
-		z-index: 2
+.images-slider__list
+	padding-bottom: $bottom-space
+	position: relative
+	z-index: 2
 
-	&__item
-		float: none
-		display: inline-block
-		vertical-align: top
-		opacity: 0
-		white-space: normal
-		overflow: hidden
-		position: relative
-		background: #494949
+.images-slider__item
+	float: none
+	display: inline-block
+	vertical-align: top
+	opacity: 0
+	white-space: normal
+	overflow: hidden
+	position: relative
+	background: #494949
 
-		.slick-initialized &
-			display: block
-			float: left
-			opacity: 1
+	.slick-initialized &
+		display: block
+		float: left
+		opacity: 1
 
-		.no-js &
-			display: block
-			width: 100%
-			opacity: 1
+	.no-js &
+		display: block
+		width: 100%
+		opacity: 1
 
-		&:before
-			content: ''
-			display: block
-			height: 0
-			padding-top: 62.5%
+	&:before
+		content: ''
+		display: block
+		height: 0
+		padding-top: 62.5%
 
-		img
-			position: absolute
-			top: -2px
-			left: 50%
-			text-align: center
-			max-width: none
-			height: calc(100% + 4px)
-			-webkit-transform: translate(-50%, 0)
-			-ms-transform: translate(-50%, 0)
-			transform: translate(-50%, 0)
+	img
+		position: absolute
+		top: -2px
+		left: 50%
+		text-align: center
+		max-width: none
+		height: calc(100% + 4px)
+		-webkit-transform: translate(-50%, 0)
+		-ms-transform: translate(-50%, 0)
+		transform: translate(-50%, 0)
+
+.images-slider
 
 	.slick-arrow
 		right: 0
@@ -193,19 +195,74 @@
 .flashes
 	padding: 0 80px
 
-	&__item
-		overflow: hidden
-		display: none
+.flashes__item
+	overflow: hidden
+	display: none
 
-		&:first-child
-			display: block
+	&:first-child
+		display: block
 
-	&__content
-		box-sizing: border-box
+.flashes__content
+	box-sizing: border-box
 
-		& > p:last-child,
-		& > ul:last-child,
-		& > ol:last-child
-			margin-bottom: 0
-			padding-bottom: 0
+	& > p:last-child,
+	& > ul:last-child,
+	& > ol:last-child
+		margin-bottom: 0
+		padding-bottom: 0
+
 /*flashes end*/
+
+/*promo slider*/
+.promo
+	margin-bottom: $bottom-space
+
+	.breadcrumbs + &
+		float: left
+		width: 100%
+
+.promo-slider
+	margin-bottom: 0
+
+	&.slick-dotted
+		margin-bottom: 0
+
+	.slick-dots, .#{$user-content} & .slick-dots
+		position: absolute
+		bottom: 20px
+
+		li
+			+padding-horizontal(7px)
+
+			button
+				width: 6px
+				height: 6px
+				border-radius: 50%
+				background-color: white
+				opacity: 0.5
+				transition-property: opacity, transform
+				transition-duration: $animation-speed
+
+				&::before
+					content: none
+
+		li
+			&.slick-active button
+				opacity: 1
+
+			.no-touchevents &:hover button
+				opacity: 1
+				transform: scale(2)
+
+.promo-slider__img
+	height: 300px
+	width: 100%
+	background-position: center center
+	background-repeat: no-repeat
+	-webkit-background-size: cover
+	background-size: cover
+
+	span
+		+hide-text
+
+/*promo slider end*/
