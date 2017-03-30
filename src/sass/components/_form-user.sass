@@ -1,0 +1,83 @@
+/*user form*/
+.form-title
+	display: block
+	@include font-title
+	padding-bottom: $space-bottom
+	color: $color-text-alt
+	font-size: 2.4rem
+	line-height: 1.2
+	text-align: center
+
+.user-form
+	background: #fafafa
+	padding: $article-layout-space-horizontal
+	border: 1px solid $color-border
+	margin-bottom: $space-bottom
+
+	form
+		display: block
+
+	textarea
+		height: 152px
+		max-height: 152px
+		resize: none
+
+	.captcha
+		+clear
+
+		img
+			$margin-right: 20px
+			display: inline-block
+			vertical-align: middle
+			max-width: calc(50%)
+			margin-right: $margin-right
+
+			& + input
+				display: inline-block
+				vertical-align: middle
+				width: auto
+				max-width: calc(50% - #{$margin-right} - 10px)
+
+		@media only screen and (max-width: $mq-tablet)
+			img
+				display: block
+				max-width: none
+				margin-bottom: $space-bottom-sm
+
+				& + input
+					display: block
+					max-width: none
+					width: 100%
+
+	.form-footer
+		+clear
+
+	.form-buttons
+		float: left
+		margin-right: 30px
+
+		.btn-submit
+			width: 200px
+
+	.form-note
+		overflow: hidden
+		min-height: 50px
+		font-size: 0
+		letter-spacing: -4px
+		line-height: 25px
+
+		&:before
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			min-height: inherit
+
+		&__item
+			display: inline-block
+			vertical-align: middle
+			width: calc(100% - 6px)
+			font-size: 1.4rem
+			line-height: 1.5
+			letter-spacing: normal
+
+/*user form end*/

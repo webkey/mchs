@@ -40,7 +40,16 @@ gulp.task('htmlCompilation', function () { // Таск формирования 
 	.pipe(gulp.dest('./src/'));
 });
 
-gulp.task('sassCompilation', function () { // Создаем таск для компиляции sass файлов
+/// Таск для переноса normalize.css и его минификации
+gulp.task('compressNormalizeCss', function () {
+	return gulp.src('src/libs/normalize-css/normalize.css')
+		.pipe(gulp.dest('src/sass/base/'))
+		.pipe(cssnano())
+		.pipe(rename({suffix: '.min'}))
+		.pipe(gulp.dest('src/sass/base/'));
+});
+
+gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Создаем таск для компиляции sass файлов
 	return gulp.src('src/sass/**/*.+(scss|sass)') // Берем источник
 		.pipe(sourcemaps.init())
 		.pipe(sass({
@@ -94,7 +103,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/priority-nav/dist/priority-nav.min.js',
 		'src/libs/gsap/src/minified/TweenMax.min.js',
 		'src/libs/gsap/src/minified/plugins/ScrollToPlugin.min.js',
-		'src/libs/jquery.filer/js/jquery.filer.min.js'
+		'src/js/temp/filer.min.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(gulp.dest('src/js'))
@@ -156,7 +165,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен
 		.pipe(gulp.dest('dist/fonts'));
 
-	gulp.src(['src/js/**/*.min.js', 'src/js/common.js']) // Переносим скрипты в продакшен
+	gulp.src(['!src/js/temp/**/*.js', 'src/js/*.js']) // Переносим скрипты в продакшен
 		.pipe(gulp.dest('dist/js'));
 
 	gulp.src(['!src/__*.html', 'src/*.html']) // Переносим HTML в продакшен

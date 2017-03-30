@@ -1,0 +1,129 @@
+/*news previews*/
+.news-previews
+	$class: news-previews
+	$padding-vertical: 26px
+	$padding-horizontal: 30px
+	$label-size: 60px
+
+	=transition
+		-webkit-transition-property: -webkit-transform, color, fill
+		transition-property: transform, color, fill
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
+
+	=transition-duration
+		-webkit-transition-duration: $animation-speed
+		transition-duration: $animation-speed
+
+	&__list
+		+grid-parent
+		margin-bottom: $space-bottom
+
+	&__item
+		font-size: $font-size-small
+		line-height: $line-height-small
+		letter-spacing: normal
+
+		.#{$class} &
+			+grid-item(4)
+			margin-bottom: $grid-space
+
+			@media only screen and (max-width: $mq-desk-md)
+				+grid-item(3)
+
+	&__inner
+		$shadow-color: $color-text-mark
+		display: block
+		position: relative
+		text-decoration: none
+		color: $color-text
+		background: #fff
+		box-shadow: inset 0 -3px 0 $color-text-mark-alt
+
+	&__label
+		position: absolute
+		left: 0
+		top: 0
+		width: $label-size
+		height: $label-size
+		text-indent: -9999px
+		overflow: hidden
+		z-index: 5
+
+		&_none
+			display: none
+
+		&_video
+			background: $color-text-mark url(../img/depict-video.svg) no-repeat center
+			-webkit-background-size: 26px
+			background-size: 26px
+
+	&__img
+		min-height: $label-size
+
+		img
+			width: 100%
+
+	&__content
+		position: relative
+		overflow: hidden
+		padding: $padding-vertical $padding-horizontal
+
+		.#{$class}__label + &
+			padding-top: $padding-vertical + $label-size
+
+		& > *
+			z-index: 2
+			position: relative
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			height: 100%
+			width: 100%
+			background: $color-text-mark-alt
+			+transform(translate(0, 100%))
+			+transition
+
+	@at-root
+		.no-touchevents a:hover .#{$class}__content
+			&:before
+				+transform(translate(0, 0))
+				+transition-duration
+
+	&__text
+		margin-bottom: $padding-vertical
+
+	&__meta
+		display: block
+		font-size: 1.2rem
+		line-height: 1.4
+		color: $color-text-light
+		+transition
+
+		time
+			font-style: normal
+
+		.visit-view
+			float: right
+
+			svg path
+				+transition
+
+	@at-root
+		.no-touchevents a:hover
+			.#{$class}__meta
+				color: $color-text
+
+				svg path
+					fill: $color-text
+					+transition-duration
+
+	&__footer
+		position: relative
+
+/*news previews end*/

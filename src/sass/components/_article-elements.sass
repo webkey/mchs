@@ -1,0 +1,84 @@
+/*article meta*/
+=article-meta-text
+	font-size: 1.2rem
+	line-height: 1.4
+	color: $color-text-light
+
+.article-meta
+	+article-meta-text
+	margin-bottom: $space-bottom-md
+	+clear
+
+/*article meta end*/
+
+/*date*/
+.datetime
+	float: left
+	display: block
+	margin-bottom: $space-bottom
+	+article-meta-text
+	font-style: normal
+
+	.article-meta &
+		margin-right: 20px
+		margin-bottom: 0
+
+/*date end*/
+
+/*visit*/
+.visit-view
+	svg
+		display: inline-block
+		vertical-align: middle
+		width: 18px
+		height: 18px
+		margin-right: 10px
+
+		path
+			fill: $color-text-light
+			-webkit-transition-property: fill
+			transition-property: fill
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+
+		&.depict-visit-share
+			width: 12px
+			height: 12px
+
+	& > em
+		display: inline-block
+		vertical-align: middle
+		font-style: normal
+
+	@at-root
+		a.visit-view > em
+			-webkit-transition-property: color
+			transition-property: color
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+
+	@at-root
+		.no-touchevents a.visit-view:hover path
+			fill: $color-text
+
+		.no-touchevents a.visit-view:hover > em
+			color: $color-text
+
+
+.visit
+	overflow: hidden
+	margin-left: 20px
+	text-align: right
+	+article-meta-text
+
+	&__item
+		display: inline-block
+		vertical-align: top
+		margin-left: 30px
+
+	&__inner
+		display: inline-block
+		text-decoration: none
+		color: $color-text-light
+
+/*visit end*/

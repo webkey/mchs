@@ -1,0 +1,151 @@
+/*breadcrumbs*/
+.breadcrumbs
+	$item-max-width: 320px
+	$item-min-width: 200px
+
+	=transition($dur: 0.2s)
+		-webkit-transition-property: max-width, opacity, visibility, border-color
+		transition-property: max-width, opacity, visibility, border-color
+		-webkit-transition-duration: $dur
+		transition-duration: $dur
+
+	&
+		float: left
+		position: relative
+		font-size: 1.4rem
+		line-height: 1.5
+		color: $color-text
+		margin-bottom: $space-bottom
+		cursor: default
+		+clear
+
+		width: 100%
+
+		@at-root
+			.breadcrumbs__list
+				position: relative
+
+			.breadcrumbs__item
+				float: left
+				position: relative
+				margin: 0 10px 10px 0
+				padding: 0
+
+				&:first-child
+					margin-left: 0
+
+				> a
+					display: inline-block
+					vertical-align: top
+					position: relative
+					padding: 0 18px 0 0
+					color: $color-text
+					text-decoration: none
+					max-width: $item-max-width
+					min-width: 0
+					cursor: pointer
+					+transition($dur: 0.5s)
+
+					> span
+						display: block
+						position: relative
+						overflow: hidden
+						white-space: nowrap
+						-ms-text-overflow: ellipsis
+						text-overflow: ellipsis
+						z-index: 5
+
+					> i
+						position: absolute
+						right: 0
+						top: 7px
+						width: 7px
+						height: 8px
+						pointer-events: none
+
+						&:before
+							content: ''
+							position: absolute
+							left: 0
+							top: 50%
+							height: 0
+							width: 0
+							border: solid transparent
+							border-width: 4px 7px
+							margin-top: -4px
+							border-left-color: $color-text-mark
+
+				> i
+					display: none
+
+				&_has-drop:last-of-type, &-drop:last-child, &_last
+					margin-right: 0
+
+					> a
+						padding-right: 0
+
+						> i
+							display: none
+
+					> i
+						display: none
+
+				&:last-of-type, &:last-child, &_last, &.hover, &_long
+
+					> a
+						max-width: $item-max-width
+
+				&_short
+					> a
+						max-width: none
+
+	@at-root
+		$space-horizontal: 20px
+		$space-vertical: 10px
+
+		.breadcrumbs-drop
+			position: absolute
+			top: -#{$space-vertical}
+			left: -#{$space-horizontal}
+			//min-width: $item-min-width
+			max-width: $item-max-width + $space-horizontal*2
+			padding: 0 $space-horizontal
+			opacity: 0
+			visibility: hidden
+			white-space: nowrap
+			background: #fff
+			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1)
+			z-index: 10
+			+transition()
+
+			.breadcrumbs__item_has-drop.hover > &
+				opacity: 1
+				visibility: visible
+				-webkit-transition-delay: 0.25s
+				transition-delay: 0.25s
+
+		.breadcrumbs-drop__holder
+			position: relative
+
+		.breadcrumbs-drop__item
+			margin: #{$space-vertical} 0
+
+			a
+				display: block
+				text-decoration: none
+				color: $color-text
+				cursor: pointer
+				position: relative
+				overflow: hidden
+				white-space: nowrap
+				-ms-text-overflow: ellipsis
+				text-overflow: ellipsis
+
+				> span
+					border-bottom: 1px solid transparent
+					+transition()
+
+				.no-touchevents &:hover > span
+					border-bottom-color: $color-text-light
+
+/*breadcrumbs end*/

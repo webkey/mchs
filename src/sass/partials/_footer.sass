@@ -1,0 +1,297 @@
+/*FOOTER*/
+.footer
+	color: #b2b2b2
+
+	.layout
+		position: relative
+
+	@at-root
+	.footer__holder
+		position: absolute
+		overflow: hidden
+		cursor: default
+		left: $sidebar-left-width
+		bottom: 0
+		width: calc(100% - #{$sidebar-left-width})
+		top: auto
+		right: auto
+
+
+/*footer gov*/
+.footer-gov
+	padding: $layout-grid-space
+	position: relative
+	background: #ffffff
+
+	@at-root
+		.gov
+			position: relative
+
+			&__list
+				margin: 0 -#{$grid-space}
+
+				.slick-dots
+					bottom: 0
+					top: 100%
+					margin-top: 20px
+
+					li
+
+						button
+							width: 10px
+							height: 10px
+							border-radius: 0
+							background: #ccc
+
+							&:before
+								left: 0
+								top: 0
+								height: 10px
+								width: 10px
+								border-radius: 0
+								box-shadow: none
+								background: none
+
+						&.slick-active button:before
+							opacity: 1
+							background: $color-text-alt
+
+			&__item
+				padding: 0 $grid-space/2
+				font-size: $font-size-small
+				line-height: $line-height-small
+				letter-spacing: normal
+				color: $color-text
+
+				img
+					margin-bottom: $space-bottom/2
+
+				p
+					margin-bottom: $space-bottom/2
+
+				& > *:last-child
+					margin-bottom: 0
+
+/*footer gov end*/
+
+/*footer common*/
+.footer-common
+	padding: $layout-grid-space
+	position: relative
+	overflow: hidden
+	background: #001e33
+
+	@media only screen and (max-width: $mq-desk-md)
+		padding: $layout-grid-space--desk-md
+
+	$bottom-space: 24px
+
+	=link
+		& > span
+			border-bottom: 1px solid transparent
+			-webkit-transition-property: border-color
+			transition-property: border-color
+			-webkit-transition-duration: 0.2s
+			transition-duration: 0.2s
+
+		&:hover > span
+			border-bottom-color: rgba(255, 255, 255, 0.30)
+
+	// footer nav
+	@at-root
+	.footer-nav
+		$nav-cols-length: 5 // length small columns
+
+		$grid-space: 15px
+		margin: 0 -#{$grid-space}
+		font-size: 0
+		line-height: 0
+		letter-spacing: -4px
+
+		// calculate width of columns
+		=layout
+			// width one column
+			$width: 100%/$nav-cols-length
+			width: $width - 0.02%
+
+			// width large column
+			&:nth-child(2)
+				width: $width*($nav-cols-length - 2) - 0.02%
+
+		&__col
+			position: relative
+			display: inline-block
+			vertical-align: top
+			padding: 0 $grid-space
+			font-size: 14px
+			line-height: 1.4
+			color: #fff
+			letter-spacing: normal
+			+layout
+
+			& > *:last-child
+				margin-bottom: 0
+
+		&__title
+			display: block
+			font: 400 12px/1.4 $font-alt
+			text-transform: uppercase
+			color: #999
+			margin-bottom: $bottom-space
+
+			a
+				color: inherit
+				text-decoration: none
+				+link
+
+		&__links
+			margin: 0 0 30px
+
+			li
+				display: inline-block
+				vertical-align: top
+				margin: 0 30px 10px 0
+
+			a
+				color: inherit
+				font-size: inherit
+				line-height: inherit
+				text-decoration: none
+				list-style: none
+				+link
+
+		p
+			margin-bottom: $bottom-space
+
+		@media only screen and (max-width: $mq-desk-md)
+			$nav-cols-length: 4
+
+			&__col
+				+layout
+
+
+/*footer common end*/
+
+/*footer bottom*/
+.footer-bottom
+	$color: #b2b2b2
+	$font-size: $font-size-small
+	$line-height: 24px
+
+	padding: 0 $layout-grid-space
+	background: #001e33
+	color: $color
+	border-top: 1px solid $color
+	font-size: $font-size
+	line-height: $line-height
+
+	@media only screen and (max-width: $mq-desk-md)
+		padding: 0 $layout-grid-space--desk-md
+
+	&__holder
+		position: relative
+		text-align: justify
+		overflow: hidden
+		cursor: default
+		padding-top: 19px
+		padding-bottom: 19px
+		//box-sizing: border-box
+
+		font-size: 1px
+		line-height: 0
+		letter-spacing: -4px
+
+		&:after
+			content: "1"
+			margin-left: 100%
+			height: 1px
+			overflow: hidden
+			display: inline-block
+
+	&__col
+		display: inline-block
+		vertical-align: middle
+		font-size: $font-size
+		line-height: $line-height
+		padding: 0
+		letter-spacing: normal
+
+	a
+		color: $color
+		text-decoration: none
+
+		.no-touchevents &:hover
+			text-decoration: underline
+
+	.copyright
+		display: inline-block
+		vertical-align: middle
+		padding-right: 45px
+
+/*footer bottom end*/
+
+/*developer*/
+.developer
+	display: inline-block
+
+	a
+		text-decoration: none
+
+		.no-touchevents &:hover
+			text-decoration: none
+
+	&__logo
+		display: inline-block
+		vertical-align: top
+		position: relative
+		top: 3px
+		width: 154px
+		height: 20px
+		text-align: left
+		text-indent: -9999px
+		padding-right: 3px
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			width: 149px
+			height: 16px
+
+		&:before
+			content: ''
+			position: absolute
+			left: 4px
+			top: 4px
+			background-color: transparent
+			background-image: linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black), linear-gradient(45deg, black 25%, transparent 25%, transparent 75%, black 75%, black)
+			background-size: 2px 2px
+			background-position: 0 0, 1px 1px
+
+			.no-cssgradient &,
+			.no-multiplebgs &
+				background: #000
+				opacity: 0.5
+				-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50)
+				filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50)
+
+		&:after
+			content: ''
+			position: absolute
+			background: #00ef85 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=') no-repeat center center
+			-webkit-background-size: auto 16px
+			background-size: auto 16px
+
+	.no-touchevents a:hover &__logo:before
+		-webkit-transform: translate(1px, 2px)
+		-ms-transform: translate(1px, 2px)
+		transform: translate(1px, 2px)
+
+	.no-touchevents a:hover &__logo:after
+		-webkit-transform: translate(0, -3px)
+		-ms-transform: translate(0, -2px)
+		transform: translate(0, -2px)
+
+/*developer end*/
+/*FOOTER end*/

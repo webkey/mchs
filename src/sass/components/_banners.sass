@@ -1,0 +1,24 @@
+/*banners*/
+.banners
+	+grid-parent
+	margin-bottom: $space-bottom
+
+	&__item
+		font-size: $font-size
+		line-height: $line-height
+		letter-spacing: normal
+
+		.aside &
+			+grid-item(1)
+
+		.banners-panel &
+			+grid-item(4)
+
+		a
+			display: block
+			text-decoration: none
+
+			img
+				width: 100%
+
+/*banners end*/

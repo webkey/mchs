@@ -1,0 +1,61 @@
+/*more button*/
+.more
+	text-align: center
+
+	.btn-more
+		display: inline-block
+		text-decoration: none
+		font: 400 #{$font-size}/#{$line-height} $font-alt
+		color: $color-text-alt
+		padding-bottom: 15px
+		-webkit-transition-property: -webkit-transform
+		transition-property: transform
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+
+		.no-touchevents &:hover
+			-webkit-transition-duration: $animation-speed
+			transition-duration: $animation-speed
+			-webkit-transform: translate(0, -4px)
+			-ms-transform: translate(0, -4px)
+			transform: translate(0, -4px)
+
+		i
+			position: absolute
+			left: 50%
+			bottom: 0
+			width: 17px
+			height: 16px
+			font-size: 1px
+			z-index: 2
+			pointer-events: none
+			-webkit-backface-visibility: hidden
+			backface-visibility: hidden
+			-webkit-transform: translate(-50%, 0)
+			-ms-transform: translate(-50%, 0)
+			transform: translate(-50%, 0)
+
+		i:before, i:after
+			content: ''
+			position: absolute
+			left: 50%
+			top: 50%
+			height: 2em
+			width: 12em
+			border-radius: 2em
+			background: $color-text-alt
+			-webkit-backface-visibility: hidden
+			backface-visibility: hidden
+
+		i:before
+			margin: -1em 0 0 -10em
+			-webkit-transform: rotate(45deg)
+			-ms-transform: rotate(45deg)
+			transform: rotate(45deg)
+
+		i:after
+			margin: -1em 0 0 -3em
+			-webkit-transform: rotate(-45deg)
+			-ms-transform: rotate(-45deg)
+			transform: rotate(-45deg)
+/*more button end*/

@@ -1,0 +1,151 @@
+/*LAYOUT*/
+.wrapper
+	margin: 0 auto
+	//min-height: 100%
+	//height: auto !important
+	//height: 100%
+	min-height: 100vh
+	overflow: hidden
+	position: relative
+
+	&:after
+		content: ''
+		position: absolute
+		left: $layout-width
+		top: 0
+		height: 100%
+		width: 9999px
+		background: #004d85
+
+.main
+	position: relative
+	clear: both
+	z-index: 50
+
+.main-holder
+	width: 100%
+	padding-right: 60px // width .side menu
+	+clear
+
+.main-frame
+	float: left
+	width: 100%
+	position: relative
+
+.main-inside
+	margin: 0 0 0 $sidebar-left-width
+	padding: $layout-grid-space
+	min-height: 50px
+	+clear
+
+	@media only screen and (max-width: $mq-desk-md)
+		padding: $layout-grid-space--desk-md
+
+.content-wrap
+	@extend .main-frame
+
+.content
+	margin: 0 $sidebar-right-width 0 0
+	padding-right: $layout-grid-space
+	min-height: 50px
+
+	@media only screen and (max-width: $mq-desk-md)
+		padding-right: $layout-grid-space--desk-md
+		margin: 0 $sidebar-right-width--desk-md 0 0
+
+	@media only screen and (max-width: $mq-desk-sm)
+		margin-right: 0
+		padding-right: 0
+
+.sheet
+	background: $color-bg-alt
+	margin-bottom: $space-bottom-md
+
+	&:last-child
+		margin-bottom: 0
+
+.header
+	position: relative
+	z-index: 100
+
+.sidebar
+	float: left
+	margin: 0 0 0 -100%
+	width: $sidebar-left-width
+	background: $color-bg-alt
+
+.aside
+	float: right
+	margin: 0 0 0 -#{$sidebar-right-width}
+	width: $sidebar-right-width
+
+	@media only screen and (max-width: $mq-desk-md)
+		margin: 0 0 0 -#{$sidebar-right-width--desk-md}
+		width: $sidebar-right-width--desk-md
+
+	@media only screen and (max-width: $mq-desk-sm)
+		display: none
+
+.footer
+	height: 0
+	position: relative
+	clear: both
+	z-index: 100
+
+%layout-space
+	padding-left: $layout-space-horizontal
+	padding-right: $layout-space-horizontal
+
+%article-layout-space
+	padding: $article-layout-space-vertical $article-layout-space-horizontal
+
+%article-layout-full-width
+	margin-left: -$article-layout-space-horizontal
+	margin-right: -$article-layout-space-horizontal
+
+%text-layout-space
+	padding-left: $text-layout-space-horizontal
+	padding-right: $text-layout-space-horizontal
+
+.layout
+	@extend %layout-space
+	max-width: $layout-width
+
+	.main > &
+		overflow-x: hidden
+
+.article-layout
+	@extend %article-layout-space
+	max-width: $article-layout-width
+	margin: 0 auto
+
+	.full-width
+		@extend %article-layout-full-width
+
+	p, ul, ol
+		@extend .text-layout
+
+.text-layout
+	@extend %text-layout-space
+	max-width: $text-layout-width
+	margin-left: auto
+	margin-right: auto
+
+/*section*/
+.section
+	margin-bottom: $space-bottom-md
+
+	* ~ &
+		margin-top: $space-bottom-md
+
+	@at-root
+	&__title
+		margin-bottom: $space-bottom/2
+
+		h2
+			color: $color-text-alt
+			font-size: 2rem
+			margin: 0
+
+/*section end*/
+/*LAYOUT end*/

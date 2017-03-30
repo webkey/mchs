@@ -1,0 +1,74 @@
+/*news links*/
+.news-links
+	+grid-parent
+	margin-bottom: $space-bottom
+
+	=transition
+		-webkit-transition-property: background-color, color
+		transition-property: background-color, color
+		-webkit-transition-duration: $animation-speed-mouseleave
+		transition-duration: $animation-speed-mouseleave
+		-webkit-transition-timing-function: ease-in-out
+		transition-timing-function: ease-in-out
+
+	=transition-duration
+		-webkit-transition-duration: $animation-speed
+		transition-duration: $animation-speed
+
+	=hover
+		a:hover &
+			color: #fff
+			+transition-duration
+
+	&__item
+		display: inline-block
+		vertical-align: top
+		+grid-item(1)
+		margin-bottom: $space-bottom
+		font-size: $font-size-small
+		line-height: $line-height-small
+		letter-spacing: normal
+
+		&:last-child
+			margin-bottom: 0
+
+	&__inner
+		display: block
+		position: relative
+		text-decoration: none
+		color: $color-text
+		z-index: 1
+
+		&:before
+			content: ''
+			position: absolute
+			$left: 18px
+			$top: 12px
+			left: -#{$left}
+			top: -#{$top}
+			width: calc(100% + #{$left}*2)
+			height: calc(100% + #{$top}*2)
+			background: transparent
+			+transition
+			z-index: -1
+
+		.no-touchevents &:hover:before
+			background-color: $color-text-alt
+			+transition-duration
+
+	&__text
+		margin-bottom: 12px
+		+transition
+
+		+hover
+
+	&__meta
+		display: block
+		font-size: 1.2rem
+		line-height: 1.4
+		color: $color-text-light
+		+transition
+
+		+hover
+
+/*news links end*/
