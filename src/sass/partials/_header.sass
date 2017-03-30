@@ -9,11 +9,24 @@
 	+clear
 
 .header__frame
+	position: relative
+	padding-top: $header-top-height
+
 	+clear
 
 .header__top
+	height: $header-top-height
+	position: absolute
+	top: 0
+	width: 100%
+	z-index: 10
 	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
 	+clear
+
+	.header-fixed &
+		position: fixed
+		width: calc(100% - #{$sidebar-left-width})
+		max-width: calc(#{$layout-width - $sidebar-left-width})
 
 .header__content
 	$height-container: 122px
@@ -155,22 +168,37 @@
 						//fill: $color-text-light
 						fill: lighten($text-color-light, 20%)
 /*logo*/
-.logo
+.logo-wrap
 	position: absolute
 	left: 0
 	top: 0
-	bottom: 0
-	background: #fff url(../img/logo.png) no-repeat center
-	-webkit-background-size: 120px
-	background-size: 120px
+	height: 100%
 	width: $sidebar-left-width
-	text-indent: -9999px
-	overflow: hidden
+	background-color: white
+	z-index: 20
+
+	.header-fixed &
+		position: fixed
+
+.logo
+	display: block
+	height: 100%
 	margin: 0
 
 	a
 		display: block
+		position: relative
 		height: 100%
+
+		img
+			position: absolute
+			top: 50%
+			left: 50%
+			backface-visibility: hidden
+			transform: translate(-50%, -50%)
+			height: 100px
+			max-height: 90%
+			+push-auto
 
 /*logo end*/
 
@@ -198,7 +226,7 @@
 		display: inline-block
 		vertical-align: top
 		position: relative
-		width: 60px
+		width: $header-top-height
 
 		&:before
 			content: ''
@@ -270,12 +298,9 @@
 	$color-text: #80a7c4
 	$color-bg: #00497d
 
-	=transition
-		-webkit-transition-property: background-color, color, opacity, visibility
+	=transition()
 		transition-property: background-color, color, opacity, visibility
-		-webkit-transition-duration: $animation-speed
 		transition-duration: $animation-speed
-		-webkit-transition-timing-function: ease-in-out
 		transition-timing-function: ease-in-out
 
 	& > a
@@ -334,6 +359,9 @@
 			.no-touchevents &:hover
 				background-color: $color-border
 				color: lighten($color-text, 30%)
+
+		li:first-child a
+			border-top: none
 
 /*lang end*/
 /*HEADER end*/

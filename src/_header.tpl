@@ -2,7 +2,9 @@
 	<div class="layout">
 		<div class="header__holder">
 			<!--logo-->
-			<strong class="logo"><a href="index.html">Министерство по чрезвычайным ситуациям Республики Беларусь</a><img style="display: none;" src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь"></strong>
+			<div class="logo-wrap">
+				<strong class="logo"><a href="index.html"><img src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь"></a></strong>
+			</div>
 			<!--logo end-->
 			<div class="header__frame">
 				<div class="header__top">

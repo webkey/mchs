@@ -1,20 +1,20 @@
 /*ASIDE*/
-.aside
-	@at-root
-	&__holder
-		& > *:last-child
-			margin-bottom: 0
+.aside__holder
+	position: relative
+	z-index: 10
 
-	@at-root
-	&__widget
-		margin: 0 0 $bottom-space
+	& > *:last-child
+		margin-bottom: 0
 
-		& > *:last-child
-			margin-bottom: 0
+.aside__widget
+	margin: 0 0 $bottom-space
 
-		h3
-			font: 400 1.2rem/1.4 $font-alt
-			color: $text-color-light
-			text-transform: uppercase
+	& > *:last-child
+		margin-bottom: 0
+
+	h3
+		font: 400 1.2rem/1.4 $font-alt
+		color: $text-color-light
+		text-transform: uppercase
 
 /*ASIDE end*/

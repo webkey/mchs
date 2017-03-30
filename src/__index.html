@@ -1,6 +1,6 @@
 @@include('_head.tpl', {
 	"title": "Главная",
-	"pageClass": ""
+	"pageClass": "home-page"
 })
 <div class="wrapper">
 	<!--HEADER-->
@@ -21,8 +21,8 @@
 						<!--breadcrumbs end-->
 						<div class="content-wrap">
 							<div class="content">
-								<section class="section">
-									<div class="section__title"><h2>Новости Минской области</h2></div>
+								<section class="section" id="main-new-anchor">
+									<div class="section__title"><h2>Главные новости</h2></div>
 									<div class="section__holder">
 										<!--news previews-->
 										<div class="news-previews">
@@ -36,6 +36,30 @@
 											</div>
 										</div>
 										<!--news previews end-->
+									</div>
+								</section>
+								<section class="section" id="map-anchor">
+									<div class="section__title"><h2>Интерактивная карта</h2></div>
+									<div class="section__holder">
+										{{Контент секции}}
+									</div>
+								</section>
+								<section class="section" id="branches-anchor">
+									<div class="section__title"><h2>Департаменты</h2></div>
+									<div class="section__holder">
+										{{Контент секции}}
+									</div>
+								</section>
+								<section class="section" id="regions-anchor">
+									<div class="section__title"><h2>Региональные управления</h2></div>
+									<div class="section__holder">
+										{{Контент секции}}
+									</div>
+								</section>
+								<section class="section" id="other-anchor">
+									<div class="section__title"><h2>Другие проекты</h2></div>
+									<div class="section__holder">
+										{{Контент секции}}
 									</div>
 								</section>
 							</div>

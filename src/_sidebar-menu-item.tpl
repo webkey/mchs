@@ -1,1 +1,1 @@
-<li><a href="#" @@if (active) {class="active"}><span>@@text</span></a></li>
+<li><a href="@@anchor" @@if (active) {class="active"}><span>@@text</span></a></li>

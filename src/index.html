@@ -37,7 +37,7 @@
 	<script src="js/modernizr.min.js"></script>
 </head>
 
-<body>
+<body class="home-page">
 	<!--[if lt IE 9]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 	<!-- >>> head.tpl END <<< -->
 	<div class="wrapper">
@@ -46,7 +46,9 @@
 			<div class="layout">
 				<div class="header__holder">
 					<!--logo-->
-					<strong class="logo"><a href="index.html">Министерство по чрезвычайным ситуациям Республики Беларусь</a><img style="display: none;" src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь"></strong>
+					<div class="logo-wrap">
+						<strong class="logo"><a href="index.html"><img src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь"></a></strong>
+					</div>
 					<!--logo end-->
 					<div class="header__frame">
 						<div class="header__top">
@@ -909,9 +911,9 @@
 							<!--breadcrumbs end-->
 							<div class="content-wrap">
 								<div class="content">
-									<section class="section">
+									<section class="section" id="main-new-anchor">
 										<div class="section__title">
-											<h2>Новости Минской области</h2>
+											<h2>Главные новости</h2>
 										</div>
 										<div class="section__holder">
 											<!--news previews-->
@@ -1021,6 +1023,38 @@
 												</div>
 											</div>
 											<!--news previews end-->
+										</div>
+									</section>
+									<section class="section" id="map-anchor">
+										<div class="section__title">
+											<h2>Интерактивная карта</h2>
+										</div>
+										<div class="section__holder">
+											{{Контент секции}}
+										</div>
+									</section>
+									<section class="section" id="branches-anchor">
+										<div class="section__title">
+											<h2>Департаменты</h2>
+										</div>
+										<div class="section__holder">
+											{{Контент секции}}
+										</div>
+									</section>
+									<section class="section" id="regions-anchor">
+										<div class="section__title">
+											<h2>Региональные управления</h2>
+										</div>
+										<div class="section__holder">
+											{{Контент секции}}
+										</div>
+									</section>
+									<section class="section" id="other-anchor">
+										<div class="section__title">
+											<h2>Другие проекты</h2>
+										</div>
+										<div class="section__holder">
+											{{Контент секции}}
 										</div>
 									</section>
 								</div>
@@ -1172,90 +1206,94 @@
 					<aside class="sidebar">
 						<div class="sidebar__holder">
 							<div class="sidebar-top">
-								<ul class="sidebar-menu">
-									<li><a href="#" class="active"><span>Главные новости МЧС</span></a></li>
-									<li><a href="#"><span>Интерактивная карта</span></a></li>
-									<li><a href="#"><span>Департаменты</span></a></li>
-									<li><a href="#"><span>Региональные управления</span></a></li>
-									<li><a href="#"><span>Другие проекты</span></a></li>
+								<ul class="sidebar-menu sidebar-menu-js">
+									<li><a href="#main-new-anchor"><span>Главные новости МЧС</span></a></li>
+									<li><a href="#map-anchor"><span>Интерактивная карта</span></a></li>
+									<li><a href="#branches-anchor"><span>Департаменты</span></a></li>
+									<li><a href="#regions-anchor"><span>Региональные управления</span></a></li>
+									<li><a href="#other-anchor"><span>Другие проекты</span></a></li>
 								</ul>
 							</div>
 							<div class="sidebar-bottom">
 								<div class="sidebar-bottom__holder">
 									<div class="sidebar-bottom__frame">
-										<h3>Новости дня</h3>
-										<div class="news-links">
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">Женщина получила ожоги отдыхая под Витебском.</div>
-													<div class="news-links__meta">Витебск, 11:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
-													<div class="news-links__meta">Гродно, 11:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">Самые читаемые материалы сайта МЧС за 2016 год.</div>
-													<div class="news-links__meta">Гомель, 10:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
-													<div class="news-links__meta">Гродно, 11:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">Женщина получила ожоги отдыхая под Витебском.</div>
-													<div class="news-links__meta">Витебск, 11:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
-													<div class="news-links__meta">Гродно, 11:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">Самые читаемые материалы сайта МЧС за 2016 год.</div>
-													<div class="news-links__meta">Гомель, 10:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
-													<div class="news-links__meta">Гродно, 11:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">Женщина получила ожоги отдыхая под Витебском.</div>
-													<div class="news-links__meta">Витебск, 11:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
-													<div class="news-links__meta">Гродно, 11:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">Самые читаемые материалы сайта МЧС за 2016 год.</div>
-													<div class="news-links__meta">Гомель, 10:30</div>
-												</a>
-											</div>
-											<div class="news-links__item">
-												<a href="#" class="news-links__inner">
-													<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
-													<div class="news-links__meta">Гродно, 11:30</div>
-												</a>
+										<div class="sidebar-bottom__heading">
+											<h3>Новости дня</h3>
+										</div>
+										<div class="sidebar-bottom__content">
+											<div class="news-links">
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">Женщина получила ожоги отдыхая под Витебском.</div>
+														<div class="news-links__meta">Витебск, 11:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+														<div class="news-links__meta">Гродно, 11:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">Самые читаемые материалы сайта МЧС за 2016 год.</div>
+														<div class="news-links__meta">Гомель, 10:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+														<div class="news-links__meta">Гродно, 11:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">Женщина получила ожоги отдыхая под Витебском.</div>
+														<div class="news-links__meta">Витебск, 11:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+														<div class="news-links__meta">Гродно, 11:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">Самые читаемые материалы сайта МЧС за 2016 год.</div>
+														<div class="news-links__meta">Гомель, 10:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+														<div class="news-links__meta">Гродно, 11:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">Женщина получила ожоги отдыхая под Витебском.</div>
+														<div class="news-links__meta">Витебск, 11:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+														<div class="news-links__meta">Гродно, 11:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">Самые читаемые материалы сайта МЧС за 2016 год.</div>
+														<div class="news-links__meta">Гомель, 10:30</div>
+													</a>
+												</div>
+												<div class="news-links__item">
+													<a href="#" class="news-links__inner">
+														<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+														<div class="news-links__meta">Гродно, 11:30</div>
+													</a>
+												</div>
 											</div>
 										</div>
 									</div>

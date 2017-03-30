@@ -3,72 +3,39 @@
 	+grid-parent
 	margin-bottom: $bottom-space
 
-	=transition
-		-webkit-transition-property: background-color, color
-		transition-property: background-color, color
-		-webkit-transition-duration: $animation-speed-mouseleave
-		transition-duration: $animation-speed-mouseleave
-		-webkit-transition-timing-function: ease-in-out
-		transition-timing-function: ease-in-out
+.news-links__item
+	display: inline-block
+	vertical-align: top
+	+grid-item(1)
+	margin-bottom: $bottom-space
+	font-size: $font-size-small
+	line-height: $line-height-small
+	letter-spacing: normal
 
-	=transition-duration
-		-webkit-transition-duration: $animation-speed
-		transition-duration: $animation-speed
+	&:last-child
+		margin-bottom: 0
 
-	=hover
-		a:hover &
-			color: #fff
-			+transition-duration
+.news-links__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: $text-color
+	z-index: 1
 
-	&__item
-		display: inline-block
-		vertical-align: top
-		+grid-item(1)
-		margin-bottom: $bottom-space
-		font-size: $font-size-small
-		line-height: $line-height-small
-		letter-spacing: normal
+.news-links__text
+	margin-bottom: 12px
+	transition-property: background-color, color
+	transition-duration: $animation-speed-mouseleave
 
-		&:last-child
-			margin-bottom: 0
+.news-links__inner:hover .news-links__text
+	color: $text-color-alt
 
-	&__inner
-		display: block
-		position: relative
-		text-decoration: none
-		color: $text-color
-		z-index: 1
-
-		&:before
-			content: ''
-			position: absolute
-			$left: 18px
-			$top: 12px
-			left: -#{$left}
-			top: -#{$top}
-			width: calc(100% + #{$left}*2)
-			height: calc(100% + #{$top}*2)
-			background: transparent
-			+transition
-			z-index: -1
-
-		.no-touchevents &:hover:before
-			background-color: $text-color-alt
-			+transition-duration
-
-	&__text
-		margin-bottom: 12px
-		+transition
-
-		+hover
-
-	&__meta
-		display: block
-		font-size: 1.2rem
-		line-height: 1.4
-		color: $text-color-light
-		+transition
-
-		+hover
+.news-links__meta
+	display: block
+	font-size: 1.2rem
+	line-height: 1.4
+	color: $text-color-light
+	transition-property: background-color, color
+	transition-duration: $animation-speed-mouseleave
 
 /*news links end*/

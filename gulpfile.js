@@ -103,7 +103,9 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/priority-nav/dist/priority-nav.min.js',
 		'src/libs/gsap/src/minified/TweenMax.min.js',
 		'src/libs/gsap/src/minified/plugins/ScrollToPlugin.min.js',
-		'src/js/temp/filer.min.js'
+		'src/js/temp/filer.min.js',
+		'src/libs/sticky-kit/jquery.sticky-kit.min.js',
+		'src/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(gulp.dest('src/js'))
@@ -165,7 +167,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен
 		.pipe(gulp.dest('dist/fonts'));
 
-	gulp.src(['!src/js/temp/**/*.js', 'src/js/*.js']) // Переносим скрипты в продакшен
+	gulp.src(['!src/js/temp/**/*.js', '!src/js/**/temp-*.js', 'src/js/*.js']) // Переносим скрипты в продакшен
 		.pipe(gulp.dest('dist/js'));
 
 	gulp.src(['!src/__*.html', 'src/*.html']) // Переносим HTML в продакшен

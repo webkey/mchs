@@ -28,7 +28,9 @@
     "masonry": "^4.1.1",
     "priority-nav": "priority-nav.js#^1.0.12",
     "gsap": "^1.19.1",
-    "include-media": "^1.4.9"
+    "include-media": "^1.4.9",
+    "sticky-kit": "^1.1.2",
+    "page-scroll-to-id": "^1.5.7"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

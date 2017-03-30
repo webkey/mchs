@@ -33,7 +33,7 @@
 .main-frame
 	float: left
 	width: 100%
-	position: relative
+	//position: relative // нельзя задавать position, кроме static. нужно для работы sticky-kit
 
 .main-inside
 	margin: 0 0 0 $sidebar-left-width
@@ -69,18 +69,21 @@
 
 .header
 	position: relative
-	z-index: 100
+	z-index: 150
 
 .sidebar
 	float: left
+	//position: relative // нельзя задавать position, кроме static. нужно для работы sticky-kit
 	margin: 0 0 0 -100%
 	width: $sidebar-left-width
 	background: $bg-color-alt
+	z-index: 20
 
 .aside
 	float: right
 	margin: 0 0 0 -#{$sidebar-right-width}
 	width: $sidebar-right-width
+	//position: relative // нельзя задавать position, кроме static. нужно для работы sticky-kit
 
 	+media('<desk-lg')
 		margin: 0 0 0 -#{$sidebar-right-width--desk-md}
@@ -137,6 +140,23 @@
 /*section*/
 .section
 	margin-bottom: $bottom-space-md
+
+	.home-page &
+		min-height: 100vh
+
+	&:nth-child(1)
+		background-color: lightgoldenrodyellow
+	&:nth-child(2)
+		background-color: lightcoral
+	&:nth-child(3)
+		background-color: lightblue
+		min-height: 50vh
+	&:nth-child(4)
+		background-color: lightgreen
+	&:nth-child(5)
+		background-color: lightsalmon
+	&:nth-child(6)
+		background-color: lightpink
 
 	* ~ &
 		margin-top: $bottom-space-md

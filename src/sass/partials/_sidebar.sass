@@ -1,16 +1,22 @@
 /*SIDEBAR*/
+/*sidebar top*/
+.sidebar-top
+	z-index: 30
+
+/*sidebar top end*/
+
 /*sidebar-menu*/
 .sidebar-menu
 	background: #001e33
 	padding: 28px 0
 
-	=transition
+	=transition()
 		-webkit-transition-property: color, opacity, visibility
 		transition-property: color, opacity, visibility
 		-webkit-transition-duration: $animation-speed-mouseleave
 		transition-duration: $animation-speed-mouseleave
 
-	=transition-duration
+	=transition-duration()
 		-webkit-transition-duration: $animation-speed
 		transition-duration: $animation-speed
 
@@ -49,20 +55,53 @@
 /*sidebar bottom*/
 .sidebar-bottom
 	width: 100%
+	background-color: white
+	//position: relative  // нельзя задавать position, кроме static. нужно для работы sticky-kit
 
-	@at-root
-	&__holder
-		height: 100%
+.sidebar-bottom__holder
+	height: 100%
 
-	@at-root
-	&__frame
-		overflow-x: hidden
-		overflow-y: auto
-		max-height: 100%
-		-webkit-overflow-scrolling: touch
-		padding: 36px 40px
+.sidebar-bottom__frame
+	overflow-x: hidden
+	overflow-y: auto
+	max-height: 100%
+	-webkit-overflow-scrolling: touch
+	padding: 0 0 36px
 
-		& > *:last-child
-			margin-bottom: 0
+	& > *:last-child
+		margin-bottom: 0
+
+.sidebar-bottom__heading
+	position: relative
+	padding: 25px $sidebar-inner-space-horizontal
+	background-color: white
+	z-index: 15
+
+	&::after
+		+pseudo()
+		left: 0
+		top: 100%
+		width: 100%
+		height: 30px
+		pointer-events: none
+		opacity: 0
+		visibility: hidden
+		+linear-gradient(to bottom, white 0, rgba(255, 255, 255, 0) 100%)
+		transition-property: opacity, visibility
+		transition-duration: $animation-speed
+
+	&.is_stuck::after
+		opacity: 1
+		visibility: visible
+
+	h4, h3, h2
+		margin-bottom: 0
+
+.sidebar-bottom__content
+	position: relative
+	background-color: white
+	padding: 18px $sidebar-inner-space-horizontal
+	z-index: 10
+
 /*sidebar bottom end*/
 /*SIDEBAR end*/
