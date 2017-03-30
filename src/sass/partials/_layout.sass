@@ -1,3 +1,6 @@
+@import ../utils/variables
+@import ../utils/mixins
+
 /*LAYOUT*/
 .wrapper
 	margin: 0 auto
@@ -38,7 +41,7 @@
 	min-height: 50px
 	+clear
 
-	@media only screen and (max-width: $mq-desk-md)
+	+media('<desk-lg')
 		padding: $layout-grid-space--desk-md
 
 .content-wrap
@@ -49,17 +52,17 @@
 	padding-right: $layout-grid-space
 	min-height: 50px
 
-	@media only screen and (max-width: $mq-desk-md)
+	+media('<desk-lg')
 		padding-right: $layout-grid-space--desk-md
 		margin: 0 $sidebar-right-width--desk-md 0 0
 
-	@media only screen and (max-width: $mq-desk-sm)
+	+media('<desk-md')
 		margin-right: 0
 		padding-right: 0
 
 .sheet
-	background: $color-bg-alt
-	margin-bottom: $space-bottom-md
+	background: $bg-color-alt
+	margin-bottom: $bottom-space-md
 
 	&:last-child
 		margin-bottom: 0
@@ -72,18 +75,18 @@
 	float: left
 	margin: 0 0 0 -100%
 	width: $sidebar-left-width
-	background: $color-bg-alt
+	background: $bg-color-alt
 
 .aside
 	float: right
 	margin: 0 0 0 -#{$sidebar-right-width}
 	width: $sidebar-right-width
 
-	@media only screen and (max-width: $mq-desk-md)
+	+media('<desk-lg')
 		margin: 0 0 0 -#{$sidebar-right-width--desk-md}
 		width: $sidebar-right-width--desk-md
 
-	@media only screen and (max-width: $mq-desk-sm)
+	+media('<desk-md')
 		display: none
 
 .footer
@@ -133,17 +136,17 @@
 
 /*section*/
 .section
-	margin-bottom: $space-bottom-md
+	margin-bottom: $bottom-space-md
 
 	* ~ &
-		margin-top: $space-bottom-md
+		margin-top: $bottom-space-md
 
 	@at-root
 	&__title
-		margin-bottom: $space-bottom/2
+		margin-bottom: $bottom-space/2
 
 		h2
-			color: $color-text-alt
+			color: $text-color-alt
 			font-size: 2rem
 			margin: 0
 

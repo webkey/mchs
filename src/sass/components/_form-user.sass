@@ -2,8 +2,8 @@
 .form-title
 	display: block
 	@include font-title
-	padding-bottom: $space-bottom
-	color: $color-text-alt
+	padding-bottom: $bottom-space
+	color: $text-color-alt
 	font-size: 2.4rem
 	line-height: 1.2
 	text-align: center
@@ -11,8 +11,8 @@
 .user-form
 	background: #fafafa
 	padding: $article-layout-space-horizontal
-	border: 1px solid $color-border
-	margin-bottom: $space-bottom
+	border: 1px solid $border-color
+	margin-bottom: $bottom-space
 
 	form
 		display: block
@@ -38,11 +38,11 @@
 				width: auto
 				max-width: calc(50% - #{$margin-right} - 10px)
 
-		@media only screen and (max-width: $mq-tablet)
+		+media('<tab-lg')
 			img
 				display: block
 				max-width: none
-				margin-bottom: $space-bottom-sm
+				margin-bottom: $bottom-space-sm
 
 				& + input
 					display: block

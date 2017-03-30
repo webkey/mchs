@@ -1,7 +1,7 @@
 /*extra popup*/
 // fixed scroll after popup open
 html.nav-opened-before
-	+scroll-lock
+	+scroll-blocked()
 
 	.wrapper
 		z-index: 100
@@ -28,7 +28,7 @@ html.nav-opened-before
 	z-index: 998
 	background: #fff
 	box-sizing: border-box
-	border: 1px solid $color-border
+	border: 1px solid $border-color
 	overflow: hidden
 
 	&.hide-before
@@ -93,7 +93,7 @@ html.nav-opened-before
 		$btn-lines-width: 30px
 		$btn-lines-height: 2px
 		$btn-lines-space: 5px
-		$btn-lines-color: $color-text-alt
+		$btn-lines-color: $text-color-alt
 
 		=line-style
 			height: $btn-lines-height
@@ -118,7 +118,7 @@ html.nav-opened-before
 			width: $btn-size
 			height: $btn-size
 			background: $btn-bg
-			border: 1px solid $color-border
+			border: 1px solid $border-color
 			color: #fff
 			text-decoration: none
 			background: $btn-bg
@@ -158,15 +158,15 @@ html.nav-opened-before
 				//first line menu
 				&:before
 					top: 0
-					+transform(rotate(-45deg))
+					transform: rotate(-45deg)
 
 				//third line menu
 				&:after
 					top: 0
-					+transform(rotate(45deg))
+					transform: rotate(45deg)
 
 		.no-touchevents &:hover > i:before, .no-touchevents &:hover > i:after
-			background-color: $color-text-mark-alt
+			background-color: $mark-color-alt
 
 
 	@at-root
@@ -221,7 +221,7 @@ html.nav-opened-before
 	line-height: 0
 	letter-spacing: -4px
 	white-space: nowrap
-	+text-transform-fix
+	+antialiased
 	+btn-hover
 	+btn-active
 
@@ -277,10 +277,10 @@ html.nav-opened-before
 
 		&:before
 			top: 0
-			+transform(rotate(-45deg))
+			transform: rotate(-45deg)
 
 		&:after
 			top: 0
-			+transform(rotate(45deg))
+			transform: rotate(45deg)
 
 /*button menu close end*/

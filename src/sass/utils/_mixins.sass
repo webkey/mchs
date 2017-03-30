@@ -1,8 +1,8 @@
-@import "variables"
-@import "functions"
+@import variables
+@import functions
 
-@import "../../libs/mathsass/dist/math"
-@import "../../libs/mathsass/dist/functions/tan"
+@import ../../libs/mathsass/dist/math
+@import ../../libs/mathsass/dist/functions/tan
 
 ////
 /// @author Astronim* Serhiy Ilchenko
@@ -134,21 +134,22 @@
 /// @example Sass - Использование
 /// @example css - Вывод CSS
 
-=grid-parent($space: 20px)
+=grid-parent($this-grid-space: $grid-space)
 	font-size: 0
+	line-height: 1
 	letter-spacing: -4px
 	margin:
-		left: -#{$space/2}
-		right: -#{$space/2}
+		left: -#{$this-grid-space/2}
+		right: -#{$this-grid-space/2}
 
-=grid-item($length-in-row: 2, $space: 20px, $bottom-space: $space)
+=grid-item($length-in-row: 1, $this-grid-space: $grid-space, $margin-bottom: $this-grid-space)
 	display: inline-block
 	vertical-align: top
-	width: 100%/$length-in-row - 0.02 // -0.02 для кроссбраузерности
+	width: 100%/$length-in-row - 0.02
 	padding:
-		left: $space/2
-		right: $space/2
-	margin-bottom: $bottom-space
+		left: $this-grid-space/2
+		right: $this-grid-space/2
+	margin-bottom: $margin-bottom
 
 // =============================================================================
 // antialiased
@@ -587,22 +588,22 @@
 	@each $origin, $value in $origins-map
 		@if $i == 0
 			$margin-direct: $origin
-			//@debug $margin-direct
+		//@debug $margin-direct
 
 		$i: $i + 1
 
 		@if $origin == top
 			$top: $value
-			//@debug 'top: ' + $value
+		//@debug 'top: ' + $value
 		@if $origin == right
 			$right: $value
-			//@debug 'right: ' + $value
+		//@debug 'right: ' + $value
 		@if $origin == bottom
 			$bottom: $value
-			//@debug 'bottom: ' + $value
+		//@debug 'bottom: ' + $value
 		@if $origin == left
 			$left: $value
-			//@debug 'left: ' + $value
+	//@debug 'left: ' + $value
 
 	// вывод общих стилей
 	&::before, &::after

@@ -2,11 +2,11 @@
 =article-meta-text
 	font-size: 1.2rem
 	line-height: 1.4
-	color: $color-text-light
+	color: $text-color-light
 
 .article-meta
 	+article-meta-text
-	margin-bottom: $space-bottom-md
+	margin-bottom: $bottom-space-md
 	+clear
 
 /*article meta end*/
@@ -15,7 +15,7 @@
 .datetime
 	float: left
 	display: block
-	margin-bottom: $space-bottom
+	margin-bottom: $bottom-space
 	+article-meta-text
 	font-style: normal
 
@@ -35,7 +35,7 @@
 		margin-right: 10px
 
 		path
-			fill: $color-text-light
+			fill: $text-color-light
 			-webkit-transition-property: fill
 			transition-property: fill
 			-webkit-transition-duration: $animation-speed
@@ -59,10 +59,10 @@
 
 	@at-root
 		.no-touchevents a.visit-view:hover path
-			fill: $color-text
+			fill: $text-color
 
 		.no-touchevents a.visit-view:hover > em
-			color: $color-text
+			color: $text-color
 
 
 .visit
@@ -79,6 +79,6 @@
 	&__inner
 		display: inline-block
 		text-decoration: none
-		color: $color-text-light
+		color: $text-color-light
 
 /*visit end*/

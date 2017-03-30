@@ -1,18 +1,18 @@
 /*tags*/
 .tags
 	.article-layout &
-		border-top: 1px solid $color-border
+		border-top: 1px solid $border-color
 
 		&:last-child
 			margin-bottom: -$article-layout-space-vertical
 
 	h3
-		margin-bottom: $space-bottom
+		margin-bottom: $bottom-space
 
 .tags__list, .content .tags__list
 	font-size: 0
 	letter-spacing: -4px
-	margin: 0 -10px ($space-bottom - $space-bottom/2)
+	margin: 0 -10px ($bottom-space - $bottom-space/2)
 
 	.article-layout &
 		max-width: none
@@ -28,7 +28,7 @@
 		letter-spacing: normal
 		text-transform: uppercase
 		margin-top: 0
-		margin-bottom: $space-bottom/2
+		margin-bottom: $bottom-space/2
 		padding: 0 10px
 
 		&:before
@@ -39,7 +39,7 @@
 			padding: 0 16px
 			text-decoration: none
 			color: #000
-			border: solid $color-text-mark-alt
+			border: solid $mark-color-alt
 			border-width: 1px 1px 4px
 			background: #fff
 			-webkit-transition-property: box-shadow, -webkit-transform
@@ -65,6 +65,6 @@
 				transform: translate(0, 0)
 
 .tags .tags__list
-	margin-bottom: -$space-bottom/2
+	margin-bottom: -$bottom-space/2
 
 /*tags end*/

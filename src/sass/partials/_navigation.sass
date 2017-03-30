@@ -6,7 +6,7 @@
 	margin-right: 240px
 	padding: 0 $layout-grid-space
 
-	@media only screen and (max-width: $mq-desk-md)
+	+media('<desk-lg')
 		padding: 0 $layout-grid-space--desk-md
 
 /*main navigation end*/
@@ -210,7 +210,7 @@
 					&.current > a,
 					.no-js &:hover > a
 						background: $color-nav-bg-hover
-						color: $color-text
+						color: $text-color
 
 				.priority-nav__dropdown > li > a span
 					display: inline-block
@@ -282,7 +282,7 @@
 				background: rgba(0, 0, 0, 0.31)
 				+transition
 
-				@media only screen and (max-width: $mq-desk-md)
+				+media('<desk-lg')
 					left: -#{$layout-grid-space--desk-md - $nav-item-space}
 
 		&.is-open.priority-nav-has-dropdown > ul:after
@@ -304,7 +304,7 @@
 		//box-sizing: border-box
 
 		.no-touchevents &:hover, &.is-open
-			background: $color-text-mark
+			background: $mark-color
 			color: #fff
 
 	.priority-nav__wrapper
@@ -316,17 +316,17 @@
 	&.is-open .priority-nav__dropdown
 		visibility: visible
 		opacity: 1
-		+transform(translate(0, 0) rotateY(0deg))
+		transform: translate(0, 0) rotateY(0deg)
 
 	.priority-nav__dropdown
 		position: absolute
 		visibility: hidden
 		opacity: 0
 		right: 100%
-		background: $color-text-alt
+		background: $text-color-alt
 		z-index: 15
 		+transition
-		+transform(translate(0, 0) rotateY(-30deg))
+		transform: translate(0, 0) rotateY(-30deg)
 		-webkit-transform-origin: 100% 0 0
 		transform-origin: 100% 0 0
 		@extend %resetStylePriorityNav
@@ -342,19 +342,17 @@
 
 	&.is-empty
 		.priority-nav__wrapper
-			-webkit-perspective: 1200px
 			perspective: 1200px
 
 		.priority-nav__dropdown
 			right: auto
 			left: 0
 			top: 100%
-			+transform(translate(0, 0) rotateX(-30deg))
-			-webkit-transform-origin: 0 0 0
+			transform: translate(0, 0) rotateX(-30deg)
 			transform-origin: 0 0 0
 
 			&.show
-				+transform(translate(0, 0) rotateY(0deg))
+				transform: translate(0, 0) rotateY(0deg)
 
 			> li
 				display: block

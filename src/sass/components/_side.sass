@@ -9,7 +9,7 @@
 	width: $width
 	z-index: 50
 
-	@media only screen and (max-width: $mq-desk-md)
+	+media('<desk-lg')
 		margin-right: -#{$layout-grid-space--desk-md + $width}
 
 	=font
@@ -48,7 +48,7 @@
 		left: 0
 		width: 100%
 		height: 100%
-		color: $color-text
+		color: $text-color
 		white-space: nowrap
 		text-decoration: none
 
@@ -65,13 +65,13 @@
 		line-height: 0
 		letter-spacing: -4px
 		white-space: nowrap
-		+text-transform-fix
+		+antialiased
 		//+transform(translate(80%, 0))
-		+transform(translate(-#{$width}, 0))
+		transform: translate(-#{$width}, 0)
 		+transition
 
 		.no-touchevents a:hover &
-			+transform(translate(-100%, 0))
+			transform: translate(-100%, 0)
 			+transition-duration
 
 	@at-root
@@ -82,8 +82,8 @@
 		padding-right:
 		height: 100%
 		width: $width
-		background: $color-text-alt
-		border-bottom: 1px solid darken($color-text-alt, 10%)
+		background: $text-color-alt
+		border-bottom: 1px solid darken($text-color-alt, 10%)
 		+transition
 
 		.no-touchevents a:hover &
@@ -118,11 +118,11 @@
 			overflow: hidden
 			max-height: $lh*2
 			opacity: 0
-			+transform(translate(20px, 0))
+			transform: translate(20px, 0)
 			+transition
 
 			.no-touchevents a:hover &
-				+transform(translate(0, 0))
+				transform: translate(0, 0)
 				opacity: 1
 				-webkit-transition-duration: 0.5s
 				transition-duration: 0.5s

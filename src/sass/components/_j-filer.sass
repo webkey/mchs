@@ -22,7 +22,7 @@
 			border-color: $color-form-border-focus
 
 		&.dragged .jFiler-input-icon i
-			+transform(translate(0, -8px))
+			transform: translate(0, -8px)
 
 		.jFiler-input-icon
 			margin-top: 0
@@ -44,20 +44,20 @@
 			font-weight: normal
 			font-size: $font-size-small
 			line-height: $line-height-small
-			color: $color-text
+			color: $text-color
 			text-align: center
 
 	&-items
-		margin: #{$space-bottom} 0 0
+		margin: #{$bottom-space} 0 0
 
 	&-items-list, .#{$user-content} &-items-list
-		margin: #{$space-bottom-sm} 0
+		margin: #{$bottom-space-sm} 0
 
 	&-item
-		margin: #{$space-bottom-sm} 0
+		margin: #{$bottom-space-sm} 0
 		font-size: $font-size-small
 		line-height: $line-height-small
-		color: $color-text
+		color: $text-color
 		overflow: hidden
 
 	&-item-icon
@@ -71,7 +71,7 @@
 	&-item-others
 		display: inline-block
 		vertical-align: top
-		color: $color-text-light
+		color: $text-color-light
 		position: relative
 
 		&:after
@@ -81,7 +81,7 @@
 			bottom: 0
 			height: 0
 			width: 999px
-			border-bottom: 1px dotted $color-border
+			border-bottom: 1px dotted $border-color
 			margin: 0 0 3px
 
 		span
@@ -117,7 +117,7 @@
 			height: 2px
 			width: 16px
 			border-radius: 2px
-			background: $color-text-mark
+			background: $mark-color
 			-webkit-transition-property: background
 			transition-property: background
 			-webkit-transition-duration: 0.2s
@@ -136,6 +136,6 @@
 
 		.no-touchevents &:hover:before,
 		.no-touchevents &:hover:after
-			background-color: $color-text-alt
+			background-color: $text-color-alt
 
 

@@ -1,3 +1,6 @@
+@import ../utils/variables
+@import ../utils/mixins
+
 /*FOOTER*/
 .footer
 	color: #b2b2b2
@@ -54,20 +57,20 @@
 
 						&.slick-active button:before
 							opacity: 1
-							background: $color-text-alt
+							background: $text-color-alt
 
 			&__item
 				padding: 0 $grid-space/2
 				font-size: $font-size-small
 				line-height: $line-height-small
 				letter-spacing: normal
-				color: $color-text
+				color: $text-color
 
 				img
-					margin-bottom: $space-bottom/2
+					margin-bottom: $bottom-space/2
 
 				p
-					margin-bottom: $space-bottom/2
+					margin-bottom: $bottom-space/2
 
 				& > *:last-child
 					margin-bottom: 0
@@ -81,7 +84,7 @@
 	overflow: hidden
 	background: #001e33
 
-	@media only screen and (max-width: $mq-desk-md)
+	+media('<desk-lg')
 		padding: $layout-grid-space--desk-md
 
 	$bottom-space: 24px
@@ -163,7 +166,7 @@
 		p
 			margin-bottom: $bottom-space
 
-		@media only screen and (max-width: $mq-desk-md)
+		+media('<desk-lg')
 			$nav-cols-length: 4
 
 			&__col
@@ -185,7 +188,7 @@
 	font-size: $font-size
 	line-height: $line-height
 
-	@media only screen and (max-width: $mq-desk-md)
+	+media('<desk-lg')
 		padding: 0 $layout-grid-space--desk-md
 
 	&__holder

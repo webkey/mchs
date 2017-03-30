@@ -6,26 +6,26 @@
 		+grid-parent()
 
 	&__box
-		+grid-item(3, $grid-space, $space-bottom)
+		+grid-item(3, $grid-space, $bottom-space)
 		font-size: $font-size
 		line-height: $line-height
 		letter-spacing: normal
 
 		.site-map__heading
 			display: block
-			margin-bottom: $space-bottom
+			margin-bottom: $bottom-space
 			font-size: 14px
 			line-height: 24px
 			font-weight: bold
 			text-transform: uppercase
 
 		a
-			color: $color-text
+			color: $text-color
 			text-decoration: none
 
 			.no-touchevents &:hover,
 			.no-touchevents .current > &,
 			.current > &
-				color: $color-text-alt
+				color: $text-color-alt
 
 /*site map menu end*/
