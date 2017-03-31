@@ -4,22 +4,25 @@
 	+reset-inline-block-space
 	margin-bottom: $bottom-space
 
-	&__item
-		font-size: $font-size
-		line-height: $line-height
-		letter-spacing: normal
+	.home-page &
+		padding-top: calc(2rem * 1.2 + 1.5rem) // Костыль. Высота однострочного заголовка секций
 
-		.aside &
-			+grid-item(1, $grid-space)
+.banners__item
+	font-size: $font-size
+	line-height: $line-height
+	letter-spacing: normal
 
-		.banners-panel &
-			+grid-item(4, $grid-space)
+	.aside &
+		+grid-item(1, $grid-space)
 
-		a
-			display: block
-			text-decoration: none
+	.banners-panel &
+		+grid-item(4, $grid-space)
 
-			img
-				width: 100%
+	a
+		display: block
+		text-decoration: none
+
+		img
+			width: 100%
 
 /*banners end*/

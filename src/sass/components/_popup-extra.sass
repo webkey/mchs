@@ -10,13 +10,13 @@ html.nav-opened-before
 	$this-container-class: extra-popup
 	$header-height: 60px
 
-	=transition
+	=transition()
 		-webkit-transition-property: opacity, visibility, box-shadow
 		transition-property: opacity, visibility, box-shadow
 		-webkit-transition-duration: 0.6s
 		transition-duration: 0.6s
 
-	=transition-duration-back
+	=transition-duration-back()
 		-webkit-transition-duration: 0.2s
 		transition-duration: 0.2s
 
@@ -121,7 +121,6 @@ html.nav-opened-before
 			border: 1px solid $border-color
 			color: #fff
 			text-decoration: none
-			background: $btn-bg
 			font-size: 0
 			line-height: 0
 			letter-spacing: -4px

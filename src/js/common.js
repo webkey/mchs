@@ -563,9 +563,9 @@ function navExpander() {
 /*nav expander end*/
 
 /**
- * !drop language
+ * !toggle drop language
  * */
-function languageEvents() {
+function toggleLanguages() {
 
 	$('.js-lang-open').on('click', function (e) {
 		e.preventDefault();
@@ -591,7 +591,239 @@ function languageEvents() {
 		$('.lang').removeClass('lang-opened');
 	}
 }
-/*drop language end*/
+/*toggle drop language end*/
+
+/**
+ * !toggle drop years
+ * */
+function toggleYears() {
+
+	var $choiceWrap = $('.js-choice-wrap');
+	if ($choiceWrap.length) {
+
+		$.each($choiceWrap, function () {
+			var $thisChoiceWrap = $(this);
+
+			if ($thisChoiceWrap.attr('data-parent-position') !== undefined) {
+				$thisChoiceWrap.parent().css({
+					'position': 'relative',
+					'padding-right': Math.round($thisChoiceWrap.outerWidth() + 10)
+				});
+			}
+		});
+
+		$('.js-choice-open').on('click', function (e) {
+			e.preventDefault();
+
+			$(this).closest('.js-choice-wrap').toggleClass('choice-opened');
+
+			e.stopPropagation();
+		});
+
+		$(document).on('click closeDropYears', function () {
+			closeDropYears();
+		});
+
+		function closeDropYears() {
+			$('.js-choice-wrap').removeClass('choice-opened');
+		}
+
+		$('.js-choice-drop').on('click', 'a', function () {
+
+			$('a', '.js-choice-drop').removeClass('active');
+
+			$(this)
+				.addClass('active')
+				.closest('.js-choice-wrap')
+				.find('.js-choice-open span')
+				.text($(this).find('span').text());
+		});
+	}
+
+}
+/*toggle drop years end*/
+
+/**
+ * !tab switcher
+ * */
+function tabSwitcher() {
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
+	// 2) resizeByWidth (resize only width);
+
+	/*
+	 <!--html-->
+	 <div class="some-class js-tabs" data-collapsed="true">
+	 <!--if has data-collapsed="true" one click open tab content, two click close collapse tab content-->
+	 <div class="some-class__nav">
+	 <div class="some-class__tab">
+	 <a href="#" class="js-tab-anchor" data-for="some-id-01">Text tab 01</a>
+	 </div>
+	 <div class="some-class__tab">
+	 <a href="#" class="js-tab-anchor" data-for="some-id-02">Text tab 02</a>
+	 </div>
+	 </div>
+
+	 <div class="some-class__panels js-tab-container">
+	 <div class="some-class__panel js-tab-content" data-id="some-id-01">Text content 01</div>
+	 <div class="some-class__panel js-tab-content" data-id="some-id-02">Text content 02</div>
+	 </div>
+	 </div>
+	 <!--html end-->
+	 */
+
+	var $main = $('.js-tabs');
+
+	var $container = $('.js-tab-container');
+
+	if ( !$container.length ) return false;
+
+	if($main.length){
+		var $anchor = $('.js-tab-anchor'),
+			$content = $('.js-tab-content'),
+			activeClass = 'active',
+			animationSpeed = 0,
+			animationHeightSpeed = 0.08;
+
+		$.each($main, function () {
+			var $this = $(this),
+				$thisAnchor = $this.find($anchor),
+				$thisContainer = $this.find($container),
+				$thisContent = $this.find($content),
+				initialDataAtr = $this.find('.active').data('for'),
+				activeDataAtr = false;
+
+			// prepare traffic content
+			function prepareTrafficContent() {
+				$thisContainer.css({
+					'display': 'block',
+					'position': 'relative',
+					'overflow': 'hidden'
+				});
+
+				$thisContent.css({
+					'display': 'block',
+					'position': 'absolute',
+					'left': 0,
+					'right': 0,
+					'width': '100%',
+					'z-index': -1
+				});
+
+				switchContent();
+			}
+
+			prepareTrafficContent();
+
+			// toggle content
+			$thisAnchor.on('click', function (e) {
+				e.preventDefault();
+
+				var $cur = $(this),
+					dataFor = $cur.data('for');
+
+				if ($this.data('collapsed') === true && activeDataAtr === dataFor) {
+
+					toggleActiveClass();
+					toggleContent(false);
+					changeHeightContainer(false);
+
+					return;
+				}
+
+				if (activeDataAtr === dataFor) return false;
+
+				initialDataAtr = dataFor;
+
+				switchContent();
+			});
+
+			// switch content
+			function switchContent() {
+				if (initialDataAtr) {
+					toggleContent();
+					changeHeightContainer();
+					toggleActiveClass();
+				}
+			}
+
+			// show active content and hide other
+			function toggleContent() {
+
+				$thisContainer.css('height', $thisContainer.outerHeight());
+
+				$thisContent.css({
+					'position': 'absolute',
+					'left': 0,
+					'right': 0
+				});
+
+				TweenMax.set($thisContent, {
+					autoAlpha: 0,
+					'z-index': -1
+				});
+
+				if ( arguments[0] === false ) return;
+
+				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
+
+				$initialContent.css('z-index', 2);
+
+				TweenMax.to($initialContent, animationSpeed, {
+					autoAlpha: 1
+				});
+			}
+
+			// change container's height
+			function changeHeightContainer() {
+				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
+
+				if ( arguments[0] === false ) {
+					TweenMax.to($thisContainer, animationHeightSpeed, {
+						'height': 0
+					});
+
+					return;
+				}
+
+				TweenMax.to($thisContainer, animationHeightSpeed, {
+					'height': $initialContent.outerHeight(),
+					onComplete: function () {
+
+						$thisContainer.css('height', 'auto');
+
+						$initialContent.css({
+							'position': 'relative',
+							'left': 'auto',
+							'right': 'auto'
+						});
+					}
+				});
+			}
+
+			// toggle class active
+			function toggleActiveClass(){
+				$thisAnchor.removeClass(activeClass);
+				$thisContent.removeClass(activeClass);
+
+				// toggleStateThumb();
+
+				if (initialDataAtr !== activeDataAtr) {
+
+					activeDataAtr = initialDataAtr;
+
+					$thisAnchor.filter('[data-for="' + initialDataAtr + '"]').addClass(activeClass);
+					$thisContent.filter('[data-id="' + initialDataAtr + '"]').addClass(activeClass);
+
+					return false;
+				}
+
+				activeDataAtr = false;
+			}
+		});
+	}
+}
+/* tab switcher end */
 
 /**
  * !sliders
@@ -748,7 +980,7 @@ function slidersInit() {
 				// autoplaySpeed: 8000,
 				infinite: true,
 				dots: true,
-				arrows: false
+				arrows: true
 			});
 
 		});
@@ -804,6 +1036,16 @@ function masonryInit() {
 			// options
 			itemSelector: '.news-previews__item',
 			percentPosition: true
+		});
+	}
+
+	var $newsGrid = $('.news-grid__list');
+	if ($newsGrid.length) {
+		$newsGrid.masonry({
+			// options
+			itemSelector: '.news-grid-js',
+			columnWidth: '.news-grid__item',
+			percentPosition: false
 		});
 	}
 }
@@ -1559,7 +1801,9 @@ $(document).ready(function(){
 	hoverClassInit();
 	addAlignClass();
 	navExpander();
-	languageEvents();
+	toggleLanguages();
+	toggleYears();
+	tabSwitcher();
 	slidersInit();
 	equalHeightInit();
 	masonryInit();

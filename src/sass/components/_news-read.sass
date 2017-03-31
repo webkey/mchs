@@ -4,7 +4,7 @@
 	+reset-inline-block-space
 	margin-bottom: $bottom-space
 
-	=transition
+	=transition()
 		-webkit-transition-property: background-color, color
 		transition-property: background-color, color
 		-webkit-transition-duration: $animation-speed-mouseleave
@@ -12,13 +12,12 @@
 		-webkit-transition-timing-function: ease-in-out
 		transition-timing-function: ease-in-out
 
-	=transition-duration
+	=transition-duration()
 		-webkit-transition-duration: $animation-speed
 		transition-duration: $animation-speed
 
 	&__item
-		+grid-item(1, $grid-space)
-		margin-bottom: $bottom-space
+		+grid-item(1, $grid-space, $bottom-space)
 		font-size: $font-size-small
 		line-height: $line-height-small
 		letter-spacing: normal

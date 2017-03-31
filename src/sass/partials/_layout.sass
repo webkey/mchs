@@ -38,7 +38,7 @@
 
 .main-inside
 	margin: 0 0 0 $sidebar-left-width
-	padding: $layout-grid-space
+	padding: $layout-grid-space #{$layout-grid-space - 10px}
 	min-height: 50px
 	position: relative
 	+clear
@@ -158,6 +158,7 @@
 		margin-top: $bottom-space-md
 
 .section__title
+	position: relative
 	margin-bottom: $bottom-space/2
 
 	h2

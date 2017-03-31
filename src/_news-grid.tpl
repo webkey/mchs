@@ -1,4 +1,4 @@
-<div class="news-grid__item@@if(context.size){ news-grid__item--@@size}">
+<div class="news-grid__item@@if(context.size){--@@size} news-grid-js">
 	@@if (context.label) { <div class="news-grid__label news-grid__label_@@label">@@label</div>}
 	@@if(context.slider){ <div class="news-grid__slider">@@include('_news-grid-slider.tpl')</div>}
 	<a href="#" class="news-grid__inner">

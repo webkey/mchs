@@ -8,23 +8,38 @@
 
 .news-grid__list
 	margin-bottom: $bottom-space
+	+margin-horizontal(round(-$grid-space/2))
 	+clear
 
-.news-grid__item
+	&:last-child
+		margin-bottom: 0
+
+.news-grid__item, .news-grid__item--large
+	float: left
 	position: relative
 	font-size: $font-size-small
 	line-height: $line-height-small
 	letter-spacing: normal
 
 	.news-grid &
-		+grid-item-float(3, $grid-space)
 		margin-bottom: $grid-space
 
-		//+media('<desk-lg')
-			+grid-item(3, $grid-space)
+		width: 270px + $grid-space // костыль для малекнького элемента, чтобы высоты блоков были четко по дизу
+		height: 304px // костыль для малекнького элемента, чтобы высоты блоков были четко по дизу
+		+padding-horizontal(round($grid-space/2))
+
+.news-grid__item:nth-child(n + 4) // Костыль. Все элементы начиная с четвертого должны быть без картинок
+	height: 154px // костыль для элемента без картинок, чтобы высоты блоков были четко по дизу
+
+	.news-grid__label
+		display: none
+
+	.news-grid__img
+		display: none
 
 .news-grid .news-grid__item--large
-	+grid-item-float(1.5, $grid-space)
+	width: 560px + $grid-space // костыль для большого элемента, чтобы высоты блоков были четко по дизу
+	height: 628px // костыль для большого элемента, чтобы высоты блоков были четко по дизу
 
 	.news-grid__content
 		height: 278px // костыль, чтобы высоты блоков были четко по дизу
@@ -36,6 +51,7 @@
 	color: $text-color
 	background: #fff
 	box-shadow: inset 0 -3px 0 $mark-color-alt
+	overflow: hidden // необходимо для учета margin внутренних элементов !!!
 
 .news-grid__label
 	position: absolute
@@ -47,9 +63,6 @@
 	overflow: hidden
 	z-index: 5
 
-	.news-grid__item:nth-child(3) ~ .news-grid__item & // Костыль. Все элементы начиная с четвертого должны быть без картинок
-		display: none;
-
 	&_none
 		display: none
 
@@ -59,15 +72,28 @@
 		background-size: 26px
 
 .news-grid__img
-	height: 150px // костыль, чтобы высоты блоков были четко по дизу
-	background: no-repeat center center
+	background-image: url(../../img/no-img.jpg)
+	background-repeat: no-repeat
+	background-position: center center
 	background-size: cover
-
-	.news-grid__item:nth-child(3) ~ .news-grid__item & // Костыль. Все элементы начиная с четвертого должны быть без картинок
-		display: none;
+	z-index: 4
 
 	img
 		width: 100%
+
+.news-grid__img, .news-grid__slider
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 150px // костыль, чтобы высоты блоков были четко по дизу
+	z-index: 4
+
+	.news-grid__item--large &
+		left: round($grid-space/2)
+		right: round($grid-space/2)
+		width: auto
+		height: 350px
 
 .news-grid__content
 	position: relative
@@ -75,8 +101,11 @@
 	padding: $grid-inside-vertical-space $grid-inside-horizontal-space 48px
 	// Костыль. Нужен больше нижний отступ, чтобы повсесить на абсолюте мета инфу
 
-	//.news-grid__label + .news-grid__inner &:first-child
-		padding-top: $grid-inside-vertical-space + $media-label-size
+	.news-grid__item:nth-child(-n+3) &
+		margin-top: 150px // Костыль. Высота картинки
+
+	.news-grid__item--large:nth-child(-n+3) &
+		margin-top: 350px // Костыль. Высота картинки для большого блока
 
 	& > *
 		z-index: 2

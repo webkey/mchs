@@ -1,3 +1,6 @@
+@function strip-units($number)
+	@return $number / ($number * 0 + 1)
+
 // =============================================================================
 // pow
 // =============================================================================
@@ -26,10 +29,16 @@
 /// @return {Number} - Значение округленное до `n` знаков после запятой
 
 @function round-float($number, $n)
+	//$unit: unit($number)
+	//$number: strip-units($number)
+	//@debug $unit
+	//@debug $number
 	$float: pow(10,$n)
 
 	$value: round($number*$float)/$float
 
+	//$valueWithUnit: $value + $unit
+	//@debug $valueWithUnit
 	@return $value
 
 // Примесь конкретно для этого проэкта

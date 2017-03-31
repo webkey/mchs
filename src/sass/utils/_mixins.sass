@@ -129,10 +129,11 @@
 // =============================================================================
 // Grid Item
 // =============================================================================
-/// Формирует упрощенную сетку элементов с применением `display: inline-block`
-/// Для родителя наобходимо подключить +grid-parent
-/// На оберту родителя при необходимости задать `overflow: hidden`
-/// Для дочерних элементов необходимо подключить +grid-item
+/// Формирует упрощенную сетку элементов с применением `display: inline-block`, или `float: left`;
+/// Для родителя наобходимо подключить `+grid-parent`;
+/// В случае с `inline-block` обнулить `font:size` и `letter-spacing` (примесь `+reset-inline-block-space`)
+/// На оберту родителя при необходимости задать `overflow: hidden`;
+/// Для дочерних элементов необходимо подключить `+grid-item` или `+grid-item-float`;
 ///
 /// @param {Length} $horizontal-space [20px] - горизонтальные отступы между элементами
 /// @param {Length} $length-in-row [2] - количество элементов в ряду
@@ -507,15 +508,15 @@
 /// 	left: 50%;
 /// 	bottom: 100%;
 /// }
-=triangle($direction, $color: tomato, $size: 1em)
+=triangle($direction, $color: tomato, $size: 1em, $kef: 1.5)
 	@if not index(top right bottom left, $direction)
 		@error "Direction must be either `top`, `right`, `bottom` or `left`."
 
-	+pseudo()
+	//+pseudo()
 	width: 0
 	height: 0
 	z-index: 2
-	border-#{opposite-direction($direction)}: ($size * 1.5) solid $color
+	border-#{opposite-direction($direction)}: ($size * $kef) solid $color
 
 	$perpendicular-borders: $size solid transparent
 

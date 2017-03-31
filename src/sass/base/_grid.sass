@@ -1,0 +1,19 @@
+.grid-row
+	+margin-horizontal(-#{$grid-space/2})
+	margin-bottom: $grid-space
+	+clear
+
+@for $grid-col from 1 through 12
+	.grid-col-#{$grid-col}
+		float: left
+		position: relative
+		min-height: 1px
+		width: (100%/(12)*$grid-col)
+		+padding-horizontal($grid-space/2)
+		//margin-bottom: $grid-space
+
+.grid-row--zero
+	+margin-horizontal(0)
+
+	[class*="grid-col-"], [class^="grid-col-"]
+		+padding-horizontal(0)

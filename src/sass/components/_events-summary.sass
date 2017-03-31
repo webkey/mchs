@@ -1,0 +1,75 @@
+/*events summary*/
+.events-sum
+	position: relative
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.events-sum__nav
+	height: 60px
+
+.events-sum__tab
+	height: 100%
+
+	$min: 1 !default
+	$max: 3 !default
+
+	@for $item from $min through $max
+
+		$cur-item: $item - 1
+
+		$percentage: 100/($max - 1)*$cur-item*1%
+
+		@debug $percentage
+
+		&:nth-child(#{$item}) a
+			background-color: mix(#ff9a09, #ec3c01, $percentage)
+
+			.no-touchevents &:hover
+				background-color: mix(darken(#ff9a09, 5%), darken(#ec3c01, 5%), $percentage)
+
+	a
+		display: block
+		position: relative
+		overflow: hidden // для обрезания стрелки активного таба
+		height: 100%
+		text-decoration: none
+		color: $text-color
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+		&::after
+			+pseudo()
+			+triangle(top, white, 10px, 1)
+			top: 100%
+			left: 50%
+			margin-left: -10px
+			will-change: transform
+			transition-property: transform
+			transition-duration: $animation-speed
+
+		//.no-touchevents &:hover
+			opacity: 0.8
+
+		&.active
+			&::after
+				transform: translate(0, -100%)
+
+		& > span
+			+hide-text
+			+antialiased
+
+		svg
+			display: block
+			position: absolute
+			left: 50%
+			top: 50%
+			width: 25px
+			height: 25px
+			transform: translate(-50%, -50%)
+
+			path, polygon
+				fill: white
+
+/*save info end*/

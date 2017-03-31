@@ -30,15 +30,37 @@
 						<div class="content-wrap">
 							<div class="content">
 								<section class="section" id="main-new-anchor">
-									<div class="section__title"><h2>Главные новости</h2></div>
-									<div class="section__holder">
-										<!--news grid-->
-										<div class="news-grid">
-											<div class="news-grid__list">
-												@@loop('_news-grid.tpl', 'includes-json/news-grid-items.json')
+									<div class="grid-row">
+										<div class="grid-col-9">
+											<div class="section__title"><h2>Главные новости</h2></div>
+											<div class="section__holder">
+												<!--news grid-->
+												<div class="news-grid">
+													<div class="news-grid__list">
+														@@loop('_news-grid.tpl', 'includes-json/news-grid-items.json')
+													</div>
+												</div>
+												<!--news grid end-->
 											</div>
 										</div>
-										<!--news grid end-->
+										<div class="grid-col-3">
+											<div class="section__title">
+												<h2>Спасены</h2>
+												@@include('_years-select.tpl')
+											</div>
+											<div class="section__holder">
+												<div class="grid-row">
+													<div class="grid-col-12">
+														@@include('_save-info.tpl')
+													</div>
+												</div>
+												<div class="grid-row">
+													<div class="grid-col-12">
+														@@include('_events-summary.tpl')
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</section>
 								<section class="section" id="map-anchor">
