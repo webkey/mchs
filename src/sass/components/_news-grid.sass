@@ -1,0 +1,143 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../utils/placeholders
+
+/*news grid*/
+.news-grid
+	overflow: hidden
+
+.news-grid__list
+	margin-bottom: $bottom-space
+	+clear
+
+.news-grid__item
+	position: relative
+	font-size: $font-size-small
+	line-height: $line-height-small
+	letter-spacing: normal
+
+	.news-grid &
+		+grid-item-float(3, $grid-space)
+		margin-bottom: $grid-space
+
+		//+media('<desk-lg')
+			+grid-item(3, $grid-space)
+
+.news-grid .news-grid__item--large
+	+grid-item-float(1.5, $grid-space)
+
+	.news-grid__content
+		height: 278px // костыль, чтобы высоты блоков были четко по дизу
+
+.news-grid__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: $text-color
+	background: #fff
+	box-shadow: inset 0 -3px 0 $mark-color-alt
+
+.news-grid__label
+	position: absolute
+	top: 0
+	width: $media-label-size
+	height: $media-label-size
+	pointer-events: none
+	text-indent: -9999px
+	overflow: hidden
+	z-index: 5
+
+	.news-grid__item:nth-child(3) ~ .news-grid__item & // Костыль. Все элементы начиная с четвертого должны быть без картинок
+		display: none;
+
+	&_none
+		display: none
+
+	&_video
+		background: $mark-color url(../../img/depict-video.svg) no-repeat center
+		-webkit-background-size: 26px
+		background-size: 26px
+
+.news-grid__img
+	height: 150px // костыль, чтобы высоты блоков были четко по дизу
+	background: no-repeat center center
+	background-size: cover
+
+	.news-grid__item:nth-child(3) ~ .news-grid__item & // Костыль. Все элементы начиная с четвертого должны быть без картинок
+		display: none;
+
+	img
+		width: 100%
+
+.news-grid__content
+	position: relative
+	overflow: hidden
+	padding: $grid-inside-vertical-space $grid-inside-horizontal-space 48px
+	// Костыль. Нужен больше нижний отступ, чтобы повсесить на абсолюте мета инфу
+
+	//.news-grid__label + .news-grid__inner &:first-child
+		padding-top: $grid-inside-vertical-space + $media-label-size
+
+	& > *
+		z-index: 2
+		position: relative
+
+	&:before
+		content: ''
+		position: absolute
+		left: 0
+		top: 0
+		height: 100%
+		width: 100%
+		background: $mark-color-alt
+		transform: translate(0, 100%)
+		+news-transition
+
+	.no-touchevents a.news-grid__inner:hover &
+		&:before
+			transform: translate(0, 0)
+			transition-duration: $animation-speed
+
+.news-grid__title
+	font-family: $font-alt
+	+font(1.8rem, 1.3)
+	font-weight: 700
+	overflow: hidden
+	height: round-float(1.8rem*1.3*2, 1) // костыль, чтобы высоты блоков были четко по дизу
+	margin-bottom: 20px
+
+.news-grid__text
+	overflow: hidden
+	height: round-float($font-size-small*$line-height-small*3, 1) // костыль, чтобы высоты блоков были четко по дизу
+	margin-bottom: 20px
+
+.news-grid__meta
+	position: absolute
+	bottom: $grid-inside-vertical-space
+	width: calc(100% - #{$grid-inside-horizontal-space*2})
+	font-size: 1.2rem
+	line-height: 1.4
+	color: $text-color-light
+	+news-transition
+
+	time
+		font-style: normal
+
+	.visit-view
+		float: right
+
+		svg path
+			+news-transition
+
+
+	.no-touchevents a.news-grid__inner:hover &
+			color: $text-color
+
+			svg path
+				fill: $text-color
+				transition-duration: $animation-speed
+
+.news-grid__footer
+	position: relative
+
+/*news grid end*/

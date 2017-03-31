@@ -2,7 +2,8 @@
 /*files item*/
 $class-files: files
 .#{$class-files}
-	+grid-parent
+	+grid-parent($grid-space)
+	+reset-inline-block-space
 	margin-bottom: $bottom-space
 
 	&__item
@@ -11,11 +12,11 @@ $class-files: files
 		letter-spacing: normal
 
 		.#{$class-files} &
-			+grid-item(2)
+			+grid-item(2, $grid-space)
 			margin-bottom: $grid-space
 
 			+media('<desk-lg')
-				+grid-item(1)
+				+grid-item(1, $grid-space)
 
 	&__inner
 		display: block

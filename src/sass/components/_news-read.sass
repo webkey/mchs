@@ -1,6 +1,7 @@
 /*news read*/
 .news-read
-	+grid-parent
+	+grid-parent($grid-space)
+	+reset-inline-block-space
 	margin-bottom: $bottom-space
 
 	=transition
@@ -16,7 +17,7 @@
 		transition-duration: $animation-speed
 
 	&__item
-		+grid-item(1)
+		+grid-item(1, $grid-space)
 		margin-bottom: $bottom-space
 		font-size: $font-size-small
 		line-height: $line-height-small

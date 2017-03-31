@@ -1,129 +1,117 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../utils/placeholders
+
 /*news previews*/
 .news-previews
-	$class: news-previews
-	$padding-vertical: 26px
-	$padding-horizontal: 30px
-	$label-size: 60px
+	overflow: hidden
 
-	=transition
-		-webkit-transition-property: -webkit-transform, color, fill
-		transition-property: transform, color, fill
-		-webkit-transition-duration: $animation-speed-mouseleave
-		transition-duration: $animation-speed-mouseleave
-		-webkit-transition-timing-function: ease-in-out
-		transition-timing-function: ease-in-out
+.news-previews__list
+	+grid-parent($grid-space)
+	+reset-inline-block-space
+	margin-bottom: $bottom-space
 
-	=transition-duration
-		-webkit-transition-duration: $animation-speed
-		transition-duration: $animation-speed
+.news-previews__item
+	font-size: $font-size-small
+	line-height: $line-height-small
+	letter-spacing: normal
 
-	&__list
-		+grid-parent
-		margin-bottom: $bottom-space
+	.news-previews &
+		+grid-item(4, $grid-space)
+		margin-bottom: $grid-space
 
-	&__item
-		font-size: $font-size-small
-		line-height: $line-height-small
-		letter-spacing: normal
+		+media('<desk-lg')
+			+grid-item(3, $grid-space)
 
-		.#{$class} &
-			+grid-item(4)
-			margin-bottom: $grid-space
+.news-previews__inner
+	$shadow-color: $mark-color
+	display: block
+	position: relative
+	text-decoration: none
+	color: $text-color
+	background: #fff
+	box-shadow: inset 0 -3px 0 $mark-color-alt
 
-			+media('<desk-lg')
-				+grid-item(3)
+.news-previews__label
+	position: absolute
+	left: 0
+	top: 0
+	width: $media-label-size
+	height: $media-label-size
+	text-indent: -9999px
+	overflow: hidden
+	z-index: 5
 
-	&__inner
-		$shadow-color: $mark-color
-		display: block
+	&_none
+		display: none
+
+	&_video
+		background: $mark-color url(../../img/depict-video.svg) no-repeat center
+		-webkit-background-size: 26px
+		background-size: 26px
+
+.news-previews__img
+	min-height: $media-label-size
+
+	img
+		width: 100%
+
+.news-previews__content
+	position: relative
+	overflow: hidden
+	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
+
+	.news-previews__label + &
+		padding-top: $grid-inside-vertical-space + $media-label-size
+
+	& > *
+		z-index: 2
 		position: relative
-		text-decoration: none
-		color: $text-color
-		background: #fff
-		box-shadow: inset 0 -3px 0 $mark-color-alt
 
-	&__label
+	&:before
+		content: ''
 		position: absolute
 		left: 0
 		top: 0
-		width: $label-size
-		height: $label-size
-		text-indent: -9999px
-		overflow: hidden
-		z-index: 5
+		height: 100%
+		width: 100%
+		background: $mark-color-alt
+		transform: translate(0, 100%)
+		+news-transition
 
-		&_none
-			display: none
-
-		&_video
-			background: $mark-color url(../img/depict-video.svg) no-repeat center
-			-webkit-background-size: 26px
-			background-size: 26px
-
-	&__img
-		min-height: $label-size
-
-		img
-			width: 100%
-
-	&__content
-		position: relative
-		overflow: hidden
-		padding: $padding-vertical $padding-horizontal
-
-		.#{$class}__label + &
-			padding-top: $padding-vertical + $label-size
-
-		& > *
-			z-index: 2
-			position: relative
-
+	.no-touchevents a.news-previews__inner:hover &
 		&:before
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			height: 100%
-			width: 100%
-			background: $mark-color-alt
-			transform: translate(0, 100%)
-			+transition
+			transform: translate(0, 0)
+			transition-duration: $animation-speed
 
-	@at-root
-		.no-touchevents a:hover .#{$class}__content
-			&:before
-				transform: translate(0, 0)
-				+transition-duration
+.news-previews__text
+	margin-bottom: $grid-inside-vertical-space
 
-	&__text
-		margin-bottom: $padding-vertical
+.news-previews__meta
+	display: block
+	font-size: 1.2rem
+	line-height: 1.4
+	color: $text-color-light
+	+news-transition
 
-	&__meta
-		display: block
-		font-size: 1.2rem
-		line-height: 1.4
-		color: $text-color-light
-		+transition
+	time
+		font-style: normal
 
-		time
-			font-style: normal
+	.visit-view
+		float: right
 
-		.visit-view
-			float: right
+		svg path
+			+news-transition
+
+
+	.no-touchevents a.news-previews__inner:hover &
+			color: $text-color
 
 			svg path
-				+transition
+				fill: $text-color
+				transition-duration: $animation-speed
 
-	@at-root
-		.no-touchevents a:hover
-			.#{$class}__meta
-				color: $text-color
-
-				svg path
-					fill: $text-color
-					+transition-duration
-
-	&__footer
-		position: relative
+.news-previews__footer
+	position: relative
 
 /*news previews end*/

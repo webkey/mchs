@@ -1,6 +1,7 @@
 /*banners*/
 .banners
-	+grid-parent
+	+grid-parent($grid-space)
+	+reset-inline-block-space
 	margin-bottom: $bottom-space
 
 	&__item
@@ -9,10 +10,10 @@
 		letter-spacing: normal
 
 		.aside &
-			+grid-item(1)
+			+grid-item(1, $grid-space)
 
 		.banners-panel &
-			+grid-item(4)
+			+grid-item(4, $grid-space)
 
 		a
 			display: block

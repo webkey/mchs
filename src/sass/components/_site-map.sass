@@ -3,7 +3,8 @@
 	display: block
 
 	&__container
-		+grid-parent()
+		+grid-parent($grid-space)
+		+reset-inline-block-space
 
 	&__box
 		+grid-item(3, $grid-space, $bottom-space)

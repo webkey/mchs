@@ -18,9 +18,15 @@
 			.no-touchevents &
 				left: 100%
 
+			.no-touchevents &.is_bottom
+				margin-left: 0
+
 		+media('<desk-hd')
 			.touchevents &
 				left: 100%
+
+			.touchevents &.is_bottom
+				margin-left: 0
 
 	+media('<desk-lg')
 		margin-right: -#{$layout-grid-space--desk-md + $width}

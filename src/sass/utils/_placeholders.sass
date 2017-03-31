@@ -31,3 +31,11 @@
 	$value: round($number*$float)/$float
 
 	@return $value
+
+// Примесь конкретно для этого проэкта
+// Устанавливает заначения параметров анимации `transition`
+// для превью новостей в гридах
+=news-transition()
+	transition-property: transform, color, fill
+	transition-duration: $animation-speed-mouseleave
+	transition-timing-function: ease-in-out

@@ -32,18 +32,13 @@
 								<section class="section" id="main-new-anchor">
 									<div class="section__title"><h2>Главные новости</h2></div>
 									<div class="section__holder">
-										<!--news previews-->
-										<div class="news-previews">
-											<div class="news-previews__list">
-												@@loop('_news-previews.tpl', 'includes-json/news-items.json')
-											</div>
-											<div class="news-previews__footer">
-												<div class="more">
-													<a href="#" class="btn-more"><span>Загрузить ещё</span><i></i></a>
-												</div>
+										<!--news grid-->
+										<div class="news-grid">
+											<div class="news-grid__list">
+												@@loop('_news-grid.tpl', 'includes-json/news-grid-items.json')
 											</div>
 										</div>
-										<!--news previews end-->
+										<!--news grid end-->
 									</div>
 								</section>
 								<section class="section" id="map-anchor">

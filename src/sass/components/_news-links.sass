@@ -1,12 +1,13 @@
 /*news links*/
 .news-links
-	+grid-parent
+	+grid-parent($grid-space)
+	+reset-inline-block-space
 	margin-bottom: $bottom-space
 
 .news-links__item
 	display: inline-block
 	vertical-align: top
-	+grid-item(1)
+	+grid-item(1, $grid-space)
 	margin-bottom: $bottom-space
 	font-size: $font-size-small
 	line-height: $line-height-small

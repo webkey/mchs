@@ -142,8 +142,6 @@
 	.home-page &
 		min-height: 100vh
 
-	&:nth-child(1)
-		background-color: lightgoldenrodyellow
 	&:nth-child(2)
 		background-color: lightcoral
 	&:nth-child(3)
@@ -159,14 +157,13 @@
 	* ~ &
 		margin-top: $bottom-space-md
 
-	@at-root
-	&__title
-		margin-bottom: $bottom-space/2
+.section__title
+	margin-bottom: $bottom-space/2
 
-		h2
-			color: $text-color-alt
-			font-size: 2rem
-			margin: 0
+	h2
+		color: $text-color-alt
+		font-size: 2rem
+		margin: 0
 
 /*section end*/
 /*LAYOUT end*/

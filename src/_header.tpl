@@ -40,47 +40,6 @@
 						</li>
 					</ul>
 					@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive" })
-					<!--user options end-->
-					<!--main navigation-->
-					<!--<div class="main-nav">
-						<nav class="nav">
-							<ul class="nav__list">
-								@@loop('_nav-items.tpl', [
-									{
-										"mainNavItem": "typography",
-										"mainNavItemText": "О министерстве",
-										"mainNavItemActive": "@@mainNavItemActive"
-									},
-									{
-										"mainNavItem": "news",
-										"mainNavItemText": "Руководителям и ИП",
-										"mainNavItemActive": "@@mainNavItemActive"
-									},
-									{
-										"mainNavItem": "news-inner",
-										"mainNavItemText": "Законодательство",
-										"mainNavItemActive": "@@mainNavItemActive"
-									},
-									{
-										"mainNavItem": "appeal",
-										"mainNavItemText": "Электронные обращения",
-										"mainNavItemActive": "@@mainNavItemActive"
-									},
-									{
-										"mainNavItem": "faq",
-										"mainNavItemText": "Вопрос-ответ",
-										"mainNavItemActive": "@@mainNavItemActive"
-									},
-									{
-										"mainNavItem": "contacts",
-										"mainNavItemText": "Контакты",
-										"mainNavItemActive": "@@mainNavItemActive"
-									}
-								])
-							</ul>
-						</nav>
-					</div>-->
-					<!--main navigation end-->
 				</div>
 				<div class="header__content">
 					<div class="header__contacts">

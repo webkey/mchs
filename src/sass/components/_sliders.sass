@@ -266,3 +266,50 @@
 		+hide-text
 
 /*promo slider end*/
+
+/*promo slider*/
+.news-grid-slider
+	margin-bottom: 0
+
+	&.slick-dotted
+		margin-bottom: 0
+
+	.slick-dots, .#{$user-content} & .slick-dots
+		position: absolute
+		bottom: 20px
+
+		li
+			+padding-horizontal(7px)
+
+			button
+				width: 6px
+				height: 6px
+				border-radius: 50%
+				background-color: white
+				opacity: 0.5
+				transition-property: opacity, transform
+				transition-duration: $animation-speed
+
+				&::before
+					content: none
+
+		li
+			&.slick-active button
+				opacity: 1
+
+			.no-touchevents &:hover button
+				opacity: 1
+				transform: scale(2)
+
+.news-grid-slider__img
+	height: 350px
+	width: 100%
+	background-position: center center
+	background-repeat: no-repeat
+	-webkit-background-size: cover
+	background-size: cover
+
+	span
+		+hide-text
+
+/*promo slider end*/
