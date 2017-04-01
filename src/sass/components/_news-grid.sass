@@ -74,25 +74,8 @@
 	.news-grid__inner::before
 		height: 350px // высота как у большой картинки. см. выше
 
-.news-grid__label
-	position: absolute
-	top: 0
-	width: $media-label-size
-	height: $media-label-size
-	pointer-events: none
-	text-indent: -9999px
-	overflow: hidden
-	z-index: 5
-
-	&_none
-		display: none
-
-	&_video
-		background: $mark-color url(../../img/depict-video.svg) no-repeat center
-		-webkit-background-size: 26px
-		background-size: 26px
-
 .news-grid__img
+	min-height: $news-label-size
 	background-image: url(../../img/no-img.jpg)
 	background-repeat: no-repeat
 	background-position: center center
@@ -132,7 +115,7 @@
 	position: relative
 	overflow: hidden
 	padding: $grid-inside-vertical-space $grid-inside-horizontal-space 48px
-	// Костыль. Нужен больше нижний отступ, чтобы повсесить на абсолюте мета инфу
+	// Костыль. Нужен больше нижний отступ, чтобы повесить на абсолюте мета инфу
 
 	// специальные свойства для блока "Главные новости" (`.news-grid--main`)
 	// или специальные свойства элемета новостей с классом `.news-grid__item--has-img`
@@ -231,4 +214,5 @@
 		height: round-float($font-size-small*$line-height-small*4, 1) // костыль, чтобы высоты блоков были четко по дизу
 		margin-bottom: 20px
 
+/*news grid view end
 /*news grid end*/

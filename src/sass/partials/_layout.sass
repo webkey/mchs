@@ -120,6 +120,9 @@ body
 	width: $sidebar-right-width
 	//position: relative // нельзя задавать position, кроме static. нужно для работы sticky-kit
 
+	.home-page &
+		padding-top: calc(2rem * 1.2 + 1.5rem) // Костыль. Высота однострочного заголовка секций
+
 	+media('<desk-lg')
 		display: none
 		//margin: 0 0 0 -#{$sidebar-right-width--desk-md}
@@ -174,6 +177,9 @@ body
 .section
 	margin-bottom: $bottom-space-md
 
+	&:last-child
+		margin-bottom: 0
+
 	* ~ &
 		margin-top: $bottom-space-md
 
@@ -213,17 +219,21 @@ body
 		color: inherit
 		margin-bottom: 0
 
-		a
-			text-decoration: underline
-			color: inherit
+	a
+		text-decoration: underline
+		color: inherit
 
-			.no-touchevents a:hover
-				text-decoration: none
+		.no-touchevents a:hover
+			text-decoration: none
 
 .v-separator
 	display: inline-block
 	vertical-align: top
 	+margin-horizontal(10px)
+
+.section__box
+	background-color: white
+	padding: $grid-inside-horizontal-space
 
 /*section end*/
 /*LAYOUT end*/

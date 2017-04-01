@@ -1,6 +1,6 @@
 <div class="news-previews__item">
 	<a href="news-inner.html" class="news-previews__inner">
-		@@if (label !== "none") { <div class="news-previews__label news-previews__label_@@label">@@label</div>}
+		@@if (label !== "none") { <div class="news__label news__label_@@label">@@label</div>}
 		@@if (src !== "img/empty.png") { <div class="news-previews__img"> <img src="@@src" alt="image description" /></div>}
 		<div class="news-previews__content">
 			<div class="news-previews__text">@@text</div>

@@ -31,12 +31,12 @@
 	background: #fff
 	box-shadow: inset 0 -3px 0 $mark-color-alt
 
-.news-previews__label
+.news__label
 	position: absolute
-	left: 0
 	top: 0
-	width: $media-label-size
-	height: $media-label-size
+	width: $news-label-size
+	height: $news-label-size
+	pointer-events: none
 	text-indent: -9999px
 	overflow: hidden
 	z-index: 5
@@ -49,8 +49,13 @@
 		-webkit-background-size: 26px
 		background-size: 26px
 
+	&_photos
+		background: $mark-color-alt url(../../img/depict-photos.svg) no-repeat center
+		-webkit-background-size: 26px
+		background-size: 26px
+
 .news-previews__img
-	min-height: $media-label-size
+	min-height: $news-label-size
 
 	img
 		width: 100%
@@ -61,7 +66,7 @@
 	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
 
 	.news-previews__label + &
-		padding-top: $grid-inside-vertical-space + $media-label-size
+		padding-top: $grid-inside-vertical-space + $news-label-size
 
 	& > *
 		z-index: 2
