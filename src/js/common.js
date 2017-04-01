@@ -314,7 +314,7 @@ function scrollToSection() {
 
 		/* Page Scroll to id fn call */
 		$(".sidebar-menu-js a").mPageScroll2id({
-			highlightClass: 'active',
+			highlightClass: 'active-section',
 			highlightSelector: '.sidebar-menu-js a',
 			scrollSpeed: 700,
 			offset: 100,
@@ -672,29 +672,30 @@ function tabSwitcher() {
 	 <!--html end-->
 	 */
 
-	var $main = $('.js-tabs');
-
+	var $tabWrapper = $('.js-tabs');
 	var $container = $('.js-tab-container');
 
 	if ( !$container.length ) return false;
 
-	if($main.length){
+	if($tabWrapper.length){
 		var $anchor = $('.js-tab-anchor'),
 			$content = $('.js-tab-content'),
 			activeClass = 'active',
-			animationSpeed = 0,
+			animationSpeed = 0.2,
 			animationHeightSpeed = 0.08;
 
-		$.each($main, function () {
+		$.each($tabWrapper, function () {
 			var $this = $(this),
 				$thisAnchor = $this.find($anchor),
 				$thisContainer = $this.find($container),
-				$thisContent = $this.find($content),
-				initialDataAtr = $this.find('.active').data('for'),
-				activeDataAtr = false;
+				$thisContent = $this.find($content);
+			var initialTab = $this.find('.' + activeClass).attr('href').substring(1);
+			var valDataAutoHeight = $this.data('auto-height');
+			var thisAutoHeight = valDataAutoHeight !== false;
+			var activeTab = false;
 
 			// prepare traffic content
-			function prepareTrafficContent() {
+			function prepareTabsContent() {
 				$thisContainer.css({
 					'display': 'block',
 					'position': 'relative',
@@ -713,16 +714,16 @@ function tabSwitcher() {
 				switchContent();
 			}
 
-			prepareTrafficContent();
+			prepareTabsContent();
 
 			// toggle content
 			$thisAnchor.on('click', function (e) {
 				e.preventDefault();
 
-				var $cur = $(this),
-					dataFor = $cur.data('for');
+				var $self = $(this),
+					selfTab = $self.attr('href').substring(1);
 
-				if ($this.data('collapsed') === true && activeDataAtr === dataFor) {
+				if ($this.data('collapsed') === true && activeTab === selfTab) {
 
 					toggleActiveClass();
 					toggleContent(false);
@@ -731,16 +732,16 @@ function tabSwitcher() {
 					return;
 				}
 
-				if (activeDataAtr === dataFor) return false;
+				if (activeTab === selfTab) return false;
 
-				initialDataAtr = dataFor;
+				initialTab = selfTab;
 
 				switchContent();
 			});
 
 			// switch content
 			function switchContent() {
-				if (initialDataAtr) {
+				if (initialTab) {
 					toggleContent();
 					changeHeightContainer();
 					toggleActiveClass();
@@ -750,7 +751,7 @@ function tabSwitcher() {
 			// show active content and hide other
 			function toggleContent() {
 
-				$thisContainer.css('height', $thisContainer.outerHeight());
+				thisAutoHeight && $thisContainer.css('height', $thisContainer.outerHeight());
 
 				$thisContent.css({
 					'position': 'absolute',
@@ -765,7 +766,7 @@ function tabSwitcher() {
 
 				if ( arguments[0] === false ) return;
 
-				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
+				var $initialContent = $thisContent.filter('[id="' + initialTab + '"]');
 
 				$initialContent.css('z-index', 2);
 
@@ -776,7 +777,7 @@ function tabSwitcher() {
 
 			// change container's height
 			function changeHeightContainer() {
-				var $initialContent = $thisContent.filter('[data-id="' + initialDataAtr + '"]');
+				var $initialContent = $thisContent.filter('[id="' + initialTab + '"]');
 
 				if ( arguments[0] === false ) {
 					TweenMax.to($thisContainer, animationHeightSpeed, {
@@ -786,19 +787,27 @@ function tabSwitcher() {
 					return;
 				}
 
-				TweenMax.to($thisContainer, animationHeightSpeed, {
-					'height': $initialContent.outerHeight(),
-					onComplete: function () {
+				if (thisAutoHeight) {
+					TweenMax.to($thisContainer, animationHeightSpeed, {
+						'height': $initialContent.outerHeight(),
+						onComplete: function () {
 
-						$thisContainer.css('height', 'auto');
+							thisAutoHeight && $thisContainer.css('height', 'auto');
 
-						$initialContent.css({
-							'position': 'relative',
-							'left': 'auto',
-							'right': 'auto'
-						});
-					}
-				});
+							$initialContent.css({
+								'position': 'relative',
+								'left': 'auto',
+								'right': 'auto'
+							});
+						}
+					});
+				}
+
+				$initialContent.css({
+					'position': 'relative',
+					'left': 'auto',
+					'right': 'auto'
+				})
 			}
 
 			// toggle class active
@@ -806,19 +815,17 @@ function tabSwitcher() {
 				$thisAnchor.removeClass(activeClass);
 				$thisContent.removeClass(activeClass);
 
-				// toggleStateThumb();
+				if (initialTab !== activeTab) {
 
-				if (initialDataAtr !== activeDataAtr) {
+					$thisAnchor.filter('[href="#' + initialTab + '"]').addClass(activeClass);
+					$thisContent.filter('[id="' + initialTab + '"]').addClass(activeClass);
 
-					activeDataAtr = initialDataAtr;
-
-					$thisAnchor.filter('[data-for="' + initialDataAtr + '"]').addClass(activeClass);
-					$thisContent.filter('[data-id="' + initialDataAtr + '"]').addClass(activeClass);
+					activeTab = initialTab;
 
 					return false;
 				}
 
-				activeDataAtr = false;
+				activeTab = false;
 			}
 		});
 	}

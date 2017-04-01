@@ -486,14 +486,25 @@
 											<div class="article-layout">
 												<div class="tags__holder">
 													<h3>Искать похожие новости:</h3>
+													<!--tags list-->
 													<ul class="tags__list">
-														<li><a href="#"><span>Будьготов</span></a></li>
-														<li><a href="#"><span>Историяоднойчс</span></a></li>
-														<li><a href="#"><span>Дтп</span></a></li>
-														<li><a href="#"><span>Аварии</span></a></li>
-														<li><a href="#"><span>Мероприятия</span></a></li>
-														<li><a href="#"><span>Безопасность</span></a></li>
+														@@loop('_tags-list-item.tpl', [
+															{
+																"text": "Будьготов"
+															},{
+																"text": "Историяоднойчс"
+															},{
+																"text": "ДТП"
+															},{
+																"text": "Аварии"
+															},{
+																"text": "Мероприятия"
+															},{
+																"text": "Безопасность"
+															}
+														])
 													</ul>
+													<!--tags list end-->
 												</div>
 											</div>
 										</div>
