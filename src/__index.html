@@ -35,9 +35,9 @@
 											<div class="section__title"><h2>Главные новости</h2></div>
 											<div class="section__holder">
 												<!--news grid-->
-												<div class="news-grid">
+												<div class="news-grid news-grid--main">
 													<div class="news-grid__list">
-														@@loop('_news-grid.tpl', 'includes-json/news-grid-items.json')
+														@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-main.json')
 													</div>
 												</div>
 												<!--news grid end-->
@@ -97,26 +97,245 @@
 										<!--tags list end-->
 									</div>
 								</section>
+								<section class="section" id="multimedia-anchor">
+									<div class="section__title"><h2>Мультимедиа по ОБЖ</h2></div>
+									<div class="section__holder">
+										@@include('_obzh.tpl')
+									</div>
+								</section>
 								<section class="section" id="map-anchor">
-									<div class="section__title"><h2>Интерактивная карта</h2></div>
+									<div class="section__title"><h2>Карта неблагоприятных явлений</h2></div>
 									<div class="section__holder">
 										<img src="img/_temp-img-section-02.jpg" alt="image description" />
 									</div>
 								</section>
-								<section class="section" id="branches-anchor">
-									<div class="section__title"><h2>Департаменты</h2></div>
+								<section class="section" id="other-projects-anchor">
+									<div class="section__title"><h2>Другие проекты</h2></div>
 									<div class="section__holder">
-										{{Контент секции}}
+										<div class="others-news-wrap">
+											<div class="tape-slider">
+												<ul class="tape-slider__list tape-slider-js">
+													@@loop('_tape-slider-item.tpl', [
+													{
+													"text": "Будь готов",
+													"id": "#other-projects-id-01",
+													"activeClass": "active"
+													}, {
+													"text": "История одной чс",
+													"id": "#other-projects-id-02",
+													"activeClass": ""
+													}, {
+													"text": "Живой эфир",
+													"id": "#other-projects-id-03",
+													"activeClass": ""
+													}, {
+													"text": "надзорная деятельность",
+													"id": "#other-projects-id-04",
+													"activeClass": ""
+													}, {
+													"text": "Региональные сми",
+													"id": "#other-projects-id-05",
+													"activeClass": ""
+													}, {
+													"text": "История одной чс",
+													"id": "#other-projects-id-06",
+													"activeClass": ""
+													}, {
+													"text": "Живой эфир",
+													"id": "#other-projects-id-07",
+													"activeClass": ""
+													}, {
+													"text": "надзорная деятельность",
+													"id": "#other-projects-id-08",
+													"activeClass": ""
+													}, {
+													"text": "Региональные сми",
+													"id": "#other-projects-id-09",
+													"activeClass": ""
+													}
+													])
+												</ul>
+											</div>
+											<div class="others-news others-news-slider-js">
+												<div class="others-news-slider__item">
+													<div class="news-grid news-grid--boxes">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
+														</div>
+													</div>
+												</div>
+												<div class="others-news-slider__item">
+													<div class="news-grid news-grid--boxes">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others-alt.json')
+														</div>
+													</div>
+												</div>
+												<div class="others-news-slider__item">
+													<div class="news-grid news-grid--boxes">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
+														</div>
+													</div>
+												</div>
+												<div class="others-news-slider__item">
+													<div class="news-grid news-grid--boxes">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others-alt.json')
+														</div>
+													</div>
+												</div>
+												<div class="others-news-slider__item">
+													<div class="news-grid news-grid--boxes">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
+														</div>
+													</div>
+												</div>
+												<div class="others-news-slider__item">
+													<div class="news-grid news-grid--boxes">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others-alt.json')
+														</div>
+													</div>
+												</div>
+												<div class="others-news-slider__item">
+													<div class="news-grid news-grid--boxes">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
+														</div>
+													</div>
+												</div>
+												<div class="others-news-slider__item">
+													<div class="news-grid news-grid--boxes">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others-alt.json')
+														</div>
+													</div>
+												</div>
+												<div class="others-news-slider__item">
+													<div class="news-grid news-grid--boxes">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</section>
+								<section class="section" id="branches-anchor">
+									<div class="section__title"><h2><a href="#">Новости департаментов МЧС</a></h2></div>
+									<div class="section__holder">
+										<div class="grid-row">
+											<div class="grid-col-6">
+												<div class="section__subtitle">
+													<h3><a href="#">Госатомнадзор</a></h3>
+												</div>
+												@@include('_news-grid-item.tpl', {
+													"src": "img/img-news-05.jpg",
+													"label": "",
+													"title": "",
+													"text": "Представители регулирующих органов в области ядерной и радиационной безопасности Беларуси и России обсудили дальнейшие шаги двустороннего взаимодействия.",
+													"meta": "01.03.2017, 13:10",
+													"hasntImgSuffix": "",
+													"hasImgSuffix": "",
+													"wideClass": "wide"
+												})
+											</div>
+											<div class="grid-col-6">
+												<div class="section__subtitle">
+													<h3><a href="#">Госпромнадзор</a></h3>
+												</div>
+												@@include('_news-grid-item.tpl', {
+													"src": "img/img-news-06.jpg",
+													"label": "video",
+													"title": "",
+													"text": "Информационный день с молодыми специалистами в Госатомнадзоре.",
+													"meta": "02.03.2017, 17:10",
+													"hasntImgSuffix": "",
+													"hasImgSuffix": "",
+													"wideClass": "wide"
+												})
+											</div>
+										</div>
+										<div class="grid-row">
+											<div class="grid-col-6">
+												<div class="section__subtitle">
+													<h3><a href="#">Госчернобыль</a></h3>
+												</div>
+												@@include('_news-grid-item.tpl', {
+													"src": "img/img-news-07.jpg",
+													"label": "",
+													"title": "",
+													"text": "Возобновлено действие лицензии УЗ «Бешенковичская центральная районная больница».",
+													"meta": "05.03.2017, 09:05",
+													"hasntImgSuffix": "",
+													"hasImgSuffix": "",
+													"wideClass": "wide"
+												})
+											</div>
+											<div class="grid-col-6">
+												<div class="section__subtitle">
+													<h3><a href="#">Госрезерв</a></h3>
+												</div>
+												@@include('_news-grid-item.tpl', {
+													"src": "",
+													"label": "",
+													"title": "",
+													"text": "Регулирующие органы ядерной и радиационной безопасности Беларуси и стран Северной Европы заключили меморандум о сотрудничестве. Регулирующие органы ядерной и радиационной безопасности Беларуси и стран Северной Европы заключили меморандум о сотрудничестве.",
+													"meta": "17.03.2017, 18:18",
+													"hasntImgSuffix": "",
+													"hasImgSuffix": "",
+													"wideClass": "wide"
+												})
+											</div>
+										</div>
 									</div>
 								</section>
 								<section class="section" id="regions-anchor">
-									<div class="section__title"><h2>Региональные управления</h2></div>
+									<div class="section__title"><h2><a href="#">Новости региональных управлений</a></h2></div>
 									<div class="section__holder">
-										{{Контент секции}}
+										<div class="grid-row">
+											<div class="grid-col-6">
+												<div class="section__subtitle">
+													<h3><a href="#">Госатомнадзор</a></h3>
+													<span class="v-separator">|</span>
+													Все новости Минска
+												</div>
+												{{Контент секции}}
+											</div>
+											<div class="grid-col-6">
+												<div class="section__subtitle">
+													<h3><a href="#">Госатомнадзор</a></h3>
+													<span class="v-separator">|</span>
+													Все новости Минска
+												</div>
+												{{Контент секции}}
+											</div>
+										</div>
+										<div class="grid-row">
+											<div class="grid-col-6">
+												<div class="section__subtitle">
+													<h3><a href="#">Госатомнадзор</a></h3>
+													<span class="v-separator">|</span>
+													Все новости Минска
+												</div>
+												{{Контент секции}}
+											</div>
+											<div class="grid-col-6">
+												<div class="section__subtitle">
+													<h3><a href="#">Госатомнадзор</a>
+													</h3><span class="v-separator">|</span>
+													Все новости Минска
+												</div>
+												{{Контент секции}}
+											</div>
+										</div>
 									</div>
 								</section>
-								<section class="section" id="other-anchor">
-									<div class="section__title"><h2>Другие проекты</h2></div>
+								<section class="section" id="information-anchor">
+									<div class="section__title"><h2>Инфомрация МЧС</h2></div>
 									<div class="section__holder">
 										{{Контент секции}}
 									</div>

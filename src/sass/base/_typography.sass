@@ -1,6 +1,7 @@
 @import ../utils/variables
 @import ../utils/_mixins
 
+/*base
 html
 	font-size: 62.5%
 
@@ -129,19 +130,12 @@ table
 
 b, strong, th
 	+font-bold
-//font-family: 'fontNameBold'
-//font-weight: normal
 
 i, em
 	+font-italic
-//font-family: 'fontNameItalic'
-//font-style: normal
 
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
-//font-family: 'fontNameBoldItalic'
-//font-weight: normal
-//font-style: normal
 
 .mark
 	color: $mark-color
@@ -173,128 +167,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	.hide-desk-sm
 		display: none !important
 
-/*btn*/
-[class|="btn"],
-[class*=" btn-"],
-input[type="submit"],
-input[type="button"],
-input[type="reset"],
-button
-	display: inline-block
-	vertical-align: top
-	position: relative
-	text-align: center
-	text-decoration: none
-	box-sizing: border-box
-	cursor: pointer
-
-[class|="btn"],
-[class*=" btn-"]
-	& input[type="submit"],
-	& input[type="button"],
-	& input[type="reset"]
-		background: url("../../img/empty.png") repeat
-		display: block
-		height: 100%
-		padding: 0
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		z-index: 99
-		border: 0
-		opacity: 0
-		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0)
-		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0)
-
-/*btn-default*/
-.btn-default
-	position: relative
-	font: 400 1.6rem/24px $font-alt
-	color: $color-btn-text
-	padding: 11px 25px
-	border: 2px solid transparent
-	background: $color-btn-bg
-	box-shadow: none
-	box-sizing: border-box
-	+btn-hover
-	+btn-active
-
-/*btn-default end*/
-
-/*btn-default-alt*/
-.btn-default-alt
-	@extend .btn-default
-	color: $color-btn-bg
-	border: 2px solid $color-btn-bg
-	background: $color-btn-text
-
-	.no-touchevents &:hover
-		background: $color-btn-bg-hover
-		color: $color-btn-text
-
-/*btn-default-alt end*/
-
-/*btn-arrow*/
-.btn-arrow
-	@extend .btn-default
-	border-width: 1px
-	padding: 7px 20px
-
-	& > span
-		display: inline-block
-		vertical-align: top
-		position: relative
-
-		&:before,
-		&:after
-			content: ''
-			position: absolute
-			top: 50%
-			height: 2px
-			width: 10px
-			border-radius: 2px
-			background: #fff
-
-		&:before
-			margin: -4px 0 0 0
-			-webkit-transform: rotate(-45deg)
-			-ms-transform: rotate(-45deg)
-			transform: rotate(-45deg)
-
-		&:after
-			margin: 2px 0 0 0
-			-webkit-transform: rotate(45deg)
-			-ms-transform: rotate(45deg)
-			transform: rotate(45deg)
-
-	&_left > span
-		padding-left: 18px
-
-		&:before, &:after
-			left: 0
-
-		&:before
-			margin: -4px 0 0 0
-
-		&:after
-			margin: 2px 0 0 0
-
-	&_right > span
-		padding-right: 18px
-
-		&:before, &:after
-			right: 0
-
-		&:before
-			margin: 2px 0 0 0
-
-		&:after
-			margin: -4px 0 0 0
-
-/*btn-arrow*/
-/*btn end*/
-
 .#{$user-content}
 	@each $tags in h2, h3, h4, h5
 		p + #{$tags},
@@ -302,8 +174,10 @@ button
 		ol + #{$tags}
 			margin-top: $bottom-space-md
 
+/*base end
+
+/*list
 .#{$user-content}, .extra-popup // add list style for popup
-	//list
 	ul, ol
 		margin: $bottom-space 0
 		//padding: 0 0 $space-bottom
@@ -326,7 +200,7 @@ button
 		content: ''
 		position: absolute
 		left: 0
-		top: 9px
+		top: 0.6em
 		height: 0
 		width: 0
 		border: solid transparent
@@ -345,17 +219,17 @@ button
 			height: 1%
 			overflow: hidden
 
-		& > li:before
-			position: relative
-			display: inline-block
-			text-align: left
-			@include font-title
-			color: $mark-color
-			content: counter(section)
-			padding: 0 4px 0 0
-			min-width: 30px
-			margin-left: -30px
-			box-sizing: border-box
+			&:before
+				position: relative
+				display: inline-block
+				text-align: left
+				@include font-title
+				color: $mark-color
+				content: counter(section)
+				padding: 0 4px 0 0
+				min-width: 30px
+				margin-left: -30px
+				box-sizing: border-box
 
 	//ol > li > ul
 	ul ul,
@@ -403,10 +277,10 @@ button
 			&:before,
 			&:first-child:before
 				content: none
-//list end
+/*list end
 
+/*table
 .#{$user-content}
-	//table
 	table
 		margin-bottom: $bottom-space
 
@@ -454,10 +328,10 @@ button
 			color: $color-table-text-alt
 			border-color: $color-table-bg-alt
 			border-top-width: 0
-//table end
+/*table end
 
+/*blockquote
 .#{$user-content}
-	//blockquote
 	.blockquote
 		margin: $bottom-space-md 0
 
@@ -506,9 +380,9 @@ button
 			font-size: $font-size
 			line-height: $line-height
 			color: $text-color
-// blockquote end
+/*blockquote end
 
-//content img
+/*content img
 .imgc
 	text-align: center
 	padding-bottom: $bottom-space-lg
@@ -534,647 +408,9 @@ button
 		margin-right: auto
 		max-width: none
 
-//content img end
+/*content img end
 
-/*FORM STYLES*/
-/*form layout*/
-.form-row,
-.input-wrap
-	padding-bottom: $space-bottom-form
-
-.form-row
-	margin: 0 -15px
-	font-size: 0
-	letter-spacing: -4px
-
-.form-row .input-wrap
-	display: inline-block
-	vertical-align: top
-	width: 49.98%
-	padding: 0 15px
-	box-sizing: border-box
-
-	font-size: $font-size
-	letter-spacing: normal
-
-	+media('<mob-lg')
-		display: block
-		width: auto
-		margin-bottom: $space-bottom-form
-
-.label-holder
-	padding: 0 0 2px
-
-.label-holder, label
-	@include font-bold
-	font-size: inherit
-	line-height: inherit
-	color: $text-color
-
-.form-mark
-	display: inline-block
-	vertical-align: top
-	color: $mark-color
-
-/*form layout end*/
-
-/*form common*/
-input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
-	display: block
-	color: $color-form-text
-	font-size: 16px
-	line-height: 24px
-	letter-spacing: normal
-	height: 50px
-	width: 100%
-	padding: 12px 18px
-	background: $color-form-bg
-	box-shadow: inset 0 0 0 1px transparent
-	border: 1px solid $color-form-border
-	-webkit-transition-property: border-color, background-color, box-shadow
-	transition-property: border-color, background-color, box-shadow
-	-webkit-transition-duration: $animation-speed
-	transition-duration: $animation-speed
-	box-sizing: border-box
-	margin: 0 0 $space-bottom-form
-
-	.input-wrap &
-		margin: 0
-
-	//form hover
-	.no-touchevents &:hover
-		border-color: $color-form-border-focus
-
-	//form focus
-	&:focus
-		border-color: $color-form-border-focus
-		box-shadow: inset 0 0 0 1px $color-form-border-focus
-
-	//form error
-	&.error, .error > &, .no-touchevents &.error, .no-touchevents .error > &
-		color: $color-form-error
-		border-color: $color-form-error
-		box-shadow: inset 0 0 0 1px $color-form-error
-
-textarea
-	padding: 12px 18px
-	min-height: 114px
-	height: 114px
-	resize: vertical
-
-.error-note
-	display: block
-	position: relative
-	float: left
-	font-size: 1.2rem
-	line-height: 1.8
-	color: $color-form-error
-	height: 1.8em
-	width: 100%
-	margin-bottom: -1.8em
-	overflow: hidden
-	-ms-text-overflow: ellipsis
-	text-overflow: ellipsis
-	white-space: nowrap
-
-	.user-form &
-		display: none
-
-	form .error &
-		display: block
-
-.success-text
-	font-weight: bold
-	color: $color-form-success
-	padding: 0 0 20px
-	text-align: center
-
-/*form common end*/
-
-/*form placeholder*/
-input,
-textarea
-	&::-webkit-input-placeholder
-		color: $color-form-placeholder
-		transition: 0.2s
-		-webkit-transition: 0.2s
-
-	&:-moz-placeholder
-		color: $color-form-placeholder
-		transition: 0.2s
-		-webkit-transition: 0.2s
-
-	&::-moz-placeholder
-		color: $color-form-placeholder
-		transition: 0.2s
-		-webkit-transition: 0.2s
-		opacity: 1
-
-	&:-ms-input-placeholder
-		color: $color-form-placeholder
-		transition: 0.2s
-		-webkit-transition: 0.2s
-		opacity: 1
-
-	&.placeholder
-		color: $color-form-placeholder
-		transition: 0.2s
-		-webkit-transition: 0.2s
-		opacity: 1
-
-	//form placeholder hide
-	&:focus
-		&::-webkit-input-placeholder
-			color: transparent !important
-
-		&:-moz-placeholder
-			color: transparent !important
-
-		&::-moz-placeholder
-			color: transparent !important
-
-		&:-ms-input-placeholder
-			color: transparent !important
-
-	&.placeholder:focus
-		color: transparent !important
-
-	//form error placeholder
-	&.error
-		&::-webkit-input-placeholder
-			color: $color-form-error
-
-		&:-moz-placeholder
-			color: $color-form-error
-
-		&::-moz-placeholder
-			color: $color-form-error
-			opacity: 1
-
-		&:-ms-input-placeholder
-			color: $color-form-error
-			opacity: 1
-
-		&.placeholder
-			color: $color-form-error
-			opacity: 1
-/*form placeholder end*/
-
-/*form checkbox and radiobutton*/
-input[type="checkbox"] + label,
-input[type="radio"] + label,
-.check-label,
-.radio-label
-	display: inline-block
-	vertical-align: top
-	color: #000
-	text-transform: none
-	cursor: pointer
-	position: relative
-
-input[type="checkbox"] + label:before,
-.check-label > span > i:before
-	content: ''
-	height: 18px
-	width: 18px
-	position: absolute
-	left: 0
-	top: 50%
-	margin-top: -9px
-	border-radius: 0
-	border: 1px solid $mark-color
-	box-sizing: border-box
-
-input[type="checkbox"] + label > span,
-input[type="radio"] + label > span,
-input[type="checkbox"] + span,
-input[type="radio"] + span
-	display: inline-block
-	vertical-align: top
-	position: relative
-	padding: 2px 0 2px 34px
-	z-index: 2
-
-//checkbox
-input[type="checkbox"]
-	width: 16px
-	height: 16px
-	padding: 0
-	margin: 0
-	display: none
-
-	& + label:after,
-	& + span > i:after
-		content: ''
-		height: 16px
-		width: 16px
-		position: absolute
-		left: 1px
-		top: 50%
-		margin-top: -8px
-		border-radius: 0
-		background: none
-		-webkit-transition-property: opacity
-		transition-property: opacity
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-
-	& + label > span:before,
-	& + label > span:after,
-	& + span:before,
-	& + span:after
-		content: ''
-		position: absolute
-		height: 3px
-		width: 0
-		left: 0
-		top: 50%
-		border-radius: 2px
-		background: $mark-color
-		-webkit-transition-property: opacity
-		transition-property: opacity
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-		-webkit-transition-timing-function: linear
-		transition-timing-function: linear
-
-	& + label > span:before,
-	& + span:before
-		transform: rotate(45deg)
-		transform-origin: 0 7px
-		z-index: 1
-
-	& + label > span:after,
-	& + span:after
-		transform: rotate(-50deg)
-		transform-origin: 0 10px
-		left: 22px
-
-	// checkbox checked
-	&:checked
-		& + label > span:before,
-		& + span:before
-			width: 7px
-			margin: -4px 0 0 0
-			-webkit-transition-property: width
-			transition-property: width
-			-webkit-transition-duration: 0.1s
-			transition-duration: 0.1s
-			-webkit-backface-visibility: hidden
-			backface-visibility: hidden
-
-		& + label > span:after,
-		& + span:after
-			width: 11px
-			margin: 0 0 0 -8px
-			-webkit-transition-property: width
-			transition-property: width
-			-webkit-transition-duration: 0.1s
-			transition-duration: 0.1s
-			-webkit-transition-delay: 0.1s
-			transition-delay: 0.1s
-			-webkit-backface-visibility: hidden
-			backface-visibility: hidden
-
-	// checkbox disabled
-	&:disabled
-		& + label,
-		& + span > i
-			color: #bdbdbd
-
-		& + label:before,
-		& + span > i:before
-			border-color: #d6d6d6
-
-		& + label > span:before,
-		& + label > span:after,
-		& + span:before,
-		& + span:after
-			background: #b9b9b9
-
-// radio
-input[type="radio"]
-	float: left
-	height: 16px
-	width: 16px
-	margin: 0
-	padding: 0
-	display: none
-
-	& + label:before,
-	& + span:before
-		content: ''
-		height: 18px
-		width: 18px
-		position: absolute
-		left: 0
-		top: 50%
-		margin-top: -9px
-		border-radius: 50px
-		border: 1px solid $mark-color
-		box-sizing: border-box
-
-	& + label:after,
-	& + span:after
-		content: ''
-		height: 16px
-		width: 16px
-		position: absolute
-		left: 1px
-		top: 50%
-		margin-top: -8px
-		border-radius: 50px
-		background: none
-		-webkit-transition-property: opacity
-		transition-property: opacity
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-
-	& + label > span:after,
-	& + span > i:after
-		content: ''
-		width: 10px
-		height: 10px
-		position: absolute
-		top: 50%
-		left: 4px
-		margin-top: -5px
-		border-radius: 50%
-		overflow: hidden
-		background: $mark-color
-		-webkit-animation: bounceout 0s
-		-webkit-animation-iteration-count: 1
-		-webkit-animation-fill-mode: forwards
-		animation: bounceout 0s
-		animation-iteration-count: 1
-		animation-fill-mode: forwards
-		opacity: 0
-
-	// radio checked
-	&:checked + label > span:after,
-	&:checked + span > i:after
-		-webkit-animation: bounce 0.3s
-		-webkit-animation-iteration-count: 1
-		animation: bounce 0.3s
-		animation-iteration-count: 1
-		opacity: 1
-
-		@-webkit-keyframes bounce
-			0%
-				-webkit-transform: scale(0.8)
-				opacity: 0.4
-
-			50%
-				-webkit-transform: scale(1.4)
-				opacity: 1
-
-			100%
-				-webkit-transform: scale(1)
-				opacity: 1
-
-		@keyframes bounce
-			0%
-				transform: scale(0.8)
-				opacity: 0.4
-
-			50%
-				transform: scale(1.4)
-				opacity: 1
-
-			100%
-				transform: scale(1)
-				opacity: 1
-
-		@-webkit-keyframes bounceout
-			0%
-				-webkit-transform: scale(0)
-				opacity: 1
-
-			50%
-				-webkit-transform: scale(1.4)
-				opacity: 1
-
-			100%
-				-webkit-transform: scale(0)
-				opacity: 0.4
-
-		@keyframes bounceout
-			0%
-				transform: scale(0)
-				opacity: 1
-
-			50%
-				transform: scale(1.4)
-				opacity: 1
-
-			100%
-				transform: scale(0)
-				opacity: 0.4
-
-	// radio disabled
-	&:disabled
-		& + label,
-		& + span
-			color: #bdbdbd
-
-		& + label:before,
-		& + span:before
-			border-color: #d6d6d6
-
-		& + label > span:after,
-		& + span > i:after
-			background: #b9b9b9
-
-/*form checkbox and radiobutton end*/
-
-/*select*/
-// select overall
-.select
-	position: relative
-	margin: 0 0 $space-bottom-form
-	width: 100%
-
-	.input-wrap &
-		margin-bottom: 0
-
-	.cselect
-		width: 100%
-
-	select,
-	button.cselect .select-inner
-		display: block
-		overflow: hidden
-		text-overflow: ''
-		cursor: pointer
-		padding: 13px 40px 13px 18px
-		white-space: nowrap
-		text-indent: 0
-		width: 100%
-		border: 1px solid $color-form-border
-		border-radius: 0
-		background: $color-form-bg
-		-webkit-font-smoothing: antialiased
-		-webkit-appearance: none
-		-moz-appearance: none
-		box-shadow: none
-		-webkit-transition-property: background, border, color, box-shadow
-		transition-property: background, border, color, box-shadow
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-		box-sizing: border-box
-		outline: none
-
-	select,
-	button.cselect,
-	button.cselect .select-inner
-		@include font-normal
-		font-size: 16px
-		line-height: 22px
-		text-transform: none
-		color: $color-form-text
-
-	select
-		height: 50px
-		padding-right: 40px
-
-	button.cselect
-		z-index: 2
-
-	select:focus,
-	button.cselect:focus .select-inner,
-	button.cselect.ui-state-active .select-inner
-		color: $color-form-text
-		border-color: $color-form-border-focus
-
-	&:before,
-	&:after,
-	button.cselect .ui-icon .arrow-select:before,
-	button.cselect .ui-icon .arrow-select:after
-		content: ''
-		position: absolute
-		right: 22px
-		top: 50%
-		width: 10px
-		height: 3px
-		background: $color-form-border-focus
-		border-radius: 2px
-		margin-top: -1px
-		box-sizing: border-box
-		z-index: 1
-
-	&:before,
-	button.cselect .ui-icon .arrow-select:before
-		-webkit-transform: rotate(45deg)
-		-ms-transform: rotate(45deg)
-		transform: rotate(45deg)
-
-	&:after,
-	button.cselect .ui-icon .arrow-select:after
-		-webkit-transform: rotate(-45deg)
-		-ms-transform: rotate(-45deg)
-		transform: rotate(-45deg)
-		right: 17px
-
-	// multiselect button
-	button.cselect
-		display: block
-		position: relative
-		padding: 0
-		margin: 0
-		border: none
-		border-radius: 0
-		background: none
-
-		.ui-icon
-			position: absolute
-			right: 0
-			top: 0
-			height: 100%
-			width: 45px
-			display: block
-			background: none
-
-		.ui-icon .arrow-select
-			position: absolute
-			right: 0
-			top: 0
-			height: 100%
-			width: 45px
-
-		.select-text
-			display: block
-			overflow: hidden
-			text-overflow: ellipsis
-			white-space: nowrap
-			min-height: 20px
-
-/*multiselect menu*/
-div.cselect
-	&.ui-multiselect-menu
-		padding: 2px 0
-		margin: 0
-
-	.ui-multiselect-checkboxes
-		padding: 0
-		margin: 0
-		list-style-type: none
-		height: auto !important
-		max-height: 322px
-		overflow: auto
-		border-radius: 4px
-		background-color: $color-form-bg
-		border: 1px solid $color-form-border-focus
-
-	.ui-multiselect-checkboxes li
-		padding: 0
-		overflow: hidden
-
-	.ui-multiselect-checkboxes li:first-child
-		border-radius: 4px 4px 0 0
-
-	.ui-multiselect-checkboxes li:last-child
-		border-radius: 0 0 4px 4px
-
-	.ui-multiselect-checkboxes label
-		display: block
-		padding: 13px 18px
-		@include font-normal
-		font-size: 16px
-		line-height: 22px
-		text-transform: none
-		color: $color-form-text
-		cursor: pointer
-		border: none
-		background-color: $color-form-bg
-		-webkit-transition-property: background, color
-		transition-property: background, color
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-
-		input
-			position: absolute
-			left: -9999px
-
-	.desktop .ui-multiselect-checkboxes label:hover
-		background-color: #eaeaea
-		color: $color-form-text
-
-	.ui-multiselect-checkboxes label.ui-state-active
-		background-color: #f3f3f3
-		color: $color-form-text
-
-	.ui-multiselect-checkboxes input[type="radio"] + span
-		padding-left: 0
-
-	.ui-multiselect-checkboxes input[type="radio"] + span:before,
-	.ui-multiselect-checkboxes input[type="radio"] + span:after
-		content: none
-
-/*multiselect menu end*/
-/*select end*/
-/*FORM STYLE end*/
-
-/*view print*/
+/*view print
 .view-print
 	display: inline-block
 	vertical-align: top

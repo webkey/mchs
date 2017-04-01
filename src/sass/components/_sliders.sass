@@ -1,3 +1,139 @@
+/*swiper slider*/
+.swiper-button-next, .swiper-button-prev
+	position: absolute
+	top: 50%
+	width: 50px
+	height: 50px
+	margin-top: -25px
+	background: none
+
+	&.swiper-button--alt
+		border: 2px solid #000
+		border-radius: 50%
+		transition-property: border-color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			border-color: $text-color-alt
+
+	&.swiper-button-disabled
+		opacity: .35
+		cursor: auto
+		pointer-events: none
+
+	span
+		+hide-text
+
+	i
+		position: absolute
+		left: 50%
+		top: 50%
+		width: 10px
+		height: 16px
+		//background-color: chocolate
+		z-index: 2
+		pointer-events: none
+		transform: translate(-50%, -50%)
+
+		&:before, &:after
+			content: ''
+			position: absolute
+			height: 12px
+			width: 2px
+			border-radius: 2px
+			backface-visibility: hidden
+			background-color: $text-color
+			transform-origin: center center
+			transition-property: background-color
+			transition-duration: 0.2s
+
+	.no-touchevents &:hover i
+		&:before, &:after
+			background-color: $text-color-alt
+
+.swiper-button-prev
+	i
+		&:before, &:after
+			left: 0
+
+		&:before
+			bottom: 50%
+			transform-origin: left bottom
+			transform: rotate(45deg)
+
+		&:after
+			top: 50%
+			transform-origin: left top
+			transform: rotate(-45deg)
+
+.swiper-button-next
+	i
+		&:before, &:after
+			right: 0
+
+		&:before
+			bottom: 50%
+			transform-origin: right bottom
+			transform: rotate(-45deg)
+
+		&:after
+			top: 50%
+			transform-origin: right top
+			transform: rotate(45deg)
+
+.slider
+	&__toolbar
+		min-height: 44px
+		position: relative
+		margin-bottom: 1rem
+
+		.swiper-pagination
+			&-fraction
+				position: relative
+				bottom: auto
+				left: auto
+				width: auto
+				text-align: left
+				font-size: 1.4rem
+				line-height: 1.5
+				font-weight: bold
+				color: $text-color
+				text-transform: uppercase
+				letter-spacing: 0.1em
+				padding: 13px 0
+
+			&-current
+				color: $text-color-alt
+
+		.swiper-button
+
+			&-prev
+				left: auto
+				right: 30px
+
+			&-next
+				right: -20px
+
+		&--bottom
+			min-height: 44px
+			position: relative
+
+			.swiper-button
+
+				&-prev
+					left: -20px
+
+					&.swiper-button--alt
+						left: 0
+
+				&-next
+					right: auto
+					left: 30px
+
+					&.swiper-button--alt
+						left: 70px
+/*swiper slider end*/
+
 /*slider*/
 // arrows
 .slick-arrow
@@ -26,6 +162,7 @@
 		opacity: 0.25
 		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
 		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
+		cursor: default
 
 		&:before
 			opacity: 1
@@ -366,8 +503,6 @@
 		&::after
 			border-color: white
 
-
-
 .news-grid-slider__img
 	// before slide load
 	float: none
@@ -391,3 +526,76 @@
 		+hide-text
 
 /*promo slider end*/
+
+/*tape slider*/
+.tape-slider
+	margin-bottom: $grid-space
+	border: 1px solid #b3b3b3
+	padding: 0 50px
+	position: relative
+	background-color: $bg-color
+
+	.tape-slider__list, .#{$user-content} .tape-slider__list
+		margin: 0
+
+		li
+			padding: 0
+			margin: 0
+
+			&:before
+				content: none
+
+	.tape-slider__list
+		li
+			display: inline-block
+			vertical-align: top
+
+			&.swiper-slide
+				width: auto
+
+.tape-slider__anchor
+	display: inline-block
+	vertical-align: top
+	padding: 20px 15px
+	text-decoration: none
+	font-family: $font-alt
+	font-weight: normal
+	font-size: 1.2rem
+	line-height: 1.4
+	color: $text-color
+	cursor: pointer
+	text-transform: uppercase
+	transition-property: color
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover, .no-touchevents .slick-current &, .slick-current &
+		color: $text-color-alt
+
+.tape-slider__list
+	position: relative
+
+	&:before, &:after
+		content: ''
+		position: absolute
+		top: 0
+		height: 100%
+		width: 15px
+		z-index: 2
+		pointer-events: none
+
+	&:before
+		left: 0
+		+linear-gradient(to right, $bg-color 0%, transparentize($bg-color, 0.4) 50%, transparentize($bg-color, 0.9) 100%)
+
+	&:after
+		right: 0
+		+linear-gradient(to left, $bg-color 0%, transparentize($bg-color, 0.4) 50%, transparentize($bg-color, 0.9) 100%)
+
+.tape-slider
+	.slick-prev
+		left: -35px
+
+	.slick-next
+		right: -35px
+
+/*tape slider end*/

@@ -1,0 +1,1 @@
+<li class="tape-slider__item"><div class="tape-slider__anchor"><span>@@text</span></div></li>

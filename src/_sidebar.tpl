@@ -9,9 +9,19 @@
 						"anchor": "#main-new-anchor"
 					},
 					{
+						"text": "Мультимедиа по ОБЖ",
+						"active": false,
+						"anchor": "#multimedia-anchor"
+					},
+					{
 						"text": "Интерактивная карта",
 						"active": false,
 						"anchor": "#map-anchor"
+					},
+					{
+						"text": "Другие проекты",
+						"active": false,
+						"anchor": "#other-projects-anchor"
 					},
 					{
 						"text": "Департаменты",
@@ -24,9 +34,9 @@
 						"anchor": "#regions-anchor"
 					},
 					{
-						"text": "Другие проекты",
+						"text": "Инфомрация",
 						"active": false,
-						"anchor": "#other-anchor"
+						"anchor": "#information-anchor"
 					}
 				])
 			</ul>

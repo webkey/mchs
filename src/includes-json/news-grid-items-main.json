@@ -6,7 +6,10 @@
 		"text": "2 января в 14-46 спасателям Островецкого района поступило сообщение о тонущем человеке на озере в деревне Кемелишки. Местный житель провалился под лед в 25 метрах от берега. Информация дежурному пожарного аварийно-спасательного поста поступила от ученика 10-го класса.",
 		"meta": "03.01.2017, 10:30",
 		"size": "large",
-		"slider": "true"
+		"slider": "true",
+		"hasJs": "news-grid-js",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	},
 	{
 		"src": "img/img-news-01.jpg",
@@ -15,7 +18,10 @@
 		"text": "Женщина получила ожоги на базе отдыха в Витебском районе.",
 		"meta": "25.12.2016, 01:30",
 		"size": "",
-		"slider": ""
+		"slider": "",
+		"hasJs": "news-grid-js",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	},
 	{
 		"src": "img/img-news-02.jpg",
@@ -24,7 +30,10 @@
 		"text": "История одной ЧС: Наводнение в Воложине.",
 		"meta": "23.12.2016, 13:30",
 		"size": "",
-		"slider": ""
+		"slider": "",
+		"hasJs": "news-grid-js",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	},
 	{
 		"src": "img/img-news-02.jpg",
@@ -33,7 +42,10 @@
 		"text": "Указом Президента присвоены специальные звания «полковник внутренней службы».",
 		"meta": "18.12.2016, 14:30",
 		"size": "",
-		"slider": ""
+		"slider": "",
+		"hasJs": "news-grid-js",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	},
 	{
 		"src": "",
@@ -42,7 +54,10 @@
 		"text": "Новогоднее поздравление Министра по чрезвычайным ситуациям Владимира Ващенко.",
 		"meta": "11.12.2016, 08:30",
 		"size": "",
-		"slider": ""
+		"slider": "",
+		"hasJs": "news-grid-js",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	},
 	{
 		"src": "img/img-news-02.jpg",
@@ -51,7 +66,10 @@
 		"text": "«Азбука безопасности» – Безопасный Новый год.",
 		"meta": "11.12.2016, 08:30",
 		"size": "",
-		"slider": ""
+		"slider": "",
+		"hasJs": "news-grid-js",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	},
 	{
 		"src": "",
@@ -60,7 +78,10 @@
 		"text": "Новогоднее поздравление Министра по чрезвычайным ситуациям Владимира Ващенко.",
 		"meta": "11.12.2016, 08:30",
 		"size": "",
-		"slider": ""
+		"slider": "",
+		"hasJs": "news-grid-js",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	},
 	{
 		"src": "img/img-news-02.jpg",
@@ -69,7 +90,10 @@
 		"text": "«Азбука безопасности» – Безопасный Новый год.",
 		"meta": "11.12.2016, 08:30",
 		"size": "",
-		"slider": ""
+		"slider": "",
+		"hasJs": "news-grid-js",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	},
 	{
 		"src": "",
@@ -78,6 +102,9 @@
 		"text": "Яркими мероприятиями завершилась республиканская акция  «Безопасный Новый год».",
 		"meta": "11.12.2016, 08:30",
 		"size": "",
-		"slider": ""
+		"slider": "",
+		"hasJs": "news-grid-js",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	}
 ]

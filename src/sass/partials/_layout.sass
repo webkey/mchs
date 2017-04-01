@@ -2,6 +2,41 @@
 @import ../utils/mixins
 
 /*LAYOUT*/
+body
+	&::before
+		+pseudo($pos: fixed)
+		+size(100%, 400px, $layout-width)
+		left: 0
+		top: 50%
+		transform: translate(0, -50%)
+		background: url(../../img/logo-light-lg.png) no-repeat center center
+		background-size: 220px
+		opacity: 0.5
+		transition-property: opacity, visibility, background-size
+		transition-duration: $animation-speed
+
+		+media('<desk-sm')
+			background-size: 180px
+
+		+media('<tab-sm')
+			background-size: 120px
+
+		.page-loaded &, .no-js &
+			opacity: 0
+			visibility: hidden
+			background-size: 200px
+
+.header, .main, .footer
+	.layout
+		opacity: 0
+		visibility: hidden
+		transition-property: opacity, visibility
+		transition-duration: 0.35s
+
+		.page-loaded &, .no-js &
+			opacity: 1
+			visibility: visible
+
 .wrapper
 	margin: 0 auto
 	//min-height: 100%
@@ -144,12 +179,51 @@
 
 .section__title
 	position: relative
-	margin-bottom: $bottom-space/2
+	margin-bottom: $bottom-space-sm
 
-	h2
+	h2, h3
 		color: $text-color-alt
 		font-size: 2rem
 		margin: 0
+
+		a
+			text-decoration: underline
+			color: inherit
+
+			.no-touchevents a:hover
+				text-decoration: none
+
+.section__subtitle
+	margin-bottom: $bottom-space-sm
+	font-family: $font-alt
+	font-weight: normal
+	font-size: 1.2rem
+	line-height: 1.6
+	text-transform: uppercase
+	color: $text-color
+
+	h2, h3, h4
+		display: inline-block
+		vertical-align: top
+		font-family: inherit
+		font-weight: inherit
+		font-size: inherit
+		line-height: inherit
+		text-transform: inherit
+		color: inherit
+		margin-bottom: 0
+
+		a
+			text-decoration: underline
+			color: inherit
+
+			.no-touchevents a:hover
+				text-decoration: none
+
+.v-separator
+	display: inline-block
+	vertical-align: top
+	+margin-horizontal(10px)
 
 /*section end*/
 /*LAYOUT end*/

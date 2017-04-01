@@ -1,0 +1,140 @@
+/*obzh*/
+.obzh
+	position: relative
+	margin-bottom: $bottom-space
+	background-color: white
+
+	&:last-child
+		margin-bottom: 0
+
+.obzh__nav
+	display: table
+	table-layout: fixed
+	width: 100%
+
+.obzh__tab
+	display: table-cell
+	vertical-align: top
+
+	$minGroup1: 1 !default
+	$maxGroup1: 3 !default
+
+	@for $item from $minGroup1 through $maxGroup1
+
+		$cur-item: $item - 1
+
+		$percentage: 100/($maxGroup1 - 1)*$cur-item*1%
+
+		&:nth-child(#{$item}) a
+			background-color: mix($mark-color-alt, $mark-color, $percentage)
+
+			.no-touchevents &:hover
+				background-color: mix(shade($mark-color-alt, 90%), shade($mark-color, 90%), $percentage)
+
+	$minGroup2: 4 !default
+	$maxGroup2: 6 !default
+
+	@for $item from $minGroup2 through $maxGroup2
+
+		$cur-item: $item - 1
+
+		$percentage: 100/($maxGroup2 - 1)*$cur-item*1%
+
+		&:nth-child(#{$item}) a
+			background-color: mix(#0982db, #004a80, $percentage)
+
+			.no-touchevents &:hover
+				background-color: mix(shade(#0982db, 95%), shade(#004a80, 95%), $percentage)
+
+	a
+		display: table
+		width: 100%
+		position: relative
+		height: 60px
+		text-decoration: none
+		color: $text-color
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+		& > span
+			display: table-cell
+			font-family: $font-alt
+			font-weight: 700
+			+font(18px, 20px)
+			color: white
+			vertical-align: middle
+			position: relative
+			+antialiased
+			+padding-horizontal($grid-inside-horizontal-space)
+
+			&::after
+				+pseudo()
+				+triangle(top, white, 8px, 1.2)
+				bottom: 0
+				left: 50%
+				margin-left: -8px
+				opacity: 0
+				pointer-events: none
+				transition-property: opacity
+				transition-duration: $animation-speed
+
+		&.active > span::after
+			opacity: 1
+
+.obzh__panels
+	//height: calc(100% - 60px) // высота блока минус высота переключателей табов
+
+.obzh__panel
+	display: block
+	position: relative
+	background-color: white
+	padding: 20px
+	//height: 100%
+	//overflow: hidden
+
+.obzh-banner
+	position: relative
+	min-height: 280px // Хардкод
+	background-position: center center
+	background-repeat: no-repeat
+	background-size: cover
+
+.obzh-banner__content
+	position: absolute
+	+absolute-fill()
+	padding: 40px 45px
+	display: flex
+	flex-flow: column nowrap
+	justify-content: space-between
+	+linear-gradient(to right, rgba(255, 255, 255, 0.80) 0, rgba(255, 255, 255, 0) 100%)
+	font-weight: 400
+	font-size: 1.4rem
+	line-height: 1.5
+
+.obzh-banner__text
+	overflow: hidden
+	margin-bottom: 1em
+	max-height: 136px // Магическое число. Примерно обрезает контент
+	width: 480px
+	max-width: 80%
+
+	ul, ol
+		li
+			margin: 0 0 1em
+
+			&:last-child
+				margin-bottom: 0
+
+	ul li &::before
+		top: 0.4em
+
+	ul, ol, p, h2, h3, h4, h5
+		+margin-vertical(1em)
+
+	& > *:first-child
+		margin-top: 0
+
+	& > *:last-child
+		margin-bottom: 0
+
+/*save info end*/

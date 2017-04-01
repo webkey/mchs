@@ -1,3 +1,128 @@
+/*BUTTONS*/
+[class|="btn"],
+[class*=" btn-"],
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+button
+	display: inline-block
+	vertical-align: top
+	position: relative
+	text-align: center
+	text-decoration: none
+	box-sizing: border-box
+	cursor: pointer
+
+[class|="btn"],
+[class*=" btn-"]
+	& input[type="submit"],
+	& input[type="button"],
+	& input[type="reset"]
+		background: url("../../img/empty.png") repeat
+		display: block
+		height: 100%
+		padding: 0
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		z-index: 99
+		border: 0
+		opacity: 0
+		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0)
+		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0)
+
+/*btn-default*/
+.btn-default
+	position: relative
+	font: 400 1.6rem/24px $font-alt
+	color: $color-btn-text
+	padding: 11px 25px
+	border: 2px solid transparent
+	background: $color-btn-bg
+	box-shadow: none
+	box-sizing: border-box
+	transition-property: background-color, color, border-color
+	transition-duration: $animation-speed
+	+btn-hover
+	+btn-active
+
+/*btn-default end*/
+
+/*btn-default-alt*/
+.btn-default-alt
+	@extend .btn-default
+	color: $color-btn-bg
+	border: 2px solid $color-btn-bg
+	background: $color-btn-text
+	transition-property: background-color, color, border-color
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		background: $color-btn-bg-hover
+		color: $color-btn-text
+
+/*btn-default-alt end*/
+
+/*btn-arrow*/
+.btn-arrow
+	@extend .btn-default
+	border-width: 1px
+	padding: 7px 20px
+
+	& > span
+		display: inline-block
+		vertical-align: top
+		position: relative
+
+		&:before,
+		&:after
+			content: ''
+			position: absolute
+			top: 50%
+			height: 2px
+			width: 10px
+			border-radius: 2px
+			background: #fff
+
+		&:before
+			margin: -4px 0 0 0
+			-webkit-transform: rotate(-45deg)
+			-ms-transform: rotate(-45deg)
+			transform: rotate(-45deg)
+
+		&:after
+			margin: 2px 0 0 0
+			-webkit-transform: rotate(45deg)
+			-ms-transform: rotate(45deg)
+			transform: rotate(45deg)
+
+	&_left > span
+		padding-left: 18px
+
+		&:before, &:after
+			left: 0
+
+		&:before
+			margin: -4px 0 0 0
+
+		&:after
+			margin: 2px 0 0 0
+
+	&_right > span
+		padding-right: 18px
+
+		&:before, &:after
+			right: 0
+
+		&:before
+			margin: 2px 0 0 0
+
+		&:after
+			margin: -4px 0 0 0
+
+/*btn-arrow*/
+
 /*more button*/
 .more
 	text-align: center
@@ -59,3 +184,4 @@
 			-ms-transform: rotate(-45deg)
 			transform: rotate(-45deg)
 /*more button end*/
+/*BUTTONS end*/

@@ -55,7 +55,9 @@ gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Созд
 		.pipe(sass({
 			outputStyle: 'expanded', // nested (default), expanded, compact, compressed
 			indentType: 'tab',
-			indentWidth: 1
+			indentWidth: 1,
+			precision: 3,
+			linefeed: 'lf' // cr, crlf, lf or lfcr
 		}).on('error', sass.logError)) // Преобразуем Sass в CSS посредством gulp-sass
 		.pipe(replace('../../', '../')) /// в css файлах меняем пути к файлам с ../../ на ../
 		.pipe(autoprefixer([
@@ -78,9 +80,10 @@ gulp.task( 'createCustomModernizr', function (done) { // Таск для фор�
 
 gulp.task('mergeCssLibs', function () { // Таск для мержа css библиотек
 	return gulp.src([
-		'src/css/temp/*.css',
-		'src/libs/magnific-popup/dist/magnific-popup.css',
-		'src/libs/priority-nav/dist/priority-nav-core.css'
+		'src/css/temp/*.css'
+		,'src/libs/magnific-popup/dist/magnific-popup.css'
+		,'src/libs/priority-nav/dist/priority-nav-core.css'
+		,'src/libs/swiper/dist/css/swiper.min.css'
 	]) // Выбираем файлы для конкатенации
 	.pipe(concatCss("src/css/libs.css", {
 		rebaseUrls: false
@@ -105,7 +108,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/gsap/src/minified/plugins/ScrollToPlugin.min.js',
 		'src/js/temp/filer.min.js',
 		'src/libs/sticky-kit/jquery.sticky-kit.min.js',
-		'src/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js'
+		'src/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js',
+		'src/libs/swiper/dist/js/swiper.min.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(gulp.dest('src/js'))

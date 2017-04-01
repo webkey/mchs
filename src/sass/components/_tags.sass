@@ -9,7 +9,7 @@
 	h3
 		margin-bottom: $bottom-space
 
-.tags__list, .content .tags__list
+.tags__list, .#{$user-content} .tags__list
 	font-size: 0
 	letter-spacing: -4px
 	margin: 0 -10px ($bottom-space - $bottom-space/2)
@@ -24,7 +24,7 @@
 		font-family: $font-alt
 		font-weight: 400
 		font-size: 1.4rem
-		line-height: 2
+		line-height: 2.1
 		letter-spacing: normal
 		text-transform: uppercase
 		margin-top: 0
@@ -35,34 +35,43 @@
 			content: none
 
 		a
+			position: relative
 			display: inline-block
+			vertical-align: top
+			overflow: hidden
 			padding: 0 16px
+			color: $text-color
 			text-decoration: none
-			color: #000
+			text-transform: uppercase
 			border: solid $mark-color-alt
 			border-width: 1px 1px 4px
-			background: #fff
-			-webkit-transition-property: box-shadow, -webkit-transform
-			transition-property: box-shadow, transform
-			-webkit-transition-duration: $animation-speed
-			transition-duration: $animation-speed
+			background: white
+			transition-property: transform
+			transition-duration: $animation-speed-mouseleave
+			+antialiased
 
 			&:before
-				content: '#'
+				+pseudo('#', inline-block, relative)
+				z-index: 5
 
-			.no-touchevents &:hover
-				box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2)
-				-webkit-transform: translate(0, -4px)
-				-ms-transform: translate(0, -4px)
-				transform: translate(0, -4px)
+			&::after
+				+pseudo()
+				+absolute-fill()
+				background-color: $mark-color-alt
+				transform: translate(0, 100%)
+				transition-property: transform
+				transition-duration: $animation-speed-mouseleave
+
+			.no-touchevents &:hover::after
+				transform: translate(0)
 
 			&:active
-				box-shadow: 0 0 0 rgba(0, 0, 0, 0)
-				-webkit-transition-duration: 0.1s
-				transition-duration: 0.1s
-				-webkit-transform: translate(0, 0)
-				-ms-transform: translate(0, 0)
-				transform: translate(0, 0)
+				transform: scale(0.95)
+
+			& > span
+				display: inline-block
+				position: relative
+				z-index: 5
 
 .tags .tags__list
 	margin-bottom: -$bottom-space/2

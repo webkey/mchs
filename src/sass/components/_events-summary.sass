@@ -4,6 +4,7 @@
 	margin-bottom: $bottom-space
 	height: ($news-item-sm-height*2+$news-item-height+$grid-space*2) // Хардкод. Высота должна равнятся сумме высот двух блоков новостей без картинки и одной с картинкой
 	overflow: hidden
+	background-color: white
 
 	&:last-child
 		margin-bottom: 0
@@ -24,10 +25,10 @@
 		$percentage: 100/($max - 1)*$cur-item*1%
 
 		&:nth-child(#{$item}) a
-			background-color: mix(#ff9a09, #ec3c01, $percentage)
+			background-color: mix($mark-color-alt, $mark-color, $percentage)
 
 			.no-touchevents &:hover
-				background-color: mix(darken(#ff9a09, 5%), darken(#ec3c01, 5%), $percentage)
+				background-color: mix(shade($mark-color-alt, 90%), shade($mark-color, 90%), $percentage)
 
 	a
 		display: block
@@ -41,10 +42,10 @@
 
 		&::after
 			+pseudo()
-			+triangle(top, white, 10px, 1)
+			+triangle(top, white, 8px, 1.2)
 			top: 100%
 			left: 50%
-			margin-left: -10px
+			margin-left: -8px
 			will-change: transform
 			transition-property: transform
 			transition-duration: $animation-speed
