@@ -1304,7 +1304,7 @@ function masonryInit() {
 		var self = this;
 
 		$(document).keyup(function(e) {
-			if (self.navIsOpened && self.closeEsc && e.keyCode == 27) {
+			if (self.navIsOpened && self.closeEsc && e.keyCode === 27) {
 				self.closeNav();
 			}
 		});
