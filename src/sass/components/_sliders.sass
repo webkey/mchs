@@ -1,140 +1,4 @@
-/*swiper slider*/
-.swiper-button-next, .swiper-button-prev
-	position: absolute
-	top: 50%
-	width: 50px
-	height: 50px
-	margin-top: -25px
-	background: none
-
-	&.swiper-button--alt
-		border: 2px solid #000
-		border-radius: 50%
-		transition-property: border-color
-		transition-duration: $animation-speed
-
-		.no-touchevents &:hover
-			border-color: $text-color-alt
-
-	&.swiper-button-disabled
-		opacity: .35
-		cursor: auto
-		pointer-events: none
-
-	span
-		+hide-text
-
-	i
-		position: absolute
-		left: 50%
-		top: 50%
-		width: 10px
-		height: 16px
-		//background-color: chocolate
-		z-index: 2
-		pointer-events: none
-		transform: translate(-50%, -50%)
-
-		&:before, &:after
-			content: ''
-			position: absolute
-			height: 12px
-			width: 2px
-			border-radius: 2px
-			backface-visibility: hidden
-			background-color: $text-color
-			transform-origin: center center
-			transition-property: background-color
-			transition-duration: 0.2s
-
-	.no-touchevents &:hover i
-		&:before, &:after
-			background-color: $text-color-alt
-
-.swiper-button-prev
-	i
-		&:before, &:after
-			left: 0
-
-		&:before
-			bottom: 50%
-			transform-origin: left bottom
-			transform: rotate(45deg)
-
-		&:after
-			top: 50%
-			transform-origin: left top
-			transform: rotate(-45deg)
-
-.swiper-button-next
-	i
-		&:before, &:after
-			right: 0
-
-		&:before
-			bottom: 50%
-			transform-origin: right bottom
-			transform: rotate(-45deg)
-
-		&:after
-			top: 50%
-			transform-origin: right top
-			transform: rotate(45deg)
-
-.slider
-	&__toolbar
-		min-height: 44px
-		position: relative
-		margin-bottom: 1rem
-
-		.swiper-pagination
-			&-fraction
-				position: relative
-				bottom: auto
-				left: auto
-				width: auto
-				text-align: left
-				font-size: 1.4rem
-				line-height: 1.5
-				font-weight: bold
-				color: $text-color
-				text-transform: uppercase
-				letter-spacing: 0.1em
-				padding: 13px 0
-
-			&-current
-				color: $text-color-alt
-
-		.swiper-button
-
-			&-prev
-				left: auto
-				right: 30px
-
-			&-next
-				right: -20px
-
-		&--bottom
-			min-height: 44px
-			position: relative
-
-			.swiper-button
-
-				&-prev
-					left: -20px
-
-					&.swiper-button--alt
-						left: 0
-
-				&-next
-					right: auto
-					left: 30px
-
-					&.swiper-button--alt
-						left: 70px
-/*swiper slider end*/
-
-/*slider*/
+/*sliders*/
 // arrows
 .slick-arrow
 	width: 40px
@@ -189,7 +53,7 @@
 	&:after
 		left: 50%
 		border-width: 0 0 2px 2px
-		margin: -5px 0 0 -4px
+		margin: -6px 0 0 -4px
 
 .slick-next
 	right: 0
@@ -197,7 +61,32 @@
 	&:after
 		right: 50%
 		border-width: 2px 2px 0 0
-		margin: -5px -4px 0 0
+		margin: -6px -4px 0 0
+
+// arrows outside
+.slick-arrow-outside, .slick-arrow-outside:hover, .slick-arrow-outside:focus
+	background-color: $btn-bg-color
+
+// переопределяем стили для ховера и фокуса на стрелки слайдера
+.slick-arrow-outside
+	left: auto
+	+size(30px)
+
+	.no-touchevents &:hover, .no-touchevents &:focus
+		background-color: $btn-bg-color-hover
+
+		&.slick-disabled
+			background-color: $btn-bg-color
+
+	&::after
+		border-color: white
+
+.slick-prev-outside
+	right: (30px + 10)
+
+.slick-next-outside
+	right: 0
+
 
 // dots
 .slick-dots
@@ -254,7 +143,7 @@
 
 		//&.slick-active button:before,
 		//.no-touchevents &.slick-active:hover button:before
-/*slider end*/
+/*sliders end*/
 
 /*images slider*/
 .images-slider
@@ -393,7 +282,6 @@
 				&::before
 					content: none
 
-		li
 			&.slick-active button
 				opacity: 1
 

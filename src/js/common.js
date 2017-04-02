@@ -836,6 +836,11 @@ function tabSwitcher() {
  * !sliders
  * */
 function slidersInit() {
+	var sliderArrowsOutside = {
+		"prev": "<button type=\"button\" class=\"slick-prev slick-arrow-outside slick-prev-outside\">Previous</button>",
+		'next': "<button type=\"button\" class=\"slick-next slick-arrow-outside slick-next-outside\">Next</button>"
+	};
+
 	//images slider
 	var $imagesSlider = $('.images-slider__list');
 
@@ -962,6 +967,51 @@ function slidersInit() {
 				infinite: true,
 				dots: true,
 				arrows: false
+			});
+
+		});
+	}
+
+	/*infoblock slider*/
+	var $infoblockSlider = $('.infoblock__list');
+
+	if($infoblockSlider.length){
+
+		$infoblockSlider.each(function () {
+			var $currentSlider = $(this);
+			var dur = 200;
+
+			$currentSlider.slick({
+				fade: false,
+				speed: dur,
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				// initialSlide: 2,
+				// lazyLoad: 'ondemand',
+				// autoplay: true,
+				// autoplaySpeed: 8000,
+				infinite: false,
+				dots: true,
+				arrows: true,
+				appendArrows: $(this).closest('.section').find('.section__title'),
+				prevArrow: sliderArrowsOutside.prev,
+				nextArrow: sliderArrowsOutside.next,
+				responsive: [
+					{
+						breakpoint: 1920,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					}, {
+						breakpoint: 1280,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					}
+				]
+
 			});
 
 		});

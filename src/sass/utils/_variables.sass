@@ -60,9 +60,9 @@ $color-form-error: #ec3c01 !default
 $color-form-success: #056e41 !default
 
 // btn color
-$color-btn-bg: $base-color !default
-$color-btn-bg-hover: darken($color-btn-bg, 20%) !default
-$color-btn-text: #fff !default
+$btn-bg-color: $text-color-alt !default
+$btn-bg-color-hover: darken($btn-bg-color, 20%) !default
+$btn-text-color: #fff !default
 
 // table color
 $color-table-text: #262626 !default
@@ -84,8 +84,8 @@ $text-layout-space-horizontal: 0 !default
 
 // grids
 $grid-space: 20px !default // отступы между элементами сетки, например, новостей
-$grid-inside-horizontal-space: 30px !default // горизонтальные отступы внутри элементов сетки
-$grid-inside-vertical-space: 26px !default // вертикальные отступы внутри элементов сетки
+$grid-inside-horizontal-space: round($grid-space*1.5) !default // горизонтальные отступы внутри элементов сетки
+$grid-inside-vertical-space: round($grid-inside-horizontal-space*0.85) !default // вертикальные отступы внутри элементов сетки
 $news-label-size: 60px !default // размер меток содержания статьи: видео, аудио, pdf и т.д.
 
 // new

@@ -1,0 +1,46 @@
+/*infoblock*/
+.infoblock
+	margin-bottom: $bottom-space
+	overflow: hidden
+
+.infoblock__list
+	// перед загрузкой слайды нужно выставить в один ряд, чтобы не прыгал контент
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	// before slide load end
+	+margin-horizontal(-#{round($grid-space/2)})
+	margin-bottom: 0
+
+	&.slick-initialized, .no-js &
+		// после загрузки вернуть стили по дефолту
+		// after slide load
+		white-space: normal
+		overflow: visible
+		// after slide load end
+
+	&.slick-dotted
+		margin-bottom: 0 // обнуляем отступ снизу
+
+.infoblock__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+	+padding-horizontal(round($grid-space/2))
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+.infoblock__list
+
+	.slick-arrow
+		width: 30px
+		height: 30px
+		background-color: $text-color-alt
+
+/*infoblock end*/

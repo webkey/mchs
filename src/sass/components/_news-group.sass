@@ -33,10 +33,10 @@
 
 	&:first-child
 		float: left
-		width: calc(50% - #{round($grid-space/2)})
+		width: calc(50% - #{$grid-space})
 
 	&:nth-child(n+2)
-		margin-left: calc(50% + #{round($grid-space/2)})
+		margin-left: calc(50% + #{$grid-space})
 
 	.news-group &
 		+padding-horizontal(round($grid-space/2))

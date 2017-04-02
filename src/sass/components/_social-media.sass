@@ -1,0 +1,81 @@
+/*social media
+.soc-media
+	position: relative
+	+clear
+
+	&::before
+		+pseudo()
+		left: 50%
+		top: 0
+		bottom: 0.15em
+		border-right: 1px solid $border-color
+
+.soc-media__col
+
+	&:first-child
+		float: left
+		width: calc(50% - #{$grid-inside-horizontal-space})
+
+	&:nth-child(2)
+		margin-left: calc(50% + #{$grid-inside-horizontal-space})
+
+.soc-media__visual
+	margin-bottom: $bottom-space
+	padding-bottom: $bottom-space
+	border-bottom: 1px solid $border-color
+
+	.video
+		padding-bottom: 30px
+
+.soc-media-share
+	text-align: center
+
+.soc-media-share__label
+	text-align: center
+	font-family: $font-alt
+	+font(1.2rem, 1.6)
+	color: $text-color-light
+	text-transform: uppercase
+	margin-bottom: $bottom-space-sm
+
+.soc-media-share
+
+	.social-networks a
+		background: none
+		+size(32px)
+
+		svg
+			+size(22px)
+
+		path
+			fill: $text-color-light
+
+.soc-media__img
+	height: 230px
+	background-position: center
+	background-repeat: no-repeat
+	-webkit-background-size: cover
+	background-size: cover
+	margin-bottom: $bottom-space-sm
+
+.soc-media__text
+	font-size: $font-size-small
+	line-height: $line-height-small
+	overflow: hidden
+	height: round-float($font-size-small*$line-height-small*4, 1)
+	margin-bottom: $bottom-space-sm
+
+.soc-media__link
+	font-family: $font-alt
+	+font(1.6rem, 1.25)
+	font-weight: 700
+	+truncate(100%)
+
+	a
+		color: $text-color
+		text-decoration: none
+
+		.no-touchevents &:hover
+			text-decoration: none
+
+/*social media end
