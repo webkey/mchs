@@ -84,6 +84,7 @@ $layout-grid-space: 60px !default
 $layout-grid-space--desk-hd: 50px !default
 $layout-grid-space--desk-lg: 40px !default
 $layout-grid-space--desk-md: 30px !default
+$layout-grid-space--mob-lg: 20px !default
 $layout-width: 1920px !default
 $layout-space-horizontal: 0 !default
 $article-layout-width: none !default
@@ -92,8 +93,10 @@ $article-layout-space-vertical: 48px !default
 $text-layout-width: 640px !default
 $text-layout-space-horizontal: 0 !default
 $section-layout-width: null !default
-$section-layout-width-desk-hd: 850px !default
+$section-layout-width-desk-hd: 1170px !default
+$section-layout-width-desk-lg: 850px !default
 $section-layout-width-tab-lg: 560px !default
+$section-layout-width-mob-sm: 270px !default
 
 // grids
 $grid-space: 20px !default // отступы между элементами сетки, например, новостей
@@ -113,10 +116,15 @@ $news-item-sm-content-height: $news-item-sm-height !default // высота ко
 $news-item-lg-height: $news-item-height*2+$grid-space !default // высота большого элемета
 $news-item-lg-width: $news-item-width*2 !default // ширина большого элемета
 $news-item-lg-img-height: 350px !default // высота картикнки в большом блоке
+$news-item-lg-img-height-mob-lg: 200px !default // для разрешений до 640
 $news-item-lg-content-height: $news-item-lg-height - $news-item-lg-img-height !default // высота контента больших превью новостей
+$news-item-lg-content-height-mob-lg: $news-item-lg-height - $news-item-lg-img-height-mob-lg !default // высота контента больших превью новостей (для разрешений до 640)
 
 // events-summary (только для текущего проекта)
 $events-summary-nav-height: 60px !default
+
+// obzh (только для текущего проекта)
+$obzh-tabs-nav-height: 60px !default
 
 // form
 $space-bottom-form: 3rem !default
@@ -131,6 +139,7 @@ $sidebar-inner-space-horizontal: 40px !default
 $color-header-bg: #f7f7f7 !default
 $header-height: 182px !default
 $header-top-height: 60px !default
+$header-top-height-sm: 40px !default
 $header-left-space: $sidebar-left-width !default
 $header-left-space-desk-sm: 140px !default // по дизайну
 

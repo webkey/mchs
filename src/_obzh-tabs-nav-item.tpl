@@ -1,5 +1,5 @@
 <div class="obzh__tab">
-	<a href="@@id" class="js-tab-anchor @@if(context.activeClass) {@@activeClass}">
+	<a href="@@id" class="@@if(context.jsClass) {@@jsClass}@@if(context.activeClass) { @@activeClass}">
 		<span>@@text</span>
 	</a>
 </div>

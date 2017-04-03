@@ -12,6 +12,10 @@
 	+media('<desk-md')
 		padding: 0 $layout-grid-space--desk-md
 
+	+media('<mob-lg')
+		padding: 0
+		margin-right: 0
+
 /*main navigation end*/
 // general styles main navigation
 .nav
@@ -25,11 +29,9 @@
 
 	$nav-item-space: 17px
 
-	=transition
-		-webkit-transition-property: color, background-color, border-color, opacity, visibility, -webkit-transform
+	=transition()
 		transition-property: color, background-color, border-color, opacity, visibility, transform
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
+		transition-duration: $animation-speed
 
 	@at-root
 	&__list
@@ -276,6 +278,9 @@
 		white-space: nowrap
 		margin: 0 -#{$nav-item-space}
 
+		+media('<mob-lg')
+			margin: 0
+
 		> ul
 			display: inline-block
 			vertical-align: top
@@ -314,6 +319,9 @@
 		background: none
 		z-index: 2
 		//box-sizing: border-box
+
+		+media('<mob-lg')
+			padding: 7px
 
 		.no-touchevents &:hover, &.is-open
 			background: $mark-color

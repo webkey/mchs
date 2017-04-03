@@ -4,16 +4,15 @@
 	$item-min-width: 200px
 
 	.home-page &
-			display: none
+		display: none
 
 	=transition($dur: 0.2s)
-		-webkit-transition-property: max-width, opacity, visibility, border-color
 		transition-property: max-width, opacity, visibility, border-color
-		-webkit-transition-duration: $dur
 		transition-duration: $dur
 
 	&
-		float: left
+		//float: left
+		//width: 100%
 		position: relative
 		font-size: 1.4rem
 		line-height: 1.5
@@ -21,8 +20,6 @@
 		margin-bottom: $bottom-space
 		cursor: default
 		+clear
-
-		width: 100%
 
 		@at-root
 			.breadcrumbs__list

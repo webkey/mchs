@@ -244,7 +244,7 @@
 	margin-bottom: $bottom-space
 	+push-auto
 
-	.breadcrumbs + &
+	//.breadcrumbs + &
 		float: left
 		width: 100%
 
@@ -256,8 +256,11 @@
 	+push-auto
 	margin-bottom: 0
 
-	+media('<desk-md')
+	+media('<desk-hd')
 		max-width: $section-layout-width-desk-hd
+
+	+media('<desk-lg')
+		max-width: $section-layout-width-desk-lg
 
 	+media('<tab-lg')
 		max-width: $section-layout-width-tab-lg
@@ -309,6 +312,9 @@
 	background-repeat: no-repeat
 	-webkit-background-size: cover
 	background-size: cover
+
+	+media('<mob-lg')
+		height: 205px
 
 	.slick-initialized &
 		// after slide load
@@ -411,6 +417,9 @@
 	background-repeat: no-repeat
 	-webkit-background-size: cover
 	background-size: cover
+
+	+media('<mob-lg')
+		height: $news-item-lg-img-height-mob-lg
 
 	.slick-initialized &
 		// after slide load

@@ -12,6 +12,27 @@
 	table-layout: fixed
 	width: 100%
 
+	+media('<desk-hd')
+		display: block
+		width: 160px
+		float: left
+
+	+media('<tab-lg')
+		display: none
+
+.obzh__links
+	display: none
+	column-count: 2
+	column-gap: 0
+	+clear
+
+	+media('<tab-lg')
+		display: block
+
+	+media('<mob-lg')
+		column-count: auto
+		column-gap: 0
+
 .obzh__tab
 	display: table-cell
 	vertical-align: top
@@ -41,16 +62,27 @@
 		$percentage: 100/($maxGroup2 - 1)*$cur-item*1%
 
 		&:nth-child(#{$item}) a
-			background-color: mix(#0982db, #004a80, $percentage)
+			background-color: mix(#004a80, #0982db, $percentage)
 
 			.no-touchevents &:hover
-				background-color: mix(shade(#0982db, 95%), shade(#004a80, 95%), $percentage)
+				background-color: mix(shade(#004a80, 95%), shade(#0982db, 95%), $percentage)
+
+	.obzh__links &
+		display: inline-block
+		vertical-align: top
+		width: 100%
+
+		+media('<mob-lg')
+			display: block
+
+	+media('<desk-hd')
+		display: block
 
 	a
 		display: table
 		width: 100%
 		position: relative
-		height: 60px
+		height: $obzh-tabs-nav-height
 		text-decoration: none
 		color: $text-color
 		transition-property: background-color
@@ -78,23 +110,44 @@
 				transition-property: opacity
 				transition-duration: $animation-speed
 
+				.obzh__links &
+					display: none !important
+					content: none !important
+
+			+media('<desk-hd')
+				+padding-horizontal(20px)
+				+font(16px, 20px)
+
+				&::after
+					+triangle(left, white, 8px, 1.2)
+					bottom: auto
+					left: auto
+					top: 50%
+					right: 0
+					margin-left: 0
+					margin-top: -8px
+
 		&.active > span::after
 			opacity: 1
 
 .obzh__panels
-	//height: calc(100% - 60px) // высота блока минус высота переключателей табов
+	height: #{$obzh-tabs-nav-height*6} // количество переключателей на их высоту
+
+	+media('<tab-lg')
+		display: none !important
 
 .obzh__panel
 	display: block
 	position: relative
 	background-color: white
 	padding: 20px
-	//height: 100%
-	//overflow: hidden
+	height: 100%
+	overflow: hidden
 
 .obzh-banner
 	position: relative
-	min-height: 280px // Хардкод
+	height: 100%
+	//min-height: 280px // Хардкод. Необязательный ораничитель минимальной высоты
 	background-position: center center
 	background-repeat: no-repeat
 	background-size: cover
@@ -111,10 +164,13 @@
 	font-size: 1.4rem
 	line-height: 1.5
 
+	+media('<desk-hd')
+		padding: round(30px*0.85) 30px
+
 .obzh-banner__text
 	overflow: hidden
 	margin-bottom: 1em
-	max-height: 136px // Магическое число. Примерно обрезает контент
+	max-height: 176px // Магическое число. Примерно обрезает контент для браузеров не поддерживающих `flex: box`
 	width: 480px
 	max-width: 80%
 

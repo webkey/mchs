@@ -85,13 +85,16 @@ body
 		padding: #{$layout-grid-space--desk-hd} #{$layout-grid-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
 
 	+media('<desk-md')
-		padding: #{$layout-grid-space--desk-hd} #{$layout-grid-space--desk-md} // -9 для компенсации вертикального скролла
+		padding: $layout-grid-space--desk-hd $layout-grid-space--desk-md
 
 	+media('<desk-sm')
 		margin-left: 0
 
 	+media('<tab-lg')
-		padding: #{$layout-grid-space--desk-md} #{$layout-grid-space--desk-md} // -9 для компенсации вертикального скролла
+		padding: $layout-grid-space--desk-md
+
+	+media('<mob-lg')
+		padding: $layout-grid-space--mob-lg
 
 .content-wrap
 	@extend .main-frame
@@ -109,6 +112,22 @@ body
 		//margin: 0 $sidebar-right-width--desk-md 0 0
 		margin-right: 0
 		padding-right: 0
+
+.content-layout
+	+clear
+	+push-auto
+
+	+media('<desk-hd')
+		max-width: $section-layout-width-desk-hd
+
+	+media('<desk-lg')
+		max-width: $section-layout-width-desk-lg
+
+	+media('<tab-lg')
+		max-width: $section-layout-width-tab-lg
+
+	+media('<mob-lg')
+		max-width: none
 
 .sheet
 	background: $bg-color-alt
@@ -194,14 +213,6 @@ body
 /*section*/
 .section
 	margin-bottom: $bottom-space-md
-	max-width: $section-layout-width
-	+push-auto
-
-	+media('<desk-hd')
-		max-width: $section-layout-width-desk-hd
-
-	+media('<tab-lg')
-		max-width: $section-layout-width-tab-lg
 
 	&:last-child
 		margin-bottom: 0
@@ -248,6 +259,11 @@ body
 		color: inherit
 		margin-bottom: 0
 
+		+media('<mob-lg')
+			font-size: 1.4rem
+			display: block
+			margin-bottom: (round-float($bottom-space-sm/2, 1))
+
 	a
 		text-decoration: underline
 		color: inherit
@@ -260,9 +276,15 @@ body
 	vertical-align: top
 	+margin-horizontal(10px)
 
+	+media('<mob-lg')
+		display: none
+
 .section__box
 	background-color: white
 	padding: $grid-inside-horizontal-space
+
+	+media('<mob-lg')
+		padding: $layout-grid-space--mob-lg
 
 .hide-tab-lg
 	display: none

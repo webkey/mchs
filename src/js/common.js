@@ -226,10 +226,10 @@ function fixedHeader(){
 	var $fixedElement = $('.header');
 
 	if ( $fixedElement.length ) {
-		var $page = $('html'),
-			$parent = $fixedElement.parent(),
-			$window = $(window),
-			layout = 1200;
+		var $page = $('html');
+		// var $parent = $fixedElement.parent();
+		// var $window = $(window);
+		// var layout = 1200;
 
 		$page.addClass('header-fixed');
 
@@ -311,7 +311,8 @@ function behaviorLogoOnScroll() {
 
 		var scrollTop = $scrollArea.scrollTop(),
 			limitSize = $('.header__top').outerHeight(),
-			currentSize = $('header').height() - scrollTop,
+			heightHeight = $('header').height(),
+			currentSize = heightHeight - scrollTop,
 			actualSize;
 
 		actualSize = (currentSize > limitSize) ? currentSize : limitSize;
@@ -320,6 +321,12 @@ function behaviorLogoOnScroll() {
 			TweenMax.to(transformElement, 0, {
 				height: actualSize
 			});
+		} else {
+			if(scrollTop > 0) {
+				$transformElement.css('height', limitSize)
+			} else {
+				$transformElement.css('height', heightHeight)
+			}
 		}
 	}
 }
@@ -922,7 +929,7 @@ function slidersInit() {
 				fade: false,
 				speed: dur  ,
 				slidesToShow: 7,
-				slidesToScroll: 1,
+				slidesToScroll: 7,
 				// initialSlide: 2,
 				// lazyLoad: 'ondemand',
 				infinite: false,
@@ -932,31 +939,57 @@ function slidersInit() {
 					{
 						breakpoint: 1740,
 						settings: {
-							slidesToShow: 6
+							slidesToShow: 6,
+							slidesToScroll: 6
 						}
 					},
 					{
 						breakpoint: 1560,
 						settings: {
-							slidesToShow: 5
+							slidesToShow: 5,
+							slidesToScroll: 5
 						}
 					},
 					{
 						breakpoint: 1380,
 						settings: {
-							slidesToShow: 4
+							slidesToShow: 4,
+							slidesToScroll: 4
 						}
 					},
 					{
 						breakpoint: 1200,
 						settings: {
-							slidesToShow: 3
+							slidesToShow: 5,
+							slidesToScroll: 5
 						}
 					},
 					{
-						breakpoint: 1020,
+						breakpoint: 992,
 						settings: {
-							slidesToShow: 2
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
+					},
+					{
+						breakpoint: 820,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
+					},
+					{
+						breakpoint: 640,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
+					},
+					{
+						breakpoint: 480,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
 						}
 					}
 				]
@@ -1023,7 +1056,7 @@ function slidersInit() {
 							slidesToScroll: 3
 						}
 					}, {
-						breakpoint: 1280,
+						breakpoint: 960,
 						settings: {
 							slidesToShow: 2,
 							slidesToScroll: 2

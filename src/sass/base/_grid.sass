@@ -17,10 +17,22 @@
 	.grid-col-#{$grid-col}
 		width: (100%/(12)*$grid-col)
 
+		@if $grid-col == 12
+			margin-bottom: $grid-space
+
+			&:last-child
+				margin-bottom: 0
+
 +media('<desk-hd')
 	@for $grid-col from 1 through 12
 		.grid-col-hd-#{$grid-col}
 			width: (100%/(12)*$grid-col)
+
+			@if $grid-col == 12
+				margin-bottom: $grid-space
+
+				&:last-child
+					margin-bottom: 0
 
 	.grid-col-hd-width-auto
 		float: none
@@ -31,7 +43,43 @@
 		.grid-col-md-#{$grid-col}
 			width: (100%/(12)*$grid-col)
 
+			@if $grid-col == 12
+				margin-bottom: $grid-space
+
+				&:last-child
+					margin-bottom: 0
+
 	.grid-col-md-width-auto
+		float: none
+		width: auto
+
++media('<tab-sm')
+	@for $grid-col from 1 through 12
+		.grid-col-sm-#{$grid-col}
+			width: (100%/(12)*$grid-col)
+
+			@if $grid-col == 12
+				margin-bottom: $grid-space
+
+				&:last-child
+					margin-bottom: 0
+
+	.grid-col-sm-width-auto
+		float: none
+		width: auto
+
++media('<mob-lg')
+	@for $grid-col from 1 through 12
+		.grid-col-lt-#{$grid-col}
+			width: (100%/(12)*$grid-col)
+
+			@if $grid-col == 12
+				margin-bottom: $grid-space
+
+				&:last-child
+					margin-bottom: 0
+
+	.grid-col-lt-width-auto
 		float: none
 		width: auto
 

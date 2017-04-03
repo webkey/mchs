@@ -36,6 +36,9 @@
 	+media('<desk-md')
 		padding: $layout-grid-space--desk-md
 
+	+media('<mob-lg')
+		padding: $layout-grid-space--mob-lg
+
 	@at-root
 		.gov
 			position: relative
@@ -100,106 +103,81 @@
 	+media('<desk-md')
 		padding: $layout-grid-space--desk-md
 
-	$bottom-space: 24px
+	+media('<mob-lg')
+		padding: $layout-grid-space--mob-lg
 
-	=link
+	$bottom-space: 24px
+	// footer nav
+
+.footer-nav
+	margin-bottom: 0
+
+	p
+		margin-bottom: $bottom-space
+
+.footer-nav__col
+	position: relative
+	+font(1.4rem, 1.4)
+	color: #fff
+
+	& > *:last-child
+		margin-bottom: 0
+
+.footer-nav__title
+	display: block
+	font: 400 12px/1.4 $font-alt
+	text-transform: uppercase
+	color: #999
+	margin-bottom: $bottom-space
+
+	a
+		color: inherit
+		text-decoration: none
+
 		& > span
 			border-bottom: 1px solid transparent
-			-webkit-transition-property: border-color
 			transition-property: border-color
-			-webkit-transition-duration: 0.2s
-			transition-duration: 0.2s
+			transition-duration: $animation-speed
 
 		&:hover > span
 			border-bottom-color: rgba(255, 255, 255, 0.30)
 
-	// footer nav
-	@at-root
-	.footer-nav
-		$nav-cols-length: 5 // length small columns
+.footer-nav__links
+	margin: 0 0 30px
 
-		$grid-space: 15px
-		margin: 0 -#{$grid-space}
-		font-size: 0
-		line-height: 0
-		letter-spacing: -4px
+	li
+		display: inline-block
+		vertical-align: top
+		margin: 0 30px 10px 0
 
-		// calculate width of columns
-		=layout
-			// width one column
-			$width: 100%/$nav-cols-length
-			width: $width - 0.02%
-
-			// width large column
-			&:nth-child(2)
-				width: $width*($nav-cols-length - 2) - 0.02%
-
-		&__col
-			position: relative
-			display: inline-block
-			vertical-align: top
-			padding: 0 $grid-space
-			font-size: 14px
-			line-height: 1.4
-			color: #fff
-			letter-spacing: normal
-			+layout
-
-			& > *:last-child
-				margin-bottom: 0
-
-		&__title
+		+media('<tab-lg')
 			display: block
-			font: 400 12px/1.4 $font-alt
-			text-transform: uppercase
-			color: #999
-			margin-bottom: $bottom-space
+			margin-right: 0
 
-			a
-				color: inherit
-				text-decoration: none
-				+link
+	a
+		color: inherit
+		font-size: inherit
+		line-height: inherit
+		text-decoration: none
+		list-style: none
 
-		&__links
-			margin: 0 0 30px
+		& > span
+			border-bottom: 1px solid transparent
+			transition-property: border-color
+			transition-duration: $animation-speed
 
-			li
-				display: inline-block
-				vertical-align: top
-				margin: 0 30px 10px 0
-
-			a
-				color: inherit
-				font-size: inherit
-				line-height: inherit
-				text-decoration: none
-				list-style: none
-				+link
-
-		p
-			margin-bottom: $bottom-space
-
-		+media('<desk-lg')
-			$nav-cols-length: 4
-
-			&__col
-				+layout
-
+		&:hover > span
+			border-bottom-color: rgba(255, 255, 255, 0.30)
 
 /*footer common end*/
 
 /*footer bottom*/
 .footer-bottom
-	$color: #b2b2b2
-	$font-size: $font-size-small
-	$line-height: 24px
-
 	padding: 0 $layout-grid-space
 	background: #001e33
-	color: $color
-	border-top: 1px solid $color
-	font-size: $font-size
-	line-height: $line-height
+	color: #b2b2b2
+	border-top: 1px solid #b2b2b2
+	+font($font-size-small, $line-height-small)
 
 	+media('<desk-hd')
 		+padding-horizontal($layout-grid-space--desk-hd)
@@ -207,36 +185,56 @@
 	+media('<desk-md')
 		+padding-horizontal($layout-grid-space--desk-md)
 
-	&__holder
-		position: relative
-		text-align: justify
+.footer-bottom__holder
+	position: relative
+	text-align: justify
+	overflow: hidden
+	cursor: default
+	padding-top: 19px
+	padding-bottom: 19px
+	//box-sizing: border-box
+
+	font-size: 1px
+	line-height: 0
+	letter-spacing: -4px
+
+	&:after
+		content: "1"
+		margin-left: 100%
+		height: 1px
 		overflow: hidden
-		cursor: default
-		padding-top: 19px
-		padding-bottom: 19px
-		//box-sizing: border-box
-
-		font-size: 1px
-		line-height: 0
-		letter-spacing: -4px
-
-		&:after
-			content: "1"
-			margin-left: 100%
-			height: 1px
-			overflow: hidden
-			display: inline-block
-
-	&__col
 		display: inline-block
-		vertical-align: middle
-		font-size: $font-size
-		line-height: $line-height
-		padding: 0
-		letter-spacing: normal
+
+.footer-bottom__col
+	display: inline-block
+	vertical-align: middle
+	text-align: left
+	+font($font-size-small, $line-height-small)
+	padding: 0
+	letter-spacing: normal
+	max-width: calc(32% - 10px)
+
+	+media('<mob-lg')
+		display: block
+		text-align: left
+		max-width: none
+		padding-bottom: $bottom-space-sm
+
+	&:nth-child(n+2)
+		text-align: center
+
+		+media('<mob-lg')
+			text-align: left
+
+	&:last-child
+		text-align: right
+
+		+media('<mob-lg')
+			text-align: left
+			padding-bottom: 0
 
 	a
-		color: $color
+		color: #b2b2b2
 		text-decoration: none
 
 		.no-touchevents &:hover
@@ -245,7 +243,6 @@
 	.copyright
 		display: inline-block
 		vertical-align: middle
-		padding-right: 45px
 
 /*footer bottom end*/
 

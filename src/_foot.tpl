@@ -16,13 +16,13 @@
 			<!--footer common-->
 			<div class="footer-common">
 				<!--footer nav-->
-				<div class="footer-nav">
-					<div class="footer-nav__col">
+				<div class="footer-nav grid-row">
+					<div class="footer-nav__col grid-col-3 grid-col-md-4 grid-col-sm-12">
 						<strong class="footer-nav__title"><span>МЧС Республики Беларусь</span></strong>
 						<p>Республиканский орган государственного управления Беларуси.</p>
 						<a href="#" class="btn-map-site btn-site-map-js"><i></i><span>Карта сайта</span></a>
 					</div>
-					<div class="footer-nav__col">
+					<div class="footer-nav__col grid-col-6 grid-col-md-4 grid-col-sm-12">
 						<strong class="footer-nav__title"><span>Популярные разделы</span></strong>
 						<ul class="footer-nav__links">
 							<li><a href="#"><span>Цели изадачи МЧС</span></a></li>
@@ -42,7 +42,7 @@
 							<li><a href="#"><span>Важнейшие мероприятия</span></a></li>
 						</ul>
 					</div>
-					<div class="footer-nav__col">
+					<div class="footer-nav__col grid-col-3 grid-col-md-4 grid-col-sm-12">
 						<strong class="footer-nav__title"><span>МЧС в социальных сетях</span></strong>
 						<p>Следите за последними новостями в социальных сетях.</p>
 						<div class="social-networks">
@@ -87,7 +87,7 @@
 			<div class="footer-bottom">
 				<div class="footer-bottom__holder">
 					<div class="footer-bottom__col">
-						<div class="copyright">Copyright &copy; 2017 МЧС Республики Беларусь</div>
+						<div class="copyright">Copyright &copy; 2017 МЧС <span class="nobr">Республики Беларусь</span></div>
 					</div>
 					<div class="footer-bottom__col">
 						<a href="#">Правила использования материалов</a>
@@ -96,7 +96,7 @@
 						<!--developer-->
 						<div class="developer">
 							<a href="http://astronim.by/">
-								<span class="developer__label">Сделано командой &mdash;</span>
+								<span class="developer__label">Разработано &mdash;</span>
 								<span class="developer__logo">Astronim*Support</span>
 							</a>
 						</div>

@@ -5,15 +5,18 @@
 			{
 				"text": "Видео",
 				"id": "#obzh-id-01",
-				"activeClass": "active"
+				"activeClass": "active",
+				"jsClass": "js-tab-anchor"
 			},{
 				"text": "Родителям и педагогам",
 				"id": "#obzh-id-02",
-				"activeClass": ""
+				"activeClass": "",
+				"jsClass": "js-tab-anchor"
 			},{
 				"text": "Брендпакеты",
 				"id": "#obzh-id-03",
-				"activeClass": ""
+				"activeClass": "",
+				"jsClass": "js-tab-anchor"
 			},{
 				"text": "Аудио",
 				"id": "#obzh-id-04",
@@ -21,11 +24,36 @@
 			},{
 				"text": "Постеры и плакаты",
 				"id": "#obzh-id-05",
-				"activeClass": ""
+				"activeClass": "",
+				"jsClass": "js-tab-anchor"
 			},{
 				"text": "Игры",
 				"id": "#obzh-id-06",
-				"activeClass": ""
+				"activeClass": "",
+				"jsClass": "js-tab-anchor"
+			}
+		])
+	</div>
+	<div class="obzh__links">
+		@@loop('_obzh-tabs-nav-item.tpl', [
+			{
+				"text": "Видео",
+				"id": "#"
+			},{
+				"text": "Родителям и педагогам",
+				"id": "#"
+			},{
+				"text": "Брендпакеты",
+				"id": "#"
+			},{
+				"text": "Аудио",
+				"id": "#"
+			},{
+				"text": "Постеры и плакаты",
+				"id": "#"
+			},{
+				"text": "Игры",
+				"id": "#"
 			}
 		])
 	</div>

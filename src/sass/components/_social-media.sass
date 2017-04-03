@@ -10,14 +10,25 @@
 		bottom: 0.15em
 		border-right: 1px solid $border-color
 
+		+media('<mob-lg')
+			content: none
+
 .soc-media__col
+	position: relative
 
 	&:first-child
 		float: left
 		width: calc(50% - #{$grid-inside-horizontal-space})
 
+		+media('<mob-lg')
+			float: none
+			width: 100%
+
 	&:nth-child(2)
 		margin-left: calc(50% + #{$grid-inside-horizontal-space})
+
+		+media('<mob-lg')
+			margin-left: 0
 
 .soc-media__visual
 	margin-bottom: $bottom-space
@@ -29,11 +40,27 @@
 		background: url(../../img/bg-video.png) no-repeat center bottom
 		background-size: 100%
 
+		+media("<desk-hd")
+			padding-bottom: 40px
+
+		+media("<tab-lg")
+			padding-bottom: 26px
+
 	.video-holder
 		padding-bottom: 62.5%
 
 .soc-media__footer
 	padding-top: $bottom-space
+
+	+media("<desk-hd")
+		padding-top: 0
+
+	+media("<tab-lg")
+		padding-top: $bottom-space
+
+	+media('<mob-lg')
+		padding-top: 0
+		padding-bottom: $bottom-space
 
 .soc-media-share
 	text-align: center
@@ -48,45 +75,59 @@
 
 .soc-media-share
 
-	.social-networks a
-		background: none
-		+size(32px)
+	.social-networks__list
 
-		.no-touchevents &:hover
-			transform: none
-			box-shadow: none
+		+media("<desk-hd")
+			+margin-horizontal(-15px)
 
-		svg
-			+size(22px)
+		+media("<tab-lg")
+			+margin-horizontal(-5px)
 
-		path
-			fill: $text-color-light
-
-		.no-touchevents &.fb:hover
-
+		.social-networks__item
+			+media("<desk-hd")
+				+margin-horizontal(15px)
+		
+			+media("<tab-lg")
+				+margin-horizontal(5px)
+		
+		a
+			background: none
+			+size(32px)
+	
+			.no-touchevents &:hover
+				transform: none
+				box-shadow: none
+	
+			svg
+				+size(22px)
+	
 			path
-				fill: $facebook-color
-
-		.no-touchevents &.twitter:hover
-
-			path
-				fill: $twitter-color
-
-		.no-touchevents &.vk:hover
-
-			path
-				fill: $vkontakte-color
-
-		.no-touchevents &.ok:hover
-
-			path
-				fill: $odnoklassniki-color
-
-		.no-touchevents &.instagram:hover
-
-			path
-				fill: $instagram-color-end
-
+				fill: $text-color-light
+	
+			.no-touchevents &.fb:hover
+	
+				path
+					fill: $facebook-color
+	
+			.no-touchevents &.twitter:hover
+	
+				path
+					fill: $twitter-color
+	
+			.no-touchevents &.vk:hover
+	
+				path
+					fill: $vkontakte-color
+	
+			.no-touchevents &.ok:hover
+	
+				path
+					fill: $odnoklassniki-color
+	
+			.no-touchevents &.instagram:hover
+	
+				path
+					fill: $instagram-color-end
 
 .soc-media__img
 	height: 227px
@@ -96,12 +137,25 @@
 	background-size: cover
 	margin-bottom: $bottom-space
 
+	+media("<desk-hd")
+		height: 0
+		padding-bottom: 100%
+
+	+media("<tab-lg")
+		height: 227px
+
 .soc-media__text
 	font-size: $font-size-small
 	line-height: $line-height-small
 	overflow: hidden
 	height: round-float($font-size-small*$line-height-small*4, 1)
 	margin-bottom: $bottom-space
+
+	+media("<desk-hd")
+		height: auto
+
+	+media("<tab-lg")
+		height: round-float($font-size-small*$line-height-small*4, 1)
 
 .soc-media__link
 	font-family: $font-alt

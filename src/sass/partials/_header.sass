@@ -12,16 +12,21 @@
 		padding-left: 140px
 
 	+media('<tab-lg')
-		padding-left: 60px
+		padding-left: $header-top-height
 
 	+media('<tab-sm')
 		min-height: 0
 
+	+media('<mob-lg')
+		padding-left: $header-top-height-sm
+
 .header__frame
 	position: relative
 	padding-top: $header-top-height
-
 	+clear
+
+	+media('<mob-lg')
+		padding-top: $header-top-height-sm
 
 .header__top
 	height: $header-top-height
@@ -33,6 +38,9 @@
 	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
 	+clear
 
+	+media('<mob-lg')
+		height: $header-top-height-sm
+
 	.no-js &, .page-loaded &
 		overflow: visible
 
@@ -43,11 +51,13 @@
 
 		+media('<desk-sm')
 			width: calc(100% - #{$header-left-space-desk-sm})
-			max-width: calc(#{$layout-width - $header-left-space-desk-sm})
+			max-width: none
 
 		+media('<tab-lg')
 			width: calc(100% - #{$header-top-height})
-			max-width: calc(#{$layout-width - $header-top-height})
+
+		+media('<mob-lg')
+			width: calc(100% - #{$header-top-height-sm})
 
 .header__content
 	$height-container: 122px
@@ -68,6 +78,10 @@
 		height: auto
 		text-align: center
 		+padding-vertical(#{$grid-space})
+
+	+media('<mob-lg')
+		padding: 0 $layout-grid-space--mob-lg
+		margin-left: -#{$header-top-height-sm}
 
 	.holder
 		overflow: hidden
@@ -119,11 +133,27 @@
 					+media('<tab-sm')
 						min-height: 0
 
+					+media('<mob-lg')
+						content: none
+
 				li
 					display: inline-block
 					vertical-align: middle
 					position: relative
 					padding: 0 $item-inside-space
+
+					+media('<tab-sm')
+						width: calc(50% - 2px)
+						text-align: center
+
+					+media('<mob-lg')
+						display: block
+						width: auto
+						border-bottom: 1px solid $border-color
+						+padding-vertical(#{round($grid-space/2)})
+
+						&:last-child
+							border: none
 
 					&:before
 						content: ''
@@ -136,14 +166,15 @@
 						margin-top: -($height/2)
 						border-left: 1px solid $border-color
 
+						+media('<mob-lg')
+							content: none
+
 					&:after
 						+vertical-align
-
 						min-height: 65px
 
-					+media('<tab-sm')
-						width: calc(50% - 2px)
-						text-align: center
+						+media('<mob-lg')
+							content: none
 
 					a
 						display: inline-block
@@ -151,10 +182,17 @@
 						color: $text-color
 						text-align: left
 
+						+media('<mob-lg')
+							display: block
+
 						& > div
 							display: inline-block
 							vertical-align: middle
 							margin-right: 20px
+
+							+media('<mob-lg')
+								min-width: 57px
+								text-align: center
 
 							& > em
 								font: normal bold 30px/1.2 $font-alt
@@ -168,6 +206,9 @@
 							font-size: $font-size-small
 							line-height: $line-height-small
 							letter-spacing: normal
+
+							+media('<mob-lg')
+								max-width: 190px
 
 	@at-root
 		.header__title
@@ -228,6 +269,10 @@
 	background-color: white
 	z-index: 20
 
+	.touchevents &
+		transition-property: height
+		transition-duration: 0.1s
+
 	.header-fixed &
 		position: fixed
 
@@ -240,6 +285,10 @@
 	+media('<tab-lg')
 		width: $header-top-height
 		height: $header-top-height !important
+
+	+media('<mob-lg')
+		width: $header-top-height-sm
+		height: $header-top-height-sm !important
 
 .logo
 	display: block
@@ -272,7 +321,7 @@
 	letter-spacing: -4px
 	z-index: 100
 
-	$color-border: #035b9a
+	$color-border: rgba(255, 255, 255, 0.3)
 	$color-text: #80a7c4
 
 	=transition
@@ -288,6 +337,9 @@
 		vertical-align: top
 		position: relative
 		width: $header-top-height
+
+		+media('<mob-lg')
+			width: $header-top-height-sm
 
 		&:before
 			content: ''
@@ -333,6 +385,10 @@
 				display: inline-block
 				+transition
 
+				+media('<mob-lg')
+					width: 18px
+					height: 18px
+
 			.no-touchevents &:hover
 				color: $text-color-alt
 
@@ -374,6 +430,9 @@
 			font-size: 16px
 			line-height: 24px
 			letter-spacing: normal
+
+			+media('<mob-lg')
+				font-size: 14px
 
 	.no-touchevents &:hover > a,
 	.no-touchevents & > a:hover,
