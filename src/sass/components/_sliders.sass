@@ -242,6 +242,7 @@
 /*promo slider*/
 .promo
 	margin-bottom: $bottom-space
+	+push-auto
 
 	.breadcrumbs + &
 		float: left
@@ -252,7 +253,14 @@
 	white-space: nowrap
 	overflow: hidden
 	// before slide load end
+	+push-auto
 	margin-bottom: 0
+
+	+media('<desk-md')
+		max-width: $section-layout-width-desk-hd
+
+	+media('<tab-lg')
+		max-width: $section-layout-width-tab-lg
 
 	&.slick-initialized, .no-js &
 		// after slide load
@@ -397,7 +405,7 @@
 	display: inline-block
 	vertical-align: top
 	// before slide load end
-	height: 350px
+	height: $news-item-lg-img-height
 	width: 100%
 	background-position: center center
 	background-repeat: no-repeat

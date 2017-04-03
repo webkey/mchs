@@ -7,7 +7,7 @@
 		"meta": "03.01.2017, 10:30",
 		"size": "large",
 		"slider": "true",
-		"hasJs": "news-grid-js",
+		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
 	},
@@ -19,7 +19,7 @@
 		"meta": "25.12.2016, 01:30",
 		"size": "",
 		"slider": "",
-		"hasJs": "news-grid-js",
+		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
 	},
@@ -31,7 +31,7 @@
 		"meta": "23.12.2016, 13:30",
 		"size": "",
 		"slider": "",
-		"hasJs": "news-grid-js",
+		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
 	},
@@ -43,7 +43,7 @@
 		"meta": "18.12.2016, 14:30",
 		"size": "",
 		"slider": "",
-		"hasJs": "news-grid-js",
+		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
 	},
@@ -55,7 +55,7 @@
 		"meta": "11.12.2016, 08:30",
 		"size": "",
 		"slider": "",
-		"hasJs": "news-grid-js",
+		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
 	},
@@ -67,7 +67,7 @@
 		"meta": "11.12.2016, 08:30",
 		"size": "",
 		"slider": "",
-		"hasJs": "news-grid-js",
+		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
 	},
@@ -79,7 +79,7 @@
 		"meta": "11.12.2016, 08:30",
 		"size": "",
 		"slider": "",
-		"hasJs": "news-grid-js",
+		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
 	},
@@ -91,7 +91,7 @@
 		"meta": "11.12.2016, 08:30",
 		"size": "",
 		"slider": "",
-		"hasJs": "news-grid-js",
+		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
 	},
@@ -103,7 +103,7 @@
 		"meta": "11.12.2016, 08:30",
 		"size": "",
 		"slider": "",
-		"hasJs": "news-grid-js",
+		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
 	}

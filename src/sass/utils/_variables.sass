@@ -2,7 +2,7 @@
 @import placeholders
 
 // medium query
-$breakpoints: ('mob-sm': 320px, 'mob-md': 480px, 'mob-lg': 640px, 'tab-sm': 768px, 'tab-lg': 992px, 'desk-sm': 1200px, 'desk-md': 1280px, 'desk-lg': 1600px, 'desk-hd': 1920px)
+$breakpoints: ('mob-sm': 320px, 'mob-md': 480px, 'mob-lg': 640px, 'tab-sm': 768px, 'tab-lg': 960px, 'desk-sm': 1200px, 'desk-md': 1280px, 'desk-lg': 1600px, 'desk-hd': 1920px)
 
 // medium query
 $mq-desk-hd: 1919px
@@ -71,9 +71,19 @@ $color-table-bg: #fff !default
 $color-table-bg-alt: $base-color !default
 $color-table-bg-row: #fafafa !default
 
+// social color
+$facebook-color: #3a589e
+$vkontakte-color: #4b73a4
+$twitter-color: #1da0f2
+$odnoklassniki-color: #f2822e
+$instagram-color-start: #de4f5a
+$instagram-color-end: #a43b97
+
 // layout
 $layout-grid-space: 60px !default
-$layout-grid-space--desk-md: 40px !default
+$layout-grid-space--desk-hd: 50px !default
+$layout-grid-space--desk-lg: 40px !default
+$layout-grid-space--desk-md: 30px !default
 $layout-width: 1920px !default
 $layout-space-horizontal: 0 !default
 $article-layout-width: none !default
@@ -81,6 +91,9 @@ $article-layout-space-horizontal: 50px !default
 $article-layout-space-vertical: 48px !default
 $text-layout-width: 640px !default
 $text-layout-space-horizontal: 0 !default
+$section-layout-width: null !default
+$section-layout-width-desk-hd: 850px !default
+$section-layout-width-tab-lg: 560px !default
 
 // grids
 $grid-space: 20px !default // отступы между элементами сетки, например, новостей
@@ -90,27 +103,36 @@ $news-label-size: 60px !default // размер меток содержания 
 
 // new
 // размеры подобранны и заданы хардкодом, чтобы сохранить полную идентичность дизайну без применения js
-$news-item-height: 304px // высота стандартного элемета превью новостей
-$news-item-width: 270px+$grid-space // ширина стандартного элемета превью новостей с учетом боковых отступов
-$news-item-sm-height: 154px // высота элемента превью новостей без изображения
-$news-item-sm-width: $news-item-width // ширина элемента превью новостей без изображения (такая же как и у стандартного)
-$news-item-lg-height: $news-item-height*2+$grid-space // высота большого элемета
-$news-item-lg-width: $news-item-width*2 // ширина большого элемета
+$news-item-height: 299px !default // высота стандартного элемета превью новостей
+$news-item-width: 270px+$grid-space !default // ширина стандартного элемета превью новостей с учетом боковых отступов
+$news-item-img-height: 154px !default // высота картикнки
+$news-item-content-height: $news-item-height - $news-item-img-height !default // высота контента превью новостей
+$news-item-sm-height: 154px !default // высота элемента превью новостей без изображения
+$news-item-sm-width: $news-item-width !default // ширина элемента превью новостей без изображения (такая же как и у стандартного)
+$news-item-sm-content-height: $news-item-sm-height !default // высота контента превью новостей без изображения
+$news-item-lg-height: $news-item-height*2+$grid-space !default // высота большого элемета
+$news-item-lg-width: $news-item-width*2 !default // ширина большого элемета
+$news-item-lg-img-height: 350px !default // высота картикнки в большом блоке
+$news-item-lg-content-height: $news-item-lg-height - $news-item-lg-img-height !default // высота контента больших превью новостей
+
+// events-summary (только для текущего проекта)
+$events-summary-nav-height: 60px !default
 
 // form
 $space-bottom-form: 3rem !default
-
-// header color
-$color-header-bg: #f7f7f7 !default
-$header-height: 182px !default
-$header-top-height: 60px !default
-
 
 // sidebars
 $sidebar-left-width: 270px !default
 $sidebar-right-width: 270px !default
 $sidebar-right-width--desk-md: 160px !default
-$sidebar-inner-space-horizontal: 40px
+$sidebar-inner-space-horizontal: 40px !default
+
+// header
+$color-header-bg: #f7f7f7 !default
+$header-height: 182px !default
+$header-top-height: 60px !default
+$header-left-space: $sidebar-left-width !default
+$header-left-space-desk-sm: 140px !default // по дизайну
 
 // animation
 $animation-speed: 0.2s !default

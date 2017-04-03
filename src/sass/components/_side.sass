@@ -10,6 +10,9 @@
 	width: $width
 	z-index: 50
 
+	+media('<desk-md')
+		display: none
+
 	&.is_stuck
 		left: $layout-width
 		margin-left: -#{$width}
@@ -28,8 +31,11 @@
 			.touchevents &.is_bottom
 				margin-left: 0
 
+		& + div
+			z-index: -1
+
 	+media('<desk-lg')
-		margin-right: -#{$layout-grid-space--desk-md + $width}
+		margin-right: -#{$layout-grid-space--desk-hd + $width}
 
 	=font()
 		font: 400 #{$fz}/#{$lh} $font-alt

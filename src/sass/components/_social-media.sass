@@ -25,7 +25,15 @@
 	border-bottom: 1px solid $border-color
 
 	.video
-		padding-bottom: 30px
+		padding-bottom: 26px
+		background: url(../../img/bg-video.png) no-repeat center bottom
+		background-size: 100%
+
+	.video-holder
+		padding-bottom: 62.5%
+
+.soc-media__footer
+	padding-top: $bottom-space
 
 .soc-media-share
 	text-align: center
@@ -44,26 +52,56 @@
 		background: none
 		+size(32px)
 
+		.no-touchevents &:hover
+			transform: none
+			box-shadow: none
+
 		svg
 			+size(22px)
 
 		path
 			fill: $text-color-light
 
+		.no-touchevents &.fb:hover
+
+			path
+				fill: $facebook-color
+
+		.no-touchevents &.twitter:hover
+
+			path
+				fill: $twitter-color
+
+		.no-touchevents &.vk:hover
+
+			path
+				fill: $vkontakte-color
+
+		.no-touchevents &.ok:hover
+
+			path
+				fill: $odnoklassniki-color
+
+		.no-touchevents &.instagram:hover
+
+			path
+				fill: $instagram-color-end
+
+
 .soc-media__img
-	height: 230px
+	height: 227px
 	background-position: center
 	background-repeat: no-repeat
 	-webkit-background-size: cover
 	background-size: cover
-	margin-bottom: $bottom-space-sm
+	margin-bottom: $bottom-space
 
 .soc-media__text
 	font-size: $font-size-small
 	line-height: $line-height-small
 	overflow: hidden
 	height: round-float($font-size-small*$line-height-small*4, 1)
-	margin-bottom: $bottom-space-sm
+	margin-bottom: $bottom-space
 
 .soc-media__link
 	font-family: $font-alt

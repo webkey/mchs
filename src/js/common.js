@@ -231,13 +231,15 @@ function fixedHeader(){
 			$window = $(window),
 			layout = 1200;
 
-		$window.on('load resizeByWidth scroll', function () {
+		$page.addClass('header-fixed');
 
-			var minScrollTop = $parent.offset().top;
-			var currentScrollTop = $window.scrollTop();
-
-			$page.toggleClass('header-fixed', (currentScrollTop > minScrollTop));
-		})
+		// $window.on('load resizeByWidth scroll', function () {
+		//
+		// 	var minScrollTop = $parent.offset().top;
+		// 	var currentScrollTop = $window.scrollTop();
+		//
+		// 	$page.toggleClass('header-fixed', (currentScrollTop > minScrollTop));
+		// })
 	}
 }
 /*fixed header end*/
@@ -254,14 +256,33 @@ function behaviorLogoOnScroll() {
 	var $scrollArea = $(window);
 	var transformElement = '.logo-wrap';
 	var $transformElement = $(transformElement);
-	var transformElementSize = $transformElement.outerHeight();
-	var viewport = 1200;
+	// var transformElementSize = $transformElement.outerHeight();
+	var viewport = 960;
 
-	$scrollArea.on('scroll resize', function () {
-		init();
+	$scrollArea.on('debouncedresize', function () {
+		if ($transformElement.length) {
+
+			var scrollTop = $scrollArea.scrollTop(),
+				limitSize = $('.header__top').outerHeight(),
+				currentSize = $('.header').height() - scrollTop,
+				actualHeight;
+
+			actualHeight = (currentSize > limitSize) ? currentSize : limitSize;
+
+			TweenMax.to(transformElement, 0, {
+				height: actualHeight
+			});
+		}
 	});
 
-	init();
+	$scrollArea.on('load scroll', function () {
+		if ($transformElement.length) {
+
+			if (window.innerWidth >= viewport) {
+				init();
+			}
+		}
+	});
 
 	function init() {
 		changeSize();
@@ -284,15 +305,13 @@ function behaviorLogoOnScroll() {
 	// 		}
 	//
 	// 	}
-	// });
+	//});
 
 	function changeSize() {
 
-		if (!$transformElement.length) return;
-
 		var scrollTop = $scrollArea.scrollTop(),
 			limitSize = $('.header__top').outerHeight(),
-			currentSize = transformElementSize - scrollTop,
+			currentSize = $('header').height() - scrollTop,
 			actualSize;
 
 		actualSize = (currentSize > limitSize) ? currentSize : limitSize;

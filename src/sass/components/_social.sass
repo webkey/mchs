@@ -62,19 +62,19 @@
 			fill: #fff
 			+transition
 
-	.fb a
-		background-color: #3a589e
+		&.fb
+			background-color: $facebook-color
 
-	.vk a
-		background-color: #4b73a4
+		&.vk
+			background-color: $vkontakte-color
 
-	.twitter a
-		background-color: #1da0f2
+		&.twitter
+			background-color: $twitter-color
 
-	.ok a
-		background-color: #f2822e
+		&.ok
+			background-color: $odnoklassniki-color
 
-	.instagram a
-		+linear-gradient(to right, #de4f5a 0%, #a43b97 100%)
+		&.instagram
+			+linear-gradient(to right, #{$instagram-color-start} 0%, #{$instagram-color-end} 100%)
 
 /*social networks end*/

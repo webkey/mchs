@@ -1,19 +1,44 @@
+/* GRID LAYOUT
 .grid-row
 	+margin-horizontal(-#{$grid-space/2})
 	margin-bottom: $grid-space
 	+clear
 
+[class*="grid-col-"]
+	float: left
+	position: relative
+	min-height: 1px
+	+padding-horizontal($grid-space/2)
+
+.grid-layout-right
+	float: right
+
 @for $grid-col from 1 through 12
 	.grid-col-#{$grid-col}
-		float: left
-		position: relative
-		min-height: 1px
 		width: (100%/(12)*$grid-col)
-		+padding-horizontal($grid-space/2)
-		//margin-bottom: $grid-space
+
++media('<desk-hd')
+	@for $grid-col from 1 through 12
+		.grid-col-hd-#{$grid-col}
+			width: (100%/(12)*$grid-col)
+
+	.grid-col-hd-width-auto
+		float: none
+		width: auto
+
++media('<tab-lg')
+	@for $grid-col from 1 through 12
+		.grid-col-md-#{$grid-col}
+			width: (100%/(12)*$grid-col)
+
+	.grid-col-md-width-auto
+		float: none
+		width: auto
 
 .grid-row--zero
 	margin: 0
 
 	[class*="grid-col-"], [class^="grid-col-"]
 		+padding-horizontal(0)
+
+/* GRID LAYOUT END

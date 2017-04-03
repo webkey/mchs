@@ -4,9 +4,18 @@
 .header__holder
 	position: relative
 	background: $color-header-bg
-	padding-left: $sidebar-left-width
-	min-height: $header-height
+	padding-left: $header-left-space
+	min-height: $header-left-space-desk-sm
 	+clear
+
+	+media('<desk-sm')
+		padding-left: 140px
+
+	+media('<tab-lg')
+		padding-left: 60px
+
+	+media('<tab-sm')
+		min-height: 0
 
 .header__frame
 	position: relative
@@ -29,18 +38,36 @@
 
 	.header-fixed &
 		position: fixed
-		width: calc(100% - #{$sidebar-left-width})
-		max-width: calc(#{$layout-width - $sidebar-left-width})
+		width: calc(100% - #{$header-left-space})
+		max-width: calc(#{$layout-width - $header-left-space})
+
+		+media('<desk-sm')
+			width: calc(100% - #{$header-left-space-desk-sm})
+			max-width: calc(#{$layout-width - $header-left-space-desk-sm})
+
+		+media('<tab-lg')
+			width: calc(100% - #{$header-top-height})
+			max-width: calc(#{$layout-width - $header-top-height})
 
 .header__content
 	$height-container: 122px
 
 	padding: 0 $layout-grid-space
 	height: $height-container
-	//+clear
 
 	+media('<desk-lg')
+		padding: 0 $layout-grid-space--desk-hd
+
+	+media('<desk-md')
 		padding: 0 $layout-grid-space--desk-md
+
+	+media('<tab-lg')
+		margin-left: -#{$header-top-height}
+
+	+media('<tab-sm')
+		height: auto
+		text-align: center
+		+padding-vertical(#{$grid-space})
 
 	.holder
 		overflow: hidden
@@ -48,6 +75,9 @@
 		font-size: 0
 		line-height: 0
 		letter-spacing: -4px
+
+		+media('<tab-sm')
+			display: none
 
 		&:before
 			content: ''
@@ -68,6 +98,10 @@
 			overflow: hidden
 			margin-left: 30px
 
+			+media('<tab-sm')
+				float: none
+				margin-left: 0
+
 			$item-inside-space: 20px
 
 			ul
@@ -81,6 +115,9 @@
 					display: inline-block
 					vertical-align: middle
 					min-height: $height-container
+
+					+media('<tab-sm')
+						min-height: 0
 
 				li
 					display: inline-block
@@ -104,10 +141,15 @@
 
 						min-height: 65px
 
+					+media('<tab-sm')
+						width: calc(50% - 2px)
+						text-align: center
+
 					a
 						display: inline-block
 						text-decoration: none
 						color: $text-color
+						text-align: left
 
 						& > div
 							display: inline-block
@@ -132,6 +174,9 @@
 			font: 700 1.8rem/1.2 $font-alt
 			text-transform: uppercase
 			color: $text-color
+
+			+media('<desk-md')
+				+font(1.4rem, 1.2)
 
 		.header__info
 			font-size: $font-size-small
@@ -179,7 +224,7 @@
 	left: 0
 	top: 0
 	height: 100%
-	width: $sidebar-left-width
+	width: $header-left-space
 	background-color: white
 	z-index: 20
 
@@ -188,6 +233,13 @@
 
 	.header-fixed.touchevents &
 		height: $header-top-height
+
+	+media('<desk-sm')
+		width: $header-left-space-desk-sm
+
+	+media('<tab-lg')
+		width: $header-top-height
+		height: $header-top-height !important
 
 .logo
 	display: block

@@ -31,7 +31,26 @@
 							<div class="content">
 								<section class="section" id="main-new-anchor">
 									<div class="grid-row">
-										<div class="grid-col-9">
+										<div class="grid-col-3 grid-col-hd-4 grid-col-md-12 grid-layout-right grid-col-md-width-auto">
+											<div class="section__holder">
+												<div class="grid-row">
+													<div class="grid-col-12 grid-col-md-6">
+														<div class="section__title">
+															<h2>Спасены</h2>
+															@@include('_years-select.tpl')
+														</div>
+														@@include('_save-info.tpl')
+													</div>
+													<div class="grid-col-12 grid-col-md-6">
+														<div class="section__title hide-tab-lg">
+															<h2>Суточные сводки</h2>
+														</div>
+														@@include('_events-summary.tpl')
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="grid-col-9 grid-col-hd-8 grid-col-md-12 grid-col-hd-width-auto">
 											<div class="section__title"><h2>Главные новости</h2></div>
 											<div class="section__holder">
 												<!--news grid-->
@@ -41,24 +60,6 @@
 													</div>
 												</div>
 												<!--news grid end-->
-											</div>
-										</div>
-										<div class="grid-col-3">
-											<div class="section__title">
-												<h2>Спасены</h2>
-												@@include('_years-select.tpl')
-											</div>
-											<div class="section__holder">
-												<div class="grid-row">
-													<div class="grid-col-12">
-														@@include('_save-info.tpl')
-													</div>
-												</div>
-												<div class="grid-row">
-													<div class="grid-col-12">
-														@@include('_events-summary.tpl')
-													</div>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -304,7 +305,7 @@
 													<h3>Социал медиа</h3>
 												</div>
 												<div class="section__box">
-
+													@@include('_social-media.tpl')
 												</div>
 											</div>
 										</div>

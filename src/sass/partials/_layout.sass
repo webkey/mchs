@@ -66,6 +66,9 @@ body
 	padding-right: 60px // width .side menu
 	+clear
 
+	+media('<desk-md')
+		padding-right: 0
+
 .main-frame
 	float: left
 	width: 100%
@@ -73,13 +76,22 @@ body
 
 .main-inside
 	margin: 0 0 0 $sidebar-left-width
-	padding: $layout-grid-space #{$layout-grid-space - 10px}
+	padding: $layout-grid-space #{$layout-grid-space - 9px} // -9 для компенсации вертикального скролла
 	min-height: 50px
 	position: relative
 	+clear
 
-	+media('<desk-lg')
-		padding: $layout-grid-space--desk-md
+	+media('<desk-hd')
+		padding: #{$layout-grid-space--desk-hd} #{$layout-grid-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
+
+	+media('<desk-md')
+		padding: #{$layout-grid-space--desk-hd} #{$layout-grid-space--desk-md} // -9 для компенсации вертикального скролла
+
+	+media('<desk-sm')
+		margin-left: 0
+
+	+media('<tab-lg')
+		padding: #{$layout-grid-space--desk-md} #{$layout-grid-space--desk-md} // -9 для компенсации вертикального скролла
 
 .content-wrap
 	@extend .main-frame
@@ -88,6 +100,9 @@ body
 	margin: 0 $sidebar-right-width 0 0
 	padding-right: $layout-grid-space
 	min-height: 50px
+
+	+media('<desk-hd')
+		padding-right: $layout-grid-space--desk-hd
 
 	+media('<desk-lg')
 		//padding-right: $layout-grid-space--desk-md
@@ -113,6 +128,9 @@ body
 	width: $sidebar-left-width
 	background: $bg-color-alt
 	z-index: 20
+
+	+media('<desk-sm')
+		display: none
 
 .aside
 	float: right
@@ -159,7 +177,8 @@ body
 .article-layout
 	@extend %article-layout-space
 	max-width: $article-layout-width
-	margin: 0 auto
+	+push-auto
+	margin-bottom: 0
 
 	.full-width
 		@extend %article-layout-full-width
@@ -170,12 +189,19 @@ body
 .text-layout
 	@extend %text-layout-space
 	max-width: $text-layout-width
-	margin-left: auto
-	margin-right: auto
+	+push-auto
 
 /*section*/
 .section
 	margin-bottom: $bottom-space-md
+	max-width: $section-layout-width
+	+push-auto
+
+	+media('<desk-hd')
+		max-width: $section-layout-width-desk-hd
+
+	+media('<tab-lg')
+		max-width: $section-layout-width-tab-lg
 
 	&:last-child
 		margin-bottom: 0
@@ -237,6 +263,12 @@ body
 .section__box
 	background-color: white
 	padding: $grid-inside-horizontal-space
+
+.hide-tab-lg
+	display: none
+
+	+media('<tab-lg')
+		display: block
 
 /*section end*/
 /*LAYOUT end*/

@@ -1,16 +1,16 @@
 /*save info*/
 .save
 	position: relative
-	margin-bottom: $bottom-space
+	margin-bottom: $grid-space
 	height: $news-item-height // Хардкод. Высота должна быть равно высоте элемета новостей
 	background-repeat: no-repeat
 	background-position: center center
 	background-size: cover
 
-	&:last-child
-		margin-bottom: 0
+	+media('<desk-hd')
+		height: $news-item-lg-img-height - $events-summary-nav-height - $grid-space // Хардкод. Высота должна равняться высоте изображения (или слайдера) большой новости минус высота переключателей табов блока ниже
 
-	&::before
+	//&::before
 		+pseudo($pos: relative)
 		+ratio(1, 1)
 	

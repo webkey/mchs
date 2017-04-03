@@ -19,6 +19,10 @@
 		top: auto
 		right: auto
 
+		+media('<desk-sm')
+			left: 0
+			width: 100%
+
 
 /*footer gov*/
 .footer-gov
@@ -26,12 +30,18 @@
 	position: relative
 	background: #ffffff
 
+	+media('<desk-hd')
+		padding: $layout-grid-space--desk-hd
+
+	+media('<desk-md')
+		padding: $layout-grid-space--desk-md
+
 	@at-root
 		.gov
 			position: relative
 
 			&__list
-				margin: 0 -#{$grid-space}
+				margin: 0 -#{round($grid-space/2)}
 
 				.slick-dots
 					bottom: 0
@@ -84,7 +94,10 @@
 	overflow: hidden
 	background: #001e33
 
-	+media('<desk-lg')
+	+media('<desk-hd')
+		padding: $layout-grid-space--desk-hd
+
+	+media('<desk-md')
 		padding: $layout-grid-space--desk-md
 
 	$bottom-space: 24px
@@ -188,8 +201,11 @@
 	font-size: $font-size
 	line-height: $line-height
 
-	+media('<desk-lg')
-		padding: 0 $layout-grid-space--desk-md
+	+media('<desk-hd')
+		+padding-horizontal($layout-grid-space--desk-hd)
+
+	+media('<desk-md')
+		+padding-horizontal($layout-grid-space--desk-md)
 
 	&__holder
 		position: relative

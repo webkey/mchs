@@ -4,7 +4,7 @@
 
 /*news grid*/
 .news-grid
-	overflow: hidden
+	//overflow: hidden
 
 .news-grid--main
 	max-width: 850px
@@ -36,7 +36,7 @@
 .news-grid--main .news-grid__item:nth-child(n + 4), .news-grid__item--no-img // Костыль. Все элементы начиная с четвертого должны быть без картинок и лейблов
 	height: $news-item-sm-height // костыль для элемента без картинок, чтобы высоты блоков были четко по дизу
 
-	.news-grid__label
+	.news__label
 		display: none
 
 	.news-grid__img
@@ -46,9 +46,6 @@
 	width: $news-item-lg-width // костыль для большого элемента, чтобы высоты блоков были четко по дизу
 	height: $news-item-lg-height // костыль для большого элемента, чтобы высоты блоков были четко по дизу
 
-	.news-grid__content
-		height: 278px // костыль, чтобы высоты блоков были четко по дизу
-
 .news-grid__inner
 	display: block
 	position: relative
@@ -56,6 +53,7 @@
 	color: $text-color
 	background: #fff
 	box-shadow: inset 0 -3px 0 $mark-color-alt
+	height: 100% // inner по высоте равен item
 	overflow: hidden // необходимо для учета margin внутренних элементов !!!
 
 .news-grid__item--has-img
@@ -65,14 +63,15 @@
 
 		&::before
 			+pseudo()
-			+absolute-fill($height: 150px) // высота как у картинки. см. выше
+			+absolute-fill($height: $news-item-img-height) // высота как у картинки. см. выше
 			background: url(../../img/no-img.jpg) no-repeat center
 			background-size: cover
 
 .news-grid__item--large
 
 	.news-grid__inner::before
-		height: 350px // высота как у большой картинки. см. выше
+		height: $news-item-lg-img-height
+// высота как у большой картинки. см. выше
 
 .news-grid__img
 	min-height: $news-label-size
@@ -90,11 +89,11 @@
 
 .news-grid__img, .news-grid__slider
 	position: relative
-	height: 150px // костыль, чтобы высоты блоков были четко по дизу
+	height: $news-item-img-height // костыль, чтобы высоты блоков были четко по дизу
 	z-index: 4
 
 	.news-grid__item--large &
-		height: 350px
+		height: $news-item-lg-img-height
 
 	.news-grid--main &, .news-grid__item--has-img &
 		position: absolute
@@ -117,16 +116,29 @@
 	padding: $grid-inside-vertical-space $grid-inside-horizontal-space 48px
 	// Костыль. Нужен больше нижний отступ, чтобы повесить на абсолюте мета инфу
 
+	.news-grid &
+		// Костыль. Жесткая высота контента. Высота элемета - высота картинки
+		height: $news-item-content-height
+
+	.news-grid .news-grid__item--large &
+		// Костыль. Для больших блоков своя высота контента. Высота элемета - высота картинки
+		height: $news-item-lg-content-height
+
+	.news-grid .news-grid__item:nth-child(n+4) &
+		// Костыль. Для мленьких блоков своя высота контента. По дизу.
+		height: $news-item-sm-content-height
+
 	// специальные свойства для блока "Главные новости" (`.news-grid--main`)
 	// или специальные свойства элемета новостей с классом `.news-grid__item--has-img`
 
 	// 1) для первых трех элементов или с классом `.news-grid__item--has-img`
 	.news-grid--main .news-grid__item:nth-child(-n+3) &, .news-grid__item--has-img &
-		margin-top: 150px // Костыль. Высота картинки
+		margin-top: $news-item-img-height // Костыль. Высота картинки
 
 	// 2) то же самое для большого элемента
 	.news-grid--main .news-grid__item--large:nth-child(-n+3) &, .news-grid__item--large.news-grid__item--has-img &
-		margin-top: 350px // Костыль. Высота картинки для большого блока
+		margin-top: $news-item-lg-img-height
+	// Костыль. Высота картинки для большого блока
 
 	& > *
 		z-index: 2
@@ -155,7 +167,6 @@
 .news-grid__text
 	overflow: hidden
 	height: round-float($font-size-small*$line-height-small*3, 1) // костыль, чтобы высоты блоков были четко по дизу
-	margin-bottom: 20px
 
 .news-grid__meta
 	position: absolute
