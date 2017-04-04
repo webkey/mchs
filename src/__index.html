@@ -84,7 +84,7 @@
 									<section class="section" id="map-anchor">
 										<div class="section__title"><h2>Карта неблагоприятных явлений</h2></div>
 										<div class="section__holder">
-											<img src="img/_temp-img-section-02.jpg" alt="image description" />
+											<img src="img/_temp-img-section-02.jpg" alt="image description" style="margin: 0 auto; display: block;" />
 										</div>
 									</section>
 									<section class="section" id="other-projects-anchor">
@@ -331,7 +331,9 @@
 				<!--CONTENT end-->
 
 				<!--SIDEBAR-->
-				@@include('_sidebar.tpl')
+				@@include('_sidebar.tpl', {
+					"menu": "true"
+				})
 				<!--SIDEBAR-->
 			</div>
 		</div>

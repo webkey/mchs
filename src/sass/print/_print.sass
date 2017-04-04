@@ -36,6 +36,7 @@
 
 	img
 		max-width: 100% !important
+		filter: grayscale(1)
 
 	p, h2, h3
 		orphans: 3
@@ -60,7 +61,7 @@
 		font-size: 18pt !important
 		line-height: 1.4 !important
 
-	h3, .main-slider-title__item
+	h3, .main-slider-title__item, .section__title
 		font-size: 16pt !important
 		line-height: 1.5 !important
 
@@ -85,23 +86,33 @@
 		& > *
 			padding: 0!important
 
-	.sidebar, .aside, .print-hidden, .view-print, .nav, .nav-list, .breadcrumbs, .breadcrumbs__list, form, .footer, .spacer, [class*="btn-"]
-		display: none !important
-
-	.main, .content, .layout, .layout-text, .layout-flood, .header, .header__holder, .blockquote, .blockquote *, blockquote, .imgl, .imgr, .imgc, .table-auto table
+	.main, .content, .layout, .layout-text, .layout-flood, .header, .header__holder, .blockquote, .blockquote *, blockquote, .imgl, .imgr, .imgc, .table-auto table, .header__frame, .logo-wrap, .header__content, .header .holder, .header .frame, .header__info, .header__title, .header__info li, .main-inside, .main-holder, .content-layout, .article-meta, .sheet, .section, .files, .files__item, .files__inner, .files__depict, .files__description, .files__meta, .files__meta > span, .news-previews, .news-previews__list, .news-previews__item, .news-previews__content, .news-previews__inner, .news-previews__text, .news-previews__content:before, .footer, .footer__holder, .footer-bottom, .footer-bottom__col, .grid-row, [class*="grid-col-"], .save, .save__holder, .save__box, .save__align, .events-sum, .events-sum__panels, .events-sum__panel, .events-list, .events-list__item, .section__holder, .news-grid, .news-grid__list, [class*="news-grid__item"], .news-grid__inner, .news-grid__content, .news-grid__title, .news-grid__text, .news-grid__meta, .section__subtitle h2, .section__subtitle h3, .section__subtitle h4, .news-group, .news-group__list, .section__box, .news-group__item, .news-group__content, .news-group__inner, .news-group__text, .news-group__meta, .soc-media__col, .soc-media__text, .soc-media__link
 		+print-reset
 
-	h1, h2, h3, h4, h5, h6, p, ul, ol, .table-auto, table, .imgl, .imgr, .imgc, .datetime
-		+prints-space-bottom-sm
+	.sidebar, .aside, .print-hidden, .view-print, .nav, .nav-list, .breadcrumbs, .breadcrumbs__list, form, .spacer, [class*="btn-"], .side, .header__top, .header__contacts, .header__info li svg, .header__info li a:after, .user-form, .ctrl, .news-previews__img, .news__label, .banners-panel, .footer-gov, .footer-common, .news-previews__footer, .developer__logo, .promo, .years, .events-sum__nav, .events-sum__footer, .news-grid__img, .news__label_video, .news-grid__slider, #multimedia-anchor, .tape-slider, .v-separator, .news-group::before, .news-group__img, .soc-media .soc-media__col:first-child, .soc-media::before, .soc-media__img
+		display: none !important
+		content: none !important
 
-	.header, .blockquote, hr, blockquote
+	h1, h2, h3, h4, h5, h6, p, ul, ol, .table-auto, table, .imgl, .imgr, .imgc, .datetime, .files, .files__item, .news-previews__item, .save__box, .events-list__item, .news-grid__title, [class*="news-grid__item"], .news-group__item, .soc-media__text
+		+prints-space-bottom-sm
+		max-width: none !important
+
+	.header, .blockquote, hr, blockquote, .section, .save, .events-sum, .section__box
 		+prints-space-bottom-md
+
+	.logo-wrap
+		position: relative !important
+		float: left !important
 
 	.logo
 		background: none !important
+		height: 2.5cm !important
+		width: 2.5cm !important
+		margin-right: 0.5cm !important
 
-		& > *
+		& > *::after
 			display: none !important
+			content: none !important
 
 		& > img
 			display: block !important
@@ -112,3 +123,41 @@
 		margin: 0 !important
 		font-size: 18pt !important
 		display: inline-block !important
+
+	.article-layout
+		margin-left: 0 !important
+		margin-right: 0 !important
+		padding-left: 0 !important
+		padding-right: 0 !important
+		padding-top: 0 !important
+
+	.article-layout .full-width
+		margin-right: 0 !important
+		margin-left: 0 !important
+
+	.files__depict
+		width: 1cm !important
+		float: left !important
+		margin-right: 0.5cm !important
+		margin-bottom: 0.5cm !important
+
+	.files__description
+		margin-left: 1.5cm !important
+
+	.news-previews__meta, .news-grid__meta, .news-group__meta
+		width: 5cm !important
+
+	/*js elements
+	.slick-slider, .slick-slider, .slick-list, .slick-track, .slick-slide, .flashes, .flashes *
+		+print-reset
+
+		::before, ::after
+			display: none !important
+			content: none !important
+
+	.images-slider .slick-slide:first-child ~ .slick-slide, .slider-counter, .slick-arrow, .slick-dots
+		display: none !important
+		content: none !important
+
+	.slick-slide, .flashes__item
+		+prints-space-bottom-sm

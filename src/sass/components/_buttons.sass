@@ -1,31 +1,18 @@
 /*BUTTONS*/
-[class|="btn"],
-[class*=" btn-"],
-input[type="submit"],
-input[type="button"],
-input[type="reset"],
-button
+[class|="btn"], [class*=" btn-"], input[type="submit"], input[type="button"], input[type="reset"], button
 	display: inline-block
 	vertical-align: top
 	position: relative
 	text-align: center
 	text-decoration: none
-	box-sizing: border-box
 	cursor: pointer
 
-[class|="btn"],
-[class*=" btn-"]
-	& input[type="submit"],
-	& input[type="button"],
-	& input[type="reset"]
+[class|="btn"], [class*=" btn-"]
+	& input[type="submit"], & input[type="button"], & input[type="reset"]
 		background: url("../../img/empty.png") repeat
 		display: block
-		height: 100%
+		+absolute-fill()
 		padding: 0
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
 		z-index: 99
 		border: 0
 		opacity: 0
@@ -41,7 +28,6 @@ button
 	border: 2px solid transparent
 	background: $btn-bg-color
 	box-shadow: none
-	box-sizing: border-box
 	transition-property: background-color, color, border-color
 	transition-duration: $animation-speed
 	+btn-hover
@@ -87,14 +73,10 @@ button
 
 		&:before
 			margin: -4px 0 0 0
-			-webkit-transform: rotate(-45deg)
-			-ms-transform: rotate(-45deg)
 			transform: rotate(-45deg)
 
 		&:after
 			margin: 2px 0 0 0
-			-webkit-transform: rotate(45deg)
-			-ms-transform: rotate(45deg)
 			transform: rotate(45deg)
 
 	&_left > span
@@ -126,62 +108,63 @@ button
 /*more button*/
 .more
 	text-align: center
+	padding-bottom: 7px
 
 	.btn-more
 		display: inline-block
+		position: relative
 		text-decoration: none
 		font: 400 #{$font-size}/#{$line-height} $font-alt
 		color: $text-color-alt
 		padding-bottom: 15px
-		-webkit-transition-property: -webkit-transform
-		transition-property: transform
-		-webkit-transition-duration: $animation-speed-mouseleave
-		transition-duration: $animation-speed-mouseleave
+		+antialiased
+		+btn-active
 
-		.no-touchevents &:hover
-			-webkit-transition-duration: $animation-speed
+		&::before
+			+pseudo()
+			top: -2px
+			bottom: -7px
+			left: -12px
+			right: -12px
+			background-color: $border-color
+			opacity: 0
+			transform: scale(0.85)
+			transition-property: opacity, transform
 			transition-duration: $animation-speed
-			-webkit-transform: translate(0, -4px)
-			-ms-transform: translate(0, -4px)
-			transform: translate(0, -4px)
+			z-index: -1
+
+		.no-touchevents &:hover::before
+			opacity: 1
+			transform: scale(1)
 
 		i
+			+size(17px, 16px)
 			position: absolute
 			left: 50%
 			bottom: 0
-			width: 17px
-			height: 16px
 			font-size: 1px
-			z-index: 2
 			pointer-events: none
-			-webkit-backface-visibility: hidden
 			backface-visibility: hidden
-			-webkit-transform: translate(-50%, 0)
-			-ms-transform: translate(-50%, 0)
 			transform: translate(-50%, 0)
+			z-index: 2
 
 		i:before, i:after
 			content: ''
 			position: absolute
 			left: 50%
 			top: 50%
-			height: 2em
-			width: 12em
+			+size(12em, 2em)
 			border-radius: 2em
 			background: $text-color-alt
-			-webkit-backface-visibility: hidden
 			backface-visibility: hidden
 
 		i:before
 			margin: -1em 0 0 -10em
-			-webkit-transform: rotate(45deg)
-			-ms-transform: rotate(45deg)
 			transform: rotate(45deg)
 
 		i:after
 			margin: -1em 0 0 -3em
-			-webkit-transform: rotate(-45deg)
-			-ms-transform: rotate(-45deg)
 			transform: rotate(-45deg)
+
 /*more button end*/
 /*BUTTONS end*/

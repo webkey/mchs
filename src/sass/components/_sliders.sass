@@ -150,6 +150,9 @@
 	position: relative
 	margin-bottom: $bottom-space
 
+	+media('<tab-lg')
+		margin-bottom: $bottom-space-lg
+
 .images-slider__list
 	padding-bottom: $bottom-space
 	position: relative
@@ -219,7 +222,10 @@
 
 /*flashes*/
 .flashes
-	padding: 0 80px
+	padding: 0 90px
+
+	+media('<tab-lg')
+		display: none
 
 .flashes__item
 	overflow: hidden

@@ -6,7 +6,7 @@
 	//float: right
 	//margin: 0 -#{$layout-grid-space + $width} 0 #{-$width}
 	position: absolute
-	top: $layout-grid-space
+	top: $grid-layout-space
 	left: 100%
 	width: $width
 	z-index: 50
@@ -15,7 +15,7 @@
 		display: none
 
 	&.is_stuck
-		left: $layout-width
+		left: $main-layout-width
 		margin-left: -#{$width}
 
 		+media('<1937px')
@@ -36,7 +36,7 @@
 			z-index: -1
 
 	+media('<desk-lg')
-		margin-right: -#{$layout-grid-space--desk-hd + $width}
+		margin-right: -#{$grid-layout-space--desk-hd + $width}
 
 	=font()
 		font: 400 #{$fz}/#{$lh} $font-alt

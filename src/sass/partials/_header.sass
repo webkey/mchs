@@ -47,7 +47,7 @@
 	.header-fixed &
 		position: fixed
 		width: calc(100% - #{$header-left-space})
-		max-width: calc(#{$layout-width - $header-left-space})
+		max-width: calc(#{$main-layout-width - $header-left-space})
 
 		+media('<desk-sm')
 			width: calc(100% - #{$header-left-space-desk-sm})
@@ -62,14 +62,14 @@
 .header__content
 	$height-container: 122px
 
-	padding: 0 $layout-grid-space
+	padding: 0 $grid-layout-space
 	height: $height-container
 
 	+media('<desk-lg')
-		padding: 0 $layout-grid-space--desk-hd
+		padding: 0 $grid-layout-space--desk-hd
 
 	+media('<desk-md')
-		padding: 0 $layout-grid-space--desk-md
+		padding: 0 $grid-layout-space--desk-md
 
 	+media('<tab-lg')
 		margin-left: -#{$header-top-height}
@@ -80,7 +80,7 @@
 		+padding-vertical(#{$grid-space})
 
 	+media('<mob-lg')
-		padding: 0 $layout-grid-space--mob-lg
+		padding: 0
 		margin-left: -#{$header-top-height-sm}
 
 	.holder
@@ -116,6 +116,9 @@
 				float: none
 				margin-left: 0
 
+			+media('<mob-lg')
+				overflow: visible
+
 			$item-inside-space: 20px
 
 			ul
@@ -123,6 +126,9 @@
 				font-size: 0
 				line-height: 0
 				letter-spacing: -4px
+
+				+media('<mob-lg')
+					+margin-horizontal(0)
 
 				&:before
 					content: ''
@@ -194,6 +200,9 @@
 								min-width: 57px
 								text-align: center
 
+								img
+									width: 34px
+
 							& > em
 								font: normal bold 30px/1.2 $font-alt
 								color: $mark-color
@@ -264,10 +273,11 @@
 	position: absolute
 	left: 0
 	top: 0
-	height: 100%
+	height: $header-height
 	width: $header-left-space
 	background-color: white
 	z-index: 20
+	box-shadow: 0 1px 0 $bg-color
 
 	.touchevents &
 		transition-property: height

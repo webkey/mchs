@@ -2,7 +2,7 @@
 <div class="events-sum js-tabs" data-auto-height="false">
 	<div class="events-sum__nav grid-row grid-row--zero">
 		<div class="events-sum__tab grid-col-4">
-			<a href="#events-sum-id-01" class="js-tab-anchor active">
+			<a href="#events-sum-id-01" class="js-tab-anchor active-tab">
 				<span>Text tab 01</span>
 				<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 319.3 263" style="enable-background:new 0 0 319.3 263;"> <polygon points="291.1,169 319.3,150.3 300.5,122.1 281.7,122.1 281.7,112.7 272.3,103.3 253.6,75.1 263,56.3 253.6,47 253.6,28.2   225.4,18.8 206.6,28.2 197.2,9.4 159.6,0 140.9,18.8 131.5,18.8 112.7,28.2 112.7,56.3 103.3,56.3 84.5,65.7 84.5,112.7 56.3,112.7   18.8,122.1 28.2,178.4 9.4,187.8 0,206.6 18.8,216 18.8,244.2 28.2,244.2 47,225.4 65.7,225.4 131.5,234.8 131.5,244.2 197.2,244.2   197.2,253.6 225.4,253.6 244.2,263 244.2,244.2 253.6,225.4 281.7,216 272.3,178.4 263,169 272.3,159.6 "/> </svg>
 			</a>

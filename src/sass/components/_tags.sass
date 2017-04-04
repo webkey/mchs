@@ -4,7 +4,16 @@
 		border-top: 1px solid $border-color
 
 		&:last-child
-			margin-bottom: -$article-layout-space-vertical
+			margin-bottom: -#{$article-layout-space-vertical}
+
+			+media('<desk-hd')
+				margin-bottom: -#{$article-layout-space-vertical--desk-hd }
+
+			+media('<tab-lg')
+				margin-bottom: -#{$article-layout-space-vertical--tab-lg}
+
+			+media('<mob-lg')
+				margin-bottom: -#{$article-layout-space-vertical--mob-lg}
 
 	h3
 		margin-bottom: $bottom-space
@@ -74,6 +83,6 @@
 				z-index: 5
 
 .tags .tags__list
-	margin-bottom: -$bottom-space/2
+	margin-bottom: -($bottom-space/2)
 
 /*tags end*/

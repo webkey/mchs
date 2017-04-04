@@ -41,7 +41,6 @@
 					padding: 0 18px 0 0
 					color: $text-color
 					text-decoration: none
-					max-width: $item-max-width
 					min-width: 0
 					cursor: pointer
 					+transition($dur: 0.5s)
@@ -53,7 +52,11 @@
 						white-space: nowrap
 						-ms-text-overflow: ellipsis
 						text-overflow: ellipsis
+						max-width: $item-max-width
 						z-index: 5
+
+						+media('<mob-lg')
+							max-width: 240px
 
 					> i
 						position: absolute

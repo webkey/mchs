@@ -345,7 +345,7 @@ function scrollToSection() {
 			scrollSpeed: 700,
 			offset: 100,
 			forceSingleHighlight: true,
-			keepHighlightUntilNext: true
+			keepHighlightUntilNext: false
 		});
 	});
 }
@@ -706,7 +706,7 @@ function tabSwitcher() {
 	if($tabWrapper.length){
 		var $anchor = $('.js-tab-anchor'),
 			$content = $('.js-tab-content'),
-			activeClass = 'active',
+			activeClass = 'active-tab',
 			animationSpeed = 0.2,
 			animationHeightSpeed = 0.08;
 
@@ -749,6 +749,8 @@ function tabSwitcher() {
 				var $self = $(this),
 					selfTab = $self.attr('href').substring(1);
 
+				console.log("seflTab: ", selfTab);
+
 				if ($this.data('collapsed') === true && activeTab === selfTab) {
 
 					toggleActiveClass();
@@ -787,7 +789,7 @@ function tabSwitcher() {
 
 				TweenMax.to($thisContent, animationSpeed, {
 					autoAlpha: 0
-					// 'z-index': -1
+					// ,'z-index': -1
 				});
 
 				if ( arguments[0] === false ) return;
@@ -798,6 +800,7 @@ function tabSwitcher() {
 
 				TweenMax.to($initialContent, animationSpeed, {
 					autoAlpha: 1
+					// ,'z-index': 2
 				});
 			}
 
@@ -983,13 +986,6 @@ function slidersInit() {
 						settings: {
 							slidesToShow: 2,
 							slidesToScroll: 2
-						}
-					},
-					{
-						breakpoint: 480,
-						settings: {
-							slidesToShow: 1,
-							slidesToScroll: 1
 						}
 					}
 				]

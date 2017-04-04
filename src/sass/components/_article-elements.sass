@@ -1,5 +1,5 @@
 /*article meta*/
-=article-meta-text
+=article-meta-text()
 	font-size: 1.2rem
 	line-height: 1.4
 	color: $text-color-light
@@ -75,6 +75,9 @@
 		display: inline-block
 		vertical-align: top
 		margin-left: 30px
+
+		+media('<mob-lg')
+			margin-left: 5px
 
 	&__inner
 		display: inline-block

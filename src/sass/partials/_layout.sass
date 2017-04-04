@@ -5,7 +5,7 @@
 body
 	&::before
 		+pseudo($pos: fixed)
-		+size(100%, 400px, $layout-width)
+		+size(100%, 400px, $main-layout-width)
 		left: 0
 		top: 50%
 		transform: translate(0, -50%)
@@ -49,7 +49,7 @@ body
 	&:after
 		content: ''
 		position: absolute
-		left: $layout-width
+		left: $main-layout-width
 		top: 0
 		height: 100%
 		width: 9999px
@@ -76,36 +76,36 @@ body
 
 .main-inside
 	margin: 0 0 0 $sidebar-left-width
-	padding: $layout-grid-space #{$layout-grid-space - 9px} // -9 для компенсации вертикального скролла
+	padding: $grid-layout-space #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
 	min-height: 50px
 	position: relative
 	+clear
 
 	+media('<desk-hd')
-		padding: #{$layout-grid-space--desk-hd} #{$layout-grid-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
+		padding: #{$grid-layout-space--desk-hd} #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
 
 	+media('<desk-md')
-		padding: $layout-grid-space--desk-hd $layout-grid-space--desk-md
+		padding: $grid-layout-space--desk-hd $grid-layout-space--desk-md
 
 	+media('<desk-sm')
 		margin-left: 0
 
 	+media('<tab-lg')
-		padding: $layout-grid-space--desk-md
+		padding: $grid-layout-space--desk-md
 
 	+media('<mob-lg')
-		padding: $layout-grid-space--mob-lg
+		padding: $grid-layout-space--mob-lg
 
 .content-wrap
 	@extend .main-frame
 
 .content
 	margin: 0 $sidebar-right-width 0 0
-	padding-right: $layout-grid-space
+	padding-right: $grid-layout-space
 	min-height: 50px
 
 	+media('<desk-hd')
-		padding-right: $layout-grid-space--desk-hd
+		padding-right: $grid-layout-space--desk-hd
 
 	+media('<desk-lg')
 		//padding-right: $layout-grid-space--desk-md
@@ -132,6 +132,9 @@ body
 .sheet
 	background: $bg-color-alt
 	margin-bottom: $bottom-space-md
+
+	+media('<mob-lg')
+		+margin-horizontal(-#{$grid-layout-space--mob-lg})
 
 	&:last-child
 		margin-bottom: 0
@@ -172,23 +175,38 @@ body
 	z-index: 100
 
 %layout-space
-	padding-left: $layout-space-horizontal
-	padding-right: $layout-space-horizontal
+	+padding-horizontal($main-layout-space-horizontal, $main-layout-space-horizontal)
 
 %article-layout-space
 	padding: $article-layout-space-vertical $article-layout-space-horizontal
 
+	+media('<desk-hd')
+		padding: $article-layout-space-vertical--desk-hd $article-layout-space-horizontal--desk-hd
+
+	+media('<tab-lg')
+		padding: $article-layout-space-vertical--tab-lg $article-layout-space-horizontal--tab-lg
+
+	+media('<mob-lg')
+		padding: $article-layout-space-vertical--mob-lg $article-layout-space-horizontal--mob-lg
+
 %article-layout-full-width
-	margin-left: -$article-layout-space-horizontal
-	margin-right: -$article-layout-space-horizontal
+	+margin-horizontal(-#{$article-layout-space-horizontal})
+
+	+media('<desk-hd')
+		+margin-horizontal(-#{$article-layout-space-horizontal--desk-hd})
+
+	+media('<tab-lg')
+		+margin-horizontal(-#{$article-layout-space-horizontal--tab-lg})
+
+	+media('<mob-lg')
+		+margin-horizontal(-#{$article-layout-space-horizontal--mob-lg})
 
 %text-layout-space
-	padding-left: $text-layout-space-horizontal
-	padding-right: $text-layout-space-horizontal
+	+padding-horizontal($text-layout-space-horizontal, $text-layout-space-horizontal)
 
 .layout
 	@extend %layout-space
-	max-width: $layout-width
+	max-width: $main-layout-width
 
 	.main > &
 		overflow-x: hidden
@@ -284,7 +302,7 @@ body
 	padding: $grid-inside-horizontal-space
 
 	+media('<mob-lg')
-		padding: $layout-grid-space--mob-lg
+		padding: $grid-layout-space--mob-lg
 
 .hide-tab-lg
 	display: none

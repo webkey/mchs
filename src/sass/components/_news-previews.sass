@@ -22,6 +22,12 @@
 		+media('<desk-lg')
 			+grid-item(3, $grid-space)
 
+		+media('<tab-lg')
+			+grid-item(2, $grid-space)
+
+		+media('<mob-md')
+			+grid-item(1, $grid-space)
+
 .news-previews__inner
 	$shadow-color: $mark-color
 	display: block
@@ -56,6 +62,14 @@
 
 .news-previews__img
 	min-height: $news-label-size
+	background-position: center top
+	background-repeat: no-repeat
+	-webkit-background-size: cover
+	background-size: cover
+	+ratio(1, 1)
+
+	+media('<mob-md')
+		+ratio(10, 6)
 
 	img
 		width: 100%
@@ -65,7 +79,7 @@
 	overflow: hidden
 	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
 
-	.news-previews__label + &
+	.news__label + &
 		padding-top: $grid-inside-vertical-space + $news-label-size
 
 	& > *

@@ -5,7 +5,7 @@
 			{
 				"text": "Видео",
 				"id": "#obzh-id-01",
-				"activeClass": "active",
+				"activeClass": "active-tab",
 				"jsClass": "js-tab-anchor"
 			},{
 				"text": "Родителям и педагогам",
@@ -20,7 +20,7 @@
 			},{
 				"text": "Аудио",
 				"id": "#obzh-id-04",
-				"activeClass": ""
+				"activeClass": "js-tab-anchor"
 			},{
 				"text": "Постеры и плакаты",
 				"id": "#obzh-id-05",
@@ -34,6 +34,7 @@
 			}
 		])
 	</div>
+
 	<div class="obzh__links">
 		@@loop('_obzh-tabs-nav-item.tpl', [
 			{
