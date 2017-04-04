@@ -188,8 +188,12 @@
 
 				@@include('_nav-drop-wrap-1_ONE.tpl', { "start": "1"})
 
-			<li>@@include('_nav-LINK.tpl', { "itemText": "aaaa", "itemLink": "#", "specialValue": "" })</li>
-			<li>@@include('_nav-LINK.tpl', { "itemText": "aaaa", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "{{Выпадающий список обращений согласно структуре МЧС}}", "itemLink": "#", "specialValue": "" })</li>
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "Электронные обращения Юрлиц и ИП", "itemLink": "#", "specialValue": "" })
+
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "{{Выпадающий список обращений согласно структуре МЧС}}", "itemLink": "#", "specialValue": "" })</li>
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "end": "1"})
 
 				@@include('_nav-drop-wrap-1_ONE.tpl', { "end": "1"})
 
@@ -202,8 +206,43 @@
 
 				@@include('_nav-drop-wrap-1_ONE.tpl', { "start": "1"})
 
-			<li>@@include('_nav-LINK.tpl', { "itemText": "aaaa", "itemLink": "#", "specialValue": "" })</li>
-			<li>@@include('_nav-LINK.tpl', { "itemText": "aaaa", "itemLink": "#", "specialValue": "" })</li>
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "Законы", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "{{Список документов}}", "itemLink": "#", "specialValue": "" })</li>
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "end": "1"})
+
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "НПА перзидента РБ", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "{{Список документов}}", "itemLink": "#", "specialValue": "" })</li>
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "end": "1"})
+
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "Постановления Правительства", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "{{Список документов}}", "itemLink": "#", "specialValue": "" })</li>
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "end": "1"})
+
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "НПА МЧС", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Постановления", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Приказы", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Формы отчетности", "itemLink": "#", "specialValue": "" })</li>
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "end": "1"})
+
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "ТНПА", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "ТКП", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "НПБ", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "ППБ", "itemLink": "#", "specialValue": "" })</li>
+
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "Проекты ТНПА", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-3_THREE.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Проекты ТКП", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Проекты СТБ", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Проекты ППБ", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Проекты ТР ЕЭС", "itemLink": "#", "specialValue": "" })</li>
+				@@include('_nav-drop-wrap-3_THREE.tpl', { "end": "1"})
+
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "end": "1"})
 
 				@@include('_nav-drop-wrap-1_ONE.tpl', { "end": "1"})
 
@@ -216,8 +255,8 @@
 
 				@@include('_nav-drop-wrap-1_ONE.tpl', { "start": "1"})
 
-			<li>@@include('_nav-LINK.tpl', { "itemText": "aaaa", "itemLink": "#", "specialValue": "" })</li>
-			<li>@@include('_nav-LINK.tpl', { "itemText": "aaaa", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "МЧС - родителям и педагогам", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Аудио", "itemLink": "#", "specialValue": "" })</li>
 
 				@@include('_nav-drop-wrap-1_ONE.tpl', { "end": "1"})
 
