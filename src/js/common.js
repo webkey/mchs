@@ -749,8 +749,6 @@ function tabSwitcher() {
 				var $self = $(this),
 					selfTab = $self.attr('href').substring(1);
 
-				console.log("seflTab: ", selfTab);
-
 				if ($this.data('collapsed') === true && activeTab === selfTab) {
 
 					toggleActiveClass();

@@ -1,4 +1,8 @@
-@import ../utils/_mixins
+@import ../utils/variables
+@import ../utils/placeholders
+@import ../utils/mixins
+@import ../utils/functions
+@import ../../libs/include-media/dist/include-media
 
 /*HEADER*/
 .header__holder
@@ -60,10 +64,8 @@
 			width: calc(100% - #{$header-top-height-sm})
 
 .header__content
-	$height-container: 122px
-
 	padding: 0 $grid-layout-space
-	height: $height-container
+	height: $header-content-height
 
 	+media('<desk-lg')
 		padding: 0 $grid-layout-space--desk-hd
@@ -73,19 +75,20 @@
 
 	+media('<tab-lg')
 		margin-left: -#{$header-top-height}
+		height: $header-content-height--tab-lg
 
 	+media('<tab-sm')
-		height: auto
 		text-align: center
-		+padding-vertical(#{$grid-space})
+		padding: 0
 
 	+media('<mob-lg')
 		padding: 0
 		margin-left: -#{$header-top-height-sm}
+		height: auto
 
 	.holder
 		overflow: hidden
-		height: $height-container
+		height: 100%
 		font-size: 0
 		line-height: 0
 		letter-spacing: -4px
@@ -93,7 +96,7 @@
 		+media('<tab-sm')
 			display: none
 
-		&:before
+		&::before
 			content: ''
 			display: inline-block
 			vertical-align: middle
@@ -102,172 +105,182 @@
 		.frame
 			display: inline-block
 			vertical-align: middle
+			max-width: calc(100% - 2px)
 			font-size: $font-size
 			line-height: $line-height
 			letter-spacing: normal
 
-	@at-root
-		.header__contacts
-			float: right
-			overflow: hidden
-			margin-left: 30px
+.header__contacts
+	float: right
+	height: 100%
+	margin-left: #{$grid-space}
+
+	+media('<tab-sm')
+		float: none
+		margin-left: 0
+
+	+media('<mob-lg')
+		overflow: visible
+
+	ul
+		height: 100%
+		margin-right: -#{$grid-space}
+		+font(0, 0)
+		letter-spacing: -4px
+
+		+media('<mob-lg')
+			+margin-horizontal(0)
+
+		&::before
+			+pseudo('', inline-block, relative)
+			vertical-align: middle
+			height: 100%
 
 			+media('<tab-sm')
-				float: none
-				margin-left: 0
+				min-height: 0
 
 			+media('<mob-lg')
-				overflow: visible
+				content: none
 
-			$item-inside-space: 20px
+		li
+			display: inline-block
+			vertical-align: middle
+			position: relative
+			height: 100%
+			width: 230px
 
-			ul
-				margin: 0 -#{$item-inside-space}
-				font-size: 0
-				line-height: 0
-				letter-spacing: -4px
+			+media('<tab-sm')
+				width: calc(50% - 2px)
+				text-align: center
+
+			+media('<mob-lg')
+				display: block
+				width: auto
+				border-bottom: 1px solid $border-color
+
+				&:last-child
+					border: none
+
+			&::before
+				content: ''
+				position: absolute
+				left: 0
+				top: 50%
+				$height: 18px
+				height: $height
+				width: 0
+				margin-top: -($height/2)
+				border-left: 1px solid $border-color
 
 				+media('<mob-lg')
-					+margin-horizontal(0)
+					content: none
+					
+			&:first-child::before
+				content: none
 
-				&:before
-					content: ''
-					display: inline-block
+			a
+				display: table
+				width: 100%
+				height: 100%
+				padding: 0 $grid-space
+				text-decoration: none
+				color: $text-color
+				text-align: left
+				transition-property: background-color
+				transition-duration: $animation-speed
+
+				.no-touchevents &:hover
+					background-color: white
+
+				+media('<mob-lg')
+					display: block
+					+padding-vertical(#{round($grid-space/2)})
+
+				& > div
+					display: table-cell
 					vertical-align: middle
-					min-height: $height-container
-
-					+media('<tab-sm')
-						min-height: 0
 
 					+media('<mob-lg')
-						content: none
-
-				li
-					display: inline-block
-					vertical-align: middle
-					position: relative
-					padding: 0 $item-inside-space
-
-					+media('<tab-sm')
-						width: calc(50% - 2px)
+						display: inline-block
+						min-width: 57px
 						text-align: center
 
-					+media('<mob-lg')
-						display: block
-						width: auto
-						border-bottom: 1px solid $border-color
-						+padding-vertical(#{round($grid-space/2)})
+						img
+							width: 34px
 
-						&:last-child
-							border: none
+					&:first-child
+						width: 78px
+						padding-right: #{$grid-space}
 
-					&:before
-						content: ''
-						position: absolute
-						left: 0
-						top: 50%
-						$height: 18px
-						height: $height
-						width: 0
-						margin-top: -($height/2)
-						border-left: 1px solid $border-color
-
-						+media('<mob-lg')
-							content: none
-
-					&:after
-						+vertical-align
-						min-height: 65px
-
-						+media('<mob-lg')
-							content: none
-
-					a
-						display: inline-block
-						text-decoration: none
-						color: $text-color
-						text-align: left
-
-						+media('<mob-lg')
-							display: block
-
-						& > div
-							display: inline-block
-							vertical-align: middle
-							margin-right: 20px
-
-							+media('<mob-lg')
-								min-width: 57px
-								text-align: center
-
-								img
-									width: 34px
-
-							& > em
-								font: normal bold 30px/1.2 $font-alt
-								color: $mark-color
-								letter-spacing: normal
-
-						& > span
-							display: inline-block
-							vertical-align: middle
-							max-width: 120px
-							font-size: $font-size-small
-							line-height: $line-height-small
-							letter-spacing: normal
-
-							+media('<mob-lg')
-								max-width: 190px
-
-	@at-root
-		.header__title
-			font: 700 1.8rem/1.2 $font-alt
-			text-transform: uppercase
-			color: $text-color
-
-			+media('<desk-md')
-				+font(1.4rem, 1.2)
-
-		.header__info
-			font-size: $font-size-small
-			line-height: $line-height-small
-			margin: 8px 0 0
-
-			+media('<desk-md')
-				display: none
-
-			li
-				display: inline-block
-				vertical-align: top
-				margin-top: 10px
-				margin-right: 30px
-				color: $text-color-light
-
-				a
-					text-decoration: none
-					color: $text-color-light
+					& > em
+						font: normal bold 30px/1.2 $font-alt
+						color: $mark-color
+						letter-spacing: normal
 
 					& > span
-						display: inline-block
-						border-bottom: 1px solid transparent
-						-webkit-transition-property: border-color
-						transition-property: border-color
-						-webkit-transition-duration: $animation-speed
-						transition-duration: $animation-speed
+						display: block
+						max-width: 120px
+						font-size: $font-size-small
+						line-height: $line-height-small
+						letter-spacing: normal
 
-					.no-touchevents &:hover > span
-						border-color: lighten($text-color-light, 25%)
+						+media('<mob-lg')
+							max-width: 190px
 
-				svg
-					width: 24px
-					height: 24px
-					display: inline-block
-					vertical-align: middle
-					margin-right: 5px
+.header__title
+	font: 700 1.8rem/1.2 $font-alt
+	text-transform: uppercase
+	color: $text-color
 
-					path
-						//fill: $color-text-light
-						fill: lighten($text-color-light, 20%)
+	+media('<desk-md')
+		+font(1.4rem, 1.2)
+
+	a
+		display: inline-block
+		vertical-align: top
+		color: inherit
+		text-decoration: none
+
+.header__info
+	font-size: $font-size-small
+	line-height: $line-height-small
+	margin: 8px 0 0
+
+	+media('<desk-md')
+		display: none
+
+	li
+		display: inline-block
+		vertical-align: top
+		margin-top: 10px
+		margin-right: 30px
+		color: $text-color-light
+
+		a
+			text-decoration: none
+			color: $text-color-light
+
+			& > span
+				display: inline-block
+				border-bottom: 1px solid transparent
+				transition-property: border-color
+				transition-duration: $animation-speed
+
+			.no-touchevents &:hover > span
+				border-color: lighten($text-color-light, 25%)
+
+			.no-touchevents &[href^="tel:"]:hover > span
+				border-color: transparent
+
+		svg
+			width: 24px
+			height: 24px
+			display: inline-block
+			vertical-align: middle
+			margin-right: 5px
+
+			path
+				fill: lighten($text-color-light, 20%)
 /*logo*/
 .logo-wrap
 	position: absolute
@@ -277,7 +290,7 @@
 	width: $header-left-space
 	background-color: white
 	z-index: 20
-	box-shadow: 0 1px 0 $bg-color
+	border-bottom: 1px solid $bg-color
 
 	.touchevents &
 		transition-property: height
@@ -334,12 +347,9 @@
 	$color-border: rgba(255, 255, 255, 0.3)
 	$color-text: #80a7c4
 
-	=transition
-		-webkit-transition-property: background-color, color, fill
+	=transition()
 		transition-property: background-color, color, fill
-		-webkit-transition-duration: $animation-speed
 		transition-duration: $animation-speed
-		-webkit-transition-timing-function: ease-in-out
 		transition-timing-function: ease-in-out
 
 	&__item
@@ -351,7 +361,7 @@
 		+media('<mob-lg')
 			width: $header-top-height-sm
 
-		&:before
+		&::before
 			content: ''
 			display: block
 			height: 0
@@ -380,7 +390,7 @@
 				line-height: $line-height
 				letter-spacing: normal
 
-			&:before
+			&::before
 				+vertical-align
 
 			& > div

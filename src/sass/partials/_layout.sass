@@ -2,6 +2,12 @@
 @import ../utils/mixins
 
 /*LAYOUT*/
+html
+	overflow: hidden
+
+	&.no-js, &.page-loaded
+		overflow: auto
+
 body
 	&::before
 		+pseudo($pos: fixed)
