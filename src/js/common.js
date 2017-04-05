@@ -580,10 +580,28 @@ function addAlignClass(){
  * !nav expander
  * */
 function navExpander() {
-	var nav = priorityNav.init({
-		navDropdownLabel: 'Eще...',
-		navDropdownBreakpointLabel: 'Меню',
-		breakPoint: 1262
+	// var nav = priorityNav.init({
+	// 	navDropdownLabel: 'Eще...',
+	// 	navDropdownBreakpointLabel: 'Меню',
+	// 	throttleDelay: 200,
+	// 	breakPoint: 768
+	// });
+
+	var $page = $('html');
+	var $nav = $('.nav');
+	var classResize = 'window-is-resize';
+	var timeout;
+
+
+
+	$(window).on('resizeByWidth', function () {
+		$page.addClass(classResize);
+	}).on('debouncedresize', function () {
+		clearTimeout(timeout);
+
+		timeout = setTimeout(function () {
+			$page.removeClass(classResize);
+		}, 300);
 	});
 }
 /*nav expander end*/

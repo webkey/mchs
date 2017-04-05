@@ -1,395 +1,267 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*NAVIGATION*/
-/*main navigation*/
+/*nav layout
 .main-nav
 	position: relative
 	z-index: 95
 	margin-right: 240px
-	padding: 0 $grid-layout-space
+	padding: 0 0 0 $grid-layout-space
 
 	+media('<desk-lg')
-		padding: 0 $grid-layout-space--desk-hd
+		padding: 0 0 0 $grid-layout-space--desk-hd
 
 	+media('<desk-md')
-		padding: 0 $grid-layout-space--desk-md
+		padding: 0 0 0 $grid-layout-space--desk-md
 
 	+media('<mob-lg')
 		padding: 0
 		margin-right: 0
 
-/*main navigation end*/
-// general styles main navigation
+/*nav layout end
+
+/*nav common
 .nav
-	//@at-root
-	//&__list,
-	//&__list ul
-	//	list-style: none
-	//	margin: 0
-	//	padding: 0
-	//	box-sizing: border-box
+	margin: 0 0 0 -#{$nav-item-space}
 
-	$nav-item-space: 17px
+.nav__list
+	position: relative
+	+reset-spacing
+	//for priority nav
+	vertical-align: top
 
-	=transition()
-		transition-property: color, background-color, border-color, opacity, visibility, transform
-		transition-duration: $animation-speed
+	//temporarily 2016.04.05
+	overflow: hidden
+	white-space: nowrap
 
-	@at-root
-	&__list
+	&::after
+		+pseudo()
+		top: 0
+		right: 0
+		height: 100%
+		width: 80px
+		+linear-gradient(to left, #00487c 0, #00487c 20%, rgba(0, 72, 124, 0) 100%)
+		z-index: 5
+
+	li
 		position: relative
-		margin: 0 -#{$nav-item-space}
-		font-size: 0
-		line-height: 0
-		letter-spacing: -4px
-		white-space: normal
+		// for 3d animation
+		perspective: 1500px
 
-		li
-			position: relative
-			-webkit-perspective: 1500px
-			perspective: 1500px
-			//box-sizing: border-box
+		//temporarily 2016.04.05
+		display: inline-block
+		vertical-align: top
 
-			&.hover, .no-js &:hover, &.active
-				z-index: 2
+		&.hover, .no-js &:hover, &.active
+			z-index: 2
 
 	a
 		display: block
 		position: relative
-		padding: 17px $nav-item-space
-		font-size: $font-size-small
+		padding: 18px $nav-item-space
 		font-weight: 400
-		line-height: 24px
-		color: #fff
+		+font($font-size-small, 24px)
 		letter-spacing: normal
+		color: white
 		text-decoration: none
-		+transition
+		// for animation
+		transition-property: color, background-color
+		transition-duration: $animation-speed
 
-		@at-root
-			.nav__angle
-				position: absolute
-				right: 30px
-				top: 50%
-				width: 7px
-				height: 13px
-				margin-top: -6px
-				display: none
+		+media('<mob-lg')
+			+padding-vertical(13px)
 
-				&:before,
-				&:after
-					content: ''
-					position: absolute
-					left: 0
-					top: 50%
-					height: 2px
-					width: 9px
-					border-radius: 4px
-					background: #262626
-					-webkit-transition-property: background
-					transition-property: background
-					-webkit-transition-duration: 0.2s
-					transition-duration: 0.2s
+/*nav common end
 
-				&:before
-					-webkit-transform: rotate(45deg)
-					-ms-transform: rotate(45deg)
-					transform: rotate(45deg)
-					margin: -4px 0 0 -1px
+/*nav item arrow
+.nav__angle
+	position: absolute
+	right: 30px
+	top: 50%
+	width: 7px
+	height: 13px
+	margin-top: -6px
+	// all arrow are hide
+	display: none
 
-				&:after
-					-webkit-transform: rotate(-45deg)
-					-ms-transform: rotate(-45deg)
-					transform: rotate(-45deg)
-					margin: 1px 0 0 -1px
+	&:before, &:after
+		+pseudo()
+		left: 0
+		top: 50%
+		height: 2px
+		width: 9px
+		border-radius: 4px
+		background: $text-color
+		//for animation
+		transition-property: background
+		transition-duration: $animation-speed
 
-	//.nav__list li.hover > a > [class*="nav-depict-icons-angle"]:before,
-	//.nav__list li.active > a > [class*="nav-depict-icons-angle"]:before,
-	//.nav__list li.current > a > [class*="nav-depict-icons-angle"]:before,
-	//.nav__list li.hover > a > [class*="nav-depict-icons-angle"]:after,
-	//.nav__list li.active > a > [class*="nav-depict-icons-angle"]:after,
-	//.nav__list li.current > a > [class*="nav-depict-icons-angle"]:after
-	//	background: #fff
+	&:before
+		transform: rotate(45deg)
+		margin: -4px 0 0 -1px
 
-	.nav__drop .has-drop > a
-		padding-right: 45px
+	&:after
+		transform: rotate(-45deg)
+		margin: 1px 0 0 -1px
 
-		.nav__angle
-			display: block
+// if has drop
+.nav__drop .has-drop > a
+	padding-right: 45px
 
-	@at-root
-		[class*="nav__drop"]
-			position: absolute
-			left: 0
-			top: 100%
-			display: block
-			width: 320px
-			opacity: 0
-			visibility: hidden
-			border: 1px solid #d9d9d9
-			background: #f2f2f2
-			box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15)
-			-webkit-transform-origin: center top
-			transform-origin: center top
-			-webkit-transform: rotateX(-30deg)
-			transform: rotateX(-30deg)
-			+transition
-			-webkit-transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
-			transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
-			z-index: 100
+	// show arrow if has drop
+	.nav__angle
+		display: block
 
-			a
-				color: #262626
-				text-transform: none
-				background: #fff
-				border-top: 1px solid #e0e0e0
+/*nav item arrow end
 
-			li
-				&:first-child > a
-					border: none
+/*nav drop common
+[class*="nav__drop"]
+	display: block
+	position: absolute
+	left: 0
+	top: 100%
+	width: 320px
+	background: #f2f2f2
+	border: 1px solid $border-color
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15)
+	z-index: 100
+	//hide drop
+	opacity: 0
+	visibility: hidden
+	//for animation
+	transform-origin: center top
+	transform: rotateX(-30deg)
+	transition-property: opacity, visibility, transform
+	transition-duration: $animation-speed
+	transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
 
-				//&.has-drop > a
-					//padding-right: 60px
-
-				&.hover > a,
-				.no-js &:hover > a
-					background: #f3f3f3
-
-			//[class*="nav__drop"] li.active > a,
-			//[class*="nav__drop"] li.current > a
-			//	color: #008acf;
-
-			$patentItem: nav li
-
-			.#{$patentItem}.hover > &, .no-js .#{$patentItem}:hover > &, .#{$patentItem}.active > &
-				opacity: 1
-				visibility: visible
-				-webkit-transform: rotateX(0deg)
-				transform: rotateX(0deg)
-
-			li.align-right > &
-				left: auto
-				right: 100%
-				margin-left: auto
-				margin-right: -10px
-
-	@at-root
-		div[class*="-nav__drop"]
-			top: 0
-			left: 100%
-			z-index: auto
-			margin-left: -5px
-			margin-top: 5px
-
-	// styles to menu level 1
-	@at-root
-		.nav__drop
-			min-width: 100%
-			border-top: none
-			white-space: normal
-			margin-left: -1px
-
-			li.align-right > &
-				left: auto
-				right: -1px
-
-			@at-root
-				.nav__list > li, .priority-nav__dropdown > li
-					display: inline-block
-					vertical-align: top
-					position: relative
-
-					&.active
-						z-index: 1
-
-					& > a
-						display: block
-						padding: 17px $nav-item-space
-						font-size: $font-size-small
-						color: #fff
-						line-height: 26px
-						text-align: center
-						background: none
-						z-index: 95
-
-						+media('<desk-md')
-							text-align: left
-
-					&.hover > a,
-					&.active > a,
-					&.current > a,
-					.no-js &:hover > a
-						background: $color-nav-bg-hover
-						color: $text-color
-
-				.priority-nav__dropdown > li > a span
-					display: inline-block
-					vertical-align: top
-					+truncate(50px)
-
-					+media('<desk-md')
-						+truncate-reset
-
-	// styles to menu level 1 end
-
-	// styles to menu level 2
-	//.sub1-nav__list
-	//
-	//.sub1-nav__list > li
-	//
-	//.sub1-nav__list > li > a
-	//
-	//.sub1-nav__drop
-
-	// styles to menu level 2 end
-
-	// styles to menu level 3
-	//.sub2-nav__list
-	//
-	//.sub2-nav__list > li
-	//
-	//.sub2-nav__list > li > a
-	//
-	//.sub2-nav__drop
-
-	// styles to menu level 3 end
-	// style for priority nav
-	%resetStylePriorityNav
-		width: auto
-		top: auto
+	li.align-right > &
 		left: auto
-		display: inline-block
-		vertical-align: top
-		visibility: visible
-		opacity: 1
-		border: none
-		background: none
-		box-shadow: none
-		z-index: auto
-		-webkit-transform: rotateX(0)
-		transform: rotateX(0)
-
-	&.priority-nav-has-dropdown .priority-nav__dropdown-toggle, .priority-nav__wrapper
-		position: relative
-		@extend %resetStylePriorityNav
-
-	.priority-nav__wrapper
-		+media('<desk-md')
-			width: 320px
-
-	&.priority-nav
-		white-space: nowrap
-		margin: 0 -#{$nav-item-space}
-
-		+media('<mob-lg')
-			margin: 0
-
-		> ul
-			display: inline-block
-			vertical-align: top
-			margin: 0
-
-			&:after
-				content: ''
-				position: absolute
-				right: 0
-				left: -#{$grid-layout-space - $nav-item-space}
-				top: 0
-				height: 100%
-				opacity: 0
-				visibility: hidden
-				box-shadow: 0 0 0 rgba(255, 255, 255, 0.5)
-				background: rgba(0, 0, 0, 0.31)
-				+transition
-
-				+media('<desk-lg')
-					left: -#{$grid-layout-space--desk-hd - $nav-item-space}
-
-		&.is-open.priority-nav-has-dropdown > ul:after
-			opacity: 1
-			visibility: visible
-
-			> li
-				display: inline-block
-
-	&.priority-nav-has-dropdown .priority-nav__dropdown-toggle
-		position: relative
-		padding: 17px $nav-item-space
-		font-size: $font-size-small
-		line-height: 26px
-		color: #fff
-		text-align: center
-		background: none
-		z-index: 2
-		//box-sizing: border-box
-
-		+media('<mob-lg')
-			padding: 7px
-
-		.no-touchevents &:hover, &.is-open
-			background: $mark-color
-			color: #fff
-
-	.priority-nav__wrapper
-		position: relative
-		vertical-align: top
-		-webkit-perspective: 400px
-		perspective: 400px
-
-	&.is-open .priority-nav__dropdown
-		visibility: visible
-		opacity: 1
-		transform: translate(0, 0) rotateY(0deg)
-
-	.priority-nav__dropdown
-		position: absolute
-		visibility: hidden
-		opacity: 0
 		right: 100%
-		background: $text-color-alt
-		z-index: 15
-		+transition
-		transform: translate(0, 0) rotateY(-30deg)
-		-webkit-transform-origin: 100% 0 0
-		transform-origin: 100% 0 0
-		@extend %resetStylePriorityNav
+		margin-left: auto
+		margin-right: -10px
 
-		> li > a
+	li.hover > &, .no-js li:hover > &, li.active > &
+		opacity: 1
+		visibility: visible
+		transform: rotateX(0deg)
+
+	a
+		color: $text-color
+		text-transform: none
+		background: white
+		border-top: 1px solid #e0e0e0
+
+	li
+		&:first-child > a
 			border: none
 
-		li
-			position: relative
+		//&.has-drop > a
+			padding-right: 60px
 
-			&.hover
-				z-index: 100
+		&.hover > a, .no-js &:hover > a
+			background: #f3f3f3
 
-	&.is-empty
-		.priority-nav__wrapper
-			perspective: 1200px
+div[class*="-nav__drop"]
+	top: 0
+	left: 100%
+	z-index: auto
+	+margin($t: 5px, $l: -5px)
 
-		.priority-nav__dropdown
-			right: auto
-			left: 0
-			top: 100%
-			transform: translate(0, 0) rotateX(-30deg)
-			transform-origin: 0 0 0
+/*nav drop common end
 
-			&.show
-				transform: translate(0, 0) rotateY(0deg)
+/*nav drop level 1
+.nav__drop
+	min-width: 100%
+	border-top: none
+	white-space: normal
+	margin-left: -1px
 
-			> li
-				display: block
+	li.align-right > &
+		left: auto
+		right: -1px
 
-				> [class*="nav__drop"]
-					left: 100%
-					top: 0
+	& > li //, .priority-nav__dropdown > li
+		display: inline-block
+		vertical-align: top
+		position: relative
+
+		&.active
+			z-index: 1
+
+		& > a
+			display: block
+			padding: 17px $nav-item-space
+			+font($font-size-small, 26px)
+			color: #fff
+			text-align: center
+			background: none
+			z-index: 95
+
+		&.hover > a, &.active > a, &.current > a, .no-js &:hover > a
+			background: $color-nav-bg-hover
+			color: $text-color
+
+//.priority-nav__dropdown > li > a span
+	display: inline-block
+	vertical-align: top
+	+truncate(50px)
+
+	+media('<desk-md')
+		+truncate-reset
+
+/*nav drop level 1 end
+
+/*nav drop level 2
+//.sub1-nav__list
+
+//.sub1-nav__list > li
+
+//.sub1-nav__list > li > a
+
+//.sub1-nav__drop
+/*nav drop level 2 end
+
+/*nav drop level 3
+//.sub2-nav__list
+
+//.sub2-nav__list > li
+
+//.sub2-nav__list > li > a
+
+//.sub2-nav__drop
+/*nav drop 3 end
+
+/*priority nav
+.nav
+	.priority-nav__wrapper, .priority-nav__dropdown-toggle
+		position: relative
+		display: inline-block
+		vertical-align: top
+		width: auto
+		height: auto
+		padding: 0
+		margin: 0
+		border: none
+		box-shadow: none
+		opacity: 1
+		visibility: visible
+		transform: none
+		background: none
 
 	.priority-nav__dropdown-toggle
-		visibility: hidden
-		position: absolute
-		@extend %resetStylePriorityNav
+		height: $header-top-height
+		+padding-horizontal(#{$nav-item-space})
+		color: white
+		// for animation
+		transition-property: background-color
+		transition-duration: $animation-speed
 
-	.priority-nav-is-visible
-		visibility: visible
+		.no-touchevents &:hover
+			background-color: $mark-color
 
-	.priority-nav-is-hidden
-		visibility: hidden
+/*priority nav end
 
 /*NAVIGATION end*/
