@@ -45,11 +45,11 @@
 	+media('<mob-lg')
 		height: $header-top-height-sm
 
-	.no-js &, .page-loaded &
-		overflow: visible
-
 	.window-is-resize &
 		overflow: hidden
+
+	.no-js &, .page-loaded &
+		overflow: visible
 
 	.header-fixed &
 		position: fixed
@@ -371,11 +371,7 @@
 			padding-top: 100%
 
 		& > a
-			position: absolute
-			left: 0
-			top: 0
-			width: 100%
-			height: 100%
+			+cover()
 			background-color: transparent
 			box-shadow: -1px 0 0 $color-border
 			text-decoration: none
@@ -383,7 +379,7 @@
 			color: $color-text
 			+transition
 
-			&:hover
+			.no-touchevents &:hover
 				background-color: $color-border
 
 			& > *
@@ -403,9 +399,10 @@
 				+transition
 
 			svg
-				width: 22px
-				height: 22px
+				width: 30px
+				height: 30px
 				display: inline-block
+				transform: scale(0.8)
 				+transition
 
 				+media('<mob-lg')
@@ -429,6 +426,27 @@
 				+hide-text
 
 /*user options end*/
+
+/*banner opener*/
+.banner-opener a
+	background-color: $mark-color
+	backface-visibility: hidden
+
+	svg
+		transition-property: transform
+		transition-duration: $animation-speed
+		+antialiased
+
+	path
+		fill: white
+
+	.no-touchevents &:hover
+		background-color: $mark-color
+
+		svg
+			transform: scale(1)
+
+/*banner opener end*/
 
 /*lang*/
 .lang

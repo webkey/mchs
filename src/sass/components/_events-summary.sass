@@ -1,3 +1,7 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*events summary*/
 .events-sum
 	position: relative
@@ -30,7 +34,7 @@
 		&:nth-child(#{$item}) a
 			background-color: mix($mark-color-alt, $mark-color, $percentage)
 
-			.no-touchevents &:hover
+			//.no-touchevents &:hover
 				background-color: mix(shade($mark-color-alt, 90%), shade($mark-color, 90%), $percentage)
 
 	a
@@ -69,12 +73,18 @@
 			position: absolute
 			left: 50%
 			top: 50%
-			width: 25px
-			height: 25px
-			transform: translate(-50%, -50%)
+			width: 30px
+			height: 30px
+			margin: -15px 0 0 -15px
+			transform: scale(0.8)
+			transition-property: transform
+			transition-duration: $animation-speed
 
 			path, polygon
 				fill: white
+
+		.no-touchevents &:hover svg
+			transform: scale(1)
 
 .events-sum__panels
 	height: calc(100% - 60px) // высота блока минус высота переключателей табов

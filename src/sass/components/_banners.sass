@@ -1,19 +1,25 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*banners*/
 .banners
 	+grid-parent($grid-space)
-	+reset-spacing
+	+clear-spacing
 	margin-bottom: $bottom-space
 
 	.section &
 		margin-bottom: 0
 
 .banners__item
-	font-size: $font-size
-	line-height: $line-height
+	+font($font-size, $line-height)
 	letter-spacing: normal
 
-	.aside &
+	.banners &
 		+grid-item(1, $grid-space)
+
+		&:last-child
+			margin-bottom: 0
 
 	.banners-panel &
 		+grid-item(4, $grid-space)
@@ -30,3 +36,66 @@
 			width: 100%
 
 /*banners end*/
+
+/*popup banners
+.popup-banners
+	position: fixed
+	right: 0
+	top: #{$header-top-height}
+	width: 320px
+	height: calc(100% - #{$header-top-height})
+	background: white
+	z-index: 998
+
+	&.hide-on-load
+		opacity: 0
+		visibility: hidden
+
+	// for ios add bg after inertia scroll
+	&:after
+		+pseudo()
+		+cover(null, 0, 100%, 50%, 100%)
+		background: inherit
+
+.popup-banners__holder
+	overflow-y: auto
+	overflow-x: hidden
+	position: relative
+	padding: 25px
+	max-height: 100%
+
+	& > *:last-child
+		margin-bottom: 0
+
+/*popup banners end
+
+/*banner closer*/
+.btn-popup-aside-close
+	position: fixed
+	right: 0
+	top: 0
+	left: auto
+	bottom: auto
+	+size($header-top-height)
+	background: $mark-color
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+	z-index: 999
+
+	&.before-extra-popup-open
+		opacity: 1
+		visibility: visible
+
+	& > i
+		&::before, &::after
+			background-color: white
+
+	.no-touchevents &:hover
+		background-color: $mark-color
+
+		& > i:before, & > i:after
+			background-color: white
+
+/*banner closer end*/

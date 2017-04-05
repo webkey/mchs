@@ -170,6 +170,11 @@ body
 	.home-page &
 		padding-top: calc(2rem * 1.2 + 1.5rem) // Костыль. Высота однострочного заголовка секций
 
+	+media('>=desk-lg')
+		//transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important
+		//opacity: 1 !important
+		//visibility: visible !important
+
 	+media('<desk-lg')
 		display: none
 		//margin: 0 0 0 -#{$sidebar-right-width--desk-md}

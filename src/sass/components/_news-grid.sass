@@ -70,7 +70,7 @@
 
 		&::before
 			+pseudo()
-			+absolute-fill($height: $news-item-img-height) // высота как у картинки. см. выше
+			+cover($position: null, $height: $news-item-img-height) // высота как у картинки. см. выше
 			background: url(../../img/no-img.jpg) no-repeat center
 			background-size: cover
 
@@ -162,7 +162,7 @@
 
 	&:before
 		+pseudo()
-		+absolute-fill
+		+cover($position: null)
 		background: $mark-color-alt
 		transform: translate(0, 100%)
 		+news-transition
@@ -228,7 +228,7 @@
 
 		&::before
 			+pseudo()
-			+absolute-fill(0, 0, 180px, 180px)
+			+cover(null, 0, 0, 180px, 180px)
 			background: url(../../img/no-img.jpg) no-repeat center
 			background-size: cover
 

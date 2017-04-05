@@ -1,6 +1,6 @@
 <!--map site-->
 <!--<div class="extra-popup main-menu hide-before">-->
-<div class="extra-popup site-map hide-before site-map-js">
+<div class="extra-popup site-map hide-on-load site-map-js">
 	<div class="extra-popup__head">
 		<a href="index.html" class="logo">Министерство по чрезвычайным ситуациям Республики Беларусь Министерство по чрезвычайным ситуациям Республики Беларусь</a>
 		<a href="#" class="btn-popup-close btn-popup-close-js"><i></i><span>Закрыть</span></a>
@@ -115,3 +115,22 @@
 	</div>
 </div>
 <!--map site end-->
+
+<!--popup banners-->
+<div class="popup-banners hide-on-load popup-aside-js">
+	<div class="popup-banners__holder">
+		<!--banners-->
+		<div class="banners">
+			@@loop('_banners.tpl', [
+			{ "src": "img/img-banner-01.jpg" },
+			{ "src": "img/img-banner-02.jpg" },
+			{ "src": "img/img-banner-03.jpg" },
+			{ "src": "img/img-banner-04.jpg" },
+			{ "src": "img/img-banner-05.jpg" }
+			])
+		</div>
+		<!--banners end-->
+	</div>
+</div>
+<a href="#" class="btn-popup-close btn-popup-aside-close btn-aside-close-js"><i></i><span>Закрыть</span></a>
+<!--popup banners end-->

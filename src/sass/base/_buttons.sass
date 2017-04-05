@@ -11,7 +11,7 @@
 	& input[type="submit"], & input[type="button"], & input[type="reset"]
 		background: url("../../img/empty.png") repeat
 		display: block
-		+absolute-fill()
+		+cover()
 		padding: 0
 		z-index: 99
 		border: 0
@@ -167,4 +167,155 @@
 			transform: rotate(-45deg)
 
 /*more button end*/
+
+/*button menu*/
+.btn-map-site
+	//<a href="#" class="btn-map-site"><i></i><span>Карта сайта</span></a>
+	$btn-bg: $btn-bg-color
+	$btn-color: #fff
+	$btn-min-height: 40px
+	$btn-space: 12px
+	$btn-lines-width: 22px
+	$btn-lines-height: 3px
+	$btn-lines-space: 5px
+	$btn-lines-color: $btn-color
+
+	=line-style()
+		height: $btn-lines-height
+		width: $btn-lines-width
+		background: $btn-lines-color
+
+	=font()
+		font: 300 14px/1.4 $font-norm
+		letter-spacing: normal
+
+	=transition()
+		transition-property: transform, box-shadow, background-color
+		transition-duration: $animation-speed
+		transition-timing-function: ease-in-out
+
+	display: inline-block
+	text-decoration: none
+	color: #fff
+	background: $btn-bg
+	font-size: 0
+	line-height: 0
+	letter-spacing: -4px
+	white-space: nowrap
+	+antialiased
+	+btn-hover
+	+btn-active
+
+	&:before
+		content: ''
+		display: inline-block
+		height: $btn-min-height
+		min-height: 100%
+		vertical-align: middle
+
+	> span
+		+font
+		display: inline-block
+		vertical-align: middle
+		position: relative
+		max-width: 98%
+		white-space: nowrap
+		margin: 0 $btn-space
+
+	> i
+		display: inline-block
+		vertical-align: middle
+		position: relative
+		margin-left: $btn-space
+		backface-visibility: hidden
+		+line-style
+
+		&:before, &:after
+			+pseudo()
+			left: 0
+			backface-visibility: hidden
+			+line-style
+
+		//first line menu
+		&:before
+			top: -#{$btn-lines-height + $btn-lines-space}
+
+		//third line menu
+		&:after
+			top: #{$btn-lines-height + $btn-lines-space}
+
+/*button menu end*/
+
+/*button popup close*/
+.btn-popup-close
+	//<a href="#" class="btn-popup-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
+	$btn-bg: #fff
+	$btn-color: #000
+	$btn-size: $header-top-height
+	$btn-space: 12px
+	$btn-lines-width: 30px
+	$btn-lines-height: 2px
+	$btn-lines-space: 5px
+	$btn-lines-color: $text-color-alt
+
+	=line-style()
+		+size($btn-lines-width, $btn-lines-height)
+
+	=font()
+		font: 300 14px/1.4 $font-norm
+		letter-spacing: normal
+
+	=transition()
+		transition-property: transform, box-shadow, background-color
+		transition-duration: $animation-speed
+		transition-timing-function: ease-in-out
+
+	display: block
+	+size($btn-size)
+	background: $btn-bg
+	color: #fff
+	text-decoration: none
+	+clear-spacing
+	white-space: nowrap
+
+	&:before
+		content: ''
+		display: inline-block
+		height: $btn-size
+		min-height: 100%
+		vertical-align: middle
+
+	> span
+		+hide-text
+
+	> i
+		display: inline-block
+		vertical-align: middle
+		position: relative
+		backface-visibility: hidden
+		background-color: transparent
+		+line-style
+
+		&:before, &:after
+			+pseudo()
+			left: 0
+			backface-visibility: hidden
+			+line-style
+			background: $btn-lines-color
+
+		//first line menu
+		&:before
+			top: 0
+			transform: rotate(-45deg)
+
+		//third line menu
+		&:after
+			top: 0
+			transform: rotate(45deg)
+
+	.no-touchevents &:hover
+		& > i:before, & > i:after
+			background-color: $mark-color-alt
+
+/*button popup close end*/
 /*BUTTONS end*/

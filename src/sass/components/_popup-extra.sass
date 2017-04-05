@@ -1,37 +1,23 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*extra popup*/
 // fixed scroll after popup open
-html.nav-opened-before
+html.before-extra-popup-open
 	+scroll-blocked()
 
 	.wrapper
 		z-index: 100
 
 .extra-popup
-	$this-container-class: extra-popup
-	$header-height: 60px
-
-	=transition()
-		-webkit-transition-property: opacity, visibility, box-shadow
-		transition-property: opacity, visibility, box-shadow
-		-webkit-transition-duration: 0.6s
-		transition-duration: 0.6s
-
-	=transition-duration-back()
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-
-	position: fixed
-	left: 0
-	top: 0
-	width: 100%
-	height: 100%
-	z-index: 998
-	background: #fff
-	box-sizing: border-box
-	border: 1px solid $border-color
 	overflow: hidden
+	+cover(fixed)
+	background: #fff
+	border: 1px solid $border-color
+	z-index: 998
 
-	&.hide-before
+	&.hide-on-load
 		opacity: 0
 		visibility: hidden
 
@@ -41,234 +27,66 @@ html.nav-opened-before
 
 	// for ios add bg after inertia scroll
 	&:after
-		content: ''
-		position: absolute
-		left: 0
-		top: 100%
-		height: 50%
-		width: 100%
+		+pseudo()
+		+cover(null, 0, 100%, 50%, 100%)
 		background: inherit
 
-	@at-root
-		.#{$this-container-class}__head
-			position: relative
-			height: $header-height
-			border: solid #d9d9d9
-			border-width: 1px 0
-			box-sizing: border-box
-			+transition
+.extra-popup__head
+	position: relative
+	height: $header-top-height
+	border: solid #d9d9d9
+	border-width: 1px 0
+	transition-property: opacity, visibility, box-shadow
+	transition-duration: $animation-speed-mouseleave
 
-			.show-shadow &
-				box-shadow: 0 0 35px rgba(0, 0, 0, 0.2)
-				+transition-duration-back
+	.show-shadow &
+		box-shadow: 0 0 35px rgba(0, 0, 0, 0.2)
+		transition-duration: $animation-speed
 
-			.logo
-				display: block
-				position: absolute
-				left: 50%
-				top: 50%
-				$size: 50px
-				width: $size
-				height: $size
-				margin: -#{$size/2} 0 0 -#{$size/2}
-				padding: 0
-				font-size: 0
-				line-height: 0
-				-webkit-background-size: contain
-				background-size: contain
-				opacity: 0
-				visibility: hidden
-				+transition
+	.logo
+		display: block
+		position: absolute
+		left: 50%
+		top: 50%
+		$size: 50px
+		+size($size)
+		margin: -#{$size/2} 0 0 -#{$size/2}
+		padding: 0
+		+font(0, 0)
+		background-size: contain
+		opacity: 0
+		visibility: hidden
+		transition-property: opacity, visibility, box-shadow
+		transition-duration: $animation-speed-mouseleave
 
-				.nav-opened-before &
-					opacity: 1
-					visibility: visible
+		.before-extra-popup-open &
+			opacity: 1
+			visibility: visible
 
-	.btn-popup-close
-		//<a href="#" class="btn-popup-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
-		$btn-bg: #fff
-		$btn-color: #000
-		$btn-size: 60px
-		$btn-space: 12px
-		$btn-lines-width: 30px
-		$btn-lines-height: 2px
-		$btn-lines-space: 5px
-		$btn-lines-color: $text-color-alt
+.extra-popup__content
+	overflow-x: hidden
+	overflow-y: auto
+	position: relative
+	height: calc(100% - #{$header-top-height})
+	padding: #{$grid-layout-space - 10px} 0
+	box-sizing: border-box
 
-		=line-style
-			height: $btn-lines-height
-			width: $btn-lines-width
-
-		=font
-			font: 300 14px/1.4 $font-norm
-			letter-spacing: normal
-
-		=transition
-			-webkit-transition-property: -webkit-transform, box-shadow, background-color
-			transition-property: transform, box-shadow, background-color
-			-webkit-transition-duration: $animation-speed
-			transition-duration: $animation-speed
-			-webkit-transition-timing-function: ease-in-out
-			transition-timing-function: ease-in-out
-
-		&
-			position: absolute
-			right: -1px
-			top: -1px
-			width: $btn-size
-			height: $btn-size
-			background: $btn-bg
-			border: 1px solid $border-color
-			color: #fff
-			text-decoration: none
-			font-size: 0
-			line-height: 0
-			letter-spacing: -4px
-			white-space: nowrap
-
-			&:before
-				content: ''
-				display: inline-block
-				height: $btn-size
-				min-height: 100%
-				vertical-align: middle
-
-			> span
-				+hide-text
-
-			> i
-				display: inline-block
-				vertical-align: middle
-				position: relative
-				-webkit-backface-visibility: hidden
-				backface-visibility: hidden
-				background-color: transparent
-				+line-style
-
-				&:before, &:after
-					content: ''
-					position: absolute
-					left: 0
-					-webkit-backface-visibility: hidden
-					backface-visibility: hidden
-					+line-style
-					background: $btn-lines-color
-
-				//first line menu
-				&:before
-					top: 0
-					transform: rotate(-45deg)
-
-				//third line menu
-				&:after
-					top: 0
-					transform: rotate(45deg)
-
-		.no-touchevents &:hover > i:before, .no-touchevents &:hover > i:after
-			background-color: $mark-color-alt
-
-
-	@at-root
-		&__content
-			overflow-x: hidden
-			overflow-y: auto
-			position: relative
-			height: calc(100% - #{$header-height})
-			padding: #{$grid-layout-space - 10px} 0
-			box-sizing: border-box
-
-	@at-root
-		.nav-overlay
-			z-index: 99
+.nav-overlay
+	z-index: 99
 
 /*extra popup end*/
 
-/*button menu*/
-.btn-map-site
-	//<a href="#" class="btn-map-site"><i></i><span>Карта сайта</span></a>
-	$btn-bg: $btn-bg-color
-	$btn-color: #fff
-	$btn-min-height: 40px
-	$btn-space: 12px
-	$btn-lines-width: 22px
-	$btn-lines-height: 3px
-	$btn-lines-space: 5px
-	$btn-lines-color: $btn-color
+/*button popup site map close*/
+.extra-popup .btn-popup-close
+	position: absolute
+	right: -1px
+	top: -1px
+	+size($header-top-height)
+	border: 1px solid $border-color
 
-	=line-style
-		height: $btn-lines-height
-		width: $btn-lines-width
-		background: $btn-lines-color
-
-	=font
-		font: 300 14px/1.4 $font-norm
-		letter-spacing: normal
-
-	=transition
-		-webkit-transition-property: -webkit-transform, box-shadow, background-color
-		transition-property: transform, box-shadow, background-color
-		-webkit-transition-duration: $animation-speed
-		transition-duration: $animation-speed
-		-webkit-transition-timing-function: ease-in-out
-		transition-timing-function: ease-in-out
-
-	display: inline-block
-	text-decoration: none
-	color: #fff
-	background: $btn-bg
-	font-size: 0
-	line-height: 0
-	letter-spacing: -4px
-	white-space: nowrap
-	+antialiased
-	+btn-hover
-	+btn-active
-
-	&:before
-		content: ''
-		display: inline-block
-		height: $btn-min-height
-		min-height: 100%
-		vertical-align: middle
-
-	> span
-		+font
-		display: inline-block
-		vertical-align: middle
-		position: relative
-		max-width: 98%
-		white-space: nowrap
-		margin: 0 $btn-space
-
-	> i
-		display: inline-block
-		vertical-align: middle
-		position: relative
-		margin-left: $btn-space
-		-webkit-backface-visibility: hidden
-		backface-visibility: hidden
-		+line-style
-
-		&:before, &:after
-			content: ''
-			position: absolute
-			left: 0
-			-webkit-backface-visibility: hidden
-			backface-visibility: hidden
-			+line-style
-
-		//first line menu
-		&:before
-			top: -#{$btn-lines-height + $btn-lines-space}
-
-		//third line menu
-		&:after
-			top: #{$btn-lines-height + $btn-lines-space}
-
-/*button menu end*/
-
+/*button popup site map close end*/
 /*button menu close*/
-.btn-menu-close
+//.btn-menu-close
 	//<a href="#" class="btn-menu-close"><i></i><span>Закрыть</span></a>
 	@extend .btn-map-site
 	> i

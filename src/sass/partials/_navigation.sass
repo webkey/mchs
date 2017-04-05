@@ -28,7 +28,7 @@
 
 .nav__list
 	position: relative
-	+reset-spacing
+	+clear-spacing
 	//for priority nav
 	vertical-align: top
 
@@ -69,9 +69,6 @@
 		// for animation
 		transition-property: color, background-color
 		transition-duration: $animation-speed
-
-		+media('<mob-lg')
-			+padding-vertical(13px)
 
 /*nav common end
 
@@ -172,18 +169,8 @@ div[class*="-nav__drop"]
 
 /*nav drop common end
 
-/*nav drop level 1
-.nav__drop
-	min-width: 100%
-	border-top: none
-	white-space: normal
-	margin-left: -1px
-
-	li.align-right > &
-		left: auto
-		right: -1px
-
-	& > li //, .priority-nav__dropdown > li
+/*main items
+.nav__list > li //, .priority-nav__dropdown > li
 		display: inline-block
 		vertical-align: top
 		position: relative
@@ -200,9 +187,25 @@ div[class*="-nav__drop"]
 			background: none
 			z-index: 95
 
+			+media('<mob-lg')
+				+padding-vertical(12px)
+
 		&.hover > a, &.active > a, &.current > a, .no-js &:hover > a
 			background: $color-nav-bg-hover
 			color: $text-color
+
+/*main items end
+
+/*nav drop level 1
+.nav__drop
+	min-width: 100%
+	border-top: none
+	white-space: normal
+	margin-left: -1px
+
+	li.align-right > &
+		left: auto
+		right: -1px
 
 //.priority-nav__dropdown > li > a span
 	display: inline-block

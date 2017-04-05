@@ -1266,8 +1266,10 @@ function masonryInit() {
 			overlay: '.nav-overlay', // overlay's class
 			overlayAppendTo: 'body', // where to place overlay
 			overlayAlpha: 0.8,
+			overlayIndex: 997,
 			classReturn: null,
 			overlayBoolean: true,
+			animationType: 'ltr', // rtl or ltr
 			animationSpeed: 300,
 			animationSpeedOverlay: null,
 			minWidthItem: 100,
@@ -1290,6 +1292,7 @@ function masonryInit() {
 		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
 		self.$staggerItems = options.staggerItems || self.$navMenuItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию navMenuItem;
 
+		self._animationType = options.animationType;
 		self._animateSpeed = _animateSpeed;
 
 		// overlay
@@ -1297,6 +1300,7 @@ function masonryInit() {
 		self.overlayAppendTo = options.overlayAppendTo;
 		self.$overlay = $('<div class="' + options.overlay.substring(1) + '"></div>'); // Темплейт оверлея;
 		self._overlayAlpha = options.overlayAlpha;
+		self._overlayIndex = options.overlayIndex;
 		self._animateSpeedOverlay = options.animationSpeedOverlay || _animateSpeed;
 		self._minWidthItem = options.minWidthItem;
 		self._mediaWidth = options.mediaWidth;
@@ -1307,8 +1311,8 @@ function masonryInit() {
 
 		self.modifiers = {
 			active: 'active',
-			opened: 'nav-opened',
-			openStart: 'nav-opened-before'
+			opened: 'extra-popup-opened',
+			beforeOpen: 'before-extra-popup-open'
 		};
 
 		self.outsideClick();
@@ -1338,6 +1342,7 @@ function masonryInit() {
 			left: 0,
 			top: 0,
 			background: '#000',
+			'z-index': self._overlayIndex,
 			onComplete: function () {
 				TweenMax.to($overlay, self._animateSpeedOverlay / 1000, {autoAlpha: self._overlayAlpha});
 			}
@@ -1367,7 +1372,8 @@ function masonryInit() {
 		var self = this,
 			$buttonMenu = self.$btnMenu;
 
-		$buttonMenu.on('mousedown touchstart vmousedown', function (e) {
+		// $buttonMenu.on('mousedown touchstart vmousedown', function (e) {
+		$buttonMenu.on('click', function (e) {
 			e.preventDefault();
 
 			if (self.navIsOpened) {
@@ -1432,11 +1438,13 @@ function masonryInit() {
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
 			$buttonMenu = self.$btnMenu,
+			$buttonClose = self.$btnMenuClose,
 			_animationSpeed = self._animateSpeedOverlay,
 			$staggerItems = self.$staggerItems;
 
+		$html.addClass(self.modifiers.beforeOpen);
 		$buttonMenu.addClass(self.modifiers.active);
-		$html.addClass(self.modifiers.openStart);
+		$buttonClose.addClass(self.modifiers.beforeOpen);
 
 		$navContainer.css({
 			'-webkit-transition-duration': '0s',
@@ -1449,17 +1457,18 @@ function masonryInit() {
 			ease: Cubic.easeOut,
 			onComplete: function () {
 				$html.addClass(self.modifiers.opened);
+				$buttonClose.addClass(self.modifiers.opened);
 
 				noScroll();
 			}
 		});
 
-		TweenMax.staggerTo($staggerItems, 0.85, {
-			// autoAlpha:1,
-			// scale:1,
-			// y: 0,
-			ease:Cubic.easeOut
-		}, 0.1);
+		// TweenMax.staggerTo($staggerItems, 0.85, {
+		// 	autoAlpha:1,
+		// 	scale:1,
+		// 	y: 0,
+		// 	ease:Cubic.easeOut
+		// }, 0.1);
 
 
 		if (self.overlayBoolean) {
@@ -1477,32 +1486,59 @@ function masonryInit() {
 			$html = self.$mainContainer,
 			$navContainer = self.$navContainer,
 			$buttonMenu = self.$btnMenu,
+			$buttonClose = self.$btnMenuClose,
 			_animationSpeed = self._animateSpeedOverlay,
-			_mediaWidth = self._mediaWidth;
+			_mediaWidth = self._mediaWidth,
+			_animationType = self._animationType;
 
 		$html.removeClass(self.modifiers.opened);
-		$html.removeClass(self.modifiers.openStart);
+		$html.removeClass(self.modifiers.beforeOpen);
 		$buttonMenu.removeClass(self.modifiers.active);
+		$buttonClose.removeClass(self.modifiers.opened);
+		$buttonClose.removeClass(self.modifiers.beforeOpen);
 
 		if (self.overlayBoolean) {
 			self.toggleOverlay(false);
 		}
 
-		TweenMax.to($navContainer, _animationSpeed / 1000, {
-			xPercent: -100,
-			ease: Cubic.easeOut,
-			onComplete: function () {
-				if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
-					self.preparationAnimation();
+		var duration = _animationSpeed / 1000;
+
+		if (_animationType === 'ltr') {
+			TweenMax.to($navContainer, duration, {
+				xPercent: -100,
+				ease: Cubic.easeOut,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
+
+					TweenMax.set($navContainer, {
+						autoAlpha: 0
+					});
+
+					canScroll();
 				}
+			});
+		} else if (_animationType === 'rtl') {
+			TweenMax.to($navContainer, duration, {
+				xPercent: 100,
+				ease: Cubic.easeOut,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
 
-				TweenMax.set($navContainer, {
-					autoAlpha: 0
-				});
+					TweenMax.set($navContainer, {
+						autoAlpha: 0
+					});
 
-				canScroll();
-			}
-		});
+					canScroll();
+				}
+			});
+
+		} else {
+			console.error('Type animation "' + _animationType + '" is wrong!')
+		}
 
 		self.navIsOpened = false;
 	};
@@ -1512,22 +1548,39 @@ function masonryInit() {
 		var self = this;
 
 		var $navContainer = self.$navContainer,
-			$staggerItems = self.$staggerItems;
+			$staggerItems = self.$staggerItems,
+			_animationType = self._animationType;
 
-		// console.log('preparationAnimation');
+		if (_animationType === 'ltr') {
+			TweenMax.set($navContainer, {
+				xPercent: -100,
+				autoAlpha: 0,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+			// TweenMax.set($staggerItems, {
+			// 	autoAlpha: 0,
+			// 	scale: 0.6,
+			// 	y: 50
+			// });
+		} else if (_animationType === 'rtl') {
+			TweenMax.set($navContainer, {
+				xPercent: 100,
+				autoAlpha: 0,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+			// TweenMax.set($staggerItems, {
+			// 	autoAlpha: 0,
+			// 	scale: 0.6,
+			// 	y: 50
+			// });
 
-		TweenMax.set($navContainer, {
-			xPercent: -100,
-			autoAlpha: 0,
-			onComplete: function () {
-				$navContainer.show(0);
-			}
-		});
-		TweenMax.set($staggerItems, {
-			// autoAlpha: 0,
-			// scale: 0.6,
-			// y: 50
-		});
+		} else {
+			console.error('Type animation "' + _animationType + '" is wrong!')
+		}
 	};
 
 	// clearing inline styles
@@ -1559,10 +1612,11 @@ function masonryInit() {
 }(jQuery));
 
 /**
- * !extra popup site map
+ * !extra popup initial
  * */
-function siteMapPopup(){
+function popupsInit(){
 	var siteMapSelector = '.site-map-js';
+
 	if($(siteMapSelector).length){
 
 		new ExtraPopup({
@@ -1579,8 +1633,28 @@ function siteMapPopup(){
 		});
 
 	}
+
+	var popupAside = '.popup-aside-js';
+
+	if($(popupAside).length){
+
+		new ExtraPopup({
+			navContainer: popupAside,
+			// navMenu: '.site-map__list',
+			btnMenu: '.btn-aside-open-js',
+			btnMenuClose: '.btn-aside-close-js',
+			// navMenuItem: '.site-map__box',
+			overlayAppendTo: 'body',
+			closeOnResize: true,
+			// mediaWidth: 1280,
+			animationType: 'rtl',
+			animationSpeed: 300,
+			overlayAlpha: 0.35
+		});
+
+	}
 }
-/*main navigation for mobile end*/
+/*extra popup initial end*/
 
 /**
  * file input
@@ -1845,12 +1919,17 @@ function stickyLayout(){
 
 			var offsetTop = offsetTopBase * 2;
 
+			// if(window.innerWidth < 1600){
+			// 	// $sidebar.trigger("sticky_kit:detach").attr('style','');
+			// 	$aside.trigger("sticky_kit:detach").css('position','relative');
+			// 	return;
+			// }
+
 			clearTimeout(timeoutAsideSticky);
 			timeoutAsideSticky = setTimeout(function () {
 				$aside.stick_in_parent({
 					parent: '.main-inside',
-					offset_top: offsetTop,
-
+					offset_top: offsetTop
 				});
 			}, 100);
 
@@ -1972,7 +2051,7 @@ $(document).ready(function(){
 	slidersInit();
 	equalHeightInit();
 	masonryInit();
-	siteMapPopup();
+	popupsInit();
 	fileInput();
 	breadcrumbsBehavior();
 	stickyLayout();

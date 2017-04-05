@@ -139,7 +139,7 @@
 // Reset for inline-block elements
 // =============================================================================
 /// обнуляет горизонтальные отступы между `inline-block` елементами
-=reset-spacing()
+=clear-spacing()
 	font-size: 0
 	letter-spacing: -4px
 
@@ -416,8 +416,10 @@
 // =============================================================================
 // Fill parent with absolute position
 // =============================================================================
-/// Примесь заполняет родительський элемент по средством `position: absolute`
-=absolute-fill($left: 0, $top: 0, $height: 100%, $width: 100%)
+/// Примесь задает блочному элемунту размеры родителя
+=cover($position: absolute, $left: 0, $top: 0, $height: 100%, $width: 100%)
+	@if $position
+		position: $position
 	left: $left
 	top: $top
 	height: $height

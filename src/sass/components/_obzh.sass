@@ -1,3 +1,7 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*obzh*/
 .obzh
 	position: relative
@@ -49,7 +53,7 @@
 		&:nth-child(#{$item}) a
 			background-color: mix($mark-color-alt, $mark-color, $percentage)
 
-			.no-touchevents &:hover
+			//.no-touchevents &:hover
 				background-color: mix(shade($mark-color-alt, 90%), shade($mark-color, 90%), $percentage)
 
 	$minGroup2: 4 !default
@@ -64,7 +68,7 @@
 		&:nth-child(#{$item}) a
 			background-color: mix(#004a80, #0982db, $percentage)
 
-			.no-touchevents &:hover
+			//.no-touchevents &:hover
 				background-color: mix(shade(#004a80, 95%), shade(#0982db, 95%), $percentage)
 
 	.obzh__links &
@@ -98,6 +102,8 @@
 			position: relative
 			+antialiased
 			+padding-horizontal($grid-inside-horizontal-space)
+			transition-property: padding
+			transition-duration: $animation-speed
 
 			&::after
 				+pseudo()
@@ -153,8 +159,7 @@
 	background-size: cover
 
 .obzh-banner__content
-	position: absolute
-	+absolute-fill()
+	+cover()
 	padding: 40px 45px
 	display: flex
 	flex-flow: column nowrap
