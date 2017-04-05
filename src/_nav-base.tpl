@@ -255,8 +255,42 @@
 
 				@@include('_nav-drop-wrap-1_ONE.tpl', { "start": "1"})
 
-			<li>@@include('_nav-LINK.tpl', { "itemText": "МЧС - родителям и педагогам", "itemLink": "#", "specialValue": "" })</li>
-			<li>@@include('_nav-LINK.tpl', { "itemText": "Аудио", "itemLink": "#", "specialValue": "" })</li>
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "МЧС - родителям и педагогам", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Аудиосказки для детей по безопасности", "itemLink": "#", "specialValue": "" })</li>
+
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Читаем вместе", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-3_THREE.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Тушистиковедение", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Сказки Инны Чугай", "itemLink": "#", "specialValue": "" })</li>
+				@@include('_nav-drop-wrap-3_THREE.tpl', { "end": "1"})
+
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Список мультфильмов, рекомендованных МЧС", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Раскраски", "itemLink": "#", "specialValue": "" })</li>
+
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "Сценарии мероприятий для детей", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-3_THREE.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Списки фильмов", "itemLink": "#", "specialValue": "" })</li>
+				@@include('_nav-drop-wrap-3_THREE.tpl', { "end": "1"})
+
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "end": "1"})
+
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "Аудио", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "По мотивам сказок и фильмов", "itemLink": "#", "specialValue": "" })</li>
+
+			<li class="has-drop">@@include('_nav-LINK.tpl', { "itemText": "Аудиоролики по безопасности", "itemLink": "#", "specialValue": "" })
+				@@include('_nav-drop-wrap-3_THREE.tpl', { "start": "1"})
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Звезды за безопасность", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Социальные ролики", "itemLink": "#", "specialValue": "" })</li>
+				@@include('_nav-drop-wrap-3_THREE.tpl', { "end": "1"})
+
+				@@include('_nav-drop-wrap-2_TWO.tpl', { "end": "1"})
+
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Обучающие фильмы", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Наглядно-изобразительная продукция", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Брэндпакеты", "itemLink": "#", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Методические материалы и игры", "itemLink": "#", "specialValue": "" })</li>
 
 				@@include('_nav-drop-wrap-1_ONE.tpl', { "end": "1"})
 
