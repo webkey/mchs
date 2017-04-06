@@ -5,6 +5,10 @@
 @import ../../libs/include-media/dist/include-media
 
 /*HEADER*/
+.header
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05)
+
+/*header layout*/
 .header__holder
 	position: relative
 	background: $color-header-bg
@@ -13,16 +17,7 @@
 	+clear
 
 	+media('<desk-sm')
-		padding-left: 140px
-
-	+media('<tab-lg')
-		padding-left: $header-top-height
-
-	+media('<tab-sm')
-		min-height: 0
-
-	+media('<mob-lg')
-		padding-left: $header-top-height-sm
+		padding-left: 0
 
 .header__frame
 	position: relative
@@ -30,8 +25,145 @@
 	+clear
 
 	+media('<mob-lg')
-		padding-top: $header-top-height-sm
+		padding-top: $header-top-height--sm
 
+/*header layout end*/
+
+/*logo*/
+.logo-wrap
+	position: absolute
+	left: 0
+	top: 0
+	height: $header-height
+	width: $header-left-space
+	background-color: white
+	z-index: 20
+	border-bottom: 1px solid $bg-color
+
+	+media('<desk-sm')
+		display: none
+
+	.touchevents &
+		transition-property: height
+		transition-duration: 0.1s
+
+	.header-fixed &
+		position: fixed
+
+	.header-fixed.touchevents &
+		height: $header-top-height
+
+	+media('<desk-sm')
+		width: $header-left-space-desk-sm
+
+	+media('<tab-lg')
+		width: $header-top-height
+		height: $header-top-height !important
+
+	+media('<mob-lg')
+		width: $header-top-height--sm
+		height: $header-top-height--sm !important
+
+.logo
+	display: block
+	height: 100%
+	margin: 0
+
+	a
+		display: block
+		position: relative
+		height: 100%
+		+clear-spacing
+
+		img
+			position: absolute
+			top: 50%
+			left: 50%
+			backface-visibility: hidden
+			transform: translate(-50%, -50%)
+			height: 100px
+			max-height: 90%
+			+push-auto
+			font-size: $font-size-small
+			letter-spacing: normal
+
+	.header__content &
+		display: none
+
+		+media('<desk-sm')
+			display: block
+			float: left
+			width: 80px
+			height: 100%
+			position: relative
+			margin-right: $grid-layout-space--desk-md
+
+		+media('<tab-lg')
+			float: none
+			width: auto
+			height: auto
+			margin: 0
+			padding: $grid-layout-space--mob-lg
+			border-bottom: 1px solid $border-color
+
+		+media('<mob-lg')
+			+padding-vertical(round($grid-layout-space--mob-lg/2))
+
+		a
+			height: auto
+			position: relative
+			top: 50%
+			transform: translate(0, -50%)
+			color: inherit
+			text-decoration: none
+			+clear
+
+			.no-touchevents &:hover
+				text-decoration: none
+
+			+media('<tab-lg')
+				top: auto
+				transform: none
+
+			& > span
+				font: 700 1.6rem/1.875 $font-alt
+				letter-spacing: normal
+				text-transform: uppercase
+				color: $text-color
+				// скрыть на десктопе
+				display: none
+				width: calc(100% - 80px - #{$grid-layout-space--mob-lg} - 5px)
+
+				+media('<tab-lg')
+					display: inline-block
+					vertical-align: middle
+
+				+media('<mob-lg')
+					+font(1.4rem, 1.429)
+
+			img
+				float: left
+				position: relative
+				left: auto
+				top: auto
+				width: 80px
+				height: auto
+				max-width: 100%
+				transform: none
+
+				+media('<tab-lg')
+					float: none
+					display: inline-block
+					vertical-align: middle
+					margin-right: $grid-layout-space--mob-lg
+
+				+media('<mob-lg')
+					margin-right: #{round($grid-layout-space--mob-lg/2)}
+
+
+/*logo end*/
+
+/*header top
 .header__top
 	height: $header-top-height
 	position: absolute
@@ -43,7 +175,7 @@
 	+clear
 
 	+media('<mob-lg')
-		height: $header-top-height-sm
+		height: $header-top-height--sm
 
 	.window-is-resize &
 		overflow: hidden
@@ -57,15 +189,12 @@
 		max-width: calc(#{$main-layout-width - $header-left-space})
 
 		+media('<desk-sm')
-			width: calc(100% - #{$header-left-space-desk-sm})
+			width: 100%
 			max-width: none
 
-		+media('<tab-lg')
-			width: calc(100% - #{$header-top-height})
+/*header top end
 
-		+media('<mob-lg')
-			width: calc(100% - #{$header-top-height-sm})
-
+/*header content
 .header__content
 	padding: 0 $grid-layout-space
 	height: $header-content-height
@@ -77,14 +206,15 @@
 		padding: 0 $grid-layout-space--desk-md
 
 	+media('<tab-lg')
-		margin-left: -#{$header-top-height}
-		height: $header-content-height--tab-lg
+		float: none
+		padding: 0
+		height: auto
 
-	+media('<tab-sm')
+	//+media('<tab-sm')
 		text-align: center
 		padding: 0
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		padding: 0
 		margin-left: -#{$header-top-height-sm}
 		height: auto
@@ -96,7 +226,7 @@
 		line-height: 0
 		letter-spacing: -4px
 
-		+media('<tab-sm')
+		+media('<tab-lg')
 			display: none
 
 		&::before
@@ -113,12 +243,15 @@
 			line-height: $line-height
 			letter-spacing: normal
 
+/*header content end
+
+/*header contacts
 .header__contacts
 	float: right
 	height: 100%
 	margin-left: #{$grid-space}
 
-	+media('<tab-sm')
+	+media('<tab-lg')
 		float: none
 		margin-left: 0
 
@@ -131,19 +264,20 @@
 		+font(0, 0)
 		letter-spacing: -4px
 
-		+media('<mob-lg')
-			+margin-horizontal(0)
-
 		&::before
 			+pseudo('', inline-block, relative)
 			vertical-align: middle
 			height: 100%
 
-			+media('<tab-sm')
-				min-height: 0
+		+media('<tab-lg')
+			+margin-horizontal(0)
+			height: 60px
 
-			+media('<mob-lg')
+			&::before
 				content: none
+
+		+media('<mob-lg')
+			height: auto
 
 		li
 			display: inline-block
@@ -152,11 +286,14 @@
 			height: 100%
 			width: 230px
 
-			+media('<tab-sm')
-				width: calc(50% - 2px)
+			+media('<tab-lg')
+				float: left
+				display: block
+				width: 50%
 				text-align: center
 
 			+media('<mob-lg')
+				float: none
 				display: block
 				width: auto
 				border-bottom: 1px solid $border-color
@@ -172,8 +309,13 @@
 				$height: 18px
 				height: $height
 				width: 0
-				margin-top: -($height/2)
+				margin-top: -(round($height/2))
 				border-left: 1px solid $border-color
+
+				+media('<tab-lg')
+					height: 100%
+					top: 0
+					margin-top: 0
 
 				+media('<mob-lg')
 					content: none
@@ -182,7 +324,7 @@
 				content: none
 
 			a
-				display: table
+				display: block
 				width: 100%
 				height: 100%
 				padding: 0 $grid-space
@@ -195,25 +337,39 @@
 				.no-touchevents &:hover
 					background-color: white
 
+				&::after
+					+vertical-align()
+
+				+media('<tab-lg')
+					text-align: center
+
 				+media('<mob-lg')
 					display: block
-					+padding-vertical(#{round($grid-space/2)})
+					text-align: left
+					+padding-vertical(#{round($grid-layout-space--mob-lg/2)})
 
 				& > div
-					display: table-cell
-					vertical-align: middle
+					$width-icon: 78px
+					$width-icon-sm: 60px
 
-					+media('<mob-lg')
-						display: inline-block
-						min-width: 57px
+					display: inline-block
+					vertical-align: middle
+					max-width: calc(100% - #{$width-icon})
+					text-align: left
+
+					+media('<tab-lg')
 						text-align: center
 
 						img
 							width: 34px
 
 					&:first-child
-						width: 78px
+						width: $width-icon
 						padding-right: #{$grid-space}
+
+						+media('<tab-lg')
+							width: $width-icon-sm
+							padding-right: #{$grid-layout-space--mob-lg}
 
 					& > em
 						font: normal bold 30px/1.2 $font-alt
@@ -222,14 +378,13 @@
 
 					& > span
 						display: block
-						max-width: 120px
 						font-size: $font-size-small
 						line-height: $line-height-small
 						letter-spacing: normal
 
-						+media('<mob-lg')
-							max-width: 190px
+/*header contacts end
 
+/*header title
 .header__title
 	font: 700 1.8rem/1.2 $font-alt
 	text-transform: uppercase
@@ -244,6 +399,9 @@
 		color: inherit
 		text-decoration: none
 
+/*header title end
+
+/*header info
 .header__info
 	font-size: $font-size-small
 	line-height: $line-height-small
@@ -284,61 +442,13 @@
 
 			path
 				fill: lighten($text-color-light, 20%)
-/*logo*/
-.logo-wrap
-	position: absolute
-	left: 0
-	top: 0
-	height: $header-height
-	width: $header-left-space
-	background-color: white
-	z-index: 20
-	border-bottom: 1px solid $bg-color
 
-	.touchevents &
-		transition-property: height
-		transition-duration: 0.1s
-
-	.header-fixed &
-		position: fixed
-
-	.header-fixed.touchevents &
-		height: $header-top-height
-
-	+media('<desk-sm')
-		width: $header-left-space-desk-sm
-
-	+media('<tab-lg')
-		width: $header-top-height
-		height: $header-top-height !important
-
-	+media('<mob-lg')
-		width: $header-top-height-sm
-		height: $header-top-height-sm !important
-
-.logo
-	display: block
-	height: 100%
-	margin: 0
-
-	a
-		display: block
-		position: relative
-		height: 100%
-
-		img
-			position: absolute
-			top: 50%
-			left: 50%
-			backface-visibility: hidden
-			transform: translate(-50%, -50%)
-			height: 100px
-			max-height: 90%
-			+push-auto
-
-/*logo end*/
+/*header info end
 
 /*user options*/
+$user-options-border-color: rgba(255, 255, 255, 0.15)
+$user-options-text-color: #80a7c4
+
 .user-options
 	float: right
 	position: relative
@@ -347,106 +457,206 @@
 	letter-spacing: -4px
 	z-index: 100
 
-	$color-border: rgba(255, 255, 255, 0.3)
-	$color-text: #80a7c4
+.user-options__item
+	display: inline-block
+	vertical-align: top
+	position: relative
+	width: $header-top-height
 
-	=transition()
-		transition-property: background-color, color, fill
+	+media('<mob-lg')
+		width: $header-top-height--sm
+
+	&::before
+		content: ''
+		display: block
+		height: 0
+		padding-top: 100%
+
+	& > a
+		+cover()
+		background-color: transparent
+		box-shadow: -1px 0 0 $user-options-border-color
+		text-decoration: none
+		text-align: center
+		color: $user-options-text-color
+		transition-property: background-color, color
 		transition-duration: $animation-speed
-		transition-timing-function: ease-in-out
 
-	&__item
-		display: inline-block
-		vertical-align: top
-		position: relative
-		width: $header-top-height
+		.no-touchevents &:hover
+			background-color: $user-options-border-color
 
-		+media('<mob-lg')
-			width: $header-top-height-sm
+		& > *
+			display: inline-block
+			vertical-align: middle
+			font-size: $font-size
+			line-height: $line-height
+			letter-spacing: normal
 
 		&::before
-			content: ''
-			display: block
-			height: 0
-			padding-top: 100%
+			+vertical-align
 
-		& > a
-			+cover()
-			background-color: transparent
-			box-shadow: -1px 0 0 $color-border
-			text-decoration: none
-			text-align: center
-			color: $color-text
-			+transition
+		& > div
+			display: inline-block
+			vertical-align: middle
+			color: $user-options-text-color
+			transition-property: background-color, color
+			transition-duration: $animation-speed
 
-			.no-touchevents &:hover
-				background-color: $color-border
+		svg
+			width: 30px
+			height: 30px
+			display: inline-block
+			transform: scale(0.8)
+			transition-property: background-color, color
+			transition-duration: $animation-speed
 
-			& > *
-				display: inline-block
-				vertical-align: middle
-				font-size: $font-size
-				line-height: $line-height
-				letter-spacing: normal
+			+media('<mob-lg')
+				width: 28px
+				height: 28px
 
-			&::before
-				+vertical-align
+		path
+			fill: $user-options-text-color
+			transition-property: fill
+			transition-duration: $animation-speed
 
-			& > div
-				display: inline-block
-				vertical-align: middle
-				color: $color-text
-				+transition
-
-			svg
-				width: 30px
-				height: 30px
-				display: inline-block
-				transform: scale(0.8)
-				+transition
-
-				+media('<mob-lg')
-					width: 18px
-					height: 18px
-
-			.no-touchevents &:hover
-				color: $text-color-alt
+		.no-touchevents &:hover
+			color: $text-color-alt
 
 			path
-				fill: $color-text
-				+transition
+				fill: lighten($user-options-text-color, 30%)
 
-			.no-touchevents &:hover path
-				fill: lighten($color-text, 30%)
+		& > span
+			display: inline-block
 
-			& > span
-				display: inline-block
+		& > svg ~ span
+			+hide-text
 
-			& > svg ~ span
-				+hide-text
+.user-options:first-child
+	float: left
+	display: none // прячем пока не понадобиться
+
+	+media('<desk-sm')
+		display: block
+
+	a
+		box-shadow: 1px 0 0 $user-options-border-color
+
+		path
+			fill: white
 
 /*user options end*/
 
 /*banner opener*/
-.banner-opener a
-	background-color: $mark-color
-	backface-visibility: hidden
+.banner-opener
+	display: none // прячем для десктопа
 
-	svg
+	+media('<desk-lg')
+		display: inline-block
+
+	a
+		background-color: $mark-color
+		backface-visibility: hidden
+
+		svg
+			transition-property: transform
+			transition-duration: $animation-speed
+			+antialiased
+
+		path
+			fill: white
+
+		.no-touchevents &:hover
+			background-color: $mark-color
+
+			svg
+				transform: scale(1)
+
+			path
+				fill: white
+
+/*banner opener end*/
+
+/*banner closer*/
+.btn-popup-banners-close
+	position: fixed
+	right: 0
+	top: 0
+	left: auto
+	bottom: auto
+	+size($header-top-height)
+	background: $mark-color
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+	z-index: 999
+
+	+media('<mob-lg')
+		+size($header-top-height--sm)
+
+	&.before-extra-popup-open
+		opacity: 1
+		visibility: visible
+
+	& > i
 		transition-property: transform
 		transition-duration: $animation-speed
-		+antialiased
 
-	path
-		fill: white
+		&::before, &::after
+			background-color: white
 
 	.no-touchevents &:hover
 		background-color: $mark-color
 
-		svg
-			transform: scale(1)
+		& > i
+			transform: scale(1.2)
 
-/*banner opener end*/
+			&::before, &::after
+				background-color: white
+
+/*banner closer end*/
+
+/*news closer*/
+.btn-popup-news-close
+	position: fixed
+	left: $header-top-height
+	top: 0
+	right: auto
+	bottom: auto
+	+size($header-top-height)
+	background: white
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+	z-index: 999
+	box-shadow: inset 0 -1px 0 $border-color
+
+	+media('<mob-lg')
+		left: $header-top-height--sm
+		+size($header-top-height--sm)
+
+	&.before-extra-popup-open
+		opacity: 1
+		visibility: visible
+
+	& > i
+		transition-property: transform
+		transition-duration: $animation-speed
+
+		&::before, &::after
+			background-color: $text-color-alt
+
+	.no-touchevents &:hover
+		background-color: white
+
+		& > i
+			transform: scale(1.2)
+
+			&::before, &::after
+				background-color: $text-color-alt
+
+/*news closer end*/
 
 /*lang*/
 .lang

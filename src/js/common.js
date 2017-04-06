@@ -203,7 +203,7 @@ function toggleHeader(){
 		var currentScrollTop = $(window).scrollTop();
 
 
-		var minScrollTop = $('.header').parent().offset().top + 50;
+		var minScrollTop = $('.header').parent().offset().top + $('.header__top').outerHeight();
 
 		$page.toggleClass('header-transform', (currentScrollTop >= minScrollTop));
 
@@ -257,7 +257,7 @@ function behaviorLogoOnScroll() {
 	var transformElement = '.logo-wrap';
 	var $transformElement = $(transformElement);
 	// var transformElementSize = $transformElement.outerHeight();
-	var viewport = 960;
+	var viewport = 1200;
 
 	$scrollArea.on('debouncedresize', function () {
 		if ($transformElement.length) {
@@ -1442,9 +1442,13 @@ function masonryInit() {
 			_animationSpeed = self._animateSpeedOverlay,
 			$staggerItems = self.$staggerItems;
 
-		$html.addClass(self.modifiers.beforeOpen);
-		$buttonMenu.addClass(self.modifiers.active);
-		$buttonClose.addClass(self.modifiers.beforeOpen);
+		var modifiers = self.modifiers;
+		var classBeforeOpen = modifiers.beforeOpen;
+		var classAfterOpen = modifiers.opened;
+
+		$html.addClass(classBeforeOpen);
+		$buttonMenu.addClass(modifiers.active);
+		$buttonClose.addClass(classBeforeOpen);
 
 		$navContainer.css({
 			'-webkit-transition-duration': '0s',
@@ -1456,8 +1460,8 @@ function masonryInit() {
 			autoAlpha: 1,
 			ease: Cubic.easeOut,
 			onComplete: function () {
-				$html.addClass(self.modifiers.opened);
-				$buttonClose.addClass(self.modifiers.opened);
+				$html.addClass(classAfterOpen);
+				$buttonClose.addClass(classAfterOpen);
 
 				noScroll();
 			}
@@ -1491,11 +1495,15 @@ function masonryInit() {
 			_mediaWidth = self._mediaWidth,
 			_animationType = self._animationType;
 
-		$html.removeClass(self.modifiers.opened);
-		$html.removeClass(self.modifiers.beforeOpen);
-		$buttonMenu.removeClass(self.modifiers.active);
-		$buttonClose.removeClass(self.modifiers.opened);
-		$buttonClose.removeClass(self.modifiers.beforeOpen);
+		var modifiers = self.modifiers;
+		var classAfterOpen = modifiers.opened;
+		var classBeforeOpen = modifiers.beforeOpen;
+
+		$html.removeClass(classAfterOpen);
+		$html.removeClass(classBeforeOpen);
+		$buttonMenu.removeClass(modifiers.active);
+		$buttonClose.removeClass(classAfterOpen);
+		$buttonClose.removeClass(classBeforeOpen);
 
 		if (self.overlayBoolean) {
 			self.toggleOverlay(false);
@@ -1615,12 +1623,14 @@ function masonryInit() {
  * !extra popup initial
  * */
 function popupsInit(){
-	var siteMapSelector = '.site-map-js';
 
-	if($(siteMapSelector).length){
+	/*site map popup*/
+	var siteMapPopupClass = '.site-map-js';
+
+	if($(siteMapPopupClass).length){
 
 		new ExtraPopup({
-			navContainer: siteMapSelector,
+			navContainer: siteMapPopupClass,
 			navMenu: '.site-map__list',
 			btnMenu: '.btn-site-map-js',
 			btnMenuClose: '.btn-popup-close-js',
@@ -1634,20 +1644,61 @@ function popupsInit(){
 
 	}
 
-	var popupAside = '.popup-aside-js';
+	/*navigation popup*/
+	var navPopupClass = '.site-map-js';
 
-	if($(popupAside).length){
+	if($(navPopupClass).length){
 
 		new ExtraPopup({
-			navContainer: popupAside,
-			// navMenu: '.site-map__list',
-			btnMenu: '.btn-aside-open-js',
-			btnMenuClose: '.btn-aside-close-js',
-			// navMenuItem: '.site-map__box',
+			navContainer: navPopupClass,
+			navMenu: '.site-map__list',
+			btnMenu: '.btn-nav-open-js',
+			btnMenuClose: '.btn-popup-close-js',
+			navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: true,
 			// mediaWidth: 1280,
+			animationSpeed: 300,
+			overlayAlpha: 0.35
+		});
+
+	}
+
+	/*banners popup*/
+	var popupAsideClass = '.popup-aside-js';
+
+	if($(popupAsideClass).length){
+
+		new ExtraPopup({
+			navContainer: popupAsideClass,
+			// navMenu: '.site-map__list',
+			btnMenu: '.btn-aside-open-js',
+			btnMenuClose: '.btn-banners-close-js',
+			// navMenuItem: '.site-map__box',
+			overlayAppendTo: 'body',
+			closeOnResize: true,
+			mediaWidth: 1600,
 			animationType: 'rtl',
+			animationSpeed: 300,
+			overlayAlpha: 0.35
+		});
+
+	}
+
+	/*news popup*/
+	var popupNewsClass = '.popup-news-js';
+
+	if($(popupNewsClass).length){
+
+		new ExtraPopup({
+			navContainer: popupNewsClass,
+			// navMenu: '.site-map__list',
+			btnMenu: '.btn-news-open-js',
+			btnMenuClose: '.btn-news-close-js',
+			// navMenuItem: '.site-map__box',
+			overlayAppendTo: 'body',
+			closeOnResize: true,
+			mediaWidth: 1200,
 			animationSpeed: 300,
 			overlayAlpha: 0.35
 		});
@@ -2039,6 +2090,7 @@ $(document).ready(function(){
 	inputHasValueClass();
 	inputFilledClass();
 	printShow();
+	toggleHeader();
 	fixedHeader();
 	behaviorLogoOnScroll();
 	scrollToSection();

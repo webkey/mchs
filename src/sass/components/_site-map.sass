@@ -2,31 +2,32 @@
 .site-map
 	display: block
 
-	&__container
-		+grid-parent($grid-space)
-		+clear-spacing
+	a
+		color: $text-color
+		text-decoration: none
 
-	&__box
-		+grid-item(3, $grid-space, $bottom-space)
-		font-size: $font-size
-		line-height: $line-height
-		letter-spacing: normal
+		.no-touchevents &:hover, .no-touchevents .current > &, .current > &
+			color: $text-color-alt
 
-		.site-map__heading
-			display: block
-			margin-bottom: $bottom-space
-			font-size: 14px
-			line-height: 24px
-			font-weight: bold
-			text-transform: uppercase
+.site-map__container
+	+grid-parent($grid-space)
+	+clear-spacing
 
-		a
-			color: $text-color
-			text-decoration: none
+.site-map__box
+	+grid-item(3, $grid-space, $bottom-space)
+	font-size: $font-size
+	line-height: $line-height
+	letter-spacing: normal
 
-			.no-touchevents &:hover,
-			.no-touchevents .current > &,
-			.current > &
-				color: $text-color-alt
+	+media('<mob-lg')
+		+grid-item(1, $grid-space, $bottom-space)
+
+.site-map__heading
+	display: block
+	margin-bottom: $bottom-space
+	font-size: 14px
+	line-height: 24px
+	font-weight: bold
+	text-transform: uppercase
 
 /*site map menu end*/

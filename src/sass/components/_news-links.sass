@@ -1,14 +1,28 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*news links*/
 .news-links
 	+grid-parent($grid-space)
 	+clear-spacing
 	margin-bottom: $bottom-space
 
+	.popup-news &
+		margin: 0
+		padding: 40px
+
+		+media('<mob-lg')
+			padding: $grid-layout-space--mob-lg
+
 .news-links__item
 	+grid-item(1, $grid-space, $bottom-space)
 	font-size: $font-size-small
 	line-height: $line-height-small
 	letter-spacing: normal
+
+	.popup-news &
+		+padding-horizontal(0)
 
 	&:last-child
 		margin-bottom: 0

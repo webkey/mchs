@@ -45,13 +45,25 @@
 		<header class="header">
 			<div class="layout">
 				<div class="header__holder">
-					<!--logo-->
 					<div class="logo-wrap">
 						<strong class="logo"><a href="index.html"><img src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь"></a></strong>
 					</div>
-					<!--logo end-->
 					<div class="header__frame">
 						<div class="header__top">
+							<!--user options-->
+							<ul class="user-options">
+								<li class="user-options__item menu-opener">
+									<a href="#" class="btn-nav btn-nav-open-js"><i></i><span>Меню</span></a>
+								</li>
+								<li class="user-options__item news-opener">
+									<a href="#" class="btn-news-open-js">
+										<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 32 32" enable-background="new 0 0 32 32"><g><path d="M4,32c-0.16,0-1.53-0.03-2.65-1.15C0.45,29.95,0,28.66,0,27V12c0-0.97,0.7-2,2-2h2c0.55,0,1,0.45,1,1s-0.45,1-1,1H2v15   c0,2.8,1.68,2.99,2.01,3H28c1.83,0,1.99-1.53,2-2V2L8,2v23c0,0.55-0.45,1-1,1s-1-0.45-1-1V2c0-0.97,0.7-2,2-2h22c0.97,0,2,0.71,2,2   v26c0,1.61-1.07,4-4,4H4C4,32,4,32,4,32z"/><path d="M18,8h-5c-0.55,0-1-0.45-1-1s0.45-1,1-1h5c0.55,0,1,0.45,1,1S18.55,8,18,8z"/><path d="M25,12H13c-0.55,0-1-0.45-1-1s0.45-1,1-1h12c0.55,0,1,0.45,1,1S25.55,12,25,12z"/><path d="M25,16H13c-0.55,0-1-0.45-1-1s0.45-1,1-1h12c0.55,0,1,0.45,1,1S25.55,16,25,16z"/><path d="M25,20H13c-0.55,0-1-0.45-1-1s0.45-1,1-1h12c0.55,0,1,0.45,1,1S25.55,20,25,20z"/><path d="M25,24H13c-0.55,0-1-0.45-1-1s0.45-1,1-1h12c0.55,0,1,0.45,1,1S25.55,24,25,24z"/></g></svg>
+										<span>Новости</span>
+									</a>
+								</li>
+							</ul>
+							<!--user options end-->
+
 							<!--user options-->
 							<ul class="user-options">
 								<li class="user-options__item search-link">
@@ -82,13 +94,14 @@
 										<li><a href="#"><span>Pol</span></a></li>
 									</ul>
 								</li>
-								<li class="user-options__item banner-opener js-choice-wrap">
+								<li class="user-options__item banner-opener">
 									<a href="#" class="btn-aside-open-js">
 										<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="153 114.8 306 409.4" enable-background="new 153 114.8 306 409.4"> <path d="M392.5,252.8c25.7,85.9-34.5,98.8-34.5,98.8c21.7-32.5,17.6-66.3,17.6-66.3c-3.4-99.5-85.3-170.5-85.3-170.5  s2.7,16.9,0,61.6c-2.7,44.7-40.6,79.8-57.5,98.1c-16.9,18.3-43.3,41.3-46.7,85.3c-3.4,44,35.2,77.1,35.2,77.1  c-68.3-23.7-63.6-77.1-63.6-77.1C125.9,532.2,266,524.1,266,524.1c-25-23.7-13.5-66.3-13.5-66.3c2.7,22.3,26.4,28.4,26.4,28.4  c-32.5-33.8-3.4-58.2,16.2-83.2c19.6-25,11-51.4,11-51.4c7.6,1.3,37.8,37.9,37.8,62.9c0,25-6.1,35.2-6.1,35.2  c20.3,0,15.6-37.9,15.6-37.9s25.7,14.9,26.4,58.9c0.7,44-31.8,53.5-31.8,53.5c73.8-11.4,106.2-56.9,111-114.4  C463.5,352.3,392.5,252.8,392.5,252.8z"/> </svg>
-										<span>Поделиться</span>
+										<span>Баннеры</span>
 									</a>
 								</li>
 							</ul>
+							<!--user options end-->
 							<!--navigation-->
 							<!--  -->
 							<!--  -->
@@ -709,6 +722,12 @@
 							<!--navigation end-->
 						</div>
 						<div class="header__content">
+							<strong class="logo">
+						<a href="index.html">
+							<img src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь">
+							<span>Министерство по чрезвычайным ситуациям Республики Беларусь</span>
+						</a>
+					</strong>
 							<div class="header__contacts">
 								<ul>
 									<li>
@@ -1666,26 +1685,122 @@
 												<!--banners-->
 												<div class="banners">
 													<div class="banners__list">
-														<div class="banners__item">
-															<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
-																<img src="img/img-banner-06.jpg" alt="Текст поясняющий содержание изображения" />
-															</a>
+														<!--banners-->
+														<div class="banners">
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-01.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-02.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-03.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-04.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-05.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
 														</div>
-														<div class="banners__item">
-															<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
-																<img src="img/img-banner-07.jpg" alt="Текст поясняющий содержание изображения" />
-															</a>
+														<!--banners end-->
+														<!--banners-->
+														<div class="banners">
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-01.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-02.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-03.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-04.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-05.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
 														</div>
-														<div class="banners__item">
-															<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
-																<img src="img/img-banner-08.jpg" alt="Текст поясняющий содержание изображения" />
-															</a>
+														<!--banners end-->
+														<!--banners-->
+														<div class="banners">
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-01.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-02.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-03.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-04.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-05.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
 														</div>
-														<div class="banners__item">
-															<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
-																<img src="img/img-banner-07.jpg" alt="Текст поясняющий содержание изображения" />
-															</a>
+														<!--banners end-->
+														<!--banners-->
+														<div class="banners">
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-01.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-02.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-03.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-04.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
+															<div class="banners__item">
+																<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+																	<img src="img/img-banner-05.jpg" alt="Текст поясняющий содержание изображения" />
+																</a>
+															</div>
 														</div>
+														<!--banners end-->
 													</div>
 												</div>
 												<!--banners end-->
@@ -1851,6 +1966,7 @@
 											<h3>Новости дня</h3>
 										</div>
 										<div class="sidebar-bottom__content">
+											<!--news links-->
 											<div class="news-links">
 												<div class="news-links__item">
 													<a href="#" class="news-links__inner">
@@ -1925,6 +2041,8 @@
 													</a>
 												</div>
 											</div>
+											<!--news links end-->
+
 										</div>
 									</div>
 								</div>
@@ -2090,8 +2208,93 @@
 			<!--banners end-->
 		</div>
 	</div>
-	<a href="#" class="btn-popup-close btn-popup-aside-close btn-aside-close-js"><i></i><span>Закрыть</span></a>
+	<a href="#" class="btn-popup-close btn-popup-banners-close btn-banners-close-js"><i></i><span>Закрыть</span></a>
 	<!--popup banners end-->
+
+	<!--popup news-->
+	<div class="popup-news hide-on-load popup-news-js">
+		<div class="popup-news__holder">
+			<!--news links-->
+			<div class="news-links">
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">Женщина получила ожоги отдыхая под Витебском.</div>
+						<div class="news-links__meta">Витебск, 11:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+						<div class="news-links__meta">Гродно, 11:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">Самые читаемые материалы сайта МЧС за 2016 год.</div>
+						<div class="news-links__meta">Гомель, 10:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+						<div class="news-links__meta">Гродно, 11:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">Женщина получила ожоги отдыхая под Витебском.</div>
+						<div class="news-links__meta">Витебск, 11:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+						<div class="news-links__meta">Гродно, 11:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">Самые читаемые материалы сайта МЧС за 2016 год.</div>
+						<div class="news-links__meta">Гомель, 10:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+						<div class="news-links__meta">Гродно, 11:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">Женщина получила ожоги отдыхая под Витебском.</div>
+						<div class="news-links__meta">Витебск, 11:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+						<div class="news-links__meta">Гродно, 11:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">Самые читаемые материалы сайта МЧС за 2016 год.</div>
+						<div class="news-links__meta">Гомель, 10:30</div>
+					</a>
+				</div>
+				<div class="news-links__item">
+					<a href="#" class="news-links__inner">
+						<div class="news-links__text">В Островецком районе работники МЧС спасли тонувшего мужчину.</div>
+						<div class="news-links__meta">Гродно, 11:30</div>
+					</a>
+				</div>
+			</div>
+			<!--news links end-->
+
+		</div>
+	</div>
+	<a href="#" class="btn-popup-close btn-popup-news-close btn-news-close-js"><i></i><span>Закрыть</span></a>
+	<!--popup news end-->
 	<!--POPUPS end-->
 	<!-- >>> foot.tpl <<< -->
 	<!--footer-->

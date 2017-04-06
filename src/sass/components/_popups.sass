@@ -5,7 +5,7 @@
 /*extra popup*/
 // fixed scroll after popup open
 html.before-extra-popup-open
-	+scroll-blocked()
+	//+scroll-blocked()
 
 	.wrapper
 		z-index: 100
@@ -25,6 +25,9 @@ html.before-extra-popup-open
 		padding: 0 #{$grid-layout-space}
 		overflow: hidden
 
+		+media('<mob-lg')
+			+padding-horizontal($grid-layout-space--mob-lg)
+
 	// for ios add bg after inertia scroll
 	&:after
 		+pseudo()
@@ -38,6 +41,9 @@ html.before-extra-popup-open
 	border-width: 1px 0
 	transition-property: opacity, visibility, box-shadow
 	transition-duration: $animation-speed-mouseleave
+
+	+media('<mob-lg')
+		height: $header-top-height--sm
 
 	.show-shadow &
 		box-shadow: 0 0 35px rgba(0, 0, 0, 0.2)
@@ -71,6 +77,10 @@ html.before-extra-popup-open
 	padding: #{$grid-layout-space - 10px} 0
 	box-sizing: border-box
 
+	+media('<mob-lg')
+		+padding-vertical($grid-layout-space--mob-lg)
+		height: calc(100% - #{$header-top-height--sm})
+
 .nav-overlay
 	z-index: 99
 
@@ -83,6 +93,9 @@ html.before-extra-popup-open
 	top: -1px
 	+size($header-top-height)
 	border: 1px solid $border-color
+
+	+media('<mob-lg')
+		+size($header-top-height--sm)
 
 /*button popup site map close end*/
 /*button menu close*/
@@ -101,3 +114,90 @@ html.before-extra-popup-open
 			transform: rotate(45deg)
 
 /*button menu close end*/
+
+/*popup banners
+.popup-banners
+	position: fixed
+	right: 0
+	top: #{$header-top-height}
+	width: 320px
+	height: calc(100% - #{$header-top-height})
+	background: white
+	z-index: 998
+
+	+media('<mob-lg')
+		top: #{$header-top-height--sm}
+		height: calc(100% - #{$header-top-height--sm})
+
+	&.hide-on-load
+		opacity: 0
+		visibility: hidden
+
+	// for ios add bg after inertia scroll
+	&:after
+		+pseudo()
+		+cover(null, 0, 100%, 50%, 100%)
+		background: inherit
+		margin-top: -10px
+		z-index: -1
+
+	.banners
+		padding: $grid-layout-space--mob-lg
+		margin: 0
+
+	.banners__item
+		+padding-horizontal(0)
+
+.popup-banners__holder
+	overflow-y: auto
+	overflow-x: hidden
+	max-height: 100%
+
+	& > *:last-child
+		margin-bottom: 0
+
+/*popup banners end
+
+/*popup news
+.popup-news
+	position: fixed
+	left: 0
+	top: #{$header-top-height}
+	width: 320px
+	height: calc(100% - #{$header-top-height})
+	background: white
+	z-index: 998
+
+	+media('<mob-lg')
+		top: #{$header-top-height--sm}
+		height: calc(100% - #{$header-top-height--sm})
+		width: 100%
+
+	&.hide-on-load
+		opacity: 0
+		visibility: hidden
+
+	// for ios add bg after inertia scroll
+	&:after
+		+pseudo()
+		+cover(null, 0, 100%, 50%, 100%)
+		background: inherit
+		margin-top: -10px
+		z-index: -1
+
+	.news
+		padding: 25px
+		margin: 0
+
+	.news__item
+		+padding-horizontal(0)
+
+.popup-news__holder
+	overflow-y: auto
+	overflow-x: hidden
+	max-height: 100%
+
+	& > *:last-child
+		margin-bottom: 0
+
+/*popup news end

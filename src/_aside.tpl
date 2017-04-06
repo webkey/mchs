@@ -1,17 +1,7 @@
 <aside class="aside">
 	<div class="aside__holder">
 		<div class="aside__widget">
-			<!--banners-->
-			<div class="banners">
-				@@loop('_banners.tpl', [
-					{ "src": "img/img-banner-01.jpg" },
-					{ "src": "img/img-banner-02.jpg" },
-					{ "src": "img/img-banner-03.jpg" },
-					{ "src": "img/img-banner-04.jpg" },
-					{ "src": "img/img-banner-05.jpg" }
-				])
-			</div>
-			<!--banners end-->
+			@@include('_banners.tpl')
 		</div>
 		<div class="aside__widget">
 			<h3>сейчас читают</h3>

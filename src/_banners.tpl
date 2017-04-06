@@ -1,5 +1,11 @@
-<div class="banners__item">
-	<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
-		<img src="@@src" alt="Текст поясняющий содержание изображения" />
-	</a>
+<!--banners-->
+<div class="banners">
+	@@loop('_banners-item.tpl', [
+	{ "src": "img/img-banner-01.jpg" },
+	{ "src": "img/img-banner-02.jpg" },
+	{ "src": "img/img-banner-03.jpg" },
+	{ "src": "img/img-banner-04.jpg" },
+	{ "src": "img/img-banner-05.jpg" }
+	])
 </div>
+<!--banners end-->

@@ -119,18 +119,17 @@
 <!--popup banners-->
 <div class="popup-banners hide-on-load popup-aside-js">
 	<div class="popup-banners__holder">
-		<!--banners-->
-		<div class="banners">
-			@@loop('_banners.tpl', [
-			{ "src": "img/img-banner-01.jpg" },
-			{ "src": "img/img-banner-02.jpg" },
-			{ "src": "img/img-banner-03.jpg" },
-			{ "src": "img/img-banner-04.jpg" },
-			{ "src": "img/img-banner-05.jpg" }
-			])
-		</div>
-		<!--banners end-->
+		@@include('_banners.tpl')
 	</div>
 </div>
-<a href="#" class="btn-popup-close btn-popup-aside-close btn-aside-close-js"><i></i><span>Закрыть</span></a>
+<a href="#" class="btn-popup-close btn-popup-banners-close btn-banners-close-js"><i></i><span>Закрыть</span></a>
 <!--popup banners end-->
+
+<!--popup news-->
+<div class="popup-news hide-on-load popup-news-js">
+	<div class="popup-news__holder">
+		@@include('_news-links.tpl')
+	</div>
+</div>
+<a href="#" class="btn-popup-close btn-popup-news-close btn-news-close-js"><i></i><span>Закрыть</span></a>
+<!--popup news end-->
