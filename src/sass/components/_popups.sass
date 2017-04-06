@@ -3,16 +3,15 @@
 @import ../../libs/include-media/dist/include-media
 
 /*extra popup*/
-// fixed scroll after popup open
 html.before-extra-popup-open
-	//+scroll-blocked()
+	//+scroll-blocked() // блокировка сколла во время открытия попапа
 
 	.wrapper
-		z-index: 100
+		z-index: 100 // поднять контент выше футера
 
 .extra-popup
-	overflow: hidden
 	+cover(fixed)
+	overflow: hidden
 	background: #fff
 	border: 1px solid $border-color
 	z-index: 998
@@ -28,8 +27,9 @@ html.before-extra-popup-open
 		+media('<mob-lg')
 			+padding-horizontal($grid-layout-space--mob-lg)
 
-	// for ios add bg after inertia scroll
-	&:after
+	// для ios добавляем подложку ниже попапа такого же цвета, как попап
+	// чтобы после инерционного скролла не было видно контент
+	&::after
 		+pseudo()
 		+cover(null, 0, 100%, 50%, 100%)
 		background: inherit
@@ -37,41 +37,14 @@ html.before-extra-popup-open
 .extra-popup__head
 	position: relative
 	height: $header-top-height
-	border: solid #d9d9d9
+	border: solid $border-color
 	border-width: 1px 0
-	transition-property: opacity, visibility, box-shadow
-	transition-duration: $animation-speed-mouseleave
 
 	+media('<mob-lg')
 		height: $header-top-height--sm
 
-	.show-shadow &
-		box-shadow: 0 0 35px rgba(0, 0, 0, 0.2)
-		transition-duration: $animation-speed
-
-	.logo
-		display: block
-		position: absolute
-		left: 50%
-		top: 50%
-		$size: 50px
-		+size($size)
-		margin: -#{$size/2} 0 0 -#{$size/2}
-		padding: 0
-		+font(0, 0)
-		background-size: contain
-		opacity: 0
-		visibility: hidden
-		transition-property: opacity, visibility, box-shadow
-		transition-duration: $animation-speed-mouseleave
-
-		.before-extra-popup-open &
-			opacity: 1
-			visibility: visible
-
 .extra-popup__content
-	overflow-x: hidden
-	overflow-y: auto
+	+overflow(hidden, auto)
 	position: relative
 	height: calc(100% - #{$header-top-height})
 	padding: #{$grid-layout-space - 10px} 0
@@ -80,9 +53,6 @@ html.before-extra-popup-open
 	+media('<mob-lg')
 		+padding-vertical($grid-layout-space--mob-lg)
 		height: calc(100% - #{$header-top-height--sm})
-
-.nav-overlay
-	z-index: 99
 
 /*extra popup end*/
 
@@ -98,22 +68,6 @@ html.before-extra-popup-open
 		+size($header-top-height--sm)
 
 /*button popup site map close end*/
-/*button menu close*/
-//.btn-menu-close
-	//<a href="#" class="btn-menu-close"><i></i><span>Закрыть</span></a>
-	@extend .btn-map-site
-	> i
-		background-color: transparent
-
-		&:before
-			top: 0
-			transform: rotate(-45deg)
-
-		&:after
-			top: 0
-			transform: rotate(45deg)
-
-/*button menu close end*/
 
 /*popup banners
 .popup-banners
@@ -134,7 +88,7 @@ html.before-extra-popup-open
 		visibility: hidden
 
 	// for ios add bg after inertia scroll
-	&:after
+	&::after
 		+pseudo()
 		+cover(null, 0, 100%, 50%, 100%)
 		background: inherit
@@ -158,6 +112,76 @@ html.before-extra-popup-open
 
 /*popup banners end
 
+/*banner opener*/
+.banner-opener
+	display: none // прячем для десктопа
+
+	+media('<desk-lg')
+		display: inline-block
+
+	a
+		background-color: $mark-color
+		backface-visibility: hidden
+
+		svg
+			transition-property: transform
+			transition-duration: $animation-speed
+			+antialiased
+
+		path
+			fill: white
+
+		.no-touchevents &:hover
+			background-color: $mark-color
+
+			svg
+				transform: scale(1)
+
+			path
+				fill: white
+
+/*banner opener end*/
+
+/*banner closer*/
+.btn-popup-banners-close
+	position: fixed
+	right: 0
+	top: 0
+	left: auto
+	bottom: auto
+	+size($header-top-height)
+	background: $mark-color
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+	z-index: 999
+
+	+media('<mob-lg')
+		+size($header-top-height--sm)
+
+	&.before-extra-popup-open
+		opacity: 1
+		visibility: visible
+
+	& > i
+		transition-property: transform
+		transition-duration: $animation-speed
+
+		&::before, &::after
+			background-color: white
+
+	.no-touchevents &:hover
+		background-color: $mark-color
+
+		& > i
+			transform: scale(1.2)
+
+			&::before, &::after
+				background-color: white
+
+/*banner closer end*/
+
 /*popup news
 .popup-news
 	position: fixed
@@ -178,7 +202,7 @@ html.before-extra-popup-open
 		visibility: hidden
 
 	// for ios add bg after inertia scroll
-	&:after
+	&::after
 		+pseudo()
 		+cover(null, 0, 100%, 50%, 100%)
 		background: inherit
@@ -201,3 +225,45 @@ html.before-extra-popup-open
 		margin-bottom: 0
 
 /*popup news end
+
+/*news closer*/
+.btn-popup-news-close
+	position: fixed
+	left: $header-top-height
+	top: 0
+	right: auto
+	bottom: auto
+	+size($header-top-height)
+	background: white
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+	z-index: 999
+	box-shadow: inset 0 -1px 0 $border-color
+
+	+media('<mob-lg')
+		left: $header-top-height--sm
+		+size($header-top-height--sm)
+
+	&.before-extra-popup-open
+		opacity: 1
+		visibility: visible
+
+	& > i
+		transition-property: transform
+		transition-duration: $animation-speed
+
+		&::before, &::after
+			background-color: $text-color-alt
+
+	.no-touchevents &:hover
+		background-color: white
+
+		& > i
+			transform: scale(1.2)
+
+			&::before, &::after
+				background-color: $text-color-alt
+
+/*news closer end*/

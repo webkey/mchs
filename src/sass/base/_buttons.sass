@@ -65,8 +65,8 @@
 		vertical-align: top
 		position: relative
 
-		&:before,
-		&:after
+		&::before,
+		&::after
 			content: ''
 			position: absolute
 			top: 50%
@@ -75,36 +75,36 @@
 			border-radius: 2px
 			background: #fff
 
-		&:before
+		&::before
 			margin: -4px 0 0 0
 			transform: rotate(-45deg)
 
-		&:after
+		&::after
 			margin: 2px 0 0 0
 			transform: rotate(45deg)
 
 	&_left > span
 		padding-left: 18px
 
-		&:before, &:after
+		&::before, &::after
 			left: 0
 
-		&:before
+		&::before
 			margin: -4px 0 0 0
 
-		&:after
+		&::after
 			margin: 2px 0 0 0
 
 	&_right > span
 		padding-right: 18px
 
-		&:before, &:after
+		&::before, &::after
 			right: 0
 
-		&:before
+		&::before
 			margin: 2px 0 0 0
 
-		&:after
+		&::after
 			margin: -4px 0 0 0
 
 /*btn-arrow*/
@@ -152,7 +152,7 @@
 			transform: translate(-50%, 0)
 			z-index: 2
 
-		i:before, i:after
+		i::before, i::after
 			content: ''
 			position: absolute
 			left: 50%
@@ -162,11 +162,11 @@
 			background: $text-color-alt
 			backface-visibility: hidden
 
-		i:before
+		i::before
 			margin: -1em 0 0 -10em
 			transform: rotate(45deg)
 
-		i:after
+		i::after
 			margin: -1em 0 0 -3em
 			transform: rotate(-45deg)
 
@@ -210,7 +210,7 @@
 	+btn-hover
 	+btn-active
 
-	&:before
+	&::before
 		content: ''
 		display: inline-block
 		height: $btn-min-height
@@ -234,18 +234,18 @@
 		backface-visibility: hidden
 		+line-style
 
-		&:before, &:after
+		&::before, &::after
 			+pseudo()
 			left: 0
 			backface-visibility: hidden
 			+line-style
 
 		//first line menu
-		&:before
+		&::before
 			top: -#{$btn-lines-height + $btn-lines-space}
 
 		//third line menu
-		&:after
+		&::after
 			top: #{$btn-lines-height + $btn-lines-space}
 
 /*button menu end*/
@@ -283,7 +283,7 @@
 	+clear-spacing
 	white-space: nowrap
 
-	&:before
+	&::before
 		content: ''
 		display: inline-block
 		height: $btn-size
@@ -304,7 +304,7 @@
 		background-color: transparent
 		+line-style
 
-		&:before, &:after
+		&::before, &::after
 			+pseudo()
 			left: 0
 			backface-visibility: hidden
@@ -312,17 +312,17 @@
 			background: $btn-lines-color
 
 		//first line menu
-		&:before
+		&::before
 			top: 0
 			transform: rotate(-45deg)
 
 		//third line menu
-		&:after
+		&::after
 			top: 0
 			transform: rotate(45deg)
 
 	.no-touchevents &:hover
-		& > i:before, & > i:after
+		& > i::before, & > i::after
 			background-color: $mark-color-alt
 
 /*button popup close end*/
@@ -357,7 +357,7 @@
 	+media('<desk-sm')
 		display: inline-block
 
-	&:before
+	&::before
 		+pseudo($pos: relative)
 		+ratio(1, 1)
 

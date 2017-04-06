@@ -162,10 +162,7 @@ gulp.task('default', ['watch']); // Назначаем таск watch дефол
 
 gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sassCompilation', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
 
-	gulp.src([ // Переносим css в продакшен
-		'src/css/main.css',
-		'src/css/libs.min.css'
-	])
+	gulp.src('src/css/*.css')
 	.pipe(gulp.dest('dist/css'));
 
 	gulp.src('src/fonts/**/*') // Переносим шрифты в продакшен

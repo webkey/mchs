@@ -39,7 +39,7 @@
 .choice-opened > a
 	color: #008acf
 
-.years > a:before
+.years > a::before
 	content: ''
 	display: inline-block
 	height: 100%
@@ -109,10 +109,10 @@
 .user-content .years-drop li:first-child
 	padding: 0
 
-.years-drop li:before,
-.user-content .years-drop li:before,
-.years-drop li:first-child:before,
-.user-content .years-drop li:first-child:before
+.years-drop li::before,
+.user-content .years-drop li::before,
+.years-drop li:first-child::before,
+.user-content .years-drop li:first-child::before
 	content: none
 
 .years-drop a

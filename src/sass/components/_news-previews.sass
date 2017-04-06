@@ -86,7 +86,7 @@
 		z-index: 2
 		position: relative
 
-	&:before
+	&::before
 		content: ''
 		position: absolute
 		left: 0
@@ -98,7 +98,7 @@
 		+news-transition
 
 	.no-touchevents a.news-previews__inner:hover &
-		&:before
+		&::before
 			transform: translate(0, 0)
 			transition-duration: $animation-speed
 

@@ -65,6 +65,28 @@
 	line-height: $line-height
 
 // =============================================================================
+// overflow
+// =============================================================================
+/// Примесь задает `overflow` по осям раздельно
+///
+/// @param {String} $x - `hidden` элемента
+/// @param {String} $y - `hidden` элемента
+///
+/// @example Sass - Использование
+/// .foo
+///   +overflow(hidden, auto)
+///
+/// @example css - Вывод CSS
+/// .foo {
+///   overflow-x: hidden;
+///   overflow-y: auto;
+/// }
+
+=overflow($x: hidden, $y: hidden)
+	overflow-x: $x
+	overflow-y: $y
+
+// =============================================================================
 // pseudo
 // =============================================================================
 /// Примесь добавляет к псевдоэлементу базовые свойства.
@@ -142,44 +164,6 @@
 =clear-spacing()
 	font-size: 0
 	letter-spacing: -4px
-
-// =============================================================================
-// Grid Item
-// =============================================================================
-/// Формирует упрощенную сетку элементов с применением `display: inline-block`, или `float: left`;
-/// Для родителя наобходимо подключить `+grid-parent`;
-/// В случае с `inline-block` обнулить `font:size` и `letter-spacing` (примесь `+reset-inline-block-space`)
-/// На оберту родителя при необходимости задать `overflow: hidden`;
-/// Для дочерних элементов необходимо подключить `+grid-item` или `+grid-item-float`;
-///
-/// @param {Length} $horizontal-space [20px] - горизонтальные отступы между элементами
-/// @param {Length} $length-in-row [2] - количество элементов в ряду
-/// @param {Length} $bottom-space [$horizontal-space] - нижние отступы элементов
-///
-/// @example Sass - Использование
-/// @example css - Вывод CSS
-
-=grid-parent($horizontal-space: 20px)
-	margin:
-		left: -#{round($horizontal-space/2)}
-		right: -#{round($horizontal-space/2)}
-
-=grid-item($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
-	display: inline-block
-	vertical-align: top
-	width: round-float(100%/$length-in-row, 2)
-	padding:
-		left: round($horizontal-space/2)
-		right: round($horizontal-space/2)
-	margin-bottom: $bottom-space
-
-=grid-item-float($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
-	float: left
-	width: round-float(100%/$length-in-row, 2)
-	padding:
-		left: round($horizontal-space/2)
-		right: round($horizontal-space/2)
-	margin-bottom: $bottom-space
 
 // =============================================================================
 // antialiased
@@ -827,6 +811,44 @@
 		font-weight: $weight
 		src: $src
 
+
+// =============================================================================
+// Grid Item
+// =============================================================================
+/// Формирует упрощенную сетку элементов с применением `display: inline-block`, или `float: left`;
+/// Для родителя наобходимо подключить `+grid-parent`;
+/// В случае с `inline-block` обнулить `font:size` и `letter-spacing` (примесь `+reset-inline-block-space`)
+/// На оберту родителя при необходимости задать `overflow: hidden`;
+/// Для дочерних элементов необходимо подключить `+grid-item` или `+grid-item-float`;
+///
+/// @param {Length} $horizontal-space [20px] - горизонтальные отступы между элементами
+/// @param {Length} $length-in-row [2] - количество элементов в ряду
+/// @param {Length} $bottom-space [$horizontal-space] - нижние отступы элементов
+///
+/// @example Sass - Использование
+/// @example css - Вывод CSS
+
+=grid-parent($horizontal-space: 20px)
+	margin:
+		left: -#{round($horizontal-space/2)}
+		right: -#{round($horizontal-space/2)}
+
+=grid-item($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
+	display: inline-block
+	vertical-align: top
+	width: round-float(100%/$length-in-row, 2)
+	padding:
+		left: round($horizontal-space/2)
+		right: round($horizontal-space/2)
+	margin-bottom: $bottom-space
+
+=grid-item-float($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
+	float: left
+	width: round-float(100%/$length-in-row, 2)
+	padding:
+		left: round($horizontal-space/2)
+		right: round($horizontal-space/2)
+	margin-bottom: $bottom-space
 
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТИОПОГРАФИЧЕСКИХ СТИЛЯХ

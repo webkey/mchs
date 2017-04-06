@@ -31,7 +31,7 @@
 		text-decoration: none
 		color: $text-color
 
-		&:before
+		&::before
 			content: ''
 			position: absolute
 			$left: 18px
@@ -43,7 +43,7 @@
 			+transition
 			z-index: -1
 
-		.no-touchevents &:hover:before
+		.no-touchevents &:hover::before
 			background-color: #fff
 			+transition-duration
 

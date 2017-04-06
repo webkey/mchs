@@ -2,7 +2,6 @@
 <!--<div class="extra-popup main-menu hide-before">-->
 <div class="extra-popup site-map hide-on-load site-map-js">
 	<div class="extra-popup__head">
-		<a href="index.html" class="logo">Министерство по чрезвычайным ситуациям Республики Беларусь Министерство по чрезвычайным ситуациям Республики Беларусь</a>
 		<a href="#" class="btn-popup-close btn-popup-close-js"><i></i><span>Закрыть</span></a>
 	</div>
 	<div class="extra-popup__content">

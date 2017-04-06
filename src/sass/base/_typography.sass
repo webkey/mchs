@@ -213,8 +213,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	//ol > li:first-child
 	//	padding-top: 0
 
-	//ol ul > li:first-child:before,
-	ul > li:before
+	//ol ul > li:first-child::before,
+	ul > li::before
 		content: ''
 		position: absolute
 		left: 0
@@ -226,7 +226,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		border-left-color: $mark-color
 		box-sizing: border-box
 
-	//ul > li:first-child:before
+	//ul > li:first-child::before
 	//	top: 7px
 
 	ol
@@ -237,7 +237,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			height: 1%
 			overflow: hidden
 
-			&:before
+			&::before
 				position: relative
 				display: inline-block
 				text-align: left
@@ -255,10 +255,10 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			   //padding-left: 20px
 			   margin: $bottom-space/2 0
 
-	//ul ul > li:before,
-	//ul ul > li:first-child:before,
-	//ol ul ul > li:before,
-	//ol ul ul > li:first-child:before
+	//ul ul > li::before,
+	//ul ul > li:first-child::before,
+	//ol ul ul > li::before,
+	//ol ul ul > li:first-child::before
 	//	height: 0
 	//	width: 10px
 	//	border-width: 2px 0
@@ -271,10 +271,10 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	//ol ul li:first-child
 		//padding-top: $space-bottom/2
 
-	//ul ul ul > li:before,
-	//ul ul ul > li:first-child:before,
-	//ul ol ul > li:before,
-	//ul ol ul > li:first-child:before
+	//ul ul ul > li::before,
+	//ul ul ul > li:first-child::before,
+	//ul ol ul > li::before,
+	//ul ol ul > li:first-child::before
 	//	height: 8px
 	//	width: 8px
 	//	top: 21px
@@ -289,7 +289,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		li, li:first-child
 			padding: 0
 
-			&:before, &:first-child:before
+			&::before, &:first-child::before
 				content: none
 /*list end
 
@@ -367,15 +367,15 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			+media('<mob-lg')
 				+font(1.6rem, 1.7)
 
-			&:before,
-			&:after
+			&::before,
+			&::after
 				+pseudo($pos: relative)
 				background: url(../../img/quote-left.svg) no-repeat
 				background-size: contain
 				+size(40px, 35px)
 				z-index: -1
 
-			&:before
+			&::before
 				//content: '«'
 				content: ''
 				margin: 0 0 20px 30%
@@ -383,7 +383,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 				+media('<mob-lg')
 					+margin($b: 10px, $l: -10px )
 
-			&:after
+			&::after
 				//content: '»'
 				content: ''
 				margin: 20px 30% 0 auto

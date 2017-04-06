@@ -74,7 +74,7 @@
 		color: $text-color-light
 		position: relative
 
-		&:after
+		&::after
 			content: ''
 			position: absolute
 			left: 100%
@@ -109,7 +109,7 @@
 		z-index: 2
 		cursor: pointer
 
-		&:before, &:after
+		&::before, &::after
 			content: ''
 			position: absolute
 			left: 50%
@@ -124,18 +124,18 @@
 			transition-duration: 0.2s
 			margin: -1px 0 0 -8px
 
-		&:before
+		&::before
 			-webkit-transform: rotate(-45deg)
 			-ms-transform: rotate(-45deg)
 			transform: rotate(-45deg)
 
-		&:after
+		&::after
 			-webkit-transform: rotate(45deg)
 			-ms-transform: rotate(45deg)
 			transform: rotate(45deg)
 
-		.no-touchevents &:hover:before,
-		.no-touchevents &:hover:after
+		.no-touchevents &:hover::before,
+		.no-touchevents &:hover::after
 			background-color: $text-color-alt
 
 

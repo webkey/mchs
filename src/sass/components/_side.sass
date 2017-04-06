@@ -1,3 +1,7 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*SIDE*/
 .side
 	$width: 60px
@@ -63,7 +67,7 @@
 	&__item
 		position: relative
 
-		&:before
+		&::before
 			content: ""
 			display: block
 			padding-top: calc(100% + 1px)
@@ -92,6 +96,7 @@
 		letter-spacing: -4px
 		white-space: nowrap
 		pointer-events: none
+		background: white
 		+antialiased
 		transform: translate(-#{$width}, 0)
 		+transition
@@ -100,7 +105,6 @@
 			transform: translate(-100%, 0)
 			+transition-duration
 			pointer-events: auto
-			background: white
 
 	@at-root
 	&__depict

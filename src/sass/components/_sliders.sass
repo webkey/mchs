@@ -32,13 +32,13 @@
 		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
 		cursor: default
 
-		&:before
+		&::before
 			opacity: 1
 
-	&:before
+	&::before
 		content: none
 
-	&:after
+	&::after
 		top: 50%
 		content: ""
 		position: absolute
@@ -54,7 +54,7 @@
 .slick-prev
 	left: 0
 
-	&:after
+	&::after
 		left: 50%
 		border-width: 0 0 2px 2px
 		margin: -6px 0 0 -4px
@@ -62,7 +62,7 @@
 .slick-next
 	right: 0
 
-	&:after
+	&::after
 		right: 50%
 		border-width: 2px 2px 0 0
 		margin: -6px -4px 0 0
@@ -112,7 +112,7 @@
 			padding: 4px 10px
 			margin: 0
 
-			&:before
+			&::before
 				content: none
 
 		button
@@ -127,7 +127,7 @@
 			-webkit-transition-duration: 0.6s
 			transition-duration: 0.6s
 
-			&:before
+			&::before
 				content: ''
 				position: absolute
 				left: 2px
@@ -143,10 +143,10 @@
 				-webkit-transition-duration: 0.6s
 				transition-duration: 0.6s
 
-		//.no-touchevents &:hover button:before
+		//.no-touchevents &:hover button::before
 
-		//&.slick-active button:before,
-		//.no-touchevents &.slick-active:hover button:before
+		//&.slick-active button::before,
+		//.no-touchevents &.slick-active:hover button::before
 /*sliders end*/
 
 /*images slider*/
@@ -182,7 +182,7 @@
 		width: 100%
 		opacity: 1
 
-	&:before
+	&::before
 		content: ''
 		display: block
 		height: 0
@@ -457,7 +457,7 @@
 			padding: 0
 			margin: 0
 
-			&:before
+			&::before
 				content: none
 
 	.tape-slider__list
@@ -489,7 +489,7 @@
 .tape-slider__list
 	position: relative
 
-	&:before, &:after
+	&::before, &::after
 		content: ''
 		position: absolute
 		top: 0
@@ -498,11 +498,11 @@
 		z-index: 2
 		pointer-events: none
 
-	&:before
+	&::before
 		left: 0
 		+linear-gradient(to right, $bg-color 0%, transparentize($bg-color, 0.4) 50%, transparentize($bg-color, 0.9) 100%)
 
-	&:after
+	&::after
 		right: 0
 		+linear-gradient(to left, $bg-color 0%, transparentize($bg-color, 0.4) 50%, transparentize($bg-color, 0.9) 100%)
 

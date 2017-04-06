@@ -5,15 +5,13 @@
 @import ../../libs/include-media/dist/include-media
 
 /*HEADER*/
-.header
-	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05)
-
 /*header layout*/
 .header__holder
 	position: relative
 	background: $color-header-bg
 	padding-left: $header-left-space
 	min-height: $header-left-space-desk-sm
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05)
 	+clear
 
 	+media('<desk-sm')
@@ -38,7 +36,6 @@
 	width: $header-left-space
 	background-color: white
 	z-index: 20
-	border-bottom: 1px solid $bg-color
 
 	+media('<desk-sm')
 		display: none
@@ -545,118 +542,6 @@ $user-options-text-color: #80a7c4
 			fill: white
 
 /*user options end*/
-
-/*banner opener*/
-.banner-opener
-	display: none // прячем для десктопа
-
-	+media('<desk-lg')
-		display: inline-block
-
-	a
-		background-color: $mark-color
-		backface-visibility: hidden
-
-		svg
-			transition-property: transform
-			transition-duration: $animation-speed
-			+antialiased
-
-		path
-			fill: white
-
-		.no-touchevents &:hover
-			background-color: $mark-color
-
-			svg
-				transform: scale(1)
-
-			path
-				fill: white
-
-/*banner opener end*/
-
-/*banner closer*/
-.btn-popup-banners-close
-	position: fixed
-	right: 0
-	top: 0
-	left: auto
-	bottom: auto
-	+size($header-top-height)
-	background: $mark-color
-	opacity: 0
-	visibility: hidden
-	transition-property: opacity, visibility
-	transition-duration: $animation-speed
-	z-index: 999
-
-	+media('<mob-lg')
-		+size($header-top-height--sm)
-
-	&.before-extra-popup-open
-		opacity: 1
-		visibility: visible
-
-	& > i
-		transition-property: transform
-		transition-duration: $animation-speed
-
-		&::before, &::after
-			background-color: white
-
-	.no-touchevents &:hover
-		background-color: $mark-color
-
-		& > i
-			transform: scale(1.2)
-
-			&::before, &::after
-				background-color: white
-
-/*banner closer end*/
-
-/*news closer*/
-.btn-popup-news-close
-	position: fixed
-	left: $header-top-height
-	top: 0
-	right: auto
-	bottom: auto
-	+size($header-top-height)
-	background: white
-	opacity: 0
-	visibility: hidden
-	transition-property: opacity, visibility
-	transition-duration: $animation-speed
-	z-index: 999
-	box-shadow: inset 0 -1px 0 $border-color
-
-	+media('<mob-lg')
-		left: $header-top-height--sm
-		+size($header-top-height--sm)
-
-	&.before-extra-popup-open
-		opacity: 1
-		visibility: visible
-
-	& > i
-		transition-property: transform
-		transition-duration: $animation-speed
-
-		&::before, &::after
-			background-color: $text-color-alt
-
-	.no-touchevents &:hover
-		background-color: white
-
-		& > i
-			transform: scale(1.2)
-
-			&::before, &::after
-				background-color: $text-color-alt
-
-/*news closer end*/
 
 /*lang*/
 .lang

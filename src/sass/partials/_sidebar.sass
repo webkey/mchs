@@ -14,16 +14,6 @@
 	background: #001e33
 	padding: 28px 0
 
-	=transition()
-		-webkit-transition-property: color, opacity, visibility
-		transition-property: color, opacity, visibility
-		-webkit-transition-duration: $animation-speed-mouseleave
-		transition-duration: $animation-speed-mouseleave
-
-	=transition-duration()
-		-webkit-transition-duration: $animation-speed
-		transition-duration: $animation-speed
-
 	a
 		display: block
 		position: relative
@@ -31,14 +21,15 @@
 		text-decoration: none
 		font-size: $font-size-small
 		line-height: $line-height-small
-		color: #7d9cb2
-		+transition
+		color: white
+		transition-property: color, opacity, visibility
+		transition-duration: $animation-speed-mouseleave
 
 		.no-touchevents &:hover, .no-touchevents &.active-section, &.active-section
-			color: #fff
-			+transition-duration
+			color: #7d9cb2
+			transition-duration: $animation-speed
 
-		&:before
+		&::before
 			content: ''
 			position: absolute
 			left: 0
@@ -48,9 +39,10 @@
 			background: $mark-color
 			opacity: 0
 			visibility: hidden
-			+transition
+			transition-property: color, opacity, visibility
+			transition-duration: $animation-speed-mouseleave
 
-		&.active-section:before
+		&.active-section::before
 			opacity: 1
 			visibility: visible
 
@@ -69,7 +61,6 @@
 	overflow-x: hidden
 	overflow-y: auto
 	max-height: 100%
-	-webkit-overflow-scrolling: touch
 	padding: 0 0 36px
 
 	& > *:last-child
@@ -80,6 +71,7 @@
 	padding: 25px $sidebar-inner-space-horizontal
 	background-color: white
 	z-index: 15
+	border-top: 1px solid $bg-color
 
 	&::after
 		+pseudo()

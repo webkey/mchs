@@ -195,8 +195,8 @@ input[type="radio"] + label,
 	cursor: pointer
 	position: relative
 
-input[type="checkbox"] + label:before,
-.check-label > span > i:before
+input[type="checkbox"] + label::before,
+.check-label > span > i::before
 	content: ''
 	height: 18px
 	width: 18px
@@ -226,8 +226,8 @@ input[type="checkbox"]
 	margin: 0
 	display: none
 
-	& + label:after,
-	& + span > i:after
+	& + label::after,
+	& + span > i::after
 		content: ''
 		height: 16px
 		width: 16px
@@ -242,10 +242,10 @@ input[type="checkbox"]
 		-webkit-transition-duration: 0.2s
 		transition-duration: 0.2s
 
-	& + label > span:before,
-	& + label > span:after,
-	& + span:before,
-	& + span:after
+	& + label > span::before,
+	& + label > span::after,
+	& + span::before,
+	& + span::after
 		content: ''
 		position: absolute
 		height: 3px
@@ -261,22 +261,22 @@ input[type="checkbox"]
 		-webkit-transition-timing-function: linear
 		transition-timing-function: linear
 
-	& + label > span:before,
-	& + span:before
+	& + label > span::before,
+	& + span::before
 		transform: rotate(45deg)
 		transform-origin: 0 7px
 		z-index: 1
 
-	& + label > span:after,
-	& + span:after
+	& + label > span::after,
+	& + span::after
 		transform: rotate(-50deg)
 		transform-origin: 0 10px
 		left: 22px
 
 	// checkbox checked
 	&:checked
-		& + label > span:before,
-		& + span:before
+		& + label > span::before,
+		& + span::before
 			width: 7px
 			margin: -4px 0 0 0
 			-webkit-transition-property: width
@@ -286,8 +286,8 @@ input[type="checkbox"]
 			-webkit-backface-visibility: hidden
 			backface-visibility: hidden
 
-		& + label > span:after,
-		& + span:after
+		& + label > span::after,
+		& + span::after
 			width: 11px
 			margin: 0 0 0 -8px
 			-webkit-transition-property: width
@@ -305,14 +305,14 @@ input[type="checkbox"]
 		& + span > i
 			color: #bdbdbd
 
-		& + label:before,
-		& + span > i:before
+		& + label::before,
+		& + span > i::before
 			border-color: #d6d6d6
 
-		& + label > span:before,
-		& + label > span:after,
-		& + span:before,
-		& + span:after
+		& + label > span::before,
+		& + label > span::after,
+		& + span::before,
+		& + span::after
 			background: #b9b9b9
 
 // radio
@@ -324,8 +324,8 @@ input[type="radio"]
 	padding: 0
 	display: none
 
-	& + label:before,
-	& + span:before
+	& + label::before,
+	& + span::before
 		content: ''
 		height: 18px
 		width: 18px
@@ -337,8 +337,8 @@ input[type="radio"]
 		border: 1px solid $mark-color
 		box-sizing: border-box
 
-	& + label:after,
-	& + span:after
+	& + label::after,
+	& + span::after
 		content: ''
 		height: 16px
 		width: 16px
@@ -353,8 +353,8 @@ input[type="radio"]
 		-webkit-transition-duration: 0.2s
 		transition-duration: 0.2s
 
-	& + label > span:after,
-	& + span > i:after
+	& + label > span::after,
+	& + span > i::after
 		content: ''
 		width: 10px
 		height: 10px
@@ -374,8 +374,8 @@ input[type="radio"]
 		opacity: 0
 
 	// radio checked
-	&:checked + label > span:after,
-	&:checked + span > i:after
+	&:checked + label > span::after,
+	&:checked + span > i::after
 		-webkit-animation: bounce 0.3s
 		-webkit-animation-iteration-count: 1
 		animation: bounce 0.3s
@@ -440,12 +440,12 @@ input[type="radio"]
 		& + span
 			color: #bdbdbd
 
-		& + label:before,
-		& + span:before
+		& + label::before,
+		& + span::before
 			border-color: #d6d6d6
 
-		& + label > span:after,
-		& + span > i:after
+		& + label > span::after,
+		& + span > i::after
 			background: #b9b9b9
 
 /*form checkbox and radiobutton end*/
@@ -509,10 +509,10 @@ input[type="radio"]
 		color: $color-form-text
 		border-color: $color-form-border-focus
 
-	&:before,
-	&:after,
-	button.cselect .ui-icon .arrow-select:before,
-	button.cselect .ui-icon .arrow-select:after
+	&::before,
+	&::after,
+	button.cselect .ui-icon .arrow-select::before,
+	button.cselect .ui-icon .arrow-select::after
 		content: ''
 		position: absolute
 		right: 22px
@@ -525,14 +525,14 @@ input[type="radio"]
 		box-sizing: border-box
 		z-index: 1
 
-	&:before,
-	button.cselect .ui-icon .arrow-select:before
+	&::before,
+	button.cselect .ui-icon .arrow-select::before
 		-webkit-transform: rotate(45deg)
 		-ms-transform: rotate(45deg)
 		transform: rotate(45deg)
 
-	&:after,
-	button.cselect .ui-icon .arrow-select:after
+	&::after,
+	button.cselect .ui-icon .arrow-select::after
 		-webkit-transform: rotate(-45deg)
 		-ms-transform: rotate(-45deg)
 		transform: rotate(-45deg)
@@ -629,8 +629,8 @@ div.cselect
 	.ui-multiselect-checkboxes input[type="radio"] + span
 		padding-left: 0
 
-	.ui-multiselect-checkboxes input[type="radio"] + span:before,
-	.ui-multiselect-checkboxes input[type="radio"] + span:after
+	.ui-multiselect-checkboxes input[type="radio"] + span::before,
+	.ui-multiselect-checkboxes input[type="radio"] + span::after
 		content: none
 
 /*multiselect menu end*/

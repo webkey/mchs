@@ -86,7 +86,7 @@
 	// all arrow are hide
 	display: none
 
-	&:before, &:after
+	&::before, &::after
 		+pseudo()
 		left: 0
 		top: 50%
@@ -98,11 +98,11 @@
 		transition-property: background
 		transition-duration: $animation-speed
 
-	&:before
+	&::before
 		transform: rotate(45deg)
 		margin: -4px 0 0 -1px
 
-	&:after
+	&::after
 		transform: rotate(-45deg)
 		margin: 1px 0 0 -1px
 

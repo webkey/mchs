@@ -1,3 +1,7 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*tags*/
 .tags
 	.article-layout &
@@ -40,7 +44,7 @@
 		margin-bottom: $bottom-space/2
 		padding: 0 10px
 
-		&:before
+		&::before
 			content: none
 
 		a
@@ -59,13 +63,13 @@
 			transition-duration: $animation-speed-mouseleave
 			+antialiased
 
-			&:before
+			&::before
 				+pseudo('#', inline-block, relative)
 				z-index: 5
 
 			&::after
 				+pseudo()
-				+cover(null)
+				+cover($position: null, $height: 102%)
 				background-color: $mark-color-alt
 				transform: translate(0, 100%)
 				transition-property: transform
