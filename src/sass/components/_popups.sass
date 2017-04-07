@@ -209,11 +209,14 @@ html.before-extra-popup-open
 		margin-top: -10px
 		z-index: -1
 
-	.news
+	.news-links
 		padding: 25px
 		margin: 0
 
-	.news__item
+		+media('<mob-lg')
+			padding: $grid-layout-space--mob-lg
+
+	.news-links__item
 		+padding-horizontal(0)
 
 .popup-news__holder

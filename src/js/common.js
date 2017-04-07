@@ -1020,7 +1020,7 @@ function slidersInit() {
 			var dur = 200;
 
 			$currentSlider.slick({
-				fade: true,
+				fade: false,
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
@@ -1091,7 +1091,7 @@ function slidersInit() {
 			var dur = 200;
 
 			$currentSlider.slick({
-				fade: true,
+				fade: false,
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
