@@ -1,0 +1,208 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*menu region
+$region-menu-bg-color: #4b5a66
+.region-menu
+	position: relative
+
+// общие стили для главного списка навигации
+.region-menu__list
+	position: relative
+
+// общие стили для подменю навигации
+.region-menu__drop
+	position: relative
+	background-color: $border-color
+	display: none
+
+// общие стили для пунктов навигации
+.region-menu__list
+
+	li
+		position: relative
+
+	& > li
+		border-bottom: 1px solid $border-color
+
+	.region-menu__tab
+		position: relative
+
+	a
+		display: block
+		position: relative
+		color: white
+		text-decoration: none
+		transition-property: color, background-color
+		transition-duration: $animation-speed
+		+padding-horizontal($grid-inside-horizontal-space)
+		+padding-vertical(24px)
+		z-index: 1
+
+		&::before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			height: 100%
+			width: 100%
+			pointer-events: none
+			opacity: 0
+			visibility: hidden
+			transition-property: opacity, visibility
+			transition-duration: $animation-speed
+			transition-timing-function: ease-in-out
+			+linear-gradient(to right, #019875, #9800f9)
+			z-index: -1
+
+// стили для пунктов навигации, у которых есть подменю
+.region-menu__list li.has-drop > .region-menu__tab > a
+	padding-right: (round($grid-inside-horizontal-space*1.5))
+
+// стили для пункта навигации текущей страницы
+.region-menu__list li
+
+	.no-touchevents &.current > .region-menu__tab, &.current > .region-menu__tab
+
+		a
+			color: white
+
+			&:hover
+				color: white
+
+			&:before
+				opacity: 1
+				visibility: visible
+
+// особые стили для пунктов навигации первого урованя
+.region-menu__list > li
+
+	& > .region-menu__tab a
+		+font-bold
+		font-size: 1.4rem
+		line-height: 1.4
+		letter-spacing: 0.1em
+		text-transform: uppercase
+		background-color: $region-menu-bg-color
+
+		.no-touchevents &:hover
+			color: $text-color-alt
+
+	&.is-open > .region-menu__tab a
+		background-color: $border-color
+
+// особые стили для пунктов навигации второго урованя
+.region-menu__drop
+
+	ul
+
+		// особые стили для пунктов навигации второго урованя
+		& > li > .region-menu__tab a
+			+padding-vertical(12px)
+			font-size: 1.6rem
+			line-height: 1.5
+			border-top: 1px solid rgba(0, 0, 0, 0.30)
+
+			.no-touchevents &:hover
+				color: $text-color-alt
+
+		// особые стили для пунктов навигации третьего урованя
+		ul
+
+			// особые стили для пунктов навигации второго урованя
+			& > li > .region-menu__tab a
+				+padding-horizontal(round($grid-inside-horizontal-space*1.5))
+				font-size: 1.4rem
+				line-height: 1.2
+				color: #999
+
+				.no-touchevents &:hover
+					color: $text-color-alt
+
+			// особые стили для пунктов навигации четвертого урованя
+			ul
+
+				// особые стили для пунктов навигации второго урованя
+				& > li > .region-menu__tab a
+					+padding-horizontal(round($grid-inside-horizontal-space*1.5))
+					font-size: 1.3rem
+					line-height: 1.3
+					background-color: darken($region-menu-bg-color, 9%)
+
+					.no-touchevents &:hover
+						color: $text-color-alt
+
+// стрелки в навигации
+.region-menu__angle
+	position: absolute
+	right: 0
+	top: 0
+	width: round($grid-inside-horizontal-space*1.5)
+	height: 100%
+	border-left: 1px solid rgba(0, 0, 0, 0.30)
+	transition-property: transform
+	transition-duration: $animation-speed
+	z-index: 2
+	cursor: pointer
+	display: none
+
+	li.has-drop > .region-menu__tab > &
+		display: block
+
+	i
+		position: absolute
+		left: 50%
+		top: 50%
+		width: 12px
+		height: 8px
+		pointer-events: none
+		margin: -4px 0 0 -6px
+		transition-property: transform
+		transition-duration: $animation-speed
+		font-size: 0
+		line-height: 0
+
+		&::before, &::after
+			content: ''
+			position: absolute
+			bottom: 0
+			height: 10px
+			width: 2px
+			border-radius: 2px
+			backface-visibility: hidden
+			background-color: #8a8b8c
+			transform-origin: center center
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		&::before
+			right: 50%
+			transform-origin: right bottom
+			transform: rotate(45deg)
+
+		&::after
+			left: 50%
+			transform-origin: left bottom
+			transform: rotate(-45deg)
+
+// стили стрелок в навигации для разных состояний
+.region-menu__angle
+
+	li.is-open > .region-menu__tab & i
+		transform: rotate(-0.5turn)
+
+		&::before, &::after
+			background-color: white
+
+	.no-touchevents &:hover i, .no-touchevents li.is-open > .region-menu__tab &:hover i
+
+		&::before, &::after
+			background-color: $text-color-alt
+
+	li.current > .region-menu__tab & i, .no-touchevents li.current > .region-menu__tab &:hover i
+
+		&::before, &::after
+			background-color: white
+
+/*menu region end

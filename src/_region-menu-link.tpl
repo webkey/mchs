@@ -1,0 +1,1 @@
+<div class="region-menu__tab"><a href="@@itemLink"@@if(context.specialValue){ class="@@specialValue"}title="@@itemText"><span>@@itemText</span></a><div class="region-menu__angle region-menu-handler-js"><i>&nbsp;</i></div></div>

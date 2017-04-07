@@ -1,1 +1,1 @@
-@@if(context.start){ <!--(3) START sub-menu THIRD level--><div class="sub2-nav__drop js-nav-drop"><ul class="sub3-nav__list">} @@if(context.end){ </ul></div><!--(3) END sub-menu THIRD level--></li>}
+@@if(context.start){ <!--(3) START sub-menu THIRD level--><div class="sub2-nav__drop nav-drop-js"><ul class="sub3-nav__list">} @@if(context.end){ </ul></div><!--(3) END sub-menu THIRD level--></li>}

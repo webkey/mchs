@@ -1,7 +1,7 @@
 <!--navigation-->
 <!-- @@if(mainNavItemActive === "biography"){ current} -->
 <!-- @@if(mainNavItemActive === "biography"){ class="current"} -->
-<div class="main-nav">
+<div class="nav-wrap">
 	<nav class="nav">
 		<ul class="nav__list">
 			<!--nav item start-->
@@ -413,13 +413,13 @@
 			<!--nav item end-->
 
 			<!--nav item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Региональные СМИ"){ current}">
+			<li class="@@if(mainNavItemActive === "Региональные СМИ"){ current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Региональные СМИ", "itemLink": "404.html", "specialValue": "" })
 			</li>
 			<!--nav item end-->
 
 			<!--nav item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Надзорная деятельность"){ current}">
+			<li class="@@if(mainNavItemActive === "Надзорная деятельность"){ current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Надзорная деятельность", "itemLink": "404.html", "specialValue": "" })
 			</li>
 			<!--nav item end-->
