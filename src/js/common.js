@@ -476,6 +476,11 @@ function hoverClassInit(){
 			drop: '.nav-drop-js'
 		});
 	}
+	if($('.header__contacts').length){
+		new HoverClass({
+			container: ('.header__contacts')
+		});
+	}
 }
 /*toggle hover class end*/
 
@@ -677,7 +682,8 @@ function navExpander() {
 			collapsibleElement = this.collapsibleElement,
 			$collapsibleElement = this.$collapsibleElement;
 
-		self.$handler.on('click', function (e) {
+		$accordionContainer.on('click', '.region-menu-handler-js', function (e) {
+
 			var current = $(this);
 			var currentAccordionItem = current.closest($anyAccordionItem);
 
@@ -691,9 +697,12 @@ function navExpander() {
 				current = current.parent();
 			}
 
-			if (current.siblings(collapsibleElement).is(':visible')){
-				currentAccordionItem.removeClass(modifiers.active).find($collapsibleElement).slideUp(animateSpeed, function () {
-					self.$accordionContainer.trigger('accordionChange');
+			if (current.next(collapsibleElement).is(':visible')){
+				currentAccordionItem.removeClass(modifiers.active).find($collapsibleElement).filter(':visible').slideUp(animateSpeed, function () {
+					if($(this).attr('class') === current.next(collapsibleElement).attr('class')){
+						// console.log('mAccordionAfterClose');
+						self.$accordionContainer.trigger('mAccordionAfterClose').trigger('mAccordionAfterChange');
+					}
 				});
 				// currentAccordionItem.removeClass(modifiers.current);
 				currentAccordionItem
@@ -707,7 +716,7 @@ function navExpander() {
 			if (self._collapsibleAll){
 				var siblingContainers = $($accordionContainer).not(current.closest($accordionContainer));
 				siblingContainers.find($collapsibleElement).slideUp(animateSpeed, function () {
-					self.$accordionContainer.trigger('accordionChange');
+					self.$accordionContainer.trigger('mAccordionAfterClosedAll').trigger('mAccordionAfterChange');
 				});
 				siblingContainers
 					.find($anyAccordionItem)
@@ -716,11 +725,12 @@ function navExpander() {
 			}
 
 			currentAccordionItem
-				.siblings()
+				.siblings('.' + modifiers.active)
 				.removeClass(modifiers.active)
-				.find($collapsibleElement)
+				.find($collapsibleElement).filter(':visible').stop()
 				.slideUp(animateSpeed, function () {
-					self.$accordionContainer.trigger('accordionChange');
+					// console.log('mAccordionAfterClosedSiblings');
+					// self.$accordionContainer.trigger('mAccordionAfterClosedSiblings');
 				});
 			// currentAccordionItem.siblings().removeClass(modifiers.current);
 			currentAccordionItem.siblings()
@@ -730,7 +740,8 @@ function navExpander() {
 
 			currentAccordionItem.addClass(modifiers.active);
 			current.siblings($collapsibleElement).slideDown(animateSpeed, function () {
-				self.$accordionContainer.trigger('accordionChange');
+				// console.log('mAccordionAfterOpened');
+				self.$accordionContainer.trigger('mAccordionAfterOpened').trigger('mAccordionAfterChange');
 			});
 		})
 	};
@@ -741,8 +752,10 @@ function navExpander() {
 /**
  * !multi accordion initial
  * */
-function menuAccordionInit() {
+function multiAccordionInit() {
 	var regionMenu = '.region-menu-js';
+	var regionMenuChangeTimeout;
+
 	if($(regionMenu).length){
 		new MultiAccordion({
 			accordionContainer: regionMenu,
@@ -752,6 +765,14 @@ function menuAccordionInit() {
 			openClass: 'is-open',
 			animateSpeed: 200
 		});
+
+		$(regionMenu).on('mAccordionAfterChange', function () {
+			clearTimeout(regionMenuChangeTimeout);
+
+			regionMenuChangeTimeout = setTimeout(function () {
+				$(document.body).trigger("sticky_kit:recalc");
+			}, 50);
+		})
 	}
 }
 /*multi accordion initial end*/
@@ -2248,7 +2269,7 @@ $(document).ready(function(){
 	hoverClassInit();
 	addAlignClass();
 	navExpander();
-	menuAccordionInit();
+	multiAccordionInit();
 	toggleLanguages();
 	toggleYears();
 	tabSwitcher();

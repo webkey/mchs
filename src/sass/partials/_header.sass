@@ -276,6 +276,10 @@
 		+media('<mob-lg')
 			height: auto
 
+		li.hover, li.hover_pref, li.hover_next
+			&::before
+				border-color: transparent
+
 		li
 			display: inline-block
 			vertical-align: middle
@@ -308,6 +312,8 @@
 				width: 0
 				margin-top: -(round($height/2))
 				border-left: 1px solid $border-color
+				transition-property: border-color
+				transition-duration: $animation-speed
 
 				+media('<tab-lg')
 					height: 100%
@@ -330,6 +336,7 @@
 				text-align: left
 				transition-property: background-color
 				transition-duration: $animation-speed
+				cursor: pointer !important
 
 				.no-touchevents &:hover
 					background-color: white

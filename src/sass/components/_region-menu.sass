@@ -2,8 +2,126 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-/*menu region
+/*MENU REGION
 $region-menu-bg-color: #4b5a66
+
+/*region menu heading
+.region-menu-heading
+	padding: 15px $sidebar-inner-space-horizontal
+	background-color: $region-menu-bg-color
+	color: white
+	+font(1.4rem, 1.286)
+	cursor: pointer
+	transition-property: background-color
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		background-color: shade($region-menu-bg-color, 70%)
+
+/*region menu button
+$btn-region-menu-size: 22px
+$btn-region-menu-margin-right: 20px
+.region-menu-btn
+	//<a href="#" class="btn-map-site"><i></i><span>Текс кнопки</span></a>
+	$btn-region-menu-bg: white
+	$btn-region-menu-color: white
+	$btn-region-menu-min-height: $header-top-height
+	$btn-region-menu-space: 12px
+	$btn-region-menu-lines-width: 22px
+	$btn-region-menu-lines-height: 3px
+	$btn-region-menu-lines-space: 5px
+	$btn-region-menu-lines-color: $btn-region-menu-color
+
+	=line-style()
+		+size($btn-region-menu-lines-width, $btn-region-menu-lines-height)
+		background: $btn-region-menu-lines-color
+
+	=transition()
+		transition-property: transform, box-shadow, background-color
+		transition-duration: $animation-speed
+
+	&
+		position: relative
+		display: inline-block
+		vertical-align: middle
+		+size($btn-region-menu-size)
+		margin-right: 20px
+		text-decoration: none
+		color: $text-color
+		+clear-spacing
+		white-space: nowrap
+
+		&::before, &::after
+			+pseudo()
+			+line-style
+			left: 50%
+			top: 50%
+			+margin($t: -#{round($btn-region-menu-lines-height*0.5)}, $l: -#{$btn-region-menu-lines-width*0.5})
+			opacity: 0
+			transition-property: transform, opacity
+			transition-duration: $animation-speed
+
+		.is-expanded &
+			&::before
+				transform: rotate(45deg)
+				opacity: 1
+
+			&::after
+				transform: rotate(-45deg)
+				opacity: 1
+
+		> span
+			+hide-text
+
+		> i
+			position: absolute
+			left: 50%
+			top: 50%
+			backface-visibility: hidden
+			+margin($t: -#{round($btn-region-menu-lines-height/2)}, $l: -#{round($btn-region-menu-lines-width/2)})
+			+line-style
+
+			&::before, &::after
+				+pseudo()
+				left: 0
+				+line-style
+				backface-visibility: hidden
+				transition-property: transform, opacity
+				transition-duration: $animation-speed
+
+			//first line menu
+			&::before
+				top: -#{$btn-region-menu-lines-height + $btn-region-menu-lines-space}
+
+			//third line menu
+			&::after
+				top: #{$btn-region-menu-lines-height + $btn-region-menu-lines-space}
+
+		.is-expanded & > i
+			background-color: transparent
+
+			&::before
+				transform: translate(0, #{$btn-region-menu-lines-space})
+				opacity: 0
+
+			&::after
+				transform: translate(0, -#{$btn-region-menu-lines-space})
+				opacity: 0
+
+
+
+/*region menu button end*/
+
+/*region menu heading text
+.region-menu-heading-text
+	display: inline-block
+	vertical-align: middle
+	max-width: calc(100% - #{$btn-region-menu-size} - #{$btn-region-menu-margin-right} - 5px)
+
+/*region menu heading text end
+/*region menu heading end
+
+/*region menu
 .region-menu
 	position: relative
 
@@ -53,7 +171,7 @@ $region-menu-bg-color: #4b5a66
 			transition-property: opacity, visibility
 			transition-duration: $animation-speed
 			transition-timing-function: ease-in-out
-			+linear-gradient(to right, #019875, #9800f9)
+			background-color: $mark-color-alt
 			z-index: -1
 
 // стили для пунктов навигации, у которых есть подменю
@@ -66,7 +184,7 @@ $region-menu-bg-color: #4b5a66
 	.no-touchevents &.current > .region-menu__tab, &.current > .region-menu__tab
 
 		a
-			color: white
+			color: $text-color
 
 			&:hover
 				color: white
@@ -205,4 +323,4 @@ $region-menu-bg-color: #4b5a66
 		&::before, &::after
 			background-color: white
 
-/*menu region end
+/*MENU REGION end

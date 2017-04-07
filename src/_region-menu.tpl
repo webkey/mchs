@@ -2,8 +2,8 @@
 <!-- @@if(regionMenuActiveItem === "biography"){ current} -->
 <!-- @@if(regionMenuActiveItem === "biography"){ class="current"} -->
 <div class="region-menu-heading expand-tab-js">
-	<div class="region-menu-tab-btn"><i>&nbsp;</i></div>
-	<div class="region-menu-tab-text">@@regionMenuTitle</div>
+	<div class="region-menu-btn"><i>&nbsp;</i></div>
+	<div class="region-menu-heading-text">@@regionMenuTitle</div>
 </div>
 <div class="region-menu-panel expand-panel-js">
 	<div class="region-menu">

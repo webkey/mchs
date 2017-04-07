@@ -8,11 +8,17 @@
 	+clear-spacing
 	margin-bottom: $bottom-space
 
+	&:last-child
+		margin-bottom: 0
+
 .news-links__item
 	+grid-item(1, $grid-space, $bottom-space)
 	font-size: $font-size-small
 	line-height: $line-height-small
 	letter-spacing: normal
+
+	&:last-child
+		margin-bottom: 0
 
 .news-links__inner
 	display: block
