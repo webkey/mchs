@@ -9,7 +9,7 @@
 	<div class="region-menu">
 		<ul class="region-menu__list region-menu-js">
 			<!--region-menu item start-->
-			<li class="has-drop@@if(regionMenuActiveItem === "Новости"){ current}">
+			<li class="has-drop current@@if(regionMenuActiveItem === "Новости"){ current}">
 				@@include('_region-menu-LINK.tpl', { "itemText": "Новости", "itemLink": "typography.html", "specialValue": "" })
 
 				@@include('_region-menu-drop-wrap-1_ONE.tpl', { "start": "1"})
