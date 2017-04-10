@@ -1,12 +1,12 @@
 <!--navigation-->
 <!-- @@if(regionMenuActiveItem === "biography"){ current} -->
 <!-- @@if(regionMenuActiveItem === "biography"){ class="current"} -->
-<div class="region-menu-heading expand-tab-js is-expanded">
+<div class="region-menu-heading region-expand-tab-js">
 	<div class="region-menu-btn"><i>&nbsp;</i></div>
 	<div class="region-menu-heading-text">@@regionMenuTitle</div>
 </div>
-<div class="region-menu-panel expand-panel-js">
-	<div class="region-menu">
+<div class="region-expand-panel-js">
+	<div class="region-menu region-menu-panel">
 		<ul class="region-menu__list region-menu-js">
 			<!--region-menu item start-->
 			<li class="has-drop current@@if(regionMenuActiveItem === "Новости"){ current}">

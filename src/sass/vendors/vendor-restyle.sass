@@ -1,0 +1,14 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+.mCSB_scrollTools
+	z-index: 20
+
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar
+	transition-property: opacity, width
+	transition-duration: $animation-speed
+
+.no-touchevents .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar:hover,
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar
+	width: 10px

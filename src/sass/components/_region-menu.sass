@@ -3,23 +3,30 @@
 @import ../../libs/include-media/dist/include-media
 
 /*MENU REGION
-$region-menu-text-color: #c3d5e5
-$region-menu-bg-color: #4b5a66
-$region-menu-border-color: shade($region-menu-bg-color, 80%)
+$region-menu-text-color: #c3d5e5 !default
+$region-menu-bg-color: #4b5a66 !default
+$region-menu-border-color: shade($region-menu-bg-color, 80%) !default
+$region-menu-tab-height: 70px !default
 
 /*region menu heading
 .region-menu-heading
-	padding: 15px $sidebar-inner-space-horizontal
+	overflow: hidden
+	height: $region-menu-tab-height
+	padding: 0 $sidebar-inner-space-horizontal
 	background-color: $region-menu-bg-color
 	border-bottom: 1px solid $region-menu-border-color
 	color: white
-	+font(1.4rem, 1.286)
 	cursor: pointer
 	transition-property: background-color
 	transition-duration: $animation-speed
+	+clear-spacing
 
 	.no-touchevents &:hover
 		background-color: shade($region-menu-bg-color, 70%)
+
+	&::before
+		+pseudo($display: inline-block, $pos: relative)
+		+vertical-align($pseudo: null)
 
 /*region menu button
 $btn-region-menu-size: 22px
@@ -83,6 +90,8 @@ $btn-region-menu-margin-right: 20px
 			backface-visibility: hidden
 			+margin($t: -#{round($btn-region-menu-lines-height/2)}, $l: -#{round($btn-region-menu-lines-width/2)})
 			+line-style
+			transition-property: background-color
+			transition-duration: $animation-speed
 
 			&::before, &::after
 				+pseudo()
@@ -104,11 +113,11 @@ $btn-region-menu-margin-right: 20px
 			background-color: transparent
 
 			&::before
-				transform: translate(0, #{$btn-region-menu-lines-space})
+				transform: translate(0, #{$btn-region-menu-lines-space+$btn-region-menu-lines-height})
 				opacity: 0
 
 			&::after
-				transform: translate(0, -#{$btn-region-menu-lines-space})
+				transform: translate(0, -#{$btn-region-menu-lines-space+$btn-region-menu-lines-height})
 				opacity: 0
 
 /*region menu button end*/
@@ -117,14 +126,66 @@ $btn-region-menu-margin-right: 20px
 .region-menu-heading-text
 	display: inline-block
 	vertical-align: middle
+	+font(1.4rem, 1.286)
+	letter-spacing: normal
 	max-width: calc(100% - #{$btn-region-menu-size} - #{$btn-region-menu-margin-right} - 5px)
 
 /*region menu heading text end
 /*region menu heading end
 
-/*region menu
-.region-menu
+/*sidebar region news
+.sidebar-region-news__heading
+	overflow: hidden
+	height: $region-menu-tab-height
 	position: relative
+	padding: 0 round($sidebar-inner-space-horizontal*1.8) 0 $sidebar-inner-space-horizontal
+	background-color: white
+	border-bottom: 1px solid $bg-color
+	cursor: pointer
+	transition-property: background-color
+	transition-duration: $animation-speed
+	+clear-spacing
+
+	.no-touchevents &:hover
+		background-color: #f3f3f3
+
+	&::before
+		+pseudo($display: null, $pos: relative)
+		+vertical-align($pseudo: null)
+
+	&::after
+		+pseudo()
+		top: 50%
+		right: round($sidebar-inner-space-horizontal)
+		margin-top: -4px
+		+triangle(bottom, $text-color, 5px, 1.5)
+
+		.is-expanded &
+			transform: rotate(0.5turn)
+
+	h4, h3, h2
+		margin-bottom: 0
+		display: inline-block
+		vertical-align: middle
+		+font(2rem, 1.3)
+		letter-spacing: normal
+		max-width: calc(100% - 5px)
+
+.sidebar-region-news__content
+	position: relative
+	background-color: white
+	padding: round($sidebar-inner-space-horizontal*0.8) $sidebar-inner-space-horizontal
+
+/*sidebar region news end
+
+/*region menu
+.region-menu-panel
+	position: relative
+	height: calc(100vh - #{$header-height} - #{round($region-menu-tab-height*2)})
+	+overflow($x: hidden, $y: auto)
+
+	.elements-is-transform &
+		height: calc(100vh - #{$header-top-height} - #{round($region-menu-tab-height*2)})
 
 // общие стили для главного списка навигации
 .region-menu__list

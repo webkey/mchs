@@ -185,12 +185,39 @@ body
 	z-index: 150
 
 .sidebar
-	float: left
 	//position: relative // нельзя задавать position, кроме static. нужно для работы sticky-kit
-	margin: 0 0 0 -100%
+
+	//float: left
+	//margin: 0 0 0 -100%
+
+	position: fixed
+	overflow: hidden
+	left: 0
+	bottom: 0
+	height: calc(100% - #{$header-height})
+
 	width: $sidebar-left-width
 	background: $bg-color-alt
 	z-index: 20
+
+	//transition-property: height
+	//transition-duration: $animation-speed
+	//transition-timing-function: linear
+
+	.elements-is-transform &
+		position: static
+		left: auto
+		bottom: auto
+		float: left
+		margin: 0 0 0 -100%
+		height: auto
+
+	.elements-is-transform &.sidebar-region
+		position: fixed
+		left: 0
+		bottom: 0
+		margin: 0
+		height: calc(100% - #{$header-top-height})
 
 	+media('<desk-sm')
 		display: none

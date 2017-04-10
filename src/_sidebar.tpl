@@ -39,7 +39,8 @@
 		<div class="sidebar-bottom">
 			<div class="sidebar-bottom__holder">
 				<div class="sidebar-bottom__frame">
-					<div class="sidebar-bottom__heading"><h3>Новости дня</h3>
+					<div class="sidebar-bottom__heading">
+						<h3>Новости дня</h3>
 					</div>
 					<div class="sidebar-bottom__content">
 						@@include('_news-links.tpl')

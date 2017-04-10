@@ -29,12 +29,15 @@
 
 /*logo*/
 .logo-wrap
-	position: absolute
+	position: fixed
 	left: 0
 	top: 0
 	height: $header-height
 	width: $header-left-space
 	background-color: white
+	//transition-property: height
+	//transition-duration: $animation-speed
+	//transition-timing-function: linear
 	z-index: 20
 
 	+media('<desk-sm')
@@ -44,10 +47,13 @@
 		transition-property: height
 		transition-duration: 0.1s
 
-	.header-fixed &
+	//.header-fixed &
 		position: fixed
 
-	.header-fixed.touchevents &
+	.elements-is-transform &
+		height: $header-top-height
+
+	//.header-fixed.touchevents &
 		height: $header-top-height
 
 	+media('<desk-sm')
