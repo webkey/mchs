@@ -3,14 +3,37 @@
 		<div class="sidebar-top">
 			@@if(context.menu) {
 			<ul class="sidebar-menu sidebar-menu-js">
-				@@loop('_sidebar-menu-item.tpl', [ { "text": "Главные новости МЧС", "active": false, "anchor": "#main-new-anchor" }, { "text": "Мультимедиа по ОБЖ", "active": false, "anchor": "#multimedia-anchor" }, { "text": "Интерактивная карта", "active": false, "anchor": "#map-anchor" }, { "text": "Другие проекты", "active": false, "anchor": "#other-projects-anchor" }, { "text": "Департаменты", "active": false, "anchor": "#branches-anchor" }, { "text": "Региональные управления", "active": false, "anchor": "#regions-anchor" }, { "text": "Инфомрация", "active": false, "anchor": "#information-anchor" } ])
+				@@loop('_sidebar-menu-item.tpl', [
+				{
+				"text": "Главные новости МЧС",
+				"active": false,
+				"anchor": "#main-new-anchor"
+				}, {
+				"text": "Мультимедиа по ОБЖ",
+				"active": false,
+				"anchor": "#multimedia-anchor"
+				}, {
+				"text": "Интерактивная карта",
+				"active": false, "anchor": "#map-anchor"
+				}, {
+				"text": "Другие проекты",
+				"active": false,
+				"anchor": "#other-projects-anchor"
+				}, {
+				"text": "Департаменты",
+				"active": false,
+				"anchor": "#branches-anchor"
+				}, {
+				"text": "Региональные управления",
+				"active": false,
+				"anchor": "#regions-anchor"
+				}, {
+				"text": "Инфомрация",
+				"active": false,
+				"anchor": "#information-anchor"
+				}
+				])
 			</ul>
-			}
-			@@if(context.regionMenu) {
-				@@include('_region-menu.tpl', {
-					"regionMenuActiveItem": "@@regionMenuActiveItem",
-					"regionMenuTitle": "Меню Брестского областного управления"
-				})
 			}
 		</div>
 		<div class="sidebar-bottom">

@@ -1,7 +1,7 @@
 <!--navigation-->
 <!-- @@if(regionMenuActiveItem === "biography"){ current} -->
 <!-- @@if(regionMenuActiveItem === "biography"){ class="current"} -->
-<div class="region-menu-heading expand-tab-js">
+<div class="region-menu-heading expand-tab-js is-expanded">
 	<div class="region-menu-btn"><i>&nbsp;</i></div>
 	<div class="region-menu-heading-text">@@regionMenuTitle</div>
 </div>
