@@ -2058,7 +2058,9 @@ function stickyLayout(){
 				});
 			}, 100);
 
-		})
+		});
+
+		$(window).trigger('resize');
 	}
 
 	/*sidebar bottom sticky*/
@@ -2080,7 +2082,9 @@ function stickyLayout(){
 				});
 			}, 100);
 
-		})
+		});
+
+		$(window).trigger('resize');
 	}
 
 	/*sidebar content sticky*/
@@ -2102,7 +2106,9 @@ function stickyLayout(){
 				});
 			}, 100);
 
-		})
+		});
+
+		$(window).trigger('resize');
 	}
 
 	/*side menu sticky*/
@@ -2114,7 +2120,8 @@ function stickyLayout(){
 
 		$(window).on('load resizeByWidth', function () {
 
-			var offsetTop = offsetTopBase * 2;
+			// var offsetTop = offsetTopBase * 2;
+			var offsetTop = offsetTopBase;
 
 			clearTimeout(timeoutSideMenuSticky);
 			timeoutSideMenuSticky = setTimeout(function () {
@@ -2128,7 +2135,9 @@ function stickyLayout(){
 				});
 			}, 100);
 
-		})
+		});
+
+		$(window).trigger('resize');
 	}
 
 	/*aside sticky*/
@@ -2156,7 +2165,9 @@ function stickyLayout(){
 				});
 			}, 100);
 
-		})
+		});
+
+		$(window).trigger('resize');
 	}
 }
 /*sticky layout end*/

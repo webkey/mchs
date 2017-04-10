@@ -16,9 +16,7 @@
 	box-shadow: 0
 	opacity: 1
 	z-index: 6
-	-webkit-transition-property: background, opacity, visibility
 	transition-property: background, opacity, visibility
-	-webkit-transition-duration: 0.2s
 	transition-duration: 0.2s
 
 	.no-touchevents &:hover
@@ -46,8 +44,6 @@
 		pointer-events: none
 		width: 12px
 		height: 12px
-		-webkit-transform: rotate(45deg)
-		-ms-transform: rotate(45deg)
 		transform: rotate(45deg)
 		border: 0 solid #000
 
@@ -122,9 +118,7 @@
 			border-radius: 50%
 			background: $text-color-alt
 			position: relative
-			-webkit-transition-property: background, border, box-shadow, -webkit-transform
 			transition-property: background, border, box-shadow, transform
-			-webkit-transition-duration: 0.6s
 			transition-duration: 0.6s
 
 			&::before
@@ -138,9 +132,7 @@
 				border-radius: 50%
 				opacity: 1
 				box-shadow: 0 2px 3px rgba(0, 0, 0, 0.20)
-				-webkit-transition-property: -webkit-transform, opacity
 				transition-property: transform, opacity
-				-webkit-transition-duration: 0.6s
 				transition-duration: 0.6s
 
 		//.no-touchevents &:hover button::before
@@ -155,7 +147,7 @@
 	margin-bottom: $bottom-space
 
 	+media('<tab-lg')
-
+		margin-bottom: $bottom-space-lg
 
 .images-slider__list
 	padding-bottom: $bottom-space
@@ -195,8 +187,6 @@
 		text-align: center
 		max-width: none
 		height: calc(100% + 4px)
-		-webkit-transform: translate(-50%, 0)
-		-ms-transform: translate(-50%, 0)
 		transform: translate(-50%, 0)
 
 .images-slider
@@ -205,8 +195,6 @@
 		right: 0
 		left: auto
 		top: 100%
-		-webkit-transform: translate(0, 0)
-		-ms-transform: translate(0, 0)
 		transform: translate(0, 0)
 
 	.slick-prev
@@ -267,13 +255,13 @@
 	margin-bottom: 0
 
 	+media('<desk-hd')
-		max-width: $section-layout-width-desk-hd
+		//max-width: $section-layout-width-desk-hd
 
 	+media('<desk-lg')
-		max-width: $section-layout-width-desk-lg
+		//max-width: $section-layout-width-desk-lg
 
 	+media('<tab-lg')
-		max-width: $section-layout-width-tab-lg
+		//max-width: $section-layout-width-tab-lg
 
 	&.slick-initialized, .no-js &
 		// after slide load
@@ -320,7 +308,6 @@
 	width: 100%
 	background-position: center center
 	background-repeat: no-repeat
-	-webkit-background-size: cover
 	background-size: cover
 
 	+media('<mob-lg')
@@ -400,7 +387,6 @@
 		height: 60px
 		z-index: 6
 		transition-property: transfrom
-		-webkit-transition-duration: $animation-speed
 		transition-duration: $animation-speed
 
 		.no-touchevents &:hover
@@ -425,8 +411,7 @@
 	width: 100%
 	background-position: center center
 	background-repeat: no-repeat
-	-webkit-background-size: cover
-	background-size: cover
+	backgroulnd-size: cover
 
 	+media('<mob-lg')
 		height: $news-item-lg-img-height-mob-lg

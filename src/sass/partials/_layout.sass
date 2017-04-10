@@ -90,7 +90,7 @@ body
 
 .main-holder
 	width: 100%
-	padding-right: 60px // width .side menu
+	//padding-right: 60px // width .side menu
 	+clear
 
 	+media('<desk-md')
@@ -103,24 +103,51 @@ body
 
 .main-inside
 	margin: 0 0 0 $sidebar-left-width
-	padding: $grid-layout-space #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
+	//padding: $grid-layout-space #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
 	min-height: 50px
 	position: relative
 	+clear
 
-	+media('<desk-hd')
+	//+media('<desk-hd')
 		padding: #{$grid-layout-space--desk-hd} #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
 
-	+media('<desk-md')
+	//+media('<desk-md')
 		padding: $grid-layout-space--desk-hd $grid-layout-space--desk-md
 
 	+media('<desk-sm')
 		margin-left: 0
 
+	//+media('<tab-lg')
+		padding: $grid-layout-space--desk-md
+
+	//+media('<mob-lg')
+		padding: $grid-layout-space--mob-lg
+
+.content-layout
+	position: relative
+	padding: $grid-layout-space #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
+	margin-right: 60px // width .side menu
+	+clear
+
+	+media('<desk-hd')
+		+push-auto
+		right: round($side-width*0.5)
+		max-width: $section-layout-width-desk-hd + ($grid-layout-space--desk-hd - 9px)*2
+		padding: #{$grid-layout-space--desk-hd} #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
+
+	+media('<desk-lg')
+		max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-hd - 9px)*2
+
+	+media('<desk-md')
+		right: auto
+		+padding-horizontal($grid-layout-space--desk-md)
+
 	+media('<tab-lg')
+		max-width: $section-layout-width-tab-lg + ($grid-layout-space--desk-md - 9px)*2
 		padding: $grid-layout-space--desk-md
 
 	+media('<mob-lg')
+		max-width: none
 		padding: $grid-layout-space--mob-lg
 
 .content-wrap
@@ -139,22 +166,6 @@ body
 		//margin: 0 $sidebar-right-width--desk-md 0 0
 		margin-right: 0
 		padding-right: 0
-
-.content-layout
-	+clear
-	+push-auto
-
-	+media('<desk-hd')
-		max-width: $section-layout-width-desk-hd
-
-	+media('<desk-lg')
-		max-width: $section-layout-width-desk-lg
-
-	+media('<tab-lg')
-		max-width: $section-layout-width-tab-lg
-
-	+media('<mob-lg')
-		max-width: none
 
 .sheet
 	background: $bg-color-alt
@@ -275,19 +286,43 @@ body
 
 .section__title
 	position: relative
+	font-family: $font-alt
 	margin-bottom: $bottom-space-sm
+	color: $text-color-alt
+	font-size: 2rem
+	line-height: 1.2
 
-	h2, h3
-		color: $text-color-alt
-		font-size: 2rem
+	h2, h3, a
+		display: inline-block
+		vertical-align: top
+		position: relative
+		font-family: inherit
+		color: inherit
+		font-size: inherit
+		line-height: inherit
 		margin: 0
 
-		a
-			text-decoration: underline
-			color: inherit
+	a
+		font-size: 0.9em
+		font-weight: normal
+		top: 0.1em
 
-			.no-touchevents a:hover
-				text-decoration: none
+		span
+			border-bottom: 1px solid transparent
+			transition-property: border-color
+			transition-duration: $animation-speed
+
+		.no-touchevents a:hover
+			text-decoration: none
+
+		&.type-anchor
+			text-decoration: none
+
+			span
+				border-bottom: 1px dotted $text-color
+
+			.no-touchevents &:hover span
+				border-bottom-color: transparent
 
 .section__subtitle
 	margin-bottom: $bottom-space-sm
