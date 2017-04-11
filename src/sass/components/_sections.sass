@@ -1,0 +1,152 @@
+/*section*/
+.section
+	margin-bottom: $bottom-space-md
+
+	&:last-child
+		margin-bottom: 0
+
+	* ~ &
+		margin-top: $bottom-space-md
+
+	& > *:last-child
+		margin-bottom: 0
+
+.section__title
+	position: relative
+	font-family: $font-alt
+	margin-bottom: $bottom-space-sm
+	color: $text-color-alt
+	font-size: 2rem
+	line-height: 1.2
+
+	h2, h3, a
+		display: inline-block
+		vertical-align: top
+		position: relative
+		font-family: inherit
+		color: inherit
+		font-size: inherit
+		line-height: inherit
+		margin: 0
+
+		+media('<mob-lg')
+			display: block
+			margin-bottom: (round-float($bottom-space-sm*0.5, 1))
+
+	a
+		font-size: 0.9em
+		font-weight: normal
+		top: 0.1em
+		cursor: pointer
+
+		span
+			border-bottom: 1px solid transparent
+			transition-property: border-color
+			transition-duration: $animation-speed
+
+		.no-touchevents a:hover
+			text-decoration: none
+
+		&.type-anchor
+			text-decoration: none
+
+			span
+				border-bottom: 1px dotted $text-color
+
+			.no-touchevents &:hover span
+				border-bottom-color: transparent
+
+.v-separator
+	display: inline-block
+	vertical-align: top
+	+margin-horizontal(10px)
+
+	+media('<mob-lg')
+		display: none
+
+.section__box
+	background-color: white
+	padding: $grid-inside-horizontal-space
+
+	+media('<mob-lg')
+		padding: $grid-layout-space--mob-lg
+
+.news-date
+	position: relative
+	display: inline-block
+	vertical-align: top
+
+	.touchevents & > a
+		display: none
+
+.datepicker-input
+	position: relative
+	top: 0.1em
+	display: inline-block
+	vertical-align: top
+	padding: 0
+	margin: 0
+	font-family: $font-alt
+	font-size: 0.9em
+	line-height: 23px
+	height: 23px
+	font-weight: normal
+	cursor: pointer
+	border: 1px solid $text-color
+	background: white
+
+	//&::-webkit-inner-spin-button, &::-webkit-calendar-picker-indicator
+		-webkit-appearance: none
+		display: none
+
+	.no-touchevents .datepicker-alt &
+			position: absolute
+			left: 0
+			bottom: 0
+			top: auto
+			width: 100%
+			height: 0
+			opacity: 0
+			padding: 0
+			border: 0
+			margin: 0 0 -5px
+
+.section__subtitle
+	margin-bottom: $bottom-space-sm
+	font-family: $font-alt
+	font-weight: normal
+	font-size: 1.2rem
+	line-height: 1.6
+	text-transform: uppercase
+	color: $text-color
+
+	h2, h3, h4
+		display: inline-block
+		vertical-align: top
+		font-family: inherit
+		font-weight: inherit
+		font-size: inherit
+		line-height: inherit
+		text-transform: inherit
+		color: inherit
+		margin-bottom: 0
+
+		+media('<mob-lg')
+			font-size: 1.4rem
+			display: block
+			margin-bottom: ($bottom-space-sm)
+
+	a
+		text-decoration: underline
+		color: inherit
+
+		.no-touchevents a:hover
+			text-decoration: none
+
+.hide-tab-lg
+	display: none
+
+	+media('<tab-lg')
+		display: block
+
+/*section end*/

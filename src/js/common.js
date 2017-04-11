@@ -2235,29 +2235,34 @@ function datePickerInit() {
 	var datepickerOverlay = $('<div/>', {
 		'class': "datepicker-overlay"
 	});
-	var dateNews = $('.news-date').flatpickr({
+
+	$('.news-date').flatpickr({
 		"locale": "ru",
 		defaultDate: 'today',
 		altInput: true,
 		clickopens: false,
 		wrap: true,
-		altFormat: 'd.m.Y',
+		altFormat: 'd M. Y',
 		maxDate: 'today',
-		disableMobile: true,
+		disableMobile: false,
 		onValueUpdate: function() {
 			$newsDateOutput.text($(this.altInput).val());
 		},
 		onOpen: function() {
-			$(this.calendarContainer).before(datepickerOverlay.clone());
-			setTimeout(function () {
-				$('html').addClass('datepicker-overlay-is-visible');
-			}, 10);
+			if (DESKTOP) {
+				$(this.calendarContainer).before(datepickerOverlay.clone());
+				setTimeout(function () {
+					$('html').addClass('datepicker-overlay-is-visible');
+				}, 10);
+			}
 		},
 		onClose: function() {
-			$('html').removeClass('datepicker-overlay-is-visible');
-			setTimeout(function () {
-				$('.datepicker-overlay').remove();
-			}, 200);
+			if (DESKTOP) {
+				$('html').removeClass('datepicker-overlay-is-visible');
+				setTimeout(function () {
+					$('.datepicker-overlay').remove();
+				}, 200);
+			}
 		},
 		onChange: function () {
 			$newsDateOutput.text($(this.altInput).val());
