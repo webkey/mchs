@@ -1,0 +1,53 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*malihu-custom-scrollbar-plugin
+.mCSB_scrollTools
+	z-index: 20
+
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar
+	transition-property: opacity, width
+	transition-duration: $animation-speed
+
+.no-touchevents .mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar:hover,
+.mCS-minimal-dark.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar
+	width: 10px
+
+/*malihu-custom-scrollbar-plugin end
+
+/*flatpickr
+.flatpickr-calendar
+	border-radius: 0
+
+.flatpickr-day
+	border-radius: 0
+
+.flatpickr-month
+	font-family: $font-alt
+	height: 48px
+	line-height: 32px
+	margin-top: 4px
+
+	span.cur-month
+		cursor: default
+
+		&:hover
+			background: none
+
+.flatpickr-next-month, .flatpickr-prev-month
+	width: 18px
+	height: 18px
+	top: 13px
+
+	svg
+		width: 18px
+		height: 18px
+
+span.flatpickr-weekday
+	height: 32px
+	line-height: 32px
+	padding-top: 0
+	padding-bottom: 5px
+
+/*flatpickr end

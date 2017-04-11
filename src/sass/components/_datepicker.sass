@@ -1,0 +1,23 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*datepicker overlay*/
+.datepicker-overlay
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	background: rgba(0, 0, 0, 0.5)
+	z-index: 99998
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+
+	.datepicker-overlay-is-visible &
+		opacity: 1
+		visibility: visible
+
+/*datepicker overlay end*/

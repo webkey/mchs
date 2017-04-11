@@ -84,7 +84,8 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 		,'src/libs/magnific-popup/dist/magnific-popup.css'
 		,'src/libs/priority-nav/dist/priority-nav-core.css'
 		,'src/libs/swiper/dist/css/swiper.min.css',
-		'src/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css'
+		'src/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
+		'src/libs/flatpickr/dist/flatpickr.min.css'
 	]) // Выбираем файлы для конкатенации
 	.pipe(concatCss("src/css/libs.css", {
 		rebaseUrls: false
@@ -111,6 +112,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/sticky-kit/jquery.sticky-kit.min.js',
 		'src/libs/page-scroll-to-id/jquery.malihu.PageScroll2id.js',
 		'src/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
+		'src/libs/flatpickr/dist/flatpickr.min.js',
+		'src/libs/flatpickr/dist/l10n/ru.js',
 		'src/libs/swiper/dist/js/swiper.min.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js

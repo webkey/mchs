@@ -2196,6 +2196,77 @@ function stickyLayout(){
 /*sticky layout end*/
 
 /**
+ * !region menu
+ * */
+function regionMenu() {
+	var timeoutSlide;
+	$('.region-expand-tab-js').on('click', function () {
+		var $this = $(this);
+		var $thisContainer = $(this).closest('.region-expand-container-js');
+		var activeClass = 'is-expanded';
+
+		if($thisContainer.hasClass(activeClass)) {
+			$thisContainer.removeClass(activeClass);
+		} else {
+			$thisContainer.addClass(activeClass);
+		}
+
+		$thisContainer.find('.region-expand-panel-js').stop().slideToggle(250, function () {
+			clearTimeout(timeoutSlide);
+
+			timeoutSlide = setTimeout(function () {
+				$(document.body).trigger("sticky_kit:recalc");
+			}, 50);
+		})
+	});
+	$(window).on('load', function () {
+		$('.region-menu-panel').mCustomScrollbar({
+			theme:"minimal-dark"
+		});
+	})
+}
+/*region menu end*/
+
+/**
+ * !datepicker initial
+ * */
+function datePickerInit() {
+	var $newsDateOutput = $('.news-date-output-js').find('span');
+	var datepickerOverlay = $('<div/>', {
+		'class': "datepicker-overlay"
+	});
+	var dateNews = $('.news-date').flatpickr({
+		"locale": "ru",
+		defaultDate: 'today',
+		altInput: true,
+		clickopens: false,
+		wrap: true,
+		altFormat: 'd.m.Y',
+		maxDate: 'today',
+		disableMobile: true,
+		onValueUpdate: function() {
+			$newsDateOutput.text($(this.altInput).val());
+		},
+		onOpen: function() {
+			$(this.calendarContainer).before(datepickerOverlay.clone());
+			setTimeout(function () {
+				$('html').addClass('datepicker-overlay-is-visible');
+			}, 10);
+		},
+		onClose: function() {
+			$('html').removeClass('datepicker-overlay-is-visible');
+			setTimeout(function () {
+				$('.datepicker-overlay').remove();
+			}, 200);
+		},
+		onChange: function () {
+			$newsDateOutput.text($(this.altInput).val());
+		}
+	});
+}
+/*datepicker initial end*/
+
+/**
  * !footer at bottom
  * */
 function footerBottom() {
@@ -2313,32 +2384,8 @@ $(document).ready(function(){
 	fileInput();
 	breadcrumbsBehavior();
 	stickyLayout();
+	regionMenu();
+	datePickerInit();
 	footerBottom();
 	formSuccessExample();
-
-	var timeoutSlide;
-	$('.region-expand-tab-js').on('click', function () {
-		var $this = $(this);
-		var $thisContainer = $(this).closest('.region-expand-container-js');
-		var activeClass = 'is-expanded';
-
-		if($thisContainer.hasClass(activeClass)) {
-			$thisContainer.removeClass(activeClass);
-		} else {
-			$thisContainer.addClass(activeClass);
-		}
-
-		$thisContainer.find('.region-expand-panel-js').stop().slideToggle(250, function () {
-			clearTimeout(timeoutSlide);
-
-			timeoutSlide = setTimeout(function () {
-				$(document.body).trigger("sticky_kit:recalc");
-			}, 50);
-		})
-	});
-	$(window).on('load', function () {
-		$('.region-menu-panel').mCustomScrollbar({
-			theme:"minimal-dark"
-		});
-	})
 });
