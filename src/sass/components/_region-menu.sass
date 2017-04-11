@@ -3,9 +3,13 @@
 @import ../../libs/include-media/dist/include-media
 
 /*MENU REGION
-$region-menu-text-color: #c3d5e5 !default
-$region-menu-bg-color: #4b5a66 !default
-$region-menu-border-color: shade($region-menu-bg-color, 80%) !default
+$region-menu-text-color: rgba(255, 255, 255, 0.50) !default
+$region-menu-bg-color: #5e7180 !default
+$region-menu-bg-color-s: shade($region-menu-bg-color, 80%) !default
+$region-menu-bg-color-ss: shade($region-menu-bg-color, 62%) !default
+$region-menu-bg-color-sss: shade($region-menu-bg-color, 48%) !default
+$region-menu-bg-color-ssss: shade($region-menu-bg-color, 38%) !default
+$region-menu-border-color: rgba(0, 0, 0, 0.20) !default
 $region-menu-tab-height: 70px !default
 
 /*region menu heading
@@ -178,7 +182,6 @@ $btn-region-menu-margin-right: 20px
 
 /*sidebar region news end
 
-/*region menu
 .region-menu-panel
 	position: relative
 	background-color: $region-menu-bg-color
@@ -188,6 +191,7 @@ $btn-region-menu-margin-right: 20px
 	.elements-is-transform &
 		height: calc(100vh - #{$header-top-height} - #{round($region-menu-tab-height*2)})
 
+/*region menu
 // общие стили для главного списка навигации
 .region-menu__list
 	position: relative
@@ -205,7 +209,7 @@ $btn-region-menu-margin-right: 20px
 		position: relative
 		overflow: hidden
 
-		&::before, &::after
+		//&::before, &::after
 			+pseudo()
 			height: 20px
 			width: 110%
@@ -217,10 +221,10 @@ $btn-region-menu-margin-right: 20px
 			pointer-events: none
 			opacity: 0
 
-		&::before
+		//&::before
 			top: -20px
 
-		&::after
+		//&::after
 			bottom: -20px
 
 		//&.is-open
@@ -237,32 +241,15 @@ $btn-region-menu-margin-right: 20px
 		text-decoration: none
 		transition-property: color, background-color
 		transition-duration: $animation-speed
-		padding: 11px $grid-inside-horizontal-space
+		padding: 21px $grid-inside-horizontal-space 22px
 		border-bottom: 1px solid $region-menu-border-color
-		font-size: 1.2rem
-		line-height: 1.4
+		font-size: 1.4rem
+		line-height: 1.429
 		letter-spacing: 0.02em
-
-		&::before
-			+pseudo()
-			left: 0
-			top: 100%
-			margin-top: -8px
-			+triangle(right, shade($region-menu-border-color, 90%), 8px, 1)
-			pointer-events: none
-			opacity: 0
-			transition-property: opacity, transform
-			transition-duration: $animation-speed
-			transform: translate(0, 100%)
-
-		span
-			border-bottom: 1px solid transparent
-			transition-property: border-color
-			transition-duration: $animation-speed
 
 // стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
 .region-menu__list li.has-drop > .region-menu__tab > a
-	padding-right: (round($grid-inside-horizontal-space*2))
+	padding-right: (round($grid-inside-horizontal-space*2.5))
 
 // стили для пункта навигации ТЕКУЩЕЙ страницы
 .region-menu__list li.current > .region-menu__tab
@@ -270,8 +257,8 @@ $btn-region-menu-margin-right: 20px
 	&, .no-touchevents &
 
 		a, a:hover
-			color: $mark-color-alt
-			box-shadow: inset 8px 0 0 $mark-color-alt
+			color: white
+			box-shadow: inset 5px 0 0 white
 
 		//& a span
 			border-color: $mark-color-alt
@@ -287,15 +274,17 @@ $btn-region-menu-margin-right: 20px
 .region-menu__list > li
 
 	& > .region-menu__tab a
-		font-size: 1.4rem
-		line-height: 1.286
+		font-family: $font-alt
+		font-size: 1.6rem
+		line-height: 1.5
 		background-color: $region-menu-bg-color
+		+padding-vertical(18px, 17px)
 
 		.no-touchevents &:hover
 			color: white
 			background-color: shade($region-menu-bg-color, 90%)
 
-	&.is-open > .region-menu__tab a
+	//&.is-open > .region-menu__tab a
 		background-color: shade($region-menu-bg-color, 90%)
 		border-color: shade($region-menu-border-color, 90%)
 
@@ -304,7 +293,7 @@ $btn-region-menu-margin-right: 20px
 	position: absolute
 	right: 0
 	top: 0
-	width: round($grid-inside-horizontal-space*1.5)
+	width: round($grid-inside-horizontal-space*2)
 	height: 100%
 	background-color: $region-menu-bg-color
 	border: solid $region-menu-border-color
@@ -335,8 +324,8 @@ $btn-region-menu-margin-right: 20px
 			content: ''
 			position: absolute
 			bottom: 0
-			height: 8px
-			width: 1px
+			height: 10px
+			width: 2px
 			border-radius: 2px
 			backface-visibility: hidden
 			background-color: $region-menu-text-color
@@ -347,19 +336,15 @@ $btn-region-menu-margin-right: 20px
 		&::before
 			right: 50%
 			transform-origin: right bottom
-			transform: rotate(40deg)
+			transform: rotate(45deg)
 
 		&::after
 			left: 50%
 			transform-origin: left bottom
-			transform: rotate(-40deg)
+			transform: rotate(-45deg)
 
 // стили стрелок навигации для разных состояний
 .region-menu__angle
-	// ховер и/или активное (подменю открыто)
-	.no-touchevents &:hover, li.is-open > .region-menu__tab &
-		background-color: shade($region-menu-bg-color, 90%)
-		border-color: shade($region-menu-border-color, 90%)
 
 	// активное (подменю открыто)
 	li.is-open > .region-menu__tab & i
@@ -378,23 +363,24 @@ $btn-region-menu-margin-right: 20px
 
 	// особые стили для пунктов навигации ВТОРОГО урованя
 	ul, a, .region-menu__angle
-		background-color: shade($region-menu-bg-color, 90%)
-		border-color: shade($region-menu-border-color, 90%)
+		background-color: $region-menu-bg-color-s
 
 		.no-touchevents &:hover
 			color: white
-			background-color: shade($region-menu-bg-color, 80%)
-	ul
-		border-style: solid
-		border-width: 2px 0 0 8px
 
-	a
-		+padding-horizontal(round($grid-inside-horizontal-space*1))
-
-	//ul
+	.region-menu__drop
 		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
-		ul
+		ul, a, .region-menu__angle
+			background-color: $region-menu-bg-color-ss
+
+		.region-menu__drop
 			// особые стили для пунктов навигации ЧЕТВЕРТОГО урованя
-			ul
+			ul, a, .region-menu__angle
+				background-color: $region-menu-bg-color-sss
+
+			.region-menu__drop
+				// особые стили для пунктов навигации ПЯТОГО урованя
+				ul, a, .region-menu__angle
+					background-color: $region-menu-bg-color-ssss
 
 /*MENU REGION end

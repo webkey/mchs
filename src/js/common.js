@@ -2071,6 +2071,10 @@ function stickyLayout(){
 
 		var timeoutSidebarSticky;
 
+		$(window).on('load', function () {
+			console.log('load');
+		});
+
 		$(window).on('load resizeByWidth', function () {
 
 			clearTimeout(timeoutSidebarSticky);
@@ -2079,7 +2083,7 @@ function stickyLayout(){
 					parent: '.main-holder',
 					offset_top: offsetTopBase
 				});
-			}, 50);
+			}, 200);
 
 		});
 
@@ -2103,7 +2107,7 @@ function stickyLayout(){
 					parent: '.main-holder',
 					offset_top: offsetTop
 				});
-			}, 100);
+			}, 200);
 
 		});
 
@@ -2127,7 +2131,7 @@ function stickyLayout(){
 					parent: '.main-holder',
 					offset_top: offsetTop
 				});
-			}, 100);
+			}, 200);
 
 		});
 
@@ -2156,7 +2160,7 @@ function stickyLayout(){
 				}).on("sticky_kit:unbottom", function(e) {
 					$(e.target).removeClass('is_bottom')
 				});
-			}, 100);
+			}, 200);
 
 		});
 
@@ -2186,7 +2190,7 @@ function stickyLayout(){
 					parent: '.main-inside',
 					offset_top: offsetTop
 				});
-			}, 100);
+			}, 200);
 
 		});
 
@@ -2374,10 +2378,10 @@ $(document).ready(function(){
 	toggleHeader();
 	fixedHeader();
 	// behaviorLogoOnScroll();
-	scrollToSection();
 	hoverClassInit();
 	addAlignClass();
 	// navExpander();
+	scrollToSection();
 	multiAccordionInit();
 	toggleLanguages();
 	toggleYears();
