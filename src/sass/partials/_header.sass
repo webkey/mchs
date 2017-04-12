@@ -53,6 +53,9 @@
 	.elements-is-transform &
 		height: $header-top-height
 
+		img
+			backface-visibility: hidden
+
 	//.header-fixed.touchevents &
 		height: $header-top-height
 
@@ -82,10 +85,9 @@
 			position: absolute
 			top: 50%
 			left: 50%
-			backface-visibility: hidden
 			transform: translate(-50%, -50%)
-			height: 100px
-			max-height: 90%
+			height: 120px
+			max-height: 88%
 			+push-auto
 			font-size: $font-size-small
 			letter-spacing: normal

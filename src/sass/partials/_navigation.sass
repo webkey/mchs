@@ -174,28 +174,31 @@ div[class*="-nav__drop"]
 
 /*main items
 .nav__list > li //, .priority-nav__dropdown > li
-		display: inline-block
-		vertical-align: top
-		position: relative
+	display: inline-block
+	vertical-align: top
+	position: relative
 
-		&.active
-			z-index: 1
+	&:nth-child(n+8)
+		display: none
 
-		& > a
-			display: block
-			padding: 17px $nav-item-space
-			+font($font-size-small, 26px)
-			color: #fff
-			text-align: center
-			background: none
-			z-index: 95
+	&.active
+		z-index: 1
 
-			+media('<mob-lg')
-				+padding-vertical(12px)
+	& > a
+		display: block
+		padding: 17px $nav-item-space
+		+font($font-size-small, 26px)
+		color: #fff
+		text-align: center
+		background: none
+		z-index: 95
 
-		&.hover > a, &.active > a, &.current > a, .no-js &:hover > a
-			background: $color-nav-bg-hover
-			color: $text-color
+		+media('<mob-lg')
+			+padding-vertical(12px)
+
+	&.hover > a, &.active > a, &.current > a, .no-js &:hover > a
+		background: $color-nav-bg-hover
+		color: $text-color
 
 /*main items end
 

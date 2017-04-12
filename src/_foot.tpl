@@ -1,5 +1,5 @@
 <!-- >>> foot.tpl <<< -->
-<!--footer-->
+<!--FOOTER-->
 <footer class="footer">
 	<div class="layout">
 		<div class="footer__holder">
@@ -108,7 +108,11 @@
 		</div>
 	</div>
 </footer>
-<!--footer end-->
+<!--FOOTER end-->
+
+<!--POPUPS-->
+@@include('_popups.tpl')
+<!--POPUPS end-->
 
 <!--[if lte IE 9]><script src="js/classList.min.js"></script><![endif]-->
 <script src="js/jquery.min.js"></script>

@@ -344,7 +344,7 @@ function scrollToSection() {
 			highlightClass: 'active-section',
 			highlightSelector: '.sidebar-menu-js a',
 			scrollSpeed: 700,
-			offset: 100,
+			offset: 80,
 			forceSingleHighlight: true,
 			keepHighlightUntilNext: false
 		});
@@ -1732,6 +1732,8 @@ function masonryInit() {
 			$staggerItems = self.$staggerItems,
 			_animationType = self._animationType;
 
+		// console.log('preparationAnimation: ', $navContainer);
+
 		if (_animationType === 'ltr') {
 			TweenMax.set($navContainer, {
 				xPercent: -100,
@@ -1818,16 +1820,16 @@ function popupsInit(){
 	}
 
 	/*navigation popup*/
-	var navPopupClass = '.site-map-js';
+	var navPopupClass = '.popup-nav-small-js';
 
 	if($(navPopupClass).length){
 
 		new ExtraPopup({
 			navContainer: navPopupClass,
-			navMenu: '.site-map__list',
+			navMenu: '.nav__list',
 			btnMenu: '.btn-nav-open-js',
-			btnMenuClose: '.btn-popup-close-js',
-			navMenuItem: '.site-map__box',
+			btnMenuClose: '.btn-nav-small-close-js',
+			navMenuItem: '.nav__list li',
 			overlayAppendTo: 'body',
 			closeOnResize: true,
 			// mediaWidth: 1280,
@@ -1838,19 +1840,19 @@ function popupsInit(){
 	}
 
 	/*banners popup*/
-	var popupAsideClass = '.popup-aside-js';
+	var popupBannersClass = '.popup-banners-js';
 
-	if($(popupAsideClass).length){
+	if($(popupBannersClass).length){
 
 		new ExtraPopup({
-			navContainer: popupAsideClass,
+			navContainer: popupBannersClass,
 			// navMenu: '.site-map__list',
-			btnMenu: '.btn-aside-open-js',
+			btnMenu: '.btn-banners-open-js',
 			btnMenuClose: '.btn-banners-close-js',
 			// navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: true,
-			mediaWidth: 1600,
+			// mediaWidth: 1600,
 			animationType: 'rtl',
 			animationSpeed: 300,
 			overlayAlpha: 0.35
@@ -1871,7 +1873,7 @@ function popupsInit(){
 			// navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: true,
-			mediaWidth: 1200,
+			// mediaWidth: 1200,
 			animationSpeed: 300,
 			overlayAlpha: 0.35
 		});
@@ -2071,10 +2073,6 @@ function stickyLayout(){
 
 		var timeoutSidebarSticky;
 
-		$(window).on('load', function () {
-			console.log('load');
-		});
-
 		$(window).on('load resizeByWidth', function () {
 
 			clearTimeout(timeoutSidebarSticky);
@@ -2225,7 +2223,9 @@ function regionMenu() {
 	});
 	$(window).on('load', function () {
 		$('.region-menu-panel').mCustomScrollbar({
-			theme:"minimal-dark"
+			theme:"minimal-dark",
+			scrollInertia: 100,
+			autoDraggerLength: true
 		});
 	})
 }
@@ -2274,6 +2274,21 @@ function datePickerInit() {
 	});
 }
 /*datepicker initial end*/
+
+function blockedScrollOnPage() {
+	$(window).on('load debouncedresize', function () {
+		if (Modernizr.objectfit) { // shame: detect ie 11 and older
+			if (window.innerWidth > 992) {
+				$('.sidebar').on('mouseenter', function () {
+					noScroll();
+				}).on('mouseleave', function () {
+					canScroll();
+				});
+			}
+		}
+	})
+}
+
 
 /**
  * !footer at bottom
@@ -2395,6 +2410,7 @@ $(document).ready(function(){
 	stickyLayout();
 	regionMenu();
 	datePickerInit();
+	blockedScrollOnPage();
 	footerBottom();
 	formSuccessExample();
 });

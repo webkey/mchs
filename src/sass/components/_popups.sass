@@ -2,9 +2,12 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+//================== EXTRA POPUP =================//
 /*extra popup*/
 html.before-extra-popup-open
-	//+scroll-blocked() // блокировка сколла во время открытия попапа
+
+	&.touchevents
+		+scroll-blocked() // блокировка скролла во время открытия попапа (на тачскринах)
 
 	.wrapper
 		z-index: 100 // поднять контент выше футера
@@ -56,6 +59,41 @@ html.before-extra-popup-open
 
 /*extra popup end*/
 
+//================== SITE MAP POPUP =================//
+/*site map menu*/
+.site-map
+	display: block
+
+	a
+		color: $text-color
+		text-decoration: none
+
+		.no-touchevents &:hover, .no-touchevents .current > &, .current > &
+			color: $text-color-alt
+
+.site-map__container
+	+grid-parent($grid-space)
+	+clear-spacing
+
+.site-map__box
+	+grid-item(3, $grid-space, $bottom-space)
+	font-size: $font-size
+	line-height: $line-height
+	letter-spacing: normal
+
+	+media('<mob-lg')
+		+grid-item(1, $grid-space, $bottom-space)
+
+.site-map__heading
+	display: block
+	margin-bottom: $bottom-space
+	font-size: 14px
+	line-height: 24px
+	font-weight: bold
+	text-transform: uppercase
+
+/*site map menu end*/
+
 /*button popup site map close*/
 .extra-popup .btn-popup-close
 	position: absolute
@@ -69,6 +107,7 @@ html.before-extra-popup-open
 
 /*button popup site map close end*/
 
+//================== BANNERS POPUP =================//
 /*popup banners
 .popup-banners
 	position: fixed
@@ -182,6 +221,7 @@ html.before-extra-popup-open
 
 /*banner closer end*/
 
+//================== NEWS POPUP =================//
 /*popup news
 .popup-news
 	position: fixed
@@ -209,12 +249,15 @@ html.before-extra-popup-open
 		margin-top: -10px
 		z-index: -1
 
-	.news-links
+	.news-links, h3
 		padding: 25px
 		margin: 0
 
 		+media('<mob-lg')
 			padding: $grid-layout-space--mob-lg
+
+	h3
+		padding-bottom: $bottom-space-sm
 
 	.news-links__item
 		+padding-horizontal(0)
@@ -270,3 +313,83 @@ html.before-extra-popup-open
 				background-color: $text-color-alt
 
 /*news closer end*/
+
+//================== NAVIGATION FOR SMALL SCREEN POPUP =================//
+/*main navigation for small screen
+.popup-nav-small
+	position: fixed
+	left: 0
+	top: #{$header-top-height}
+	width: 320px
+	height: calc(100% - #{$header-top-height})
+	background: white
+	z-index: 998
+
+	+media('<mob-lg')
+		top: #{$header-top-height--sm}
+		height: calc(100% - #{$header-top-height--sm})
+		width: 100%
+
+	&.hide-on-load
+		opacity: 0
+		visibility: hidden
+
+	// for ios add bg after inertia scroll
+	&::after
+		+pseudo()
+		+cover(null, 0, 100%, 50%, 100%)
+		background: inherit
+		margin-top: -10px
+		z-index: -1
+
+.popup-nav-small__holder
+	overflow-y: auto
+	overflow-x: hidden
+	max-height: 100%
+
+	& > *:last-child
+		margin-bottom: 0
+
+/*main navigation for small screen end
+
+/*main navigation for small screen closer*/
+.btn-popup-nav-small-close
+	position: fixed
+	left: 0
+	top: 0
+	right: auto
+	bottom: auto
+	+size($header-top-height)
+	background: white
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+	z-index: 999
+	box-shadow: inset 0 -1px 0 $border-color
+
+	+media('<mob-lg')
+		left: $header-top-height--sm
+		+size($header-top-height--sm)
+
+	&.before-extra-popup-open
+		opacity: 1
+		visibility: visible
+
+	& > i
+		transition-property: transform
+		transition-duration: $animation-speed
+
+		&::before, &::after
+			background-color: $text-color-alt
+
+	.no-touchevents &:hover
+		background-color: white
+
+		& > i
+			transform: scale(1.2)
+
+			&::before, &::after
+				background-color: $text-color-alt
+
+/*main navigation for small screen closer end*/

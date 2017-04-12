@@ -13,8 +13,7 @@
 .sidebar-menu
 	background: $header-bg
 	padding: 28px 0
-	border: solid $bg-color
-	border-width: 1px 0
+	border-top: 1px solid $bg-color
 
 	a
 		display: block
@@ -39,7 +38,7 @@
 			top: 0
 			height: 100%
 			width: 4px
-			background: $mark-color
+			background: $text-color-alt
 			opacity: 0
 			visibility: hidden
 			transition-property: color, opacity, visibility
@@ -73,8 +72,8 @@
 	position: relative
 	padding: round($sidebar-inner-space-horizontal*0.8) $sidebar-inner-space-horizontal
 	background-color: white
+	border-top: 1px solid $bg-color
 	z-index: 15
-	//border-top: 1px solid $bg-color
 
 	&::after
 		+pseudo()
