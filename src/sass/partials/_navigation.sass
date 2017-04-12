@@ -345,3 +345,195 @@ div[class*="-nav__drop"]
 
 /*button navigation open end*/
 /*NAVIGATION end*/
+
+/*NAVIGATION MOBILE*/
+/*MENU REGION
+$nav-mobile-text-color: rgba(255, 255, 255, 0.50) !default
+$nav-mobile-bg-color: white !default
+$nav-mobile-bg-color-s: $text-color-alt !default
+$nav-mobile-bg-color-ss: shade($nav-mobile-bg-color-s, 86%) !default
+$nav-mobile-bg-color-sss: shade($nav-mobile-bg-color-s, 72%) !default
+$nav-mobile-bg-color-ssss: shade($nav-mobile-bg-color-s, 58%) !default
+$nav-mobile-bg-color-sssss: shade($nav-mobile-bg-color-s, 44%) !default
+$nav-mobile-border-color: rgba(0, 0, 0, 0.15) !default
+$nav-mobile-tab-height: 70px !default
+
+// ==================== ОБЩИЕ стили для пунктов навигации =====================
+.nav-mobile__list
+	position: relative
+
+	li
+		position: relative
+		overflow: hidden
+
+	.nav-mobile__tab
+		position: relative
+
+	a
+		display: block
+		position: relative
+		color: $nav-mobile-text-color
+		text-decoration: none
+		transition-property: color, background-color
+		transition-duration: $animation-speed
+		padding: 21px $grid-inside-horizontal-space 22px
+		border-bottom: 1px solid $nav-mobile-border-color
+		font-size: 1.4rem
+		line-height: 1.429
+		letter-spacing: 0.02em
+
+// стили для пунктов навигации, у которых ЕСТЬ ПОДМЕНЮ
+.nav-mobile__list li.has-drop > .nav-mobile__tab > a
+	padding-right: (round($grid-inside-horizontal-space*2.5))
+
+// ==================== СТРЕЛКИ навигации =====================
+.nav-mobile__angle
+	position: absolute
+	right: 0
+	top: 0
+	width: round($grid-inside-horizontal-space*2)
+	height: 100%
+	background-color: $nav-mobile-bg-color
+	border: solid $nav-mobile-border-color
+	border-width: 0 0 1px 1px
+	transition-property: transform, color, background-color
+	transition-duration: $animation-speed
+	z-index: 2
+	cursor: pointer
+	display: none
+
+	li.has-drop > .nav-mobile__tab > &
+		display: block
+
+	i
+		position: absolute
+		left: 50%
+		top: 50%
+		width: 12px
+		height: 8px
+		pointer-events: none
+		margin: -4px 0 0 -6px
+		transition-property: transform
+		transition-duration: $animation-speed
+		font-size: 0
+		line-height: 0
+
+		&::before, &::after
+			content: ''
+			position: absolute
+			bottom: 0
+			height: 10px
+			width: 2px
+			border-radius: 2px
+			backface-visibility: hidden
+			background-color: $nav-mobile-text-color
+			transform-origin: center center
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		&::before
+			right: 50%
+			transform-origin: right bottom
+			transform: rotate(45deg)
+
+		&::after
+			left: 50%
+			transform-origin: left bottom
+			transform: rotate(-45deg)
+
+	// ховер
+	.no-touchevents &:hover i
+		&::before, &::after
+			background-color: white
+
+// стили стрелок навигации для разных состояний
+.nav-mobile__angle
+
+	// активное (подменю открыто)
+	li.is-open > .nav-mobile__tab & i
+		transform: rotate(-0.5turn)
+
+// ==================== ОБЩИЕ стили для ПОДМЕНЮ навигации ==================
+.nav-mobile__drop
+	position: relative
+	background-color: $nav-mobile-bg-color
+	display: none
+
+// ==================== стили для пункта навигации ТЕКУЩЕЙ страницы =================
+.nav-mobile__list li.current > .nav-mobile__tab
+
+	&, .no-touchevents &
+
+		a, a:hover
+			color: white
+			box-shadow: inset 5px 0 0 white
+
+// ===================== стили для АКТИВНОГО пункта навигации (С ОТКРЫТЫМ ПОДМЕНЮ) =================
+.nav-mobile__list li
+	&.is-open > .nav-mobile__tab a
+		&::before
+			opacity: 1
+			transform: translate(0, 0)
+
+// ===================== особые стили для пунктов навигации ПЕРВОГО урованя ====================
+.nav-mobile__list > li
+
+	& > .nav-mobile__tab
+		a
+			font-family: $font-alt
+			font-weight: 400
+			font-size: 1.6rem
+			line-height: 1.5
+			color: $text-color
+			background-color: $nav-mobile-bg-color
+			+padding-vertical(18px, 17px)
+
+			// стили для ховера (список ПЕРВОГО урованя)
+			.no-touchevents &:hover
+				color: $text-color-alt
+
+		.nav-mobile__angle
+			i
+				&::before, &::after
+					background-color: $text-color
+
+			// ховер
+			.no-touchevents &:hover i
+				&::before, &::after
+					background-color: $text-color-alt
+
+	// стили для пункта ТЕКУЩЕЙ страницы (список ПЕРВОГО урованя)
+	&.current > .nav-mobile__tab
+
+		&, .no-touchevents &
+
+			a, a:hover
+				color: $text-color-alt
+				box-shadow: inset 5px 0 0 $text-color-alt
+
+// ================= особые стили для пунктов ПОДМЕНЮ ===================
+.nav-mobile__drop
+
+	// особые стили для пунктов навигации ВТОРОГО урованя
+	ul, a, .nav-mobile__angle
+		background-color: $nav-mobile-bg-color-s
+
+		.no-touchevents &:hover
+			color: white
+
+	.nav-mobile__drop
+		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+		ul, a, .nav-mobile__angle
+			background-color: $nav-mobile-bg-color-ss
+
+		.nav-mobile__drop
+			// особые стили для пунктов навигации ЧЕТВЕРТОГО урованя
+			ul, a, .nav-mobile__angle
+				background-color: $nav-mobile-bg-color-sss
+
+			.nav-mobile__drop
+				// особые стили для пунктов навигации ПЯТОГО урованя
+				ul, a, .nav-mobile__angle
+					background-color: $nav-mobile-bg-color-ssss
+
+/*NAVIGATION MOBILE end*/

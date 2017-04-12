@@ -137,7 +137,7 @@
 <!--main navigation for small screen-->
 <div class="popup-nav-small hide-on-load popup-nav-small-js">
 	<div class="popup-nav-small__holder">
-		@@include('_nav-base.tpl', { "mainNavItemActive": "", "classKey": "nav-mobile", "navTag": "" })
+		@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive", "classKey": "nav-mobile", "navTag": "" })
 	</div>
 </div>
 <a href="#" class="btn-popup-close btn-popup-nav-small-close btn-nav-small-close-js"><i></i><span>Закрыть</span></a>

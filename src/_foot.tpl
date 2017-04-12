@@ -111,7 +111,7 @@
 <!--FOOTER end-->
 
 <!--POPUPS-->
-@@include('_popups.tpl')
+@@include('_popups.tpl', { "mainNavItemActive": "@@mainNavItemActive"})
 <!--POPUPS end-->
 
 <!--[if lte IE 9]><script src="js/classList.min.js"></script><![endif]-->

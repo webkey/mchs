@@ -682,8 +682,7 @@ function navExpander() {
 			$anyAccordionItem = this.$accordionItem,
 			collapsibleElement = this.collapsibleElement,
 			$collapsibleElement = this.$collapsibleElement;
-
-		$accordionContainer.on('click', '.region-menu-handler-js', function (e) {
+		$accordionContainer.on('click', self.options.handler, function (e) {
 
 			var current = $(this);
 			var currentAccordionItem = current.closest($anyAccordionItem);
@@ -774,6 +773,19 @@ function multiAccordionInit() {
 				$(document.body).trigger("sticky_kit:recalc");
 			}, 50);
 		})
+	}
+
+	var navMobile = '.nav-mobile-js';
+
+	if($(navMobile).length){
+		new MultiAccordion({
+			accordionContainer: navMobile,
+			accordionItem: 'li',
+			handler: '.nav-mobile-handler-js',
+			collapsibleElement: '.nav-mobile-drop-js',
+			openClass: 'is-open',
+			animateSpeed: 200
+		});
 	}
 }
 /*multi accordion initial end*/
@@ -2221,15 +2233,40 @@ function regionMenu() {
 			}, 50);
 		})
 	});
-	$(window).on('load', function () {
-		$('.region-menu-panel').mCustomScrollbar({
-			theme:"minimal-dark",
-			scrollInertia: 100,
-			autoDraggerLength: true
-		});
-	})
 }
 /*region menu end*/
+
+/**
+ * !custom scroll
+ * */
+function customScrollInit() {
+	var customScrollOptions = {
+		theme:"minimal-dark",
+		scrollInertia: 100,
+		autoDraggerLength: true
+	};
+
+	var $regionMenuContainer = $('.region-menu-panel');
+	if($regionMenuContainer.length) {
+		$regionMenuContainer.mCustomScrollbar(customScrollOptions);
+	}
+
+	var $navMobileContainer = $('.popup-nav-small__holder');
+	if($navMobileContainer.length) {
+		$navMobileContainer.mCustomScrollbar(customScrollOptions);
+	}
+
+	var $popupNewsContainer = $('.popup-news__holder');
+	if($popupNewsContainer.length) {
+		$popupNewsContainer.mCustomScrollbar(customScrollOptions);
+	}
+
+	var $popupBannersContainer = $('.popup-banners__holder');
+	if($popupBannersContainer.length) {
+		$popupBannersContainer.mCustomScrollbar(customScrollOptions);
+	}
+}
+/*custom scroll end*/
 
 /**
  * !datepicker initial
@@ -2383,6 +2420,7 @@ function formSuccessExample() {
 
 $(window).on('load', function(){
 	$('html').addClass('page-loaded');
+	customScrollInit();
 });
 
 $(document).ready(function(){

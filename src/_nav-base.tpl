@@ -3,7 +3,7 @@
 <!-- @@if(mainNavItemActive === "biography"){ class="current"} -->
 <div class="@@classKey-wrap">
 	<@@if(context.navTag){nav}@@if(!context.navTag){div} class="@@classKey">
-	<ul class="@@classKey__list">
+	<ul class="@@classKey__list @@classKey-js">
 		<!--@@classKey item start-->
 		<li class="has-drop@@if(mainNavItemActive === "О министерстве"){ current}">
 			@@include('_nav-LINK.tpl', { "itemText": "О министерстве", "itemLink": "typography.html", "key": "@@classKey", "specialValue": "" })
