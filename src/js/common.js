@@ -2316,7 +2316,7 @@ function blockedScrollOnPage() {
 	$(window).on('load debouncedresize', function () {
 		if (Modernizr.objectfit) { // shame: detect ie 11 and older
 			if (window.innerWidth > 992) {
-				$('.sidebar').on('mouseenter', function () {
+				$('.sidebar-region').on('mouseenter', function () {
 					noScroll();
 				}).on('mouseleave', function () {
 					canScroll();

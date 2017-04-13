@@ -106,5 +106,41 @@
 		"hasJs": "",
 		"hasntImgSuffix": "",
 		"hasImgSuffix": ""
+	},
+	{
+		"src": "img/img-news-02.jpg",
+		"label": "",
+		"title": "",
+		"text": "Указом Президента присвоены специальные звания «полковник внутренней службы».",
+		"meta": "18.12.2016, 14:30",
+		"size": "",
+		"slider": "",
+		"hasJs": "",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
+	},
+	{
+		"src": "",
+		"label": "",
+		"title": "",
+		"text": "Новогоднее поздравление Министра по чрезвычайным ситуациям Владимира Ващенко.",
+		"meta": "11.12.2016, 08:30",
+		"size": "",
+		"slider": "",
+		"hasJs": "",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
+	},
+	{
+		"src": "img/img-news-02.jpg",
+		"label": "",
+		"title": "",
+		"text": "«Азбука безопасности» – Безопасный Новый год.",
+		"meta": "11.12.2016, 08:30",
+		"size": "",
+		"slider": "",
+		"hasJs": "",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
 	}
 ]

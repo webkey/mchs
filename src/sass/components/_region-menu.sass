@@ -3,15 +3,6 @@
 @import ../../libs/include-media/dist/include-media
 
 /*MENU REGION
-$region-menu-text-color: rgba(255, 255, 255, 0.50) !default
-$region-menu-bg-color: #5e7180 !default
-$region-menu-bg-color-s: shade($region-menu-bg-color, 80%) !default
-$region-menu-bg-color-ss: shade($region-menu-bg-color, 62%) !default
-$region-menu-bg-color-sss: shade($region-menu-bg-color, 48%) !default
-$region-menu-bg-color-ssss: shade($region-menu-bg-color, 38%) !default
-$region-menu-border-color: rgba(0, 0, 0, 0.20) !default
-$region-menu-tab-height: 70px !default
-
 /*region menu heading
 .region-menu-heading
 	overflow: hidden
@@ -184,7 +175,6 @@ $btn-region-menu-margin-right: 20px
 
 .region-menu-panel
 	position: relative
-	background-color: $region-menu-bg-color
 	height: calc(100vh - #{$header-height} - #{round($region-menu-tab-height*2)})
 	+overflow($x: hidden, $y: auto)
 
@@ -195,6 +185,8 @@ $btn-region-menu-margin-right: 20px
 // общие стили для главного списка навигации
 .region-menu__list
 	position: relative
+	background-color: $region-menu-bg-color
+	min-height: 100%
 
 // общие стили для подменю навигации
 .region-menu__drop

@@ -24,11 +24,11 @@
 				"active": false,
 				"anchor": "#branches-anchor"
 				}, {
-				"text": "Региональные управления",
+				"text": "Территориальные управления",
 				"active": false,
 				"anchor": "#regions-anchor"
 				}, {
-				"text": "Инфомрация",
+				"text": "Информация",
 				"active": false,
 				"anchor": "#information-anchor"
 				}

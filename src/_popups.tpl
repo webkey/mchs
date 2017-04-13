@@ -135,9 +135,18 @@
 <!--popup news end-->
 
 <!--main navigation for small screen-->
-<div class="popup-nav-small hide-on-load popup-nav-small-js">
-	<div class="popup-nav-small__holder">
-		@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive", "classKey": "nav-mobile", "navTag": "" })
+<div class="popup-nav-small hide-on-load popup-nav-small-js js-tabs" data-auto-height="false">
+	<div class="nav-small-tabs">
+		<a href="#region-menu-mobile-anchor" class="js-tab-anchor active-tab"><span>Брестское управление</span></a>
+		<a href="#nav-mobile-anchor" class="js-tab-anchor"><span>Меню МЧС РБ</span></a>
+	</div>
+	<div class="nav-small-container js-tab-container">
+		<div class="popup-nav-small__holder js-tab-content" id="region-menu-mobile-anchor">
+			@@include('_region-menu.tpl', { "regionMenuActiveItem": "@@regionMenuActiveItem" })
+		</div>
+		<div class="popup-nav-small__holder js-tab-content" id="nav-mobile-anchor">
+			@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive", "classKey": "nav-mobile", "navTag": "" })
+		</div>
 	</div>
 </div>
 <a href="#" class="btn-popup-close btn-popup-nav-small-close btn-nav-small-close-js"><i></i><span>Закрыть</span></a>
