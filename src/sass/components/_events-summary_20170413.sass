@@ -6,12 +6,12 @@
 .events-sum
 	position: relative
 	margin-bottom: $bottom-space
-	height: ($news-item-height) // Хардкод. Высота должна равняться блоку новостей с картинкой
+	height: ($news-item-sm-height*2+$news-item-height+$grid-space*2) // Хардкод. Высота должна равнятся сумме высот двух блоков новостей без картинки и одной с картинкой
 	overflow: hidden
 	background-color: white
 
 	+media('<desk-hd')
-		height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
+		height: ($news-item-sm-height*2+$news-item-height+$grid-space*2) // Хардкод. Высота должна равнятся сумме высот двух блоков новостей без картинки и одной с картинкой
 
 	&:last-child
 		margin-bottom: 0
@@ -87,7 +87,7 @@
 			transform: scale(1)
 
 .events-sum__panels
-	height: calc(100% - #{$events-summary-nav-height}) // высота блока минус высота переключателей табов
+	height: calc(100% - 60px) // высота блока минус высота переключателей табов
 
 .events-sum__panel
 	$events-sum-bottom: 80px // нижний отступ больше, чем верхний

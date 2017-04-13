@@ -39,6 +39,21 @@
 		float: none
 		width: auto
 
++media('<desk-lg')
+	@for $grid-col from 1 through 12
+		.grid-col-lg-#{$grid-col}
+			width: (100%/(12)*$grid-col)
+
+			@if $grid-col == 12
+				margin-bottom: $grid-space
+
+				&:last-child
+					margin-bottom: 0
+
+	.grid-col-lg-width-auto
+		float: none
+		width: auto
+
 +media('<tab-lg')
 	@for $grid-col from 1 through 12
 		.grid-col-md-#{$grid-col}
@@ -89,5 +104,9 @@
 
 	[class*="grid-col-"], [class^="grid-col-"]
 		+padding-horizontal(0)
+
+.grid-col-width-auto
+	float: none
+	width: auto
 
 /* GRID LAYOUT END

@@ -43,7 +43,13 @@
 		+media("<desk-hd")
 			padding-bottom: 40px
 
-		+media("<tab-lg")
+		+media("<desk-lg")
+			padding-bottom: 26px
+
+		+media("<mob-lg")
+			padding-bottom: 40px
+
+		+media("<mob-md")
 			padding-bottom: 26px
 
 	.video-holder
@@ -55,7 +61,7 @@
 	+media("<desk-hd")
 		padding-top: 0
 
-	+media("<tab-lg")
+	+media("<desk-lg")
 		padding-top: $bottom-space
 
 	+media('<mob-lg')
@@ -80,14 +86,26 @@
 		+media("<desk-hd")
 			+margin-horizontal(-15px)
 
-		+media("<tab-lg")
+		+media("<desk-lg")
+			+margin-horizontal(-5px)
+
+		+media("<mob-lg")
+			+margin-horizontal(-15px)
+
+		+media("<mob-md")
 			+margin-horizontal(-5px)
 
 		.social-networks__item
 			+media("<desk-hd")
 				+margin-horizontal(15px)
 		
-			+media("<tab-lg")
+			+media("<desk-lg")
+				+margin-horizontal(5px)
+
+			+media("<mob-lg")
+				+margin-horizontal(15px)
+
+			+media("<mob-md")
 				+margin-horizontal(5px)
 		
 		a
@@ -141,7 +159,7 @@
 		height: 0
 		padding-bottom: 100%
 
-	+media("<tab-lg")
+	+media("<desk-lg")
 		height: 227px
 
 .soc-media__text
@@ -154,7 +172,7 @@
 	+media("<desk-hd")
 		height: auto
 
-	+media("<tab-lg")
+	+media("<desk-lg")
 		height: round-float($font-size-small*$line-height-small*4, 1)
 
 .soc-media__link

@@ -13,6 +13,7 @@
 
 .section__title
 	position: relative
+	overflow: hidden
 	font-family: $font-alt
 	margin-bottom: $bottom-space-sm
 	color: $text-color-alt
@@ -32,6 +33,9 @@
 		+media('<mob-lg')
 			display: block
 			margin-bottom: (round-float($bottom-space-sm*0.5, 1))
+
+		a
+			font-weight: inherit
 
 	a
 		font-size: 0.9em
@@ -146,7 +150,7 @@
 .hide-tab-lg
 	display: none
 
-	+media('<tab-lg')
+	+media('<desk-lg')
 		display: block
 
 /*section end*/

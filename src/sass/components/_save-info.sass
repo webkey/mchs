@@ -10,6 +10,9 @@
 	+media('<desk-hd')
 		height: $news-item-lg-img-height - $events-summary-nav-height - $grid-space // Хардкод. Высота должна равняться высоте изображения (или слайдера) большой новости минус высота переключателей табов блока ниже
 
+	+media('<desk-lg')
+		height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
+
 	+media('<mob-lg')
 		height: 180px
 

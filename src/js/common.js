@@ -1253,10 +1253,16 @@ function slidersInit() {
 							slidesToScroll: 3
 						}
 					}, {
-						breakpoint: 960,
+						breakpoint: 1600,
 						settings: {
 							slidesToShow: 2,
 							slidesToScroll: 2
+						}
+					}, {
+						breakpoint: 360,
+						settings: {
+							slidesToShow: 1,
+							slidesToScroll: 1
 						}
 					}
 				]
@@ -1389,15 +1395,15 @@ function masonryInit() {
 		});
 	}
 
-	var $newsGrid = $('.news-grid--main .news-grid__list');
-	if ($newsGrid.length) {
-		$newsGrid.masonry({
-			// options
-			itemSelector: '.news-grid-js',
-			columnWidth: '.news-grid__item',
-			percentPosition: false
-		});
-	}
+	// var $newsGrid = $('.news-grid--main .news-grid__list');
+	// if ($newsGrid.length) {
+	// 	$newsGrid.masonry({
+	// 		// options
+	// 		itemSelector: '.news-grid-js',
+	// 		columnWidth: '.news-grid__item',
+	// 		percentPosition: false
+	// 	});
+	// }
 }
 /*masonry*/
 
@@ -2246,24 +2252,26 @@ function customScrollInit() {
 		autoDraggerLength: true
 	};
 
-	var $regionMenuContainer = $('.region-menu-panel');
-	if($regionMenuContainer.length) {
-		$regionMenuContainer.mCustomScrollbar(customScrollOptions);
-	}
+	if (DESKTOP) {
+		var $regionMenuContainer = $('.region-menu-panel');
+		if ($regionMenuContainer.length) {
+			$regionMenuContainer.mCustomScrollbar(customScrollOptions);
+		}
 
-	var $navMobileContainer = $('.popup-nav-small__holder');
-	if($navMobileContainer.length) {
-		$navMobileContainer.mCustomScrollbar(customScrollOptions);
-	}
+		var $navMobileContainer = $('.popup-nav-small__holder');
+		if ($navMobileContainer.length) {
+			$navMobileContainer.mCustomScrollbar(customScrollOptions);
+		}
 
-	var $popupNewsContainer = $('.popup-news__holder');
-	if($popupNewsContainer.length) {
-		$popupNewsContainer.mCustomScrollbar(customScrollOptions);
-	}
+		var $popupNewsContainer = $('.popup-news__holder');
+		if ($popupNewsContainer.length) {
+			$popupNewsContainer.mCustomScrollbar(customScrollOptions);
+		}
 
-	var $popupBannersContainer = $('.popup-banners__holder');
-	if($popupBannersContainer.length) {
-		$popupBannersContainer.mCustomScrollbar(customScrollOptions);
+		var $popupBannersContainer = $('.popup-banners__holder');
+		if ($popupBannersContainer.length) {
+			$popupBannersContainer.mCustomScrollbar(customScrollOptions);
+		}
 	}
 }
 /*custom scroll end*/

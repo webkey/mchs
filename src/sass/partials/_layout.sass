@@ -165,6 +165,10 @@ body
 	+media('<desk-lg')
 		//padding-right: $layout-grid-space--desk-md
 		//margin: 0 $sidebar-right-width--desk-md 0 0
+		margin-right: $sidebar-right-width--desk-lg
+		padding-right: $grid-layout-space--desk-lg
+
+	+media('<tab-lg')
 		margin-right: 0
 		padding-right: 0
 
@@ -229,15 +233,20 @@ body
 	width: $sidebar-right-width
 	//position: relative // нельзя задавать position, кроме static. нужно для работы sticky-kit
 
+	+media('<desk-lg')
+		margin: 0 0 0 -#{$sidebar-right-width--desk-lg}
+		width: $sidebar-right-width--desk-lg
+
 	.home-page &
 		padding-top: calc(2rem * 1.2 + 1.5rem) // Костыль. Высота однострочного заголовка секций
 
-	+media('>=desk-lg')
-		//transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important
-		//opacity: 1 !important
-		//visibility: visible !important
+	//+media('>=desk-lg')
+		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important
+		opacity: 1 !important
+		visibility: visible !important
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
+	+media('<tab-lg')
 		display: none
 		//margin: 0 0 0 -#{$sidebar-right-width--desk-md}
 		//width: $sidebar-right-width--desk-md

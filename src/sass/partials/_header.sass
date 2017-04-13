@@ -515,16 +515,20 @@ $user-options-text-color: #80a7c4
 			transition-duration: $animation-speed
 
 		svg
-			width: 30px
-			height: 30px
+			+size(30px)
 			display: inline-block
 			transform: scale(0.8)
 			transition-property: background-color, color
 			transition-duration: $animation-speed
 
-			+media('<mob-lg')
-				width: 28px
-				height: 28px
+			&.svg-search
+				+size(24px)
+
+			&.svg-visually-impaired
+				+size(32px)
+
+			&.svg-share
+				+size(25px)
 
 		path
 			fill: $user-options-text-color

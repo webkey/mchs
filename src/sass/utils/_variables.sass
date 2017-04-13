@@ -78,6 +78,38 @@ $odnoklassniki-color: #f2822e
 $instagram-color-start: #de4f5a
 $instagram-color-end: #a43b97
 
+// grids
+$grid-space: 20px !default // отступы между элементами сетки, например, новостей
+$grid-inside-horizontal-space: round($grid-space*1.5) !default // горизонтальные отступы внутри элементов сетки
+$grid-inside-vertical-space: round($grid-inside-horizontal-space*0.85) !default // вертикальные отступы внутри элементов сетки
+$news-label-size: 50px !default // размер меток содержания статьи: видео, аудио, pdf и т.д.
+
+// new
+// размеры подобранны и заданы хардкодом, чтобы сохранить полную идентичность дизайну без применения js
+//$news-item-height: 299px !default // высота стандартного элемета превью новостей
+$news-item-height: 328px !default // высота стандартного элемета превью новостей
+$news-item-width-base: 270px !default // ширина стандартного элемета превью новостей без учета бокового отступа
+$news-item-width: $news-item-width-base+$grid-space !default // ширина стандартного элемета превью новостей с учетом боковых отступов
+$news-item-img-height: 154px !default // высота картикнки
+$news-item-content-height: $news-item-height - $news-item-img-height !default // высота контента превью новостей
+//$news-item-sm-height: 154px !default // высота элемента превью новостей без изображения
+$news-item-sm-height: round($news-item-height/2)-(round($grid-space/2)) !default // высота элемента превью новостей без изображения
+$news-item-sm-width: $news-item-width !default // ширина элемента превью новостей без изображения (такая же как и у стандартного)
+$news-item-sm-content-height: $news-item-sm-height !default // высота контента превью новостей без изображения
+$news-item-lg-height: $news-item-height*2+$grid-space !default // высота большого элемета
+$news-item-lg-width: $news-item-width*2 !default // ширина большого элемета
+$news-item-lg-img-height: 350px !default // высота картикнки в большом блоке
+$news-item-lg-img-height-mob-lg: 200px !default // для разрешений до 640
+$news-item-lg-content-height: $news-item-lg-height - $news-item-lg-img-height !default // высота контента больших превью новостей
+$news-item-lg-content-height-mob-lg: $news-item-lg-height - $news-item-lg-img-height-mob-lg !default // высота контента больших превью новостей (для разрешений до 640)
+
+// sidebars
+$sidebar-left-width: 270px !default
+$sidebar-right-width: 270px !default
+$sidebar-right-width--desk-lg: 225px !default
+$sidebar-right-width--desk-md: 160px !default
+$sidebar-inner-space-horizontal: 30px !default
+
 // layout
 $main-layout-width: 1920px !default
 $main-layout-space-horizontal: 0 !default
@@ -98,32 +130,19 @@ $article-layout-space-vertical--mob-lg: round($article-layout-space-horizontal--
 $text-layout-width: 640px !default
 $text-layout-space-horizontal: 0 !default
 $section-layout-width: null !default
-$section-layout-width-desk-hd: 1170px !default
-$section-layout-width-desk-lg: 850px !default
-$section-layout-width-tab-lg: 560px !default
-$section-layout-width-mob-sm: 270px !default
+//$section-layout-width-desk-hd: 1170px !default
+//$section-layout-width-desk-lg: 850px !default
+//$section-layout-width-tab-lg: 560px !default
+//$section-layout-width-mob-sm: 270px !default
 
-// grids
-$grid-space: 20px !default // отступы между элементами сетки, например, новостей
-$grid-inside-horizontal-space: round($grid-space*1.5) !default // горизонтальные отступы внутри элементов сетки
-$grid-inside-vertical-space: round($grid-inside-horizontal-space*0.85) !default // вертикальные отступы внутри элементов сетки
-$news-label-size: 50px !default // размер меток содержания статьи: видео, аудио, pdf и т.д.
-
-// new
-// размеры подобранны и заданы хардкодом, чтобы сохранить полную идентичность дизайну без применения js
-$news-item-height: 299px !default // высота стандартного элемета превью новостей
-$news-item-width: 270px+$grid-space !default // ширина стандартного элемета превью новостей с учетом боковых отступов
-$news-item-img-height: 154px !default // высота картикнки
-$news-item-content-height: $news-item-height - $news-item-img-height !default // высота контента превью новостей
-$news-item-sm-height: 154px !default // высота элемента превью новостей без изображения
-$news-item-sm-width: $news-item-width !default // ширина элемента превью новостей без изображения (такая же как и у стандартного)
-$news-item-sm-content-height: $news-item-sm-height !default // высота контента превью новостей без изображения
-$news-item-lg-height: $news-item-height*2+$grid-space !default // высота большого элемета
-$news-item-lg-width: $news-item-width*2 !default // ширина большого элемета
-$news-item-lg-img-height: 350px !default // высота картикнки в большом блоке
-$news-item-lg-img-height-mob-lg: 200px !default // для разрешений до 640
-$news-item-lg-content-height: $news-item-lg-height - $news-item-lg-img-height !default // высота контента больших превью новостей
-$news-item-lg-content-height-mob-lg: $news-item-lg-height - $news-item-lg-img-height-mob-lg !default // высота контента больших превью новостей (для разрешений до 640)
+$section-layout-width-desk-hd: $news-item-width-base*3+$grid-space*2+$sidebar-right-width+$grid-layout-space--desk-hd !default
+$section-layout-width-desk-lg: $news-item-width-base*2+$grid-space*1+$sidebar-right-width--desk-lg+$grid-layout-space--desk-lg !default
+$section-layout-width-tab-lg: $news-item-width-base*2+$grid-space !default
+$section-layout-width-mob-sm: $news-item-width-base !default
+//@debug $section-layout-width-desk-hd
+//@debug $section-layout-width-desk-lg
+//@debug $section-layout-width-tab-lg
+//@debug $section-layout-width-mob-sm
 
 // events-summary (только для текущего проекта)
 $events-summary-nav-height: 60px !default
@@ -133,12 +152,6 @@ $obzh-tabs-nav-height: 60px !default
 
 // form
 $space-bottom-form: 3rem !default
-
-// sidebars
-$sidebar-left-width: 270px !default
-$sidebar-right-width: 270px !default
-$sidebar-right-width--desk-md: 160px !default
-$sidebar-inner-space-horizontal: 30px !default
 
 // side
 $side-width: 60px
