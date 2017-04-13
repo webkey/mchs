@@ -510,7 +510,8 @@ function hoverClassInit(){
 		this.$navDropMenu = $(options.navDropMenu, container);     // Дроп-меню всех уровней.
 
 		this.modifiers = {
-			alignRight: 'align-right'
+			alignRight: 'align-right',
+			alignBottom: 'align-bottom'
 		};
 
 		this.addAlignDropClass();
@@ -520,8 +521,9 @@ function hoverClassInit(){
 	PositionDropMenu.prototype.createAlignDropClass = function (item, drop) {
 		var self = this,
 			alightRightClass = self.modifiers.alignRight,
-			$navContainer = self.$navContainer;
+			alightBottomClass = self.modifiers.alignBottom;
 
+		// for align right
 		// var navContainerPosRight = $navContainer.offset().left + $navContainer.outerWidth();
 		var navContainerPosRight = $('body').outerWidth();
 		var navDropPosRight = drop.offset().left + drop.outerWidth();
@@ -529,19 +531,28 @@ function hoverClassInit(){
 		if(navContainerPosRight < navDropPosRight){
 			item.addClass(alightRightClass);
 		}
+		
+		// for align bottom
+		var navContainerPosBottom = $(window).height();
+		var navDropPosBottom = drop.offset().top + drop.outerHeight();
+
+		if(navContainerPosBottom < navDropPosBottom){
+			item.addClass(alightBottomClass);
+		}
 	};
 
 	PositionDropMenu.prototype.addAlignDropClass = function () {
 		var self = this,
 			$navContainer = self.$navContainer,
 			navMenuItem = self.options.navMenuItem,
-			alightRightClass = self.modifiers.alignRight;
+			alightRightClass = self.modifiers.alignRight,
+			alightBottomClass = self.modifiers.alignBottom;
 
 		$navContainer.on('click', ''+navMenuItem+'', function () {
 			var $this = $(this);
 			var $drop = $this.find(self.$navDropMenu);
 
-			if ( !device.desktop() && $drop.length && !$this.hasClass(alightRightClass)) {
+			if ( !device.desktop() && $drop.length) {
 				self.createAlignDropClass($this, $drop);
 			}
 		});
@@ -550,7 +561,7 @@ function hoverClassInit(){
 			var $this = $(this);
 			var $drop = $this.find(self.$navDropMenu);
 
-			if ( device.desktop() && $drop.length && !$this.hasClass(alightRightClass)) {
+			if ( device.desktop() && $drop.length) {
 				self.createAlignDropClass($this, $drop);
 			}
 		});
@@ -558,8 +569,9 @@ function hoverClassInit(){
 
 	PositionDropMenu.prototype.removeAlignDropClass = function () {
 		var self = this;
-		$(window).on('resizeByWidth', function () {
+		$(window).on('debouncedresize', function () {
 			self.$navMenuItem.removeClass(self.modifiers.alignRight );
+			self.$navMenuItem.removeClass(self.modifiers.alignBottom );
 		});
 	};
 
@@ -586,19 +598,17 @@ function addAlignClass(){
  * !nav expander
  * */
 function navExpander() {
-	// var nav = priorityNav.init({
-	// 	navDropdownLabel: 'Eще...',
-	// 	navDropdownBreakpointLabel: 'Меню',
-	// 	throttleDelay: 200,
-	// 	breakPoint: 768
-	// });
+	var nav = priorityNav.init({
+		navDropdownLabel: 'Eще...',
+		navDropdownBreakpointLabel: 'Меню',
+		throttleDelay: 200,
+		breakPoint: 768
+	});
 
 	var $page = $('html');
 	var $nav = $('.nav');
 	var classResize = 'window-is-resize';
 	var timeout;
-
-
 
 	$(window).on('resizeByWidth', function () {
 		$page.addClass(classResize);
@@ -2127,7 +2137,9 @@ function stickyLayout(){
 
 		});
 
-		$(window).trigger('resize');
+		setTimeout(function () {
+			$(window).trigger('resize');
+		}, 1000) // shame
 	}
 
 	/*sidebar content sticky*/
@@ -2151,7 +2163,9 @@ function stickyLayout(){
 
 		});
 
-		$(window).trigger('resize');
+		setTimeout(function () {
+			$(window).trigger('resize');
+		}, 1000) // shame
 	}
 
 	/*side menu sticky*/
@@ -2441,7 +2455,7 @@ $(document).ready(function(){
 	// behaviorLogoOnScroll();
 	hoverClassInit();
 	addAlignClass();
-	// navExpander();
+	navExpander();
 	scrollToSection();
 	multiAccordionInit();
 	toggleLanguages();

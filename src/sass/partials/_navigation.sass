@@ -8,12 +8,13 @@
 	position: relative
 	z-index: 95
 	margin-right: 240px
-	padding: 0 0 0 $grid-layout-space
+	padding: 0
+	//padding: 0 0 0 $grid-layout-space
 
-	+media('<desk-lg')
+	//+media('<desk-lg')
 		padding: 0 0 0 $grid-layout-space--desk-hd
 
-	+media('<desk-md')
+	//+media('<desk-md')
 		padding: 0 0 0 $grid-layout-space--desk-md
 
 	+media('<desk-sm')
@@ -27,35 +28,33 @@
 
 /*nav common
 .nav
-	margin: 0 0 0 -#{$nav-item-space}
+	//margin: 0 0 0 -#{$nav-item-space}
 
-.nav__list
-	position: relative
-	+clear-spacing
-	//for priority nav
-	vertical-align: top
+	.nav__list
+		position: relative
+		+clear-spacing
+		//for priority nav
+		vertical-align: top
+		z-index: 10
 
-	//temporarily 2016.04.05
-	overflow: hidden
-	white-space: nowrap
+		//temporarily 2016.04.05
+		//overflow: hidden
+		//white-space: nowrap
 
-	&::after
-		+pseudo()
-		top: 0
-		right: 0
-		height: 100%
-		width: 80px
-		+linear-gradient(to left, #00487c 0, #00487c 20%, rgba(0, 72, 124, 0) 100%)
-		z-index: 5
+		// ГРАДИЕНТНАЯ МАСКА вконце списка для плавного скрытия лишних пунктов
+		//&::after
+			+pseudo()
+			top: 0
+			right: 0
+			height: 100%
+			width: 80px
+			+linear-gradient(to left, #00487c 0, #00487c 20%, rgba(0, 72, 124, 0) 100%)
+			z-index: 5
 
 	li
 		position: relative
-		// for 3d animation
-		perspective: 1500px
-
-		//temporarily 2016.04.05
-		display: inline-block
-		vertical-align: top
+		// для 3d анимации
+		//perspective: 1500px
 
 		&.hover, .no-js &:hover, &.active
 			z-index: 2
@@ -63,7 +62,7 @@
 	a
 		display: block
 		position: relative
-		padding: 18px $nav-item-space
+		padding: 12px $nav-item-space
 		font-weight: 400
 		+font($font-size-small, 24px)
 		letter-spacing: normal
@@ -85,13 +84,16 @@
 	margin-top: -6px
 	// all arrow are hide
 	display: none
+	// если не нужен клик
+	cursor: default
+	pointer-events: none
 
 	&::before, &::after
 		+pseudo()
 		left: 0
 		top: 50%
 		height: 2px
-		width: 9px
+		width: 8px
 		border-radius: 4px
 		background: $text-color
 		//for animation
@@ -106,18 +108,11 @@
 		transform: rotate(-45deg)
 		margin: 1px 0 0 -1px
 
-// if has drop
-.nav__drop .has-drop > a
-	padding-right: 45px
-
-	// show arrow if has drop
-	.nav__angle
-		display: block
-
 /*nav item arrow end
 
 /*nav drop common
-[class*="nav__drop"]
+// общие стили для всех ПОДМЕНЮ
+.nav__drop
 	display: block
 	position: absolute
 	left: 0
@@ -125,7 +120,7 @@
 	width: 320px
 	background: #f2f2f2
 	border: 1px solid $border-color
-	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15)
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25)
 	z-index: 100
 	//hide drop
 	opacity: 0
@@ -140,8 +135,14 @@
 	li.align-right > &
 		left: auto
 		right: 100%
-		margin-left: auto
+		margin-left: 0
 		margin-right: -10px
+
+	li.align-bottom > &
+		top: auto
+		bottom: 0
+		margin-top: 0
+		margin-bottom: 5px
 
 	li.hover > &, .no-js li:hover > &, li.active > &
 		opacity: 1
@@ -155,25 +156,51 @@
 		border-top: 1px solid #e0e0e0
 
 	li
-		&:first-child > a
-			border: none
+		&:first-child > .nav__tab > a
+			border-top: none
 
 		//&.has-drop > a
 			padding-right: 60px
 
-		&.hover > a, .no-js &:hover > a
-			background: #f3f3f3
+		&.hover, .no-js &:hover
+			& > .nav__tab > a
+				background: #f3f3f3
 
-div[class*="-nav__drop"]
-	top: 0
-	left: 100%
-	z-index: auto
-	+margin($t: 5px, $l: -5px)
+	.nav__drop
+		top: 0
+		left: 100%
+		z-index: auto
+		+margin($t: 5px, $l: -5px)
+
+// если у пунктов подменю есть свои подменю
+.nav__drop .has-drop > .nav__tab
+	& > a
+		padding-right: 45px
+
+	// показываем стрелку, если есть подменю
+	& > .nav__angle
+		display: block
 
 /*nav drop common end
 
+/*nav drop level 1
+// подменю первого уровня и подменю первого уровня для "priority-nav"
+.nav__list, .priority-nav__dropdown
+	& > li
+		& > .nav__drop
+			min-width: 100%
+			border-top: none
+			white-space: normal
+			margin-left: -1px
+
+		&.align-right > .nav__drop
+			left: auto
+			right: 0
+			margin: 0 -1px 0 0
+
 /*main items
-.nav__list > li //, .priority-nav__dropdown > li
+// пункты меню ПЕРВОГО уровня
+.nav__list > li, .priority-nav__dropdown > li
 	display: inline-block
 	vertical-align: top
 	position: relative
@@ -184,34 +211,26 @@ div[class*="-nav__drop"]
 	&.active
 		z-index: 1
 
-	& > a
+	& > a, & > .nav__tab > a
 		display: block
 		padding: 17px $nav-item-space
 		+font($font-size-small, 26px)
 		color: #fff
 		text-align: center
 		background: none
-		z-index: 95
+		box-shadow: inset -1px -1px 0 rgba(255, 255, 255, 0.15)
+		//z-index: 95
 
 		+media('<mob-lg')
 			+padding-vertical(12px)
 
-	&.hover > a, &.active > a, &.current > a, .no-js &:hover > a
-		background: $color-nav-bg-hover
-		color: $text-color
+	&.hover, &.active, &.current, .no-js &:hover
+		& > .nav__tab > a
+			background: $color-nav-bg-hover
+			color: $text-color
+			box-shadow: inset -1px -1px 0 rgba(0, 0, 0, 0.15)
 
 /*main items end
-
-/*nav drop level 1
-.nav__drop
-	min-width: 100%
-	border-top: none
-	white-space: normal
-	margin-left: -1px
-
-	li.align-right > &
-		left: auto
-		right: -1px
 
 //.priority-nav__dropdown > li > a span
 	display: inline-block
@@ -259,6 +278,7 @@ div[class*="-nav__drop"]
 		visibility: visible
 		transform: none
 		background: none
+		z-index: 5
 
 	.priority-nav__dropdown-toggle
 		height: $header-top-height
@@ -267,9 +287,22 @@ div[class*="-nav__drop"]
 		// for animation
 		transition-property: background-color
 		transition-duration: $animation-speed
+		box-shadow: inset -1px -1px 0 rgba(255, 255, 255, 0.15)
 
-		.no-touchevents &:hover
+		.no-touchevents &:hover, &.is-open
 			background-color: $mark-color
+
+	.priority-nav__dropdown
+		position: fixed
+		top: $header-top-height
+		left: $sidebar-left-width
+		width: calc(100% - #{$sidebar-left-width})
+		max-width: $main-layout-width
+		+linear-gradient(to right, #006ab8 0%, #00487c 100%)
+
+	&.is-open.priority-nav
+		white-space: normal
+
 
 /*priority nav end
 
