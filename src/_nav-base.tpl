@@ -355,7 +355,7 @@
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
-			<li>@@include('_nav-LINK.tpl', { "itemText": "Самое читаемое", "itemLink": "#", "key": "@@classKey", "specialValue": "" })</li>
+			<li>@@include('_nav-LINK.tpl', { "itemText": "Сейчас читают", "itemLink": "#", "key": "@@classKey", "specialValue": "" })</li>
 			<li>@@include('_nav-LINK.tpl', { "itemText": "Материалы предыдущих лет", "itemLink": "#", "key": "@@classKey", "specialValue": "" })</li>
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "end": "1", "key": "@@classKey"})

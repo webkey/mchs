@@ -4,7 +4,7 @@
 		<div class="soc-media__visual">
 			<div class="video">
 				<div class="video-holder">
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/ytZ1AH5IYD4" frameborder="0" allowfullscreen></iframe>
+					<iframe src="https://www.youtube.com/embed/ytZ1AH5IYD4" title="Видео МЧС" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>

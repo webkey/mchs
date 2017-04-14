@@ -171,6 +171,10 @@
 				font: 700 1.6rem/1.875 $font-alt
 				letter-spacing: normal
 				text-transform: uppercase
+				visibility: visible
+				opacity: 1
+				max-width: none
+				padding: 0
 				color: $text-color
 				// скрыть на десктопе
 				display: none
@@ -183,13 +187,15 @@
 				+media('<mob-lg')
 					+font(1.4rem, 1.429)
 
+				+media('<mob-md')
+					+font(1.2rem, 1.5)
+
 			img
 				float: left
 				position: relative
 				left: auto
 				top: auto
-				width: 80px
-				height: auto
+				+size(80px, auto)
 				max-width: 100%
 				transform: none
 
@@ -202,6 +208,8 @@
 				+media('<mob-lg')
 					margin-right: #{round($grid-layout-space--mob-lg/2)}
 
+				+media('<mob-md')
+					width: 60px
 
 /*logo end*/
 
