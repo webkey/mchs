@@ -339,15 +339,17 @@ function behaviorLogoOnScroll() {
 function scrollToSection() {
 	$(window).on("load",function(){
 
-		/* Page Scroll to id fn call */
-		$(".sidebar-menu-js a").mPageScroll2id({
-			highlightClass: 'active-section',
-			highlightSelector: '.sidebar-menu-js a',
-			scrollSpeed: 700,
-			offset: 80,
-			forceSingleHighlight: true,
-			keepHighlightUntilNext: false
-		});
+		setTimeout(function () {
+			/* Page Scroll to id fn call */
+			$(".sidebar-menu-js a").mPageScroll2id({
+				highlightClass: 'active-section',
+				highlightSelector: '.sidebar-menu-js a',
+				scrollSpeed: 700,
+				offset: 80,
+				forceSingleHighlight: true,
+				keepHighlightUntilNext: false
+			});
+		}, 1000)
 	});
 }
 /*scroll to section end*/
@@ -534,9 +536,13 @@ function hoverClassInit(){
 		
 		// for align bottom
 		var navContainerPosBottom = $(window).height();
-		var navDropPosBottom = drop.offset().top + drop.outerHeight();
+		var dropHeight = drop.outerHeight();
+		var navDropPosBottom = drop.offset().top + dropHeight - $(window).scrollTop();
 
 		if(navContainerPosBottom < navDropPosBottom){
+			if(navContainerPosBottom < 550) {
+				return;
+			}
 			item.addClass(alightBottomClass);
 		}
 	};
@@ -544,9 +550,7 @@ function hoverClassInit(){
 	PositionDropMenu.prototype.addAlignDropClass = function () {
 		var self = this,
 			$navContainer = self.$navContainer,
-			navMenuItem = self.options.navMenuItem,
-			alightRightClass = self.modifiers.alignRight,
-			alightBottomClass = self.modifiers.alignBottom;
+			navMenuItem = self.options.navMenuItem;
 
 		$navContainer.on('click', ''+navMenuItem+'', function () {
 			var $this = $(this);
@@ -568,10 +572,13 @@ function hoverClassInit(){
 	};
 
 	PositionDropMenu.prototype.removeAlignDropClass = function () {
-		var self = this;
+		var self = this,
+			alightRightClass = self.modifiers.alignRight,
+			alightBottomClass = self.modifiers.alignBottom;
+
 		$(window).on('debouncedresize', function () {
-			self.$navMenuItem.removeClass(self.modifiers.alignRight );
-			self.$navMenuItem.removeClass(self.modifiers.alignBottom );
+			self.$navMenuItem.removeClass(alightRightClass );
+			self.$navMenuItem.removeClass(alightBottomClass );
 		});
 	};
 
@@ -846,7 +853,8 @@ function toggleYears() {
 			if ($thisChoiceWrap.attr('data-parent-position') !== undefined) {
 				$thisChoiceWrap.parent().css({
 					'position': 'relative',
-					'padding-right': Math.round($thisChoiceWrap.outerWidth() + 10)
+					'padding-right': Math.round($thisChoiceWrap.outerWidth() + 10),
+					'overflow': 'visible'
 				});
 			}
 		});
@@ -2113,7 +2121,9 @@ function stickyLayout(){
 
 		});
 
-		$(window).trigger('resize');
+		setTimeout(function () {
+			$(window).trigger('resize');
+		}, 1000) // shame
 	}
 
 	/*sidebar bottom heading sticky*/
@@ -2194,7 +2204,9 @@ function stickyLayout(){
 
 		});
 
-		$(window).trigger('resize');
+		setTimeout(function () {
+			$(window).trigger('resize');
+		}, 1000) // shame
 	}
 
 	/*aside sticky*/
@@ -2224,7 +2236,9 @@ function stickyLayout(){
 
 		});
 
-		$(window).trigger('resize');
+		setTimeout(function () {
+			$(window).trigger('resize');
+		}, 1000) // shame
 	}
 }
 /*sticky layout end*/

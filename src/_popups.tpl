@@ -24,14 +24,14 @@
 				<div class="site-map__box">
 					<strong class="site-map__heading"><a href="#"><span>Руководителям и ИП</span></a></strong>
 					<ul class="site-map__list">
-						<li><a href="news.html"><span>Новости</span></a></li>
+						<li><a href="404.html"><span>Новости</span></a></li>
 						<li><a href="#"><span>Статьи</span></a>
 							<ul>
 								<li><a href="#"><span>Управление качеством</span></a></li>
 								<li>
 									<a href="#"><span>Эффективность</span></a>
 									<ul class="site-map__list">
-										<li><a href="news.html"><span>Новости</span></a></li>
+										<li><a href="404.html"><span>Новости</span></a></li>
 										<li><a href="#"><span>Статьи</span></a>
 											<ul>
 												<li><a href="#"><span>Управление качеством</span></a></li>

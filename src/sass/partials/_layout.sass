@@ -125,7 +125,7 @@ body
 
 .content-layout
 	position: relative
-	padding: $grid-layout-space #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
+	padding: #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
 	margin-right: 60px // width .side menu
 	+clear
 
@@ -133,7 +133,7 @@ body
 		+push-auto
 		right: round($side-width*0.5)
 		max-width: $section-layout-width-desk-hd + ($grid-layout-space--desk-hd - 9px)*2
-		padding: #{$grid-layout-space--desk-hd} #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
+		padding: #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
 
 	+media('<desk-lg')
 		max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-hd - 9px)*2
@@ -238,7 +238,7 @@ body
 		width: $sidebar-right-width--desk-lg
 
 	.home-page &
-		padding-top: calc(2rem * 1.2 + 1.5rem) // Костыль. Высота однострочного заголовка секций
+		padding-top: calc(2rem * 1.3 + 1.5rem) // Костыль. Высота однострочного заголовка секций
 
 	//+media('>=desk-lg')
 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important

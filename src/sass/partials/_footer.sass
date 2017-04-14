@@ -133,6 +133,9 @@
 	+font(1.4rem, 1.4)
 	color: #fff
 
+	+media('<mob-lg')
+		margin-bottom: 4rem
+
 	& > *:last-child
 		margin-bottom: 0
 
@@ -142,6 +145,9 @@
 	text-transform: uppercase
 	color: #999
 	margin-bottom: $bottom-space
+
+	+media('<mob-lg')
+		margin-bottom: $bottom-space-sm
 
 	a
 		color: inherit
@@ -189,7 +195,7 @@
 	padding: 0 $grid-layout-space
 	background: #001e33
 	color: #b2b2b2
-	border-top: 1px solid #b2b2b2
+	border-top: 1px solid rgba(255, 255, 255, 0.2)
 	+font($font-size-small, $line-height-small)
 
 	+media('<desk-hd')

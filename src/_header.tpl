@@ -2,7 +2,12 @@
 	<div class="layout">
 		<div class="header__holder">
 			<div class="logo-wrap">
-				<strong class="logo"><a href="index.html"><img src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь"></a></strong>
+				<div class="logo">
+					<a href="index.html">
+						<img src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь">
+						<strong class="logo-short-text">МЧС РБ</strong>
+					</a>
+				</div>
 			</div>
 			<div class="header__frame">
 				<div class="header__top">
@@ -61,12 +66,12 @@
 					@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive", "classKey": "nav", "navTag": "true" })
 				</div>
 				<div class="header__content">
-					<strong class="logo">
+					<div class="logo">
 						<a href="index.html">
 							<img src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь">
-							<span>Министерство по чрезвычайным ситуациям Республики Беларусь</span>
+							<strong>Министерство по чрезвычайным ситуациям Республики Беларусь</strong>
 						</a>
-					</strong>
+					</div>
 					<div class="header__contacts">
 						<ul>
 							<li>
