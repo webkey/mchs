@@ -28,7 +28,7 @@
 					<!--user options-->
 					<ul class="user-options">
 						<li class="user-options__item search-link">
-							<a href="#" title="Поиск">
+							<a href="#" title="Поиск" class="btn-search-open-js">
 								<svg class="svg-search" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="30.6 44.1 550.8 550.8" enable-background="new 30.6 44.1 550.8 550.8"> <path d="M570.4,531L459.9,420.4c67.4-92.7,59.2-223.3-24.4-306.9c-46.3-46.3-107-69.5-167.7-69.5s-121.4,23.2-167.7,69.5  c-92.6,92.6-92.6,242.8,0,335.4c46.3,46.3,107,69.5,167.7,69.5c48.9,0,97.8-15,139.1-45.1l110.5,110.5c7.3,7.3,16.9,11,26.5,11  c9.6,0,19.2-3.7,26.5-11C585.1,569.3,585.1,545.6,570.4,531z M398.4,411.9c-34.9,34.9-81.3,54.1-130.6,54.1  c-49.4,0-95.7-19.2-130.6-54.1c-72-72-72-189.3,0-261.3c34.9-34.9,81.3-54.1,130.6-54.1s95.8,19.2,130.6,54.1  C470.5,222.7,470.5,339.9,398.4,411.9z"></path> </svg>
 								<span>Поиск</span>
 							</a>
@@ -39,20 +39,13 @@
 								<span>Версия для слабовидящих</span>
 							</a>
 						</li>
-						<li class="user-options__item js-choice-wrap" data-select="false">
-							<a href="#" title="Поделиться" class="js-choice-open">
+						<li class="user-options__item">
+							<a href="#" title="Поделиться" class="btn-share-open-js">
 								<svg class="svg-share" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="93.6 55.1 428.4 532.4" enable-background="new 93.6 55.1 428.4 532.4"> <path d="M439.4,422.3c-21.4,0-41,8.6-55.7,22l-139.5-104c1.8-6.1,2.4-12.2,2.4-19s-1.2-12.9-2.4-19l139.5-104  c14.1,13.5,33.7,22,55.7,22c45.3,0,82.6-37.3,82.6-82.6c0-45.3-37.3-82.6-82.6-82.6s-82.6,37.3-82.6,82.6c0,8.6,1.2,16.5,3.7,24.5  L221.5,265c-13.5-12.9-31.8-20.2-51.4-20.2c-42.2,0-76.5,34.3-76.5,76.5s34.3,76.5,76.5,76.5c20.2,0,38.6-8,52-20.2l138.3,102.8  c-2.4,8-3.7,15.9-3.7,24.5c0,45.3,37.3,82.6,82.6,82.6s82.6-37.3,82.6-82.6C522,459.6,484.7,422.3,439.4,422.3z M439.4,98  c22,0,39.8,17.7,39.8,39.8c0,22-17.7,39.8-39.8,39.8s-39.8-17.7-39.8-39.8C399.6,115.7,417.4,98,439.4,98z M439.4,544.7  c-22,0-39.8-17.7-39.8-39.8c0-22,17.7-39.8,39.8-39.8c22,0,39.8,17.7,39.8,39.8C479.2,527,461.4,544.7,439.4,544.7z"></path> </svg>
 								<span>Поделиться</span>
 							</a>
-							<!--social networks-->
-							<div class="share-link__list js-choice-drop">
-								<div class="social-networks__list">
-									@@loop('_social-items.tpl', 'includes-json/social-items.json')
-								</div>
-							</div>
-							<!--social networks end-->
 						</li>
-						<li class="user-options__item lang js-choice-wrap">
+						<li class="user-options__item lang">
 							<a href="#" class="btn-language-open-js" title="Выбрать язык">
 								<i class="current" style="background-image: url(img/flag-russia.png);"><span>Рус</span></i>
 								<i style="background-image: url(img/flag-belarus.png);"><span>Бел</span></i>

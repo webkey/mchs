@@ -9,10 +9,14 @@ html
 	&.no-js, &.page-loaded
 		overflow: auto
 
+	&.css-scroll-fixed
+		+scroll-blocked
+
 body
 	&::before
 		+pseudo($pos: fixed)
-		+size(100%, 400px, $main-layout-width)
+		+size(100%, 400px)
+		//+size(100%, 400px, $main-layout-width)
 		left: 0
 		top: 50%
 		transform: translate(0, -50%)
@@ -32,9 +36,6 @@ body
 			opacity: 0
 			visibility: hidden
 			background-size: 200px
-
-	&.css-scroll-fixed
-		+scroll-blocked
 
 .header, .main, .footer
 	.layout

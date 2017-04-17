@@ -109,7 +109,6 @@
 	</div>
 </footer>
 <!--FOOTER end-->
-@@qwer
 <!--POPUPS-->
 @@include('_popups.tpl', { "mainNavItemActive": "@@mainNavItemActive", "subSiteMenu": "@@subSiteMenu"})
 <!--POPUPS end-->

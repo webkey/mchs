@@ -1,131 +1,186 @@
-/*years*/
-.years
-	position: absolute
-	top: 0
-	right: 0
-	margin-right: -20px
-	width: 82px
-	height: 48px
-	text-align: center
-	box-sizing: border-box
-	-webkit-perspective: 1500px
-	perspective: 1500px
+/*search form*/
+.search-form
+	max-width: 800px
+	margin: 0 auto
 
-.years a
-	display: block
+.search-form__field
+	overflow: hidden
 	position: relative
-	box-sizing: border-box
-	line-height: 24px
-	color: #262626
-	text-align: center
-	text-decoration: none
+	padding-top: 35px
 
-.years > a
-	height: 100%
-	font-family: 'lato-semibold', sans-serif
-	background: #fff
-	border: 1px solid #fff
-	-webkit-transition-property: background, border
-	transition-property: background, border
-	-webkit-transition-duration: 0.2s
-	transition-duration: 0.2s
-	
-	font-size: 0
-	letter-spacing: -4px
-
-.desktop .years > a:hover
-	color: #008acf
-
-.choice-opened > a
-	color: #008acf
-
-.years > a::before
-	content: ''
-	display: inline-block
-	height: 100%
-	vertical-align: middle
-
-.years > a > span
-	display: inline-block
-	text-transform: uppercase
-	vertical-align: middle
-	line-height: 1
-	border-bottom: 1px dotted #3a3a3a
-	-webkit-transition-property: border
-	transition-property: border
-	-webkit-transition-duration: 0.2s
-	transition-duration: 0.2s
-	
-	font-size: 16px
-	letter-spacing: 0.025em
-
-.years > a:hover > span
-	border-color: #008acf
-
-.choice-opened > a > span,
-.choice-opened > a:hover > span
-	border-color: transparent
-
-.years-drop,
-.user-content .years-drop
-	list-style: none
-	padding: 12px 0
-	margin: -1px 0 0
-
-.years-drop
-	position: absolute
-	top: 100%
-	left: 0
+input.search-form__input,
+input.search-form__input:hover,
+input.search-form__input:focus
+	border: none
+	height: 50px
 	width: 100%
-	border: 1px solid #d9d9d9
-	background: #fff
-	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15)
-	box-sizing: border-box
+	padding: 11px 60px 11px 20px
+	margin: 0
+	font-family: 'lato-light', sans-serif
+	font-size: 20px
+	line-height: 28px
+	letter-spacing: 0.05em
+	color: #f9f7f6
+	border-radius: 0
+	background: none
+	z-index: 998
+
+input.search-form__input
 	opacity: 0
-	visibility: hidden
-	-webkit-transform-origin: center top
-	transform-origin: center top
-	-webkit-transform: rotateX(-30deg)
-	transform: rotateX(-30deg)
-	-webkit-transition-property: opacity, visibility, -webkit-transform
-	transition-property: opacity, visibility, transform
-	-webkit-transition-duration: 0.2s
-	transition-duration: 0.2s
-	-webkit-transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
-	transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
-	z-index: 9
+	cursor: pointer
 
-.choice-opened .years-drop
-	opacity: 1
-	visibility: visible
-	-webkit-transform: rotateX(0deg)
-	transform: rotateX(0deg)
+.input--filled input.search-form__input
+	cursor: text
 
-.years-drop li,
-.user-content .years-drop li
-	padding: 12px 0 0
+.search-form__label
+	width: 100%
+	position: absolute
+	left: 0
+	bottom: 0
+	height: 50px
+	text-align: left
+	pointer-events: none
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	-webkit-touch-callout: none
+	-webkit-user-select: none
+	-khtml-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
 
-.years-drop li:first-child,
-.user-content .years-drop li:first-child
-	padding: 0
-
-.years-drop li::before,
-.user-content .years-drop li::before,
-.years-drop li:first-child::before,
-.user-content .years-drop li:first-child::before
-	content: none
-
-.years-drop a
-	padding: 0
-	text-align: center
+.search-form__label label
 	position: relative
-	-webkit-transition-property: color
-	transition-property: color
+	display: block
+	padding: 0
+	font-family: 'lato-regular', sans-serif
+	font-size: 24px
+	line-height: 50px
+	letter-spacing: 0.05em
+	color: #696969
+	overflow: hidden
+	-ms-text-overflow: ellipsis
+	text-overflow: ellipsis
+	-webkit-transform-origin: 0 0
+	transform-origin: 0 0
+	-webkit-transition-property: color, -webkit-transform
+	transition-property: color, transform
 	-webkit-transition-duration: 0.2s
 	transition-duration: 0.2s
 
-.desktop .years-drop a:hover,
-.years-drop a.active
-	color: #008acf
+.search-form__label label span
+	display: inline-block
+	opacity: 1
+	-webkit-transition-property: opacity, -webkit-transform
+	transition-property: opacity, transform
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
 
-/*years end*/
+.search-form__label::before,
+.search-form__label::after
+	content: ''
+	position: absolute
+	width: 100%
+	left: 0
+
+.search-form__label::before
+	height: 2px
+	background: #a8a8a8
+	bottom: 0
+	-webkit-transition-property: opacity
+	transition-property: opacity
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+.search-form__label::after
+	height: 100%
+	background: #a8a8a8
+	top: 0
+	-webkit-transform: translate(0, 100%)
+	transform: translate(0, 100%)
+	-webkit-transition-property: -webkit-transform
+	transition-property: transform
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+.search-form__btn
+	position: absolute
+	right: 0
+	bottom: 0
+	width: 50px
+	height: 50px
+	z-index: 99
+	-webkit-transform: translate(10px, 0)
+	-ms-transform: translate(10px, 0)
+	transform: translate(10px, 0)
+	-webkit-transition-property: -webkit-transform
+	transition-property: transform
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+.search-form__btn svg
+	position: absolute
+	left: 50%
+	top: 50%
+	width: 24px
+	height: 24px
+	margin: -12px 0 0 -12px
+
+.search-form__btn svg path
+	fill: #a8a8a8
+	-webkit-transition: fill 0.2s
+	transition: fill 0.2s
+
+.input--filled .search-form__btn
+	z-index: 999
+
+.search-form__label::before,
+.search-form__label::after,
+.search-form__label label,
+.search-form__label label span,
+.search-form__input:focus,
+.input--filled .search-form__input,
+.search-form__btn,
+.search-form__btn svg path
+	-webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+	transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+
+.search-form__input:focus,
+.input--filled .search-form__input
+	opacity: 1
+	-webkit-transition: opacity 0s 0.2s
+	transition: opacity 0s 0.2s
+
+.search-form__input:focus + .search-form__label::before,
+.input--filled .search-form__label::before
+	opacity: 0
+
+.search-form__input:focus + .search-form__label::after,
+.input--filled .search-form__label::after
+	-webkit-transform: translate(0, 0)
+	transform: translate(0, 0)
+
+.search-form__input:focus + .search-form__label label,
+.input--filled .search-form__label label
+	color: #cbc4c6
+	-webkit-transform: translate(0, -70%) scale(0.65, 0.65)
+	transform: translate(0, -70%) scale(0.65, 0.65)
+
+.search-form__input:focus + .search-form__label label span,
+.input--filled .search-form__label label span
+	opacity: 0
+	-webkit-transform: scale(0, 0)
+	-ms-transform: scale(0, 0)
+	transform: scale(0, 0)
+
+.search-form__input:focus ~ .search-form__btn,
+.input--filled .search-form__btn
+	-webkit-transform: translate(0, 0)
+	-ms-transform: translate(0, 0)
+	transform: translate(0, 0)
+
+.search-form__input:focus ~ .search-form__btn svg path,
+.input--filled .search-form__btn svg path
+	fill: #f9f7f6
+
+/*search form end*/

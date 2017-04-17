@@ -69,42 +69,43 @@
 /*social networks end*/
 
 /*share link list*/
-.share-link__list
-	position: absolute
-	top: 100%
-	right: 0
-	margin: 0
-	padding: 0
-	width: 100%
-	text-align: center
-	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1)
-	opacity: 0
-	visibility: hidden
-	transition-property: opacity, visibility
-	transition-duration: $animation-speed
-
-	.choice-opened &
-		opacity: 1
-		visibility: visible
-
-	.social-networks__list
-		margin: 0
-
-	.social-networks__item
-		display: block
-		width: auto
+//.user-options
+	.share-link__list
+		position: absolute
+		top: 100%
+		right: 0
 		margin: 0
 		padding: 0
+		width: 100%
+		text-align: center
+		box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1)
+		opacity: 0
+		visibility: hidden
+		transition-property: opacity, visibility
+		transition-duration: $animation-speed
 
-	a
-		+size($header-top-height)
+		.choice-opened &
+			opacity: 1
+			visibility: visible
 
-		.no-touchevents &:hover
-			box-shadow: none
-			transform: none
+		.social-networks__list
+			margin: 0
 
-		&:active, .no-touchevents &:active
-			box-shadow: none
-			transform: none
+		.social-networks__item
+			display: block
+			width: auto
+			margin: 0
+			padding: 0
+
+		a
+			+size($header-top-height)
+
+			.no-touchevents &:hover
+				box-shadow: none
+				transform: none
+
+			&:active, .no-touchevents &:active
+				box-shadow: none
+				transform: none
 
 /*share link list end*/
