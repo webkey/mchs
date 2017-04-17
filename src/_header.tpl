@@ -39,11 +39,18 @@
 								<span>Версия для слабовидящих</span>
 							</a>
 						</li>
-						<li class="user-options__item share-link">
-							<a href="#" title="Поделиться">
+						<li class="user-options__item js-choice-wrap" data-select="false">
+							<a href="#" title="Поделиться" class="js-choice-open">
 								<svg class="svg-share" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="93.6 55.1 428.4 532.4" enable-background="new 93.6 55.1 428.4 532.4"> <path d="M439.4,422.3c-21.4,0-41,8.6-55.7,22l-139.5-104c1.8-6.1,2.4-12.2,2.4-19s-1.2-12.9-2.4-19l139.5-104  c14.1,13.5,33.7,22,55.7,22c45.3,0,82.6-37.3,82.6-82.6c0-45.3-37.3-82.6-82.6-82.6s-82.6,37.3-82.6,82.6c0,8.6,1.2,16.5,3.7,24.5  L221.5,265c-13.5-12.9-31.8-20.2-51.4-20.2c-42.2,0-76.5,34.3-76.5,76.5s34.3,76.5,76.5,76.5c20.2,0,38.6-8,52-20.2l138.3,102.8  c-2.4,8-3.7,15.9-3.7,24.5c0,45.3,37.3,82.6,82.6,82.6s82.6-37.3,82.6-82.6C522,459.6,484.7,422.3,439.4,422.3z M439.4,98  c22,0,39.8,17.7,39.8,39.8c0,22-17.7,39.8-39.8,39.8s-39.8-17.7-39.8-39.8C399.6,115.7,417.4,98,439.4,98z M439.4,544.7  c-22,0-39.8-17.7-39.8-39.8c0-22,17.7-39.8,39.8-39.8c22,0,39.8,17.7,39.8,39.8C479.2,527,461.4,544.7,439.4,544.7z"></path> </svg>
 								<span>Поделиться</span>
 							</a>
+							<!--social networks-->
+							<div class="share-link__list js-choice-drop">
+								<div class="social-networks__list">
+									@@loop('_social-items.tpl', 'includes-json/social-items.json')
+								</div>
+							</div>
+							<!--social networks end-->
 						</li>
 						<li class="user-options__item lang js-choice-wrap">
 							<a href="#" class="js-choice-open">

@@ -842,18 +842,20 @@ function toggleLanguages() {
 /**
  * !toggle drop years
  * */
-function toggleYears() {
+function toggleDrop() {
 
-	var $choiceWrap = $('.js-choice-wrap');
-	if ($choiceWrap.length) {
+	var $choiceContainer = $('.js-choice-wrap');
+	var openClass = 'choice-opened';
 
-		$.each($choiceWrap, function () {
-			var $thisChoiceWrap = $(this);
+	if ($choiceContainer.length) {
 
-			if ($thisChoiceWrap.attr('data-parent-position') !== undefined) {
-				$thisChoiceWrap.parent().css({
+		$.each($choiceContainer, function () {
+			var $thisContainer = $(this);
+
+			if ($thisContainer.attr('data-parent-position') !== undefined) {
+				$thisContainer.parent().css({
 					'position': 'relative',
-					'padding-right': Math.round($thisChoiceWrap.outerWidth() + 10),
+					'padding-right': Math.round($thisContainer.outerWidth() + 10),
 					'overflow': 'visible'
 				});
 			}
@@ -861,29 +863,42 @@ function toggleYears() {
 
 		$('.js-choice-open').on('click', function (e) {
 			e.preventDefault();
-
-			$(this).closest('.js-choice-wrap').toggleClass('choice-opened');
+			var $currentContainer = $(this).closest('.js-choice-wrap');
 
 			e.stopPropagation();
+
+			if($currentContainer.hasClass(openClass)) {
+				$currentContainer.removeClass(openClass);
+				return;
+			}
+
+			$choiceContainer.removeClass(openClass);
+			$currentContainer.addClass(openClass);
 		});
 
 		$(document).on('click closeDropYears', function () {
-			closeDropYears();
+			closeDrop();
 		});
 
-		function closeDropYears() {
-			$('.js-choice-wrap').removeClass('choice-opened');
+		function closeDrop() {
+			$('.js-choice-wrap').removeClass(openClass);
 		}
 
-		$('.js-choice-drop').on('click', 'a', function () {
+		$('.js-choice-drop').on('click', 'a', function (e) {
+			var $this = $(this);
+
+			// if data-select is false, do not replace text
+			if ($this.closest($choiceContainer).attr('data-select') === 'false') {
+				return false;
+			}
 
 			$('a', '.js-choice-drop').removeClass('active');
 
-			$(this)
+			$this
 				.addClass('active')
 				.closest('.js-choice-wrap')
 				.find('.js-choice-open span')
-				.text($(this).find('span').text());
+				.text($this.find('span').text());
 		});
 	}
 
@@ -2218,7 +2233,7 @@ function stickyLayout(){
 
 		$(window).on('load resizeByWidth', function () {
 
-			var offsetTop = offsetTopBase * 2;
+			var offsetTop = offsetTopBase + 50;
 
 			// if(window.innerWidth < 1600){
 			// 	// $sidebar.trigger("sticky_kit:detach").attr('style','');
@@ -2472,8 +2487,8 @@ $(document).ready(function(){
 	navExpander();
 	scrollToSection();
 	multiAccordionInit();
-	toggleLanguages();
-	toggleYears();
+	// toggleLanguages();
+	toggleDrop();
 	tabSwitcher();
 	slidersInit();
 	equalHeightInit();

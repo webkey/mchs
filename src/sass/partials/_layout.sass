@@ -103,6 +103,7 @@ body
 
 .main-inside
 	margin: 0 0 0 $sidebar-left-width
+	padding-bottom: $bottom-space-lg
 	//padding: $grid-layout-space #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
 	min-height: 50px
 	position: relative
@@ -125,7 +126,7 @@ body
 
 .content-layout
 	position: relative
-	padding: #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
+	padding: #{$grid-layout-space - 9px} #{$grid-layout-space - 9px} 0 // -9 для компенсации вертикального скролла
 	margin-right: 60px // width .side menu
 	+clear
 
@@ -133,7 +134,7 @@ body
 		+push-auto
 		right: round($side-width*0.5)
 		max-width: $section-layout-width-desk-hd + ($grid-layout-space--desk-hd - 9px)*2
-		padding: #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
+		padding: #{$grid-layout-space--desk-hd - 9px} #{$grid-layout-space--desk-hd - 9px} 0 // -9 для компенсации вертикального скролла
 
 	+media('<desk-lg')
 		max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-hd - 9px)*2
@@ -145,11 +146,11 @@ body
 
 	+media('<tab-lg')
 		max-width: $section-layout-width-tab-lg + ($grid-layout-space--desk-md)*2
-		padding: $grid-layout-space--desk-md
+		padding: $grid-layout-space--desk-md $grid-layout-space--desk-md 0
 
 	+media('<mob-lg')
 		max-width: none
-		padding: $grid-layout-space--mob-lg
+		padding: $grid-layout-space--mob-lg $grid-layout-space--mob-lg 0
 
 .content-wrap
 	@extend .main-frame

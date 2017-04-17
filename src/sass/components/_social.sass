@@ -1,24 +1,20 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*social networks*/
-.social-networks
-	=transition
-		-webkit-transition-property: -webkit-transform, box-shadow, fill
-		transition-property: transform, box-shadow, fill
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-		-webkit-transition-timing-function: ease-in-out
-		transition-timing-function: ease-in-out
+.social-networks__list
+	position: relative
+	font-size: 0
+	line-height: 0
+	margin: 0 -5px -10px
 
-	&__list
-		font-size: 0
-		line-height: 0
-		margin: 0 -5px
-
-	&__item
-		display: inline-block
-		vertical-align: top
-		margin: 0 5px 10px
-		font-size: 14px
-		line-height: 1.4
+.social-networks__item
+	display: inline-block
+	vertical-align: top
+	margin: 0 5px 10px
+	font-size: 14px
+	line-height: 1.4
 
 	a
 		display: block
@@ -26,7 +22,8 @@
 		width: 40px
 		height: 40px
 		background: #fff
-		+transition
+		transition-property: transform, box-shadow, fill
+		transition-duration: $animation-speed
 
 		.no-touchevents &:hover
 			box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2)
@@ -51,7 +48,8 @@
 
 		path
 			fill: #fff
-			+transition
+			transition-property: transform, box-shadow, fill
+			transition-duration: $animation-speed
 
 		&.fb
 			background-color: $facebook-color
@@ -69,3 +67,44 @@
 			+linear-gradient(to right, #{$instagram-color-start} 0%, #{$instagram-color-end} 100%)
 
 /*social networks end*/
+
+/*share link list*/
+.share-link__list
+	position: absolute
+	top: 100%
+	right: 0
+	margin: 0
+	padding: 0
+	width: 100%
+	text-align: center
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1)
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+
+	.choice-opened &
+		opacity: 1
+		visibility: visible
+
+	.social-networks__list
+		margin: 0
+
+	.social-networks__item
+		display: block
+		width: auto
+		margin: 0
+		padding: 0
+
+	a
+		+size($header-top-height)
+
+		.no-touchevents &:hover
+			box-shadow: none
+			transform: none
+
+		&:active, .no-touchevents &:active
+			box-shadow: none
+			transform: none
+
+/*share link list end*/

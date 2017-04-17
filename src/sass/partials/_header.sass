@@ -503,9 +503,6 @@
 /*header info end
 
 /*user options*/
-$user-options-border-color: rgba(255, 255, 255, 0.15)
-$user-options-text-color: #80a7c4
-
 .user-options
 	float: right
 	position: relative
@@ -532,15 +529,15 @@ $user-options-text-color: #80a7c4
 	& > a
 		+cover()
 		background-color: transparent
-		box-shadow: -1px 0 0 $user-options-border-color
+		box-shadow: -1px 0 0 rgba(255, 255, 255, 0.15)
 		text-decoration: none
 		text-align: center
-		color: $user-options-text-color
+		color: rgba(255, 255, 255, 0.50)
 		transition-property: background-color, color
 		transition-duration: $animation-speed
 
 		.no-touchevents &:hover
-			background-color: $user-options-border-color
+			background-color: rgba(255, 255, 255, 0.15)
 
 		& > *
 			display: inline-block
@@ -555,7 +552,7 @@ $user-options-text-color: #80a7c4
 		& > div
 			display: inline-block
 			vertical-align: middle
-			color: $user-options-text-color
+			color: rgba(255, 255, 255, 0.5)
 			transition-property: background-color, color
 			transition-duration: $animation-speed
 
@@ -576,7 +573,7 @@ $user-options-text-color: #80a7c4
 				+size(25px)
 
 		path
-			fill: $user-options-text-color
+			fill: rgba(255, 255, 255, 0.5)
 			transition-property: fill
 			transition-duration: $animation-speed
 
@@ -584,7 +581,7 @@ $user-options-text-color: #80a7c4
 			color: $text-color-alt
 
 			path
-				fill: lighten($user-options-text-color, 30%)
+				fill: rgba(255, 255, 255, 1)
 
 		& > span
 			display: inline-block
@@ -600,7 +597,7 @@ $user-options-text-color: #80a7c4
 		display: block
 
 	a
-		box-shadow: 1px 0 0 $user-options-border-color
+		box-shadow: 1px 0 0 rgba(255, 255, 255, 0.15)
 
 		path
 			fill: white
@@ -611,17 +608,9 @@ $user-options-text-color: #80a7c4
 .lang
 	position: relative
 
-	$color-border: #035b9a
-	$color-text: #80a7c4
-	$color-bg: #00497d
-
-	=transition()
-		transition-property: background-color, color, opacity, visibility
-		transition-duration: $animation-speed
-		transition-timing-function: ease-in-out
-
 	& > a
-		+transition
+		transition-property: background-color, color
+		transition-duration: $animation-speed
 
 		& > span
 			display: inline-block
@@ -634,54 +623,50 @@ $user-options-text-color: #80a7c4
 			+media('<mob-lg')
 				font-size: 14px
 
-	.no-touchevents &:hover > a,
-	.no-touchevents & > a:hover,
-	&.choice-opened > a
-		color: lighten($color-text, 30%)
-		background-color: $color-border
+	.no-touchevents &:hover > a, .no-touchevents & > a:hover, &.choice-opened > a
+		color: rgba(255, 255, 255, 1)
+		background-color: rgba(255, 255, 255, 0.15)
 
-	@at-root
-	&__list
-		list-style: none
-		position: absolute
-		top: 100%
-		right: 0
-		margin: 0
+.lang__list
+	list-style: none
+	position: absolute
+	top: 100%
+	right: 0
+	left: -1px
+	margin: -1px 0 0
+	padding: 0
+	font-size: 16px
+	letter-spacing: 0.05em
+	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1)
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+
+	.choice-opened &
+		opacity: 1
+		visibility: visible
+
+	li
 		padding: 0
+		background: shade($text-color-alt, 70%)
+
+	a
+		display: block
+		text-decoration: none
+		text-align: center
+		color: rgba(255, 255, 255, 0.50)
+		padding: 18px 4px
 		font-size: 16px
-		letter-spacing: 0.05em
-		width: 100%
-		opacity: 0
-		visibility: hidden
-		box-shadow: -1px 0 0 $color-border
-		+transition
+		line-height: 24px
+		letter-spacing: normal
+		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15)
+		transition-property: background-color, color
+		transition-duration: $animation-speed
 
-		.choice-opened &
-			opacity: 1
-			visibility: visible
-
-		li
-			padding: 0
-
-		a
-			display: block
-			text-decoration: none
-			text-align: center
-			color: $color-text
-			background: $color-bg
-			padding: 12px 6px
-			font-size: 16px
-			line-height: 24px
-			letter-spacing: normal
-			border-top: 1px solid $color-border
-			+transition
-
-			.no-touchevents &:hover
-				background-color: $color-border
-				color: lighten($color-text, 30%)
-
-		li:first-child a
-			border-top: none
+		.no-touchevents &:hover
+			background-color: rgba(255, 255, 255, 0.15)
+			color: rgba(255, 255, 255, 1)
 
 /*lang end*/
 /*HEADER end*/

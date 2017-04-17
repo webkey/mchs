@@ -420,12 +420,11 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	margin: $bottom-space*0.3 0 $bottom-space-lg $bottom-space-lg
 	max-width: 50%
 
-+media('<tab-lg')
++media('<desk-lg')
 	.imgl, .imgr
 		float: none
 		display: block
-		margin-left: auto
-		margin-right: auto
+		margin: 0 auto $bottom-space
 		max-width: none
 
 /*content img end
@@ -473,12 +472,13 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+media('<tab-lg')
 		font-size: 14px
 
-	+media('<mob-lg')
+	+media('<desk-lg')
 		& svg
 			margin-right: 0
 
 		& span
 			display: none
+
 /*view print end*/
 
 /*video
