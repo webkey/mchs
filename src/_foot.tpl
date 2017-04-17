@@ -109,9 +109,9 @@
 	</div>
 </footer>
 <!--FOOTER end-->
-
+@@qwer
 <!--POPUPS-->
-@@include('_popups.tpl', { "mainNavItemActive": "@@mainNavItemActive"})
+@@include('_popups.tpl', { "mainNavItemActive": "@@mainNavItemActive", "subSiteMenu": "@@subSiteMenu"})
 <!--POPUPS end-->
 
 <!--[if lte IE 9]><script src="js/classList.min.js"></script><![endif]-->

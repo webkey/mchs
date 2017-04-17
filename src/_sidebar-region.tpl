@@ -4,7 +4,7 @@
 			"regionMenuTitle": "Меню Брестского областного управления"
 		})
 		<div class="region-expand-panel-js">
-			<div class="region-menu-panel">
+			<div class="region-menu-panel menu-sub-site">
 				@@include('_region-menu.tpl', { "regionMenuActiveItem": "@@regionMenuActiveItem" })
 			</div>
 		</div>

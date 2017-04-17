@@ -134,13 +134,15 @@
 <!--popup news end-->
 
 <!--main navigation for small screen-->
+
+@@if(context.subSiteMenu) {
 <div class="popup-nav-small hide-on-load popup-nav-small-js js-tabs" data-auto-height="false">
 	<div class="nav-small-tabs">
 		<a href="#region-menu-mobile-anchor" class="js-tab-anchor active-tab"><span>Брестское управление</span></a>
 		<a href="#nav-mobile-anchor" class="js-tab-anchor"><span>Меню МЧС РБ</span></a>
 	</div>
 	<div class="nav-small-container js-tab-container">
-		<div class="popup-nav-small__holder js-tab-content menu-alt-style" id="region-menu-mobile-anchor">
+		<div class="popup-nav-small__holder js-tab-content menu-sub-site" id="region-menu-mobile-anchor">
 			@@include('_region-menu.tpl', { "regionMenuActiveItem": "@@regionMenuActiveItem" })
 		</div>
 		<div class="popup-nav-small__holder js-tab-content" id="nav-mobile-anchor">
@@ -148,10 +150,20 @@
 		</div>
 	</div>
 </div>
+}
+@@if(!context.subSiteMenu) {
+<div class="popup-nav-small hide-on-load popup-nav-small-js">
+	<div class="nav-small-container">
+		<div class="popup-nav-small__holder">
+			@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive", "classKey": "nav-mobile", "navTag": "" })
+		</div>
+	</div>
+</div>
+}
 <a href="#" class="btn-popup-close btn-popup-nav-small-close btn-nav-small-close-js"><i></i><span>Закрыть</span></a>
 <!--main navigation for small screen end-->
 
-<!--user options popups-->
+<!--languages popup-->
 <div class="user-options-popup hide-on-load languages-popup-js">
 	<div class="user-options-popup__holder">
 		<div class="user-options-popup__frame">
@@ -169,4 +181,24 @@
 	</div>
 	<a href="#" class="btn-popup-close btn-popup-close-js"><i></i><span>Закрыть</span></a>
 </div>
-<!--user options popups end-->
+<!--languages popup end-->
+
+<!--share popup-->
+<div class="user-options-popup hide-on-load languages-popup-js">
+	<div class="user-options-popup__holder">
+		<div class="user-options-popup__frame">
+			<div class="user-options-popup__align">
+				<div class="popup-label">Выберите пожалуйста язык:</div>
+				<div class="user-options-popup__content">
+					<ul class="lang__list">
+						<li><a href="javascript:void(0)" class="current"><i style="background-image: url(img/flag-russia.png);"></i><span>Русский</span></a></li>
+						<li><a href="#"><i style="background-image: url(img/flag-belarus.png);"></i><span>Беларускi</span></a></li>
+						<li><a href="#"><i style="background-image: url(img/flag-britain.png);"></i><span>English</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a href="#" class="btn-popup-close btn-popup-close-js"><i></i><span>Закрыть</span></a>
+</div>
+<!--share popup end-->

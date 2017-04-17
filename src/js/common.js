@@ -969,7 +969,7 @@ function tabSwitcher() {
 				});
 
 				$thisContent.css({
-					'display': 'block',
+					// 'display': 'block',
 					'position': 'absolute',
 					'left': 0,
 					'right': 0,
