@@ -876,12 +876,16 @@ function toggleDrop() {
 			$currentContainer.addClass(openClass);
 		});
 
-		$(document).on('click closeDropYears', function () {
+		$(document).on('click', function () {
+			closeDrop();
+		});
+
+		$choiceContainer.on('closeDrop', function () {
 			closeDrop();
 		});
 
 		function closeDrop() {
-			$('.js-choice-wrap').removeClass(openClass);
+			$choiceContainer.removeClass(openClass);
 		}
 
 		$('.js-choice-drop').on('click', 'a', function (e) {
@@ -1450,7 +1454,7 @@ function masonryInit() {
 	// 3) resizeByWidth (resize only width);
 
 	// add css style
-	// .nav-opened-before{
+	// .before-extra-popup-open{
 	// 	width: 100%!important;
 	// 	height: 100%!important;
 	// 	max-width: 100%!important;
@@ -1460,7 +1464,7 @@ function masonryInit() {
 	// 	overflow: hidden!important;
 	// }
 
-	// .nav-opened-before .wrapper{ z-index: 99; } // z-index of header must be greater than footer
+	// .before-extra-popup-open .wrapper{ z-index: 99; } // z-index of header must be greater than footer
 	//
 	// if nav need to hide
 	// @media only screen and (min-width: [example: 1280px]){
@@ -1494,11 +1498,13 @@ function masonryInit() {
 			classReturn: null,
 			overlayBoolean: true,
 			animationType: 'ltr', // rtl or ltr
+			animationScale: 0.85, // default scale for animation
 			animationSpeed: 300,
 			animationSpeedOverlay: null,
 			minWidthItem: 100,
 			mediaWidth: null,
 			closeOnResize: true,
+			cssScrollBlocked: false, // add class to body for blocked scroll
 			closeEsc: true // close popup on click Esc
 		}, settings || {});
 
@@ -1517,6 +1523,7 @@ function masonryInit() {
 		self.$staggerItems = options.staggerItems || self.$navMenuItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию navMenuItem;
 
 		self._animationType = options.animationType;
+		self._animationScale = options.animationScale;
 		self._animateSpeed = _animateSpeed;
 
 		// overlay
@@ -1529,6 +1536,7 @@ function masonryInit() {
 		self._minWidthItem = options.minWidthItem;
 		self._mediaWidth = options.mediaWidth;
 		self.closeOnResize = options.closeOnResize;
+		self.cssScrollBlocked = options.cssScrollBlocked;
 		self.closeEsc = options.closeEsc;
 
 		self.desktop = device.desktop();
@@ -1674,13 +1682,21 @@ function masonryInit() {
 		$buttonMenu.addClass(modifiers.active);
 		$buttonClose.addClass(classBeforeOpen);
 
+		if(self.cssScrollBlocked){
+			self.cssScrollFixed();
+		}
+
 		$navContainer.css({
 			'-webkit-transition-duration': '0s',
 			'transition-duration': '0s'
 		});
 
+		$navContainer.trigger('extraPopupBeforeOpen');
+		$('.js-choice-wrap').trigger('closeDrop');
+
 		TweenMax.to($navContainer, _animationSpeed / 1000, {
 			xPercent: 0,
+			scale: 1,
 			autoAlpha: 1,
 			ease: Cubic.easeOut,
 			onComplete: function () {
@@ -1749,8 +1765,13 @@ function masonryInit() {
 					});
 
 					canScroll();
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
 				}
 			});
+
 		} else if (_animationType === 'rtl') {
 			TweenMax.to($navContainer, duration, {
 				xPercent: 100,
@@ -1765,6 +1786,28 @@ function masonryInit() {
 					});
 
 					canScroll();
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
+				}
+			});
+
+		} else if (_animationType === 'surface') {
+			TweenMax.to($navContainer, duration, {
+				scale: self._animationScale,
+				autoAlpha: 0,
+				ease: Cubic.easeOut,
+				onComplete: function () {
+					if (_mediaWidth === null || window.innerWidth < _mediaWidth) {
+						self.preparationAnimation();
+					}
+
+					canScroll();
+
+					if(self.cssScrollBlocked){
+						self.cssScrollUnfixed();
+					}
 				}
 			});
 
@@ -1798,6 +1841,7 @@ function masonryInit() {
 			// 	scale: 0.6,
 			// 	y: 50
 			// });
+
 		} else if (_animationType === 'rtl') {
 			TweenMax.set($navContainer, {
 				xPercent: 100,
@@ -1812,9 +1856,31 @@ function masonryInit() {
 			// 	y: 50
 			// });
 
+		} else if (_animationType === 'surface') {
+			TweenMax.set($navContainer, {
+				scale: self._animationScale,
+				autoAlpha: 0,
+				onComplete: function () {
+					$navContainer.show(0);
+				}
+			});
+			// TweenMax.set($staggerItems, {
+			// 	autoAlpha: 0,
+			// 	scale: 0.6,
+			// 	y: 50
+			// });
+
 		} else {
 			console.error('Type animation "' + _animationType + '" is wrong!')
 		}
+	};
+
+	ExtraPopup.prototype.cssScrollFixed = function() {
+		$('body').addClass('css-scroll-fixed');
+	};
+
+	ExtraPopup.prototype.cssScrollUnfixed = function() {
+		$('body').removeClass('css-scroll-fixed');
 	};
 
 	// clearing inline styles
@@ -1865,7 +1931,8 @@ function popupsInit(){
 			closeOnResize: true,
 			// mediaWidth: 1280,
 			animationSpeed: 300,
-			overlayAlpha: 0.35
+			overlayAlpha: 0.35,
+			cssScrollBlocked: true
 		});
 
 	}
@@ -1927,6 +1994,28 @@ function popupsInit(){
 			// mediaWidth: 1200,
 			animationSpeed: 300,
 			overlayAlpha: 0.35
+		});
+
+	}
+
+	/*languages popup*/
+	var popupLang = '.languages-popup-js';
+
+	if($(popupLang).length){
+
+		new ExtraPopup({
+			navContainer: popupLang,
+			// navMenu: '.site-map__list',
+			btnMenu: '.btn-language-open-js',
+			btnMenuClose: '.btn-popup-close-js',
+			// navMenuItem: '.site-map__box',
+			overlayAppendTo: 'body',
+			closeOnResize: true,
+			// mediaWidth: 1200,
+			animationType: 'surface',
+			animationSpeed: 300,
+			overlayAlpha: 0.35,
+			cssScrollBlocked: true
 		});
 
 	}

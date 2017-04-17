@@ -59,6 +59,85 @@ html.before-extra-popup-open
 
 /*extra popup end*/
 
+/*button popup close*/
+.btn-popup-close
+	//<a href="#" class="btn-popup-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
+	$btn-bg: #f3f3f3
+	$btn-color: $text-color
+	$btn-size: $header-top-height
+	$btn-space: 12px
+	$btn-lines-width: 20px
+	$btn-lines-height: 3px
+	$btn-lines-space: 5px
+	$btn-lines-color: $text-color
+
+	=line-style()
+		+size($btn-lines-width, $btn-lines-height)
+		border-radius: 2px
+
+	display: block
+	+size($btn-size)
+	background: $btn-bg
+	color: #fff
+	text-decoration: none
+	+clear-spacing
+	white-space: nowrap
+	opacity: 0
+	visibility: hidden
+	transition-property: background-color, opacity, visibility
+	transition-duration: $animation-speed
+
+	+media('<mob-lg')
+		+size(45px)
+
+	&::before
+		content: ''
+		display: inline-block
+		height: $btn-size
+		min-height: 100%
+		vertical-align: middle
+
+		+media('<mob-lg')
+			height: $header-top-height--sm
+
+	> span
+		+hide-text
+
+	> i
+		display: inline-block
+		vertical-align: middle
+		position: relative
+		backface-visibility: hidden
+		background-color: transparent
+		+line-style
+
+		&::before, &::after
+			+pseudo()
+			left: 0
+			backface-visibility: hidden
+			+line-style
+			background: $btn-lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		//first line menu
+		&::before
+			top: 0
+			transform: rotate(-45deg)
+
+		//third line menu
+		&::after
+			top: 0
+			transform: rotate(45deg)
+
+	.no-touchevents &:hover
+		background-color: $mark-color-alt
+
+		& > i::before, & > i::after
+			background-color: white
+
+/*button popup close end*/
+
 //================== SITE MAP POPUP =================//
 /*site map menu*/
 .site-map
@@ -346,9 +425,12 @@ $nav-small-tabs-height: 60px
 
 .nav-small-tabs
 	height: $nav-small-tabs-height
-	display: table
+	display: none
 	width: 100%
 	table-layout: fixed
+
+	.region-page &
+		display: table
 
 	a
 		display: table-cell
@@ -394,12 +476,16 @@ $nav-small-tabs-height: 60px
 				border-color: transparent
 
 .nav-small-container
-	height: calc(100% - #{$nav-small-tabs-height})
+	height: 100%
+
+	.region-page &
+		height: calc(100% - #{$nav-small-tabs-height})
 
 .popup-nav-small__holder
 	overflow-y: auto
 	overflow-x: hidden
 	height: 100%
+	background-color: white
 
 	& > *:last-child
 		margin-bottom: 0
@@ -446,3 +532,114 @@ $nav-small-tabs-height: 60px
 				background-color: $text-color-alt
 
 /*main navigation for small screen closer end*/
+
+//================== USER OPTIONS POPUP =================//
+/*user options popup
+.user-options-popup
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	max-width: $main-layout-width
+	background: white
+	z-index: 998
+
+	&.hide-on-load
+		opacity: 0
+		visibility: hidden
+
+	// for ios add bg after inertia scroll
+	//&::after
+		+pseudo()
+		+cover(null, 0, 100%, 50%, 100%)
+		background: inherit
+		margin-top: -10px
+		z-index: -1
+
+	.btn-popup-close
+		position: absolute
+		right: 0
+		top: 0
+
+		.extra-popup-opened &
+			opacity: 1
+			visibility: visible
+
+.user-options-popup__holder
+	overflow-y: auto
+	overflow-x: hidden
+	height: 100%
+
+	& > *:last-child
+		margin-bottom: 0
+
+.user-options-popup__frame
+	position: relative
+	text-align: center
+	top: 50%
+	transform: translate(0, -50%)
+
+.user-options-popup__align
+	display: inline-block
+	text-align: left
+
+.popup-label
+	display: block
+	font-size: 1.4rem
+	line-height: 1.5
+	color: $text-color-light
+	margin-bottom: $bottom-space
+	+antialiased
+
+	+media('<mob-lg')
+		font-size: 1.8rem
+
+.user-options-popup__content
+	white-space: nowrap
+
+.lang__list
+	font-family: $font-alt
+	font-weight: 700
+	font-size: 36px
+	line-height: 1.3
+	margin-bottom: $bottom-space
+
+	+media('<mob-lg')
+		font-size: 26px
+
+	&:last-child
+		margin-bottom: 0
+
+	li
+		margin-bottom: $bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+	a
+		text-decoration: none
+		color: $text-color
+		+antialiased
+		transition-property: color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover, &.current
+			color: $text-color-alt
+			text-decoration: none
+			
+		&.current
+			cursor: default
+
+		& > i
+			display: inline-block
+			vertical-align: middle
+			width: 40px
+			height: 20px
+			background-position: center center
+			background-repeat: no-repeat
+			background-size: cover
+			margin-right: $grid-space
+			margin-bottom: 5px
+
+/*user options popup end
