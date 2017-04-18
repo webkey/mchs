@@ -1,11 +1,11 @@
 <aside class="sidebar sidebar-region region-expand-container-js is-expanded">
 	<div class="sidebar__holder">
 		@@include('_region-menu-heading.tpl', {
-			"regionMenuTitle": "Меню Брестского областного управления"
+			"headingText": "@@headingText"
 		})
 		<div class="region-expand-panel-js">
 			<div class="region-menu-panel menu-sub-site">
-				@@include('_region-menu.tpl', { "regionMenuActiveItem": "@@regionMenuActiveItem" })
+				@@include('_region-menu.tpl', { "regionMenuActiveItem": "@@regionMenuActiveItem", "classKey": "region-menu", "navTag": "" })
 			</div>
 		</div>
 		<div class="sidebar-region-news__heading region-expand-tab-js">

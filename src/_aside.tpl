@@ -1,7 +1,18 @@
 <aside class="aside">
 	<div class="aside__holder">
 		<div class="aside__widget">
-			@@include('_banners.tpl')
+			<!--banners-->
+			<div class="banners">
+				<div class="banners__list">
+					@@if(context.pageDepartment) {
+						@@loop('_banners-item.tpl', 'includes-json/banners-items-aside-department.json')
+					}
+					@@if(!context.pageDepartment) {
+						@@loop('_banners-item.tpl', 'includes-json/banners-items-aside.json')
+					}
+				</div>
+			</div>
+			<!--banners end-->
 		</div>
 		<div class="aside__widget">
 			<h3>сейчас читают</h3>

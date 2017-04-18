@@ -1,0 +1,97 @@
+/*===========departments Chernobil===========*/
+// base
+$text-color-alt: #9b2813
+$mark-color-alt: #9b2813
+
+// header
+$header-bg-color: #395b7e
+
+// navigation
+$color-nav-bg-hover: $mark-color-alt
+
+// region menu
+$region-menu-bg-color: #172534
+$region-menu-bg-color-s: shade($region-menu-bg-color, 80%)
+$region-menu-bg-color-ss: shade($region-menu-bg-color, 62%)
+$region-menu-bg-color-sss: shade($region-menu-bg-color, 48%)
+$region-menu-bg-color-ssss: shade($region-menu-bg-color, 38%)
+$region-menu-border-color: rgba(255, 255, 255, 0.20)
+
+.department-page
+	// LOGO
+	.logo-wrap
+		background-color: $region-menu-bg-color
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1)
+
+	.elements-is-transform & .logo a
+		text-align: center
+
+	// HEADER TOP PANEL
+	.header__top
+		background: $header-bg-color
+
+	// NAVIGATION
+	.nav__list > li, .priority-nav__dropdown > li
+
+		&.hover, &.active, &.current, .no-js &:hover
+			& > .nav__tab > a
+				background: $color-nav-bg-hover
+				color: white
+
+	// PRIORITY NAV
+	.nav
+		.priority-nav__dropdown
+			background: $header-bg-color
+
+	// REGION MENU
+	.region-menu-heading
+		background-color: $region-menu-bg-color
+		border-bottom: 1px solid $region-menu-border-color
+
+		.no-touchevents &:hover
+			background-color: tint($region-menu-bg-color, 90%)
+
+	// REGION MENU
+	// общие стили для пунктов навигации
+	.region-menu__list
+		a
+			border-bottom: 1px solid $region-menu-border-color
+
+	// особые стили для пунктов навигации ПЕРВОГО урованя
+	.region-menu__list > li
+
+		& > .region-menu__tab a
+			background-color: $region-menu-bg-color
+
+	// СТРЕЛКИ навигации
+	.region-menu__angle
+		background-color: $region-menu-bg-color
+		border: solid $region-menu-border-color
+		border-width: 0 0 1px 1px
+
+	// особые стили для пунктов ПОДМЕНЮ
+	.region-menu__drop
+
+		// особые стили для пунктов навигации ВТОРОГО урованя
+		ul, a, .region-menu__angle
+			background-color: $region-menu-bg-color-s
+
+			.no-touchevents &:hover
+				color: white
+
+		.region-menu__drop
+			// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+			ul, a, .region-menu__angle
+				background-color: $region-menu-bg-color-ss
+
+			.region-menu__drop
+				// особые стили для пунктов навигации ЧЕТВЕРТОГО урованя
+				ul, a, .region-menu__angle
+					background-color: $region-menu-bg-color-sss
+
+				.region-menu__drop
+					// особые стили для пунктов навигации ПЯТОГО урованя
+					ul, a, .region-menu__angle
+						background-color: $region-menu-bg-color-ssss
+
+/*===========departments Chernobil end===========*/

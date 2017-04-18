@@ -4,9 +4,6 @@
 
 /*SIDE*/
 .side
-	$side-width: 60px
-	$fz: 14px
-	$lh: round($fz*1.3)
 	position: absolute
 	margin-top: $grid-layout-space - 9px
 	margin-left: -#{$side-width}
@@ -40,115 +37,103 @@
 	+media('<desk-lg')
 		margin-right: -#{$grid-layout-space--desk-hd + $side-width}
 
-	=font()
-		font: 400 #{$fz}/#{$lh} $font-alt
-		letter-spacing: normal
+.side__list
+	width: $side-width
+	position: relative
+	z-index: 10
 
-	=transition()
-		transition-property: background-color, transform, box-shadow, border-color, opacity
-		transition-duration: $animation-speed-mouseleave
-		transition-timing-function: cubic-bezier(0.61, 0.01, 0.41, 1)
+.side__item
+	position: relative
 
-	=transition-duration()
+	&::before
+		content: ""
+		display: block
+		padding-top: calc(100% + 1px)
+
+.side__link
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	color: $text-color
+	white-space: nowrap
+	text-decoration: none
+
+.side__inner
+	background: none
+	position: absolute
+	top: 0
+	left: 100%
+	height: 100%
+	font-size: 0
+	line-height: 0
+	letter-spacing: -4px
+	white-space: nowrap
+	pointer-events: none
+	background: white
+	+antialiased
+	transform: translate(-#{$side-width}, 0)
+	transition-property: background-color, transform, box-shadow, border-color, opacity
+	transition-duration: $animation-speed-mouseleave
+	transition-timing-function: $side-transition-timing-function
+
+	.no-touchevents a:hover &
+		transform: translate(-100%, 0)
+		transition-duration: $animation-speed
+		pointer-events: auto
+
+.side__depict
+	display: inline-block
+	vertical-align: middle
+	position: relative
+	padding-right:
+	height: 100%
+	width: $side-width
+	background: $text-color-alt
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25)
+	transition-property: background-color, transform, box-shadow, border-color, opacity
+	transition-duration: $animation-speed-mouseleave
+	transition-timing-function: $side-transition-timing-function
+
+	.no-touchevents a:hover &
+		border-color: transparent
 		transition-duration: $animation-speed
 
-	@at-root
-	&__list
-		width: $side-width
-		position: relative
-		z-index: 10
-
-	@at-root
-	&__item
-		position: relative
-
-		&::before
-			content: ""
-			display: block
-			padding-top: calc(100% + 1px)
-
-	@at-root
-	&__link
+	svg
+		width: 30px
+		height: 30px
 		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		color: $text-color
-		white-space: nowrap
-		text-decoration: none
+		left: 50%
+		top: 50%
+		-webkit-backface-visibility: hidden
+		backface-visibility: hidden
+		transform: translate(-50%, -50%)
 
-	@at-root
-	&__inner
-		$translateX: calc(100% - #{$side-width})
-		background: none
-		position: absolute
-		top: 0
-		left: 100%
-		height: 100%
-		font-size: 0
-		line-height: 0
-		letter-spacing: -4px
-		white-space: nowrap
-		pointer-events: none
-		background: white
-		+antialiased
-		transform: translate(-#{$side-width}, 0)
-		+transition
+	path
+		fill: #fff
+
+.side__text
+	display: inline-block
+	vertical-align: middle
+	padding: 0 20px
+	max-height: 100%
+	font: 400 #{$side-font-size}/#{$side-line-height} $font-alt
+	letter-spacing: normal
+
+	span
+		display: block
+		overflow: hidden
+		max-height: $side-line-height*2
+		opacity: 0
+		transform: translate(20px, 0)
+		transition-property: background-color, transform, box-shadow, border-color, opacity
+		transition-duration: $animation-speed-mouseleave
+		transition-timing-function: $side-transition-timing-function
 
 		.no-touchevents a:hover &
-			transform: translate(-100%, 0)
-			+transition-duration
-			pointer-events: auto
-
-	@at-root
-	&__depict
-		display: inline-block
-		vertical-align: middle
-		position: relative
-		padding-right:
-		height: 100%
-		width: $side-width
-		background: $text-color-alt
-		border-bottom: 1px solid darken($text-color-alt, 10%)
-		+transition
-
-		.no-touchevents a:hover &
-			border-color: transparent
-			+transition-duration
-
-		svg
-			width: 30px
-			height: 30px
-			position: absolute
-			left: 50%
-			top: 50%
-			-webkit-backface-visibility: hidden
-			backface-visibility: hidden
-			transform: translate(-50%, -50%)
-
-		path
-			fill: #fff
-
-	@at-root
-	&__text
-		display: inline-block
-		vertical-align: middle
-		padding: 0 20px
-		max-height: 100%
-		+font
-
-		span
-			display: block
-			overflow: hidden
-			max-height: $lh*2
-			opacity: 0
-			transform: translate(20px, 0)
-			+transition
-
-			.no-touchevents a:hover &
-				transform: translate(0, 0)
-				opacity: 1
-				transition-duration: 0.5s
+			transform: translate(0, 0)
+			opacity: 1
+			transition-duration: 0.5s
 
 /*SIDE end*/

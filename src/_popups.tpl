@@ -1,7 +1,7 @@
 <!--map site-->
 <div class="extra-popup site-map hide-on-load site-map-js">
-	<div class="extra-popup__content">
-		<div class="layout">
+	<div class="extra-popup__holder">
+		<div class="extra-popup__frame">
 			<div class="site-map__container">
 				<div class="site-map__box">
 					<strong class="site-map__heading"><a href="#"><span>О министерстве</span></a></strong>
@@ -106,6 +106,7 @@
 					</ul>
 				</div>
 			</div>
+			<a href="#" class="btn-popup-close btn-popup-close-js"><i></i><span>Закрыть</span></a>
 		</div>
 	</div>
 </div>
@@ -147,7 +148,13 @@
 <!--popup banners-->
 <div class="popup-banners hide-on-load popup-banners-js">
 	<div class="popup-banners__holder">
-		@@include('_banners.tpl')
+		<!--banners-->
+		<div class="banners">
+			<div class="banners__list">
+				@@loop('_banners-item.tpl', 'includes-json/banners-items-aside.json')
+			</div>
+		</div>
+		<!--banners end-->
 	</div>
 </div>
 <a href="#" class="btn-popup-close btn-popup-banners-close btn-banners-close-js"><i></i><span>Закрыть</span></a>
@@ -172,7 +179,7 @@
 	</div>
 	<div class="nav-small-container js-tab-container">
 		<div class="popup-nav-small__holder js-tab-content menu-sub-site" id="region-menu-mobile-anchor">
-			@@include('_region-menu.tpl', { "regionMenuActiveItem": "@@regionMenuActiveItem" })
+			@@include('_region-menu.tpl', { "regionMenuActiveItem": "@@regionMenuActiveItem", "classKey": "region-menu", "navTag": "" })
 		</div>
 		<div class="popup-nav-small__holder js-tab-content" id="nav-mobile-anchor">
 			@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive", "classKey": "nav-mobile", "navTag": "" })
