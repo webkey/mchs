@@ -86,10 +86,10 @@
 		& > *
 			padding: 0!important
 
-	.main, .content, .layout, .layout-text, .layout-flood, .header, .header__holder, .blockquote, .blockquote *, blockquote, .imgl, .imgr, .imgc, .table-auto table, .header__frame, .logo-wrap, .header__content, .header .holder, .header .frame, .header__info, .header__title, .header__info li, .main-inside, .main-holder, .content-layout, .article-meta, .sheet, .section, .files, .files__item, .files__inner, .files__depict, .files__description, .files__meta, .files__meta > span, .news-previews, .news-previews__list, .news-previews__item, .news-previews__content, .news-previews__inner, .news-previews__text, .news-previews__content::before, .footer, .footer__holder, .footer-bottom, .footer-bottom__col, .grid-row, [class*="grid-col-"], .save, .save__holder, .save__box, .save__align, .events-sum, .events-sum__panels, .events-sum__panel, .events-list, .events-list__item, .section__holder, .news-grid, .news-grid__list, [class*="news-grid__item"], .news-grid__inner, .news-grid__content, .news-grid__title, .news-grid__text, .news-grid__meta, .section__subtitle h2, .section__subtitle h3, .section__subtitle h4, .news-group, .news-group__list, .section__box, .news-group__item, .news-group__content, .news-group__inner, .news-group__text, .news-group__meta, .soc-media__col, .soc-media__text, .soc-media__link
+	.main, .content, .layout, .layout-text, .layout-flood, .header, .header__holder, .blockquote, .blockquote *, blockquote, .imgl, .imgr, .imgc, .table-auto table, .header__frame, .logo-wrap, .header__content, .header .holder, .header .frame, .header__info, .header__title, .header__info li, .main-inside, .main-holder, .content-layout, .article-meta, .sheet, .section, .files, .files__item, .files__inner, .files__depict, .files__description, .files__meta, .files__meta > span, .news-previews, .news-previews__list, .news-previews__item, .news-previews__content, .news-previews__inner, .news-previews__text, .news-previews__content::before, .footer, .footer__holder, .footer-bottom, .footer-bottom__col, .grid-row, [class*="grid-col-"], .save, .save__holder, .save__box, .save__align, .events-sum, .events-sum__panels, .events-sum__panel, .events-list, .events-list__item, .section__holder, .news-grid, .news-grid__list, [class*="news-grid__item"], .news-grid__inner, .news-grid__content, .news-grid__title, .news-grid__text, .news-grid__meta, .section__subtitle h2, .section__subtitle h3, .section__subtitle h4, .news-group, .news-group__list, .section__box, .news-group__item, .news-group__content, .news-group__inner, .news-group__text, .news-group__meta, .soc-media__col, .soc-media__text, .soc-media__link, .logo a,.logo img
 		+print-reset
 
-	.sidebar, .aside, .print-hidden, .view-print, .nav, .nav-list, .breadcrumbs, .breadcrumbs__list, form, .spacer, [class*="btn-"], .side, .header__top, .header__contacts, .header__info li svg, .header__info li a::after, .user-form, .ctrl, .news-previews__img, .news__label, .banners-panel, .footer-gov, .footer-common, .news-previews__footer, .developer__logo, .promo, .years, .events-sum__nav, .events-sum__footer, .news-grid__img, .news__label_video, .news-grid__slider, #multimedia-anchor, .tape-slider, .v-separator, .news-group::before, .news-group__img, .soc-media .soc-media__col:first-child, .soc-media::before, .soc-media__img
+	.sidebar, .aside, .print-hidden, .view-print, .nav, .nav-list, .breadcrumbs, .breadcrumbs__list, form, .spacer, [class*="btn-"], .side, .header__top, .header__contacts, .header__info li svg, .header__info li a::after, .user-form, .ctrl, .news-previews__img, .news__label, .banners-panel, .footer-gov, .footer-common, .news-previews__footer, .developer__logo, .promo, .years, .events-sum__nav, .events-sum__footer, .news-grid__img, .news__label_video, .news-grid__slider, #multimedia-anchor, .tape-slider, .v-separator, .news-group::before, .news-group__img, .soc-media .soc-media__col:first-child, .soc-media::before, .soc-media__img, .logo-short-text, .header__content .logo
 		display: none !important
 		content: none !important
 
@@ -103,20 +103,25 @@
 	.logo-wrap
 		position: relative !important
 		float: left !important
-
-	.logo
 		background: none !important
 		height: 2.5cm !important
 		width: 2.5cm !important
 		margin-right: 0.5cm !important
 
+		a
+			display: block !important
+
 		& > *::after
 			display: none !important
 			content: none !important
 
-		& > img
+		img
+			width: 100% !important
 			display: block !important
 			float: left !important
+
+	.header__frame
+		overflow: hidden !important
 
 	blockquote q::before, blockquote q::after
 		padding: 0 !important

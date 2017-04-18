@@ -1,18 +1,19 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*breadcrumbs*/
+$bread-item-max-width: 320px
+$bread-item-min-width: 200px
+$bread-space-horizontal: 20px
+$bread-space-vertical: 10px
+
 .breadcrumbs
-	$item-max-width: 320px
-	$item-min-width: 200px
 
 	.home-page &
 		display: none
 
-	=transition($dur: 0.2s)
-		transition-property: max-width, opacity, visibility, border-color
-		transition-duration: $dur
-
 	&
-		//float: left
-		//width: 100%
 		position: relative
 		font-size: 1.4rem
 		line-height: 1.5
@@ -21,134 +22,127 @@
 		cursor: default
 		+clear
 
-		@at-root
-			.breadcrumbs__list
-				position: relative
+.breadcrumbs__item
+	float: left
+	position: relative
+	margin: 0 10px 10px 0
+	padding: 0
 
-			.breadcrumbs__item
-				float: left
-				position: relative
-				margin: 0 10px 10px 0
-				padding: 0
+	&:first-child
+		margin-left: 0
 
-				&:first-child
-					margin-left: 0
+	& > span
+		display: inline-block
+		vertical-align: top
+		+truncate($bread-item-max-width)
 
-				> a
-					display: inline-block
-					vertical-align: top
-					position: relative
-					padding: 0 18px 0 0
-					color: $text-color
-					text-decoration: none
-					min-width: 0
-					cursor: pointer
-					+transition($dur: 0.5s)
+	& > a
+		display: inline-block
+		vertical-align: top
+		position: relative
+		padding: 0 18px 0 0
+		color: $text-color-alt
+		text-decoration: none
+		min-width: 0
+		cursor: pointer
+		transition-property: max-width, opacity, visibility, border-color
+		transition-duration: $animation-speed
 
-					> span
-						display: block
-						position: relative
-						overflow: hidden
-						white-space: nowrap
-						-ms-text-overflow: ellipsis
-						text-overflow: ellipsis
-						max-width: $item-max-width
-						z-index: 5
-
-						+media('<mob-lg')
-							max-width: 240px
-
-					> i
-						position: absolute
-						right: 0
-						top: 7px
-						width: 7px
-						height: 8px
-						pointer-events: none
-
-						&::before
-							content: ''
-							position: absolute
-							left: 0
-							top: 50%
-							height: 0
-							width: 0
-							border: solid transparent
-							border-width: 4px 7px
-							margin-top: -4px
-							border-left-color: $mark-color
-
-				> i
-					display: none
-
-				&_has-drop:last-of-type, &-drop:last-child, &_last
-					margin-right: 0
-
-					> a
-						padding-right: 0
-
-						> i
-							display: none
-
-					> i
-						display: none
-
-				&:last-of-type, &:last-child, &_last, &.hover, &_long
-
-					> a
-						max-width: $item-max-width
-
-				&_short
-					> a
-						max-width: none
-
-	@at-root
-		$space-horizontal: 20px
-		$space-vertical: 10px
-
-		.breadcrumbs-drop
-			position: absolute
-			top: -#{$space-vertical}
-			left: -#{$space-horizontal}
-			//min-width: $item-min-width
-			max-width: $item-max-width + $space-horizontal*2
-			padding: 0 $space-horizontal
-			opacity: 0
-			visibility: hidden
-			white-space: nowrap
-			background: #fff
-			box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1)
-			z-index: 10
-			+transition()
-
-			.breadcrumbs__item_has-drop.hover > &
-				opacity: 1
-				visibility: visible
-				-webkit-transition-delay: 0.25s
-				transition-delay: 0.25s
-
-		.breadcrumbs-drop__holder
+		& > span
+			display: block
 			position: relative
+			+truncate($bread-item-max-width)
+			//border-bottom: 1px solid $text-color
+			z-index: 5
 
-		.breadcrumbs-drop__item
-			margin: #{$space-vertical} 0
+			+media('<mob-lg')
+				max-width: 240px
 
-			a
-				display: block
-				text-decoration: none
-				color: $text-color
-				cursor: pointer
-				position: relative
-				overflow: hidden
-				white-space: nowrap
-				-ms-text-overflow: ellipsis
-				text-overflow: ellipsis
+		& > i
+			position: absolute
+			right: 0
+			top: 7px
+			width: 7px
+			height: 8px
+			pointer-events: none
 
-				> span
-					border-bottom: 1px solid transparent
-					+transition()
+			&::before
+				content: ''
+				position: absolute
+				left: 0
+				top: 50%
+				height: 0
+				width: 0
+				border: solid transparent
+				border-width: 4px 7px
+				margin-top: -4px
+				border-left-color: $mark-color
 
-				.no-touchevents &:hover > span
-					border-bottom-color: $text-color-light
+	& > i
+		display: none
+
+	&_has-drop:last-of-type, &-drop:last-child, &_last
+		margin-right: 0
+
+		& > a
+			padding-right: 0
+
+			& > i
+				display: none
+
+		& > i
+			display: none
+
+	&:last-of-type, &:last-child, &_last, &.hover, &_long
+
+		& > a
+			max-width: $bread-item-max-width
+
+	&_short
+		> a
+			max-width: none
+
+.breadcrumbs-drop
+	position: absolute
+	top: -#{$bread-space-vertical}
+	left: -#{$bread-space-horizontal}
+	padding: 0 $bread-space-horizontal
+	opacity: 0
+	visibility: hidden
+	white-space: nowrap
+	background: #fff
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1)
+	z-index: 10
+	transition-property: max-width, opacity, visibility, border-color
+	transition-duration: $animation-speed
+
+	.breadcrumbs__item_has-drop.hover > &
+		opacity: 1
+		visibility: visible
+		transition-delay: 0.1s
+
+.breadcrumbs-drop__holder
+	position: relative
+
+.breadcrumbs-drop__item
+	margin: #{$bread-space-vertical} 0
+
+	a
+		display: block
+		text-decoration: none
+		color: $text-color
+		cursor: pointer
+		position: relative
+
+		& > span
+			display: inline-block
+			vertical-align: top
+			border-bottom: 1px solid transparent
+			transition-property: max-width, opacity, visibility, border-color
+			transition-duration: $animation-speed
+			+truncate($bread-item-max-width)
+
+		.no-touchevents &:hover > span
+			border-bottom-color: $text-color-light
 
 /*breadcrumbs end*/

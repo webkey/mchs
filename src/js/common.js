@@ -2043,7 +2043,7 @@ function popupsInit(){
 	}
 
 	/*languages popup*/
-	var popupSearch = '.search-popup-js';
+	var popupSearch = '.popup-search-js';
 
 	if($(popupSearch).length){
 
@@ -2139,11 +2139,11 @@ function breadcrumbsBehavior(){
 			$this.attr('data-text', $this.children('a').children('span').text());
 		}
 
-		$breadcrumbsItemHasDrop
-			.not(':last-child')
-			.children('a')
-			.children('span')
-			.text('...');
+		// $breadcrumbsItemHasDrop
+		// 	.not(':last-child')
+		// 	.children('a')
+		// 	.children('span')
+		// 	.text('...');
 
 		$breadcrumbsItemHasDrop.on('click', function (e) {
 			var $breadcrumbsItemCurrent = $(this);
@@ -2152,17 +2152,17 @@ function breadcrumbsBehavior(){
 			}
 			e.stopPropagation();
 
-			$breadcrumbsItemHasDrop
-				.removeClass('hover breadcrumbs__item_long')
-				.addClass('breadcrumbs__item_short');
+			// $breadcrumbsItemHasDrop
+			// 	.removeClass('hover breadcrumbs__item_long')
+			// 	.addClass('breadcrumbs__item_short');
 
-			$breadcrumbsItemHasDrop.children('a').children('span').text('...');
+			// $breadcrumbsItemHasDrop.children('a').children('span').text('...');
 
-			$breadcrumbsItemCurrent
-				.addClass('hover breadcrumbs__item_long')
-				.removeClass('breadcrumbs__item_short');
+			// $breadcrumbsItemCurrent
+			// 	.addClass('hover breadcrumbs__item_long')
+			// 	.removeClass('breadcrumbs__item_short');
 
-			$breadcrumbsItemCurrent.children('a').children('span').text($breadcrumbsItemCurrent.data('text'));
+			// $breadcrumbsItemCurrent.children('a').children('span').text($breadcrumbsItemCurrent.data('text'));
 
 			e.preventDefault();
 		});
@@ -2628,7 +2628,7 @@ $(document).ready(function(){
 	masonryInit();
 	popupsInit();
 	fileInput();
-	breadcrumbsBehavior();
+	// breadcrumbsBehavior();
 	stickyLayout();
 	regionMenu();
 	datePickerInit();
