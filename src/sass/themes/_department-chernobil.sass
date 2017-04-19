@@ -1,23 +1,144 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*===========departments Chernobil===========*/
-// base
-$text-color-alt: #9b2813
-$mark-color-alt: #9b2813
-
-// header
-$header-bg-color: #395b7e
-
-// navigation
-$color-nav-bg-hover: $mark-color-alt
-
-// region menu
-$region-menu-bg-color: #172534
-$region-menu-bg-color-s: shade($region-menu-bg-color, 80%)
-$region-menu-bg-color-ss: shade($region-menu-bg-color, 62%)
-$region-menu-bg-color-sss: shade($region-menu-bg-color, 48%)
-$region-menu-bg-color-ssss: shade($region-menu-bg-color, 38%)
-$region-menu-border-color: rgba(255, 255, 255, 0.20)
-
 .department-page
+	// VARIABLES
+	// base
+	$text-color-alt: #9b2813
+	$mark-color: #9b2813
+	$mark-color-alt: #9b2813
+
+	// header
+	$header-bg-color: #395b7e
+
+	// navigation
+	$color-nav-bg-hover: $mark-color-alt
+
+	// region menu
+	$region-menu-bg-color: #172534
+	$region-menu-bg-color-s: shade($region-menu-bg-color, 80%)
+	$region-menu-bg-color-ss: shade($region-menu-bg-color, 62%)
+	$region-menu-bg-color-sss: shade($region-menu-bg-color, 48%)
+	$region-menu-bg-color-ssss: shade($region-menu-bg-color, 38%)
+	$region-menu-border-color: rgba(255, 255, 255, 0.20)
+
+	// form color
+	$color-form-border-focus: $text-color-alt
+
+	// btn color
+	$btn-bg-color: $text-color-alt
+	$btn-bg-color-hover: shade($btn-bg-color, 80%)
+	$btn-text-color: #fff
+
+	// table color
+	$color-table-bg-alt: $text-color-alt
+	$color-table-bg-row: #fafafa
+
+	// no img
+	$path-no-img: '../../img/no-img-department-chernobil.jpg'
+
+	// TYPOGRAPHY
+	.mark
+		color: $mark-color
+
+	.text-color-alt
+		color: $text-color-alt
+
+	.#{$user-content}
+		ul > li::before
+			border-left-color: $mark-color
+
+		ol > li::before
+			color: $mark-color
+
+		.tbl
+			td, th
+				background-color: $color-table-bg
+
+			th, thead td, tfoot td
+				background: $color-table-bg-alt
+				color: $color-table-text-alt
+				border-color: $color-table-bg-alt
+
+	.view-print
+		color: $text-color-alt
+		border: 1px solid $text-color-alt
+
+		.no-touchevents &:hover
+			background-color: $text-color-alt
+
+		path
+			fill: $text-color-alt
+
+		.no-touchevents &:hover path
+			fill: white
+
+	// BUTTONS
+	// btn-default
+	.btn-default
+		background-color: $btn-bg-color
+
+		.no-touchevents &:hover
+			background-color: $btn-bg-color-hover
+
+	.btn-default-alt
+		background-color: $btn-text-color
+		border-color: $btn-bg-color
+		color: $btn-bg-color
+
+		.no-touchevents &:hover
+			background: $btn-bg-color-hover
+			color: $btn-text-color
+
+	.btn-arrow
+		color: $btn-text-color
+		background-color: $btn-bg-color
+
+		.no-touchevents &:hover
+			background-color: $btn-bg-color-hover
+
+	.more
+		.btn-more
+			color: $text-color
+
+		i::before, i::after
+			background: $text-color
+
+	.btn-map-site
+		background-color: $color-form-border-focus
+
+		.no-touchevents &:hover
+			background-color: shade($text-color-alt, 85%)
+
+	// FORM STYLES DEFAULT
+	.form-mark
+		color: $mark-color
+
+	.no-touchevents &
+		input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
+			&:hover
+				border-color: $color-form-border-focus
+
+			&:focus
+				border-color: $color-form-border-focus
+				box-shadow: inset 0 0 0 1px $color-form-border-focus
+
+	.select
+		select:focus, button.cselect:focus .select-inner, button.cselect.ui-state-active .select-inner
+			border-color: $color-form-border-focus
+
+		&::before, &::after, button.cselect .ui-icon .arrow-select::before, button.cselect .ui-icon .arrow-select::after
+			background-color: $color-form-border-focus
+
+		div.cselect .ui-multiselect-checkboxes
+				border-color: $color-form-border-focus
+
+	// USER FORM
+	.form-title
+		color: $text-color-alt
+
 	// LOGO
 	.logo-wrap
 		background-color: $region-menu-bg-color
@@ -93,5 +214,89 @@ $region-menu-border-color: rgba(255, 255, 255, 0.20)
 					// особые стили для пунктов навигации ПЯТОГО урованя
 					ul, a, .region-menu__angle
 						background-color: $region-menu-bg-color-ssss
+
+	// SIDE
+	.side__depict
+		background: $text-color-alt
+
+	// SECTION
+	.section__title
+		color: $text-color
+
+	// FLATPICKR (vendor restyle)
+	//.flatpickr-day.endRange, .flatpickr-day.endRange.inRange, .flatpickr-day.endRange.nextMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.endRange:focus, .flatpickr-day.endRange:hover, .flatpickr-day.selected, .flatpickr-day.selected.inRange, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.selected:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange, .flatpickr-day.startRange.inRange, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.startRange:focus, .flatpickr-day.startRange:hover
+		background: $text-color-alt
+		border-color: $text-color-alt
+
+	// NEWS
+	.news-grid__inner, .news-previews__inner
+		box-shadow: inset 0 -3px 0 $mark-color-alt
+
+	.news-grid__content, .news-previews__content
+
+		&::before
+			background: $mark-color-alt
+
+	// news grid wide
+	.news-grid__item--wide .news-grid__inner::before
+		background: url($path-no-img) no-repeat center
+		background-size: cover
+
+	// hover
+	.no-touchevents & a.news-grid__inner:hover
+		.news-grid__content, .news-grid__meta
+			color: white
+
+		path
+			fill: white
+
+	.no-touchevents & a.news-previews__inner:hover
+		.news-previews__content, .news-previews__meta
+			color: white
+
+		path
+			fill: white
+
+	// FOOTER
+	.gov__list .slick-dots li.slick-active button::before
+		background: $text-color-alt
+
+	// POPUPS
+	// button popup close
+	.btn-popup-close
+		.no-touchevents &:hover
+			background-color: $mark-color-alt
+
+	// lang list
+	.no-touchevents & .lang__list a
+		&:hover, &.current
+			color: $text-color-alt
+
+	// share link list
+	.no-touchevents & .share-link__list a:hover
+		color: $text-color-alt
+
+	// search form
+	input.search-form__input
+		& ~ .search-form__btn::after
+			background-color: $mark-color-alt
+
+	// bitrix default search page
+	.search-page ul
+		.active
+			span
+				color: white !important
+				background-color: $text-color-alt !important
+
+	.no-touchevents & .search-page ul
+		a:hover
+			color: white
+
+			span
+				background-color: $mark-color-alt
+
+	.no-touchevents & .search-page .p-nav:hover
+		background: $mark-color-alt
+		box-shadow: inset 0 0 0 1px $mark-color-alt
 
 /*===========departments Chernobil end===========*/

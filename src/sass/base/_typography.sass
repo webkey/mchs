@@ -195,7 +195,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 /*base end
 
 /*list
-.#{$user-content}, .extra-popup // add list style for popup
+.#{$user-content}
 	ul, ol
 		margin: $bottom-space 0
 		//padding: 0 0 $space-bottom
@@ -249,7 +249,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 				box-sizing: border-box
 
 	//ol > li > ul
-	ul ul, ul ol, ol ul
+	//ul ul, ul ol, ol ul
 	//padding-bottom: 0
 			   //padding-left: 20px
 			   margin: $bottom-space/2 0
@@ -303,8 +303,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	.tbl
 		border: none
 
-		td,
-		th
+		td, th
 			color: $color-table-text
 			background-color: $color-table-bg
 			border: 0 solid $border-color
@@ -328,19 +327,17 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		tbody tr:nth-child(even) td
 			background: #fafafa
 
-		th,
-		thead td
+		th, thead td
 			@include font-bold
 			font-size: 1.6rem
 			text-align: left
 
-		th,
-		thead td,
-		tfoot td
+		th, thead td, tfoot td
 			background: $color-table-bg-alt
 			color: $color-table-text-alt
 			border-color: $color-table-bg-alt
 			border-top-width: 0
+
 /*table end
 
 /*blockquote
@@ -457,10 +454,10 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		vertical-align: middle
 		margin-right: 10px
 
-		path
-			fill: $text-color-alt
-			transition-property: fill
-			transition-duration: $animation-speed
+	path
+		fill: $text-color-alt
+		transition-property: fill
+		transition-duration: $animation-speed
 
 	.no-touchevents &:hover path
 		fill: white

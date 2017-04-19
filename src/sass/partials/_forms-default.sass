@@ -1,3 +1,7 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*FORM STYLES DEFAULT
 /*form layout
 .form-row,
@@ -463,8 +467,7 @@ input[type="radio"]
 	.cselect
 		width: 100%
 
-	select,
-	button.cselect .select-inner
+	select, button.cselect .select-inner
 		display: block
 		overflow: hidden
 		text-overflow: ''
@@ -519,7 +522,7 @@ input[type="radio"]
 		top: 50%
 		width: 10px
 		height: 3px
-		background: $color-form-border-focus
+		background-color: $color-form-border-focus
 		border-radius: 2px
 		margin-top: -1px
 		box-sizing: border-box

@@ -28,7 +28,7 @@
 	color: $btn-text-color
 	padding: 11px 25px
 	border: 2px solid transparent
-	background: $btn-bg-color
+	background-color: $btn-bg-color
 	box-shadow: none
 	transition-property: background-color, color, border-color
 	transition-duration: $animation-speed
@@ -39,10 +39,13 @@
 
 /*btn-default-alt*/
 .btn-default-alt
-	@extend .btn-default
+	position: relative
+	font: 400 1.6rem/24px $font-alt
+	padding: 11px 25px
+	background-color: white
+	box-shadow: none
 	color: $btn-bg-color
 	border: 2px solid $btn-bg-color
-	background: $btn-text-color
 	transition-property: background-color, color, border-color
 	transition-duration: $animation-speed
 
@@ -54,9 +57,18 @@
 
 /*btn-arrow*/
 .btn-arrow
-	@extend .btn-default
-	border-width: 1px
+	position: relative
+	font: 400 1.6rem/24px $font-alt
+	color: $btn-text-color
+	background-color: $btn-bg-color
+	box-shadow: none
+	border: 1px solid transparent
 	padding: 7px 20px
+	transition-property: background-color, color, border-color
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		background-color: $btn-bg-color-hover
 
 	& > span
 		display: inline-block
@@ -170,7 +182,7 @@
 
 /*more button end*/
 
-/*button menu*/
+/*button map site*/
 .btn-map-site
 	//<a href="#" class="btn-map-site"><i></i><span>Карта сайта</span></a>
 	$btn-bg: $btn-bg-color
@@ -199,11 +211,13 @@
 	display: inline-block
 	text-decoration: none
 	color: #fff
-	background: $btn-bg
+	background-color: $btn-bg
 	font-size: 0
 	line-height: 0
 	letter-spacing: -4px
 	white-space: nowrap
+	transition-property: background-color
+	transition-duration: $animation-speed
 	+antialiased
 	+btn-hover
 	+btn-active
@@ -246,5 +260,5 @@
 		&::after
 			top: #{$btn-lines-height + $btn-lines-space}
 
-/*button menu end*/
+/*button map site end*/
 /*BUTTONS end*/

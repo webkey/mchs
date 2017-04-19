@@ -1,11 +1,11 @@
 @@include('_head.tpl', {
-	"title": "Типографика",
-	"pageClass": ""
+	"title": "Департамент по ликвидации последствий катастрофы на Чернобыльской АЭС МЧС РБ",
+	"pageClass": "department-page"
 })
 <div class="wrapper">
 	<!--HEADER-->
-	@@include('_header.tpl', {
-		"mainNavItemActive": "О министерстве"
+	@@include('_header-department.tpl', {
+		"mainNavItemActive": "Подведомственные организации"
 	})
 	<!--HEADER end-->
 
@@ -506,7 +506,7 @@
 								</div>
 							</div>
 							<!--ASIDE-->
-							@@include('_aside.tpl')
+							@@include('_aside.tpl', { "pageDepartment": "true" })
 							<!--ASIDE end-->
 						</div>
 					</div>

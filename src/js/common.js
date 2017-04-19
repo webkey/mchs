@@ -2605,6 +2605,7 @@ function formSuccessExample() {
 $(window).on('load', function(){
 	$('html').addClass('page-loaded');
 	customScrollInit();
+	navExpander();
 });
 
 $(document).ready(function(){
@@ -2617,7 +2618,6 @@ $(document).ready(function(){
 	// behaviorLogoOnScroll();
 	hoverClassInit();
 	addAlignClass();
-	navExpander();
 	scrollToSection();
 	multiAccordionInit();
 	// toggleLanguages();

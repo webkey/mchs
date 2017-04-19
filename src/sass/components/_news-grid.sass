@@ -1,6 +1,6 @@
 @import ../utils/variables
 @import ../utils/mixins
-@import ../utils/placeholders
+@import ../../libs/include-media/dist/include-media
 
 /*news grid*/
 .news-grid
@@ -176,14 +176,20 @@
 .news-grid__title
 	font-family: $font-alt
 	+font(1.8rem, 1.3)
+	color: inherit
 	font-weight: 700
 	overflow: hidden
 	height: round-float(1.8rem*1.3*2, 1) // костыль, чтобы высоты блоков были четко по дизу
 	margin-bottom: 20px
+	transition-property: color
+	transition-duration: $animation-speed
 
 .news-grid__text
 	overflow: hidden
+	color: inherit
 	height: round-float($font-size-small*$line-height-small*3, 1) // костыль, чтобы высоты блоков были четко по дизу
+	transition-property: color
+	transition-duration: $animation-speed
 
 	+media('<mob-lg')
 		margin-bottom: $bottom-space-sm
@@ -208,11 +214,11 @@
 
 
 	.no-touchevents a.news-grid__inner:hover &
-			color: $text-color
+		color: $text-color
 
-			svg path
-				fill: $text-color
-				transition-duration: $animation-speed
+		path
+			fill: $text-color
+			transition-duration: $animation-speed
 
 .news-grid__footer
 	position: relative
