@@ -1,5 +1,5 @@
-<div class="gov__item">
+<a href="http://@@url/" class="gov__item" target="_blank">
 	<img src="@@src" alt="@@text"/>
 	<p>@@text</p>
-	<a href="http://@@url/" target="_blank" title="@@text">@@url</a>
-</div>
+	<span class="gov__link" title="@@text">@@url</span>
+</a>

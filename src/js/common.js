@@ -539,9 +539,9 @@ function hoverClassInit(){
 		var dropHeight = drop.outerHeight();
 		var navDropPosBottom = drop.offset().top + dropHeight - $(window).scrollTop();
 
-		console.log("navContainerPosBottom: ", navContainerPosBottom);
-		console.log("dropHeight: ", dropHeight);
-		console.log("navDropPosBottom: ", navDropPosBottom);
+		// console.log("navContainerPosBottom: ", navContainerPosBottom);
+		// console.log("dropHeight: ", dropHeight);
+		// console.log("navDropPosBottom: ", navDropPosBottom);
 
 		if(navContainerPosBottom < navDropPosBottom){
 			if(navContainerPosBottom < 500) {
@@ -1170,7 +1170,11 @@ function slidersInit() {
 			var $currentSlider = $(this);
 			var dur = 200;
 
-			$currentSlider.slick({
+			$currentSlider.on('init', function (event, el) {
+				$(el.$slides).matchHeight({
+					byRow: true, property: 'height', target: null, remove: false
+				});
+			}).slick({
 				fade: false,
 				speed: dur  ,
 				slidesToShow: 7,

@@ -52,54 +52,69 @@
 			content: none
 			display: none
 
-	@at-root
-		.gov
-			position: relative
+.gov
+	position: relative
 
-			&__list
-				margin: 0 -#{round($grid-space/2)}
+.gov__list
+	margin: 0 -#{round($grid-space/2)}
 
-				.slick-dots
-					bottom: 0
-					top: 100%
-					margin-top: 20px
+	.slick-dots
+		bottom: 0
+		top: 100%
+		margin-top: 20px
 
-					li
+		li
 
-						button
-							width: 10px
-							height: 10px
-							border-radius: 0
-							background: #ccc
+			button
+				width: 10px
+				height: 10px
+				border-radius: 0
+				background: #ccc
 
-							&::before
-								left: 0
-								top: 0
-								height: 10px
-								width: 10px
-								border-radius: 0
-								box-shadow: none
-								background: none
+				&::before
+					left: 0
+					top: 0
+					height: 10px
+					width: 10px
+					border-radius: 0
+					box-shadow: none
+					background: none
 
-						&.slick-active button::before
-							opacity: 1
-							background: $text-color-alt
+			&.slick-active button::before
+				opacity: 1
+				background: $text-color-alt
 
-			&__item
-				padding: 0 $grid-space/2
-				font-size: $font-size-small
-				line-height: $line-height-small
-				letter-spacing: normal
-				color: $text-color
+.gov__item
+	display: block
+	padding: $grid-space/2
+	font-size: $font-size-small
+	line-height: $line-height-small
+	letter-spacing: normal
+	color: $text-color
+	text-decoration: none
+	transition-property: background-color
+	transition-duration: $animation-speed
 
-				img
-					margin-bottom: $bottom-space/2
+	.no-touchevents &:hover
+		background-color: $text-color-ultralight
 
-				p
-					margin-bottom: $bottom-space/2
+	img
+		margin-bottom: $bottom-space/2
 
-				& > *:last-child
-					margin-bottom: 0
+	p
+		margin-bottom: $bottom-space/2
+
+	& > *:last-child
+		margin-bottom: 0
+
+.gov__link
+	color: $text-color-alt
+	border-bottom: 1px solid tint($text-color-alt, 40%)
+	transition-property: border-color
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		border-bottom-color: transparent
 
 /*footer gov end*/
 
