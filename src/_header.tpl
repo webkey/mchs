@@ -109,10 +109,8 @@
 									</a>
 								</li>
 								<li class="hide-desk-sm">
-									<a href="tel:+375173273387">
-										<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 24 27.5" style="enable-background:new 0 0 24 22;"><g><path d="M1,6C0.447,6,0,6.447,0,7v13c0,0.553,0.447,1,1,1V6z"></path><path d="M6,5H3C2.447,5,2,5.447,2,6v15c0,0.553,0.447,1,1,1h3c0.553,0,1-0.447,1-1V6C7,5.447,6.553,5,6,5z"></path><path d="M23,6v2H9V7V6H8v15h15c0.553,0,1-0.447,1-1V7C24,6.447,23.553,6,23,6z M12,19h-2v-2h2V19z M12,16h-2v-2h2V16z M15,19h-2v-2   h2V19z M15,16h-2v-2h2V16z M18,19h-2v-2h2V19z M18,16h-2v-2h2V16z M21,19h-2v-2h2V19z M21,16h-2v-2h2V16z M21,12H10V9h11V12z"></path><path d="M22,7V6V1c0-0.553-0.447-1-1-1H11c-0.553,0-1,0.447-1,1v5v1H22z"></path></g></svg>
-										<span>+375 (17) 327-33-87</span>
-									</a>
+									<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="0 0 24 27.5" style="enable-background:new 0 0 24 22;"><g><path d="M1,6C0.447,6,0,6.447,0,7v13c0,0.553,0.447,1,1,1V6z"></path><path d="M6,5H3C2.447,5,2,5.447,2,6v15c0,0.553,0.447,1,1,1h3c0.553,0,1-0.447,1-1V6C7,5.447,6.553,5,6,5z"></path><path d="M23,6v2H9V7V6H8v15h15c0.553,0,1-0.447,1-1V7C24,6.447,23.553,6,23,6z M12,19h-2v-2h2V19z M12,16h-2v-2h2V16z M15,19h-2v-2   h2V19z M15,16h-2v-2h2V16z M18,19h-2v-2h2V19z M18,16h-2v-2h2V16z M21,19h-2v-2h2V19z M21,16h-2v-2h2V16z M21,12H10V9h11V12z"></path><path d="M22,7V6V1c0-0.553-0.447-1-1-1H11c-0.553,0-1,0.447-1,1v5v1H22z"></path></g></svg>
+									<span>+375 (17) 327-33-87</span>
 								</li>
 								<li class="hide-desk-lg">
 									<a href="mailto:mail@mchs.gov.by">

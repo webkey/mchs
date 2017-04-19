@@ -226,6 +226,9 @@ html.before-extra-popup-open
 	overflow-x: hidden
 	max-height: 100%
 
+	&.mCustomScrollbar
+		height: 100%
+
 	& > *:last-child
 		margin-bottom: 0
 
@@ -748,24 +751,45 @@ $nav-small-tabs-height: 60px
 .search-form__field
 	overflow: hidden
 	position: relative
-	padding-top: 40px
 
-$search-form-popup-btn-width: 110px
+$search-form-popup-btn-width: 90px
 $search-form-popup-btn-width--mob-lg: 54px
+=search-form-placeholder($color: $text-color, $tsp: color, $tsd: $animation-speed)
+	&::-webkit-input-placeholder
+		color: $color
+		transition: $tsp $tsd
+
+	&:-moz-placeholder
+		color: $color
+		transition: $tsp $tsd
+
+	&::-moz-placeholder
+		color: $color
+		transition: $tsp $tsd
+		opacity: 1
+
+	&:-ms-input-placeholder
+		color: $color
+		transition: $tsp $tsd
+		opacity: 1
+
+	&.placeholder
+		color: $color
+		transition: $tsp $tsd
+		opacity: 1
 
 input.search-form__input
 	cursor: pointer
-	opacity: 0
-	transition-property: opacity, transform
-	transition-duration: $animation-speed
 
-	&, &:hover, &:focus, & ~ .search-form__label, & ~ .search-form__label label
+	+search-form-placeholder()
+
+	&, &:hover, &:focus
 		display: block
 		position: relative
 		border: none
 		height: 64px
 		width: 100%
-		padding: 11px #{$search-form-popup-btn-width+10} 11px 20px
+		padding: 11px #{$search-form-popup-btn-width+10} 11px 0
 		margin: 0
 		font-family: $font-alt
 		+font(36px, 42px)
@@ -773,7 +797,6 @@ input.search-form__input
 		border-radius: 0
 		background: none
 		box-shadow: none
-		z-index: 998
 
 		+media('<tab-sm')
 			font-size: 28px
@@ -782,171 +805,73 @@ input.search-form__input
 			font-size: 16px
 			padding-right: $search-form-popup-btn-width--mob-lg
 
-	// Подписть поля ввода или пелейсхолдер
-	& ~ .search-form__label
-		width: 100%
+	// если поле ввода В ФОКУСЕ, или ЗАПОЛНЕННО
+	.input--filled &, &:focus
+		cursor: text
+
+// кнопка поиска
+.search-form__btn
+	position: absolute
+	right: 0
+	bottom: 0
+	height: 64px
+	width: $search-form-popup-btn-width
+	z-index: 5
+	transition-property: color
+	transition-duration: $animation-speed
+
+	+media('<mob-lg')
+		width: $search-form-popup-btn-width--mob-lg
+
+	&::before
+		+vertical-align()
+
+	input
+		display: block
+		+cover()
+		padding: 0
+		z-index: 99
+		border: 0
+		opacity: 0
+
+	svg
 		position: absolute
 		left: 0
-		bottom: 0
-		text-align: left
-		+padding-horizontal(0, #{$search-form-popup-btn-width+10})
-		margin: 0
-		pointer-events: none
-		z-index: auto
+		top: 50%
+		width: 24px
+		height: 24px
+		transform: translate(0, -50%)
+
+	path
+		fill: $text-color
+		transition: fill $animation-speed
+
+	span
+		position: absolute
+		width: 100%
+		+padding-horizontal(40px, 0)
+		text-align: right
+		top: 50%
+		font-size: 14px
+		line-height: 1.5
+		color: $text-color
+		transform: translate(0, -50%)
+		transition-property: color
+		transition-duration: $animation-speed
 		+antialiased
 
 		+media('<mob-lg')
-			padding-right: $search-form-popup-btn-width--mob-lg
+			+hide-text
 
-		&::before, &::after
-			content: ''
-			position: absolute
-			width: 100%
-			left: 0
-			transition-property: opacity, transform
-			transition-duration: $animation-speed
-			@extend %search-form-transition
-			z-index: -1
+	.input--filled &
+		z-index: 999
 
-		&::before
-			height: 1px
-			background: $border-color
-			bottom: 0
-
-		&::after
-			height: 100%
-			background: $text-color-ultralight
-			top: 0
-			transform: translate(0, 100%)
-
-		label
-			padding: 0
-			+truncate(100%)
-			height: auto
-			transform-origin: 0 0
-			transition-property: color, transform
-			transition-duration: $animation-speed
-			@extend %search-form-transition
-
-			span
-				transition-property: opacity
-				transition-duration: $animation-speed
-
-	// кнопка поиска
-	& ~ .search-form__btn
-		position: absolute
-		right: 0
-		bottom: 0
-		height: 64px
-		width: $search-form-popup-btn-width
-		z-index: auto
-		transform: translate(15px, 0)
-		transition-property: transform, background-color
-		transition-duration: $animation-speed
-		@extend %search-form-transition
-
-		+media('<mob-lg')
-			width: $search-form-popup-btn-width--mob-lg
-
-		&::before
-			+vertical-align()
-
-		&::after
-			+pseudo()
-			+cover($position: null)
-			background-color: $mark-color-alt
-			opacity: 0
-			transition-property: opacity
-			transition-duration: $animation-speed
-			@extend %search-form-transition
-			z-index: -1
-
-		input
-			display: block
-			+cover()
-			padding: 0
-			z-index: 99
-			border: 0
-			opacity: 0
-
-		svg
-			position: absolute
-			left: 15px
-			top: 50%
-			width: 24px
-			height: 24px
-			transform: translate(0, -50%)
+	.no-touchevents &:hover
 
 		path
-			fill: $text-color
-			transition: fill $animation-speed
-			@extend %search-form-transition
+			fill: $text-color-alt
 
 		span
-			position: absolute
-			width: 100%
-			+padding-horizontal(40px, 15px)
-			text-align: right
-			top: 50%
-			font-size: 14px
-			line-height: 1.5
-			color: $text-color
-			transform: translate(0, -50%)
-			transition-property: color
-			transition-duration: $animation-speed
-			+antialiased
-
-			+media('<mob-lg')
-				+hide-text
-
-		.input--filled &
-			z-index: 999
-
-		&:hover
-
-			&::after
-				opacity: 1
-
-			//path
-				fill: white
-
-			//span
-				color: white
-
-	// если поле ввода В ФОКУСЕ, или ЗАПОЛНЕННО
-	.input--filled &, &:focus
-		// само поле ввода
-		cursor: text
-		opacity: 1
-		z-index: auto
-
-		// подпись поля ввода
-		& ~ .search-form__label
-			// нижний бордер
-			&::before
-				opacity: 0
-
-			// подложка
-			&::after
-				transform: translate(0, 0)
-
-			// текст
-			label
-				color: $border-color
-				transform: translate(0, -100%) scale(0.65)
-
-				+media('<mob-lg')
-					transform: translate(0, -100%) scale(0.85)
-
-				span
-					opacity: 0
-
-		// кнопка поиска
-		& ~ .search-form__btn
-			transform: translate(0, 0)
-
-// все селекторы, в которых подключет этот класс добавятья сюда, т.е. после .input--filled .search-form__btn
-%search-form-transition
-	transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+			color: $text-color-alt
 
 /*search form end*/

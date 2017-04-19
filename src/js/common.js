@@ -539,8 +539,12 @@ function hoverClassInit(){
 		var dropHeight = drop.outerHeight();
 		var navDropPosBottom = drop.offset().top + dropHeight - $(window).scrollTop();
 
+		console.log("navContainerPosBottom: ", navContainerPosBottom);
+		console.log("dropHeight: ", dropHeight);
+		console.log("navDropPosBottom: ", navDropPosBottom);
+
 		if(navContainerPosBottom < navDropPosBottom){
-			if(navContainerPosBottom < 550) {
+			if(navContainerPosBottom < 500) {
 				return;
 			}
 			item.addClass(alightBottomClass);
@@ -1171,9 +1175,11 @@ function slidersInit() {
 				speed: dur  ,
 				slidesToShow: 7,
 				slidesToScroll: 7,
+				autoplay: true,
+				autoplaySpeed: 5000,
 				// initialSlide: 2,
 				// lazyLoad: 'ondemand',
-				infinite: false,
+				infinite: true,
 				dots: true,
 				arrows: false,
 				responsive: [
@@ -2518,7 +2524,7 @@ function footerBottom() {
 	var $footer = $('.footer__holder');
 
 	if ($footer.length) {
-		$('.sidebar').after($('<div class="spacer"></div>')); // need for sidebar's element sticky of bottom page
+		$('.main-frame').append($('<div class="spacer"></div>')); // need for sidebar's element sticky of bottom page
 
 		setTimeout(function () {
 			layoutFooter();

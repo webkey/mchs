@@ -20,13 +20,13 @@
 				"active": false,
 				"anchor": "#other-projects-anchor"
 				}, {
-				"text": "Департаменты",
-				"active": false,
-				"anchor": "#branches-anchor"
-				}, {
 				"text": "Территориальные управления",
 				"active": false,
 				"anchor": "#regions-anchor"
+				}, {
+				"text": "Департаменты",
+				"active": false,
+				"anchor": "#branches-anchor"
 				}, {
 				"text": "Информация",
 				"active": false,

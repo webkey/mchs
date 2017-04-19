@@ -38,6 +38,7 @@
 	//transition-property: height
 	//transition-duration: $animation-speed
 	//transition-timing-function: linear
+	border-bottom: 1px solid $bg-color
 	z-index: 20
 
 	+media('<desk-sm')
@@ -120,6 +121,9 @@
 		//top: 50%
 		//left: 50%
 		//transform: translate(-50%, -50%)
+		position: relative
+		top: 50%
+		transform: translate(0, -50%)
 		height: 120px
 		max-height: 100%
 		//+push-auto
@@ -219,13 +223,11 @@
 	position: absolute
 	top: 0
 	width: 100%
+	min-width: 320px
 	z-index: 30
 	overflow: hidden
 	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
 	+clear
-
-	+media('<mob-lg')
-		height: $header-top-height--sm
 
 	.window-is-resize &
 		overflow: hidden
@@ -241,6 +243,9 @@
 		+media('<desk-sm')
 			width: 100%
 			max-width: none
+
+	+media('<mob-lg')
+		height: $header-top-height--sm
 
 /*header top end
 
@@ -441,6 +446,77 @@
 
 /*header contacts end
 
+/*header hot line
+.header__hot-line
+	float: right
+	height: 100%
+	margin-left: #{$grid-space}
+	text-align: right
+	cursor: default
+	+font(0, 0)
+	letter-spacing: -4px
+
+	&::before
+		+vertical-align()
+
+	+media('<tab-lg')
+		float: none
+		height: auto
+		padding: $grid-layout-space--mob-lg
+		margin-left: 0
+		text-align: left
+
+		&::before
+			content: none
+
+	+media('<mob-lg')
+		overflow: visible
+
+.header__hot-line--align
+	display: inline-block
+	vertical-align: middle
+	font-size: 1.4rem
+	line-height: 1.5
+	letter-spacing: normal
+
+	+media('<tab-lg')
+		display: block
+
+.header__hot-line
+	ul
+		position: relative
+
+		+media('<tab-lg')
+			+margin-horizontal(0)
+			height: 60px
+
+			&::before
+				content: none
+
+		+media('<mob-lg')
+			height: auto
+
+	li
+		position: relative
+		+margin-vertical(#{$bottom-space-sm})
+
+		&:first-child
+			font-family: $font-alt
+			font-weight: 700
+			+font(1.8rem, 1.4)
+			color: $text-color-light
+			margin-top: 0
+
+			a
+				&, .no-touchevents &:hover
+					display: inline-block
+					color: $text-color-alt
+
+		&:last-child
+			margin-bottom: 0
+
+/*header hot line end
+
 /*header title
 .header__title
 	font: 700 1.8rem/1.2 $font-alt
@@ -463,6 +539,7 @@
 	font-size: $font-size-small
 	line-height: $line-height-small
 	margin: 8px 0 0
+	cursor: default
 
 	+media('<desk-md')
 		display: none
@@ -477,6 +554,7 @@
 		a
 			text-decoration: none
 			color: $text-color-light
+			cursor: pointer
 
 			& > span
 				display: inline-block
@@ -603,6 +681,56 @@
 			fill: white
 
 /*user options end*/
+
+/*go to site mchs
+.go-to-mchs, .go-to-mchs--mob
+	float: left
+	position: relative
+	width: $go-to-mchs-width
+	text-align: center
+	font-size: 1.4rem
+	line-height: 1.4
+	text-decoration: none
+	color: white
+	height: $header-top-height
+	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
+	+padding-horizontal(52px, 12px)
+
+	+media('<mob-lg')
+		height: $header-top-height--sm
+
+	+media('<mob-md')
+		display: none
+
+	&::before
+		+vertical-align()
+
+	&::after
+		+pseudo()
+		left: 10px
+		top: 50%
+		+size(40px)
+		transform: translate(0, -50%)
+		background: url(../../img/logo.png) no-repeat center
+		background-size: contain
+
+	span
+		display: inline-block
+		vertical-align: middle
+		width: 98%
+
+.go-to-mchs--mob
+	float: none
+	width: 100%
+	clear: both
+	padding-left: 60px
+	text-align: left
+	display: none
+
+	+media('<mob-md')
+		display: block
+
+/*go to site mchs end
 
 /*lang*/
 .lang

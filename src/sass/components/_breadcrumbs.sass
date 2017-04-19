@@ -22,6 +22,9 @@ $bread-space-vertical: 10px
 		cursor: default
 		+clear
 
+		+media('<mob-lg')
+			margin-bottom: 15px
+
 .breadcrumbs__item
 	float: left
 	position: relative
@@ -35,6 +38,9 @@ $bread-space-vertical: 10px
 		display: inline-block
 		vertical-align: top
 		+truncate($bread-item-max-width)
+
+		+media('<mob-lg')
+			max-width: 240px
 
 	& > a
 		display: inline-block

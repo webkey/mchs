@@ -363,12 +363,11 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			+media('<mob-lg')
 				+font(1.6rem, 1.7)
 
-			&::before,
-			&::after
+			&::before, &::after
 				+pseudo($pos: relative)
-				background: url(../../img/quote-left.svg) no-repeat
+				background: url(../../img/quote-left.svg) no-repeat center center
 				background-size: contain
-				+size(40px, 35px)
+				+size(39px)
 				z-index: -1
 
 			&::before
@@ -377,7 +376,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 				margin: 0 0 20px 30%
 
 				+media('<mob-lg')
-					+margin($b: 10px, $l: -10px )
+					+margin($b: 10px, $l: 0 )
 
 			&::after
 				//content: '»'

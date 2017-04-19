@@ -61,6 +61,10 @@
 				background: $color-table-bg-alt
 				color: $color-table-text-alt
 				border-color: $color-table-bg-alt
+				
+		blockquote q
+			&::before, &::after
+				background-image: url(../../img/quote-left-department-chernobil.svg)
 
 	.view-print
 		color: $text-color-alt
@@ -116,14 +120,13 @@
 	.form-mark
 		color: $mark-color
 
-	.no-touchevents &
-		input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
-			&:hover
-				border-color: $color-form-border-focus
+	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
+		.no-touchevents &:hover
+			border-color: $color-form-border-focus
 
-			&:focus
-				border-color: $color-form-border-focus
-				box-shadow: inset 0 0 0 1px $color-form-border-focus
+		&:focus
+			border-color: $color-form-border-focus
+			box-shadow: inset 0 0 0 1px $color-form-border-focus
 
 	.select
 		select:focus, button.cselect:focus .select-inner, button.cselect.ui-state-active .select-inner
@@ -138,6 +141,10 @@
 	// USER FORM
 	.form-title
 		color: $text-color-alt
+
+	// BREADCRUMBS
+	.breadcrumbs__item a > i::before
+		border-left-color: $mark-color
 
 	// LOGO
 	.logo-wrap
@@ -164,13 +171,23 @@
 		.priority-nav__dropdown
 			background: $header-bg-color
 
+		.priority-nav__dropdown-toggle
+			.no-touchevents &:hover, &.is-open
+				background-color: $mark-color
+
+	// HEADER HOT LINE
+	.header__hot-line
+		li:first-child a
+			&, .no-touchevents &:hover
+				color: $text-color-alt
+
 	// REGION MENU
 	.region-menu-heading
 		background-color: $region-menu-bg-color
 		border-bottom: 1px solid $region-menu-border-color
 
 		.no-touchevents &:hover
-			background-color: tint($region-menu-bg-color, 90%)
+			background-color: shade($region-menu-bg-color, 75%)
 
 	// REGION MENU
 	// общие стили для пунктов навигации
@@ -224,7 +241,7 @@
 		color: $text-color
 
 	// FLATPICKR (vendor restyle)
-	//.flatpickr-day.endRange, .flatpickr-day.endRange.inRange, .flatpickr-day.endRange.nextMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.endRange:focus, .flatpickr-day.endRange:hover, .flatpickr-day.selected, .flatpickr-day.selected.inRange, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.selected:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange, .flatpickr-day.startRange.inRange, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.startRange:focus, .flatpickr-day.startRange:hover
+	.flatpickr-day.endRange, .flatpickr-day.endRange.inRange, .flatpickr-day.endRange.nextMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.endRange:focus, .flatpickr-day.endRange:hover, .flatpickr-day.selected, .flatpickr-day.selected.inRange, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.selected:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange, .flatpickr-day.startRange.inRange, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.startRange:focus, .flatpickr-day.startRange:hover
 		background: $text-color-alt
 		border-color: $text-color-alt
 
@@ -267,6 +284,9 @@
 		.no-touchevents &:hover
 			background-color: $mark-color-alt
 
+			& > i::before, & > i::after
+				background-color: white
+
 	// lang list
 	.no-touchevents & .lang__list a
 		&:hover, &.current
@@ -278,8 +298,21 @@
 
 	// search form
 	input.search-form__input
-		& ~ .search-form__btn::after
+		&, &:focus
+			border: none
+			box-shadow: none
+
+	.search-form__btn
+		&::after
 			background-color: $mark-color-alt
+
+		.no-touchevents &:hover
+
+			path
+				fill: $text-color-alt
+
+			span
+				color: $text-color-alt
 
 	// bitrix default search page
 	.search-page ul

@@ -298,8 +298,8 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Электронные обращения"){ current}">
-				@@include('_nav-LINK.tpl', { "itemText": "Электронные обращения", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+			<li class="has-drop@@if(mainNavItemActive === "Электронное обращение"){ current}">
+				@@include('_nav-LINK.tpl', { "itemText": "Электронное обращение", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
