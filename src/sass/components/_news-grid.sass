@@ -35,6 +35,10 @@
 		+media('<mob-lg')
 			width: 100%
 
+	.news-grid__slider &
+		margin-bottom: 0
+		+padding-horizontal(0)
+
 // специальные свойства для блока "Главные новости" (`.news-grid--main`)
 // или специальные свойства элемета новостей с классом `.news-grid__item--no-img`
 .news-grid--main .news-grid__item:nth-child(n + 4), .news-grid .news-grid__item--no-img // Костыль. Все элементы начиная с четвертого должны быть без картинок и лейблов
@@ -95,7 +99,8 @@
 	.news-grid__slider + .news-grid__inner &
 		display: none
 
-.news-grid__img, .news-grid__slider
+//.news-grid__slider,
+.news-grid__img
 	position: relative
 	height: $news-item-img-height // костыль, чтобы высоты блоков были четко по дизу
 	z-index: 4

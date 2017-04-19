@@ -1,8 +1,15 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /* GRID LAYOUT
 .grid-row
 	+margin-horizontal(-#{$grid-space/2})
 	margin-bottom: $grid-space
 	+clear
+
+	&:last-child
+		margin-bottom: 0
 
 [class*="grid-col-"]
 	float: left
