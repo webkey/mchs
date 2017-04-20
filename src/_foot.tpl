@@ -4,6 +4,8 @@
 <!--FOOTER end-->
 <!--POPUPS-->
 @@include('_popups.tpl', {
+	"hasRegionMenu": "@@hasRegionMenu",
+	"hasSquadMenu": "@@hasSquadMenu",
 	"mainNavItemActive": "@@mainNavItemActive",
 	"subSiteMenu": "@@subSiteMenu",
 	"titleSub": "@@titleSub",

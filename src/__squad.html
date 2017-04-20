@@ -32,287 +32,116 @@
 						<div class="content-layout">
 							<div class="content-wrap">
 								<div class="content user-content">
-									<div class="content-news">
-										<section class="section">
-											<div class="section__title">
-												<h2>Новости</h2>
-												<span class="v-separator">|</span>
-												<div class="news-date datepicker-alt">
-													<a data-toggle class="type-anchor news-date-output-js"><span>18.04.2017</span></a>
-													<input data-input type="text" class="datepicker-input" value="18.04.2017" title="Дата публикации новостей"/>
+									<section class="section">
+										<div class="section__title"><h2>Руководство</h2></div>
+										<div class="section__holder">
+											<!--lead-->
+											<div class="lead fb-switcher-container-js">
+												<div class="lead__description">
+													<p>
+														<b>Уважаемые пользователи!</b> <br>
+														Прежде чем написать обращение в Республиканский отряд специального назначения, рекомендуем вам ознакомиться с
+														<a href="#">документами</a> и <a href="#">материалами</a>, размещенными на сайте.</p>
+												</div>
+												<div class="lead__list">
+													@@loop('_lead-item.tpl', 'includes-json/lead-item.json')
 												</div>
 											</div>
-											<div class="section__holder">
-												<div class="grid-row">
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-11.jpg",
-														"label": "",
-														"title": "",
-														"text": "Представитель службы по ЧС провела профилактическую беседу с воспитанниками средней группы по теме предупреждения происшествий по причине детской шалости с огнем.",
-														"meta": "01.03.2017, 13:10",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-12.jpg",
-														"label": "video",
-														"title": "",
-														"text": "Руслан Олексюк провел занятие в детском садике д.Тельмы и рассказал малышам об опасностях, которые могут их подстерегать в жизни.",
-														"meta": "02.03.2017, 17:10",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-												</div>
-												<div class="grid-row">
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "",
-														"label": "",
-														"title": "",
-														"text": "В гимназии №2 г.Пинска состоялся необычный открытый урок по основам безопасности жизнедеятельности.",
-														"meta": "05.03.2017, 09:05",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-13.jpg",
-														"label": "",
-														"title": "",
-														"text": "Работники районного отдела по чрезвычайным ситуациям провели разъяснительную профилактическую работу с трудовым коллективом Малоритского районного центра гигиены и эпидемиологии.",
-														"meta": "17.03.2017, 18:18",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-												</div>
-												<div class="grid-row">
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "",
-														"label": "",
-														"title": "",
-														"text": "В гимназии №2 г.Пинска состоялся необычный открытый урок по основам безопасности жизнедеятельности.",
-														"meta": "02.04.2017, 09:05",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "",
-														"label": "",
-														"title": "",
-														"text": "Почувствовать себя настоящими огнеборцами.",
-														"meta": "21.04.2017, 18:18",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-												</div>
-											</div>
-										</section>
-										<section class="section">
-											<div class="section__holder">
-												<div class="grid-row">
-													@@loop('_context-banners.tpl', [
-														{"src": "img/img-banner-09.jpg"},
-														{"src": "img/img-banner-10.jpg"}
-													])
-												</div>
-											</div>
-										</section>
-										<section class="section">
-											<div class="section__holder">
-												<div class="grid-row">
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "",
-														"label": "",
-														"title": "",
-														"text": "Представитель службы по ЧС провела профилактическую беседу с воспитанниками средней группы по теме предупреждения происшествий по причине детской шалости с огнем.",
-														"meta": "01.03.2017, 13:10",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-12.jpg",
-														"label": "video",
-														"title": "",
-														"text": "Руслан Олексюк провел занятие в детском садике д.Тельмы и рассказал малышам об опасностях, которые могут их подстерегать в жизни.",
-														"meta": "02.03.2017, 17:10",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-												</div>
-												<div class="grid-row">
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-13.jpg",
-														"label": "",
-														"title": "",
-														"text": "В гимназии №2 г.Пинска состоялся необычный открытый урок по основам безопасности жизнедеятельности.",
-														"meta": "05.03.2017, 09:05",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "",
-														"label": "",
-														"title": "",
-														"text": "Работники районного отдела по чрезвычайным ситуациям провели разъяснительную профилактическую работу с трудовым коллективом Малоритского районного центра гигиены и эпидемиологии.",
-														"meta": "17.03.2017, 18:18",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-												</div>
-												<div class="grid-row">
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-02.jpg",
-														"label": "",
-														"title": "",
-														"text": "В гимназии №2 г.Пинска состоялся необычный открытый урок по основам безопасности жизнедеятельности.",
-														"meta": "02.04.2017, 09:05",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-11.jpg",
-														"label": "",
-														"title": "",
-														"text": "Почувствовать себя настоящими огнеборцами.",
-														"meta": "21.04.2017, 18:18",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-												</div>
-											</div>
-										</section>
-										<section class="section">
-											<div class="section__holder">
-												<div class="grid-row">
-													@@loop('_context-banners.tpl', [
-													{"src": "img/img-promo-slider-03.jpg"},
-													{"src": "img/img-promo-slider-05.jpg"}
-													])
-												</div>
-											</div>
-										</section>
-										<section class="section">
-											<div class="section__holder">
-												<div class="grid-row">
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-11.jpg",
-														"label": "",
-														"title": "",
-														"text": "Представитель службы по ЧС провела профилактическую беседу с воспитанниками средней группы по теме предупреждения происшествий по причине детской шалости с огнем.",
-														"meta": "01.03.2017, 13:10",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-12.jpg",
-														"label": "video",
-														"title": "",
-														"text": "Руслан Олексюк провел занятие в детском садике д.Тельмы и рассказал малышам об опасностях, которые могут их подстерегать в жизни.",
-														"meta": "02.03.2017, 17:10",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-												</div>
-												<div class="grid-row">
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "",
-														"label": "",
-														"title": "",
-														"text": "В гимназии №2 г.Пинска состоялся необычный открытый урок по основам безопасности жизнедеятельности.",
-														"meta": "05.03.2017, 09:05",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "img/img-news-13.jpg",
-														"label": "",
-														"title": "",
-														"text": "Работники районного отдела по чрезвычайным ситуациям провели разъяснительную профилактическую работу с трудовым коллективом Малоритского районного центра гигиены и эпидемиологии.",
-														"meta": "17.03.2017, 18:18",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-												</div>
-												<div class="grid-row">
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "",
-														"label": "",
-														"title": "",
-														"text": "В гимназии №2 г.Пинска состоялся необычный открытый урок по основам безопасности жизнедеятельности.",
-														"meta": "02.04.2017, 09:05",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-													<div class="grid-col-6 grid-col-hd-12">
-														@@include('_news-grid-item.tpl', {
-														"src": "",
-														"label": "",
-														"title": "",
-														"text": "Почувствовать себя настоящими огнеборцами.",
-														"meta": "21.04.2017, 18:18",
-														"hasntImgSuffix": "",
-														"hasImgSuffix": "",
-														"wideClass": "wide"
-														})
-													</div>
-												</div>
-											</div>
-										</section>
-									</div>
-									<div class="news-previews__footer">
-										<div class="more">
-											<a href="#" class="btn-more"><span>Загрузить ещё</span><i></i></a>
+											<!--lead end-->
 										</div>
-									</div>
+									</section>
+									<section class="section">
+										<div class="section__title"><h2>История</h2></div>
+										<div class="section__holder">
+											<div class="history-info">
+												<div class="history-info__holder">
+													<div class="history-info__img">
+														<img src="img/img-history.jpg" alt="image description" />
+													</div>
+													<div class="history-info__text text-slide-js">
+														<p>Республиканский отряд специального назначения (РОСН) является подразделением по чрезвычайным ситуациям Республики Беларусь центрального подчинения МЧС. Отряд был создан в 1991 году для эффективного реагирования на наиболее сложные чрезвычайные ситуации природного и техногенного характера на территории Республики включая утечки опасных химических веществ, радиационные аварии, обрушение зданий, происшествия на акваториях и другие. Также согласно Уставу отряда одной из его задач является проведение международных спасательных операций. На раннем этапе деятельности отряд, как и вся Республиканская система реагирования на чрезвычайные ситуации, находился в подчинении Министерства внутренних дел, однако в 1999 году после создания профильного Министерства по чрезвычайным ситуациям, отряд стал его частью. Начиная с 1991 года Республиканский отряд специального назначения (РОСН) был и остается полностью государственной организацией, которая занимает важное место в плане привлечения сил и средств как отряд специального назначения который задействуется в случаях когда чрезвычайная ситуация выходит на республиканский уровень.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
+									<section class="section">
+										<div class="section__title"><h2>Фото и видеоматериалы</h2></div>
+										<div class="section__holder">
+											<!--media block-->
+											<div class="media-block js-tabs" data-auto-height="false">
+												<div class="media-block__nav">
+													<div class="media-block__tab">
+														<a href="#media-block-equipment" class="js-tab-anchor active-tab">
+															<span>Оснащение</span>
+														</a>
+													</div>
+													<div class="media-block__tab">
+														<a href="#media-block-photo" class="js-tab-anchor">
+															<span>фотографии</span>
+														</a>
+													</div>
+													<div class="media-block__tab">
+														<a href="#media-block-video" class="js-tab-anchor">
+															<span>видеогалерея</span>
+														</a>
+													</div>
+												</div>
+
+												<div class="media-block__panels js-tab-container">
+													<div class="media-block__panel js-tab-content" id="media-block-equipment">
+
+													</div>
+													<div class="media-block__panel js-tab-content" id="media-block-photo">
+
+													</div>
+													<div class="media-block__panel js-tab-content" id="media-block-video">
+
+													</div>
+												</div>
+											</div>
+											<!--media block end-->
+										</div>
+									</section>
+									<section class="section">
+										<div class="section__title"><h2>Новости</h2></div>
+										<div class="section__holder">
+											<div class="news-simple">
+												<div class="news-simple__list">
+													@@loop('_news-grid-item.tpl', [
+														{
+															"src": "",
+															"label": "",
+															"title": "",
+															"text": "Присвоение очередных сaпециальных званий старшего и среднего начальствующего состава.",
+															"meta": "01.03.2017, 13:10"
+														},
+														{
+															"src": "",
+															"label": "",
+															"title": "",
+															"text": "В Пинском центре отработали действия при заторе на дороге из-за снегопада.",
+															"meta": "02.03.2017, 17:10"
+														},
+														{
+															"src": "",
+															"label": "",
+															"title": "",
+															"text": "Обеспечение безопасности при проведении мероприятий, приуроченных празднику Крещения Господня и Дня спасателя в г.Пинске.",
+															"meta": "02.03.2017, 17:10"
+														},
+														{
+															"src": "",
+															"label": "",
+															"title": "",
+															"text": "Проведение занятий с представителями внутренних войск МВД Республики Беларусь.",
+															"meta": "02.03.2017, 17:10"
+														}
+													])
+												</div>
+											</div>
+										</div>
+									</section>
 									<section class="section banners-panel">
 										<div class="section__holder">
 											<!--banners-->
@@ -338,7 +167,7 @@
 				@@include('_sidebar-region.tpl', {
 					"hasRegionMenu": "",
 					"hasSquadMenu": "true",
-					"regionMenuActiveItem": "Об управлении",
+					"regionMenuActiveItem": "Центр медицинского обеспечения",
 					"headingText": "Меню республиканского отряда спецназ."
 				})
 				<!--SIDEBAR-->
@@ -350,6 +179,8 @@
 @@include('_foot.tpl', {
 	"mainNavItemActive": "О министерстве",
 	"subSiteMenu": "true",
-	"titleSub": "Брестское управление",
+	"hasRegionMenu": "",
+	"hasSquadMenu": "true",
+	"titleSub": "Меню отряда",
 	"titleMain": "Меню МЧС РБ"
 })

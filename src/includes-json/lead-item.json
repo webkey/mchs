@@ -1,0 +1,23 @@
+[
+	{
+		"position": "Начальник отряда",
+		"name": "Солодкин Руслан Анатольевич",
+		"srcImg": "img/img-lead-01.png",
+		"scheduleWork": "09.00 - 18.00",
+		"scheduleWeekend": "Виходной"
+	},
+	{
+		"position": "Заместитель начальника отряда по ИРиКО",
+		"name": "Свиридович Борис Владимирович",
+		"srcImg": "img/img-lead-02.png",
+		"scheduleWork": "10.00 - 19.00",
+		"scheduleWeekend": "Виходной"
+	},
+	{
+		"position": "Заместитель начальника отряда",
+		"name": "Зарембо Игорь Леонидович",
+		"srcImg": "img/img-lead-03.png",
+		"scheduleWork": "09.00 - 22.00",
+		"scheduleWeekend": "10.00 - 16.00"
+	}
+]

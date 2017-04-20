@@ -39,6 +39,10 @@
 		margin-bottom: 0
 		+padding-horizontal(0)
 
+	.news-simple &
+		height: auto
+		width: auto
+
 // специальные свойства для блока "Главные новости" (`.news-grid--main`)
 // или специальные свойства элемета новостей с классом `.news-grid__item--no-img`
 .news-grid--main .news-grid__item:nth-child(n + 4), .news-grid .news-grid__item--no-img // Костыль. Все элементы начиная с четвертого должны быть без картинок и лейблов
@@ -67,6 +71,10 @@
 	box-shadow: inset 0 -3px 0 $mark-color-alt
 	height: 100% // inner по высоте равен item
 	overflow: hidden // необходимо для учета margin внутренних элементов !!!
+
+	.news-simple &
+		background: none
+		box-shadow: none
 
 .news-grid__item--has-img
 
@@ -162,6 +170,13 @@
 		+media('<mob-lg')
 			margin-top: $news-item-lg-img-height-mob-lg
 
+	.news-simple &
+		padding: 0
+		margin-right: 10px
+
+		&::before
+			content: none
+
 	& > *
 		z-index: 2
 		position: relative
@@ -199,6 +214,10 @@
 	+media('<mob-lg')
 		margin-bottom: $bottom-space-sm
 
+	.news-simple &
+		height: auto
+		margin-bottom: $bottom-space
+
 .news-grid__meta
 	position: absolute
 	bottom: $grid-inside-vertical-space
@@ -224,6 +243,11 @@
 		path
 			fill: $text-color
 			transition-duration: $animation-speed
+
+	.news-simple &
+		position: relative
+		bottom: auto
+		width: auto
 
 .news-grid__footer
 	position: relative
@@ -295,3 +319,19 @@
 			display: none
 
 /*others news end*
+
+/*news simple
+.news-simple__list
+	+grid-parent()
+	+clear-spacing
+
+	.news-grid__item
+		+grid-item(4)
+
+		+media('<desk-lg')
+			+grid-item(2)
+
+		+media('<mob-md')
+			+grid-item(1)
+
+/*news simple end

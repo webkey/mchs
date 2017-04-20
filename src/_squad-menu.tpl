@@ -1,8 +1,8 @@
 <!--region menu-->
 <ul class="@@classKey__list @@classKey-js">
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "Новости"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Новости", "itemLink": "typography.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Главная"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Главная", "itemLink": "typography.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 	<li>@@include('_nav-LINK.tpl', { "itemText": "Цели и задачи", "itemLink": "#", "key": "@@classKey", "specialValue": "" })</li>
@@ -82,8 +82,8 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "Руководство"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Руководство", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Центр медицинского обеспечения"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Центр медицинского обеспечения", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -179,8 +179,8 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "Об управлении"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Об управлении", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Центр химической и радиационной защиты"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Центр химической и радиационной защиты", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -197,8 +197,8 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "История"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "История", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Центр водолазно-спасательной млужбы"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Центр водолазно-спасательной млужбы", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -246,8 +246,8 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "Важно знать!"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Важно знать!", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Центр взрывотехнической службы"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Центр взрывотехнической службы", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -294,8 +294,8 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "Международные проекты"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Международные проекты", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Кинологическая служба"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Кинологическая служба", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -313,8 +313,8 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "УМ ЧС в лицах"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "УМ ЧС в лицах", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Пожарно-спасательная служба"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Пожарно-спасательная служба", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -328,8 +328,8 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "Дебюрократизация"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Дебюрократизация", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Центр организации спортивно-массовой работы"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Центр организации спортивно-массовой работы", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -346,8 +346,8 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "График приёма граждан"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "График приёма граждан", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Центр оперативного управления"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Центр оперативного управления", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -360,20 +360,20 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="@@if(regionMenuActiveItem === "Подразделения"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Подразделения", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="@@if(regionMenuActiveItem === "Международная деятельность"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Международная деятельность", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 	</li>
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="@@if(regionMenuActiveItem === "Одно окно"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Одно окно", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="@@if(regionMenuActiveItem === "Новости и статьи"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Новости и статьи", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 	</li>
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "Контактная информация"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Контактная информация", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Вакансии"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Вакансии", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -393,8 +393,8 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
-	<li class="has-drop@@if(regionMenuActiveItem === "Платные услуги"){ current}">
-		@@include('_nav-LINK.tpl', { "itemText": "Платные услуги", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	<li class="has-drop@@if(regionMenuActiveItem === "Файловый архив"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Файловый архив", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 		@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 
@@ -409,8 +409,32 @@
 	<!--@@classKey item end-->
 
 	<!--@@classKey item start-->
+	<li class="@@if(regionMenuActiveItem === "Стратегия развития"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Стратегия развития", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	</li>
+	<!--@@classKey item end-->
+
+	<!--@@classKey item start-->
+	<li class="@@if(regionMenuActiveItem === "Ветераны"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Ветераны", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	</li>
+	<!--@@classKey item end-->
+
+	<!--@@classKey item start-->
+	<li class="@@if(regionMenuActiveItem === "Административные процедуры"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Административные процедуры", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	</li>
+	<!--@@classKey item end-->
+
+	<!--@@classKey item start-->
 	<li class="@@if(regionMenuActiveItem === "Электронные обращения"){ current}">
 		@@include('_nav-LINK.tpl', { "itemText": "Электронные обращения", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+	</li>
+	<!--@@classKey item end-->
+
+	<!--@@classKey item start-->
+	<li class="@@if(regionMenuActiveItem === "Контакты"){ current}">
+		@@include('_nav-LINK.tpl', { "itemText": "Контакты", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 	</li>
 	<!--@@classKey item end-->
 </ul>

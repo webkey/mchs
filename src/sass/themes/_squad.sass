@@ -1,0 +1,80 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+.squad-styles
+	// VARIABLES
+
+	// subsite menu
+	$subsite-menu-bg-color: #3d469e
+	$subsite-menu-bg-color-s: shade($subsite-menu-bg-color, 80%)
+	$subsite-menu-bg-color-ss: shade($subsite-menu-bg-color, 62%)
+	$subsite-menu-bg-color-sss: shade($subsite-menu-bg-color, 48%)
+	$subsite-menu-bg-color-ssss: shade($subsite-menu-bg-color, 38%)
+	$subsite-menu-border-color: rgba(255, 255, 255, 0.10)
+
+	// no img
+	$path-no-img: '../../img/no-img-squad.jpg'
+
+	// REGION MENU
+	.region-menu-heading
+		background-color: $subsite-menu-bg-color-s
+		border-bottom: 1px solid $subsite-menu-border-color
+
+		.no-touchevents &:hover
+			background-color: $subsite-menu-bg-color-ss
+
+	// REGION MENU
+	// общие стили для пунктов навигации
+	.region-menu__list
+		a
+			border-bottom: 1px solid $subsite-menu-border-color
+
+	// особые стили для пунктов навигации ПЕРВОГО урованя
+	.region-menu__list > li
+
+		& > .region-menu__tab a
+			background-color: $subsite-menu-bg-color
+
+	// СТРЕЛКИ навигации
+	.region-menu__angle
+		background-color: $subsite-menu-bg-color
+		border: solid $subsite-menu-border-color
+		border-width: 0 0 1px 1px
+
+	// особые стили для пунктов ПОДМЕНЮ
+	.region-menu__drop
+
+		// особые стили для пунктов навигации ВТОРОГО урованя
+		ul, a, .region-menu__angle
+			background-color: $subsite-menu-bg-color-s
+
+			.no-touchevents &:hover
+				color: white
+
+		.region-menu__drop
+			// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+			ul, a, .region-menu__angle
+				background-color: $subsite-menu-bg-color-ss
+
+			.region-menu__drop
+				// особые стили для пунктов навигации ЧЕТВЕРТОГО урованя
+				ul, a, .region-menu__angle
+					background-color: $subsite-menu-bg-color-sss
+
+				.region-menu__drop
+					// особые стили для пунктов навигации ПЯТОГО урованя
+					ul, a, .region-menu__angle
+						background-color: $subsite-menu-bg-color-ssss
+
+	// NAVIGATION FOR SMALL SCREEN POPUP
+	.nav-small-tabs a
+
+		&:first-child
+			background-color: $subsite-menu-bg-color-s
+
+		// стили для таба активного таба
+		&.active-tab
+
+			&:first-child
+				border-color: $subsite-menu-border-color

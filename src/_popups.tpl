@@ -181,10 +181,27 @@
 	</div>
 	<div class="nav-small-container js-tab-container">
 		<div class="popup-nav-small__holder js-tab-content menu-sub-site" id="region-menu-mobile-anchor">
-			@@include('_region-menu.tpl', { "regionMenuActiveItem": "@@regionMenuActiveItem", "classKey": "region-menu", "navTag": "" })
+			@@if(context.hasRegionMenu){
+				@@include('_region-menu.tpl', {
+					"regionMenuActiveItem": "@@regionMenuActiveItem",
+					"classKey": "region-menu",
+					"navTag": ""
+				})
+			}
+			@@if(context.hasSquadMenu){
+				@@include('_squad-menu.tpl', {
+					"regionMenuActiveItem": "@@regionMenuActiveItem",
+					"classKey": "region-menu",
+					"navTag": ""
+				})
+			}
 		</div>
 		<div class="popup-nav-small__holder js-tab-content" id="nav-mobile-anchor">
-			@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive", "classKey": "nav-mobile", "navTag": "" })
+			@@include('_nav-base.tpl', {
+				"mainNavItemActive": "@@mainNavItemActive",
+				"classKey": "nav-mobile",
+				"navTag": ""
+			})
 		</div>
 	</div>
 </div>
@@ -193,7 +210,11 @@
 <div class="popup-nav-small hide-on-load popup-nav-small-js">
 	<div class="nav-small-container">
 		<div class="popup-nav-small__holder">
-			@@include('_nav-base.tpl', { "mainNavItemActive": "@@mainNavItemActive", "classKey": "nav-mobile", "navTag": "" })
+			@@include('_nav-base.tpl', {
+				"mainNavItemActive": "@@mainNavItemActive",
+				"classKey": "nav-mobile",
+				"navTag": ""
+			})
 		</div>
 	</div>
 </div>
