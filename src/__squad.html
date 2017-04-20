@@ -69,7 +69,7 @@
 										<div class="section__title"><h2>Фото и видеоматериалы</h2></div>
 										<div class="section__holder">
 											<!--media block-->
-											<div class="media-block js-tabs" data-auto-height="false">
+											<div class="media-block js-tabs">
 												<div class="media-block__nav">
 													<div class="media-block__tab">
 														<a href="#media-block-equipment" class="js-tab-anchor active-tab">
@@ -90,13 +90,19 @@
 
 												<div class="media-block__panels js-tab-container">
 													<div class="media-block__panel js-tab-content" id="media-block-equipment">
-
+														<div class="media-list">
+															@@loop("_media-list-item.tpl", "includes-json/media-list-item.json")
+														</div>
 													</div>
 													<div class="media-block__panel js-tab-content" id="media-block-photo">
-
+														<div class="media-list">
+															@@loop("_media-list-item.tpl", "includes-json/media-list-item-alt.json")
+														</div>
 													</div>
 													<div class="media-block__panel js-tab-content" id="media-block-video">
-
+														<div class="media-list">
+															@@loop("_media-list-item.tpl", "includes-json/media-list-item.json")
+														</div>
 													</div>
 												</div>
 											</div>

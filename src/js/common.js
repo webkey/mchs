@@ -1419,6 +1419,14 @@ function equalHeightInit() {
 		});
 	}
 
+	var $mediaList = $('.media-list');
+
+	if ($mediaList.length) {
+		$mediaList.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+
 	var $leads = $('.lead__list');
 
 	if ($leads.length) {
