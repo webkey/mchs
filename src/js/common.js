@@ -1908,6 +1908,7 @@ function masonryInit() {
 					if (!$btnMenu.is(':visible')) {
 						$navContainer.attr('style', '');
 						$staggerItems.attr('style', '');
+						self.closeNav();
 					} else {
 						self.closeNav();
 					}

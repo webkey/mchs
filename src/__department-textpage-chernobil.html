@@ -1,6 +1,6 @@
 @@include('_head.tpl', {
 	"title": "Департамент по ликвидации последствий катастрофы на Чернобыльской АЭС МЧС РБ (Текстовая страница)",
-	"pageClass": "department-page"
+	"pageClass": "department-chernobil-style"
 })
 <div class="wrapper">
 	<!--HEADER-->
@@ -515,8 +515,10 @@
 
 				<!--SIDEBAR-->
 				@@include('_sidebar-region.tpl', {
-					"regionMenuActiveItem": "Новости",
-					"headingText": "Меню"
+					"hasRegionMenu": "true",
+					"hasSquadMenu": "",
+					"regionMenuActiveItem": "Об управлении",
+					"headingText": "Меню Брестского областного управления"
 				})
 				<!--SIDEBAR-->
 			</div>
@@ -524,4 +526,9 @@
 	</div>
 	<!--MAIN end-->
 </div>
-@@include('_foot.tpl', {"mainNavItemActive": "О министерстве", "subSiteMenu": ""})
+@@include('_foot.tpl', {
+	"mainNavItemActive": "О министерстве",
+	"subSiteMenu": "true",
+	"titleSub": "Разделы",
+	"titleMain": "Главное Меню"
+})

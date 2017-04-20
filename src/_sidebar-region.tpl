@@ -5,7 +5,20 @@
 		})
 		<div class="region-expand-panel-js">
 			<div class="region-menu-panel menu-sub-site">
-				@@include('_region-menu.tpl', { "regionMenuActiveItem": "@@regionMenuActiveItem", "classKey": "region-menu", "navTag": "" })
+				@@if(context.hasRegionMenu){
+					@@include('_region-menu.tpl', {
+						"regionMenuActiveItem": "@@regionMenuActiveItem",
+						"classKey": "region-menu",
+						"navTag": ""
+					})
+				}
+				@@if(context.hasSquadMenu){
+					@@include('_squad-menu.tpl', {
+						"regionMenuActiveItem": "@@regionMenuActiveItem",
+						"classKey": "region-menu",
+						"navTag": ""
+					})
+				}
 			</div>
 		</div>
 		<div class="sidebar-region-news__heading region-expand-tab-js">

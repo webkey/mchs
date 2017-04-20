@@ -176,8 +176,8 @@
 @@if(context.subSiteMenu) {
 <div class="popup-nav-small hide-on-load popup-nav-small-js js-tabs" data-auto-height="false">
 	<div class="nav-small-tabs">
-		<a href="#region-menu-mobile-anchor" class="js-tab-anchor active-tab"><span>Брестское управление</span></a>
-		<a href="#nav-mobile-anchor" class="js-tab-anchor"><span>Меню МЧС РБ</span></a>
+		<a href="#region-menu-mobile-anchor" class="js-tab-anchor active-tab"><span>@@titleSub</span></a>
+		<a href="#nav-mobile-anchor" class="js-tab-anchor"><span>@@titleMain</span></a>
 	</div>
 	<div class="nav-small-container js-tab-container">
 		<div class="popup-nav-small__holder js-tab-content menu-sub-site" id="region-menu-mobile-anchor">

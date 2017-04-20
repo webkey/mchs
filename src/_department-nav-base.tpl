@@ -1,6 +1,3 @@
-<!--navigation-->
-<!-- @@if(mainNavItemActive === "biography"){ current} -->
-<!-- @@if(mainNavItemActive === "biography"){ class="current"} -->
 <div class="@@classKey-wrap">
 	<@@if(context.navTag){nav}@@if(!context.navTag){div} class="@@classKey">
 		<ul class="@@classKey__list @@classKey-js">

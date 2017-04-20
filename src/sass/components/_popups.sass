@@ -429,12 +429,9 @@ $nav-small-tabs-height: 60px
 
 .nav-small-tabs
 	height: $nav-small-tabs-height
-	display: none
+	display: table
 	width: 100%
 	table-layout: fixed
-
-	.region-page &
-		display: table
 
 	a
 		display: table-cell
@@ -452,7 +449,7 @@ $nav-small-tabs-height: 60px
 		// стили для таба открывающего меню регионов
 		&:first-child
 			color: white
-			background-color: $region-menu-bg-color
+			background-color: $subsite-menu-bg-color
 
 		span
 			border-bottom: 1px dotted $text-color-alt
@@ -482,7 +479,7 @@ $nav-small-tabs-height: 60px
 .nav-small-container
 	height: 100%
 
-	.region-page &
+	.nav-small-tabs ~ &
 		height: calc(100% - #{$nav-small-tabs-height})
 
 .popup-nav-small__holder

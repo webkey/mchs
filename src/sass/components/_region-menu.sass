@@ -6,10 +6,10 @@
 /*region menu heading
 .region-menu-heading
 	overflow: hidden
-	height: $region-menu-tab-height
+	height: $subsite-menu-tab-height
 	padding: 0 $sidebar-inner-space-horizontal
-	background-color: $region-menu-bg-color
-	border-bottom: 1px solid $region-menu-border-color
+	background-color: $subsite-menu-bg-color
+	border-bottom: 1px solid $subsite-menu-border-color
 	color: white
 	cursor: pointer
 	transition-property: background-color
@@ -17,16 +17,16 @@
 	+clear-spacing
 
 	.no-touchevents &:hover
-		background-color: shade($region-menu-bg-color, 70%)
+		background-color: shade($subsite-menu-bg-color, 70%)
 
 	&::before
 		+pseudo($display: inline-block, $pos: relative)
 		+vertical-align($pseudo: null)
 
 .menu-sub-site
-	background-color: $region-menu-bg-color
+	background-color: $subsite-menu-bg-color
 
-	.popup-nav-small &
+	//.popup-nav-small &
 		display: none
 
 		.region-page &
@@ -140,7 +140,7 @@ $btn-region-menu-margin-right: 20px
 /*sidebar region news
 .sidebar-region-news__heading
 	overflow: hidden
-	height: $region-menu-tab-height
+	height: $subsite-menu-tab-height
 	position: relative
 	padding: 0 round($sidebar-inner-space-horizontal*1.8) 0 $sidebar-inner-space-horizontal
 	background-color: white
@@ -184,23 +184,23 @@ $btn-region-menu-margin-right: 20px
 
 .region-menu-panel
 	position: relative
-	height: calc(100vh - #{$header-height} - #{round($region-menu-tab-height*2)})
+	height: calc(100vh - #{$header-height} - #{round($subsite-menu-tab-height*2)})
 	+overflow($x: hidden, $y: auto)
 
 	.elements-is-transform &
-		height: calc(100vh - #{$header-top-height} - #{round($region-menu-tab-height*2)})
+		height: calc(100vh - #{$header-top-height} - #{round($subsite-menu-tab-height*2)})
 
 /*region menu
 // общие стили для главного списка навигации
 .region-menu__list
 	position: relative
-	background-color: $region-menu-bg-color
+	background-color: $subsite-menu-bg-color
 	min-height: 100%
 
 // общие стили для подменю навигации
 .region-menu__drop
 	position: relative
-	background-color: $region-menu-bg-color
+	background-color: $subsite-menu-bg-color
 	display: none
 
 // общие стили для пунктов навигации
@@ -238,12 +238,12 @@ $btn-region-menu-margin-right: 20px
 	a
 		display: block
 		position: relative
-		color: $region-menu-text-color
+		color: $subsite-menu-text-color
 		text-decoration: none
 		transition-property: color, background-color
 		transition-duration: $animation-speed
 		padding: 21px $grid-inside-horizontal-space 22px
-		border-bottom: 1px solid $region-menu-border-color
+		border-bottom: 1px solid $subsite-menu-border-color
 		font-size: 1.4rem
 		line-height: 1.429
 		letter-spacing: 0.02em
@@ -278,7 +278,7 @@ $btn-region-menu-margin-right: 20px
 		font-family: $font-alt
 		font-size: 1.6rem
 		line-height: 1.5
-		background-color: $region-menu-bg-color
+		background-color: $subsite-menu-bg-color
 		+padding-vertical(18px, 17px)
 
 		.no-touchevents &:hover
@@ -295,8 +295,8 @@ $btn-region-menu-margin-right: 20px
 	top: 0
 	width: round($grid-inside-horizontal-space*2)
 	height: 100%
-	background-color: $region-menu-bg-color
-	border: solid $region-menu-border-color
+	background-color: $subsite-menu-bg-color
+	border: solid $subsite-menu-border-color
 	border-width: 0 0 1px 1px
 	transition-property: transform, color, background-color
 	transition-duration: $animation-speed
@@ -328,7 +328,7 @@ $btn-region-menu-margin-right: 20px
 			width: 2px
 			border-radius: 2px
 			backface-visibility: hidden
-			background-color: $region-menu-text-color
+			background-color: $subsite-menu-text-color
 			transform-origin: center center
 			transition-property: background-color
 			transition-duration: $animation-speed
@@ -351,7 +351,7 @@ $btn-region-menu-margin-right: 20px
 		transform: rotate(-0.5turn)
 
 		&::before, &::after
-			background-color: $region-menu-text-color
+			background-color: $subsite-menu-text-color
 
 	// ховер
 	.no-touchevents li > .region-menu__tab &:hover i
@@ -363,7 +363,7 @@ $btn-region-menu-margin-right: 20px
 
 	// особые стили для пунктов навигации ВТОРОГО урованя
 	ul, a, .region-menu__angle
-		background-color: $region-menu-bg-color-s
+		background-color: $subsite-menu-bg-color-s
 
 		.no-touchevents &:hover
 			color: white
@@ -371,16 +371,16 @@ $btn-region-menu-margin-right: 20px
 	.region-menu__drop
 		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
 		ul, a, .region-menu__angle
-			background-color: $region-menu-bg-color-ss
+			background-color: $subsite-menu-bg-color-ss
 
 		.region-menu__drop
 			// особые стили для пунктов навигации ЧЕТВЕРТОГО урованя
 			ul, a, .region-menu__angle
-				background-color: $region-menu-bg-color-sss
+				background-color: $subsite-menu-bg-color-sss
 
 			.region-menu__drop
 				// особые стили для пунктов навигации ПЯТОГО урованя
 				ul, a, .region-menu__angle
-					background-color: $region-menu-bg-color-ssss
+					background-color: $subsite-menu-bg-color-ssss
 
 /*MENU REGION end
