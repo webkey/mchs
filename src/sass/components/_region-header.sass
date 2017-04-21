@@ -27,6 +27,9 @@
 		+linear-gradient(to right, rgba(0, 0, 0, 0.75) 0, rgba(0, 0, 0, 0.50) 20%, rgba(0, 0, 0, 0) 100%)
 		z-index: -1
 
+		+media('<mob-lg')
+			background: rgba(0, 0, 0, 0.35)
+
 .region-header__bg
 	+cover()
 	background-position: center
@@ -101,8 +104,13 @@
 		+clear
 
 		+media('<mob-lg')
+			font-size: 1.6rem
 			width: 100%
 			padding-right: 0
+
+		& > span
+			display: block
+			overflow: hidden
 
 	svg
 		float: left
@@ -112,10 +120,6 @@
 
 	path
 		fill: white
-
-	& > span
-		display: block
-		overflow: hidden
 
 	a
 		color: inherit

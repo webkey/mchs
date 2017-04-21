@@ -7,6 +7,7 @@
 	"hasRegionMenu": "@@hasRegionMenu",
 	"hasSquadMenu": "@@hasSquadMenu",
 	"mainNavItemActive": "@@mainNavItemActive",
+	"regionMenuActiveItem": "@@regionMenuActiveItem",
 	"subSiteMenu": "@@subSiteMenu",
 	"titleSub": "@@titleSub",
 	"titleMain": "@@titleMain"

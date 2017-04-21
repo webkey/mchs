@@ -73,9 +73,6 @@ p
 	padding: 0
 	margin: 0 0 $bottom-space
 
-	+media('<mob-lg')
-
-
 hr
 	line-height: 1px
 	height: 0
@@ -152,6 +149,18 @@ i, em
 
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+font-bold-italic
+
+.entry-text
+	font-size: 1.8rem
+	line-height: 1.3
+	font-weight: 700
+	margin-bottom: $bottom-space
+
+	.#{$user-content} & p, ul, ol
+		max-width: none
+
+	p:last-child
+		margin-bottom: 0
 
 .mark
 	color: $mark-color
