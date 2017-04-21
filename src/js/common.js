@@ -2724,46 +2724,6 @@ function textSlide() {
 /*text slide end*/
 
 /**
- * loadList
- * */
-function loadList(){
-	$('.jq-show-list').each(function(){
-		var list = $(this);
-		var showItem = list.data('show-item');
-		var slideItem = list.data('slide-item');
-		var showItemIndex = showItem - 1;
-		list
-			.find('li:gt('+showItemIndex+')')
-			.hide(0)
-			.addClass('hidden');
-		list
-			.parents('.jq-show-container')
-			.find('.jq-show-more')
-			.on('click', function(e){
-				var toShow = list.find('li.hidden:lt('+slideItem+')');
-				toShow.slideDown().removeClass('hidden');
-				if ( list.find('li.hidden').length ) {} else {
-					$(this).hide(0);
-				}
-				e.preventDefault();
-			});
-	});
-}
-
-/*
- <div class="jq-show-container">
- <ul class="jq-show-list" data-show-item="18" data-slide-item="3">
- <li>
- ........
- </li>
- </ul>
- <a href="#" class="jq-show-more">Показать еще</a>
- </div>
- */
-
-/* loadList end */
-
-/**
  * !footer at bottom
  * */
 function footerBottom() {
