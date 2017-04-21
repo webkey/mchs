@@ -27,9 +27,16 @@ $history-info-inside-space: 80px
 	margin-left: $history-info-inside-space
 
 	+media('<desk-lg')
-		display: inline-block
+		border-width: 6px
+		margin-left: $article-layout-space-horizontal--tab-lg
+		width: 36%
+
+	+media('<mob-md')
+		display: block
 		float: none
-		margin-left: 0
+		+push-auto
+		width: 240px
+		max-width: 100%
 		margin-bottom: $bottom-space
 
 .history-info__text

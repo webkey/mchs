@@ -184,6 +184,24 @@ body
 	background: $bg-color-alt
 	margin-bottom: $bottom-space-md
 
+	.page-404 &
+		position: relative
+		overflow: hidden
+		z-index: 1
+
+		&::before
+			z-index: -1
+			+pseudo('404')
+			position: absolute
+			left: 50%
+			top: -12.5rem
+			transform: translate(-50%, 0)
+			font-family: $font-alt
+			font-weight: 700
+			color: $bg-color
+			font-size: 24rem
+			line-height: 1.2
+
 	+media('<mob-lg')
 		+margin-horizontal(-#{$grid-layout-space--mob-lg})
 

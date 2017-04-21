@@ -811,7 +811,6 @@ function multiAccordionInit() {
 }
 /*multi accordion initial end*/
 
-
 /**
  * !toggle drop language
  * */
@@ -923,7 +922,7 @@ function tabSwitcher() {
 
 	/*
 	 <!--html-->
-	 <div class="some-class js-tabs" data-collapsed="true">
+	 <div class="some-class js-tabs" data-collapsed="true" data-auto-height="true" data-to-queue="480">
 	 <!--if has data-collapsed="true" one click open tab content, two click close collapse tab content-->
 	 <div class="some-class__nav">
 	 <div class="some-class__tab">
@@ -960,6 +959,8 @@ function tabSwitcher() {
 				$thisContainer = $this.find($container),
 				$thisContent = $this.find($content);
 			var initialTab = $this.find('.' + activeClass).attr('href').substring(1);
+			// var toQueue = $this.data('to-queue'); // transform tab for toQueue value layout width
+			// var tabInitedFlag = false;
 			var valDataAutoHeight = $this.data('auto-height');
 			var thisAutoHeight = valDataAutoHeight !== false;
 			var activeTab = false;
@@ -1098,6 +1099,24 @@ function tabSwitcher() {
 
 				activeTab = false;
 			}
+
+			// to queue
+			// $(window).on('load debouncedresize', function () {
+			// 	console.log("toQueue.length: ", !!toQueue);
+			// 	if (toQueue && window.innerWidth < toQueue){
+			// 		tabInitedFlag = false;
+			// 		$thisContainer.attr('style', "");
+			// 		$thisContent.attr('style', "");
+			//
+			// 		return;
+			// 	}
+			//
+			// 	console.log("tabInitedFlag: ", tabInitedFlag);
+			// 	if(!tabInitedFlag) {
+			// 		prepareTabsContent();
+			// 		tabInitedFlag = true;
+			// 	}
+			// });
 		});
 	}
 }
@@ -2703,6 +2722,46 @@ function textSlide() {
 	})
 }
 /*text slide end*/
+
+/**
+ * loadList
+ * */
+function loadList(){
+	$('.jq-show-list').each(function(){
+		var list = $(this);
+		var showItem = list.data('show-item');
+		var slideItem = list.data('slide-item');
+		var showItemIndex = showItem - 1;
+		list
+			.find('li:gt('+showItemIndex+')')
+			.hide(0)
+			.addClass('hidden');
+		list
+			.parents('.jq-show-container')
+			.find('.jq-show-more')
+			.on('click', function(e){
+				var toShow = list.find('li.hidden:lt('+slideItem+')');
+				toShow.slideDown().removeClass('hidden');
+				if ( list.find('li.hidden').length ) {} else {
+					$(this).hide(0);
+				}
+				e.preventDefault();
+			});
+	});
+}
+
+/*
+ <div class="jq-show-container">
+ <ul class="jq-show-list" data-show-item="18" data-slide-item="3">
+ <li>
+ ........
+ </li>
+ </ul>
+ <a href="#" class="jq-show-more">Показать еще</a>
+ </div>
+ */
+
+/* loadList end */
 
 /**
  * !footer at bottom

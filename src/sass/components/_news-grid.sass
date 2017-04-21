@@ -321,6 +321,12 @@
 /*others news end*
 
 /*news simple
+.news-simple
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
 .news-simple__list
 	+grid-parent()
 	+clear-spacing
@@ -334,4 +340,18 @@
 		+media('<mob-md')
 			+grid-item(1)
 
+	.no-touchevents & .news-grid__inner:hover
+		.news-grid__content
+			color: $text-color-alt
+
 /*news simple end
+
+/*news footer
+.news__footer
+	text-align: center
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+/*news footer end

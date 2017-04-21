@@ -58,11 +58,16 @@ $bread-space-vertical: 10px
 			display: block
 			position: relative
 			+truncate($bread-item-max-width)
-			//border-bottom: 1px solid $text-color
+			border-bottom: 1px solid transparent
 			z-index: 5
+			transition-property: border-color
+			transition-duration: $animation-speed
 
 			+media('<mob-lg')
 				max-width: 240px
+
+		.no-touchevents &:hover > span
+			border-bottom-color: tint($text-color-alt, 40%)
 
 		& > i
 			position: absolute

@@ -14,6 +14,9 @@
 	margin-bottom: 20px
 	+clear
 
+	+media('<mob-md')
+		display: none
+
 .media-block__tab
 	float: left
 	margin-bottom: -1px
@@ -23,6 +26,7 @@
 		vertical-align: top
 		padding: 12px 20px
 		font-family: $font-alt
+		font-weight: 400
 		font-size: 1.2rem
 		line-height: 1.5
 		text-decoration: none
@@ -55,10 +59,39 @@
 .media-block__panel
 	overflow: hidden
 
+	+media('<mob-md')
+		opacity: 1 !important
+		visibility: visible !important
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		margin-bottom: $bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+	.section__subtitle
+		display: none
+
+		+media('<mob-md')
+			display: block
+
 .media-list
-	margin-bottom: $grid-space
+	margin-bottom: $bottom-space
 	+grid-parent($grid-space)
 	+clear-spacing
+
+	&:last-child
+		margin-bottom: 0
+
+	.media-block__panel &
+		margin-bottom: -$grid-space
+
+	+media('<mob-md')
+		+grid-parent(2px)
+
+		.media-block__panel &
+			margin-bottom: -2px
 
 .media-list__item
 	+grid-item(4, $grid-space)
@@ -70,7 +103,7 @@
 		+grid-item(2, $grid-space)
 
 	+media('<mob-md')
-		+grid-item(1, $grid-space)
+		+grid-item(2, 2px)
 
 .media-list__inner
 	display: block
@@ -88,8 +121,13 @@
 .media-list__img
 	position: relative
 	overflow: hidden
-	+ratio(1, 1)
 	margin-bottom: $bottom-space-sm
+
+.media-list__figure
+	position: relative
+	+ratio(1, 1)
+	transition-property: transform
+	transition-duration: $animation-speed
 
 	img
 		position: absolute
@@ -104,10 +142,14 @@
 		transform: translate(-50%, -50%)
 		text-align: left
 		object-fit: cover
+		backface-visibility: hidden
 
 		.no-objectfit &
 			width: auto
 			height: 100%
+			
+.no-touchevents .media-list__inner:hover .media-list__figure
+	transform: scale(1.1)
 
 .media-list__title
 	padding-bottom: 5px
