@@ -1387,7 +1387,10 @@ function slidersInit() {
 			});
 
 			$panelsSlider.slick({
-				fade: true,
+				accessibility: false,
+				swipe: false,
+				touchMove: false,
+				fade: false,
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
