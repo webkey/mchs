@@ -1,4 +1,4 @@
-<aside class="sidebar sidebar-region region-expand-container-js is-expanded">
+<aside class="sidebar sidebar-region region-expand-container-js">
 	<div class="sidebar__holder">
 		@@include('_region-menu-heading.tpl', {
 			"headingText": "@@headingText"
