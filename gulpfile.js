@@ -84,9 +84,9 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 		'src/css/temp/*.css'
 		,'src/libs/magnific-popup/dist/magnific-popup.css'
 		,'src/libs/priority-nav/dist/priority-nav-core.css'
-		,'src/libs/swiper/dist/css/swiper.min.css',
-		'src/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
-		'src/libs/flatpickr/dist/flatpickr.min.css'
+		, 'src/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css'
+		, 'src/libs/flatpickr/dist/flatpickr.min.css'
+		,'src/libs/swiper/dist/css/swiper.min.css'
 	]) // Выбираем файлы для конкатенации
 	.pipe(concatCss("src/css/libs.css", {
 		rebaseUrls: false

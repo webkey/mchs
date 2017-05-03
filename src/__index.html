@@ -2,7 +2,7 @@
 	"title": "Главная",
 	"pageClass": "home-page"
 })
-<div class="wrapper">
+
 	<!--HEADER-->
 	@@include('_header.tpl', {
 		"mainNavItemActive": "index"
@@ -39,14 +39,14 @@
 											<div class="grid-col-3 grid-col-hd-4 grid-col-lg-12 grid-layout-right grid-col-md-width-auto">
 												<div class="section__holder">
 													<div class="grid-row">
-														<div class="grid-col-12 grid-col-lg-6 grid-col-lt-12">
+														<div class="grid-col-12 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
 															<div class="section__title">
 																<h2>Спасены</h2>
 																@@include('_years-select.tpl')
 															</div>
 															@@include('_save-info.tpl')
 														</div>
-														<div class="grid-col-12 grid-col-lg-6 grid-col-lt-12">
+														<div class="grid-col-12 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
 															<div class="section__title hide-tab-lg">
 																<h2>Суточные сводки</h2>
 															</div>
@@ -99,9 +99,13 @@
 										<div class="section__holder">
 											<div class="others-news-wrap">
 												<div class="tape-slider">
-													<ul class="tape-slider__list tape-slider-js">
-														@@loop('_tape-slider-item.tpl', 'includes-json/other-news-tabs.json')
-													</ul>
+													<div class="swiper-container tape-slider-js">
+														<ul class="tape-slider__list swiper-wrapper">
+															@@loop('_tape-slider-item.tpl', 'includes-json/other-news-tabs.json')
+														</ul>
+													</div>
+													<div class="swiper-arrow swiper-button-prev">Назад</div>
+													<div class="swiper-arrow swiper-button-next">Вперед</div>
 												</div>
 												<div class="others-news others-news-slider-js">
 													<div class="others-news-slider__item">
@@ -342,5 +346,5 @@
 		</div>
 	</div>
 	<!--MAIN end-->
-</div>
+
 @@include('_foot.tpl', {"mainNavItemActive": "О министерстве", "subSiteMenu": ""})

@@ -5,7 +5,7 @@
 				<div class="logo">
 					<a href="index.html">
 						<img src="img/logo.png" alt="Министерство по чрезвычайным ситуациям Республики Беларусь">
-						<strong class="logo-short-text">МЧС РБ</strong>
+						<strong class="logo-short-text">МЧС Беларуси</strong>
 					</a>
 				</div>
 			</div>
@@ -49,9 +49,9 @@
 						</li>
 						<li class="user-options__item lang">
 							<a href="#" class="btn-language-open-js" title="Выбрать язык">
-								<i class="current" style="background-image: url(img/flag-russia.png);"><span>Рус</span></i>
-								<i style="background-image: url(img/flag-belarus.png);"><span>Бел</span></i>
-								<i style="background-image: url(img/flag-britain.png);"><span>Eng</span></i>
+								<span class="current">Рус</span>
+								<!--<i><span>Бел</span></i>-->
+								<span>Eng</span>
 							</a>
 							<!--
 							<ul class="lang__list js-choice-drop">

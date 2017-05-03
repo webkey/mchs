@@ -32,7 +32,8 @@
     "sticky-kit": "^1.1.2",
     "page-scroll-to-id": "^1.5.7",
     "malihu-custom-scrollbar-plugin": "^3.1.5",
-    "flatpickr": "flatpickr-calendar#^2.4.8"
+    "flatpickr": "flatpickr-calendar#^2.4.8",
+    "swiper": "^3.4.2"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

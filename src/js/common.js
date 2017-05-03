@@ -47,7 +47,7 @@ var resizeByWidth = true;
 var prevWidth = -1;
 $(window).resize(function () {
 	var currentWidth = $('body').outerWidth();
-	resizeByWidth = prevWidth != currentWidth;
+	resizeByWidth = prevWidth !== currentWidth;
 	if(resizeByWidth){
 		$(window).trigger('resizeByWidth');
 		prevWidth = currentWidth;
@@ -1366,27 +1366,76 @@ function slidersInit() {
 
 	/*tape slider*/
 	var $othersNews = $('.others-news-wrap');
-	if($othersNews.length){
-		$.each($othersNews, function () {
-			var $currentSlider = $(this);
-			var dur = 300;
-			var $thumbsSlider = $currentSlider.find('.tape-slider-js');
-			var $panelsSlider = $currentSlider.find('.others-news-slider-js');
+	// if($othersNews.length){
+	// 	$.each($othersNews, function () {
+	// 		var $currentSlider = $(this);
+	// 		var dur = 300;
+	// 		var $thumbsSlider = $currentSlider.find('.tape-slider-js');
+	// 		var $panelsSlider = $currentSlider.find('.others-news-slider-js');
+	//
+	// 		$thumbsSlider.slick({
+	// 			fade: false,
+	// 			speed: dur,
+	// 			slidesToShow: 1,
+	// 			// slidesToScroll: 1,
+	// 			infinite: true,
+	// 			dots: false,
+	// 			arrows: true,
+	// 			focusOnSelect: true,
+	// 			variableWidth: true,
+	// 			asNavFor: $panelsSlider
+	// 		});
+	//
+	// 		$panelsSlider.slick({
+	// 			accessibility: false,
+	// 			swipe: false,
+	// 			touchMove: false,
+	// 			fade: false,
+	// 			speed: dur,
+	// 			slidesToShow: 1,
+	// 			slidesToScroll: 1,
+	// 			infinite: true,
+	// 			dots: false,
+	// 			arrows: false,
+	// 			asNavFor: $thumbsSlider
+	// 		});
+	//
+	// 	});
+	// }
 
-			$thumbsSlider.slick({
-				fade: false,
-				speed: dur,
-				slidesToShow: 1,
-				// slidesToScroll: 1,
-				infinite: false,
-				dots: false,
-				arrows: true,
-				focusOnSelect: true,
-				variableWidth: true,
-				asNavFor: $panelsSlider
+	if ($othersNews.length) {
+		$othersNews.each(function () {
+			var $thisGroup = $(this);
+			// var $wrap = $thisSlider.parent();
+			var $thumbsSlider = $thisGroup.find('.tape-slider-js');
+			var $panelsSlider = $thisGroup.find('.others-news-slider-js');
+			var thumbsSlidesLength = $thisGroup.find('.swiper-slide').length;
+			var $thisBtnNext = $('.swiper-button-next', $thisGroup);
+			var $thisBtnPrev = $('.swiper-button-prev', $thisGroup);
+			var currentClass = 'current';
+			var dur = 300;
+			var infinite = false;
+
+			var thumbsSliderInit = new Swiper($thumbsSlider, {
+				loop: infinite,
+				loopedSlides: thumbsSlidesLength,
+				slidesPerView: 'auto',
+				watchSlidesVisibility: true,
+				keyboardControl: false,
+				// slideToClickedSlide: true,
+
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev
 			});
 
-			$panelsSlider.slick({
+			function addCurrentClass(index) {
+				$(thumbsSliderInit.slides).removeClass(currentClass);
+				$(thumbsSliderInit.slides[index]).addClass(currentClass);
+			}
+
+			var panelsSliderInit = $panelsSlider.on('init', function (event, target) {
+				addCurrentClass(target.currentSlide);
+			}).slick({
 				accessibility: false,
 				swipe: false,
 				touchMove: false,
@@ -1394,38 +1443,28 @@ function slidersInit() {
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				infinite: false,
+				infinite: infinite,
 				dots: false,
-				arrows: false,
-				asNavFor: $thumbsSlider
+				arrows: false
+			}).on('beforeChange', function(event, target, currentSlide, nextSlide){
+				addCurrentClass(nextSlide);
 			});
 
+			thumbsSliderInit.on('tap', function (swiper, event) {
+				if (infinite) {
+					// if infinite is true
+					panelsSliderInit.slick('slickGoTo', $(swiper.clickedSlide).data('swiper-slide-index'));
+				} else {
+					// if infinite is false
+					panelsSliderInit.slick('slickGoTo', swiper.clickedIndex);
+				}
+			});
+
+			setTimeout(function () {
+				thumbsSliderInit.update();
+			}, 1000);
 		});
 	}
-
-	//banner slider
-	// var $bannersSlider = $('.banners__list');
-	//
-	// if($bannersSlider.length){
-	//
-	// 	$bannersSlider.each(function () {
-	// 		var $currentSlider = $(this);
-	// 		var dur = 200;
-	//
-	// 		$currentSlider.slick({
-	// 			fade: false,
-	// 			speed: dur  ,
-	// 			slidesToShow: 4,
-	// 			slidesToScroll: 4,
-	// 			// initialSlide: 2,
-	// 			// lazyLoad: 'ondemand',
-	// 			infinite: true,
-	// 			dots: false,
-	// 			arrows: true
-	// 		});
-	//
-	// 	});
-	// }
 }
 /*sliders end*/
 
@@ -2719,7 +2758,6 @@ function textSlide() {
 		clearTimeout(textSlideTimeout);
 
 		textSlideTimeout = setTimeout(function () {
-			console.log(1);
 			$(document.body).trigger("sticky_kit:recalc");
 		}, 100);
 	})

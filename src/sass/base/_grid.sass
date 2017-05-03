@@ -25,11 +25,12 @@
 	.grid-col-#{$grid-col}
 		width: (100%/(12)*$grid-col)
 
-		@if $grid-col == 12
-			margin-bottom: $grid-space
+		+media('>=desk-hd')
+			@if $grid-col == 12
+				margin-bottom: $grid-space
 
-			&:last-child
-				margin-bottom: 0
+				&:last-child
+					margin-bottom: 0
 
 +media('<desk-hd')
 	@for $grid-col from 1 through 12

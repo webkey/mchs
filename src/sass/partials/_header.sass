@@ -740,39 +740,21 @@
 		transition-property: background-color, color
 		transition-duration: $animation-speed
 
-		& > i
+		& > span
 			width: 30px
-			max-width: 80%
+			max-width: 90%
 			vertical-align: middle
 			position: relative
-			background-position: center center
-			background-repeat: no-repeat
-			background-size: cover
+			+font(16px, 24px)
+			font-weight: 400
+			letter-spacing: normal
 			display: none
 
 			+media('<mob-lg')
-				width: 24px
-
-			&::before
-				+pseudo($pos: relative)
-				+ratio(2, 1)
+				font-size: 14px
 
 			&.current
 				display: inline-block
-
-				& > span
-					+hide-text
-
-		//& > span
-			display: inline-block
-			font-family: $font-alt
-			font-weight: 700
-			font-size: 16px
-			line-height: 24px
-			letter-spacing: normal
-
-			+media('<mob-lg')
-				font-size: 14px
 
 	.no-touchevents &:hover > a, .no-touchevents & > a:hover, &.choice-opened > a
 		color: rgba(255, 255, 255, 1)
