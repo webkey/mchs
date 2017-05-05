@@ -598,6 +598,12 @@ $nav-small-tabs-height: 60px
 	text-align: left
 	max-width: 98%
 
+.popup-title
+	margin-bottom: $bottom-space-lg
+
+	&:last-child
+		margin-bottom: 0
+
 .popup-label
 	display: block
 	font-size: 1.4rem
@@ -874,3 +880,31 @@ input.search-form__input
 			color: $text-color-alt
 
 /*search form end*/
+
+//================== FILTERS POPUP =================//
+/*filters popup
+.filters-form
+	.form-buttons
+		opacity: 0
+		visibility: hidden
+		transition-property: visibility, opacity
+		transition-duration: $animation-speed
+		+clear
+
+		input[type="submit"], input[type="reset"]
+			float: left
+			margin-right: $grid-space
+
+			&:disabled
+				cursor: default
+
+	.check-label, .radio-label, input[type="checkbox"], input[type="radio"]
+		font-family: $font-alt
+		font-size: 1.2rem
+		text-transform: uppercase
+
+.form-has-checked .form-buttons
+	opacity: 1
+	visibility: visible
+
+/*filters popup end

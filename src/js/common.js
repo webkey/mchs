@@ -2130,7 +2130,7 @@ function popupsInit(){
 
 	}
 
-	/*languages popup*/
+	/*share popup*/
 	var popupShare = '.share-popup-js';
 
 	if($(popupShare).length){
@@ -2152,7 +2152,7 @@ function popupsInit(){
 
 	}
 
-	/*languages popup*/
+	/*search popup*/
 	var popupSearch = '.popup-search-js';
 
 	if($(popupSearch).length){
@@ -2161,6 +2161,28 @@ function popupsInit(){
 			navContainer: popupSearch,
 			// navMenu: '.site-map__list',
 			btnMenu: '.btn-search-open-js',
+			btnMenuClose: '.btn-popup-close-js',
+			// navMenuItem: '.site-map__box',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1200,
+			animationType: 'surface',
+			animationSpeed: 300,
+			overlayAlpha: 0.35,
+			cssScrollBlocked: true
+		});
+
+	}
+
+	/*filters popup*/
+	var popupFilters = '.filters-popup-js';
+
+	if($(popupFilters).length){
+
+		new ExtraPopup({
+			navContainer: popupFilters,
+			// navMenu: '.site-map__list',
+			btnMenu: '.btn-filters-open-js',
 			btnMenuClose: '.btn-popup-close-js',
 			// navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
@@ -2764,6 +2786,70 @@ function textSlide() {
 }
 /*text slide end*/
 
+function toggleFormButtons() {
+	var $toggleButtonForm = $('.toggle-button-js');
+
+	function checkProp($form) {
+		var $input = $form.find(':radio, :checkbox');
+
+		var hasCheckedInput = false;
+
+		$.each($input, function () {
+			if ($(this).prop('checked')) {
+				hasCheckedInput = true;
+				return false;
+			}
+		});
+
+		return hasCheckedInput;
+	}
+
+	function enabledButtons($thisForm, $btnSubmit, $btnReset) {
+		$thisForm.addClass('form-has-checked');
+		$btnSubmit.prop('disabled', false);
+		$btnReset.prop('disabled', false);
+	}
+
+	function disabledButtons($thisForm, $btnSubmit, $btnReset) {
+		$thisForm.removeClass('form-has-checked');
+		$btnSubmit.prop('disabled', true);
+		$btnReset.prop('disabled', true);
+	}
+
+	if ($toggleButtonForm.length) {
+		$.each($toggleButtonForm, function () {
+			var $thisForm = $(this);
+			var $btnSubmit = $('input[type=submit]', $thisForm);
+			var $btnReset = $('input[type=reset]', $thisForm);
+
+			disabledButtons($thisForm, $btnSubmit, $btnReset);
+
+			if (checkProp($thisForm)) {
+				enabledButtons($thisForm, $btnSubmit, $btnReset);
+			}
+		});
+	}
+
+	$toggleButtonForm.on('change', 'input', function () {
+		var $thisForm = $(this).closest($toggleButtonForm);
+		var $btnSubmit = $('input[type=submit]', $thisForm);
+		var $btnReset = $('input[type=reset]', $thisForm);
+
+		disabledButtons($thisForm, $btnSubmit, $btnReset);
+
+		if (checkProp($thisForm)) {
+			enabledButtons($thisForm, $btnSubmit, $btnReset);
+		}
+	});
+
+	$(':reset', $toggleButtonForm).on('click', function (e) {
+		e.preventDefault();
+
+		$(':checked').prop('checked', false).trigger('change');
+	})
+
+}
+
 /**
  * !footer at bottom
  * */
@@ -2888,6 +2974,7 @@ $(document).ready(function(){
 	blockedScrollOnPage();
 	frontBackSwitcher();
 	textSlide();
+	toggleFormButtons();
 	footerBottom();
 	formSuccessExample();
 });

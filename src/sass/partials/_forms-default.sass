@@ -187,211 +187,171 @@ input[type="checkbox"] + label,
 input[type="radio"] + label,
 .check-label,
 .radio-label
+	position: relative
 	display: inline-block
 	vertical-align: top
-	color: #000
+	+font-normal
+	+font($font-size, 22px)
 	text-transform: none
 	cursor: pointer
-	position: relative
 
-input[type="checkbox"] + label::before,
-.check-label > span > i::before
-	content: ''
-	height: 18px
-	width: 18px
-	position: absolute
-	left: 0
-	top: 50%
-	margin-top: -9px
-	border-radius: 0
-	border: 1px solid $mark-color
-	box-sizing: border-box
+input[type="checkbox"],
+input[type="radio"]
+	& + span
+		&::before
+			display: inline-block
+			position: relative
 
-input[type="checkbox"] + label > span,
-input[type="radio"] + label > span,
-input[type="checkbox"] + span,
-input[type="radio"] + span
-	display: inline-block
-	vertical-align: top
-	position: relative
-	padding: 2px 0 2px 34px
-	z-index: 2
+		i
+			font-size: 0
+			line-height: 0
+			position: absolute
+			left: 0
+			top: 0
+
+input[type="checkbox"],
+input[type="radio"]
+	& + label,
+	& + span i
+		&::before
+			+pseudo()
+			+size(26px)
+			left: 0
+			top: 0
+			border-radius: 0
+			border: 2px solid $text-color
+
+	& + label span,
+	& + span
+		display: inline-block
+		vertical-align: top
+		position: relative
+		padding: 2px 0 2px 45px
+		z-index: 2
 
 //checkbox
 input[type="checkbox"]
-	width: 16px
-	height: 16px
+	+size(16px)
 	padding: 0
 	margin: 0
 	display: none
 
-	& + label::after,
-	& + span > i::after
-		content: ''
-		height: 16px
-		width: 16px
-		position: absolute
-		left: 1px
-		top: 50%
-		margin-top: -8px
-		border-radius: 0
-		background: none
-		-webkit-transition-property: opacity
-		transition-property: opacity
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
+	& + label span,
+	& + span
+		&::before,
+		&::after
+			content: ''
+			position: absolute
+			+size(0, 4px)
+			left: 0
+			top: 13px
+			border-radius: 0
+			background: $text-color-alt
+			transition: opacity $animation-speed linear // prop dur tfunct del
 
-	& + label > span::before,
-	& + label > span::after,
-	& + span::before,
-	& + span::after
-		content: ''
-		position: absolute
-		height: 3px
-		width: 0
-		left: 0
-		top: 50%
-		border-radius: 2px
-		background: $mark-color
-		-webkit-transition-property: opacity
-		transition-property: opacity
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-		-webkit-transition-timing-function: linear
-		transition-timing-function: linear
+		&::before
+			transform: rotate(45deg)
+			transform-origin: 0 7px
+			z-index: 1
 
-	& + label > span::before,
-	& + span::before
-		transform: rotate(45deg)
-		transform-origin: 0 7px
-		z-index: 1
-
-	& + label > span::after,
-	& + span::after
-		transform: rotate(-50deg)
-		transform-origin: 0 10px
-		left: 22px
+		&::after
+			transform: rotate(-50deg)
+			transform-origin: 0 10px
+			left: 22px
 
 	// checkbox checked
 	&:checked
-		& + label > span::before,
-		& + span::before
-			width: 7px
-			margin: -4px 0 0 0
-			-webkit-transition-property: width
-			transition-property: width
-			-webkit-transition-duration: 0.1s
-			transition-duration: 0.1s
-			-webkit-backface-visibility: hidden
-			backface-visibility: hidden
+		& + label,
+		& + span i
+			&::before
+				border-color: $text-color-alt
+				background-color: $text-color-alt
 
-		& + label > span::after,
-		& + span::after
-			width: 11px
-			margin: 0 0 0 -8px
-			-webkit-transition-property: width
-			transition-property: width
-			-webkit-transition-duration: 0.1s
-			transition-duration: 0.1s
-			-webkit-transition-delay: 0.1s
-			transition-delay: 0.1s
-			-webkit-backface-visibility: hidden
-			backface-visibility: hidden
+		& + label span,
+		& + span
+			&::before, &::after
+				background-color: white
+
+			&::before
+				width: 10px
+				margin: -5px 0 0 2px
+				transition: width 0.1s // prop dur tfunct del
+				backface-visibility: hidden
+
+			&::after
+				width: 14px
+				margin: 1px 0 0 -5px
+				transition: width 0.1s 0.1s // prop dur tfunct del
+				backface-visibility: hidden
 
 	// checkbox disabled
 	&:disabled
 		& + label,
-		& + span > i
+		& + span i
+			&::before
+				background-color: transparent
+
+		& + label,
+		& + span
 			color: #bdbdbd
+			cursor: default
 
-		& + label::before,
-		& + span > i::before
-			border-color: #d6d6d6
+		& + label,
+		& + span i
 
-		& + label > span::before,
-		& + label > span::after,
-		& + span::before,
-		& + span::after
-			background: #b9b9b9
+			&::before
+				border-color: #d6d6d6
+
+		& + label span,
+		& + span
+			&::before, &::after
+				background: #b9b9b9
 
 // radio
 input[type="radio"]
 	float: left
-	height: 16px
-	width: 16px
+	+size(16px)
 	margin: 0
 	padding: 0
 	display: none
 
-	& + label::before,
-	& + span::before
-		content: ''
-		height: 18px
-		width: 18px
-		position: absolute
-		left: 0
-		top: 50%
-		margin-top: -9px
-		border-radius: 50px
-		border: 1px solid $mark-color
-		box-sizing: border-box
+	& + label,
+	& + span
+		&::before
+			border-radius: 50%
 
-	& + label::after,
-	& + span::after
-		content: ''
-		height: 16px
-		width: 16px
-		position: absolute
-		left: 1px
-		top: 50%
-		margin-top: -8px
-		border-radius: 50px
-		background: none
-		-webkit-transition-property: opacity
-		transition-property: opacity
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
+	& + label span,
+	& + span i
+		&::before
+			border-radius: 50%
 
-	& + label > span::after,
-	& + span > i::after
-		content: ''
-		width: 10px
-		height: 10px
-		position: absolute
-		top: 50%
-		left: 4px
-		margin-top: -5px
-		border-radius: 50%
-		overflow: hidden
-		background: $mark-color
-		-webkit-animation: bounceout 0s
-		-webkit-animation-iteration-count: 1
-		-webkit-animation-fill-mode: forwards
-		animation: bounceout 0s
-		animation-iteration-count: 1
-		animation-fill-mode: forwards
-		opacity: 0
+		&::after
+			content: ''
+			+size(14px)
+			position: absolute
+			top: 6px
+			left: 6px
+			border-radius: 50%
+			overflow: hidden
+			background: white
+			animation: bounceout 0s
+			animation-iteration-count: 1
+			animation-fill-mode: forwards
+			opacity: 0
 
 	// radio checked
-	&:checked + label > span::after,
-	&:checked + span > i::after
-		-webkit-animation: bounce 0.3s
-		-webkit-animation-iteration-count: 1
-		animation: bounce 0.3s
-		animation-iteration-count: 1
-		opacity: 1
+	&:checked
+		& + label,
+		& + span i
+			&::before
+				border-color: $text-color-alt
+				background-color: $text-color-alt
 
-		@-webkit-keyframes bounce
-			0%
-				-webkit-transform: scale(0.8)
-				opacity: 0.4
-
-			50%
-				-webkit-transform: scale(1.4)
-				opacity: 1
-
-			100%
-				-webkit-transform: scale(1)
+		& + label span,
+		& + span i
+			&::after
+				animation: bounce 0.3s
+				animation-iteration-count: 1
 				opacity: 1
 
 		@keyframes bounce
@@ -406,19 +366,6 @@ input[type="radio"]
 			100%
 				transform: scale(1)
 				opacity: 1
-
-		@-webkit-keyframes bounceout
-			0%
-				-webkit-transform: scale(0)
-				opacity: 1
-
-			50%
-				-webkit-transform: scale(1.4)
-				opacity: 1
-
-			100%
-				-webkit-transform: scale(0)
-				opacity: 0.4
 
 		@keyframes bounceout
 			0%
@@ -438,14 +385,20 @@ input[type="radio"]
 		& + label,
 		& + span
 			color: #bdbdbd
+			cursor: default
 
-		& + label::before,
-		& + span::before
-			border-color: #d6d6d6
+			&::before
+				border-color: #d6d6d6
 
-		& + label > span::after,
-		& + span > i::after
-			background: #b9b9b9
+		& + label span,
+		& + span i
+			&::after
+				background: #b9b9b9
+
+		& + span i
+			&::before
+				border-color: #d6d6d6
+				background-color: transparent
 
 /*form checkbox and radiobutton end*/
 

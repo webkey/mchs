@@ -261,3 +261,128 @@
 	</div>
 </div>
 <!--share popup end-->
+
+<!--filters popup-->
+<div class="extra-popup filters-popup hide-on-load filters-popup-js">
+	<div class="extra-popup__holder">
+		<div class="extra-popup__frame">
+			<div class="extra-popup__align user-content">
+				<h2 class="popup-title">Фильтр новостей</h2>
+				<div class="popup-label">Выберите пожалуйста интересующие Вас разделы новостей:</div>
+				<!-- filters form -->
+				<div class="filters-form toggle-button-js">
+					<form action="#" method="get">
+						<div class="grid-row">
+							<div class="grid-col-4 grid-col-sm-12">
+								<h3>Территориальные управления</h3>
+								<ul class="checkbox-list list-reset">
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Минск</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" checked />
+											<span><i>&nbsp;</i>Минская область</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Гомельская область</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Гродненская область</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Брестская область</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Могилевская область</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Витебская область</span>
+										</label>
+									</li>
+								</ul>
+							</div>
+							<div class="grid-col-4 grid-col-sm-12">
+								<h3>Департаменты</h3>
+								<ul class="checkbox-list list-reset">
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Госпромнадзор</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Госатомнадзор</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Ликвидация ПОСЛЕДСТВИЙ КАТАСТРОФЫ НА ЧЕРНОБЫЛЬСКОЙ АЭС МЧС РБ</span>
+										</label>
+									</li>
+								</ul>
+							</div>
+							<div class="grid-col-4 grid-col-sm-12">
+								<h3>Другие проекты</h3>
+								<ul class="checkbox-list list-reset">
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Университет</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Научно-исследовательский институт</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Республиканский отряд специального назначения</span>
+										</label>
+									</li>
+									<li>
+										<label class="check-label">
+											<input type="checkbox" />
+											<span><i>&nbsp;</i>Авиация МЧС</span>
+										</label>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="form-buttons">
+							<input class="btn-default" type="submit" value="Применить">
+							<input class="btn-default-alt" type="reset" value="Очистить">
+						</div>
+					</form>
+				</div>
+				<!--filters form end-->
+			</div>
+			<a href="#" class="btn-popup-close btn-popup-close-js"><i></i><span>Закрыть</span></a>
+		</div>
+	</div>
+</div>
+<!--filters popup end-->

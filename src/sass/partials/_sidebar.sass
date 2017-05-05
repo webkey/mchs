@@ -96,6 +96,32 @@
 	h4, h3, h2
 		margin-bottom: 0
 
+		.btn-filters-open + &
+			padding-right: 30px
+
+	.btn-filters-open
+		position: absolute
+		top: 50%
+		right: $sidebar-inner-space-horizontal
+		transform: translate(0, -50%)
+		text-indent: -9999px
+		overflow: hidden
+		font-size: 0
+		line-height: 0
+
+		svg
+			display: block
+			+size(24px)
+
+		path
+			fill: $text-color-light
+			-webkit-transition: fill $animation-speed
+			transition: fill $animation-speed
+
+		.no-touchevents &:hover
+			path
+				fill: $text-color-alt
+
 .sidebar-bottom__content
 	position: relative
 	background-color: white

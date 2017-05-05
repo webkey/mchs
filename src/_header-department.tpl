@@ -48,9 +48,8 @@
 						</li>
 						<li class="user-options__item lang">
 							<a href="#" class="btn-language-open-js" title="Выбрать язык">
-								<i class="current" style="background-image: url(img/flag-russia.png);"><span>Рус</span></i>
-								<i style="background-image: url(img/flag-belarus.png);"><span>Бел</span></i>
-								<i style="background-image: url(img/flag-britain.png);"><span>Eng</span></i>
+								<span class="current">Рус</span>
+								<span>Eng</span>
 							</a>
 						</li>
 						<li class="user-options__item banner-opener">
