@@ -2,7 +2,7 @@
 	"title": "Главная",
 	"pageClass": "home-page"
 })
-
+<div class="wrapper">
 	<!--HEADER-->
 	@@include('_header.tpl', {
 		"mainNavItemActive": "index"
@@ -56,7 +56,11 @@
 												</div>
 											</div>
 											<div class="grid-col-9 grid-col-hd-8 grid-col-lg-12 grid-col-width-auto">
-												<div class="section__title"><h2>Главные новости</h2></div>
+												<div class="section__title">
+													<h2>Главные новости, 6 мая 2017 г.</h2>
+													<span class="v-separator">|</span>
+													<a href="#">Все новости</a>
+												</div>
 												<div class="section__holder">
 													<!--news grid-->
 													<div class="news-grid news-grid--main">
@@ -85,13 +89,28 @@
 									<section class="section" id="map-anchor">
 										<div class="section__title"><h2>Карта неблагоприятных явлений</h2></div>
 										<div class="section__holder">
-											<div class="phenomena-map" id="phenomena_map"></div>
-											<script type="text/javascript" src="http://101.belta.by/jscript/script.js" charset="utf-8"></script>
-											<script type="text/javascript" src="http://101.belta.by/jscript/jquery-1.11.0.min.js"></script>
-											<script type="text/javascript" src="http://101.belta.by/jscript/jquery-ui-1.10.4.custom.min.js"></script>
-											<script type="text/javascript">
-												window.onload = start_ajax;
-											</script>
+											<!--events map-->
+											<div class="events-map">
+												<div class="events-map__main">
+													<div class="events-map__content">
+														<div class="phenomena-map" id="phenomena_map"></div>
+														<script type="text/javascript" src="http://101.belta.by/jscript/script.js" charset="utf-8"></script>
+														<script type="text/javascript" src="http://101.belta.by/jscript/jquery-1.11.0.min.js"></script>
+														<script type="text/javascript" src="http://101.belta.by/jscript/jquery-ui-1.10.4.custom.min.js"></script>
+														<script type="text/javascript">
+															window.onload = start_ajax;
+														</script>
+													</div>
+												</div>
+												<div class="events-map__side">
+													<div class="events-map__banner">
+														<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+															<img src="img/_temp-map-events-banner.jpg" alt="Текст поясняющий содержание изображения">
+														</a>
+													</div>
+												</div>
+											</div>
+											<!--events map end-->
 										</div>
 									</section>
 									<section class="section" id="other-projects-anchor">
@@ -114,19 +133,8 @@
 																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
 															</div>
 														</div>
-													</div>
-													<div class="others-news-slider__item">
-														<div class="news-grid news-grid--boxes">
-															<div class="news-grid__list">
-																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others-alt.json')
-															</div>
-														</div>
-													</div>
-													<div class="others-news-slider__item">
-														<div class="news-grid news-grid--boxes">
-															<div class="news-grid__list">
-																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
-															</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
 														</div>
 													</div>
 													<div class="others-news-slider__item">
@@ -135,12 +143,18 @@
 																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others-alt.json')
 															</div>
 														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
 													</div>
 													<div class="others-news-slider__item">
 														<div class="news-grid news-grid--boxes">
 															<div class="news-grid__list">
 																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
 															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
 														</div>
 													</div>
 													<div class="others-news-slider__item">
@@ -149,12 +163,18 @@
 																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others-alt.json')
 															</div>
 														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
 													</div>
 													<div class="others-news-slider__item">
 														<div class="news-grid news-grid--boxes">
 															<div class="news-grid__list">
 																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
 															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
 														</div>
 													</div>
 													<div class="others-news-slider__item">
@@ -163,12 +183,38 @@
 																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others-alt.json')
 															</div>
 														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
 													</div>
 													<div class="others-news-slider__item">
 														<div class="news-grid news-grid--boxes">
 															<div class="news-grid__list">
 																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
 															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others-alt.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-others.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
 														</div>
 													</div>
 												</div>
@@ -346,5 +392,5 @@
 		</div>
 	</div>
 	<!--MAIN end-->
-
+</div>
 @@include('_foot.tpl', {"mainNavItemActive": "О министерстве", "subSiteMenu": ""})

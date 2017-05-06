@@ -276,6 +276,7 @@
 
 	.holder
 		overflow: hidden
+		position: relative
 		height: 100%
 		font-size: 0
 		line-height: 0
@@ -293,10 +294,17 @@
 		.frame
 			display: inline-block
 			vertical-align: middle
-			max-width: calc(100% - 2px)
+			max-width: calc(100% - 92px)
 			font-size: $font-size
 			line-height: $line-height
 			letter-spacing: normal
+			margin-right: 20px
+
+		.gerb
+			display: inline-block
+			vertical-align: middle
+			width: 62px
+			backface-visibility: hidden
 
 /*header content end
 

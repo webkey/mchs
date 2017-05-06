@@ -120,6 +120,9 @@
 								</li>
 							</ul>
 						</div>
+						<div class="gerb">
+							<img src="img/gerb.png" alt="image description" />
+						</div>
 					</div>
 				</div>
 			</div>

@@ -2,10 +2,65 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+/* events map
+$events-map-space: 30px
+$events-map-space--mob-lg: 20px
+$events-map-side-width: 290px
+
+.events-map
+	background-color: white
+	padding: $events-map-space
+	+clear
+
+	+media('<mob-lg')
+		padding: $events-map-space--mob-lg
+
+.events-map__main
+	float: left
+	width: 100%
+
+	+media('<desk-lg')
+		float: none
+
+		&:last-child
+			.events-map__content
+				margin-bottom: 0
+
+.events-map__content
+	margin-right: calc(#{$events-map-side-width} + #{$events-map-space*2})
+
+	+media('<desk-lg')
+		margin: 0 0 $events-map-space
+
+.events-map__side
+	float: right
+	margin: 0 0 0 -#{$events-map-side-width}
+	width: #{$events-map-side-width}
+	max-width: 100%
+
+	+media('<desk-lg')
+		float: none
+		+push-auto
+
+.events-map__banner
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+	a
+		display: block
+
+	img
+		width: 100%
+
+/* events map end
+
 /* phenomena map restyling
 .phenomena-map
 	&#phenomena_map .svg_map
 		max-width: 900px
+		background: white !important
 		+push-auto
 
 	&#phenomena_map .menu_pozar_b div,

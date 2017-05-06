@@ -1439,7 +1439,7 @@ function slidersInit() {
 				accessibility: false,
 				swipe: false,
 				touchMove: false,
-				fade: false,
+				fade: true,
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,

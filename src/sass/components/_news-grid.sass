@@ -294,26 +294,31 @@
 /*news grid end*/
 
 /*others news*
-.others-news .news-grid__list .news-grid__item
+.others-news
 
-	+media('<mob-lg')
-		display: none
-
-		&:nth-child(-n+2)
-			display: block
-
-		&:nth-child(2)
-			margin-bottom: 0
-
-	&:last-child
-		+media('<desk-hd')
-			display: none
-
-		+media('<desk-lg')
-			display: block
+	.news-grid__list .news-grid__item
 
 		+media('<mob-lg')
 			display: none
+
+			&:nth-child(-n+2)
+				display: block
+
+			&:nth-child(2)
+				margin-bottom: 0
+
+		&:last-child
+			+media('<desk-hd')
+				display: none
+
+			+media('<desk-lg')
+				display: block
+
+			+media('<mob-lg')
+				display: none
+
+	.news-grid ~ .section__footer
+		padding-top: $bottom-space
 
 /*others news end*
 

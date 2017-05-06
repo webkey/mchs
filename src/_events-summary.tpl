@@ -51,18 +51,11 @@
 		<div class="events-sum__panel js-tab-content" id="events-sum-id-02">
 			<div class="events-list">
 				<div class="events-list__item">
-					<h3>Уничтожены</h3>
-					<p>Строений – 1</p>
-					<p>Единиц техники – 2</p>
-				</div>
-				<div class="events-list__item">
-					<h3>Погибло на пожарах</h3>
-					<p>Человек – 4</p>
-					<p>Детей – 0</p>
+					<img src="img/img-map-events.jpg" alt="image description" />
 				</div>
 			</div>
 			<div class="events-sum__footer">
-				<a href="#">Все суточные сводки</a>
+				<a href="#map-anchor">Сметреть карту</a>
 			</div>
 		</div>
 		<div class="events-sum__panel js-tab-content" id="events-sum-id-03">

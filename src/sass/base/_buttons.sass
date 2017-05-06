@@ -38,10 +38,10 @@
 
 	&:disabled
 		cursor: default
-		background-color: #ccc
+		background-color: $btn-disabled-color
 
 		.no-touchevents &
-			background-color: #ccc
+			background-color: $btn-disabled-color
 
 /*btn-default end*/
 
@@ -58,8 +58,20 @@
 	transition-duration: $animation-speed
 
 	.no-touchevents &:hover
-		background: $btn-bg-color-hover
+		background: $btn-bg-color
 		color: $btn-text-color
+
+	&:disabled
+		cursor: default
+		background-color: white
+		border-color: $btn-disabled-color
+		color: $btn-disabled-color
+
+		.no-touchevents &
+			background-color: white
+			
+			&:hover
+				color: $btn-disabled-color
 
 /*btn-default-alt end*/
 

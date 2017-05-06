@@ -66,6 +66,16 @@
 			.no-touchevents &:hover span
 				border-bottom-color: transparent
 
+	.v-separator
+		font-size: 0.6em
+		vertical-align: middle
+
+		+ a
+			color: $text-color
+			text-transform: uppercase
+			font-size: 0.6em
+			vertical-align: middle
+
 .v-separator
 	display: inline-block
 	vertical-align: top
@@ -73,6 +83,9 @@
 
 	+media('<mob-lg')
 		display: none
+
+	.section__title &
+		color: $text-color
 
 .section__box
 	background-color: white
