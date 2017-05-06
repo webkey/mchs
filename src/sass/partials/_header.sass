@@ -531,7 +531,7 @@
 	text-transform: uppercase
 	color: $text-color
 
-	+media('<desk-md')
+	+media('<desk-lg')
 		+font(1.4rem, 1.2)
 
 	a
@@ -544,10 +544,12 @@
 
 /*header info
 .header__info
-	font-size: $font-size-small
-	line-height: $line-height-small
+	+font($font-size-small, $line-height-small)
 	margin: 8px 0 0
 	cursor: default
+
+	+media('<desk-lg')
+		font-size: 1.2rem
 
 	+media('<desk-md')
 		display: none
@@ -558,6 +560,9 @@
 		margin-top: 10px
 		margin-right: 30px
 		color: $text-color-light
+
+		+media('<desk-hd')
+			margin-top: 4px
 
 		a
 			text-decoration: none

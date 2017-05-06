@@ -35,6 +35,9 @@
 	+btn-hover
 	+btn-active
 
+	+media('<mob-lg')
+		padding: 6px 20px
+		font-size: 1.4rem
 
 	&:disabled
 		cursor: default
@@ -56,6 +59,10 @@
 	border: 2px solid $btn-bg-color
 	transition-property: background-color, color, border-color
 	transition-duration: $animation-speed
+
+	+media('<mob-lg')
+		padding: 6px 20px
+		font-size: 1.4rem
 
 	.no-touchevents &:hover
 		background: $btn-bg-color
