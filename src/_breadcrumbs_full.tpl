@@ -1,15 +1,8 @@
 <!--breadcrumbs-->
 <div class="breadcrumbs">
 	<div class="breadcrumbs__list">
-		<div class="breadcrumbs__item breadcrumbs__item_has-drop">
+		<div class="breadcrumbs__item">
 			<a href="#"><span>Главная</span><i>&nbsp;</i></a>
-			<div class="breadcrumbs-drop">
-				<div class="breadcrumbs-drop__holder">
-					@@loop('_breadcrumbs-drop-items.tpl', [
-						{ "text": "Главная" }
-					])
-				</div>
-			</div>
 			<i>&nbsp;</i>
 		</div>
 		<div class="breadcrumbs__item breadcrumbs__item_has-drop">
