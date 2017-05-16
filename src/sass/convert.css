@@ -1,186 +1,387 @@
-/*search form*/
-.search-form
-	max-width: 800px
-	margin: 0 auto
+/*expander*/
+.expander
+	counter-reset: section
+	margin-bottom: -1px
 
-.search-form__field
-	overflow: hidden
-	position: relative
-	padding-top: 35px
+.expander__content
+	padding: 0 0 40px
 
-input.search-form__input,
-input.search-form__input:hover,
-input.search-form__input:focus
-	border: none
-	height: 50px
-	width: 100%
-	padding: 11px 60px 11px 20px
-	margin: 0
-	font-family: 'lato-light', sans-serif
-	font-size: 20px
-	line-height: 28px
-	letter-spacing: 0.05em
-	color: #f9f7f6
-	border-radius: 0
-	background: none
-	z-index: 998
+.expander + .expander__content,
+.expander__content + .expander
+	border-top: 1px solid #d9d9d9
 
-input.search-form__input
-	opacity: 0
-	cursor: pointer
-
-.input--filled input.search-form__input
-	cursor: text
-
-.search-form__label
-	width: 100%
-	position: absolute
-	left: 0
-	bottom: 0
-	height: 50px
-	text-align: left
-	pointer-events: none
-	-webkit-font-smoothing: antialiased
-	-moz-osx-font-smoothing: grayscale
-	-webkit-touch-callout: none
-	-webkit-user-select: none
-	-khtml-user-select: none
-	-moz-user-select: none
-	-ms-user-select: none
-	user-select: none
-
-.search-form__label label
-	position: relative
-	display: block
-	padding: 0
-	font-family: 'lato-regular', sans-serif
-	font-size: 24px
-	line-height: 50px
-	letter-spacing: 0.05em
-	color: #696969
-	overflow: hidden
-	-ms-text-overflow: ellipsis
-	text-overflow: ellipsis
-	-webkit-transform-origin: 0 0
-	transform-origin: 0 0
-	-webkit-transition-property: color, -webkit-transform
-	transition-property: color, transform
-	-webkit-transition-duration: 0.2s
-	transition-duration: 0.2s
-
-.search-form__label label span
-	display: inline-block
-	opacity: 1
-	-webkit-transition-property: opacity, -webkit-transform
-	transition-property: opacity, transform
-	-webkit-transition-duration: 0.2s
-	transition-duration: 0.2s
-
-.search-form__label::before,
-.search-form__label::after
-	content: ''
-	position: absolute
-	width: 100%
-	left: 0
-
-.search-form__label::before
-	height: 2px
-	background: #a8a8a8
-	bottom: 0
+.expander > .expander__item
+	counter-increment: section
+	border: solid #d9d9d9
+	border-width: 1px 0 0
 	-webkit-transition-property: opacity
 	transition-property: opacity
 	-webkit-transition-duration: 0.2s
 	transition-duration: 0.2s
 
-.search-form__label::after
-	height: 100%
-	background: #a8a8a8
-	top: 0
-	-webkit-transform: translate(0, 100%)
-	transform: translate(0, 100%)
-	-webkit-transition-property: -webkit-transform
-	transition-property: transform
+.expander > .expander__item:last-child
+	border-bottom-width: 1px
+
+.expander__header
+	position: relative
+	line-height: 1
+	box-sizing: border-box
+
+.expander__hand
+	min-height: inherit
+	position: relative
+	cursor: pointer
+	padding: 28px 40px 28px 0
+	box-sizing: border-box
+	-webkit-transition-property: border-color
+	transition-property: border-color
 	-webkit-transition-duration: 0.2s
 	transition-duration: 0.2s
 
-.search-form__btn
+.expander__hand:after
+	content: ''
+	display: inline-block
+	vertical-align: middle
+	min-height: inherit
+
+.accordion-figure
+	display: inline-block
+	vertical-align: middle
+	width: 100px
+	height: 100px
+	border-radius: 50px
+	overflow: hidden
+	margin-right: 36px
+	margin-top: -4px
+	margin-bottom: -4px
+
+.expander__title
+	display: inline-block
+	vertical-align: middle
+	width: calc(100% - 10px)
+	font-family: 'lato-bold', sans-serif
+	font-size: 22px
+	line-height: 30px
+	box-sizing: border-box
+	-webkit-transition-property: color
+	transition-property: color
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+.expander__title,
+.desktop .expander__hand.js-accordion__no-hover:hover .expander__title
+	color: #000
+
+.accordion-figure + .expander__title
+	width: calc(100% - 152px)
+
+.desktop .expander__hand:hover .expander__title
+	color: #008acf
+
+.expander.expander_ordered > .expander__item .expander__title:before
+	position: relative
+	display: inline-block
+	content: counter(section) "."
+	padding: 0 10px 0 0
+	box-sizing: border-box
+
+.file-link
+	position: relative
+	display: inline-block
+	vertical-align: top
+	font-family: 'lato-light', sans-serif
+	font-size: 16px
+	line-height: 20px
+	text-decoration: none
+	color: #3a3a3a
+	padding: 12px 15px 12px 30px
+	background: no-repeat -999px 0
+	-webkit-transition-property: color
+	transition-property: color
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+.desktop .file-link:hover
+	color: #008acf
+
+.file-link:before,
+.file-link:after
+	content: ''
+	position: absolute
+	left: 0
+	top: 50%
+	height: 40px
+	width: 20px
+	background: no-repeat -26px 50%
+	background-image: inherit
+	-webkit-background-size: 72px
+	background-size: 72px
+	opacity: 0
+	-webkit-transform: translate(0, -50%)
+	-ms-transform: translate(0, -50%)
+	transform: translate(0, -50%)
+	-webkit-transition-property: opacity
+	transition-property: opacity
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+.file-link:before
+	opacity: 1
+	background-position: 0 50%
+
+.desktop .file-link:hover:before
+	opacity: 0
+
+.desktop .file-link:hover:after
+	opacity: 1
+
+.expander__angle
 	position: absolute
 	right: 0
-	bottom: 0
-	width: 50px
-	height: 50px
-	z-index: 99
-	-webkit-transform: translate(10px, 0)
-	-ms-transform: translate(10px, 0)
-	transform: translate(10px, 0)
-	-webkit-transition-property: -webkit-transform
-	transition-property: transform
-	-webkit-transition-duration: 0.2s
-	transition-duration: 0.2s
+	top: 50%
+	width: 38px
+	height: 38px
+	border-radius: 50%
+	border: 2px solid #008acf
+	-webkit-transform: translate(0, -50%)
+	-ms-transform: translate(0, -50%)
+	transform: translate(0, -50%)
 
-.search-form__btn svg
+.expander__angle,
+.desktop .expander__hand.js-accordion__no-hover:hover .expander__angle
+	background: #fff
+
+.js-accordion__header_active .expander__angle
+	-webkit-transform: translate(0, -50%) rotate(-180deg)
+	-ms-transform: translate(0, -50%) rotate(-180deg)
+	transform: translate(0, -50%) rotate(-180deg)
+
+.expander__angle:before,
+.expander__angle:after
+	content: ''
 	position: absolute
 	left: 50%
 	top: 50%
-	width: 24px
-	height: 24px
-	margin: -12px 0 0 -12px
+	height: 2px
+	width: 10px
+	border-radius: 2px
+	-webkit-backface-visibility: hidden
+	backface-visibility: hidden
 
-.search-form__btn svg path
-	fill: #a8a8a8
-	-webkit-transition: fill 0.2s
-	transition: fill 0.2s
+.expander__angle:before,
+.expander__angle:after,
+.desktop .expander__hand.js-accordion__no-hover:hover .expander__angle:before,
+.desktop .expander__hand.js-accordion__no-hover:hover .expander__angle:after
+	background: #008acf
 
-.input--filled .search-form__btn
-	z-index: 999
+.expander__angle:before
+	-webkit-transform: rotate(45deg)
+	-ms-transform: rotate(45deg)
+	transform: rotate(45deg)
+	margin: 0 0 0 -8px
 
-.search-form__label::before,
-.search-form__label::after,
-.search-form__label label,
-.search-form__label label span,
-.search-form__input:focus,
-.input--filled .search-form__input,
-.search-form__btn,
-.search-form__btn svg path
-	-webkit-transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
-	transition-timing-function: cubic-bezier(0, 0.25, 0.5, 1)
+.expander__angle:after
+	-webkit-transform: rotate(-45deg)
+	-ms-transform: rotate(-45deg)
+	transform: rotate(-45deg)
+	margin: 0 0 0 -2px
 
-.search-form__input:focus,
-.input--filled .search-form__input
+.expander__angle,
+.expander__angle:before,
+.expander__angle:after
+	-webkit-transition-property: -webkit-transform, background
+	transition-property: transform, background
+	-webkit-transition-duration: 0.18s
+	transition-duration: 0.18s
+
+.desktop .expander__hand:hover .expander__angle
+	background: #008acf
+
+.desktop .expander__hand:hover .expander__angle:before,
+.desktop .expander__hand:hover .expander__angle:after
+	background: #fff
+
+.expander__panel
+	position: relative
+	overflow: hidden
+	border-top: 1px solid #d9d9d9
+	box-sizing: border-box
+	display: none
+	color: #262626
+
+.no-js .expander__panel
+	display: block
+
+.expander__panel:before,
+.expander__panel:after
+	content: ''
+	position: absolute
+	left: -10%
+	width: 120%
+	height: 20px
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
+	z-index: 99
+
+.expander__panel:before
+	top: -20px
+
+.expander__panel:after
+	bottom: -20px
+
+.expander__panel h4
+	font-family: 'lato-black', sans-serif
+	font-size: 16px
+	line-height: 30px
+	color: #262626
+	text-transform: none
+
+.expander__frame
+	overflow: hidden
+	position: relative
+	padding: 40px
+	opacity: 0
+	-webkit-transition-property: opacity
+	transition-property: opacity
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+
+.js-accordion__panel_active > .expander__frame
 	opacity: 1
-	-webkit-transition: opacity 0s 0.2s
-	transition: opacity 0s 0.2s
+	-webkit-transition-delay: 0.08s
+	transition-delay: 0.08s
 
-.search-form__input:focus + .search-form__label::before,
-.input--filled .search-form__label::before
-	opacity: 0
+.expander__frame > p:last-child,
+.expander__frame > ul:last-child,
+.expander__frame > ol:last-child
+	padding-bottom: 0
+	margin-bottom: 0
 
-.search-form__input:focus + .search-form__label::after,
-.input--filled .search-form__label::after
-	-webkit-transform: translate(0, 0)
-	transform: translate(0, 0)
+.accordion-frame__footer
+	text-align: center
 
-.search-form__input:focus + .search-form__label label,
-.input--filled .search-form__label label
-	color: #cbc4c6
-	-webkit-transform: translate(0, -70%) scale(0.65, 0.65)
-	transform: translate(0, -70%) scale(0.65, 0.65)
+.expander__panel .expander
+	float: left
+	margin: -40px
+	position: relative
+	box-sizing: border-box
+	width: calc(100% + 80px)
 
-.search-form__input:focus + .search-form__label label span,
-.input--filled .search-form__label label span
-	opacity: 0
-	-webkit-transform: scale(0, 0)
-	-ms-transform: scale(0, 0)
-	transform: scale(0, 0)
+.expander__panel .expander__item
+	border: none
 
-.search-form__input:focus ~ .search-form__btn,
-.input--filled .search-form__btn
-	-webkit-transform: translate(0, 0)
-	-ms-transform: translate(0, 0)
-	transform: translate(0, 0)
+.expander__panel .expander__hand
+	border-bottom: 1px dashed #d9d9d9
 
-.search-form__input:focus ~ .search-form__btn svg path,
-.input--filled .search-form__btn svg path
-	fill: #f9f7f6
+.expander__panel .expander__hand.js-accordion__hand_active
+	border-color: transparent
 
-/*search form end*/
+.expander__panel .expander__item:last-child .expander__hand
+	border: none
+
+.expander__panel .expander__title
+	font-family: 'lato-semibold', sans-serif
+	font-size: 18px
+	line-height: 22px
+
+.expander.expander_ordered .expander__panel .expander__title:before
+	content: none
+
+.expander__panel .expander__angle
+	border-color: transparent
+
+.expander__panel .expander__angle:before,
+.expander__panel .expander__angle:after
+	background: #b3b3b3
+	width: 14px
+	height: 2px
+	border-radius: 0
+
+.expander__panel .expander__angle:before
+	-webkit-transform: rotate(0)
+	-ms-transform: rotate(0)
+	transform: rotate(0)
+	margin: -1px 0 0 -7px
+
+.expander__panel .expander__angle:after
+	-webkit-transform: rotate(90deg)
+	-ms-transform: rotate(90deg)
+	transform: rotate(90deg)
+	margin: -1px 0 0 -7px
+
+.desktop .expander__panel .expander__hand:hover .expander__angle
+	background: none
+
+.desktop .expander__panel .expander__hand:hover .expander__angle:before,
+.desktop .expander__panel .expander__hand:hover .expander__angle:after
+	background: #008acf
+
+.expander__panel .js-accordion__header_active .expander__angle:after
+	-webkit-transform: rotate(0)
+	-ms-transform: rotate(0)
+	transform: rotate(0)
+
+.expander__panel .expander__panel
+	overflow: visible
+	border: none
+	padding-left: 40px
+	padding-right: 40px
+
+.expander__panel .expander__panel:before,
+.expander__panel .expander__panel:before
+	content: none
+
+.expander__panel .expander__item:last-child .expander__panel
+	padding-bottom: 40px
+
+.expander__panel .expander .expander__frame
+	overflow: visible
+	padding: 30px
+	border: 2px solid #008acf
+	box-sizing: border-box
+
+.expander__panel .expander__panel:before,
+.expander__panel .expander__panel:after
+	content: none
+
+.expander__panel .expander .expander__frame:after,
+.expander__panel .expander .expander__frame:before
+	bottom: 100%
+	left: 40px
+	border: solid transparent
+	content: " "
+	height: 0
+	width: 0
+	position: absolute
+	pointer-events: none
+	-webkit-transition-property: border-width
+	transition-property: border-width
+	-webkit-transition-duration: 0.1s
+	transition-duration: 0.1s
+
+.expander__panel .expander .expander__frame:after
+	border-color: rgba(255, 255, 255, 0)
+	border-bottom-color: #fff
+	border-width: 11px 8px 0
+	margin-left: -8px
+
+.expander__panel .expander .expander__frame:before
+	border-color: rgba(0, 138, 207, 0)
+	border-bottom-color: #008acf
+	border-width: 15px 11px 2px
+	margin-left: -11px
+
+.expander__panel .expander .js-accordion__panel_active .expander__frame:after
+	border-width: 11px 8px 11px
+	-webkit-transition-delay: 0.08s
+	transition-delay: 0.08s
+
+.expander__panel .expander .js-accordion__panel_active .expander__frame:before
+	border-width: 15px 11px 15px
+	-webkit-transition-delay: 0.08s
+	transition-delay: 0.08s
+
+.expander_no-corners .expander__frame:after,
+.expander_no-corners .expander__frame:before
+	content: none !important
+
+/*expander end*/

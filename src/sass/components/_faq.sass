@@ -1,0 +1,311 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*expander
+.expander
+	counter-reset: section
+	margin-bottom: -1px
+
+.expander__content
+	padding: 0 0 40px
+
+.expander + .expander__content, .expander__content + .expander
+	border-top: 1px solid #d9d9d9
+
+.expander
+	& > .expander__item
+		counter-increment: section
+		border: solid #d9d9d9
+		border-width: 1px 0 0
+		transition-property: opacity
+		transition-duration: 0.2s
+
+		&:last-child
+			border-bottom-width: 1px
+
+.expander__header
+	position: relative
+	line-height: 1
+
+.expander__hand
+	min-height: inherit
+	position: relative
+	cursor: pointer
+	padding: 28px 40px 28px 0
+	transition-property: border-color
+	transition-duration: 0.2s
+
+	&:after
+		+pseudo($pos: relative)
+		vertical-align: middle
+		min-height: inherit
+
+.expander__title
+	display: inline-block
+	vertical-align: middle
+	width: calc(100% - 10px)
+	font-family: $font-alt
+	+font(22px, 30px)
+	transition-property: color
+	transition-duration: 0.2s
+
+	&, .notouchevents .expander__hand.js-accordion__no-hover:hover &
+		color: $text-color
+
+	.accordion-figure + &
+		width: calc(100% - 152px)
+
+	.notouchevents .expander__hand:hover &
+		color: $text-color-alt
+
+	.expander.expander_ordered > .expander__item &:before
+		position: relative
+		display: inline-block
+		content: counter(section) "."
+		padding: 0 10px 0 0
+
+.file-link
+	position: relative
+	display: inline-block
+	vertical-align: top
+	font-size: 16px
+	line-height: 20px
+	text-decoration: none
+	color: #3a3a3a
+	padding: 12px 15px 12px 30px
+	background: no-repeat -999px 0
+	transition-property: color
+	transition-duration: 0.2s
+
+	.notouchevents &:hover
+		color: $text-color-alt
+
+	&:before, &:after
+		+pseudo()
+		left: 0
+		top: 50%
+		+size(20px, 40px)
+		background: no-repeat -26px 50%
+		background-image: inherit
+		background-size: 72px
+		opacity: 0
+		transform: translate(0, -50%)
+		transition-property: opacity
+		transition-duration: 0.2s
+
+	&:before
+		opacity: 1
+		background-position: 0 50%
+
+	.notouchevents &:hover:before
+		opacity: 0
+
+	.notouchevents &:hover:after
+		opacity: 1
+
+.expander__angle
+	position: absolute
+	right: 0
+	top: 50%
+	width: 38px
+	height: 38px
+	border-radius: 50%
+	border: 2px solid $text-color-alt
+	transform: translate(0, -50%)
+
+	&, .notouchevents .expander__hand.js-accordion__no-hover:hover &
+		background: #fff
+
+	.js-accordion__header_active &
+		transform: translate(0, -50%) rotate(-180deg)
+
+	&:before, &:after
+		+pseudo()
+		left: 50%
+		top: 50%
+		+size(10px, 2px)
+		border-radius: 2px
+		backface-visibility: hidden
+
+	&:before, &:after,
+	.notouchevents .expander__hand.js-accordion__no-hover:hover &:before,
+	.notouchevents .expander__hand.js-accordion__no-hover:hover &:after
+		background: $text-color-alt
+
+	&:before
+		transform: rotate(45deg)
+		margin: 0 0 0 -8px
+
+	&:after
+		transform: rotate(-45deg)
+		margin: 0 0 0 -2px
+
+	&, &:before, &:after
+		transition-property: transform, background
+		transition-duration: 0.18s
+	
+	.notouchevents .expander__hand:hover &
+		background: $text-color-alt
+	
+		&:before, &:after
+			background: #fff
+
+.expander__panel
+	position: relative
+	overflow: hidden
+	border-top: 1px solid #d9d9d9
+	display: none
+	color: #262626
+
+	.no-js &
+		display: block
+
+	&:before, &:after
+		content: ''
+		position: absolute
+		left: -10%
+		width: 120%
+		height: 20px
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
+		z-index: 99
+
+	&:before
+		top: -20px
+
+	&:after
+		bottom: -20px
+
+	h4
+		+font-bold
+		+font(1.6rem, 1.4)
+		color: #262626
+		text-transform: none
+
+.expander__frame
+	overflow: hidden
+	position: relative
+	padding: 40px
+	opacity: 0
+	transition-property: opacity
+	transition-duration: 0.2s
+
+	.js-accordion__panel_active > &
+		opacity: 1
+		transition-delay: 0.08s
+
+	& > p:last-child,
+	& > ul:last-child,
+	& > ol:last-child
+		padding-bottom: 0
+		margin-bottom: 0
+
+.accordion-frame__footer
+	text-align: center
+
+.expander__panel
+	.expander
+		float: left
+		margin: -40px
+		position: relative
+		width: calc(100% + 80px)
+
+	.expander__item
+		border: none
+
+	.expander__hand
+		border-bottom: 1px dashed #d9d9d9
+
+	.expander__hand.js-accordion__hand_active
+		border-color: transparent
+
+	.expander__item:last-child .expander__hand
+		border: none
+
+	.expander__title
+		+font-normal
+		+font(1.6rem, 1.4)
+
+	.expander.expander_ordered & .expander__title:before
+		content: none
+
+	.expander__angle
+		border-color: transparent
+
+		&:before, &:after
+			background: #b3b3b3
+			width: 14px
+			height: 2px
+			border-radius: 0
+
+		&:before
+			transform: rotate(0)
+			margin: -1px 0 0 -7px
+
+		&:after
+			transform: rotate(90deg)
+			margin: -1px 0 0 -7px
+
+	.notouchevents & .expander__hand:hover .expander__angle
+		background: none
+
+	.notouchevents & .expander__hand:hover .expander__angle:before,
+	.notouchevents & .expander__hand:hover .expander__angle:after
+		background: $text-color-alt
+
+	.js-accordion__header_active .expander__angle:after
+		transform: rotate(0)
+
+	.expander__panel
+		overflow: visible
+		border: none
+		padding-left: 40px
+		padding-right: 40px
+
+		&:before, &:after
+			content: none
+
+	.expander__item:last-child .expander__panel
+		padding-bottom: 40px
+
+	.expander .expander__frame
+		overflow: visible
+		padding: 30px
+		border: 2px solid $text-color-alt
+
+	.expander .expander__frame
+		&:after, &:before
+			+pseudo()
+			bottom: 100%
+			left: 40px
+			border: solid transparent
+			+size(0)
+			pointer-events: none
+			transition-property: border-width
+			transition-duration: 0.1s
+
+		&:after
+			border-color: rgba(255, 255, 255, 0)
+			border-bottom-color: #fff
+			border-width: 11px 8px 0
+			margin-left: -8px
+
+		&:before
+			border-color: rgba(0, 138, 207, 0)
+			border-bottom-color: $text-color-alt
+			border-width: 15px 11px 2px
+			margin-left: -11px
+
+	.expander .js-accordion__panel_active .expander__frame:after
+		border-width: 11px 8px 11px
+		transition-delay: 0.08s
+
+	.expander .js-accordion__panel_active .expander__frame:before
+		border-width: 15px 11px 15px
+		transition-delay: 0.08s
+
+.expander_no-corners .expander__frame
+	&:after, &:before
+		content: none !important
+
+/*expander end
