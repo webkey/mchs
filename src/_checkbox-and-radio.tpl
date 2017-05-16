@@ -69,11 +69,11 @@
 						<label for="radio-female"><span>Female</span></label>
 					</li>
 					<li>
-						<input type="radio" name="radio-disabled" id="radio-disabled" disabled />
+						<input type="radio" name="radio-disabled-outside" id="radio-disabled" disabled />
 						<label for="radio-disabled"><span>Disabled</span></label>
 					</li>
 					<li>
-						<input type="radio" name="radio-checked-disabled" id="radio-checked-disabled" checked disabled />
+						<input type="radio" name="radio-checked-disabled-outside" id="radio-checked-disabled" checked disabled />
 						<label for="radio-checked-disabled"><span>Checked & Disabled</span></label>
 					</li>
 				</ul>

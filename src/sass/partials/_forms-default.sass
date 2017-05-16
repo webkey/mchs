@@ -289,23 +289,20 @@ input[type="checkbox"]
 		& + label,
 		& + span i
 			&::before
-				background-color: transparent
+				border-color: $text-color
+				background-color: white
+				opacity: 0.4
 
 		& + label,
 		& + span
-			color: #bdbdbd
 			cursor: default
-
-		& + label,
-		& + span i
-
-			&::before
-				border-color: #d6d6d6
+			opacity: 0.4
 
 		& + label span,
 		& + span
 			&::before, &::after
-				background: #b9b9b9
+				background: lighten($text-color, 40%)
+				//opacity: 0.4
 
 // radio
 input[type="radio"]
@@ -384,21 +381,26 @@ input[type="radio"]
 	&:disabled
 		& + label,
 		& + span
-			color: #bdbdbd
+			color: $text-color
+			opacity: 0.4
 			cursor: default
 
 			&::before
-				border-color: #d6d6d6
+				border-color: $text-color
+				background-color: white
+				opacity: 0.4
 
 		& + label span,
 		& + span i
 			&::after
-				background: #b9b9b9
+				background-color: $text-color
+				opacity: 0.4
 
 		& + span i
 			&::before
-				border-color: #d6d6d6
-				background-color: transparent
+				border-color: $text-color
+				background-color: white
+				opacity: 0.4
 
 /*form checkbox and radiobutton end*/
 

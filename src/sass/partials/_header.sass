@@ -117,16 +117,11 @@
 	img
 		display: inline-block
 		vertical-align: middle
-		//position: absolute
-		//top: 50%
-		//left: 50%
-		//transform: translate(-50%, -50%)
 		position: relative
 		top: 50%
 		transform: translate(0, -50%)
 		height: 120px
 		max-height: 100%
-		//+push-auto
 		font-size: $font-size-small
 		letter-spacing: normal
 
@@ -146,7 +141,7 @@
 			width: auto
 			height: auto
 			margin: 0
-			padding: $grid-layout-space--mob-lg
+			padding: 10px 20px
 			border-bottom: 1px solid $border-color
 
 		+media('<mob-lg')
@@ -182,7 +177,7 @@
 				color: $text-color
 				// скрыть на десктопе
 				display: none
-				width: calc(100% - 80px - #{$grid-layout-space--mob-lg} - 5px)
+				width: calc(100% - 60px - #{$grid-layout-space--mob-lg} - 5px)
 
 				+media('<tab-lg')
 					display: inline-block
@@ -199,14 +194,18 @@
 				position: relative
 				left: auto
 				top: auto
-				+size(80px, auto)
+				+size(60px)
 				max-width: 100%
 				transform: none
+
+				+media('<desk-sm')
+					+size(80px)
 
 				+media('<tab-lg')
 					float: none
 					display: inline-block
 					vertical-align: middle
+					+size(60px)
 					margin-right: $grid-layout-space--mob-lg
 
 				+media('<mob-lg')
@@ -255,24 +254,17 @@
 	height: $header-content-height
 
 	+media('<desk-lg')
-		padding: 0 $grid-layout-space--desk-hd
+		padding: 0 $grid-layout-space--desk-md
 
-	+media('<desk-md')
+	//+media('<desk-md')
 		padding: 0 $grid-layout-space--desk-md
 
 	+media('<tab-lg')
 		float: none
 		padding: 0
 		height: auto
-
-	//+media('<tab-sm')
-		text-align: center
-		padding: 0
-
-	//+media('<mob-lg')
-		padding: 0
-		margin-left: -#{$header-top-height-sm}
-		height: auto
+		display: table
+		width: 100%
 
 	.holder
 		overflow: hidden
@@ -283,7 +275,7 @@
 		letter-spacing: -4px
 
 		+media('<tab-lg')
-			display: none
+			border-bottom: 1px solid $border-color
 
 		&::before
 			content: ''
@@ -300,11 +292,30 @@
 			letter-spacing: normal
 			margin-right: 20px
 
+			+media('<desk-md')
+				max-width: calc(100% - 5px)
+				margin-right: 0
+
+			+media('<desk-sm')
+				border-right: 1px solid $border-color
+
+			+media('<tab-lg')
+				display: block
+				border: none
+				max-width: none
+				padding: 10px 20px
+
 		.gerb
 			display: inline-block
 			vertical-align: middle
 			width: 62px
 			backface-visibility: hidden
+
+			+media('<desk-lg')
+				width: 50px
+
+			+media('<desk-md')
+				display: none
 
 /*header content end
 
@@ -314,9 +325,20 @@
 	height: 100%
 	margin-left: #{$grid-space}
 
+	+media('<desk-md')
+		&::before
+			+pseudo('', inline-block, relative)
+			vertical-align: middle
+			height: 100%
+
+			+media('<tab-lg')
+				content: none
+
 	+media('<tab-lg')
 		float: none
+		padding: 0
 		margin-left: 0
+		display: table-footer-group
 
 	+media('<mob-lg')
 		overflow: visible
@@ -327,20 +349,28 @@
 		+font(0, 0)
 		letter-spacing: -4px
 
+		+media('<desk-md')
+			display: inline-block
+			vertical-align: middle
+			height: auto
+			max-width: calc(100% - 6px)
+
+		+media('<tab-lg')
+			display: block
+			max-width: none
+			+margin-horizontal(0)
+			height: 60px
+
+		+media('<mob-lg')
+			height: auto
+
 		&::before
 			+pseudo('', inline-block, relative)
 			vertical-align: middle
 			height: 100%
 
-		+media('<tab-lg')
-			+margin-horizontal(0)
-			height: 60px
-
-			&::before
+			+media('<desk-md')
 				content: none
-
-		+media('<mob-lg')
-			height: auto
 
 		li.hover, li.hover_pref, li.hover_next
 			&::before
@@ -353,10 +383,19 @@
 			height: 100%
 			width: 230px
 
+			+media('<desk-lg')
+				width: 180px
+
+			+media('<desk-md')
+				display: block
+				height: auto
+				width: auto
+
 			+media('<tab-lg')
 				float: left
 				display: block
 				width: 50%
+				height: 100%
 				text-align: center
 
 			+media('<mob-lg')
@@ -377,13 +416,19 @@
 				height: $height
 				width: 0
 				margin-top: -(round($height/2))
-				border-left: 1px solid $border-color
+				border: solid $border-color
+				border-width: 0 0 0 1px
 				transition-property: border-color
 				transition-duration: $animation-speed
 
+				+media('<desk-md')
+					content: none
+
 				+media('<tab-lg')
+					content: ""
 					height: 100%
 					top: 0
+					border-width: 0 0 0 1px
 					margin-top: 0
 
 				+media('<mob-lg')
@@ -404,6 +449,12 @@
 				transition-duration: $animation-speed
 				cursor: pointer !important
 
+				+media('<desk-lg')
+					padding: 0 #{round($grid-space/2)}
+
+				+media('<desk-md')
+					padding: 5px #{round($grid-space/2)}
+
 				.no-touchevents &:hover
 					background-color: white
 
@@ -416,7 +467,7 @@
 				+media('<mob-lg')
 					display: block
 					text-align: left
-					+padding-vertical(#{round($grid-layout-space--mob-lg/2)})
+					padding: 10px 20px
 
 				& > div
 					$width-icon: 78px
@@ -437,9 +488,15 @@
 						width: $width-icon
 						padding-right: #{$grid-space}
 
-						+media('<tab-lg')
+						+media('<desk-lg')
 							width: $width-icon-sm
+							padding-right: #{round($grid-space*0.5)}
+
+						+media('<tab-lg')
 							padding-right: #{$grid-layout-space--mob-lg}
+
+						+media('<mob-lg')
+							width: 70px
 
 					& > em
 						font: normal bold 30px/1.2 $font-alt
@@ -451,6 +508,12 @@
 						font-size: $font-size-small
 						line-height: $line-height-small
 						letter-spacing: normal
+
+						+media('<desk-lg')
+							font-size: 1.2rem
+
+						+media('<tab-lg')
+							font-size: 1.4rem
 
 /*header contacts end
 
@@ -534,11 +597,38 @@
 	+media('<desk-lg')
 		+font(1.4rem, 1.2)
 
+	+media('<tab-lg')
+		display: none
+
 	a
+		position: relative
 		display: inline-block
 		vertical-align: top
 		color: inherit
 		text-decoration: none
+
+		+media('<desk-md')
+			padding-left: 50px
+
+			&::before
+				+pseudo()
+				left: 0
+				top: 50%
+				+size(38px)
+				margin-top: -19px
+				backface-visibility: hidden
+				background: url(../../img/gerb.png) no-repeat
+				background-size: contain
+
+			&::after
+				+pseudo($display: inline-block, $pos: relative)
+				vertical-align: middle
+				min-height: 40px
+
+		& > span
+			display: inline-block
+			vertical-align: middle
+			max-width: calc(100% - 6px)
 
 /*header title end
 
@@ -550,9 +640,26 @@
 
 	+media('<desk-lg')
 		font-size: 1.2rem
+		margin-top: 0
 
-	+media('<desk-md')
-		display: none
+	+media('<tab-lg')
+		font-size: 1.4rem
+		padding-left: 80px
+		position: relative
+		min-height: 50px
+
+		&::before
+			+pseudo()
+			left: 5px
+			top: 50%
+			+size(50px)
+			margin-top: -25px
+			backface-visibility: hidden
+			background: url(../../img/gerb.png) no-repeat
+			background-size: contain
+
+	+media('<mob-lg')
+		padding-left: 70px
 
 	li
 		display: inline-block
@@ -563,6 +670,13 @@
 
 		+media('<desk-hd')
 			margin-top: 4px
+
+		+media('<desk-lg')
+			margin-top: 8px
+
+		+media('<tab-lg')
+			margin-top: 4px
+			margin-bottom: 4px
 
 		a
 			text-decoration: none
@@ -582,11 +696,13 @@
 				border-color: transparent
 
 		svg
-			width: 24px
-			height: 24px
+			+size(24px)
 			display: inline-block
 			vertical-align: middle
 			margin-right: 5px
+
+			+media('<desk-lg')
+				+size(18px)
 
 			path
 				fill: lighten($text-color-light, 20%)

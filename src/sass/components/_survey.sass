@@ -1,0 +1,141 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*survey
+.survey
+	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
+	background-color: $text-color-alt
+	color: white
+
+.survey__header
+	margin-bottom: 20px
+	+font(1.4rem, 1.5)
+	color: rgba(255, 255, 255, 0.51)
+	+clear
+
+	& > span
+		display: block
+		overflow: hidden
+
+.survey__all
+	float: right
+	margin-left: 15px
+	color: inherit
+
+.survey__title
+	text-align: center
+	margin-bottom: 30px
+	font-family: $font-alt
+	+font(1.6rem, 1.2)
+	color: white
+
+.survey__answers
+	&, .#{$user-content} &
+		margin-bottom: 30px
+
+		&:last-child
+			margin-bottom: 0
+
+	li
+		margin: 2rem 0
+
+.survey__answers
+	line-height: 1
+	min-height: 188px
+
+	input[type="checkbox"] + label,
+	input[type="radio"] + label,
+	.check-label,
+	.radio-label
+		+font(14px, 18px)
+		color: white
+
+	input[type="checkbox"],
+	input[type="radio"]
+		& + label,
+		& + span i
+			&::before
+				+size(20px)
+				border-width: 0
+				background-color: white
+
+		& + label span,
+		& + span
+			padding: 1px 0 1px 35px
+
+	input[type="checkbox"]
+
+		& + label span,
+		& + span
+			&::before,
+			&::after
+				+size(0, 4px)
+				top: 10px
+
+			&::after
+				left: 22px
+
+		// checkbox checked
+		&:checked
+
+			& + label span,
+			& + span
+				&::before, &::after
+					background-color: $mark-color
+
+				&::before
+					width: 9px
+					margin: -5px 0 0 0
+
+				&::after
+					width: 12px
+					margin: 0 0 0 -8px
+
+		// checkbox disabled
+		&:disabled
+
+			& + label span,
+			& + span
+				&::before, &::after
+					background: lighten($text-color, 30%)
+
+	// radio
+	input[type="radio"]
+
+		& + label span,
+		& + span i
+
+			&::after
+				+size(12px)
+				top: 4px
+				left: 4px
+				background: $mark-color
+
+		// radio disabled
+		&:disabled
+			& + label,
+			& + span
+				color: white
+
+			& + label span,
+			& + span i
+				&::after
+					background: $text-color
+
+.survey__footer
+	display: table
+	width: 100%
+	height: 40px
+
+	a
+		display: table-cell
+		vertical-align: middle
+		text-align: center
+		color: rgba(255, 255, 255, 0.51)
+
+	[class*="btn-default-"]
+		padding: 8px
+
+
+/*survey end

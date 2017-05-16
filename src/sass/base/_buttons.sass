@@ -82,6 +82,39 @@
 
 /*btn-default-alt end*/
 
+/*btn-default-light
+.btn-default-light
+	position: relative
+	font: 400 1.6rem/24px $font-alt
+	padding: 13px
+	background-color: white
+	box-shadow: none
+	border: none
+	color: $text-color
+	transition-property: opacity
+	transition-duration: $animation-speed
+
+	+media('<mob-lg')
+		padding: 6px 20px
+		font-size: 1.4rem
+
+	.no-touchevents &:hover
+		opacity: 0.5
+
+	&:disabled
+		cursor: default
+		background-color: white
+		border-color: $btn-disabled-color
+		color: $btn-disabled-color
+
+		.no-touchevents &
+			background-color: white
+
+			&:hover
+				color: $btn-disabled-color
+
+/*btn-default-light end
+
 /*btn-arrow*/
 .btn-arrow
 	position: relative

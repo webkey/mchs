@@ -75,6 +75,7 @@
 								])
 							</div>
 						</div>
+						<div class="orphus">Нашли ошибку? Выделите и нажмите <b>ctrl+enter</b></div>
 					</div>
 				</div>
 				<!--footer nav end-->
