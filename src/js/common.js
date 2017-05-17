@@ -639,31 +639,31 @@ function navExpander() {
 (function ($) {
 	var MultiAccordion = function (settings) {
 		var options = $.extend({
-			collapsibleAll: false,
-			resizeCollapsible: false,
-			accordionContainer: null,
-			accordionItem: null,
-			handler: null,
-			collapsibleElement: null,
-			openClass: 'active',
-			animateSpeed: 300
+			collapsibleAll: false, // если установить значение true, сворачиваются идентичные панели НА СТРАНИЦЕ, кроме текущего
+			resizeCollapsible: false, // если установить значение true, при ресайзе будут соворачиваться все элементы
+			container: null, // общий контейнер
+			item: null, // непосредственный родитель открывающегося элемента
+			handler: null, // открывающий элемента
+			handlerWrap: null, // если открывающий элемент не является непосредственным соседом открывающегося элемента, нужно указать элемент, короный является оберткой открывающего элемета и лежит непосредственно перед открывающимся элементом (условно, является табом)
+			panel: null, // открывающийся элемент
+			openClass: 'active', // класс, который добавляется при открытии
+			currentClass: 'current', // класс текущего элемента
+			animateSpeed: 300 // скорость анимации
 		}, settings || {});
 
 		this.options = options;
-		var container = $(options.accordionContainer);
-		this.$accordionContainer = container; //блок с аккордеоном
-		this.$accordionItem = $(options.accordionItem, container); //непосредственный родитель сворачиваемого элемента
-		this.$handler = $(options.handler, container); //элемент, по которому производим клик
-		this.collapsibleElement = options.collapsibleElement; //элемент, который сворачивается/разворачивается
-		this.$collapsibleElement = $(this.collapsibleElement); //элемент, который сворачивается/разворачивается
-		this._collapsibleAll = options.collapsibleAll;
+		var container = $(options.container);
+		this.$container = container;
+		this.$item = $(options.item, container);
+		this.$handler = $(options.handler, container);
+		this.$handlerWrap = $(options.handlerWrap, container);
 		this._animateSpeed = options.animateSpeed;
-		this.$totalCollapsible = $(options.totalCollapsible);//элемент, по клику на который сворачиваются все аккордены в наборе
-		this._resizeCollapsible = options.resizeCollapsible;//флаг, сворачивание всех открытых аккордеонов при ресайзе
+		this.$totalCollapsible = $(options.totalCollapsible);
+		this._resizeCollapsible = options.resizeCollapsible;
 
 		this.modifiers = {
 			active: options.openClass,
-			current: 'current'
+			current: options.currentClass
 		};
 
 		this.bindEvents();
@@ -675,11 +675,10 @@ function navExpander() {
 	MultiAccordion.prototype.totalCollapsible = function () {
 		var self = this;
 		self.$totalCollapsible.on('click', function () {
-			self.$collapsibleElement.slideUp(self._animateSpeed, function () {
-				self.$accordionContainer.trigger('accordionChange');
+			self.$panel.slideUp(self._animateSpeed, function () {
+				self.$container.trigger('accordionChange');
 			});
-			self.$accordionItem.removeClass(self.modifiers.active);
-			self.$accordionItem.removeClass(self.modifiers.current);
+			self.$item.removeClass(self.modifiers.active);
 		})
 	};
 
@@ -687,84 +686,71 @@ function navExpander() {
 		var self = this;
 		$(window).on('resize', function () {
 			if(self._resizeCollapsible){
-				self.$collapsibleElement.slideUp(self._animateSpeed, function () {
-					self.$accordionContainer.trigger('accordionChange');
+				self.$panel.slideUp(self._animateSpeed, function () {
+					self.$container.trigger('accordionChange');
 				});
-				self.$accordionItem.removeClass(self.modifiers.active);
+				self.$item.removeClass(self.modifiers.active);
 			}
 		});
 	};
 
 	MultiAccordion.prototype.bindEvents = function () {
-		var self = this,
-			modifiers = this.modifiers,
-			animateSpeed = this._animateSpeed,
-			$accordionContainer = this.$accordionContainer,
-			$anyAccordionItem = this.$accordionItem,
-			collapsibleElement = this.collapsibleElement,
-			$collapsibleElement = this.$collapsibleElement;
-		$accordionContainer.on('click', self.options.handler, function (e) {
+		var self = this;
+		var $container = this.$container;
+		var $item = this.$item;
+		var panel = this.options.panel;
 
-			var current = $(this);
-			var currentAccordionItem = current.closest($anyAccordionItem);
+		$container.on('click', self.options.handler, function (e) {
+			var $currentHandler = self.options.handlerWrap ? $(this).closest(self.options.handlerWrap) : $(this);
+			// console.log("!!self.options.handlerWrap: ", self.options.handlerWrap);
+			// console.log("$currentHandler: ", $currentHandler);
+			var $currentItem = $currentHandler.closest($item);
 
-			if (!currentAccordionItem.has($collapsibleElement).length){
-				return;
+			if ($currentItem.has($(panel)).length){
+				e.preventDefault();
+
+				if ($currentHandler.next(panel).is(':visible')){
+					self.closePanel($currentItem);
+
+					return;
+				}
+
+				if (self.options.collapsibleAll){
+					self.closePanel($($container).not($currentHandler.closest($container)).find($item));
+				}
+
+				self.closePanel($currentItem.siblings());
+
+				self.openPanel($currentItem, $currentHandler);
 			}
-
-			e.preventDefault();
-
-			if (current.parent().prop('tagName') !== currentAccordionItem.prop('tagName')) {
-				current = current.parent();
-			}
-
-			if (current.next(collapsibleElement).is(':visible')){
-				currentAccordionItem.removeClass(modifiers.active).find($collapsibleElement).filter(':visible').slideUp(animateSpeed, function () {
-					if($(this).attr('class') === current.next(collapsibleElement).attr('class')){
-						// console.log('mAccordionAfterClose');
-						self.$accordionContainer.trigger('mAccordionAfterClose').trigger('mAccordionAfterChange');
-					}
-				});
-				// currentAccordionItem.removeClass(modifiers.current);
-				currentAccordionItem
-					.find($anyAccordionItem)
-					.removeClass(modifiers.active);
-				// .removeClass(modifiers.current);
-				return;
-			}
-
-
-			if (self._collapsibleAll){
-				var siblingContainers = $($accordionContainer).not(current.closest($accordionContainer));
-				siblingContainers.find($collapsibleElement).slideUp(animateSpeed, function () {
-					self.$accordionContainer.trigger('mAccordionAfterClosedAll').trigger('mAccordionAfterChange');
-				});
-				siblingContainers
-					.find($anyAccordionItem)
-					.removeClass(modifiers.active);
-				// .removeClass(modifiers.current);
-			}
-
-			currentAccordionItem
-				.siblings('.' + modifiers.active)
-				.removeClass(modifiers.active)
-				.find($collapsibleElement).filter(':visible').stop()
-				.slideUp(animateSpeed, function () {
-					// console.log('mAccordionAfterClosedSiblings');
-					// self.$accordionContainer.trigger('mAccordionAfterClosedSiblings');
-				});
-			// currentAccordionItem.siblings().removeClass(modifiers.current);
-			currentAccordionItem.siblings()
-				.find($anyAccordionItem)
-				.removeClass(modifiers.active);
-			// .removeClass(modifiers.current);
-
-			currentAccordionItem.addClass(modifiers.active);
-			current.siblings($collapsibleElement).slideDown(animateSpeed, function () {
-				// console.log('mAccordionAfterOpened');
-				self.$accordionContainer.trigger('mAccordionAfterOpened').trigger('mAccordionAfterChange');
-			});
 		})
+	};
+
+	MultiAccordion.prototype.closePanel = function ($currentItem) {
+		var self = this;
+		var panel = self.options.panel;
+		var openClass = self.modifiers.active;
+
+		$currentItem.removeClass(openClass).find(panel).filter(':visible').slideUp(self._animateSpeed, function () {
+			console.log('mAccordionAfterClose');
+			self.$container.trigger('mAccordionAfterClose').trigger('mAccordionAfterChange');
+		});
+
+		$currentItem
+			.find(self.$item)
+			.removeClass(openClass);
+	};
+
+	MultiAccordion.prototype.openPanel = function($currentItem, $currentHandler) {
+		var self = this;
+		var panel = self.options.panel;
+
+		$currentItem.addClass(self.modifiers.active);
+
+		$currentHandler.next(panel).slideDown(self._animateSpeed, function () {
+			console.log('mAccordionAfterOpened');
+			self.$container.trigger('mAccordionAfterOpened').trigger('mAccordionAfterChange');
+		});
 	};
 
 	window.MultiAccordion = MultiAccordion;
@@ -779,10 +765,11 @@ function multiAccordionInit() {
 
 	if($(regionMenu).length){
 		new MultiAccordion({
-			accordionContainer: regionMenu,
-			accordionItem: 'li',
+			container: regionMenu,
+			item: 'li',
 			handler: '.region-menu-handler-js',
-			collapsibleElement: '.region-menu-drop-js',
+			handlerWrap: '.region-menu__tab',
+			panel: '.region-menu-drop-js',
 			openClass: 'is-open',
 			animateSpeed: 200
 		});
@@ -800,323 +787,32 @@ function multiAccordionInit() {
 
 	if($(navMobile).length){
 		new MultiAccordion({
-			accordionContainer: navMobile,
-			accordionItem: 'li',
+			container: navMobile,
+			item: 'li',
 			handler: '.nav-mobile-handler-js',
-			collapsibleElement: '.nav-mobile-drop-js',
+			handlerWrap: '.nav-mobile__tab',
+			panel: '.nav-mobile-drop-js',
 			openClass: 'is-open',
 			animateSpeed: 200
 		});
 	}
-}
-/*multi accordion initial end*/
 
-/**
- * accordion
- * */
-/*<div class="{accordionContainer} js-accordion__container">
- <div class="{accordionItem} js-accordion__item">
- <div class="{accordionHeader} js-accordion__header">
- <a href="#" class="{accordionHand} js-accordion__hand">Heading 1</a>
- </div>
- <div style="display: none;" class="{accordionContent} js-accordion__content">Content 1</div>
- </div>
- <div class="{accordionItem} js-accordion__item">
- <div class="{accordionHeader} js-accordion__header">
- <a href="#" class="{accordionHand} js-accordion__hand">Heading 2</a>
- </div>
- <div style="display: none;" class="{accordionContent} js-accordion__content">Content 2</div>
- </div>
- </div>*/
-(function ($) {
-	var JsAccordion = function (settings) {
-		var options = $.extend({
-			accordionContainer: null,
-			accordionItem: null,
-			accordionHeader: null, // wrap for accordion's switcher
-			accordionHand: null, // accordion's switcher
-			accordionContent: null,
-			indexInit: 0, // if "false", all accordion are closed
-			showFromHash: true, // if "false", all accordion are closed
+	var faq = '.accordion__container-js';
+
+	if($(faq).length){
+		new MultiAccordion({
+			container: faq,
+			item: '.accordion__item-js',
+			handler: '.expander__angle-js',
+			panel: '.expander__panel-js',
+			handlerWrap: '.accordion__tab-js',
+			openClass: 'expander-is-open',
 			animateSpeed: 300,
-			scrollToTop: false, // if true, scroll to current accordion;
-			scrollToTopSpeed: 300,
-			clickOutside: false, // if true, close current accordion's content on click outside accordion;
-			collapseInside: true // collapse attachments
-		}, settings || {});
-
-		this.options = options;
-		var container = $(options.accordionContainer);
-
-		this.$accordionContainer = container;
-		this.$accordionItem = $(options.accordionItem, container);
-		this.$accordionHeader = $(options.accordionHeader, container);
-		this.$accordionHand = $(options.accordionHand, container);
-		this.$accordionContent = options.accordionContent ?
-			$(options.accordionContent, container) :
-			this.$accordionHeader.next();
-
-		this.scrollToTop = options.scrollToTop;
-		this._scrollToTopSpeed = options.scrollToTopSpeed;
-		this.clickOutside = options.clickOutside;
-		this._indexInit = options.indexInit;
-		this._animateSpeed = options.animateSpeed;
-		this._collapseInside = options.collapseInside;
-
-		this.modifiers = {
-			activeItem: 'js-accordion__item_active',
-			activeHeader: 'js-accordion__header_active',
-			activeHand: 'js-accordion__hand_active',
-			activeContent: 'js-accordion__panel_active',
-			noHoverClass: 'js-accordion__no-hover'
-		};
-
-		this.bindEvents();
-		if (options.indexInit !== false) {
-			this.activeAccordion();
-		}
-		this.hashAccordion();
-	};
-
-	JsAccordion.prototype.bindEvents = function () {
-		var self = this,
-			$accordionContent = self.$accordionContent,
-			animateSpeed = self._animateSpeed,
-			modifiers = self.modifiers;
-
-		self.$accordionHand.on('click', 'a', function (e) {
-			e.stopPropagation();
-		});
-
-		self.$accordionHand.on('mouseenter', 'a', function () {
-			$(this).closest(self.$accordionHand).addClass(modifiers.noHoverClass);
-		}).on('mouseleave', 'a', function () {
-			$(this).closest(self.$accordionHand).removeClass(modifiers.noHoverClass);
-		});
-
-		self.$accordionHand.on('click', function (e) {
-			e.preventDefault();
-
-			var $currentHand = $(this),
-				$currentHeader = $currentHand.closest(self.$accordionHeader),
-				$currentItem = $currentHand.closest(self.$accordionItem),
-				$currentItemContent = $currentHeader.next();
-
-			if ($accordionContent.is(':animated')) return;
-
-			if ($currentHeader.hasClass(modifiers.activeHeader)){
-
-				$currentItem.removeClass(modifiers.activeItem);
-				$currentHeader.removeClass(modifiers.activeHeader);
-				$currentHand.removeClass(modifiers.activeHand);
-				$currentItemContent.removeClass(modifiers.activeContent);
-
-				$currentItemContent.slideUp(animateSpeed, function () {
-
-					// console.log('closed');
-
-					if (self._collapseInside) {
-						var $internalContent = $currentItem.find(self.$accordionHeader).next();
-
-						$.each($internalContent, function () {
-							if ($(this).hasClass(self.modifiers.activeContent)) {
-
-								// self.scrollPosition($currentItem);
-
-								$(this).slideUp(self._animateSpeed, function () {
-									// console.log('closed attachment');
-									self.scrollPosition($currentItem);
-								});
-							}
-						});
-
-
-						$currentItem.find(self.$accordionItem).removeClass(self.modifiers.activeItem);
-						$currentItem.find(self.$accordionHeader).removeClass(self.modifiers.activeHeader);
-						$currentItem.find(self.$accordionHand).removeClass(self.modifiers.activeHand);
-						$internalContent.removeClass(self.modifiers.activeContent);
-					}
-				});
-
-				return;
-			}
-
-			var $siblings = $currentItem.siblings();
-
-			$siblings.find(self.$accordionHeader).next().slideUp(self._animateSpeed, function () {
-				// console.log('closed siblings');
-			});
-
-			$siblings.removeClass(modifiers.activeItem);
-			$siblings.find(self.$accordionHeader).removeClass(modifiers.activeHeader);
-			$siblings.find(self.$accordionHand).removeClass(modifiers.activeHand);
-			$siblings.find(self.$accordionHeader).next().removeClass(modifiers.activeContent);
-
-			// self.scrollPosition($currentItem);
-
-			$currentItemContent.slideDown(animateSpeed, function () {
-				// console.log('opened');
-				self.scrollPosition($currentItem);
-			});
-
-			$currentItem.addClass(modifiers.activeItem);
-			$currentHeader.addClass(modifiers.activeHeader);
-			$currentHand.addClass(modifiers.activeHand);
-			$currentItemContent.addClass(modifiers.activeContent);
-
-			e.stopPropagation();
-		});
-
-		$(document).click(function () {
-			if (self.clickOutside) {
-				self.closeAllAccordions();
-			}
-		});
-
-		$accordionContent.on('click', function(e){
-			e.stopPropagation();
-		});
-	};
-
-	// show accordion's content from hash tag
-	JsAccordion.prototype.hashAccordion = function() {
-		var self = this;
-		var modifiers = self.modifiers,
-			hashTag = window.location.hash;
-
-		if ( !hashTag ) return false;
-
-		var activeItemClass = modifiers.activeItem;
-		var activeHeaderClass = modifiers.activeHeader;
-		var activeHandClass = modifiers.activeHand;
-		var activeContentClass = modifiers.activeContent;
-
-		var $accordionHeader = self.$accordionHeader;
-		var $accordionItem = self.$accordionItem;
-
-		var $currentItem = $(hashTag);
-		var $currentItemParents = $currentItem.parents().filter($accordionItem);
-
-		// open parents accordion
-
-		if ($currentItemParents.length) {
-			var $currentHeaderParents = $currentItemParents.children($accordionHeader),
-				$currentHandParents = $currentItemParents.children($accordionItem),
-				$currentItemContentParents = $currentHeaderParents.next();
-
-			$currentItemContentParents.slideDown(0);
-
-			$currentItemParents.addClass(activeItemClass);
-			$currentHeaderParents.addClass(activeHeaderClass);
-			$currentHandParents.addClass(activeHandClass);
-			$currentItemContentParents.addClass(activeContentClass);
-		}
-
-		// open current accordion
-
-		var $currentHeader = $currentItem.children($accordionHeader),
-			$currentHand = $currentHeader.children($accordionItem),
-			$currentItemContent = $currentHeader.next();
-
-		$currentItemContent.slideDown(0, function () {
-			self.scrollPosition($currentItem);
-		});
-
-		$currentItem.addClass(activeItemClass);
-		$currentHeader.addClass(activeHeaderClass);
-		$currentHand.addClass(activeHandClass);
-		$currentItemContent.addClass(activeContentClass);
-	};
-
-	// show current accordion's content
-	JsAccordion.prototype.activeAccordion = function() {
-		var self = this;
-		var indexInit = self._indexInit;
-
-		if ( indexInit === false ) return false;
-
-		$.each(self.$accordionContainer, function () {
-			var $currentItem = $(this).children().eq(indexInit);
-
-			$currentItem.addClass(self.modifiers.activeItem);
-			$currentItem.children(self.$accordionHeader).addClass(self.modifiers.activeHeader);
-			$currentItem.children(self.$accordionHeader).find(self.$accordionHand).addClass(self.modifiers.activeHand);
-
-			// self.scrollPosition($currentItem);
-
-			$currentItem.children(self.$accordionHeader).next().addClass(self.modifiers.activeContent).slideDown(self._animateSpeed, function () {
-				// console.log('opened active');
-
-				// self.scrollPosition($currentItem);
-			});
-		});
-	};
-
-	// close all accordions
-	JsAccordion.prototype.closeAllAccordions = function() {
-		var self = this;
-
-		self.$accordionHeader.next().slideUp(self._animateSpeed, function () {
-			// console.log('closed all');
-		});
-
-		var modifiers = self.modifiers;
-
-		self.$accordionItem.removeClass(modifiers.activeItem);
-		self.$accordionHeader.removeClass(modifiers.activeHeader);
-		self.$accordionHand.removeClass(modifiers.activeHand);
-		self.$accordionHeader.next().removeClass(modifiers.activeContent);
-	};
-
-	// open all accordions
-	JsAccordion.prototype.openAllAccordions = function() {
-		var self = this;
-
-		self.$accordionHeader.next().slideDown(self._animateSpeed, function () {
-			// console.log('open all');
-		});
-
-		var modifiers = self.modifiers;
-
-		self.$accordionItem.addClass(modifiers.activeItem);
-		self.$accordionHeader.addClass(modifiers.activeHeader);
-		self.$accordionHand.addClass(modifiers.activeHand);
-		self.$accordionHeader.next().addClass(modifiers.activeContent);
-	};
-
-	JsAccordion.prototype.scrollPosition = function (element) {
-		var self = this;
-		if (self.scrollToTop && !$('html, body').is('animated')) {
-			$('html, body').animate({ scrollTop: element.offset().top - $('.main-nav-frame').outerHeight() }, self._scrollToTopSpeed);
-		}
-	};
-
-	window.JsAccordion = JsAccordion;
-}(jQuery));
-/*accordion end*/
-
-/**
- * default accordion
- * */
-function jsAccordion() {
-	// accordion default
-	var $accordion = $('.js-accordion__container');
-
-	if($accordion.length){
-		new JsAccordion({
-			accordionContainer: '.js-accordion__container',
-			accordionItem: '.js-accordion__item',
-			accordionHeader: '.js-accordion__header',
-			accordionHand: '.js-accordion__hand',
-			scrollToTop: false,
-			scrollToTopSpeed: 300,
-			indexInit: false,
-			clickOutside: false,
-			animateSpeed: 300
+			collapsibleAll: true
 		});
 	}
 }
-/*default accordion end*/
+/*multi accordion initial end*/
 
 /**
  * !toggle drop language
@@ -2502,6 +2198,28 @@ function popupsInit(){
 		});
 
 	}
+
+	/*filters popup*/
+	var popupFiltersNews = '.filters-news-popup-js';
+
+	if($(popupFiltersNews).length){
+
+		new ExtraPopup({
+			navContainer: popupFiltersNews,
+			// navMenu: '.site-map__list',
+			btnMenu: '.btn-filters-news-open-js',
+			btnMenuClose: '.btn-popup-close-js',
+			// navMenuItem: '.site-map__box',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			// mediaWidth: 1200,
+			animationType: 'ltr',
+			animationSpeed: 300,
+			overlayAlpha: 0.35,
+			cssScrollBlocked: true
+		});
+
+	}
 }
 /*extra popup initial end*/
 
@@ -2598,53 +2316,6 @@ function stickyLayout(){
 	}
 
 	var offsetTopBase = $('.header__top').outerHeight();
-
-	/*sidebar sticky*/
-	// var $sidebar = $(".sidebar-holder");
-	//
-	// if ($sidebar.length) {
-	// 	$sidebar.css('position','static');
-	//
-	// 	var resizeTimerMenu;
-	//
-	// 	$(window).on('load resizeByWidth', function () {
-	// 		if(window.innerWidth < 980){
-	// 			// $sidebar.trigger("sticky_kit:detach").attr('style','');
-	// 			$sidebar.trigger("sticky_kit:detach").css('position','relative');
-	// 			return;
-	// 		}
-	//
-	// 		clearTimeout(resizeTimerMenu);
-	// 		resizeTimerMenu = setTimeout(function () {
-	// 			$sidebar.stick_in_parent({
-	// 				parent: '.main-holder',
-	// 				offset_top: 100
-	// 			});
-	// 		}, 100);
-	// 	})
-	// }
-
-	/*sidebar region sticky*/
-	// var $sidebarRegion = $(".sidebar-region").find('.sidebar__holder');
-	//
-	// if ($sidebarRegion.length) {
-	//
-	// 	var timeoutSidebarRegionSticky;
-	//
-	// 	$(window).on('load resizeByWidth', function () {
-	//
-	// 		clearTimeout(timeoutSidebarRegionSticky);
-	// 		timeoutSidebarRegionSticky = setTimeout(function () {
-	// 			$sidebarRegion.stick_in_parent({
-	// 				parent: '.main-holder',
-	// 				offset_top: offsetTopBase
-	// 			});
-	// 		}, 100);
-	//
-	// 	});
-	//
-	// 	$(window).trigger('resize');
-	// }
 
 	/*sidebar top sticky*/
 	var $sidebarTop = $(".sidebar-top");
@@ -2827,7 +2498,19 @@ function customScrollInit() {
 	if (DESKTOP) {
 		var $regionMenuContainer = $('.region-menu-panel');
 		if ($regionMenuContainer.length) {
-			$regionMenuContainer.mCustomScrollbar(customScrollOptions);
+			$regionMenuContainer.mCustomScrollbar({
+				theme:"minimal-dark",
+				scrollInertia: 100,
+				autoDraggerLength: true,
+				callbacks:{
+					onInit:function(e){
+						var $this = $(this);
+						$regionMenuContainer.mCustomScrollbar("scrollTo",$('.current', $this), {
+							scrollInertia: 0
+						});
+					}
+				}
+			});
 		}
 
 		var $navMobileContainer = $('.popup-nav-small__holder');
@@ -3223,7 +2906,6 @@ $(document).ready(function(){
 	addAlignClass();
 	scrollToSection();
 	multiAccordionInit();
-	jsAccordion();
 	// toggleLanguages();
 	toggleDrop();
 	tabSwitcher();
