@@ -25,13 +25,27 @@
 								<div class="content user-content">
 									<div class="sheet">
 										<div class="article-layout">
-											<h1>Сертификация и лицензирование</h1>
+											<h1>Вопрос - ответ</h1>
+											<h2>Сертификация и лицензирование</h2>
 											<footer class="article-meta text-layout">
-												Навигация
+												{{Какие-то дополниетльные элементы}}
 											</footer>
 											<!--faq-->
 											@@include('_faq.tpl')
 											<!--faq end-->
+											<div class="user-section toggle-block-js">
+												<div class="user-section toggle-block-content-js" style="display: none;">
+													<!--faq-->
+													@@include('_user-form.tpl', {
+													"title": "",
+													"warning": "Внимание! Вопросы либо информация, оставленные в данных рубриках, не являются электронными обращениями и не подлежат рассмотрению в порядке, установленном Законом Республики Беларусь «Об обращениях граждан и юридических лиц»."
+													})
+													<!--faq end-->
+												</div>
+												<div class="user-section align-center">
+													<a href="#" class="btn-default toggle-block-btn-js" data-text-close="Закрыть форму">Задать вопрос</a>
+												</div>
+											</div>
 										</div>
 									</div>
 									<section class="section banners-panel">

@@ -1,6 +1,11 @@
 <div class="user-form">
 	<div class="text-layout">
-		<div class="form-title">Форма обратной связи</div>
+		@@if(context.title) {
+			<div class="form-title">@@title</div>
+		}
+		@@if(context.warning) {
+			<div class="text-warning">@@warning</div>
+		}
 		<form action="#" method="get">
 			<div class="input-wrap">
 				<div class="label-holder">

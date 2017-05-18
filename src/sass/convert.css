@@ -10,7 +10,7 @@
 .expander__content + .expander
 	border-top: 1px solid #d9d9d9
 
-.expander > .expander__item
+.expander > .expander-item
 	counter-increment: section
 	border: solid #d9d9d9
 	border-width: 1px 0 0
@@ -19,10 +19,10 @@
 	-webkit-transition-duration: 0.2s
 	transition-duration: 0.2s
 
-.expander > .expander__item:last-child
+.expander > .expander-item:last-child
 	border-bottom-width: 1px
 
-.expander__header
+.expander-header
 	position: relative
 	line-height: 1
 	box-sizing: border-box
@@ -78,7 +78,7 @@
 .desktop .expander__hand:hover .expander__title
 	color: #008acf
 
-.expander.expander_ordered > .expander__item .expander__title:before
+.expander.expander_ordered > .expander-item .expander__title:before
 	position: relative
 	display: inline-block
 	content: counter(section) "."
@@ -201,7 +201,7 @@
 .desktop .expander__hand:hover .expander__angle:after
 	background: #fff
 
-.expander__panel
+.expander-panel
 	position: relative
 	overflow: hidden
 	border-top: 1px solid #d9d9d9
@@ -209,11 +209,11 @@
 	display: none
 	color: #262626
 
-.no-js .expander__panel
+.no-js .expander-panel
 	display: block
 
-.expander__panel:before,
-.expander__panel:after
+.expander-panel:before,
+.expander-panel:after
 	content: ''
 	position: absolute
 	left: -10%
@@ -222,13 +222,13 @@
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
 	z-index: 99
 
-.expander__panel:before
+.expander-panel:before
 	top: -20px
 
-.expander__panel:after
+.expander-panel:after
 	bottom: -20px
 
-.expander__panel h4
+.expander-panel h4
 	font-family: 'lato-black', sans-serif
 	font-size: 16px
 	line-height: 30px
@@ -259,92 +259,92 @@
 .accordion-frame__footer
 	text-align: center
 
-.expander__panel .expander
+.expander-panel .expander
 	float: left
 	margin: -40px
 	position: relative
 	box-sizing: border-box
 	width: calc(100% + 80px)
 
-.expander__panel .expander__item
+.expander-panel .expander-item
 	border: none
 
-.expander__panel .expander__hand
+.expander-panel .expander__hand
 	border-bottom: 1px dashed #d9d9d9
 
-.expander__panel .expander__hand.js-accordion__hand_active
+.expander-panel .expander__hand.js-accordion__hand_active
 	border-color: transparent
 
-.expander__panel .expander__item:last-child .expander__hand
+.expander-panel .expander-item:last-child .expander__hand
 	border: none
 
-.expander__panel .expander__title
+.expander-panel .expander__title
 	font-family: 'lato-semibold', sans-serif
 	font-size: 18px
 	line-height: 22px
 
-.expander.expander_ordered .expander__panel .expander__title:before
+.expander.expander_ordered .expander-panel .expander__title:before
 	content: none
 
-.expander__panel .expander__angle
+.expander-panel .expander__angle
 	border-color: transparent
 
-.expander__panel .expander__angle:before,
-.expander__panel .expander__angle:after
+.expander-panel .expander__angle:before,
+.expander-panel .expander__angle:after
 	background: #b3b3b3
 	width: 14px
 	height: 2px
 	border-radius: 0
 
-.expander__panel .expander__angle:before
+.expander-panel .expander__angle:before
 	-webkit-transform: rotate(0)
 	-ms-transform: rotate(0)
 	transform: rotate(0)
 	margin: -1px 0 0 -7px
 
-.expander__panel .expander__angle:after
+.expander-panel .expander__angle:after
 	-webkit-transform: rotate(90deg)
 	-ms-transform: rotate(90deg)
 	transform: rotate(90deg)
 	margin: -1px 0 0 -7px
 
-.desktop .expander__panel .expander__hand:hover .expander__angle
+.desktop .expander-panel .expander__hand:hover .expander__angle
 	background: none
 
-.desktop .expander__panel .expander__hand:hover .expander__angle:before,
-.desktop .expander__panel .expander__hand:hover .expander__angle:after
+.desktop .expander-panel .expander__hand:hover .expander__angle:before,
+.desktop .expander-panel .expander__hand:hover .expander__angle:after
 	background: #008acf
 
-.expander__panel .js-accordion__header_active .expander__angle:after
+.expander-panel .js-accordion__header_active .expander__angle:after
 	-webkit-transform: rotate(0)
 	-ms-transform: rotate(0)
 	transform: rotate(0)
 
-.expander__panel .expander__panel
+.expander-panel .expander-panel
 	overflow: visible
 	border: none
 	padding-left: 40px
 	padding-right: 40px
 
-.expander__panel .expander__panel:before,
-.expander__panel .expander__panel:before
+.expander-panel .expander-panel:before,
+.expander-panel .expander-panel:before
 	content: none
 
-.expander__panel .expander__item:last-child .expander__panel
+.expander-panel .expander-item:last-child .expander-panel
 	padding-bottom: 40px
 
-.expander__panel .expander .expander__frame
+.expander-panel .expander .expander__frame
 	overflow: visible
 	padding: 30px
 	border: 2px solid #008acf
 	box-sizing: border-box
 
-.expander__panel .expander__panel:before,
-.expander__panel .expander__panel:after
+.expander-panel .expander-panel:before,
+.expander-panel .expander-panel:after
 	content: none
 
-.expander__panel .expander .expander__frame:after,
-.expander__panel .expander .expander__frame:before
+.expander-panel .expander .expander__frame:after,
+.expander-panel .expander .expander__frame:before
 	bottom: 100%
 	left: 40px
 	border: solid transparent
@@ -358,24 +358,24 @@
 	-webkit-transition-duration: 0.1s
 	transition-duration: 0.1s
 
-.expander__panel .expander .expander__frame:after
+.expander-panel .expander .expander__frame:after
 	border-color: rgba(255, 255, 255, 0)
 	border-bottom-color: #fff
 	border-width: 11px 8px 0
 	margin-left: -8px
 
-.expander__panel .expander .expander__frame:before
+.expander-panel .expander .expander__frame:before
 	border-color: rgba(0, 138, 207, 0)
 	border-bottom-color: #008acf
 	border-width: 15px 11px 2px
 	margin-left: -11px
 
-.expander__panel .expander .js-accordion__panel_active .expander__frame:after
+.expander-panel .expander .js-accordion__panel_active .expander__frame:after
 	border-width: 11px 8px 11px
 	-webkit-transition-delay: 0.08s
 	transition-delay: 0.08s
 
-.expander__panel .expander .js-accordion__panel_active .expander__frame:before
+.expander-panel .expander .js-accordion__panel_active .expander__frame:before
 	border-width: 15px 11px 15px
 	-webkit-transition-delay: 0.08s
 	transition-delay: 0.08s

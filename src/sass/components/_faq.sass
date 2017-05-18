@@ -4,119 +4,121 @@
 
 /*expander
 .expander
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space-lg
 
 	&:last-child
 		margin-bottom: 0
 
-.expander
-	& > .expander__item
-		border: solid #d9d9d9
-		border-width: 1px 0 0
+.expander-item
+	border: 1px solid $border-color
+	margin-bottom: $bottom-space
+	padding: 0 $grid-inside-horizontal-space
 
-		&:last-child
-			border-bottom-width: 1px
+	&:last-child
+		margin-bottom: 0
 
-.expander__header
-	min-height: inherit
+	p, ul, ol
+		max-width: none
+
+	.#{$user-content} & ul > li::before
+		top: calc(1em * #{1.25} / 2)
+
+.expander-header
 	position: relative
-	cursor: pointer
-	padding: #{$grid-layout-space--desk-md}
+	padding: $grid-inside-vertical-space 0
 	transition-property: border-color
-	transition-duration: 0.2s
+	transition-duration: $animation-speed
+	+clear
 
-	&:after
-		+pseudo($pos: relative)
-		vertical-align: middle
-		min-height: inherit
+.expander-header__meta
+	float: left
+	width: $faq-meta-width
+	+font(1.2rem, 1.7)
+	color: $text-color-light
 
-.expander__title
-	display: inline-block
-	vertical-align: middle
-	width: calc(100% - 10px)
+	time
+		+font-normal
+		display: block
+
+.expander-header__text
+	padding-right: #{$grid-inside-horizontal-space + $faq-angle-size}
 	font-family: $font-alt
+	+font(1.6rem, 1.25)
+	font-weight: normal
 	color: $text-color
 	transition-property: color
-	transition-duration: 0.2s
+	transition-duration: $animation-speed
 
-	.no-touchevents .expander__hand:hover &
-		color: $text-color-alt
+	.no-js &
+		padding-right: 0
 
-.expander__angle
+.expander-angle
+	$btn-size: $header-top-height
+	$btn-lines-width: 17px
+	$btn-lines-height: 3px
+	$btn-lines-color: $text-color
+
+	=line-style()
+		+size($btn-lines-width, $btn-lines-height)
+		background-color: $btn-lines-color
+
 	position: absolute
 	right: 0
 	top: 50%
-	width: 38px
-	height: 38px
-	border-radius: 50%
-	border: 2px solid $text-color-alt
+	+size($faq-angle-size)
+	cursor: pointer
 	transform: translate(0, -50%)
 
-	.expander-is-open &
-		transform: translate(0, -50%) rotate(-180deg)
+	.no-js &
+		display: none
 
-	&:before, &:after
-		+pseudo()
+	> span
+		+hide-text
+
+	> i
+		position: absolute
 		left: 50%
 		top: 50%
-		+size(10px, 2px)
-		background: $text-color-alt
-		border-radius: 2px
+		margin: -#{round($btn-lines-width/2)} 0 0 -#{round($btn-lines-width/2)}
+		+size($btn-lines-width)
 		backface-visibility: hidden
+		transition-property: transform
+		transition-duration: $animation-speed
 
-	&:before
-		transform: rotate(45deg)
-		margin: 0 0 0 -8px
+		.expander-is-open &
+			transform: rotate(0.625turn)
 
-	&:after
-		transform: rotate(-45deg)
-		margin: 0 0 0 -2px
+		&::before, &::after
+			+pseudo()
+			left: 0
+			top: 50%
+			margin-top: -#{round($btn-lines-height/2)}
+			+line-style
 
-	&, &:before, &:after
-		transition-property: transform, background
-		transition-duration: 0.18s
-	
-	.no-touchevents .expander__hand:hover &
-		background: $text-color-alt
-	
-		&:before, &:after
-			background: #fff
+		&::after
+			transform: rotate(90deg)
 
-.expander__panel
+	.no-touchevents &:hover i
+		&::before, &::after
+			background-color: $text-color-alt
+
+.expander-panel
 	position: relative
 	overflow: hidden
-	border-top: 1px solid #d9d9d9
+	border-top: 1px solid $border-color
 	display: none
-	color: white
-	background-color: $text-color-alt
+	+font(1.4rem, 1.7)
 
 	.no-js &
 		display: block
 
-	&:before, &:after
-		content: ''
-		position: absolute
-		left: -10%
-		width: 120%
-		height: 20px
-		box-shadow: 0 0 20px rgba(0, 0, 0, 0.15)
-		z-index: 99
+.expander-panel__holder
+	padding: $grid-inside-vertical-space 0
 
-	&:before
-		top: -20px
+.expander-header__text, .expander-panel__holder
+	margin-left: #{$faq-meta-width + $grid-inside-horizontal-space}
 
-	&:after
-		bottom: -20px
-
-.expander__frame
-	overflow: hidden
-	position: relative
-	padding: #{$grid-layout-space--desk-md}
-
-	& > p:last-child,
-	& > ul:last-child,
-	& > ol:last-child
-		padding-bottom: 0
+	& > p:last-child, & > ul:last-child, & > ol:last-child
 		margin-bottom: 0
 
 /*expander end

@@ -797,15 +797,15 @@ function multiAccordionInit() {
 		});
 	}
 
-	var faq = '.accordion__container-js';
+	var faq = '.expander-js';
 
 	if($(faq).length){
 		new MultiAccordion({
 			container: faq,
-			item: '.accordion__item-js',
-			handler: '.expander__angle-js',
-			panel: '.expander__panel-js',
-			handlerWrap: '.accordion__tab-js',
+			item: '.expander-item-js',
+			handler: '.expander-angle-js',
+			panel: '.expander-panel-js',
+			handlerWrap: '.expander-header-js',
 			openClass: 'expander-is-open',
 			animateSpeed: 300,
 			collapsibleAll: true
@@ -2642,7 +2642,7 @@ function frontBackSwitcher(){
  * */
 
 /**
- * text slide
+ * !text slide
  * */
 function textSlide() {
 	// external js:
@@ -2746,6 +2746,9 @@ function textSlide() {
 }
 /*text slide end*/
 
+/**
+ * !toggle state form buttons
+ * */
 function toggleFormButtons() {
 	var $toggleButtonForm = $('.toggle-button-js');
 
@@ -2825,6 +2828,135 @@ function toggleFormButtons() {
 	})
 
 }
+/*toggle state form buttons end*/
+
+/**
+ * !toggle block jQuery plugin
+ * */
+(function ($) {
+	// external js:
+
+	var ToggleBlock = function (settings) {
+		var options = $.extend({
+			container: null, // общий котейнер
+			content: null, // скрывающийся элемент
+			opener: null, // открывающий элемент
+			openClass: 'block-is-open', // класс, навешиваемый при открытии
+			animationSpeed: 300, // скорость анимации
+			openerHide: false // скрывать ли кнопку после открытия
+		}, settings || {});
+
+		var $container = $(options.container);
+
+		this.options = options;
+		this.$container = $container;
+		this.$content = $(options.content, $container);
+		this.$opener = $(options.opener, $container);
+		this._animateSpeed = options.animationSpeed;
+		this.openerHide = options.openerHide;
+
+		this.modifiers = {
+			open: options.openClass,
+			openBtn: options.openClass + '--btn',
+			openContent: options.openClass + '--content'
+		};
+
+		this.toggleBlock();
+	};
+
+	ToggleBlock.prototype.openerText = false;
+
+	// toggle block
+	ToggleBlock.prototype.toggleBlock = function() {
+		var self = this;
+		var $container = self.$container;
+
+		self.$container.on('click', self.options.opener, function (e) {
+			e.preventDefault();
+
+			if($container.hasClass(self.modifiers.open)) {
+				self.closeBlock();
+
+				return;
+			}
+
+			self.openBlock();
+
+		})
+	};
+
+	// open block
+	ToggleBlock.prototype.openBlock = function() {
+		var self = this;
+		var $opener = self.$opener;
+		var $content = self.$content;
+		var _animateSpeed = self.animateSpeed;
+
+		self.$container.addClass(self.modifiers.open);
+		$opener.addClass(self.modifiers.openBtn);
+		$content.addClass(self.modifiers.openContent);
+
+		$content.slideDown(_animateSpeed);
+
+		if(self.openerHide) {
+			$opener.fadeOut(_animateSpeed, function () {
+				setTimeout(function () {
+					$opener.remove();
+				}, 500)
+			})
+		}
+
+		var textClose = $opener.attr('data-text-close');
+
+		if(!!textClose && textClose.length > 0) {
+			if(!self.openerText){
+				self.openerText = $opener.text();
+			}
+			$opener.text(textClose);
+		}
+	};
+
+	// close block
+	ToggleBlock.prototype.closeBlock = function() {
+		var self = this;
+		var $opener = self.$opener;
+		var $content = self.$content;
+
+		self.$container.removeClass(self.modifiers.open);
+		$opener.removeClass(self.modifiers.openBtn);
+		$content
+			.removeClass(self.modifiers.openContent)
+			.slideUp(self.animateSpeed);
+
+		var textClose = $opener.attr('data-text-close');
+		if(!!textClose && textClose.length > 0) {
+			$opener.text(self.openerText);
+		}
+	};
+
+	window.ToggleBlock = ToggleBlock;
+
+}(jQuery));
+
+/**
+ * !toggle block
+ * */
+function toggleBlockInit() {
+	/*faq form*/
+	var faqForm = '.toggle-block-js';
+
+	if($(faqForm).length){
+
+		new ToggleBlock({
+			container: faqForm,
+			content: '.toggle-block-content-js',
+			opener: '.toggle-block-btn-js',
+			openerHide: false
+		});
+
+	}
+}
+/*toggle block*/
 
 /**
  * !footer at bottom
@@ -2951,6 +3083,7 @@ $(document).ready(function(){
 	frontBackSwitcher();
 	textSlide();
 	toggleFormButtons();
+	toggleBlockInit();
 	footerBottom();
 	formSuccessExample();
 });

@@ -6,17 +6,14 @@
 .btn-popup-close
 	//<a href="#" class="btn-popup-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
 	$btn-bg: #f3f3f3
-	$btn-color: $text-color
 	$btn-size: $header-top-height
-	$btn-space: 12px
 	$btn-lines-width: 20px
 	$btn-lines-height: 3px
-	$btn-lines-space: 5px
 	$btn-lines-color: $text-color
 
 	=line-style()
 		+size($btn-lines-width, $btn-lines-height)
-		border-radius: 2px
+		background-color: $btn-lines-color
 
 	display: block
 	+size($btn-size)
@@ -57,16 +54,13 @@
 			left: 0
 			backface-visibility: hidden
 			+line-style
-			background: $btn-lines-color
 			transition-property: background-color
 			transition-duration: $animation-speed
 
-		//first line menu
 		&::before
 			top: 0
 			transform: rotate(-45deg)
 
-		//third line menu
 		&::after
 			top: 0
 			transform: rotate(45deg)
