@@ -1,0 +1,66 @@
+@@include('_head.tpl', {
+	"title": "Вопрос-ответ",
+	"pageClass": ""
+})
+<div class="wrapper">
+	<!--HEADER-->
+	@@include('_header.tpl', {
+		"mainNavItemActive": "Часто задаваемые вопросы и отзывы"
+	})
+	<!--HEADER end-->
+
+	<!--MAIN-->
+	<div class="main">
+		<div class="layout">
+			<div class="main-holder">
+				<!--CONTENT-->
+				<div class="main-frame">
+					<div class="main-inside">
+						<!--SIDE-->
+						@@include('_side.tpl')
+						<!--SIDE end-->
+						<div class="content-layout">
+							@@include('_breadcrumbs_full.tpl')
+							<div class="content-wrap">
+								<div class="content user-content">
+									<div class="sheet">
+										<div class="article-layout">
+											<h1>Сертификация и лицензирование</h1>
+											<footer class="article-meta text-layout">
+												Навигация
+											</footer>
+											<!--faq-->
+											@@include('_faq.tpl')
+											<!--faq end-->
+										</div>
+									</div>
+									<section class="section banners-panel">
+										<div class="section__holder">
+											<div class="banners">
+												<div class="banners__list">
+													@@loop('_banners-item.tpl', 'includes-json/banners-items.json')
+												</div>
+											</div>
+										</div>
+									</section>
+								</div>
+							</div>
+							<!--ASIDE-->
+							@@include('_aside.tpl')
+							<!--ASIDE end-->
+						</div>
+					</div>
+				</div>
+				<!--CONTENT end-->
+
+				<!--SIDEBAR-->
+				@@include('_sidebar.tpl', {
+					"menu": ""
+				})
+				<!--SIDEBAR-->
+			</div>
+		</div>
+	</div>
+	<!--MAIN end-->
+</div>
+@@include('_foot.tpl', {"mainNavItemActive": "Часто задаваемые вопросы и отзывы", "subSiteMenu": ""})

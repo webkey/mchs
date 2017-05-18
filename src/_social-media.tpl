@@ -22,9 +22,11 @@
 		</div>
 	</div>
 	<div class="soc-media__col">
-		<div class="soc-media__img" style="background-image: url(img/img-news-10.jpg);"></div>
-		<div class="soc-media__text">Принята единая позиция по проекту Технического регламента Евразийского экономического союза.</div>
-		<div class="soc-media__link"><a href="#">Фото дня в «Instagram»</a></div>
+		<a href="#">
+			<div class="soc-media__img" style="background-image: url(img/img-news-10.jpg);"></div>
+			<div class="soc-media__text">Принята единая позиция по проекту Технического регламента Евразийского экономического союза.</div>
+			<div class="soc-media__link">Фото дня в «Instagram»</div>
+		</a>
 	</div>
 </div>
 <!-- social media end -->

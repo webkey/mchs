@@ -134,10 +134,15 @@
 	overflow: hidden
 	max-height: round-float(1.6rem*1.25*3, 1) // костыль, чтобы высоты блоков были четко по дизу
 	margin-bottom: 0.9em
+	transition-property: color
+	transition-duration: $animation-speed
 
 	// заголовок может быть тольков в первой новости
 	.news-group__item:nth-child(n+2) &
 		display: none
+
+	.no-touchevents .news-group__inner:hover &
+		color: $text-color-alt
 
 .news-group__text
 	overflow: hidden

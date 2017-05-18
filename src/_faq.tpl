@@ -1,4 +1,3 @@
-<h1>Сертификация и лицензирование</h1>
 <div class="expander full-width accordion__container-js">
 	<div class="expander__item accordion__item-js">
 		<div class="expander__header accordion__tab-js">

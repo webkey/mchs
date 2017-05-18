@@ -1667,6 +1667,7 @@ function masonryInit() {
 		self.eventsBtnMenuClose();
 		self.clearStyles();
 		self.closeNavOnEsc();
+		self.closeNavOnTrigger();
 	};
 
 	ExtraPopup.prototype.navIsOpened = false;
@@ -1772,6 +1773,18 @@ function masonryInit() {
 				self.closeNav();
 			}
 		});
+	};
+
+	// method close popup
+	ExtraPopup.prototype.closeNavOnTrigger = function () {
+		var self = this;
+		var $mainContainer = self.$mainContainer;
+
+		$mainContainer.on('closeExtraPopup', function () {
+			if (self.navIsOpened) {
+				self.closeNav();
+			}
+		})
 	};
 
 	// open nav
@@ -2751,16 +2764,14 @@ function toggleFormButtons() {
 		return hasCheckedInput;
 	}
 
-	function enabledButtons($thisForm, $btnSubmit, $btnReset) {
+	function enabledButton($thisForm, $button) {
 		$thisForm.addClass('form-has-checked');
-		$btnSubmit.prop('disabled', false);
-		$btnReset.prop('disabled', false);
+		$button.prop('disabled', false);
 	}
 
-	function disabledButtons($thisForm, $btnSubmit, $btnReset) {
+	function disabledButton($thisForm, $button) {
 		$thisForm.removeClass('form-has-checked');
-		$btnSubmit.prop('disabled', true);
-		$btnReset.prop('disabled', true);
+		$button.prop('disabled', true);
 	}
 
 	if ($toggleButtonForm.length) {
@@ -2769,10 +2780,11 @@ function toggleFormButtons() {
 			var $btnSubmit = $('input[type=submit]', $thisForm);
 			var $btnReset = $('input[type=reset]', $thisForm);
 
-			disabledButtons($thisForm, $btnSubmit, $btnReset);
+			disabledButton($thisForm, $btnReset);
+			disabledButton($thisForm, $btnSubmit);
 
 			if (checkProp($thisForm)) {
-				enabledButtons($thisForm, $btnSubmit, $btnReset);
+				enabledButton($thisForm, $btnReset);
 			}
 		});
 	}
@@ -2782,11 +2794,28 @@ function toggleFormButtons() {
 		var $btnSubmit = $('input[type=submit]', $thisForm);
 		var $btnReset = $('input[type=reset]', $thisForm);
 
-		disabledButtons($thisForm, $btnSubmit, $btnReset);
+		disabledButton($thisForm, $btnReset);
+		enabledButton($thisForm, $btnSubmit);
 
 		if (checkProp($thisForm)) {
-			enabledButtons($thisForm, $btnSubmit, $btnReset);
+			enabledButton($thisForm, $btnReset);
 		}
+	});
+
+	var closePopupTimeout;
+
+	$toggleButtonForm.on('submit', function () {
+		var $thisForm = $(this);
+		var $btnSubmit = $('input[type=submit]', $thisForm);
+
+		disabledButton($thisForm, $btnSubmit);
+
+		// close popups after submit
+		clearTimeout(closePopupTimeout);
+		closePopupTimeout = setTimeout(function () {
+			$('.filters-popup-js').trigger('closeExtraPopup');
+			$('.filters-news-popup-js').trigger('closeExtraPopup');
+		}, 350);
 	});
 
 	$(':reset', $toggleButtonForm).on('click', function (e) {

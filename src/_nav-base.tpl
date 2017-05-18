@@ -318,7 +318,7 @@
 
 			<!--@@classKey item start-->
 			<li class="has-drop@@if(mainNavItemActive === "Часто задаваемые вопросы и отзывы"){ current}">
-				@@include('_nav-LINK.tpl', { "itemText": "Часто задаваемые вопросы и отзывы", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
+				@@include('_nav-LINK.tpl', { "itemText": "Часто задаваемые вопросы и отзывы", "itemLink": "faq.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
 

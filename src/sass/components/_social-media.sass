@@ -1,3 +1,7 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*social media
 .soc-media
 	position: relative
@@ -29,6 +33,11 @@
 
 		+media('<mob-lg')
 			margin-left: 0
+
+	a
+		display: block
+		text-decoration: none
+		color: $text-color
 
 .soc-media__visual
 	margin-bottom: $bottom-space
@@ -180,12 +189,10 @@
 	+font(1.6rem, 1.25)
 	font-weight: 700
 	+truncate(100%)
+	transition-property: color
+	transition-duration: $animation-speed
 
-	a
-		color: $text-color
-		text-decoration: none
-
-		.no-touchevents &:hover
-			text-decoration: none
+	.no-touchevents .soc-media__col a:hover &
+		color: $text-color-alt
 
 /*social media end
