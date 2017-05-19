@@ -137,9 +137,6 @@
 					</form>
 				</div>
 				<!--search form end-->
-				<!--search result-->
-				@@include('_search-page-bitrix.tpl')
-				<!--search result end-->
 			</div>
 			<a href="#" class="btn-popup-close btn-popup-close-js"><i></i><span>Закрыть</span></a>
 		</div>

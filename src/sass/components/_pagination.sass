@@ -1,0 +1,102 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*pagination
+.paging
+	font-weight: normal
+	+font(1.4rem, 1.7)
+	color: $text-color
+	fill: $text-color
+	text-align: center
+	cursor: default
+	+margin-horizontal(-#{$pagination-space})
+
+.paging-start, .paging-prev, .paging-next, .paging-end
+	+display-inline-block-middle
+	+margin-horizontal($pagination-space)
+
+	a
+		+display-inline-block-top
+		color: inherit
+		text-decoration: none
+		transition-property: color
+		transition-duration: $animation-speed
+
+		span
+			+display-inline-block-middle
+
+	svg
+		display: inline-block
+		vertical-align: middle
+		+size(12px)
+		fill: inherit
+
+	path
+		fill: inherit
+		transition-property: fill
+		transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		color: $text-color-alt
+		fill: $text-color-alt
+
+svg
+	.paging-start &, .paging-prev &
+		margin-right: 6px
+
+	.paging-next &, .paging-end &
+		margin-left: 6px
+
+.paging-list
+	+display-inline-block-middle
+
+	&, .#{$user-content} &
+		margin: -4px $pagination-space
+
+		li
+			margin: 4px 0
+			padding: 0
+
+			&:before
+				content: none
+
+	li
+		+display-inline-block-top
+		text-align: center
+
+	a, li > span
+		+display-inline-block-top
+		color: inherit
+		min-width: calc(1em * 1.7 + 6px)
+		padding: 3px
+		background: transparent
+		transition-property: background-color, color
+		transition-duration: $animation-speed
+
+	a
+		text-decoration: none
+		cursor: pointer
+
+	.no-touchevents &:hover
+		color: $text-color-alt
+
+	.paging-current > span
+		cursor: default
+		color: white
+		background-color: $text-color-alt
+
+.paging-list li[class*="switch-"]
+	width: 30px
+
+.paging-list li[class*="switch-"] a
+	border-color: #fff
+	background: #fff
+
+.paging-list li[class*="switch-"] a [class*="arrow-"]
+	margin-top: 8px
+
+.paging-list li[class*="switch-"] a:hover
+	opacity: 0.85
+
+/*pagination end

@@ -13,7 +13,6 @@
 
 	=line-style()
 		+size($btn-lines-width, $btn-lines-height)
-		background-color: $btn-lines-color
 
 	display: block
 	+size($btn-size)
@@ -54,6 +53,7 @@
 			left: 0
 			backface-visibility: hidden
 			+line-style
+			background-color: $btn-lines-color
 			transition-property: background-color
 			transition-duration: $animation-speed
 
@@ -613,9 +613,47 @@ $nav-small-tabs-height: 60px
 	color: $text-color-light
 	margin-bottom: $bottom-space
 	+antialiased
+	+clear
 
 	+media('<mob-lg')
 		font-size: 1.8rem
+
+.popup-label__options
+	float: right
+	font-weight: normal
+	color: $text-color
+	fill: $text-color
+
+	a
+		+display-inline-block-top
+		text-decoration: none
+		color: inherit
+		transition-property: color
+		transition-duration: $animation-speed
+
+		span
+			+display-inline-block-middle
+
+		svg
+			+display-inline-block-middle
+			+size(22px)
+			fill: inherit
+
+			& + span
+				padding-left: 6px
+
+		path
+			fill: inherit
+			transition-property: fill
+			transition-duration: $animation-speed
+
+	.no-touchevents & a:hover
+		color: $text-color-alt
+		fill: $text-color-alt
+
+.popup-label__text
+	display: block
+	overflow: hidden
 
 .user-options-popup__content
 	white-space: nowrap
@@ -745,143 +783,6 @@ $nav-small-tabs-height: 60px
 
 /*share link list end*/
 /*user options popup end
-
-//================== SEARCH POPUP =================//
-/*search form*/
-.search-form
-	position: relative
-	margin-bottom: $bottom-space-lg
-
-	&:last-child
-		margin-bottom: 0
-
-.search-form__field
-	overflow: hidden
-	position: relative
-
-$search-form-popup-btn-width: 90px
-$search-form-popup-btn-width--mob-lg: 54px
-=search-form-placeholder($color: $text-color, $tsp: color, $tsd: $animation-speed)
-	&::-webkit-input-placeholder
-		color: $color
-		transition: $tsp $tsd
-
-	&:-moz-placeholder
-		color: $color
-		transition: $tsp $tsd
-
-	&::-moz-placeholder
-		color: $color
-		transition: $tsp $tsd
-		opacity: 1
-
-	&:-ms-input-placeholder
-		color: $color
-		transition: $tsp $tsd
-		opacity: 1
-
-	&.placeholder
-		color: $color
-		transition: $tsp $tsd
-		opacity: 1
-
-input.search-form__input
-	cursor: pointer
-
-	+search-form-placeholder()
-
-	&, &:hover, &:focus
-		display: block
-		position: relative
-		border: none
-		height: 64px
-		width: 100%
-		padding: 11px #{$search-form-popup-btn-width+10} 11px 0
-		margin: 0
-		font-family: $font-alt
-		+font(36px, 42px)
-		color: $text-color
-		border-radius: 0
-		background: none
-		box-shadow: none
-
-		+media('<tab-sm')
-			font-size: 28px
-
-		+media('<mob-lg')
-			font-size: 16px
-			padding-right: $search-form-popup-btn-width--mob-lg
-
-	// если поле ввода В ФОКУСЕ, или ЗАПОЛНЕННО
-	.input--filled &, &:focus
-		cursor: text
-
-// кнопка поиска
-.search-form__btn
-	position: absolute
-	right: 0
-	bottom: 0
-	height: 64px
-	width: $search-form-popup-btn-width
-	z-index: 5
-	transition-property: color
-	transition-duration: $animation-speed
-
-	+media('<mob-lg')
-		width: $search-form-popup-btn-width--mob-lg
-
-	&::before
-		+vertical-align()
-
-	input
-		display: block
-		+cover()
-		padding: 0
-		z-index: 99
-		border: 0
-		opacity: 0
-
-	svg
-		position: absolute
-		left: 0
-		top: 50%
-		width: 24px
-		height: 24px
-		transform: translate(0, -50%)
-
-	path
-		fill: $text-color
-		transition: fill $animation-speed
-
-	span
-		position: absolute
-		width: 100%
-		+padding-horizontal(40px, 0)
-		text-align: right
-		top: 50%
-		font-size: 14px
-		line-height: 1.5
-		color: $text-color
-		transform: translate(0, -50%)
-		transition-property: color
-		transition-duration: $animation-speed
-		+antialiased
-
-		+media('<mob-lg')
-			+hide-text
-
-	.input--filled &
-		z-index: 999
-
-	.no-touchevents &:hover
-
-		path
-			fill: $text-color-alt
-
-		span
-			color: $text-color-alt
-
-/*search form end*/
 
 //================== FILTERS POPUP =================//
 /*filters popup

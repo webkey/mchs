@@ -5,7 +5,7 @@
 </form>
 <br>
 -->
-<div class="search-page">
+<div class="bitrix-search-page">
 	<div class="pagination-wrap">
 		<div class="p-nav-title">Результаты поиска</div>
 		<div class="pagination">

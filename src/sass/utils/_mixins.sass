@@ -87,6 +87,19 @@
 	overflow-y: $y
 
 // =============================================================================
+// display inline block + vertical align
+// =============================================================================
+/// Примесь задает пару свойст display: inline-block и vertical-align для
+/// выравнивания инлайн-блок элементов по вертикали
+=display-inline-block-top()
+	display: inline-block
+	vertical-align: top
+
+=display-inline-block-middle()
+	display: inline-block
+	vertical-align: middle
+
+// =============================================================================
 // pseudo
 // =============================================================================
 /// Примесь добавляет к псевдоэлементу базовые свойства.
@@ -475,6 +488,34 @@
 		overflow: visible
 		position: static
 		width: auto
+
+// =============================================================================
+// Input placeholder
+// =============================================================================
+
+=search-form-placeholder($color: #ccc, $tsp: color, $tsd: 0.2s)
+	&::-webkit-input-placeholder
+		color: $color
+		transition: $tsp $tsd
+
+	&:-moz-placeholder
+		color: $color
+		transition: $tsp $tsd
+
+	&::-moz-placeholder
+		color: $color
+		transition: $tsp $tsd
+		opacity: 1
+
+	&:-ms-input-placeholder
+		color: $color
+		transition: $tsp $tsd
+		opacity: 1
+
+	&.placeholder
+		color: $color
+		transition: $tsp $tsd
+		opacity: 1
 
 // =============================================================================
 // Scroll lock

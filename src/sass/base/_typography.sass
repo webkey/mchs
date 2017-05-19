@@ -485,3 +485,38 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		transform: translate(0, -50%)
 		background-color: $mark-color
 		border-radius: 50%
+
+.rss
+	$rss-bg-color: #f8991d
+
+	&, .section__title &
+		display: inline-block
+		background-color: $rss-bg-color
+		text-decoration: none
+		color: white
+		fill: white
+		padding: 4px 10px
+		font-family: $font-alt
+		font-weight: normal
+		+font(16px, 20px)
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+		svg
+			+display-inline-block-top
+			+size(16px)
+			margin-top: 2px
+			margin-right: 4px
+
+		path
+			fill: inherit
+
+		span
+			+display-inline-block-top
+			border: none
+			text-transform: uppercase
+
+	.section__title &
+		position: absolute
+		right: 0
+		top: 0

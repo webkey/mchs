@@ -1,8 +1,9 @@
 @import ../utils/variables
 @import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
 
 /*bitrix default search page*/
-.search-page
+.bitrix-search-page
 	margin-bottom: $bottom-space-lg
 
 	&:last-child
@@ -28,8 +29,7 @@
 			font-size: 1.6rem
 
 	.pagination
-		display: inline-block
-		vertical-align: top
+		+display-inline-block-top
 		margin-bottom: $bottom-space
 		+clear
 
