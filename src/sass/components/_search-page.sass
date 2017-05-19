@@ -9,6 +9,77 @@
 	&:last-child
 		margin-bottom: 0
 
+.search-page-options
+	display: block
+	+font(1.4rem, 1.5)
+	font-weight: normal
+	color: $text-color-light
+	margin-bottom: $bottom-space
+	+clear
+
+	.left
+		float: left
+
+	.right
+		float: right
+
+.search-results
+	margin-bottom: $bottom-space-lg
+
+	&:last-child
+		margin-bottom: 0
+
+.search-results__item
+	margin-bottom: $bottom-space-md
+
+	&:last-child
+		margin-bottom: 0
+
+.search-results__inner
+	position: relative
+
+.search-result__date, .search-result__path
+	display: block
+	+font(1.2rem, 1.5)
+	font-style: normal
+	color: $text-color-light
+	margin-bottom: $bottom-space-sm
+
+	&:last-child
+		margin-bottom: 0
+
+.search-result__title
+	display: block
+	overflow: hidden
+	font-family: $font-alt
+	font-weight: bold
+	+font(1.8rem, 1.2)
+	margin-bottom: $bottom-space-sm
+	max-height: calc(1.8rem * 1.2 * 3)
+
+	&:last-child
+		margin-bottom: 0
+
+	a
+		padding-top: 5px
+		color: inherit
+		text-decoration: none
+		transition-property: color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			color: $text-color-alt
+
+.search-result__text
+	display: block
+	overflow: hidden
+	+font(1.4rem, 1.7)
+	margin-bottom: $bottom-space-sm
+	max-height: calc(1.4rem * 1.7 * 3)
+
+	&:last-child
+		margin-bottom: 0
+
 /*search page end
 
 /*search form
@@ -23,9 +94,6 @@
 	overflow: hidden
 	position: relative
 
-
-$search-form-popup-btn-width: 90px
-$search-form-popup-btn-width--mob-lg: 54px
 
 input.search-form__input
 	cursor: pointer
@@ -47,6 +115,10 @@ input.search-form__input
 		border-radius: 0
 		background: none
 		box-shadow: none
+		border-bottom: 1px solid $border-color
+
+		.no-touchevents &:hover
+			border-bottom-color: $border-color
 
 		+media('<tab-sm')
 			font-size: 28px
@@ -63,12 +135,22 @@ input.search-form__input
 .search-form__btn
 	position: absolute
 	right: 0
-	bottom: 0
-	height: 64px
+	top: 50%
+	height: $search-form-popup-btn-height
+	margin-top: -20px
 	width: $search-form-popup-btn-width
+	font-family: $font-alt
+	+font(16px, $search-form-popup-btn-height)
+	text-align: center
+	color: white
+	fill: white
 	z-index: 5
+	background-color: $text-color-alt
 	transition-property: color
 	transition-duration: $animation-speed
+
+	+btn-hover
+	+btn-active
 
 	+media('<mob-lg')
 		width: $search-form-popup-btn-width--mob-lg
@@ -85,27 +167,20 @@ input.search-form__input
 		opacity: 0
 
 	svg
-		position: absolute
-		left: 0
+		+display-inline-block-top
+		position: relative
 		top: 50%
-		width: 24px
-		height: 24px
-		transform: translate(0, -50%)
+		+size(16px)
+		margin-top: -8px
+		margin-right: 10px
 
 	path
-		fill: $text-color
+		fill: inherit
 		transition: fill $animation-speed
 
 	span
-		position: absolute
-		width: 100%
-		+padding-horizontal(40px, 0)
-		text-align: right
-		top: 50%
-		font-size: 14px
-		line-height: 1.5
-		color: $text-color
-		transform: translate(0, -50%)
+		+display-inline-block-top
+		color: inherit
 		transition-property: color
 		transition-duration: $animation-speed
 		+antialiased
@@ -115,13 +190,5 @@ input.search-form__input
 
 	.input--filled &
 		z-index: 999
-
-	.no-touchevents &:hover
-
-		path
-			fill: $text-color-alt
-
-		span
-			color: $text-color-alt
 
 /*search form end
