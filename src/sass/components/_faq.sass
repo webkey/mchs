@@ -6,6 +6,9 @@
 .expander
 	margin-bottom: $bottom-space-lg
 
+	+media('<mob-lg')
+		+margin-horizontal(-#{$article-layout-space-horizontal--mob-lg})
+
 	&:last-child
 		margin-bottom: 0
 
@@ -13,6 +16,17 @@
 	border: 1px solid $border-color
 	margin-bottom: $bottom-space
 	padding: 0 $grid-inside-horizontal-space
+
+	+media('<tab-lg')
+		+padding-horizontal($article-layout-space-horizontal--tab-lg)
+
+	+media('<mob-lg')
+		+padding-horizontal($article-layout-space-horizontal--mob-lg)
+		margin-bottom: 0
+		border-width: 0 0 1px
+
+		&:first-child
+			border-top-width: 1px
 
 	&:last-child
 		margin-bottom: 0
@@ -30,15 +44,34 @@
 	transition-duration: $animation-speed
 	+clear
 
+	+media('<tab-lg')
+		+padding-vertical($article-layout-space-vertical--tab-lg)
+
+	+media('<mob-lg')
+		+padding-vertical($article-layout-space-vertical--mob-lg)
+
 .expander-header__meta
 	float: left
 	width: $faq-meta-width
 	+font(1.2rem, 1.7)
 	color: $text-color-light
 
+	+media('<desk-lg')
+		display: block
+		float: none
+		width: auto
+		margin-bottom: $bottom-space-sm
+
+	+media('<mob-lg')
+		+font($font-size, $line-height)
+
 	time
 		+font-normal
 		display: block
+
+		+media('<mob-lg')
+			display: inline-block
+			margin-right: 20px
 
 .expander-header__text
 	padding-right: #{$grid-inside-horizontal-space + $faq-angle-size}
@@ -51,6 +84,10 @@
 
 	.no-js &
 		padding-right: 0
+
+	+media('<mob-lg')
+		padding-right: 0
+		padding-bottom: 45px
 
 .expander-angle
 	$btn-size: $header-top-height
@@ -68,6 +105,15 @@
 	+size($faq-angle-size)
 	cursor: pointer
 	transform: translate(0, -50%)
+	+antialiased
+
+	+media('<mob-lg')
+		top: auto
+		right: auto
+		left: 0
+		bottom: $article-layout-space-vertical--mob-lg
+		+size(auto)
+		transform: none
 
 	.no-js &
 		display: none
@@ -75,15 +121,60 @@
 	> span
 		+hide-text
 
+		+media('<mob-lg')
+			display: inline-block
+			position: relative
+			+show-text
+			overflow: visible
+			margin: 0
+			+font(0, 0)
+			font-weight: bold
+			white-space: nowrap
+
+			&:before, &:after
+				position: relative
+				display: inline-block
+				+font($font-size, 1.2)
+				border-bottom: 1px dotted $text-color
+				transition-property: opacity, transform, visibility
+				transition-duration: $animation-speed
+
+			&:before
+				content: 'Показать ответ'
+				transform: translate(0, 0)
+
+				.expander-is-open &
+					opacity: 0
+					visibility: hidden
+					transform: translate(0, -1em)
+
+			&:after
+				position: absolute
+				left: 0
+				top: 0
+				content: 'Закрыть ответ'
+				opacity: 0
+				visibility: hidden
+				transform: translate(0, 1em)
+
+				.expander-is-open &
+					opacity: 1
+					visibility: visible
+					transform: translate(0, 0)
 	> i
 		position: absolute
 		left: 50%
 		top: 50%
-		margin: -#{round($btn-lines-width/2)} 0 0 -#{round($btn-lines-width/2)}
+		margin: -#{round($btn-lines-width*0.5)} 0 0 -#{round($btn-lines-width*0.5)}
 		+size($btn-lines-width)
 		backface-visibility: hidden
 		transition-property: transform
 		transition-duration: $animation-speed
+
+		+media('<mob-lg')
+			left: 0
+			margin-left: 0
+			display: none
 
 		.expander-is-open &
 			transform: rotate(0.625turn)
@@ -109,14 +200,26 @@
 	display: none
 	+font(1.4rem, 1.7)
 
+	+media('<mob-lg')
+		border-top: none
+
 	.no-js &
 		display: block
 
 .expander-panel__holder
 	padding: $grid-inside-vertical-space 0
 
+	+media('<tab-lg')
+		+padding-vertical($article-layout-space-vertical--tab-lg)
+
+	+media('<mob-lg')
+		+padding-vertical(0, $article-layout-space-vertical--mob-lg)
+
 .expander-header__text, .expander-panel__holder
 	margin-left: #{$faq-meta-width + $grid-inside-horizontal-space}
+
+	+media('<desk-lg')
+		margin-left: 0
 
 	& > p:last-child, & > ul:last-child, & > ol:last-child
 		margin-bottom: 0

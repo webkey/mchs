@@ -399,10 +399,11 @@
 			<div class="extra-popup__align user-content">
 				<div class="popup-title">
 					<h2>Расширенный поиск</h2>
-					<div class="right">
-						<div class="sorting-options">
-							<span class="sorting-label">Сортировать по:</span>
-							@@include('_sorting-select.tpl')
+					<div class="sorting-options">
+						<span class="sorting-label">Показать результаты:</span>
+						<div class="news-date datepicker-alt">
+							<a data-toggle class="type-anchor news-date-output-js"><span>За время</span></a>
+							<input data-input type="text" class="datepicker-input" value="18.04.2017" title="Дата публикации новостей" />
 						</div>
 					</div>
 				</div>

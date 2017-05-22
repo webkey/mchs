@@ -10,18 +10,23 @@
 		margin-bottom: 0
 
 .search-page-options
-	display: block
-	+font(1.4rem, 1.5)
+	+font($font-size-small, $line-height-small)
 	font-weight: normal
 	color: $text-color-light
 	margin-bottom: $bottom-space
-	+clear
+	display: flex
+	justify-content: space-between
+	//align-items: center
 
-	.left
-		float: left
+	+media('<tab-sm')
+		display: block
+		+font($font-size, $line-height)
 
-	.right
-		float: right
+		div
+			margin-bottom: $bottom-space-sm
+
+			&:last-child
+				margin-bottom: 0
 
 .search-results
 	margin-bottom: $bottom-space-lg
@@ -120,11 +125,11 @@ input.search-form__input
 		.no-touchevents &:hover
 			border-bottom-color: $border-color
 
-		+media('<tab-sm')
-			font-size: 28px
+		+media('<desk-lg')
+			font-size: 20px
 
 		+media('<mob-lg')
-			font-size: 16px
+			font-size: 18px
 			padding-right: $search-form-popup-btn-width--mob-lg
 
 	// если поле ввода В ФОКУСЕ, или ЗАПОЛНЕННО
@@ -136,11 +141,10 @@ input.search-form__input
 	position: absolute
 	right: 0
 	top: 50%
-	height: $search-form-popup-btn-height
 	margin-top: -20px
-	width: $search-form-popup-btn-width
+	+size($search-form-popup-btn-width, $search-form-popup-btn-height)
 	font-family: $font-alt
-	+font(16px, $search-form-popup-btn-height)
+	+clear-spacing
 	text-align: center
 	color: white
 	fill: white
@@ -153,7 +157,7 @@ input.search-form__input
 	+btn-active
 
 	+media('<mob-lg')
-		width: $search-form-popup-btn-width--mob-lg
+		width: $search-form-popup-btn-height
 
 	&::before
 		+vertical-align()
@@ -174,12 +178,17 @@ input.search-form__input
 		margin-top: -8px
 		margin-right: 10px
 
+		+media('<mob-lg')
+			margin-right: 0
+
 	path
 		fill: inherit
 		transition: fill $animation-speed
 
 	span
 		+display-inline-block-top
+		+font(16px, $search-form-popup-btn-height)
+		letter-spacing: normal
 		color: inherit
 		transition-property: color
 		transition-duration: $animation-speed

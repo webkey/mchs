@@ -1081,13 +1081,13 @@
 										<div class="sheet">
 											<div class="article-layout">
 												<div class="popup-label">
+													<div class="popup-label__text">Что вы ищите?</div>
 													<div class="popup-label__options">
 														<a href="#" class="btn-search-advanced-open-js">
 															<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 308 288.3"> <path d="M9.8,59h32.8v22.9c0,5.4,4.4,9.8,9.8,9.8h72.1c5.4,0,9.8-4.4,9.8-9.8V59h163.9c5.4,0,9.8-4.4,9.8-9.8c0-5.4-4.4-9.8-9.8-9.8  H134.3V9.8c0-5.4-4.4-9.8-9.8-9.8H52.4c-5.4,0-9.8,4.4-9.8,9.8v29.5H9.8c-5.4,0-9.8,4.4-9.8,9.8C0,54.6,4.4,59,9.8,59z M62.3,19.7  h52.4v52.4H62.3V19.7z M298.2,235.9H134.3v-29.5c0-5.4-4.4-9.8-9.8-9.8H52.4c-5.4,0-9.8,4.4-9.8,9.8v29.5H9.8  c-5.4,0-9.8,4.4-9.8,9.8c0,5.4,4.4,9.8,9.8,9.8h32.8v22.9c0,5.4,4.4,9.8,9.8,9.8h72.1c5.4,0,9.8-4.4,9.8-9.8v-22.9h163.8  c5.4,0,9.8-4.4,9.8-9.8C308,240.3,303.6,235.9,298.2,235.9z M114.7,268.7H62.3v-52.4h52.4V268.7z M298.2,137.9h-32.8v-29.5  c0-5.4-4.4-9.8-9.8-9.8h-72.1c-5.4,0-9.8,4.4-9.8,9.8v29.5H9.8c-5.4,0-9.8,4.4-9.8,9.8s4.4,9.8,9.8,9.8h163.8v22.9  c0,5.4,4.4,9.8,9.8,9.8h72.1c5.4,0,9.8-4.4,9.8-9.8v-22.9h32.8c5.4,0,9.8-4.4,9.8-9.8S303.6,137.9,298.2,137.9z M245.7,170.7h-52.4  v-52.4h52.4V170.7z"></path> </svg>
 															<span>Расширенный поиск</span>
 														</a>
 													</div>
-													<div class="popup-label__text">Что вы ищите?</div>
 												</div>
 												<!-- search form -->
 												<div class="search-form">
@@ -1106,25 +1106,21 @@
 												<!--search result-->
 												<div class="search-page">
 													<footer class="search-page-options">
-														<div class="left">
-															<div class="coincide">Найдено совпадений: <span class="dark-text">15</span></div>
-														</div>
-														<div class="right">
-															<div class="sorting-options">
-																<span class="sorting-label">Сортировать по:</span>
-																<!--sorting-->
-																<div class="sorting-select js-choice-wrap" data-window-location="true">
-																	<a href="#" class="js-choice-open">
-																		<span>Дате публикации</span>
-																	</a>
-																	<ul class="sorting-select-drop js-choice-drop">
-																		<li><a class="active" href="#"><span>Дате публикации</span></a></li>
-																		<li><a href="#"><span>Релевантности</span></a></li>
-																		<li><a href="#"><span>Алфавиту</span></a></li>
-																	</ul>
-																</div>
-																<!--sorting end-->
+														<div class="coincide">Найдено совпадений: <span class="dark-text">15</span></div>
+														<div class="sorting-options">
+															<span class="sorting-label">Сортировать по:</span>
+															<!--sorting-->
+															<div class="sorting-select js-choice-wrap" data-window-location="true">
+																<a href="#" class="js-choice-open">
+																	<span>Дате публикации</span>
+																</a>
+																<ul class="sorting-select-drop js-choice-drop">
+																	<li><a class="active" href="#"><span>Дате публикации</span></a></li>
+																	<li><a href="#"><span>Релевантности</span></a></li>
+																	<li><a href="#"><span>Алфавиту</span></a></li>
+																</ul>
 															</div>
+															<!--sorting end-->
 														</div>
 													</footer>
 													<div class="search-results">
@@ -2820,21 +2816,11 @@
 				<div class="extra-popup__align user-content">
 					<div class="popup-title">
 						<h2>Расширенный поиск</h2>
-						<div class="right">
-							<div class="sorting-options">
-								<span class="sorting-label">Сортировать по:</span>
-								<!--sorting-->
-								<div class="sorting-select js-choice-wrap" data-window-location="true">
-									<a href="#" class="js-choice-open">
-										<span>Дате публикации</span>
-									</a>
-									<ul class="sorting-select-drop js-choice-drop">
-										<li><a class="active" href="#"><span>Дате публикации</span></a></li>
-										<li><a href="#"><span>Релевантности</span></a></li>
-										<li><a href="#"><span>Алфавиту</span></a></li>
-									</ul>
-								</div>
-								<!--sorting end-->
+						<div class="sorting-options">
+							<span class="sorting-label">Показать результаты:</span>
+							<div class="news-date datepicker-alt">
+								<a data-toggle class="type-anchor news-date-output-js"><span>За время</span></a>
+								<input data-input type="text" class="datepicker-input" value="18.04.2017" title="Дата публикации новостей" />
 							</div>
 						</div>
 					</div>

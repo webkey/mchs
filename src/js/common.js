@@ -752,7 +752,8 @@ function navExpander() {
 			panel: null, // открывающийся элемент
 			openClass: 'active', // класс, который добавляется при открытии
 			currentClass: 'current', // класс текущего элемента
-			animateSpeed: 300 // скорость анимации
+			animateSpeed: 300, // скорость анимации
+			collapsible: false // сворачивать соседние панели
 		}, settings || {});
 
 		this.options = options;
@@ -823,7 +824,9 @@ function navExpander() {
 					self.closePanel($($container).not($currentHandler.closest($container)).find($item));
 				}
 
-				self.closePanel($currentItem.siblings());
+				if (self.options.collapsible) {
+					self.closePanel($currentItem.siblings());
+				}
 
 				self.openPanel($currentItem, $currentHandler);
 			}
@@ -875,7 +878,8 @@ function multiAccordionInit() {
 			handlerWrap: '.region-menu__tab',
 			panel: '.region-menu-drop-js',
 			openClass: 'is-open',
-			animateSpeed: 200
+			animateSpeed: 200,
+			collapsible: true
 		});
 
 		$(regionMenu).on('mAccordionAfterChange', function () {
@@ -897,7 +901,8 @@ function multiAccordionInit() {
 			handlerWrap: '.nav-mobile__tab',
 			panel: '.nav-mobile-drop-js',
 			openClass: 'is-open',
-			animateSpeed: 200
+			animateSpeed: 200,
+			collapsible: true
 		});
 	}
 
@@ -911,8 +916,7 @@ function multiAccordionInit() {
 			panel: '.expander-panel-js',
 			handlerWrap: '.expander-header-js',
 			openClass: 'expander-is-open',
-			animateSpeed: 300,
-			collapsibleAll: true
+			animateSpeed: 300
 		});
 	}
 }
@@ -1666,6 +1670,57 @@ function masonryInit() {
 /*masonry*/
 
 /**
+ * !datepicker initial
+ * */
+function datePickerInit() {
+	var datepickerOverlay = $('<div/>', {
+		'class': "datepicker-overlay"
+	});
+
+	var calendar = $('.news-date').flatpickr({
+		"locale": "ru",
+		// mode: "range",
+		defaultDate: 'today',
+		altInput: true,
+		clickopens: false,
+		wrap: true,
+		altFormat: 'd M. Y',
+		maxDate: 'today',
+		disableMobile: false,
+		onValueUpdate: function() {
+			$(this.element).find('.news-date-output-js').find('span').text($(this.altInput).val());
+		},
+		onOpen: function() {
+			if (DESKTOP) {
+				$(this.calendarContainer).before(datepickerOverlay.clone());
+				setTimeout(function () {
+					$('html').addClass('datepicker-overlay-is-visible');
+				}, 10);
+			}
+		},
+		onClose: function() {
+			if (DESKTOP) {
+				$('html').removeClass('datepicker-overlay-is-visible');
+				setTimeout(function () {
+					$('.datepicker-overlay').remove();
+				}, 200);
+			}
+		},
+		onChange: function () {
+			$(this.element).find('.news-date-output-js').find('span').text($(this.altInput).val());
+		}
+	});
+
+	$('body').on('click', '.datepicker-overlay', function () {
+		// console.log(2);
+		if($('html').hasClass('extra-popup-opened')) {
+			calendar.close();
+		}
+	})
+}
+/*datepicker initial end*/
+
+/**
  * !extra popup jQuery plugin
  * */
 (function ($) {
@@ -1705,12 +1760,12 @@ function masonryInit() {
 	var ExtraPopup = function (settings) {
 		var options = $.extend({
 			mainContainer: 'html', // container wrapping all elements
-			navContainer: null, // main navigation container
-			navMenu: null, // menu
+			container: null, // main navigation container
 			btnMenu: null, // element which opens or switches menu
 			btnMenuClose: null, // element which closes a menu
-			navMenuItem: null,
-			navMenuAnchor: 'a',
+			list: null, // menu
+			listItem: null,
+			listAnchor: 'a',
 			staggerItems: null,
 			overlay: '.nav-overlay', // overlay's class
 			overlayAppendTo: 'body', // where to place overlay
@@ -1726,22 +1781,23 @@ function masonryInit() {
 			mediaWidth: null,
 			closeOnResize: true,
 			cssScrollBlocked: false, // add class to body for blocked scroll
-			closeEsc: true // close popup on click Esc
+			closeEsc: true, // close popup on click Esc
+			stopClose: null // элементы по клику на которые, НЕ закрывается попап
 		}, settings || {});
 
-		var container = $(options.navContainer),
+		var container = $(options.container),
 			_animateSpeed = options.animationSpeed;
 
 		var self = this;
 		self.options = options;
 		self.$mainContainer = $(options.mainContainer);            // . по умолчанию <html></html>
-		self.$navMenu = $(options.navMenu);
+		self.$list = $(options.list);
 		self.$btnMenu = $(options.btnMenu);
 		self.$btnMenuClose = $(options.btnMenuClose);
-		self.$navContainer = container;
-		self.$navMenuItem = $(options.navMenuItem, container);     // Пункты навигации;
-		self.$navMenuAnchor = $(options.navMenuAnchor, container); // Элемент, по которому производится событие (клик);
-		self.$staggerItems = options.staggerItems || self.$navMenuItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию navMenuItem;
+		self.$container = container;
+		self.$listItem = $(options.listItem, container);     // Пункты навигации;
+		self.$listAnchor = $(options.listAnchor, container); // Элемент, по которому производится событие (клик);
+		self.$staggerItems = options.staggerItems || self.$listItem;  //Элементы в стеке, к которым применяется анимация. По умолчанию listItem;
 
 		self._animationType = options.animationType;
 		self._animationScale = options.animationScale;
@@ -1866,11 +1922,17 @@ function masonryInit() {
 			}
 		});
 
-		self.$navContainer.on('click', function (e) {
+		self.$container.on('click', function (e) {
 			if ( self.navIsOpened ) {
 				e.stopPropagation();
 			}
-		})
+		});
+
+		$('body').on('click', self.options.stopClose, function (e) {
+			if(self.navIsOpened) {
+				e.stopPropagation();
+			}
+		});
 	};
 
 	// close popup on click to "Esc" key
@@ -1902,7 +1964,7 @@ function masonryInit() {
 
 		var self = this,
 			$html = self.$mainContainer,
-			$navContainer = self.$navContainer,
+			$container = self.$container,
 			$buttonMenu = self.$btnMenu,
 			$buttonClose = self.$btnMenuClose,
 			_animationSpeed = self._animateSpeedOverlay,
@@ -1920,15 +1982,15 @@ function masonryInit() {
 			self.cssScrollFixed();
 		}
 
-		$navContainer.css({
+		$container.css({
 			'-webkit-transition-duration': '0s',
 			'transition-duration': '0s'
 		});
 
-		$navContainer.trigger('extraPopupBeforeOpen');
+		$container.trigger('extraPopupBeforeOpen');
 		$('.js-choice-wrap').trigger('closeDrop');
 
-		TweenMax.to($navContainer, _animationSpeed / 1000, {
+		TweenMax.to($container, _animationSpeed / 1000, {
 			xPercent: 0,
 			scale: 1,
 			autoAlpha: 1,
@@ -1962,7 +2024,7 @@ function masonryInit() {
 
 		var self = this,
 			$html = self.$mainContainer,
-			$navContainer = self.$navContainer,
+			$container = self.$container,
 			$buttonMenu = self.$btnMenu,
 			$buttonClose = self.$btnMenuClose,
 			_animationSpeed = self._animateSpeedOverlay,
@@ -1986,7 +2048,7 @@ function masonryInit() {
 		var duration = _animationSpeed / 1000;
 
 		if (_animationType === 'ltr') {
-			TweenMax.to($navContainer, duration, {
+			TweenMax.to($container, duration, {
 				xPercent: -100,
 				ease: Cubic.easeOut,
 				onComplete: function () {
@@ -1994,7 +2056,7 @@ function masonryInit() {
 						self.preparationAnimation();
 					}
 
-					TweenMax.set($navContainer, {
+					TweenMax.set($container, {
 						autoAlpha: 0
 					});
 
@@ -2007,7 +2069,7 @@ function masonryInit() {
 			});
 
 		} else if (_animationType === 'rtl') {
-			TweenMax.to($navContainer, duration, {
+			TweenMax.to($container, duration, {
 				xPercent: 100,
 				ease: Cubic.easeOut,
 				onComplete: function () {
@@ -2015,7 +2077,7 @@ function masonryInit() {
 						self.preparationAnimation();
 					}
 
-					TweenMax.set($navContainer, {
+					TweenMax.set($container, {
 						autoAlpha: 0
 					});
 
@@ -2028,7 +2090,7 @@ function masonryInit() {
 			});
 
 		} else if (_animationType === 'surface') {
-			TweenMax.to($navContainer, duration, {
+			TweenMax.to($container, duration, {
 				scale: self._animationScale,
 				autoAlpha: 0,
 				ease: Cubic.easeOut,
@@ -2056,18 +2118,18 @@ function masonryInit() {
 	ExtraPopup.prototype.preparationAnimation = function() {
 		var self = this;
 
-		var $navContainer = self.$navContainer,
+		var $container = self.$container,
 			$staggerItems = self.$staggerItems,
 			_animationType = self._animationType;
 
-		// console.log('preparationAnimation: ', $navContainer);
+		// console.log('preparationAnimation: ', $container);
 
 		if (_animationType === 'ltr') {
-			TweenMax.set($navContainer, {
+			TweenMax.set($container, {
 				xPercent: -100,
 				autoAlpha: 0,
 				onComplete: function () {
-					$navContainer.show(0);
+					$container.show(0);
 				}
 			});
 			// TweenMax.set($staggerItems, {
@@ -2077,11 +2139,11 @@ function masonryInit() {
 			// });
 
 		} else if (_animationType === 'rtl') {
-			TweenMax.set($navContainer, {
+			TweenMax.set($container, {
 				xPercent: 100,
 				autoAlpha: 0,
 				onComplete: function () {
-					$navContainer.show(0);
+					$container.show(0);
 				}
 			});
 			// TweenMax.set($staggerItems, {
@@ -2091,11 +2153,11 @@ function masonryInit() {
 			// });
 
 		} else if (_animationType === 'surface') {
-			TweenMax.set($navContainer, {
+			TweenMax.set($container, {
 				scale: self._animationScale,
 				autoAlpha: 0,
 				onComplete: function () {
-					$navContainer.show(0);
+					$container.show(0);
 				}
 			});
 			// TweenMax.set($staggerItems, {
@@ -2121,7 +2183,7 @@ function masonryInit() {
 	ExtraPopup.prototype.clearStyles = function() {
 		var self = this,
 			$btnMenu = self.$btnMenu,
-			$navContainer = self.$navContainer,
+			$container = self.$container,
 			$staggerItems = self.$staggerItems;
 
 		//clear on horizontal resize
@@ -2130,7 +2192,7 @@ function masonryInit() {
 			$(window).on('resizeByWidth', function () {
 				if (self.navIsOpened) {
 					if (!$btnMenu.is(':visible')) {
-						$navContainer.attr('style', '');
+						$container.attr('style', '');
 						$staggerItems.attr('style', '');
 						self.closeNav();
 					} else {
@@ -2151,17 +2213,37 @@ function masonryInit() {
  * */
 function popupsInit(){
 
+	/*search advanced*/
+	var popupSearchAdvanced = '.search-advanced-popup-js';
+
+	if($(popupSearchAdvanced).length){
+
+		new ExtraPopup({
+			container: popupSearchAdvanced,
+			btnMenu: '.btn-search-advanced-open-js',
+			btnMenuClose: '.btn-popup-close-js',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			animationType: 'ltr',
+			animationSpeed: 300,
+			overlayAlpha: 0.35,
+			cssScrollBlocked: true,
+			stopClose: '.flatpickr-calendar, .datepicker-overlay'
+		});
+
+	}
+
 	/*site map popup*/
 	var siteMapPopupClass = '.site-map-js';
 
 	if($(siteMapPopupClass).length){
 
 		new ExtraPopup({
-			navContainer: siteMapPopupClass,
-			navMenu: '.site-map__list',
+			container: siteMapPopupClass,
+			list: '.site-map__list',
 			btnMenu: '.btn-site-map-js',
 			btnMenuClose: '.btn-popup-close-js',
-			navMenuItem: '.site-map__box',
+			listItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
 			// mediaWidth: 1280,
@@ -2178,11 +2260,11 @@ function popupsInit(){
 	if($(navPopupClass).length){
 
 		new ExtraPopup({
-			navContainer: navPopupClass,
-			navMenu: '.nav__list',
+			container: navPopupClass,
+			list: '.nav__list',
 			btnMenu: '.btn-nav-open-js',
 			btnMenuClose: '.btn-nav-small-close-js',
-			navMenuItem: '.nav__list li',
+			listItem: '.nav__list li',
 			overlayAppendTo: 'body',
 			closeOnResize: true,
 			// mediaWidth: 1280,
@@ -2198,14 +2280,11 @@ function popupsInit(){
 	if($(popupBannersClass).length){
 
 		new ExtraPopup({
-			navContainer: popupBannersClass,
-			// navMenu: '.site-map__list',
+			container: popupBannersClass,
 			btnMenu: '.btn-banners-open-js',
 			btnMenuClose: '.btn-banners-close-js',
-			// navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: true,
-			// mediaWidth: 1600,
 			animationType: 'rtl',
 			animationSpeed: 300,
 			overlayAlpha: 0.35
@@ -2219,14 +2298,11 @@ function popupsInit(){
 	if($(popupNewsClass).length){
 
 		new ExtraPopup({
-			navContainer: popupNewsClass,
-			// navMenu: '.site-map__list',
+			container: popupNewsClass,
 			btnMenu: '.btn-news-open-js',
 			btnMenuClose: '.btn-news-close-js',
-			// navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: true,
-			// mediaWidth: 1200,
 			animationSpeed: 300,
 			overlayAlpha: 0.35
 		});
@@ -2239,14 +2315,11 @@ function popupsInit(){
 	if($(popupLang).length){
 
 		new ExtraPopup({
-			navContainer: popupLang,
-			// navMenu: '.site-map__list',
+			container: popupLang,
 			btnMenu: '.btn-language-open-js',
 			btnMenuClose: '.btn-popup-close-js',
-			// navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
-			// mediaWidth: 1200,
 			animationType: 'surface',
 			animationSpeed: 300,
 			overlayAlpha: 0.35,
@@ -2261,14 +2334,11 @@ function popupsInit(){
 	if($(popupShare).length){
 
 		new ExtraPopup({
-			navContainer: popupShare,
-			// navMenu: '.site-map__list',
+			container: popupShare,
 			btnMenu: '.btn-share-open-js',
 			btnMenuClose: '.btn-popup-close-js',
-			// navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
-			// mediaWidth: 1200,
 			animationType: 'surface',
 			animationSpeed: 300,
 			overlayAlpha: 0.35,
@@ -2283,14 +2353,11 @@ function popupsInit(){
 	if($(popupSearch).length){
 
 		new ExtraPopup({
-			navContainer: popupSearch,
-			// navMenu: '.site-map__list',
+			container: popupSearch,
 			btnMenu: '.btn-search-open-js',
 			btnMenuClose: '.btn-popup-close-js',
-			// navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
-			// mediaWidth: 1200,
 			animationType: 'surface',
 			animationSpeed: 300,
 			overlayAlpha: 0.35,
@@ -2305,14 +2372,11 @@ function popupsInit(){
 	if($(popupFilters).length){
 
 		new ExtraPopup({
-			navContainer: popupFilters,
-			// navMenu: '.site-map__list',
+			container: popupFilters,
 			btnMenu: '.btn-filters-open-js',
 			btnMenuClose: '.btn-popup-close-js',
-			// navMenuItem: '.site-map__box',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
-			// mediaWidth: 1200,
 			animationType: 'ltr',
 			animationSpeed: 300,
 			overlayAlpha: 0.35,
@@ -2327,30 +2391,8 @@ function popupsInit(){
 	if($(popupFiltersNews).length){
 
 		new ExtraPopup({
-			navContainer: popupFiltersNews,
-			// navMenu: '.site-map__list',
+			container: popupFiltersNews,
 			btnMenu: '.btn-filters-news-open-js',
-			btnMenuClose: '.btn-popup-close-js',
-			// navMenuItem: '.site-map__box',
-			overlayAppendTo: 'body',
-			closeOnResize: false,
-			// mediaWidth: 1200,
-			animationType: 'ltr',
-			animationSpeed: 300,
-			overlayAlpha: 0.35,
-			cssScrollBlocked: true
-		});
-
-	}
-
-	/*search advanced*/
-	var popupSearchAdvanced = '.search-advanced-popup-js';
-
-	if($(popupSearchAdvanced).length){
-
-		new ExtraPopup({
-			navContainer: popupSearchAdvanced,
-			btnMenu: '.btn-search-advanced-open-js',
 			btnMenuClose: '.btn-popup-close-js',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
@@ -2671,50 +2713,6 @@ function customScrollInit() {
 	}
 }
 /*custom scroll end*/
-
-/**
- * !datepicker initial
- * */
-function datePickerInit() {
-	var $newsDateOutput = $('.news-date-output-js').find('span');
-	var datepickerOverlay = $('<div/>', {
-		'class': "datepicker-overlay"
-	});
-
-	$('.news-date').flatpickr({
-		"locale": "ru",
-		defaultDate: 'today',
-		altInput: true,
-		clickopens: false,
-		wrap: true,
-		altFormat: 'd M. Y',
-		maxDate: 'today',
-		disableMobile: false,
-		onValueUpdate: function() {
-			$newsDateOutput.text($(this.altInput).val());
-		},
-		onOpen: function() {
-			if (DESKTOP) {
-				$(this.calendarContainer).before(datepickerOverlay.clone());
-				setTimeout(function () {
-					$('html').addClass('datepicker-overlay-is-visible');
-				}, 10);
-			}
-		},
-		onClose: function() {
-			if (DESKTOP) {
-				$('html').removeClass('datepicker-overlay-is-visible');
-				setTimeout(function () {
-					$('.datepicker-overlay').remove();
-				}, 200);
-			}
-		},
-		onChange: function () {
-			$newsDateOutput.text($(this.altInput).val());
-		}
-	});
-}
-/*datepicker initial end*/
 
 function blockedScrollOnPage() {
 	$(window).on('load debouncedresize', function () {

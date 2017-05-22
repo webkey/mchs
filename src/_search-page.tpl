@@ -1,13 +1,9 @@
 <div class="search-page">
 	<footer class="search-page-options">
-		<div class="left">
-			<div class="coincide">Найдено совпадений: <span class="dark-text">15</span></div>
-		</div>
-		<div class="right">
-			<div class="sorting-options">
-				<span class="sorting-label">Сортировать по:</span>
-				@@include('_sorting-select.tpl')
-			</div>
+		<div class="coincide">Найдено совпадений: <span class="dark-text">15</span></div>
+		<div class="sorting-options">
+			<span class="sorting-label">Сортировать по:</span>
+			@@include('_sorting-select.tpl')
 		</div>
 	</footer>
 	<div class="search-results">

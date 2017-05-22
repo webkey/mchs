@@ -3,6 +3,14 @@
 @import ../../libs/include-media/dist/include-media
 
 /*sorting
+.sorting-options
+	+font($font-size-small, $line-height-small)
+	font-weight: normal
+	color: $text-color-light
+
+	.popup-title &
+		padding-top: 13px
+
 .sorting-select
 	//perspective: 1500px
 	position: relative
@@ -15,9 +23,6 @@
 		text-decoration: none
 
 	& > a
-		height: 100%
-		transition-property: background, border
-		transition-duration: $animation-speed
 		z-index: 10
 
 		& > span
@@ -77,5 +82,19 @@
 
 		.no-touchevents &:hover, &.active
 			color: $text-color-alt
+
+
+.news-date
+	a
+		text-decoration: none
+		color: $text-color
+		cursor: pointer
+
+		& > span
+			+display-inline-block-middle
+			line-height: 1
+			position: relative
+			border-bottom: 1px dotted $text-color
+			z-index: 1
 
 /*sorting end*/
