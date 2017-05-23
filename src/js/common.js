@@ -198,7 +198,7 @@ function removePositionClass(obj) {
 	obj.removeClass('right');
 }
 
-function customSelect(select) {
+function customSelect2(select) {
 	if (select.length) {
 		selectArray = [];
 		select.each(function (selectIndex, selectItem) {
@@ -278,6 +278,15 @@ function selectResize() {
 			$(el).multiselect('close');
 		});
 	}
+}
+
+function customSelect(select) {
+	select.select2({
+		language: "ru",
+		width: '100%',
+		containerCssClass: 'cselect-head',
+		dropdownCssClass: 'cselect-drop'
+	});
 }
 /* Multiselect init end */
 
@@ -3188,6 +3197,7 @@ $(document).ready(function(){
 	if (!Modernizr.touchevents) {
 		// customSelect($('select.cselect'));
 	}
+	customSelect($('select.cselect'));
 	printShow();
 	toggleHeader();
 	fixedHeader();

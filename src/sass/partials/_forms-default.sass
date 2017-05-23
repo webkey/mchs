@@ -58,9 +58,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	background: $color-form-bg
 	box-shadow: inset 0 0 0 1px transparent
 	border: 1px solid $color-form-border
-	-webkit-transition-property: border-color, background-color, box-shadow
 	transition-property: border-color, background-color, box-shadow
-	-webkit-transition-duration: $animation-speed
 	transition-duration: $animation-speed
 	box-sizing: border-box
 	margin: 0 0 $space-bottom-form
@@ -417,9 +415,13 @@ input[type="radio"]
 	.cselect
 		width: 100%
 
-	select, button.cselect .select-inner
+	select,
+	.select2-container--default .select2-selection--single,
+	.select2-container--default .select2-selection--multiple
 		display: block
+		position: relative
 		overflow: hidden
+		height: 50px
 		text-overflow: ''
 		cursor: pointer
 		padding: 13px 40px 13px 18px
@@ -429,162 +431,119 @@ input[type="radio"]
 		border: 1px solid $color-form-border
 		border-radius: 0
 		background: $color-form-bg
-		-webkit-font-smoothing: antialiased
-		-webkit-appearance: none
-		-moz-appearance: none
 		box-shadow: none
-		-webkit-transition-property: background, border, color, box-shadow
 		transition-property: background, border, color, box-shadow
-		-webkit-transition-duration: 0.2s
 		transition-duration: 0.2s
 		box-sizing: border-box
 		outline: none
 
+	.select2-container--default .select2-selection--multiple
+		height: auto
+
 	select,
-	button.cselect,
-	button.cselect .select-inner
-		@include font-normal
+	.select2-container--default .select2-selection--single .select2-selection__rendered,
+	.select2-container--default .select2-selection--multiple .select2-selection__rendered
+		+font-normal
 		font-size: 16px
 		line-height: 22px
 		text-transform: none
 		color: $color-form-text
 
 	select
-		height: 50px
 		padding-right: 40px
 
-	button.cselect
-		z-index: 2
-
-	select:focus,
-	button.cselect:focus .select-inner,
-	button.cselect.ui-state-active .select-inner
+	select:focus
 		color: $color-form-text
 		border-color: $color-form-border-focus
 
+	.select2-container--default
+		.select2-selection--single
+			.select2-selection__rendered
+				padding-left: 0
+				padding-right: 0
+
+			.select2-selection__arrow
+				position: absolute
+				right: 0
+				top: 0
+				height: 100%
+				width: 40px
+				background-color: white
+				z-index: 2
+
+				b
+					border: none
+					position: absolute
+					left: 0
+					top: 0
+					width: 100%
+					height: 100%
+					margin: 0
+
 	&::before,
 	&::after,
-	button.cselect .ui-icon .arrow-select::before,
-	button.cselect .ui-icon .arrow-select::after
+	.select2-container--default .select2-selection--single .select2-selection__arrow b::before,
+	.select2-container--default .select2-selection--single .select2-selection__arrow b::after
 		content: ''
 		position: absolute
 		right: 22px
 		top: 50%
-		width: 10px
-		height: 3px
-		background-color: $color-form-border-focus
-		border-radius: 2px
+		width: 8px
+		height: 2px
+		background-color: $title-color
 		margin-top: -1px
 		box-sizing: border-box
 		z-index: 1
 
 	&::before,
-	button.cselect .ui-icon .arrow-select::before
-		-webkit-transform: rotate(45deg)
-		-ms-transform: rotate(45deg)
+	.select2-container--default .select2-selection--single .select2-selection__arrow b::before
 		transform: rotate(45deg)
 
 	&::after,
-	button.cselect .ui-icon .arrow-select::after
-		-webkit-transform: rotate(-45deg)
-		-ms-transform: rotate(-45deg)
+	.select2-container--default .select2-selection--single .select2-selection__arrow b::after
 		transform: rotate(-45deg)
 		right: 17px
 
-	// multiselect button
-	button.cselect
-		display: block
-		position: relative
-		padding: 0
+	.select2-container--default .select2-search--inline .select2-search__field
+		height: auto
 		margin: 0
-		border: none
-		border-radius: 0
-		background: none
 
-		.ui-icon
-			position: absolute
-			right: 0
-			top: 0
-			height: 100%
-			width: 45px
-			display: block
-			background: none
+	// multiple
+	.select2-container--default .select2-selection--multiple
+		padding: 9px 40px 9px 18px
 
-		.ui-icon .arrow-select
-			position: absolute
-			right: 0
-			top: 0
-			height: 100%
-			width: 45px
+		.select2-selection__rendered
+			padding-left: 0
+			padding-right: 0
+			margin: 0
+			vertical-align: top
+			max-width: none
 
-		.select-text
-			display: block
-			overflow: hidden
-			text-overflow: ellipsis
-			white-space: nowrap
-			min-height: 20px
+			li
+				padding: 0 4px
+				margin: 4px 8px 4px 0
+
+				&::before
+					content: none
 
 /*multiselect menu*/
-div.cselect
-	&.ui-multiselect-menu
-		padding: 2px 0
-		margin: 0
+.select2-dropdown
+	border-color: $color-form-border
+	border-radius: 0
 
-	.ui-multiselect-checkboxes
-		padding: 0
-		margin: 0
-		list-style-type: none
-		height: auto !important
-		max-height: 322px
-		overflow: auto
-		border-radius: 4px
-		background-color: $color-form-bg
-		border: 1px solid $color-form-border-focus
+.select2-container--default
+	.select2-search--dropdown
+		.select2-search__field
+			border-color: $color-form-border
+			margin: 0
+			height: 34px
 
-	.ui-multiselect-checkboxes li
-		padding: 0
-		overflow: hidden
+			&:focus
+				border-color: $color-form-border
+				box-shadow: inset 0 0 0 1px $color-form-border
 
-	.ui-multiselect-checkboxes li:first-child
-		border-radius: 4px 4px 0 0
-
-	.ui-multiselect-checkboxes li:last-child
-		border-radius: 0 0 4px 4px
-
-	.ui-multiselect-checkboxes label
-		display: block
-		padding: 13px 18px
-		@include font-normal
-		font-size: 16px
-		line-height: 22px
-		text-transform: none
-		color: $color-form-text
-		cursor: pointer
-		border: none
-		background-color: $color-form-bg
-		-webkit-transition-property: background, color
-		transition-property: background, color
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-
-		input
-			position: absolute
-			left: -9999px
-
-	.desktop .ui-multiselect-checkboxes label:hover
-		background-color: #eaeaea
-		color: $color-form-text
-
-	.ui-multiselect-checkboxes label.ui-state-active
-		background-color: #f3f3f3
-		color: $color-form-text
-
-	.ui-multiselect-checkboxes input[type="radio"] + span
-		padding-left: 0
-
-	.ui-multiselect-checkboxes input[type="radio"] + span::before,
-	.ui-multiselect-checkboxes input[type="radio"] + span::after
-		content: none
+	.select2-results>.select2-results__options
+		max-height: 210px
 
 /*multiselect menu end*/
 /*select end*/
