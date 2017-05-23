@@ -392,7 +392,7 @@
 </div>
 <!--filters popup end-->
 
-<!--filters popup-->
+<!--filters search advanced-->
 <div class="extra-popup filters-popup hide-on-load search-advanced-popup-js">
 	<div class="extra-popup__holder">
 		<div class="extra-popup__frame">
@@ -524,4 +524,4 @@
 		</div>
 	</div>
 </div>
-<!--filters popup end-->
+<!--filters search advanced end-->
