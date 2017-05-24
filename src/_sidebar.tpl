@@ -3,36 +3,12 @@
 		<div class="sidebar-top">
 			@@if(context.menu) {
 			<ul class="sidebar-menu sidebar-menu-js">
-				@@loop('_sidebar-menu-item.tpl', [
-				{
-				"text": "Главные новости МЧС",
-				"active": false,
-				"anchor": "#main-new-anchor"
-				}, {
-				"text": "Мультимедиа по ОБЖ",
-				"active": false,
-				"anchor": "#multimedia-anchor"
-				}, {
-				"text": "Интерактивная карта",
-				"active": false, "anchor": "#map-anchor"
-				}, {
-				"text": "Другие проекты",
-				"active": false,
-				"anchor": "#other-projects-anchor"
-				}, {
-				"text": "Территориальные управления",
-				"active": false,
-				"anchor": "#regions-anchor"
-				}, {
-				"text": "Департаменты",
-				"active": false,
-				"anchor": "#branches-anchor"
-				}, {
-				"text": "Информация",
-				"active": false,
-				"anchor": "#information-anchor"
-				}
-				])
+				@@loop('_sidebar-menu-item.tpl', './includes-json/sidebar-menu-items.json')
+			</ul>
+			}
+			@@if(context.typography) {
+			<ul class="sidebar-menu">
+				@@loop('_sidebar-menu-item.tpl', './includes-json/sidebar-menu-typography-items.json')
 			</ul>
 			}
 		</div>

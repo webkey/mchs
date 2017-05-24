@@ -180,113 +180,18 @@ function inputFilledClass() {
 /**
  * !Multiselect init
  * */
-/** !add ui position add class */
-function addPositionClass(position, feedback, obj) {
-	removePositionClass(obj);
-	obj.css(position);
-	obj
-		.addClass(feedback.vertical)
-		.addClass(feedback.horizontal);
-}
-
-/** !add ui position remove class */
-function removePositionClass(obj) {
-	obj.removeClass('top');
-	obj.removeClass('bottom');
-	obj.removeClass('center');
-	obj.removeClass('left');
-	obj.removeClass('right');
-}
-
-function customSelect2(select) {
-	if (select.length) {
-		selectArray = [];
-		select.each(function (selectIndex, selectItem) {
-			var placeholderText = $(selectItem).attr('data-placeholder');
-			var flag = true;
-			if (placeholderText === undefined) {
-				placeholderText = $(selectItem).find(':selected').html();
-				flag = false;
-			}
-			var classes = $(selectItem).attr('class');
-			selectArray[selectIndex] = $(selectItem).multiselect({
-				// appendTo: ".select",
-				header: false,
-				height: 'auto',
-				minWidth: 50,
-				selectedList: 1,
-				classes: classes,
-				multiple: false,
-				noneSelectedText: placeholderText,
-				show: ['fade', 100],
-				hide: ['fade', 100],
-				create: function (event) {
-					var select = $(this);
-					var button = $(this).multiselect('getButton');
-					var widget = $(this).multiselect('widget');
-					button.wrapInner('<span class="select-inner"></span>');
-					button.find('.ui-icon').append('<i class="arrow-select"></i>')
-						.siblings('span').addClass('select-text');
-					widget.find('.ui-multiselect-checkboxes li:last')
-						.addClass('last')
-						.siblings().removeClass('last');
-					if (flag) {
-						$(selectItem).multiselect('uncheckAll');
-						$(selectItem)
-							.multiselect('widget')
-							.find('.ui-state-active')
-							.removeClass('ui-state-active')
-							.find('input')
-							.removeAttr('checked');
-					}
-				},
-				selectedText: function (number, total, checked) {
-					var checkedText = checked[0].title;
-					return checkedText;
-				},
-				position: {
-					my: 'left top',
-					at: 'left bottom',
-					using: function (position, feedback) {
-						addPositionClass(position, feedback, $(this));
-					}
-				}
-			});
-		});
-		$(window).resize(selectResize);
-	}
-}
-
-function selectResize() {
-	if (selectArray.length) {
-		$.each(selectArray, function (i, el) {
-			var checked = $(el).multiselect('getChecked');
-			var flag = true;
-			if (!checked.length) {
-				flag = false
-			}
-			$(el).multiselect('refresh');
-			if (!flag) {
-				$(el).multiselect('uncheckAll');
-				$(el)
-					.multiselect('widget')
-					.find('.ui-state-active')
-					.removeClass('ui-state-active')
-					.find('input')
-					.removeAttr('checked');
-			}
-			$(el).multiselect('close');
-		});
-	}
-}
-
 function customSelect(select) {
-	select.select2({
-		language: "ru",
-		width: '100%',
-		containerCssClass: 'cselect-head',
-		dropdownCssClass: 'cselect-drop'
-	});
+	$.each(select, function () {
+		var $thisSelect = $(this);
+		var placeholder = $thisSelect.attr('data-placeholder') || '';
+		$thisSelect.select2({
+			language: "ru",
+			width: '100%',
+			containerCssClass: 'cselect-head',
+			dropdownCssClass: 'cselect-drop',
+			placeholder: placeholder
+		});
+	})
 }
 /* Multiselect init end */
 
@@ -1686,46 +1591,91 @@ function datePickerInit() {
 		'class': "datepicker-overlay"
 	});
 
-	var calendar = $('.news-date').flatpickr({
-		"locale": "ru",
-		// mode: "range",
-		defaultDate: 'today',
-		altInput: true,
-		clickopens: false,
-		wrap: true,
-		altFormat: 'd M. Y',
-		maxDate: 'today',
-		disableMobile: false,
-		onValueUpdate: function() {
-			$(this.element).find('.news-date-output-js').find('span').text($(this.altInput).val());
-		},
-		onOpen: function() {
-			if (DESKTOP) {
-				$(this.calendarContainer).before(datepickerOverlay.clone());
-				setTimeout(function () {
-					$('html').addClass('datepicker-overlay-is-visible');
-				}, 10);
+	var $newsDate = $('.news-date');
+	if($newsDate) {
+		var calendar = $newsDate.flatpickr({
+			"locale": "ru",
+			// mode: "range",
+			defaultDate: 'today',
+			altInput: true,
+			clickopens: false,
+			wrap: true,
+			altFormat: 'd M. Y',
+			maxDate: 'today',
+			disableMobile: false,
+			onValueUpdate: function() {
+				$(this.element).find('.news-date-output-js').find('span').text($(this.altInput).val());
+			},
+			onOpen: function() {
+				if (DESKTOP) {
+					$(this.calendarContainer).before(datepickerOverlay.clone());
+					setTimeout(function () {
+						$('html').addClass('datepicker-overlay-is-visible');
+					}, 10);
+				}
+			},
+			onClose: function() {
+				if (DESKTOP) {
+					$('html').removeClass('datepicker-overlay-is-visible');
+					setTimeout(function () {
+						$('.datepicker-overlay').remove();
+					}, 200);
+				}
+			},
+			onChange: function () {
+				$(this.element).find('.news-date-output-js').find('span').text($(this.altInput).val());
 			}
-		},
-		onClose: function() {
-			if (DESKTOP) {
-				$('html').removeClass('datepicker-overlay-is-visible');
-				setTimeout(function () {
-					$('.datepicker-overlay').remove();
-				}, 200);
-			}
-		},
-		onChange: function () {
-			$(this.element).find('.news-date-output-js').find('span').text($(this.altInput).val());
-		}
-	});
+		});
+	}
 
 	$('body').on('click', '.datepicker-overlay', function () {
-		// console.log(2);
 		if($('html').hasClass('extra-popup-opened')) {
 			calendar.close();
 		}
-	})
+	});
+
+	var $customDate = $('.custom-date');
+	if($customDate) {
+		$customDate.flatpickr({
+			"locale": "ru",
+			// defaultDate: 'today',
+			altInput: true,
+			clickopens: false,
+			// wrap: true,
+			altFormat: 'd M. Y',
+			maxDate: 'today',
+			disableMobile: false
+		});
+	}
+
+	var $customDateFrom = $('.custom-date--from');
+	var $customDateTo = $('.custom-date--to');
+	var $customDateContainer = $customDateFrom.closest('.form-row');
+	
+	if($customDateFrom) {
+		$.each($customDateContainer, function () {
+			var $thisContainer = $(this);
+			var dateFrom, dateTo;
+
+			console.log("$thisContainer.find('.custom-date--from'): ", $thisContainer.find('.custom-date--from'));
+
+			dateFrom = $thisContainer.find($customDateFrom).flatpickr({
+				// minDate: 'today',
+				onChange: function (el, date) {
+					console.log("dateTo: ", dateTo);
+					// console.log("new Date().fp_incr(1): ", new Date(el).fp_incr(1));
+					dateTo.set("minDate", date)
+				}
+			});
+
+			dateTo = $thisContainer.find($customDateTo).flatpickr({
+				// minDate: 'today',
+				onChange: function (el, date) {
+					dateFrom.set("maxDate", date)
+				}
+			});
+		});
+	}
 }
 /*datepicker initial end*/
 

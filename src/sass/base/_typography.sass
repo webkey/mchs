@@ -526,3 +526,36 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		position: absolute
 		right: 0
 		top: 0
+
+h3
+	position: relative
+
+	a
+		color: inherit
+		text-decoration: none
+
+.hash-anchor
+	width: 100%
+	display: block
+	position: absolute
+	left: 0
+	top: 0
+	margin-top: -100px
+
+	&::before
+		+pseudo()
+		right: 100%
+		top: 4px
+		margin-right: 10px
+		margin-top: 100px
+		+size(15px, 20px)
+		background-repeat: no-repeat
+		background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAArCAYAAAD2f+EJAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MDI4REUwNTY0MDZDMTFFNzk2MzBGMTgxM0Y3M0IxOEMiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MDI4REUwNTc0MDZDMTFFNzk2MzBGMTgxM0Y3M0IxOEMiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMjhERTA1NDQwNkMxMUU3OTYzMEYxODEzRjczQjE4QyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDowMjhERTA1NTQwNkMxMUU3OTYzMEYxODEzRjczQjE4QyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Ps1gPw4AAAGxSURBVHja7JjRbcJADIbT6N6bDbgNkg2abtANYIQ+Jk/kLa+M0A3aDZpsQDY4NoAJ6EUCCZ1sx/YdFQ9YOqQYEn3n+Ld9vDRNkzGt8OsT+e7LLwf468uCrJs/+r7PTMa3yq8tAQHZxq814B9vL3IBBLajExKFKzhkey0E64GBlf8FMQgjFwWxQvzSV6GGYO+KATGGjjzyVVAQlhu5WIiRuOeNC53fSRmiyHEhyoQQgwaCSkqpMibIaYJavs1k9iv8/RzR862jbVtRnbibPSEeCsIEM8EAKANL1nfEv0MkPWFDkQnk5pjyPBDds0D8P9A982SVK2uEIwBW0rljCcIKZ4hKUdhICM2uNN2WhNA8UNNt1RBRg20KiFHRbd1SneiEyiiQe4qFDXVAcg9XCGnnLIkdY7amVPbsHQ/XwEYkkV6RnuGQpCyJke5IKcYgKjgTx3noBP7h1zehsqP0ddiEReqwBIBBiMZ1ZbdVQ0wJu+0iRC2s/6oZQhuJ6L8AuBAWkaYmH07anLAJZwhWFCCIWiG1KiYpIQhpPkQnpQQi6WBLnTtm2wgfuCcOQexI/AkwAD+DY70+tUz3AAAAAElFTkSuQmCC')
+		background-size: contain
+		backface-visibility: hidden
+		opacity: 0
+		transition: opacity $animation-speed
+
+.no-touchevents h3:hover
+	& > .hash-anchor::before
+		opacity: 0.5

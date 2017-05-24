@@ -88,7 +88,54 @@
 				<option value="3">тонувшего мужчину</option>
 				<option value="4">Женщина получила ожоги отдыхая под Витебском.</option>
 			</select>
-			</div>
+		</div>
+	</div>
+	<div class="input-wrap">
+		<div class="label-holder">
+			<label for="multiselect-example">Мультиселект c пелейсхолдером:</label>
+		</div>
+		<div class="select">
+			<select class="cselect" id="multiselect-example" multiple data-placeholder="Выберите несколько вариантов">
+				<option value="0">В Островецком</option>
+				<option value="1">районе работники</option>
+				<option value="2">МЧС спасли</option>
+				<option value="3">тонувшего мужчину</option>
+				<option value="4">Женщина получила ожоги отдыхая под Витебском.</option>
+			</select>
+		</div>
+	</div>
+	<div class="input-wrap" style="width: 200px;">
+		<div class="label-holder">
+			<label for="date-example-01">Выбрать дату:</label>
+		</div>
+		<input class="custom-date" type="text" placeholder="Выбирите дату" id="date-example-01"/>
+	</div>
+	<div class="input-wrap" style="width: 200px;">
+		<div class="label-holder">
+			<label for="date-example-02">Выбрать дату:</label>
+		</div><input class="custom-date" type="text" placeholder="Выбирите дату" id="date-example-02"/>
+	</div>
+	<div class="label-holder">
+		<label for="date-example-03">Дата начала и конца события (1):</label>
+	</div>
+	<div class="form-row">
+		<div class="input-wrap">
+			<input class="custom-date--from" type="text" placeholder="Дата начала" id="date-example-03"/>
+		</div>
+		<div class="input-wrap">
+			<input class="custom-date--to" type="text" placeholder="Дата конца"/>
+		</div>
+	</div>
+	<div class="label-holder">
+		<label for="date-example-04">Дата начала и конца события (2):</label>
+	</div>
+	<div class="form-row">
+		<div class="input-wrap">
+			<input class="custom-date--from" type="text" placeholder="Дата начала" id="date-example-04"/>
+		</div>
+		<div class="input-wrap">
+			<input class="custom-date--to" type="text" placeholder="Дата конца"/>
+		</div>
 	</div>
 	<div class="input-wrap">
 		<div class="label-holder">
