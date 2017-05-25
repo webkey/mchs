@@ -7,14 +7,24 @@
 .sidebar-top
 	z-index: 30
 
+.sidebar-top__holder
+	position: relative
+	padding: 16px 0
+	border-bottom: 1px solid $bg-color
+	background: white
+
 /*sidebar top end*/
 
 /*sidebar-menu*/
+.sidebar-menu-wrap
+	overflow: hidden
+	position: relative
+
 .sidebar-menu
 	background: white
-	padding: 16px 0
+	position: relative
+
 	//border-top: 1px solid $bg-color
-	border-bottom: 1px solid $bg-color
 
 	a
 		display: block
@@ -48,6 +58,44 @@
 		&.active-section::before
 			opacity: 1
 			visibility: visible
+
+.nav-menu-opener
+	position: absolute
+	top: 0
+	right: 0
+	+size(70px, 36px)
+	cursor: pointer
+	z-index: 99
+
+	&::before
+		+pseudo()
+		top: 0
+		right: 0
+		+size(70px, 100%)
+		+linear-gradient(to left, white 0%, white 80%, rgba(255, 255, 255, 0) 100%)
+
+	i
+		$menu-opener-icon-height: 8px
+
+		position: absolute
+		right: #{$grid-inside-horizontal-space + 6}
+		top: 50%
+		+size(10px, $menu-opener-icon-height)
+		margin-top: -#{round($menu-opener-icon-height*0.5)}
+
+		&::after
+			+pseudo()
+
+		&::after
+			bottom: 0
+			left: 0
+			+triangle(top, $text-color-light, 5px, 1.5)
+
+	.short-view &
+		+size(100%)
+
+		i::after
+			transform: rotate(0.5turn)
 
 /*sidebar-menu end*/
 
@@ -83,13 +131,13 @@
 		width: 100%
 		height: 30px
 		pointer-events: none
-		opacity: 0
-		visibility: hidden
+		//opacity: 0
+		//visibility: hidden
 		+linear-gradient(to bottom, white 0, rgba(255, 255, 255, 0) 100%)
 		transition-property: opacity, visibility
 		transition-duration: $animation-speed
 
-	&.is_stuck::after
+	//.sidebar-top.is_stuck &::after
 		opacity: 1
 		visibility: visible
 
@@ -110,6 +158,7 @@
 		overflow: hidden
 		font-size: 0
 		line-height: 0
+		z-index: 1
 
 		svg
 			display: block

@@ -112,38 +112,6 @@
 </div>
 <!--map site end-->
 
-<!--search popup-->
-<div class="extra-popup popup-search hide-on-load popup-search-js">
-	<div class="extra-popup__holder">
-		<div class="extra-popup__frame">
-			<div class="extra-popup__align user-content">
-				<div class="popup-label">Что вы ищите?</div>
-				<!-- search form -->
-				<div class="search-form">
-					<form action="#" method="get">
-						<div class="search-form__field js-field-effects">
-							<input class="search-form__input" type="search" id="search-form-field" placeholder="Введите текст для поиска">
-							<!--
-							<div class="search-form__label">
-								<label for="search-form-field"> <span>...</span></label>
-							</div>
-							-->
-							<div class="search-form__btn">
-								<svg xmlns="http://www.w3.org/2000/svg" version="1.1" x="0px" y="0px" viewBox="30.6 44.1 550.8 550.8" enable-background="new 30.6 44.1 550.8 550.8"> <path d="M570.4,531L459.9,420.4c67.4-92.7,59.2-223.3-24.4-306.9c-46.3-46.3-107-69.5-167.7-69.5s-121.4,23.2-167.7,69.5  c-92.6,92.6-92.6,242.8,0,335.4c46.3,46.3,107,69.5,167.7,69.5c48.9,0,97.8-15,139.1-45.1l110.5,110.5c7.3,7.3,16.9,11,26.5,11  c9.6,0,19.2-3.7,26.5-11C585.1,569.3,585.1,545.6,570.4,531z M398.4,411.9c-34.9,34.9-81.3,54.1-130.6,54.1  c-49.4,0-95.7-19.2-130.6-54.1c-72-72-72-189.3,0-261.3c34.9-34.9,81.3-54.1,130.6-54.1s95.8,19.2,130.6,54.1  C470.5,222.7,470.5,339.9,398.4,411.9z"/> </svg>
-								<span>Искать</span>
-								<input type="submit" value="">
-							</div>
-						</div>
-					</form>
-				</div>
-				<!--search form end-->
-			</div>
-			<a href="#" class="btn-popup-close btn-popup-close-js"><i></i><span>Закрыть</span></a>
-		</div>
-	</div>
-</div>
-<!--search popup end-->
-
 <!--popup banners-->
 <div class="popup-banners hide-on-load popup-banners-js">
 	<div class="popup-banners__holder">
