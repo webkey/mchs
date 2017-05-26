@@ -385,6 +385,7 @@ function scrollToSection() {
 	var $wrap = $('.sidebar-menu-wrap-js');
 	var activeClass = 'short-view';
 	var classIcon = 'nav-menu-opener';
+	var timeout;
 
 	var $tplOpener = $('<div class="'+classIcon+'"><i>&nbsp;</i></div>');
 	$tplOpener.clone().appendTo($wrap);
@@ -419,10 +420,13 @@ function scrollToSection() {
 			// console.log("$wrap.top: ", $currentItem.position().top);
 
 			if(currentScrollTop >= minScrollTop) {
+				clearTimeout(timeout);
 				$wrap.addClass(activeClass).css('height', $currentItem.outerHeight());
-				TweenMax.set($wrap.find('.sidebar-menu-js'), {
-					y: -$currentItem.position().top
-				});
+				timeout = setTimeout(function () {
+					TweenMax.set($wrap.find('.sidebar-menu-js'), {
+						y: -$currentItem.position().top
+					});
+				}, 100);
 			} else {
 				$wrap.removeClass(activeClass).css('height', 'auto');
 			}

@@ -85,11 +85,14 @@
 
 		&::after
 			+pseudo()
-
-		&::after
 			bottom: 0
 			left: 0
 			+triangle(top, $text-color-light, 5px, 1.5)
+			transition-property: border-color
+			transition-duration: $animation-speed
+
+	.no-touchevents &:hover i::after
+		border-bottom-color: $text-color-alt
 
 	.short-view &
 		+size(100%)
