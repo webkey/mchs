@@ -7,37 +7,149 @@ var docElem = window.document.documentElement,
 	scrollPosition;
 
 function noScrollFn() {
-	window.scrollTo( scrollPosition ? scrollPosition.x : 0, scrollPosition ? scrollPosition.y : 0 );
+	window.scrollTo(scrollPosition ? scrollPosition.x : 0, scrollPosition ? scrollPosition.y : 0);
 }
 
 function noScroll() {
-	window.removeEventListener( 'scroll', scrollHandler );
-	window.addEventListener( 'scroll', noScrollFn );
+	window.removeEventListener('scroll', scrollHandler);
+	window.addEventListener('scroll', noScrollFn);
 }
 
 function scrollFn() {
-	window.addEventListener( 'scroll', scrollHandler );
+	window.addEventListener('scroll', scrollHandler);
 }
 
 function canScroll() {
-	window.removeEventListener( 'scroll', noScrollFn );
+	window.removeEventListener('scroll', noScrollFn);
 	scrollFn();
 }
 
 function scrollHandler() {
-	if( !didScroll ) {
+	if (!didScroll) {
 		didScroll = true;
-		setTimeout( function() { scrollPage(); }, 60 );
+		setTimeout(function () {
+			scrollPage();
+		}, 60);
 	}
 }
 
 function scrollPage() {
-	scrollPosition = { x : window.pageXOffset || docElem.scrollLeft, y : window.pageYOffset || docElem.scrollTop };
+	scrollPosition = {
+		x: window.pageXOffset || docElem.scrollLeft,
+		y: window.pageYOffset || docElem.scrollTop
+	};
 	didScroll = false;
 }
 
 scrollFn();
 /*js scroll page lock end*/
+
+/**
+ * !cookie
+ * */
+function setCookie(name, value, options) {
+	// https://learn.javascript.ru/cookie
+	options = options || {};
+
+	var expires = options.expires;
+
+	if (typeof expires === "number" && expires) {
+		var d = new Date();
+		d.setTime(d.getTime() + expires * 1000);
+		expires = options.expires = d;
+	}
+	if (expires && expires.toUTCString) {
+		options.expires = expires.toUTCString();
+	}
+
+	value = encodeURIComponent(value);
+
+	var updatedCookie = name + "=" + value;
+
+	for (var propName in options) {
+		updatedCookie += "; " + propName;
+		var propValue = options[propName];
+		if (propValue !== true) {
+			updatedCookie += "=" + propValue;
+		}
+	}
+
+	document.cookie = updatedCookie;
+}
+
+function getCookie(name) {
+	// https://learn.javascript.ru/cookie
+	var matches = document.cookie.match(new RegExp(
+		"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+	));
+	return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+/*cookie end*/
+
+/**
+ * !switch special version
+ * */
+function switchSpecialVersion() {
+	$('body').on('click', '.cecutient-version-toggle-js', function (e) {
+		e.preventDefault();
+
+		toggleSpecialVersion();
+	});
+}
+/*switch special version end*/
+
+/**
+ * !toggle special version
+ * */
+function toggleSpecialVersion() {
+
+	var $cecutientCssLink = $('#cecutient-css-link');
+	var $body = $('body');
+	var path = cssPath || 'css/';
+
+	console.log("path: ", path);
+
+	if ($cecutientCssLink.length) {
+
+		$cecutientCssLink.remove();
+
+		setCookie('cecutientVersion', false, {
+			// expires: expiresValue,
+			// domain: "localhost:3000",
+			path: "/"
+		});
+
+		$body.removeClass('cecutient-version');
+		$body.removeClass('color-scheme-bw');
+
+	} else {
+		setCookie('cecutientVersion', true, {
+			// expires: expiresValue,
+			// domain: "localhost:3000",
+			path: "/"
+		});
+
+		$('<link/>', {
+			id: 'cecutient-css-link',
+			rel: 'stylesheet',
+			href: path + 'cecutient.css'
+		}).appendTo('head');
+
+		$body.addClass('cecutient-version');
+		$body.addClass('color-scheme-bw');
+	}
+}
+/*toggle special version end*/
+
+/**
+ * !check cecutient version cookie
+ */
+function checkCecutientVersionCookie() {
+	if (getCookie('cecutientVersion') === 'true' && !$('#cecutient-css-link').length) {
+		toggleSpecialVersion();
+	}
+}
+/*check cecutient version cookie end*/
 
 /**
  * !resize only width
@@ -48,7 +160,7 @@ var prevWidth = -1;
 $(window).resize(function () {
 	var currentWidth = $('body').outerWidth();
 	resizeByWidth = prevWidth !== currentWidth;
-	if(resizeByWidth){
+	if (resizeByWidth) {
 		$(window).trigger('resizeByWidth');
 		prevWidth = currentWidth;
 	}
@@ -69,7 +181,7 @@ var TABLET = device.tablet();
 /**
  * !placeholder
  * */
-function placeholderInit(){
+function placeholderInit() {
 	$('[placeholder]').placeholder();
 }
 /*placeholder end*/
@@ -81,22 +193,22 @@ function inputToggleFocusClass() {
 	var $fieldWrap = $('.input-wrap');
 
 	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find( "input, textarea, select" );
+		var $inputsAll = $fieldWrap.find("input, textarea, select");
 		var _classFocus = 'input--focus';
 
-		$inputsAll.focus(function() {
+		$inputsAll.focus(function () {
 			var $thisField = $(this);
 
 			$thisField
-			.closest($fieldWrap)
-			.addClass(_classFocus);
+				.closest($fieldWrap)
+				.addClass(_classFocus);
 
-		}).blur(function() {
+		}).blur(function () {
 			var $thisField = $(this);
 
 			$thisField
-			.closest($fieldWrap)
-			.removeClass(_classFocus);
+				.closest($fieldWrap)
+				.removeClass(_classFocus);
 		});
 	}
 }
@@ -105,7 +217,7 @@ function inputHasValueClass() {
 	var $fieldWrap = $('.input-wrap');
 
 	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find( 'input[type="email"], input[type="search"], :text, textarea, select' );
+		var $inputsAll = $fieldWrap.find('input[type="email"], input[type="search"], :text, textarea, select');
 		var _classHasValue = 'has--value';
 
 		function switchHasValue() {
@@ -134,23 +246,23 @@ function inputFilledClass() {
 	var $fieldWrap = $('.js-field-effects');
 
 	if ($fieldWrap.length) {
-		var $inputsAll = $fieldWrap.find( 'input[type="email"], input[type="search"], :text, textarea, select' );
+		var $inputsAll = $fieldWrap.find('input[type="email"], input[type="search"], :text, textarea, select');
 		var _classFilled = 'input--filled';
 
-		$inputsAll.focus(function() {
+		$inputsAll.focus(function () {
 			var $thisField = $(this);
 
 			$thisField
-			.closest($fieldWrap)
-			.addClass(_classFilled);
+				.closest($fieldWrap)
+				.addClass(_classFilled);
 
-		}).blur(function() {
+		}).blur(function () {
 			var $thisField = $(this);
 
 			if ($thisField.val() == '') {
 				$thisField
-				.closest($fieldWrap)
-				.removeClass(_classFilled);
+					.closest($fieldWrap)
+					.removeClass(_classFilled);
 			}
 		});
 
@@ -209,10 +321,10 @@ function printShow() {
 /**
  * !toggle header
  * */
-function toggleHeader(){
+function toggleHeader() {
 	// external js:
 	// 1) debouncedresize (lib.min.js);
-	// 1) TweenMax (lib.min.js);
+	// 2) TweenMax (lib.min.js);
 
 	var $page = $('html');
 	var $header = $('.header');
@@ -239,13 +351,13 @@ function toggleHeader(){
 /**
  * !fixed header
  * */
-function fixedHeader(){
+function fixedHeader() {
 	// external js:
 	// 1) resizeByWidth (resize only width);
 
 	var $fixedElement = $('.header');
 
-	if ( $fixedElement.length ) {
+	if ($fixedElement.length) {
 		var $page = $('html');
 		// var $parent = $fixedElement.parent();
 		// var $window = $(window);
@@ -342,7 +454,7 @@ function behaviorLogoOnScroll() {
 				height: actualSize
 			});
 		} else {
-			if(scrollTop > 0) {
+			if (scrollTop > 0) {
 				$transformElement.css('height', limitSize)
 			} else {
 				$transformElement.css('height', heightHeight)
@@ -362,7 +474,7 @@ function scrollToSection() {
 	// 3) TweenMax (lib.min.js);
 	var activeSectionClass = 'active-section';
 
-	$(window).on("load",function(){
+	$(window).on("load", function () {
 
 		setTimeout(function () {
 			/* Page Scroll to id fn call */
@@ -387,7 +499,7 @@ function scrollToSection() {
 	var classIcon = 'nav-menu-opener';
 	var timeout;
 
-	var $tplOpener = $('<div class="'+classIcon+'"><i>&nbsp;</i></div>');
+	var $tplOpener = $('<div class="' + classIcon + '"><i>&nbsp;</i></div>');
 	$tplOpener.clone().appendTo($wrap);
 
 	$wrap.on('click', '.' + classIcon, function () {
@@ -413,13 +525,13 @@ function scrollToSection() {
 		var currentScrollTop = $(window).scrollTop();
 		var minScrollTop = $header.outerHeight() - $headerTop.outerHeight();
 
-		if($wrap.length) {
+		if ($wrap.length) {
 			var $currentItem = getActiveItem();
 
 			// console.log("$item.length > 1: ", $item.length > 0);
 			// console.log("$wrap.top: ", $currentItem.position().top);
 
-			if(currentScrollTop >= minScrollTop) {
+			if (currentScrollTop >= minScrollTop) {
 				clearTimeout(timeout);
 				$wrap.addClass(activeClass).css('height', $currentItem.outerHeight());
 				timeout = setTimeout(function () {
@@ -452,7 +564,7 @@ function scrollToSection() {
 			container: 'ul',
 			item: 'li',
 			drop: 'ul'
-		},settings || {});
+		}, settings || {});
 
 		var self = this;
 		self.options = options;
@@ -488,29 +600,31 @@ function scrollToSection() {
 
 		if (!DESKTOP) {
 
-			$container.on('click', ''+item+'', function (e) {
+			$container.on('click', '' + item + '', function (e) {
 				var $currentAnchor = $(this);
 				var currentItem = $currentAnchor.closest($item);
 
-				if (!currentItem.has(self.$drop).length){ return; }
-
-				e.stopPropagation();
-
-				if (currentItem.hasClass(_hover)){
-					currentItem.removeClass(_hover).find('.'+_hover+'').removeClass(_hover);
+				if (!currentItem.has(self.$drop).length) {
 					return;
 				}
 
-				$('.'+_hover+' ').not($currentAnchor.parents('.'+_hover+''))
+				e.stopPropagation();
+
+				if (currentItem.hasClass(_hover)) {
+					currentItem.removeClass(_hover).find('.' + _hover + '').removeClass(_hover);
+					return;
+				}
+
+				$('.' + _hover + ' ').not($currentAnchor.parents('.' + _hover + ''))
 					.removeClass(_hover)
-					.find('.'+_hover+' ')
+					.find('.' + _hover + ' ')
 					.removeClass(_hover);
 				currentItem.addClass(_hover);
 
 				e.preventDefault();
 			});
 
-			$container.on('click', ''+self.options.drop+'', function (e) {
+			$container.on('click', '' + self.options.drop + '', function (e) {
 				e.stopPropagation();
 			});
 
@@ -519,7 +633,7 @@ function scrollToSection() {
 			});
 
 		} else {
-			$container.on('mouseenter', ''+item+'', function () {
+			$container.on('mouseenter', '' + item + '', function () {
 
 				var currentItem = $(this);
 
@@ -533,7 +647,7 @@ function scrollToSection() {
 					currentItem.prev().addClass(_hoverPrev);
 				}, 50));
 
-			}).on('mouseleave', ''+ item+'', function () {
+			}).on('mouseleave', '' + item + '', function () {
 
 				var currentItem = $(this);
 
@@ -554,21 +668,21 @@ function scrollToSection() {
 
 	HoverClass.prototype.removeClassHover = function () {
 		var self = this;
-		self.$item.removeClass(self.modifiers.hover );
+		self.$item.removeClass(self.modifiers.hover);
 	};
 
 	window.HoverClass = HoverClass;
 
 }(jQuery));
 
-function hoverClassInit(){
-	if($('.nav').length){
+function hoverClassInit() {
+	if ($('.nav').length) {
 		new HoverClass({
 			container: ('.nav'),
 			drop: '.nav-drop-js'
 		});
 	}
-	if($('.header__contacts').length){
+	if ($('.header__contacts').length) {
 		new HoverClass({
 			container: ('.header__contacts')
 		});
@@ -590,7 +704,7 @@ function hoverClassInit(){
 			navList: null,
 			navMenuItem: 'li',
 			navDropMenu: '.nav-drop-js'
-		},settings || {});
+		}, settings || {});
 
 		this.options = options;
 
@@ -619,10 +733,10 @@ function hoverClassInit(){
 		var navContainerPosRight = $('body').outerWidth();
 		var navDropPosRight = drop.offset().left + drop.outerWidth();
 
-		if(navContainerPosRight < navDropPosRight){
+		if (navContainerPosRight < navDropPosRight) {
 			item.addClass(alightRightClass);
 		}
-		
+
 		// for align bottom
 		var navContainerPosBottom = $(window).height();
 		var dropHeight = drop.outerHeight();
@@ -632,8 +746,8 @@ function hoverClassInit(){
 		// console.log("dropHeight: ", dropHeight);
 		// console.log("navDropPosBottom: ", navDropPosBottom);
 
-		if(navContainerPosBottom < navDropPosBottom){
-			if(navContainerPosBottom < 500) {
+		if (navContainerPosBottom < navDropPosBottom) {
+			if (navContainerPosBottom < 500) {
 				return;
 			}
 			item.addClass(alightBottomClass);
@@ -645,11 +759,11 @@ function hoverClassInit(){
 			$navContainer = self.$navContainer,
 			navMenuItem = self.options.navMenuItem;
 
-		$navContainer.on('click', ''+navMenuItem+'', function () {
+		$navContainer.on('click', '' + navMenuItem + '', function () {
 			var $this = $(this);
 			var $drop = $this.find(self.$navDropMenu);
 
-			if ( !device.desktop() && $drop.length) {
+			if (!device.desktop() && $drop.length) {
 				self.createAlignDropClass($this, $drop);
 			}
 		});
@@ -658,7 +772,7 @@ function hoverClassInit(){
 			var $this = $(this);
 			var $drop = $this.find(self.$navDropMenu);
 
-			if ( device.desktop() && $drop.length) {
+			if (device.desktop() && $drop.length) {
 				self.createAlignDropClass($this, $drop);
 			}
 		});
@@ -670,8 +784,8 @@ function hoverClassInit(){
 			alightBottomClass = self.modifiers.alignBottom;
 
 		$(window).on('debouncedresize', function () {
-			self.$navMenuItem.removeClass(alightRightClass );
-			self.$navMenuItem.removeClass(alightBottomClass );
+			self.$navMenuItem.removeClass(alightRightClass);
+			self.$navMenuItem.removeClass(alightBottomClass);
 		});
 	};
 
@@ -679,10 +793,10 @@ function hoverClassInit(){
 
 }(jQuery));
 
-function addAlignClass(){
+function addAlignClass() {
 	var $nav = $('.nav');
 
-	if($nav.length){
+	if ($nav.length) {
 		new PositionDropMenu({
 			navContainer: '.nav',
 			navList: '.nav__list',
@@ -775,7 +889,7 @@ function navExpander() {
 	MultiAccordion.prototype.totalCollapsibleOnResize = function () {
 		var self = this;
 		$(window).on('resize', function () {
-			if(self._resizeCollapsible){
+			if (self._resizeCollapsible) {
 				self.$panel.slideUp(self._animateSpeed, function () {
 					self.$container.trigger('accordionChange');
 				});
@@ -796,16 +910,16 @@ function navExpander() {
 			// console.log("$currentHandler: ", $currentHandler);
 			var $currentItem = $currentHandler.closest($item);
 
-			if ($currentItem.has($(panel)).length){
+			if ($currentItem.has($(panel)).length) {
 				e.preventDefault();
 
-				if ($currentHandler.next(panel).is(':visible')){
+				if ($currentHandler.next(panel).is(':visible')) {
 					self.closePanel($currentItem);
 
 					return;
 				}
 
-				if (self.options.collapsibleAll){
+				if (self.options.collapsibleAll) {
 					self.closePanel($($container).not($currentHandler.closest($container)).find($item));
 				}
 
@@ -833,7 +947,7 @@ function navExpander() {
 			.removeClass(openClass);
 	};
 
-	MultiAccordion.prototype.openPanel = function($currentItem, $currentHandler) {
+	MultiAccordion.prototype.openPanel = function ($currentItem, $currentHandler) {
 		var self = this;
 		var panel = self.options.panel;
 
@@ -855,7 +969,7 @@ function multiAccordionInit() {
 	var regionMenu = '.region-menu-js';
 	var regionMenuChangeTimeout;
 
-	if($(regionMenu).length){
+	if ($(regionMenu).length) {
 		new MultiAccordion({
 			container: regionMenu,
 			item: 'li',
@@ -878,7 +992,7 @@ function multiAccordionInit() {
 
 	var navMobile = '.nav-mobile-js';
 
-	if($(navMobile).length){
+	if ($(navMobile).length) {
 		new MultiAccordion({
 			container: navMobile,
 			item: 'li',
@@ -893,7 +1007,7 @@ function multiAccordionInit() {
 
 	var faq = '.expander-js';
 
-	if($(faq).length){
+	if ($(faq).length) {
 		new MultiAccordion({
 			container: faq,
 			item: '.expander-item-js',
@@ -966,7 +1080,7 @@ function toggleDrop() {
 
 			e.stopPropagation();
 
-			if($currentContainer.hasClass(openClass)) {
+			if ($currentContainer.hasClass(openClass)) {
 				$currentContainer.removeClass(openClass);
 				return;
 			}
@@ -1045,9 +1159,9 @@ function tabSwitcher() {
 	var $tabWrapper = $('.js-tabs');
 	var $container = $('.js-tab-container');
 
-	if ( !$container.length ) return false;
+	if (!$container.length) return false;
 
-	if($tabWrapper.length){
+	if ($tabWrapper.length) {
 		var $anchor = $('.js-tab-anchor'),
 			$content = $('.js-tab-content'),
 			activeClass = 'active-tab',
@@ -1136,7 +1250,7 @@ function tabSwitcher() {
 					// ,'z-index': -1
 				});
 
-				if ( arguments[0] === false ) return;
+				if (arguments[0] === false) return;
 
 				var $initialContent = $thisContent.filter('[id="' + initialTab + '"]');
 
@@ -1152,7 +1266,7 @@ function tabSwitcher() {
 			function changeHeightContainer() {
 				var $initialContent = $thisContent.filter('[id="' + initialTab + '"]');
 
-				if ( arguments[0] === false ) {
+				if (arguments[0] === false) {
 					TweenMax.to($thisContainer, animationHeightSpeed, {
 						'height': 0
 					});
@@ -1184,7 +1298,7 @@ function tabSwitcher() {
 			}
 
 			// toggle class active
-			function toggleActiveClass(){
+			function toggleActiveClass() {
 				$thisAnchor.removeClass(activeClass);
 				$thisContent.removeClass(activeClass);
 
@@ -1235,7 +1349,7 @@ function slidersInit() {
 	//images slider
 	var $imagesSlider = $('.images-slider__list');
 
-	if($imagesSlider.length){
+	if ($imagesSlider.length) {
 		var slideCounterTpl = '' +
 			'<div class="slider-counter">' +
 			'<span class="slide-curr">0</span>/<span class="slide-total">0</span>' +
@@ -1257,7 +1371,7 @@ function slidersInit() {
 
 			$currentSlider.slick({
 				// fade: true,
-				speed: dur  ,
+				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
 				// initialSlide: 2,
@@ -1271,7 +1385,7 @@ function slidersInit() {
 
 				$slideTitle.hide();
 				$slideTitle.eq(nextSlider).fadeIn(dur);
-			}).on('afterChange reInit', function(event, slick, currentSlide, nextSlide) {
+			}).on('afterChange reInit', function (event, slick, currentSlide, nextSlide) {
 				// $('.slide-curr', $(slick.$slider)).text(currentSlide + 1);
 				//
 				// $slideTitle.hide();
@@ -1284,7 +1398,7 @@ function slidersInit() {
 	/*gov slider*/
 	var $govSlider = $('.gov__list');
 
-	if($govSlider.length){
+	if ($govSlider.length) {
 
 		$govSlider.each(function () {
 			var $currentSlider = $(this);
@@ -1296,7 +1410,7 @@ function slidersInit() {
 				});
 			}).slick({
 				fade: false,
-				speed: dur  ,
+				speed: dur,
 				slidesToShow: 7,
 				slidesToScroll: 7,
 				autoplay: true,
@@ -1365,7 +1479,7 @@ function slidersInit() {
 	/*promo slider*/
 	var $promoSlider = $('.promo-slider');
 
-	if($promoSlider.length){
+	if ($promoSlider.length) {
 
 		$promoSlider.each(function () {
 			var $currentSlider = $(this);
@@ -1391,7 +1505,7 @@ function slidersInit() {
 	/*infoblock slider*/
 	var $infoblockSlider = $('.infoblock__list');
 
-	if($infoblockSlider.length){
+	if ($infoblockSlider.length) {
 
 		$infoblockSlider.each(function () {
 			var $currentSlider = $(this);
@@ -1442,7 +1556,7 @@ function slidersInit() {
 	/*news grid slider*/
 	var $newsGridSlider = $('.news-grid-slider');
 
-	if($newsGridSlider.length){
+	if ($newsGridSlider.length) {
 
 		$newsGridSlider.each(function () {
 			var $currentSlider = $(this);
@@ -1547,7 +1661,7 @@ function slidersInit() {
 				infinite: infinite,
 				dots: false,
 				arrows: false
-			}).on('beforeChange', function(event, target, currentSlide, nextSlide){
+			}).on('beforeChange', function (event, target, currentSlide, nextSlide) {
 				addCurrentClass(nextSlide);
 			});
 
@@ -1605,7 +1719,9 @@ function equalHeightInit() {
 
 		function setHeight(el) {
 			el.css('height', 'auto');
-			var height = Math.max.apply(Math,el.map(function(){return $(this).outerHeight();}).get());
+			var height = Math.max.apply(Math, el.map(function () {
+				return $(this).outerHeight();
+			}).get());
 			el.css('height', height);
 			$.fn.matchHeight._apply($leadItem, leadsMatchHeightOptions)
 		}
@@ -1663,7 +1779,7 @@ function datePickerInit() {
 	});
 
 	var $newsDate = $('.news-date');
-	if($newsDate) {
+	if ($newsDate) {
 		var calendar = $newsDate.flatpickr({
 			"locale": "ru",
 			// mode: "range",
@@ -1674,10 +1790,10 @@ function datePickerInit() {
 			altFormat: 'd M. Y',
 			maxDate: 'today',
 			disableMobile: false,
-			onValueUpdate: function() {
+			onValueUpdate: function () {
 				$(this.element).find('.news-date-output-js').find('span').text($(this.altInput).val());
 			},
-			onOpen: function() {
+			onOpen: function () {
 				if (DESKTOP) {
 					$(this.calendarContainer).before(datepickerOverlay.clone());
 					setTimeout(function () {
@@ -1685,7 +1801,7 @@ function datePickerInit() {
 					}, 10);
 				}
 			},
-			onClose: function() {
+			onClose: function () {
 				if (DESKTOP) {
 					$('html').removeClass('datepicker-overlay-is-visible');
 					setTimeout(function () {
@@ -1700,13 +1816,13 @@ function datePickerInit() {
 	}
 
 	$('body').on('click', '.datepicker-overlay', function () {
-		if($('html').hasClass('extra-popup-opened')) {
+		if ($('html').hasClass('extra-popup-opened')) {
 			calendar.close();
 		}
 	});
 
 	var $customDate = $('.custom-date');
-	if($customDate) {
+	if ($customDate) {
 		$customDate.flatpickr({
 			"locale": "ru",
 			// defaultDate: 'today',
@@ -1722,8 +1838,8 @@ function datePickerInit() {
 	var $customDateFrom = $('.custom-date--from');
 	var $customDateTo = $('.custom-date--to');
 	var $customDateContainer = $customDateFrom.closest('.form-row');
-	
-	if($customDateFrom) {
+
+	if ($customDateFrom) {
 		$.each($customDateContainer, function () {
 			var $thisContainer = $(this);
 			var dateFrom, dateTo;
@@ -1865,7 +1981,7 @@ function datePickerInit() {
 		};
 
 		self.outsideClick();
-		if ( self._mediaWidth === null || window.innerWidth < self._mediaWidth ) {
+		if (self._mediaWidth === null || window.innerWidth < self._mediaWidth) {
 			self.preparationAnimation();
 		}
 		self.toggleMenu();
@@ -1944,7 +2060,7 @@ function datePickerInit() {
 		self.$btnMenuClose.on('click', function (e) {
 			e.preventDefault();
 
-			if ( self.navIsOpened ) {
+			if (self.navIsOpened) {
 				self.closeNav();
 			}
 
@@ -1957,13 +2073,13 @@ function datePickerInit() {
 		var self = this;
 
 		$(document).on('click', function () {
-			if ( self.navIsOpened ) {
+			if (self.navIsOpened) {
 				self.closeNav();
 			}
 		});
 
 		self.$container.on('click', function (e) {
-			if ( self.navIsOpened ) {
+			if (self.navIsOpened) {
 				e.stopPropagation();
 			}
 		});
@@ -1971,7 +2087,7 @@ function datePickerInit() {
 		var stopClose = self.options.stopClose;
 
 		$('body').on('click', stopClose, function (e) {
-			if(stopClose && self.navIsOpened) {
+			if (stopClose && self.navIsOpened) {
 				e.stopPropagation();
 			}
 		});
@@ -1981,7 +2097,7 @@ function datePickerInit() {
 	ExtraPopup.prototype.closeNavOnEsc = function () {
 		var self = this;
 
-		$(document).keyup(function(e) {
+		$(document).keyup(function (e) {
 			if (self.navIsOpened && self.closeEsc && e.keyCode === 27) {
 				self.closeNav();
 			}
@@ -2001,7 +2117,7 @@ function datePickerInit() {
 	};
 
 	// open nav
-	ExtraPopup.prototype.openNav = function() {
+	ExtraPopup.prototype.openNav = function () {
 		// console.log("openNav");
 
 		var self = this,
@@ -2020,7 +2136,7 @@ function datePickerInit() {
 		$buttonMenu.addClass(modifiers.active);
 		$buttonClose.addClass(classBeforeOpen);
 
-		if(self.cssScrollBlocked){
+		if (self.cssScrollBlocked) {
 			self.cssScrollFixed();
 		}
 
@@ -2061,7 +2177,7 @@ function datePickerInit() {
 	};
 
 	// close nav
-	ExtraPopup.prototype.closeNav = function() {
+	ExtraPopup.prototype.closeNav = function () {
 		// console.log("closeNav");
 
 		var self = this,
@@ -2104,7 +2220,7 @@ function datePickerInit() {
 
 					canScroll();
 
-					if(self.cssScrollBlocked){
+					if (self.cssScrollBlocked) {
 						self.cssScrollUnfixed();
 					}
 				}
@@ -2125,7 +2241,7 @@ function datePickerInit() {
 
 					canScroll();
 
-					if(self.cssScrollBlocked){
+					if (self.cssScrollBlocked) {
 						self.cssScrollUnfixed();
 					}
 				}
@@ -2143,7 +2259,7 @@ function datePickerInit() {
 
 					canScroll();
 
-					if(self.cssScrollBlocked){
+					if (self.cssScrollBlocked) {
 						self.cssScrollUnfixed();
 					}
 				}
@@ -2157,7 +2273,7 @@ function datePickerInit() {
 	};
 
 	// preparation element before animation
-	ExtraPopup.prototype.preparationAnimation = function() {
+	ExtraPopup.prototype.preparationAnimation = function () {
 		var self = this;
 
 		var $container = self.$container,
@@ -2213,16 +2329,16 @@ function datePickerInit() {
 		}
 	};
 
-	ExtraPopup.prototype.cssScrollFixed = function() {
+	ExtraPopup.prototype.cssScrollFixed = function () {
 		$('html').addClass('css-scroll-fixed');
 	};
 
-	ExtraPopup.prototype.cssScrollUnfixed = function() {
+	ExtraPopup.prototype.cssScrollUnfixed = function () {
 		$('html').removeClass('css-scroll-fixed');
 	};
 
 	// clearing inline styles
-	ExtraPopup.prototype.clearStyles = function() {
+	ExtraPopup.prototype.clearStyles = function () {
 		var self = this,
 			$btnMenu = self.$btnMenu,
 			$container = self.$container,
@@ -2253,12 +2369,12 @@ function datePickerInit() {
 /**
  * !extra popup initial
  * */
-function popupsInit(){
+function popupsInit() {
 
 	/*search advanced*/
 	var popupSearchAdvanced = '.search-advanced-popup-js';
 
-	if($(popupSearchAdvanced).length){
+	if ($(popupSearchAdvanced).length) {
 
 		new ExtraPopup({
 			container: popupSearchAdvanced,
@@ -2278,7 +2394,7 @@ function popupsInit(){
 	/*site map popup*/
 	var siteMapPopupClass = '.site-map-js';
 
-	if($(siteMapPopupClass).length){
+	if ($(siteMapPopupClass).length) {
 
 		new ExtraPopup({
 			container: siteMapPopupClass,
@@ -2299,7 +2415,7 @@ function popupsInit(){
 	/*navigation popup*/
 	var navPopupClass = '.popup-nav-small-js';
 
-	if($(navPopupClass).length){
+	if ($(navPopupClass).length) {
 
 		new ExtraPopup({
 			container: navPopupClass,
@@ -2319,7 +2435,7 @@ function popupsInit(){
 	/*banners popup*/
 	var popupBannersClass = '.popup-banners-js';
 
-	if($(popupBannersClass).length){
+	if ($(popupBannersClass).length) {
 
 		new ExtraPopup({
 			container: popupBannersClass,
@@ -2337,7 +2453,7 @@ function popupsInit(){
 	/*news popup*/
 	var popupNewsClass = '.popup-news-js';
 
-	if($(popupNewsClass).length){
+	if ($(popupNewsClass).length) {
 
 		new ExtraPopup({
 			container: popupNewsClass,
@@ -2354,7 +2470,7 @@ function popupsInit(){
 	/*languages popup*/
 	var popupLang = '.languages-popup-js';
 
-	if($(popupLang).length){
+	if ($(popupLang).length) {
 
 		new ExtraPopup({
 			container: popupLang,
@@ -2373,7 +2489,7 @@ function popupsInit(){
 	/*share popup*/
 	var popupShare = '.share-popup-js';
 
-	if($(popupShare).length){
+	if ($(popupShare).length) {
 
 		new ExtraPopup({
 			container: popupShare,
@@ -2390,28 +2506,28 @@ function popupsInit(){
 	}
 
 	/*search popup*/
-	// var popupSearch = '.popup-search-js';
-	//
-	// if($(popupSearch).length){
-	//
-	// 	new ExtraPopup({
-	// 		container: popupSearch,
-	// 		btnMenu: '.btn-search-open-js',
-	// 		btnMenuClose: '.btn-popup-close-js',
-	// 		overlayAppendTo: 'body',
-	// 		closeOnResize: false,
-	// 		animationType: 'surface',
-	// 		animationSpeed: 300,
-	// 		overlayAlpha: 0.35,
-	// 		cssScrollBlocked: true
-	// 	});
-	//
-	// }
+	var popupSearch = '.popup-search-js';
+
+	if ($(popupSearch).length) {
+
+		new ExtraPopup({
+			container: popupSearch,
+			btnMenu: '.btn-search-open-js',
+			btnMenuClose: '.btn-popup-close-js',
+			overlayAppendTo: 'body',
+			closeOnResize: false,
+			animationType: 'surface',
+			animationSpeed: 300,
+			overlayAlpha: 0.35,
+			cssScrollBlocked: true
+		});
+
+	}
 
 	/*filters popup*/
 	var popupFilters = '.filters-popup-js';
 
-	if($(popupFilters).length){
+	if ($(popupFilters).length) {
 
 		new ExtraPopup({
 			container: popupFilters,
@@ -2430,7 +2546,7 @@ function popupsInit(){
 	/*filters popup*/
 	var popupFiltersNews = '.filters-news-popup-js';
 
-	if($(popupFiltersNews).length){
+	if ($(popupFiltersNews).length) {
 
 		new ExtraPopup({
 			container: popupFiltersNews,
@@ -2457,14 +2573,14 @@ function fileInput() {
 			// limit: 3,
 			changeInput: '' +
 			'<div class="jFiler-input-dragDrop">' +
-				'<div class="jFiler-input-inner">' +
-					'<div class="jFiler-input-icon">' +
-						'<i class="icon-jfi-cloud-up-o"></i>' +
-					'</div>' +
-					'<div class="jFiler-input-text">' +
-						'<strong>Кликните по полю или перетащите сюда файл</strong>' +
-					'</div>' +
-				'</div>' +
+			'<div class="jFiler-input-inner">' +
+			'<div class="jFiler-input-icon">' +
+			'<i class="icon-jfi-cloud-up-o"></i>' +
+			'</div>' +
+			'<div class="jFiler-input-text">' +
+			'<strong>Кликните по полю или перетащите сюда файл</strong>' +
+			'</div>' +
+			'</div>' +
 			'</div>',
 			showThumbs: true,
 			theme: "dragdropbox",
@@ -2512,7 +2628,7 @@ function fileInput() {
 /*file input end end*/
 
 /*breadcrumbs add hover class*/
-function breadcrumbsBehavior(){
+function breadcrumbsBehavior() {
 	var $breadcrumbsItemHasDrop = $('.breadcrumbs__item_has-drop');
 	if (DESKTOP) {
 		$breadcrumbsItemHasDrop.on('mouseenter', function () {
@@ -2534,7 +2650,7 @@ function breadcrumbsBehavior(){
 /**
  * !sticky layout
  * */
-function stickyLayout(){
+function stickyLayout() {
 
 	if (!DESKTOP) {
 		return;
@@ -2637,9 +2753,9 @@ function stickyLayout(){
 				$sideMenu.stick_in_parent({
 					parent: '.main-inside',
 					offset_top: offsetTop
-				}).on("sticky_kit:bottom", function(e) {
+				}).on("sticky_kit:bottom", function (e) {
 					$(e.target).addClass('is_bottom')
-				}).on("sticky_kit:unbottom", function(e) {
+				}).on("sticky_kit:unbottom", function (e) {
 					$(e.target).removeClass('is_bottom')
 				});
 			}, 200);
@@ -2695,7 +2811,7 @@ function regionMenu() {
 		var $thisContainer = $(this).closest('.region-expand-container-js');
 		var activeClass = 'is-expanded';
 
-		if($thisContainer.hasClass(activeClass)) {
+		if ($thisContainer.hasClass(activeClass)) {
 			$thisContainer.removeClass(activeClass);
 		} else {
 			$thisContainer.addClass(activeClass);
@@ -2717,7 +2833,7 @@ function regionMenu() {
  * */
 function customScrollInit() {
 	var customScrollOptions = {
-		theme:"minimal-dark",
+		theme: "minimal-dark",
 		scrollInertia: 100,
 		autoDraggerLength: true
 	};
@@ -2726,13 +2842,13 @@ function customScrollInit() {
 		var $regionMenuContainer = $('.region-menu-panel');
 		if ($regionMenuContainer.length) {
 			$regionMenuContainer.mCustomScrollbar({
-				theme:"minimal-dark",
+				theme: "minimal-dark",
 				scrollInertia: 100,
 				autoDraggerLength: true,
-				callbacks:{
-					onInit:function(e){
+				callbacks: {
+					onInit: function (e) {
 						var $this = $(this);
-						$regionMenuContainer.mCustomScrollbar("scrollTo",$('.current', $this), {
+						$regionMenuContainer.mCustomScrollbar("scrollTo", $('.current', $this), {
 							scrollInertia: 0
 						});
 					}
@@ -2775,10 +2891,10 @@ function blockedScrollOnPage() {
 /**
  * !card switch
  * */
-function frontBackSwitcher(){
+function frontBackSwitcher() {
 	var $fbSwitcherContainer = $('.fb-switcher-container-js');
 
-	if($fbSwitcherContainer.length){
+	if ($fbSwitcherContainer.length) {
 		var $fbItem = $('.fb-switcher-item-js');
 		var fbActiveClass = 'fb-switcher-active';
 		var fbToggleAll = false;
@@ -2789,7 +2905,7 @@ function frontBackSwitcher(){
 			var $fbHandler = $(this);
 			var $fbCurrentItem = $fbHandler.closest($fbItem);
 
-			if($fbCurrentItem.hasClass(fbActiveClass)) {
+			if ($fbCurrentItem.hasClass(fbActiveClass)) {
 				$fbCurrentItem.removeClass(fbActiveClass);
 				fbChangeText('data-text');
 			} else {
@@ -2824,16 +2940,16 @@ function textSlide() {
 
 	if (!$textSlide.length) return false;
 
-	var $window = $( window ),
+	var $window = $(window),
 		prefix = 'text-slide',
 		textFull = 'Подробнее',
 		textShort = 'Свернуть',
-		$tplSlideFull = $('<div class="'+ prefix +'__button text-full-js" style="display: none;"><a href="#" class="btn-arrow btn-arrow--bottom text-slide-switcher-js"><span>' + textFull + '</span></a></div>'),
+		$tplSlideFull = $('<div class="' + prefix + '__button text-full-js" style="display: none;"><a href="#" class="btn-arrow btn-arrow--bottom text-slide-switcher-js"><span>' + textFull + '</span></a></div>'),
 		$tplTextSlideInner = $('<div class="text-slide-inner-js" />'),
 		$tplShadow = $('<div class="text-slide-shadow-js" >'),
 		textSlideHeight = $textSlide.outerHeight(),
 		isTextFull = false,
-		minHeight = parseInt($textSlide.css('line-height'), 10)*9;
+		minHeight = parseInt($textSlide.css('line-height'), 10) * 9;
 
 	// hide elements
 	TweenMax.set($tplShadow, {autoAlpha: 0});
@@ -2854,7 +2970,7 @@ function textSlide() {
 			TweenMax.set($textSlide, {height: 'auto'});
 			TweenMax.set($tplShadow, {autoAlpha: 0});
 			$tplSlideFull.hide(0);
-		} else if ( !isTextFull ) {
+		} else if (!isTextFull) {
 			TweenMax.set($textSlide, {height: minHeight});
 			TweenMax.set($tplShadow, {autoAlpha: 1});
 			$tplSlideFull.show(0);
@@ -2872,7 +2988,7 @@ function textSlide() {
 
 		var $this = $(this);
 
-		if ( isTextFull ) {
+		if (isTextFull) {
 			TweenMax.to($textSlide, 0.5, {
 				height: textSlideHeight,
 				ease: Power3.easeInOut,
@@ -3037,14 +3153,14 @@ function toggleFormButtons() {
 	ToggleBlock.prototype.openerText = false;
 
 	// toggle block
-	ToggleBlock.prototype.toggleBlock = function() {
+	ToggleBlock.prototype.toggleBlock = function () {
 		var self = this;
 		var $container = self.$container;
 
 		self.$container.on('click', self.options.opener, function (e) {
 			e.preventDefault();
 
-			if($container.hasClass(self.modifiers.open)) {
+			if ($container.hasClass(self.modifiers.open)) {
 				self.closeBlock();
 
 				return;
@@ -3056,7 +3172,7 @@ function toggleFormButtons() {
 	};
 
 	// open block
-	ToggleBlock.prototype.openBlock = function() {
+	ToggleBlock.prototype.openBlock = function () {
 		var self = this;
 		var $opener = self.$opener;
 		var $content = self.$content;
@@ -3068,7 +3184,7 @@ function toggleFormButtons() {
 
 		$content.slideDown(_animateSpeed);
 
-		if(self.openerHide) {
+		if (self.openerHide) {
 			$opener.fadeOut(_animateSpeed, function () {
 				setTimeout(function () {
 					$opener.remove();
@@ -3078,8 +3194,8 @@ function toggleFormButtons() {
 
 		var textClose = $opener.attr('data-text-close');
 
-		if(!!textClose && textClose.length > 0) {
-			if(!self.openerText){
+		if (!!textClose && textClose.length > 0) {
+			if (!self.openerText) {
 				self.openerText = $opener.text();
 			}
 			$opener.text(textClose);
@@ -3087,7 +3203,7 @@ function toggleFormButtons() {
 	};
 
 	// close block
-	ToggleBlock.prototype.closeBlock = function() {
+	ToggleBlock.prototype.closeBlock = function () {
 		var self = this;
 		var $opener = self.$opener;
 		var $content = self.$content;
@@ -3099,7 +3215,7 @@ function toggleFormButtons() {
 			.slideUp(self.animateSpeed);
 
 		var textClose = $opener.attr('data-text-close');
-		if(!!textClose && textClose.length > 0) {
+		if (!!textClose && textClose.length > 0) {
 			$opener.text(self.openerText);
 		}
 	};
@@ -3115,7 +3231,7 @@ function toggleBlockInit() {
 	/*faq form*/
 	var faqForm = '.toggle-block-js';
 
-	if($(faqForm).length){
+	if ($(faqForm).length) {
 
 		new ToggleBlock({
 			container: faqForm,
@@ -3154,7 +3270,7 @@ function footerBottom() {
 
 			$('.spacer').css({
 				'height': footerHeight,
-				'pointer-events': 'none','float': 'left',
+				'pointer-events': 'none', 'float': 'left',
 				'width': '100%'
 			});
 		}
@@ -3168,7 +3284,7 @@ function footerBottom() {
 function formSuccessExample() {
 	var $form = $('.user-form form');
 
-	if ( $form.length ) {
+	if ($form.length) {
 
 		$form.submit(function (event) {
 			var $thisForm = $(this);
@@ -3219,19 +3335,21 @@ function formSuccessExample() {
 
 /** ready/load/resize document **/
 
-$(window).on('load', function(){
+$(window).on('load', function () {
 	$('html').addClass('page-loaded');
 	customScrollInit();
 	navExpander();
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
+	switchSpecialVersion();
+	checkCecutientVersionCookie();
 	placeholderInit();
 	inputHasValueClass();
 	inputFilledClass();
-	if (!Modernizr.touchevents) {
-		// customSelect($('select.cselect'));
-	}
+	// if (!Modernizr.touchevents) {
+	// 	customSelect($('select.cselect'));
+	// }
 	customSelect($('select.cselect'));
 	printShow();
 	toggleHeader();

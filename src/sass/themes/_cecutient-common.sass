@@ -1,0 +1,22 @@
+@import ../utils/variables
+@import ../utils/variables-special
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+//.cecutient-version
+//*
+	&, &::before, &::after
+		transition-duration: 0s !important
+body
+	font-weight: 500
+
+.special-hide
+	display: none
+
+/*view print
+.view-print
+	svg
+		display: none
+
+	+media('<tab-lg')
+		display: none

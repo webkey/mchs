@@ -144,6 +144,8 @@
 			width: 10px
 			border-radius: 2px
 			background: #fff
+			transition-property: background-color
+			transition-duration: $animation-speed
 
 		&::before
 			margin: -4px 0 0 0
@@ -304,7 +306,7 @@
 	line-height: 0
 	letter-spacing: -4px
 	white-space: nowrap
-	transition-property: background-color
+	transition-property: background-color, color
 	transition-duration: $animation-speed
 	+antialiased
 	+btn-hover

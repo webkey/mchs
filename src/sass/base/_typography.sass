@@ -8,8 +8,7 @@ html
 
 body
 	+font-normal
-	font-size: $font-size
-	line-height: $line-height
+	+font($font-size, $line-height)
 	height: 100%
 
 	color: $text-color
@@ -302,7 +301,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			border-top-width: 0
 
 		tbody tr:nth-child(even) td
-			background: #fafafa
+			background-color: #fafafa
 
 		th, thead td
 			@include font-bold
@@ -310,7 +309,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			text-align: left
 
 		th, thead td, tfoot td
-			background: $color-table-bg-alt
+			background-color: $color-table-bg-alt
 			color: $color-table-text-alt
 			border-color: $color-table-bg-alt
 			border-top-width: 0
@@ -346,18 +345,19 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 				background-size: contain
 				+size(39px)
 				z-index: -1
+				font-size: 0
+				line-height: 0
+				letter-spacing: -4px
 
 			&::before
-				//content: '«'
-				content: ''
+				content: '«'
 				margin: 0 0 20px 30%
 
 				+media('<mob-lg')
 					+margin($b: 10px, $l: 0 )
 
 			&::after
-				//content: '»'
-				content: ''
+				content: ' »'
 				margin: 20px 30% 0 auto
 				transform: rotate(180deg)
 
@@ -442,15 +442,15 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		display: inline-block
 		vertical-align: middle
 
-	+media('<tab-lg')
-		font-size: 14px
-
 	+media('<desk-lg')
 		& svg
 			margin-right: 0
 
 		& span
 			display: none
+
+	+media('<tab-lg')
+		font-size: 14px
 
 /*view print end*/
 

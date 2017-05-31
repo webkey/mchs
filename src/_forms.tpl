@@ -95,7 +95,7 @@
 			<label for="multiselect-example">Мультиселект c пелейсхолдером:</label>
 		</div>
 		<div class="select">
-			<select class="cselect" id="multiselect-example" multiple data-placeholder="Выберите несколько вариантов">
+			<select class="cselect" id="multiselect-example-with" multiple data-placeholder="Выберите несколько вариантов">
 				<option value="0">В Островецком</option>
 				<option value="1">районе работники</option>
 				<option value="2">МЧС спасли</option>
