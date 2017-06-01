@@ -17,7 +17,7 @@
 	display: block
 	+size($btn-size)
 	background: $btn-bg
-	color: #fff
+	color: $text-color
 	text-decoration: none
 	+clear-spacing
 	white-space: nowrap
@@ -86,7 +86,7 @@ html.before-extra-popup-open
 .extra-popup
 	+cover($position: fixed)
 	max-width: $main-layout-width
-	background: white
+	background-color: white
 	z-index: 998
 
 	&.hide-on-load
@@ -152,25 +152,31 @@ html.before-extra-popup-open
 .site-map
 	display: block
 
-	a
-		color: $text-color
-		text-decoration: none
-
-		.no-touchevents &:hover, .no-touchevents .current > &, .current > &
-			color: $text-color-alt
-
 .site-map__container
 	+grid-parent($grid-space)
 	+clear-spacing
 
+	a
+		color: $text-color
+		text-decoration: none
+		+font($font-size, 1.2)
+
+		.no-touchevents &:hover, .no-touchevents .current > &, .current > &
+			color: $text-color-alt
+
 .site-map__box
 	+grid-item(3, $grid-space, $bottom-space)
-	font-size: $font-size
-	line-height: $line-height
+	+font($font-size, 1.3)
 	letter-spacing: normal
 
 	+media('<mob-lg')
 		+grid-item(1, $grid-space, $bottom-space)
+
+	ul
+		margin: 1em 0
+
+		li
+			margin: 1em 0
 
 .site-map__heading
 	display: block

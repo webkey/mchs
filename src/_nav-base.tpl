@@ -5,7 +5,7 @@
 	<@@if(context.navTag){nav}@@if(!context.navTag){div} class="@@classKey">
 		<ul class="@@classKey__list @@classKey-js">
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "О министерстве"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "О министерстве"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "О министерстве", "itemLink": "typography.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -86,7 +86,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Структура"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Структура"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Структура", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -183,7 +183,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Электронное обращение"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Электронное обращение"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Электронное обращение", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -201,7 +201,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Законодательство в сфере деятельности"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Законодательство в сфере деятельности"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Законодательство в сфере деятельности", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -250,7 +250,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Мультимедийные материалы ОБЖ"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Мультимедийные материалы ОБЖ"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Мультимедийные материалы ОБЖ", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -298,7 +298,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Организациям и предпринимателям"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Организациям и предпринимателям"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Организациям и предпринимателям", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -317,7 +317,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Часто задаваемые вопросы и отзывы"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Часто задаваемые вопросы и отзывы"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Часто задаваемые вопросы и отзывы", "itemLink": "faq.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -332,7 +332,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Главное"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Главное"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Главное", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -350,7 +350,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Самое читаемое"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Самое читаемое"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Самое читаемое", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -376,7 +376,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Оперативная информация и новости территориальных управлений"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Оперативная информация и новости территориальных управлений"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Оперативная информация и новости территориальных управлений", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})
@@ -397,7 +397,7 @@
 			<!--@@classKey item end-->
 
 			<!--@@classKey item start-->
-			<li class="has-drop@@if(mainNavItemActive === "Новости департаментов"){current}">
+			<li class="has-drop @@if(mainNavItemActive === "Новости департаментов"){current}">
 				@@include('_nav-LINK.tpl', { "itemText": "Новости департаментов", "itemLink": "404.html", "key": "@@classKey", "specialValue": "" })
 
 				@@include('_nav-DROP-WRAP.tpl', { "dropLevel": "(==========1==========)", "start": "1", "key": "@@classKey"})

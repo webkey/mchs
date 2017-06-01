@@ -1,11 +1,18 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*article meta*/
-=article-meta-text()
-	font-size: 1.2rem
-	line-height: 1.4
+=article-meta-text-size()
+	+font(1.2rem, 1.4)
+
+=article-meta-text-color()
 	color: $text-color-light
+	fill: $text-color-light
 
 .article-meta
-	+article-meta-text
+	+article-meta-text-size
+	+article-meta-text-color
 	margin-bottom: $bottom-space-md
 	+clear
 
@@ -16,7 +23,8 @@
 	float: left
 	display: block
 	margin-bottom: $bottom-space
-	+article-meta-text
+	+article-meta-text-size
+	+article-meta-text-color
 	font-style: normal
 
 	.article-meta &
@@ -27,61 +35,52 @@
 
 /*visit*/
 .visit-view
+	cursor: default
+
 	svg
-		display: inline-block
-		vertical-align: middle
-		width: 18px
-		height: 18px
+		+display-inline-block-middle
+		+size(18px)
 		margin-right: 10px
 
 		path
-			fill: $text-color-light
-			-webkit-transition-property: fill
+			+article-meta-text-color
 			transition-property: fill
-			-webkit-transition-duration: $animation-speed
 			transition-duration: $animation-speed
 
 		&.depict-visit-share
-			width: 12px
-			height: 12px
+			+size(12px)
 
 	& > em
-		display: inline-block
-		vertical-align: middle
+		+display-inline-block-middle
 		font-style: normal
+		transition-property: color
+		transition-duration: $animation-speed
 
-	@at-root
-		a.visit-view > em
-			-webkit-transition-property: color
-			transition-property: color
-			-webkit-transition-duration: $animation-speed
-			transition-duration: $animation-speed
+	//.no-touchevents &:hover path
+		fill: $text-color
 
-	@at-root
-		.no-touchevents a.visit-view:hover path
-			fill: $text-color
-
-		.no-touchevents a.visit-view:hover > em
-			color: $text-color
-
+	//.no-touchevents &:hover > em
+		color: $text-color
 
 .visit
 	overflow: hidden
 	margin-left: 20px
 	text-align: right
-	+article-meta-text
+	+article-meta-text-size
+	+article-meta-text-color
+	cursor: default
 
-	&__item
-		display: inline-block
-		vertical-align: top
-		margin-left: 30px
+.visit__item
+	display: inline-block
+	vertical-align: top
+	margin-left: 30px
 
-		+media('<mob-lg')
-			margin-left: 5px
+	+media('<mob-lg')
+		margin-left: 5px
 
-	&__inner
-		display: inline-block
-		text-decoration: none
-		color: $text-color-light
+.visit__inner
+	display: inline-block
+	text-decoration: none
+	+article-meta-text-color
 
 /*visit end*/

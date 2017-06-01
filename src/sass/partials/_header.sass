@@ -8,7 +8,7 @@
 /*header layout*/
 .header__holder
 	position: relative
-	background: $header-bg
+	background-color: $header-bg
 	padding-left: $header-left-space
 	min-height: $header-left-space-desk-sm
 	+clear
@@ -174,7 +174,7 @@
 				opacity: 1
 				max-width: none
 				padding: 0
-				color: $text-color
+				color: inherit
 				// скрыть на десктопе
 				display: none
 				width: calc(100% - 60px - #{$grid-layout-space--mob-lg} - 5px)
@@ -270,9 +270,7 @@
 		overflow: hidden
 		position: relative
 		height: 100%
-		font-size: 0
-		line-height: 0
-		letter-spacing: -4px
+		+clear-spacing
 
 		+media('<tab-lg')
 			border-bottom: 1px solid $border-color
@@ -284,13 +282,12 @@
 			height: 100%
 
 		.frame
-			display: inline-block
-			vertical-align: middle
-			max-width: calc(100% - 92px)
-			font-size: $font-size
-			line-height: $line-height
+			+display-inline-block-middle
+			//max-width: calc(100% - 92px)
+			width: calc(100% - 5px)
+			+font($font-size, $line-height)
 			letter-spacing: normal
-			margin-right: 20px
+			//margin-right: 20px
 
 			+media('<desk-md')
 				max-width: calc(100% - 5px)
@@ -306,7 +303,8 @@
 				padding: 10px 20px
 
 		.gerb
-			display: inline-block
+			//display: inline-block
+			display: none
 			vertical-align: middle
 			width: 62px
 			backface-visibility: hidden
@@ -346,12 +344,10 @@
 	ul
 		height: 100%
 		margin-right: -#{$grid-space}
-		+font(0, 0)
-		letter-spacing: -4px
+		+clear-spacing
 
 		+media('<desk-md')
-			display: inline-block
-			vertical-align: middle
+			+display-inline-block-middle
 			height: auto
 			max-width: calc(100% - 6px)
 
@@ -377,11 +373,9 @@
 				border-color: transparent
 
 		li
-			display: inline-block
-			vertical-align: middle
+			+display-inline-block-middle
 			position: relative
-			height: 100%
-			width: 230px
+			+size(230px, 100%)
 
 			+media('<desk-lg')
 				width: 180px
@@ -394,8 +388,7 @@
 			+media('<tab-lg')
 				float: left
 				display: block
-				width: 50%
-				height: 100%
+				+size(50%, 100%)
 				text-align: center
 
 			+media('<mob-lg')
@@ -413,8 +406,7 @@
 				left: 0
 				top: 50%
 				$height: 18px
-				height: $height
-				width: 0
+				+size(0, $height)
 				margin-top: -(round($height/2))
 				border: solid $border-color
 				border-width: 0 0 0 1px
@@ -439,8 +431,7 @@
 
 			a
 				display: block
-				width: 100%
-				height: 100%
+				+size(100%)
 				padding: 0 $grid-space
 				text-decoration: none
 				color: $text-color
@@ -473,8 +464,7 @@
 					$width-icon: 78px
 					$width-icon-sm: 60px
 
-					display: inline-block
-					vertical-align: middle
+					+display-inline-block-middle
 					max-width: calc(100% - #{$width-icon})
 					text-align: left
 
@@ -505,8 +495,7 @@
 
 					& > span
 						display: block
-						font-size: $font-size-small
-						line-height: $line-height-small
+						+font($font-size-small, $line-height-small)
 						letter-spacing: normal
 
 						+media('<desk-lg')
@@ -546,8 +535,7 @@
 .header__hot-line--align
 	display: inline-block
 	vertical-align: middle
-	font-size: 1.4rem
-	line-height: 1.5
+	+font($font-size-small, 1.5)
 	letter-spacing: normal
 
 	+media('<tab-lg')
@@ -606,20 +594,24 @@
 		color: inherit
 		text-decoration: none
 		width: 100%
+		padding-left: 50px
+
+		&::before
+			+pseudo()
+			left: 0
+			top: 50%
+			+size(38px)
+			margin-top: -19px
+			backface-visibility: hidden
+			background: url(../../img/gerb.png) no-repeat
+			background-size: contain
+
+		&::after
+			+pseudo($display: null, $pos: relative)
+			+display-inline-block-middle
+			min-height: 38px
 
 		+media('<desk-md')
-			padding-left: 50px
-
-			&::before
-				+pseudo()
-				left: 0
-				top: 50%
-				+size(38px)
-				margin-top: -19px
-				backface-visibility: hidden
-				background: url(../../img/gerb.png) no-repeat
-				background-size: contain
-
 			&::after
 				+pseudo($display: inline-block, $pos: relative)
 				vertical-align: middle
@@ -680,7 +672,7 @@
 
 		a
 			text-decoration: none
-			color: $text-color-light
+			color: inherit
 			cursor: pointer
 
 			& > span
@@ -697,15 +689,14 @@
 
 		svg
 			+size(24px)
-			display: inline-block
-			vertical-align: middle
+			+display-inline-block-middle
 			margin-right: 5px
 
 			+media('<desk-lg')
 				+size(18px)
 
-			path
-				fill: lighten($text-color-light, 20%)
+		path
+			fill: lighten($text-color-light, 20%)
 
 /*header info end
 
@@ -743,22 +734,16 @@
 		transition-property: background-color, color
 		transition-duration: $animation-speed
 
-		.no-touchevents &:hover
-			background-color: rgba(255, 255, 255, 0.15)
-
 		& > *
-			display: inline-block
-			vertical-align: middle
-			font-size: $font-size
-			line-height: $line-height
+			+display-inline-block-middle
+			+font($font-size, $line-height)
 			letter-spacing: normal
 
 		&::before
 			+vertical-align
 
 		& > div
-			display: inline-block
-			vertical-align: middle
+			+display-inline-block-middle
 			color: rgba(255, 255, 255, 0.5)
 			transition-property: background-color, color
 			transition-duration: $animation-speed
@@ -785,6 +770,7 @@
 			transition-duration: $animation-speed
 
 		.no-touchevents &:hover
+			background-color: rgba(255, 255, 255, 0.15)
 			color: $text-color-alt
 
 			path
@@ -875,7 +861,7 @@
 			vertical-align: middle
 			position: relative
 			+font(16px, 24px)
-			font-weight: 400
+			font-weight: normal
 			letter-spacing: normal
 			display: none
 

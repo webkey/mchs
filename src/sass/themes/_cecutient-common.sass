@@ -3,20 +3,120 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-//.cecutient-version
-//*
-	&, &::before, &::after
-		transition-duration: 0s !important
-body
-	font-weight: 500
+.cecutient-version
+	// base
+	$font-size: 1.6rem
+	$line-height: round-float(3.0rem/$font-size, 2)
 
-.special-hide
-	display: none
+	//*
+		&, &::before, &::after
+			transition-duration: 0s !important
+	&
+		font-weight: 500
 
-/*view print
-.view-print
-	svg
+	.special-hide
 		display: none
 
-	+media('<tab-lg')
-		display: none
+	/*view print
+	.view-print
+		svg
+			display: none
+
+		+media('<tab-lg')
+			display: none
+
+	// article meta
+	=article-meta-text-size()
+		+font($font-size, $line-height)
+		font-weight: normal
+
+	.article-meta
+		+article-meta-text-size
+
+	.datetime
+		+article-meta-text-size
+
+	.visit
+		+article-meta-text-size
+
+	.visit-view
+		*
+			font-weight: normal
+
+		svg
+			+size(24px)
+			margin-right: 10px
+
+			&.depict-visit-share
+				+size(18px)
+
+	// header contacts
+	.header__contacts
+		ul
+			li
+				a
+					& > div
+						& > em
+							color: $mark-color
+
+						& > span
+							+font(16px, 20px)
+							font-weight: normal
+
+							+media('<desk-lg')
+								font-size: 12px
+
+							+media('<tab-lg')
+								font-size: 14px
+
+	// header info
+	.header__info
+		+font($font-size-small, $line-height-small)
+
+		+media('<desk-lg')
+			font-size: 1.2rem
+
+	// header info
+	.header__info
+		font-weight: normal
+
+	// user options
+	.user-options__item
+		& > a
+			font-weight: normal
+
+	// NAVIGATION
+	.nav
+		a
+			font-weight: normal
+
+	// sidebar bottom
+	//.sidebar-bottom__heading, .popup-news__heading
+		padding-bottom: 50px
+
+		.btn-filters-open
+			top: auto
+			right: auto
+			bottom: 0
+			left: 0
+			transform: none
+
+			svg
+				display: none
+
+			& > span
+				+show-text
+
+	// POPUPS
+	.btn-popup-close
+		$btn-lines-width: 40px
+		$btn-lines-height: 6px
+
+		=line-style()
+			+size($btn-lines-width, $btn-lines-height)
+
+		& > i
+			+line-style
+
+			&::before, &::after
+				+line-style

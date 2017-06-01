@@ -13,8 +13,7 @@
 
 .news-links__item
 	+grid-item(1, $grid-space, $bottom-space)
-	font-size: $font-size-small
-	line-height: $line-height-small
+	+font($font-size-small, $line-height-small)
 	letter-spacing: normal
 
 	&:last-child
@@ -32,13 +31,12 @@
 	transition-property: background-color, color
 	transition-duration: $animation-speed-mouseleave
 
-.news-links__inner:hover .news-links__text
+.no-touchevents .news-links__inner:hover .news-links__text
 	color: $text-color-alt
 
 .news-links__meta
 	display: block
-	font-size: 1.2rem
-	line-height: 1.4
+	+font(12px, 1.4)
 	color: $text-color-light
 	transition-property: background-color, color
 	transition-duration: $animation-speed-mouseleave

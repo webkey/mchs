@@ -54,8 +54,7 @@
 	position: absolute
 	top: 0
 	left: 0
-	width: 100%
-	height: 100%
+	+size(100%)
 	color: $text-color
 	white-space: nowrap
 	text-decoration: none
@@ -66,9 +65,7 @@
 	top: 0
 	left: 100%
 	height: 100%
-	font-size: 0
-	line-height: 0
-	letter-spacing: -4px
+	+clear-spacing
 	white-space: nowrap
 	pointer-events: none
 	background: white
@@ -90,7 +87,7 @@
 	padding-right:
 	height: 100%
 	width: $side-width
-	background: $text-color-alt
+	background-color: $text-color-alt
 	border-bottom: 1px solid rgba(0, 0, 0, 0.25)
 	transition-property: background-color, transform, box-shadow, border-color, opacity
 	transition-duration: $animation-speed-mouseleave

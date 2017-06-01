@@ -15,7 +15,7 @@
 
 /*sidebar top end*/
 
-/*sidebar-menu*/
+/*sidebar menu*/
 .sidebar-menu-wrap
 	overflow: hidden
 	position: relative
@@ -158,11 +158,10 @@
 		top: 50%
 		right: $sidebar-inner-space-horizontal
 		transform: translate(0, -50%)
-		text-indent: -9999px
-		overflow: hidden
-		font-size: 0
-		line-height: 0
 		z-index: 1
+
+		& > span
+			+hide-text
 
 		svg
 			display: block
@@ -170,7 +169,6 @@
 
 		path
 			fill: $text-color-light
-			-webkit-transition: fill $animation-speed
 			transition: fill $animation-speed
 
 		.no-touchevents &:hover

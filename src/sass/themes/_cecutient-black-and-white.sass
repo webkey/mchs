@@ -518,7 +518,14 @@
 			&::before
 				background-color: $bg-color
 
+	// LAYOUT
+	.wrapper
+		&::before
+			background-color: $bg-color
+			border-right: 2px solid $border-color
 
+		&::after
+			background-color: $text-color
 
 	// user form
 	.user-form
@@ -601,8 +608,460 @@
 			background: none
 
 
+	// breadcrumbs
+	.breadcrumbs
+		color: $text-color
+		+font(18px, 21px)
+
+	.breadcrumbs__item
+		margin-right: 15px
+
+		& > a
+			color: $link-color
+			padding-right: 25px
+			transition: none
+
+			.no-touchevents &:hover > span
+				border-bottom-color: $link-color
+
+			& > span
+				transition: none
+				border-width: 2px
+
+			& > i
+				top: 4px
+				+size(10px, 12px)
+
+				&::before
+					border-width: 6px 0 6px 10px
+					margin-top: -6px
+					border-left-color: $text-color
+
+	.breadcrumbs-drop
+		background: $bg-color
+		box-shadow: 0 0 0 2px $border-color
+		top: -15px
+		transition: none
+
+	.breadcrumbs-drop__item
+		margin: 15px 0
+
+		a
+			color: $text-color
+
+			& > span
+				transition: none
+				border-width: 2px
+
+			.no-touchevents &:hover > span
+				border-bottom-color: $text-color
+
+	// article meta
+	=article-meta-text-color()
+		color: $text-color
+		fill: $text-color
+
+	.article-meta
+		+article-meta-text-color
+
+	.datetime
+		+article-meta-text-color
+
+	.visit
+		+article-meta-text-color
+
+	.visit-view
+		+article-meta-text-color
+
+		svg path
+			+article-meta-text-color
 
 
+	// news links
+	.news-links__inner
+		color: $text-color
+
+		&::before
+			+pseudo()
+			top: -#{round($sidebar-inner-space-horizontal*0.5)}
+			bottom: -#{round($sidebar-inner-space-horizontal*0.5)}
+			left: -#{$sidebar-inner-space-horizontal}
+			right: -#{$sidebar-inner-space-horizontal}
+			z-index: -1
+
+	.news-links__text, .news-links__meta
+		transition: none
+		color: inherit
+
+	.no-touchevents & .news-links__inner:hover
+		&::before
+			background-color: $text-color
+
+		.news-links__text, .news-links__meta
+			color: $bg-color
+
+	// side
+	.side__link
+		color: $text-color
+
+	.side__inner
+		background-color: $bg-color
+		//transition: none
+		box-shadow: inset 0 0 0 2px $text-color
+
+	.side__depict
+		background-color: $text-color
+		border-bottom: 1px solid $bg-color
+
+
+
+
+
+
+	// POPUPS
+	.btn-popup-close
+		$btn-bg: $text-color
+		$btn-lines-color: $text-color
+
+		background: $btn-bg
+		color: #000
+		transition: none
+
+		//&::before
+			content: none
+
+		& > i
+			//display: none
+
+			&::before, &::after
+				background-color: $link-color-inverse
+				transition: none
+
+		.no-touchevents &:hover
+			background-color: $link-color-inverse
+			box-shadow: inset 0 0 0 2px $link-color
+
+			& > i
+				&::before, &::after
+					background-color: $link-color
+
+	.extra-popup
+		background-color: $bg-color
+
+	.site-map__container
+		a
+			color: $link-color
+
+			.no-touchevents &:hover, .no-touchevents .current > &, .current > &
+				background-color: $link-color
+				color: $link-color-inverse
+				padding-top: 5px
+
+				& > span
+					box-shadow: 0 0 0 5px $link-color
+
+	.site-map__box
+		+font(20px, 24px)
+
+	// HEADER
+	.header__holder
+		background-color: $bg-color
+
+	.header__frame
+		box-shadow: inset 0 -2px 0 $border-color
+
+	// logo
+	.logo-wrap
+		border-bottom: none
+		box-shadow: inset 0 -2px 0 $border-color, inset -2px 0 0 $border-color
+
+	// header top
+	.header__top
+		background: $text-color
+
+	// header content
+	.header__content
+		.holder
+			+media('<tab-lg')
+				border-bottom: 1px solid $border-color
+
+		.frame
+			+media('<desk-sm')
+				border-bottom: 1px solid $border-color
+
+	// header contacts
+	.header__contacts
+		ul
+			li
+				+media('<mob-lg')
+					border-bottom: 1px solid $border-color
+
+				&::before
+					border: solid $border-color
+					border-width: 0 0 0 1px
+					transition: none
+
+					+media('<tab-lg')
+						border-width: 0 0 0 1px
+
+				a
+					color: $text-color
+					transition: none
+
+					.no-touchevents &:hover
+						background-color: $bg-color
+						box-shadow: inset 0 -2px 0 2px $border-color, inset 0 0 0 2px $border-color
+
+					& > div
+						& > em
+							color: $mark-color
+
+	// header hot line
+	.header__hot-line
+		li
+			color: $text-color
+
+	// header title
+	.header__title
+		color: $text-color
+
+		a
+			&::before
+				+gray()
+
+	// header info
+	.header__info
+
+		li
+			color: $text-color
+
+		a
+			& > span
+				border-bottom: 2px solid transparent
+
+			.no-touchevents &:hover > span
+				border-color: $text-color
+
+		path
+			fill: $text-color
+
+	// user options
+	.user-options__item
+		& > a
+			box-shadow: -1px 0 0 $bg-color
+			color: $bg-color
+			transition: none
+
+			& > div
+				color: $bg-color
+				transition: none
+
+			svg
+				transition: none
+
+			path
+				fill: $bg-color
+				transition: none
+
+			.no-touchevents &:hover
+				background-color: $bg-color
+				color: $text-color
+
+				path
+					fill: $text-color
+
+		&.cecutient-link
+			z-index: 2
+
+			& > a
+				box-shadow: inset 0 0 0 2px $text-color
+				background-color: $bg-color
+				color: $text-color
+
+				path
+					fill: $text-color
+
+	// lang
+	.lang
+		& > a
+			transition: none
+			color: $bg-color
+
+
+	// NAVIGATION
+	.nav
+		a
+			color: $bg-color
+			transition: none
+
+	// nav item arrow
+	.nav__angle
+		+size(15px, 20px)
+		margin-top: -10px
+		right: 15px
+
+		&::before, &::after
+			content: none
+			background: none
+			border-radius: 0
+			transition: none
+			transform: none
+			margin: 0
+
+		&::after
+			content: ''
+			top: 0
+			+triangle(right, $text-color, 10px, 1.5)
+
+	li
+		&.hover, .no-js &:hover
+			& > .nav__tab .nav__angle
+				&::after
+					border-left-color: $bg-color
+
+	// общие стили для всех ПОДМЕНЮ
+	.nav__drop
+		background-color: $bg-color
+		border: 2px solid $text-color
+		box-shadow: none
+		transition: none
+
+		a
+			color: $text-color
+			border-width: 2px
+			border-color: $text-color
+
+		li
+			&.hover, .no-js &:hover
+				& > .nav__tab > a
+					background: $text-color
+					color: $bg-color
+
+	// подменю первого уровня и подменю первого уровня для "priority-nav"
+	.nav__list, .priority-nav__dropdown
+		& > li
+			& > .nav__drop
+				min-width: 100%
+				border-top: 2px solid $text-color
+
+	// пункты меню ПЕРВОГО уровня
+	.nav__list > li, .priority-nav__dropdown > li
+		& > a, & > .nav__tab > a
+			color: $bg-color
+			box-shadow: inset -1px 0 0 $bg-color, 0 -1px 0 $bg-color
+
+		&.hover, &.active, &.current, .no-js &:hover
+			& > .nav__tab > a
+				background: $bg-color
+				color: $text-color
+				box-shadow: -1px 0 0 $text-color, 1px 0 0 $text-color, inset 0 -2px 0 $text-color, inset 0 2px 0 $text-color, inset -1px 0 0 $text-color, inset 1px 0 0 $text-color
+				//box-shadow: inset 0 -2px 0 $text-color, inset 0 2px 0 $text-color
+
+	// priority nav
+	.nav
+		.priority-nav__dropdown-toggle
+			box-shadow: inset -1px 0 0 $bg-color
+			transition: none
+
+			.no-touchevents &:hover, &.is-open
+				background-color: $bg-color
+				color: $text-color
+
+	.priority-nav__dropdown
+		background: $text-color
+		box-shadow: 0 -1px 0 $bg-color
+
+		&::after
+			+pseudo()
+			left: 0
+			bottom: 0
+			width: 100%
+			height: 1px
+			background-color: $text-color
+
+		& > li
+			box-shadow: inset -1px 0 0 $bg-color, 0 -1px 0 $bg-color, inset 0 -1px 0 $bg-color
+
+	// SIDEBAR
+	.sidebar
+		background-color: $bg-color
+		border-right: 2px solid $border-color
+
+	.sidebar-top__holder
+		border-bottom: 2px solid $border-color
+
+	// sidebar bottom
+	.sidebar-bottom__heading
+		background-color: $bg-color
+
+		&::after
+			+linear-gradient(to bottom, $bg-color 0, transparentize($bg-color, 1) 100%)
+
+	.sidebar-bottom__heading, .popup-news__heading
+		.btn-filters-open
+			&::before
+				+pseudo()
+				width: 36px
+				height: 36px
+				left: 50%
+				top: 50%
+				margin: -18px 0 0 -18px
+				z-index: -1
+
+			path
+				fill: $text-color
+				transition: none
+
+			.no-touchevents &:hover
+				&::before
+					background-color: $text-color
+
+				path
+					fill: $bg-color
+
+	// sidebar menu
+	.sidebar-menu
+		a
+			color: $text-color
+			transition: none
+
+			.no-touchevents &:hover
+				color: $bg-color
+				background-color: $text-color
+				transition: none
+
+			.no-touchevents &.active-section, &.active-section
+				color: $text-color
+				transition: none
+
+				&::before
+					background-color: $text-color
+					width: 8px
+
+				&:hover
+					color: $bg-color
+
+	.nav-menu-opener
+		i
+			$menu-opener-icon-height: 36px
+
+			right: #{$grid-inside-horizontal-space - 6px}
+			+size($menu-opener-icon-height)
+			margin-top: -#{round($menu-opener-icon-height*0.5)}
+
+			&::after
+				left: 50%
+				bottom: 50%
+				margin: 0 0 -7px -10px
+				+triangle(top, $text-color, 10px, 1.5)
+				transition: none
+
+		.no-touchevents &:hover i
+			box-shadow: inset 0 0 0 2px $text-color
+			background-color: $text-color
+
+			&::after
+				border-bottom-color: $bg-color
 
 	// FOOTER
 	.footer,
