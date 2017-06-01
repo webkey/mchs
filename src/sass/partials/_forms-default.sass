@@ -49,8 +49,7 @@
 input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
 	display: block
 	color: $color-form-text
-	font-size: 16px
-	line-height: 24px
+	+font(16px, 24px)
 	letter-spacing: normal
 	height: 50px
 	width: 100%
@@ -91,14 +90,11 @@ textarea
 	display: block
 	position: relative
 	float: left
-	font-size: 1.2rem
-	line-height: 1.8
+	+font(12px, 1.8)
 	color: $color-form-error
-	height: 1.8em
-	width: 100%
+	+size(100%, 1.8em)
 	margin-bottom: -1.8em
 	overflow: hidden
-	-ms-text-overflow: ellipsis
 	text-overflow: ellipsis
 	white-space: nowrap
 
@@ -424,7 +420,7 @@ input[type="radio"]
 		height: 50px
 		text-overflow: ''
 		cursor: pointer
-		padding: 13px 40px 13px 18px
+		padding: 13px 50px 13px 18px
 		white-space: nowrap
 		text-indent: 0
 		width: 100%
@@ -444,13 +440,12 @@ input[type="radio"]
 	.select2-container--default .select2-selection--single .select2-selection__rendered,
 	.select2-container--default .select2-selection--multiple .select2-selection__rendered
 		+font-normal
-		font-size: 16px
-		line-height: 22px
+		+font(16px, 22px)
 		text-transform: none
 		color: $color-form-text
 
 	select
-		padding-right: 40px
+		padding-right: 50px
 
 	select:focus
 		color: $color-form-text
@@ -464,10 +459,10 @@ input[type="radio"]
 
 			.select2-selection__arrow
 				position: absolute
-				right: 0
-				top: 0
-				height: 100%
-				width: 40px
+				right: 1px
+				top: 1px
+				height: calc(100% - 2px)
+				width: 46px
 				background-color: white
 				z-index: 2
 
@@ -476,8 +471,7 @@ input[type="radio"]
 					position: absolute
 					left: 0
 					top: 0
-					width: 100%
-					height: 100%
+					+size(100%)
 					margin: 0
 
 	&::before,
@@ -486,10 +480,9 @@ input[type="radio"]
 	.select2-container--default .select2-selection--single .select2-selection__arrow b::after
 		content: ''
 		position: absolute
-		right: 22px
+		right: 21px
 		top: 50%
-		width: 8px
-		height: 2px
+		+size(8px, 2px)
 		background-color: $title-color
 		margin-top: -1px
 		box-sizing: border-box
@@ -502,15 +495,16 @@ input[type="radio"]
 	&::after,
 	.select2-container--default .select2-selection--single .select2-selection__arrow b::after
 		transform: rotate(-45deg)
-		right: 17px
+		right: 16px
 
 	.select2-container--default .select2-search--inline .select2-search__field
 		height: auto
 		margin: 0
+		box-shadow: none !important
 
 	// multiple
 	.select2-container--default .select2-selection--multiple
-		padding: 9px 40px 9px 18px
+		padding: 9px 50px 9px 18px
 
 		.select2-selection__rendered
 			padding-left: 0
@@ -526,6 +520,9 @@ input[type="radio"]
 				&::before
 					content: none
 
+		.select2-selection__choice__remove
+			margin-right: 6px
+
 /*multiselect menu*/
 .select2-dropdown
 	border-color: $color-form-border
@@ -536,7 +533,8 @@ input[type="radio"]
 		.select2-search__field
 			border-color: $color-form-border
 			margin: 0
-			height: 34px
+			padding: 9px 8px
+			height: 44px
 
 			&:focus
 				border-color: $color-form-border

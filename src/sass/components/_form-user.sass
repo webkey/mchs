@@ -1,3 +1,7 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*user form*/
 .form-title
 	display: block
@@ -9,7 +13,7 @@
 	text-align: center
 
 .user-form
-	background: #fafafa
+	background-color: #fafafa
 	padding: $article-layout-space-vertical $article-layout-space-horizontal
 	border: 1px solid $border-color
 	margin-bottom: $bottom-space
@@ -93,12 +97,13 @@
 			vertical-align: middle
 			min-height: inherit
 
-		&__item
-			display: inline-block
-			vertical-align: middle
-			width: calc(100% - 6px)
-			font-size: 1.4rem
-			line-height: 1.5
-			letter-spacing: normal
+	.form-note__item
+		display: inline-block
+		vertical-align: middle
+		width: calc(100% - 6px)
+		font-size: 1.4rem
+		line-height: 1.5
+		+font($font-size-small, $line-height-small)
+		letter-spacing: normal
 
 /*user form end*/

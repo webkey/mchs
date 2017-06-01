@@ -1,141 +1,129 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 .upload-file
 	opacity: 0
 
 .jFiler
-	=transition
-		-webkit-transition-property: background-color, border-color, -webkit-transform
-		transition-property: background-color, border-color, transform
-		-webkit-transition-duration: 0.2s
-		transition-duration: 0.2s
-
 	position: relative
 
-	&-input-dragDrop
-		margin: 0
-		cursor: pointer
-		padding: 30px
-		background: #fff
-		border: 1px dashed $color-form-border
-		+transition
+.jFiler-input-dragDrop
+	margin: 0
+	cursor: pointer
+	padding: 30px
+	background: white
+	border: 1px dashed $color-form-border
+	transition-property: background-color, border-color, transform
+	transition-duration: $animation-speed
 
-		.no-touchevents &:hover
-			border-color: $color-form-border-focus
+	.no-touchevents &:hover
+		border-color: $color-form-border-focus
 
-		&.dragged .jFiler-input-icon i
-			transform: translate(0, -8px)
+	&.dragged .jFiler-input-icon i
+		transform: translate(0, -8px)
 
-		.jFiler-input-icon
-			margin-top: 0
-			margin-bottom: 24px
-			text-align: center
+	.jFiler-input-icon
+		margin-top: 0
+		margin-bottom: 24px
+		text-align: center
 
-			i
-				display: inline-block
-				vertical-align: top
-				background: url(../../img/attach.svg) no-repeat
-				-webkit-background-size: contain
-				background-size: contain
-				width: 50px
-				height: 50px
-				+transition
+		i
+			display: inline-block
+			vertical-align: top
+			background: url(../../img/attach.svg) no-repeat
+			background-size: contain
+			+size(50px)
+			transition-property: background-color, border-color, transform
+			transition-duration: $animation-speed
 
-		.jFiler-input-text strong
-			display: block
-			font-weight: normal
-			font-size: $font-size-small
-			line-height: $line-height-small
-			color: $text-color
-			text-align: center
-
-	&-items
-		margin: #{$bottom-space} 0 0
-
-	&-items-list, .#{$user-content} &-items-list
-		margin: #{$bottom-space-sm} 0
-
-	&-item
-		margin: #{$bottom-space-sm} 0
-		font-size: $font-size-small
-		line-height: $line-height-small
-		color: $text-color
-		overflow: hidden
-
-	&-item-icon
-		display: none
-
-	&-item-title
-		display: inline-block
-		vertical-align: top
-		+font-bold
-
-	&-item-others
-		display: inline-block
-		vertical-align: top
-		color: $text-color-light
-		position: relative
-
-		&::after
-			content: ''
-			position: absolute
-			left: 100%
-			bottom: 0
-			height: 0
-			width: 999px
-			border-bottom: 1px dotted $border-color
-			margin: 0 0 3px
-
-		span
-			padding-right: 5px
-
-	&-item-assets
-		position: absolute
-		right: 0
-		bottom: 0
-
-	&-item-assets ul,
-	.#{$user-content} ul &-item-assets ul
-		margin: 0
-
-		li
-			margin: 0
-			padding: 0 0 3px 8px !important
-			background: #fafafa
-
-	&-item-trash-action
+	.jFiler-input-text strong
 		display: block
-		position: relative
-		width: 12px
-		height: 12px
-		z-index: 2
-		cursor: pointer
+		font-weight: normal
+		+font($font-size-small, $line-height-small)
+		color: $text-color
+		text-align: center
 
-		&::before, &::after
-			content: ''
-			position: absolute
-			left: 50%
-			top: 50%
-			height: 2px
-			width: 16px
-			border-radius: 2px
-			background: $mark-color
-			-webkit-transition-property: background
-			transition-property: background
-			-webkit-transition-duration: 0.2s
-			transition-duration: 0.2s
-			margin: -1px 0 0 -8px
+.jFiler-items
+	margin: #{$bottom-space} 0 0
 
-		&::before
-			-webkit-transform: rotate(-45deg)
-			-ms-transform: rotate(-45deg)
-			transform: rotate(-45deg)
+.jFiler-items-list, .#{$user-content} &-items-list
+	margin: #{$bottom-space-sm} 0
 
-		&::after
-			-webkit-transform: rotate(45deg)
-			-ms-transform: rotate(45deg)
-			transform: rotate(45deg)
+.jFiler-item
+	margin: #{$bottom-space-sm} 0
+	+font($font-size-small, $line-height-small)
+	color: $text-color
+	overflow: hidden
 
-		.no-touchevents &:hover::before,
-		.no-touchevents &:hover::after
-			background-color: $text-color-alt
+.jFiler-item-icon
+	display: none
+
+.jFiler-item-title
+	display: inline-block
+	vertical-align: top
+	+font-bold
+	margin-right: 10px
+
+.jFiler-item-others
+	display: inline-block
+	vertical-align: top
+	color: $text-color-light
+	position: relative
+
+	&::after
+		content: ''
+		position: absolute
+		left: 100%
+		bottom: 0
+		+size(999px, 0)
+		border-bottom: 1px dotted $border-color
+		margin: 0 0 3px
+
+	span
+		padding-right: 5px
+
+.jFiler-item-assets
+	position: absolute
+	right: 0
+	bottom: 0
+
+.jFiler-item-assets ul,
+.#{$user-content} ul .jFiler-item-assets ul
+	margin: 0
+
+	li
+		margin: 0
+		padding: 0 0 3px 8px !important
+		background: #fafafa
+
+.jFiler-item-trash-action
+	display: block
+	position: relative
+	+size(12px)
+	z-index: 2
+	cursor: pointer
+
+	&::before, &::after
+		content: ''
+		position: absolute
+		left: 50%
+		top: 50%
+		+size(16px, 2px)
+		border-radius: 2px
+		background: $mark-color
+		transition-property: background
+		transition-duration: $animation-speed
+		margin: -1px 0 0 -8px
+
+	&::before
+		transform: rotate(-45deg)
+
+	&::after
+		transform: rotate(45deg)
+
+	.no-touchevents &:hover::before,
+	.no-touchevents &:hover::after
+		background-color: $text-color-alt
 
 
