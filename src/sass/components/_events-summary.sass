@@ -6,7 +6,7 @@
 .events-sum
 	position: relative
 	margin-bottom: $bottom-space
-	height: ($news-item-height) // Хардкод. Высота должна равняться блоку новостей с картинкой
+	height: $news-item-height // Хардкод. Высота должна равняться блоку новостей с картинкой
 	overflow: hidden
 	background-color: white
 
@@ -113,8 +113,7 @@
 
 .events-list__item
 	border-bottom: 1px solid $border-color
-	font-size: 1.4rem
-	line-height: 1.43
+	+font(1.4rem, 1.43)
 	+padding-vertical(round($grid-inside-vertical-space*0.75))
 
 	&:last-child

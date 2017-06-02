@@ -685,8 +685,7 @@ $nav-small-tabs-height: 60px
 .lang__list
 	font-family: $font-alt
 	font-weight: 700
-	font-size: 36px
-	line-height: 1.3
+	+font(36px, 1.3)
 	margin-bottom: $bottom-space
 
 	+media('<mob-lg')
@@ -732,8 +731,7 @@ $nav-small-tabs-height: 60px
 .share-link__list
 	font-family: $font-alt
 	font-weight: 700
-	font-size: 36px
-	line-height: 1.3
+	+font(36px, 1.3)
 	margin-bottom: $bottom-space
 
 	+media('<mob-lg')
@@ -773,7 +771,7 @@ $nav-small-tabs-height: 60px
 
 		path
 			fill: #fff
-			transition-property: transform, box-shadow, fill
+			transition-property: fill
 			transition-duration: $animation-speed
 
 		&.fb

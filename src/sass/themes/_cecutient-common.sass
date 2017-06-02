@@ -7,6 +7,10 @@
 	// base
 	$font-size: 1.6rem
 	$line-height: round-float(3.0rem/$font-size, 2)
+	$font-size-small: 1.4rem !default
+	$line-height-small: round-float(2.0rem/$font-size, 2) !default
+
+	$news-item-height: auto
 
 	//*
 		&, &::before, &::after
@@ -17,7 +21,44 @@
 	.special-hide
 		display: none
 
-	/*view print
+	// layout
+	&.home-page .aside
+		padding-top: calc(2rem * 1.3 + #{$bottom-space})
+
+	// grid
+	.content [class*="grid-col-"]
+		float: none
+		width: auto
+
+	// section
+	.section__title
+		margin-bottom: $bottom-space
+
+	.v-separator
+		text-indent: -9999px
+		overflow: hidden
+		+size(2px, 12px)
+
+		& + a
+			padding: 5px
+			font-weight: bold
+			text-decoration: none
+
+	// years
+	.years
+		a
+			position: relative
+			padding: 4px
+
+		& > a > span
+			border: none
+			line-height: inherit
+
+	.years-drop
+		padding: 0
+		margin-top: -2px
+
+	// view print
 	.view-print
 		svg
 			display: none
@@ -50,6 +91,227 @@
 			&.depict-visit-share
 				+size(18px)
 
+	// promo slider
+	.promo
+		position: absolute
+		width: 100%
+		left: 9999px
+		top: -9999px
+		z-index: -1
+		opacity: 0
+		visibility: hidden
+
+	//news slider
+	.news-grid-slider
+		.slick-track
+			transform: none !important
+			width: auto !important
+
+		&::after
+			content: none
+
+		.slick-dots, .slick-arrow
+			display: none
+
+	.news-grid-slider__slide
+		width: auto !important
+		float: none
+		display: block
+
+
+	// save info
+	.save
+		height: $news-item-height
+		margin-bottom: $bottom-space-md
+
+		&::after
+			display: none
+
+	.save__holder
+		+clear-spacing
+
+	.save__holder, .save__align
+		padding: 0
+		position: relative
+		left: auto
+		right: auto
+		top: auto
+		bottom: auto
+		width: auto
+		height: auto
+		transform: none
+
+	.save__box
+		height: auto
+		+display-inline-block-middle
+		width: 50%
+
+	.save__box:first-child
+		border: none
+
+	.save__align
+		padding: 10px
+
+		& > strong, & > span
+			+display-inline-block-middle
+
+		& > strong
+			margin-right: 20px
+
+	// events summary
+	.events-sum
+		height: $news-item-height
+		display: none
+
+	.events-sum__nav
+		display: none
+
+	.events-sum__panels
+		height: auto !important
+
+	.events-sum__panel
+		height: auto !important
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		right: auto !important
+		bottom: auto !important
+		visibility: visible !important
+		opacity: 1 !important
+		z-index: auto !important
+		padding: 0
+		margin-bottom: $bottom-space
+
+		&::after
+			content: none
+
+	.events-list__item
+		+font($font-size, $line-height)
+		border-bottom: none
+		padding: 0
+		margin-bottom: $bottom-space
+
+	.events-sum__footer
+		position: relative
+		left: auto
+		bottom: auto
+		width: auto
+		padding: 0
+
+		a
+			font-family: $font-alt
+			+font(18px, 24px)
+
+	// news previews
+	.news-previews__list
+		height: auto !important
+		+grid-parent(0)
+
+	.news-previews__item
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		right: auto !important
+		bottom: auto !important
+		+font($font-size, $line-height)
+
+	.news-previews .news-previews__item
+		+grid-item(1, 0, $bottom-space-md)
+
+	.news-previews__inner
+		box-shadow: none
+
+	.news__label
+		display: none
+
+	.news-previews__img
+		display: none
+
+	.news-previews__content
+		padding: 5px 10px
+
+		&::before
+			content: none
+
+	.news-previews__text
+		margin-bottom: 1em
+
+	.news-previews__meta, .news-grid__meta
+		+font($font-size-small, $line-height-small)
+
+
+
+
+	// news grid
+	.news-grid__list
+		margin-bottom: $bottom-space
+
+	.news-grid__item, .news-grid__item--large, .news-grid__item--wide
+		+font($font-size, $line-height)
+		height: auto !important
+		margin-bottom: $bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+	.news-grid__item, .news-grid__list > .news-grid__item--large
+		float: none
+		width: auto
+
+	.news-grid__inner
+		height: auto
+		box-shadow: none
+		+font($font-size, $line-height)
+
+	.news-grid__img
+		display: none
+
+	.news-grid__content
+		height: auto !important
+		margin-top: 0 !important
+		padding: 5px 10px
+
+		&::before
+			content: none
+
+	.news-grid__title, .news-grid__text
+		height: auto
+		margin-bottom: 1em
+
+	.news-grid__text
+		font-family: $font-alt
+		+font(1.3em, 1.4)
+		font-weight: bold
+
+	.news-grid__title
+		+font(1.3em, 1.4)
+
+		& ~ .news-grid__text
+			font-family: $font-norm
+			+font(1em, $line-height)
+			font-weight: normal
+
+	.news-grid__meta
+		position: relative
+		left: auto
+		top: auto
+		bottom: auto
+		right: auto
+		width: auto
+		+clear
+
+	// search page
+	.search-form__btn
+		height: 100%
+		top: 0
+		margin: 0
+
+		svg
+			display: none
+
+		span
+			font-size: 20px
+
 	// header contacts
 	.header__contacts
 		ul
@@ -71,14 +333,11 @@
 
 	// header info
 	.header__info
+		font-weight: normal
 		+font($font-size-small, $line-height-small)
 
 		+media('<desk-lg')
 			font-size: 1.2rem
-
-	// header info
-	.header__info
-		font-weight: normal
 
 	// user options
 	.user-options__item
@@ -120,3 +379,6 @@
 
 			&::before, &::after
 				+line-style
+
+	.popup-label
+		+font(18px, 24px)

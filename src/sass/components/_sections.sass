@@ -27,13 +27,11 @@
 		color: $text-color-alt
 
 	h2, h3, a
-		display: inline-block
-		vertical-align: top
+		+display-inline-block-middle
 		position: relative
 		font-family: inherit
 		color: inherit
-		font-size: inherit
-		line-height: inherit
+		+font(inherit, inherit)
 		margin: 0
 
 		+media('<mob-lg')
@@ -70,15 +68,14 @@
 		font-size: 0.6em
 		vertical-align: middle
 
-		+ a
+		& + a
 			color: $text-color
 			text-transform: uppercase
-			font-size: 0.6em
+			+font(0.6em, 1)
 			vertical-align: middle
 
 .v-separator
-	display: inline-block
-	vertical-align: top
+	+display-inline-block-top
 	+margin-horizontal(10px)
 
 	+media('<mob-lg')
@@ -96,8 +93,7 @@
 
 .news-date
 	position: relative
-	display: inline-block
-	vertical-align: top
+	+display-inline-block-top
 
 	.touchevents & > a
 		display: none
@@ -105,13 +101,11 @@
 .datepicker-input
 	position: relative
 	top: 0.1em
-	display: inline-block
-	vertical-align: top
+	+display-inline-block-top
 	padding: 0
 	margin: 0
 	font-family: $font-alt
-	font-size: 0.9em
-	line-height: 23px
+	+font(0.9em, 23px)
 	height: 23px
 	font-weight: normal
 	cursor: pointer

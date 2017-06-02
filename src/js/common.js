@@ -90,7 +90,7 @@ function getCookie(name) {
  * !switch special version
  * */
 function switchSpecialVersion() {
-	$('body').on('click', '.cecutient-version-toggle-js', function (e) {
+	$('.cecutient-version-toggle-js').on('click', function (e) {
 		e.preventDefault();
 
 		toggleSpecialVersion();
@@ -122,6 +122,8 @@ function toggleSpecialVersion() {
 		$body.removeClass('cecutient-version');
 		$body.removeClass('color-scheme-bw');
 
+		$(document).trigger('specialVersionOff');
+
 	} else {
 		setCookie('cecutientVersion', true, {
 			// expires: expiresValue,
@@ -137,6 +139,8 @@ function toggleSpecialVersion() {
 
 		$body.addClass('cecutient-version');
 		$body.addClass('color-scheme-bw');
+
+		$(document).trigger('specialVersionOn');
 	}
 }
 /*toggle special version end*/
@@ -1478,12 +1482,11 @@ function slidersInit() {
 
 	/*promo slider*/
 	var $promoSlider = $('.promo-slider');
+	var dur = 200;
 
 	if ($promoSlider.length) {
-
-		$promoSlider.each(function () {
+		$.each($promoSlider, function () {
 			var $currentSlider = $(this);
-			var dur = 200;
 
 			$currentSlider.slick({
 				fade: false,
@@ -1498,7 +1501,18 @@ function slidersInit() {
 				dots: true,
 				arrows: false
 			});
+		});
 
+		var timeoutPromoSlider;
+		$(document).on('specialVersionOff', function () {
+			clearTimeout(timeoutPromoSlider);
+			timeoutPromoSlider = setTimeout(function () {
+				$.each($promoSlider, function () {
+					var $currentSlider = $(this);
+
+					$currentSlider.resize();
+				})
+			}, 100);
 		});
 	}
 
@@ -1558,7 +1572,7 @@ function slidersInit() {
 
 	if ($newsGridSlider.length) {
 
-		$newsGridSlider.each(function () {
+		$.each($newsGridSlider, function () {
 			var $currentSlider = $(this);
 			var dur = 200;
 
@@ -1576,6 +1590,18 @@ function slidersInit() {
 				arrows: true
 			});
 
+		});
+
+		var timeoutNewsGridSlider;
+		$(document).on('specialVersionOff', function () {
+			clearTimeout(timeoutNewsGridSlider);
+			timeoutNewsGridSlider = setTimeout(function () {
+				$.each($newsGridSlider, function () {
+					var $currentSlider = $(this);
+
+					$currentSlider.resize();
+				})
+			}, 100);
 		});
 	}
 
