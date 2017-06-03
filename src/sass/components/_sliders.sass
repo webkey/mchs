@@ -3,10 +3,9 @@
 @import ../../libs/include-media/dist/include-media
 
 /*sliders*/
-// arrows
+// slider arrows
 .slick-arrow, .swiper-arrow
-	width: 40px
-	height: 40px
+	+size(40px)
 	display: block
 	margin-top: 0
 	position: absolute
@@ -17,13 +16,10 @@
 	box-shadow: 0
 	opacity: 1
 	z-index: 6
-	-webkit-transform: translate(0, -50%)
-	-ms-transform: translate(0, -50%)
 	transform: translate(0, -50%)
 	transition-property: background, opacity, visibility
 	transition-duration: 0.2s
-	font-size: 0
-	line-height: 0
+	+font(0, 0)
 	color: transparent
 
 	.no-touchevents &:hover
@@ -32,7 +28,6 @@
 
 	&.slick-disabled, &.swiper-button-disabled, .no-touchevents &.slick-disabled, .no-touchevents &.swiper-button-disabled
 		opacity: 0.25
-		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
 		filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
 		cursor: default
 
@@ -48,8 +43,7 @@
 		position: absolute
 		opacity: 1
 		pointer-events: none
-		width: 12px
-		height: 12px
+		+size(12px)
 		transform: rotate(45deg)
 		border: 0 solid #000
 
@@ -518,14 +512,12 @@
 				float: left
 
 .tape-slider__anchor
-	display: inline-block
-	vertical-align: top
-	padding: 20px 15px
+	+display-inline-block-top
+	padding: 14px 15px
 	text-decoration: none
 	font-family: $font-alt
 	font-weight: normal
-	font-size: 1.2rem
-	line-height: 1.4
+	+font(1.2rem, 30px)
 	color: $text-color
 	cursor: pointer
 	text-transform: uppercase
@@ -535,20 +527,21 @@
 	.no-touchevents &:hover, .no-touchevents .current &, .current &
 		color: $text-color-alt
 
-//.tape-slider
+// swiper slider
 .swiper-container
 	position: relative
 	transition-property: opacity, visibility
 	transition-duration: $animation-speed
 
-	&::before, &::after
-		content: ''
-		position: absolute
-		top: 0
-		height: 100%
-		width: 15px
-		z-index: 2
-		pointer-events: none
+	.tape-slider &
+		&::before, &::after
+			content: ''
+			position: absolute
+			top: 0
+			height: 100%
+			width: 15px
+			z-index: 2
+			pointer-events: none
 
 	&::before
 		left: 0

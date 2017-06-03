@@ -92,11 +92,24 @@ function getCookie(name) {
 function switchSpecialVersion() {
 	$('.cecutient-version-toggle-js').on('click', function (e) {
 		e.preventDefault();
+		$('body').hide(); // hide content
 
 		toggleSpecialVersion();
+
+		location.reload();
 	});
 }
 /*switch special version end*/
+
+/**
+ * !check cecutient version cookie
+ */
+function checkCecutientVersionCookie() {
+	if (getCookie('cecutientVersion') === 'true' && !$('#cecutient-css-link').length) {
+		toggleSpecialVersion();
+	}
+}
+/*check cecutient version cookie end*/
 
 /**
  * !toggle special version
@@ -107,7 +120,7 @@ function toggleSpecialVersion() {
 	var $body = $('body');
 	var path = cssPath || 'css/';
 
-	console.log("path: ", path);
+	// console.log("path: ", path);
 
 	if ($cecutientCssLink.length) {
 
@@ -144,16 +157,6 @@ function toggleSpecialVersion() {
 	}
 }
 /*toggle special version end*/
-
-/**
- * !check cecutient version cookie
- */
-function checkCecutientVersionCookie() {
-	if (getCookie('cecutientVersion') === 'true' && !$('#cecutient-css-link').length) {
-		toggleSpecialVersion();
-	}
-}
-/*check cecutient version cookie end*/
 
 /**
  * !resize only width
@@ -1484,7 +1487,7 @@ function slidersInit() {
 	var $promoSlider = $('.promo-slider');
 	var dur = 200;
 
-	if ($promoSlider.length) {
+	if ($promoSlider.length && getCookie('cecutientVersion') !== 'true') {
 		$.each($promoSlider, function () {
 			var $currentSlider = $(this);
 
@@ -1503,17 +1506,17 @@ function slidersInit() {
 			});
 		});
 
-		var timeoutPromoSlider;
-		$(document).on('specialVersionOff', function () {
-			clearTimeout(timeoutPromoSlider);
-			timeoutPromoSlider = setTimeout(function () {
-				$.each($promoSlider, function () {
-					var $currentSlider = $(this);
-
-					$currentSlider.resize();
-				})
-			}, 100);
-		});
+		// var timeoutPromoSlider;
+		// $(document).on('specialVersionOff', function () {
+		// 	clearTimeout(timeoutPromoSlider);
+		// 	timeoutPromoSlider = setTimeout(function () {
+		// 		$.each($promoSlider, function () {
+		// 			var $currentSlider = $(this);
+		//
+		// 			$currentSlider.resize();
+		// 		})
+		// 	}, 100);
+		// });
 	}
 
 	/*infoblock slider*/
@@ -1570,7 +1573,7 @@ function slidersInit() {
 	/*news grid slider*/
 	var $newsGridSlider = $('.news-grid-slider');
 
-	if ($newsGridSlider.length) {
+	if ($newsGridSlider.length && getCookie('cecutientVersion') !== 'true') {
 
 		$.each($newsGridSlider, function () {
 			var $currentSlider = $(this);
@@ -1592,17 +1595,17 @@ function slidersInit() {
 
 		});
 
-		var timeoutNewsGridSlider;
-		$(document).on('specialVersionOff', function () {
-			clearTimeout(timeoutNewsGridSlider);
-			timeoutNewsGridSlider = setTimeout(function () {
-				$.each($newsGridSlider, function () {
-					var $currentSlider = $(this);
-
-					$currentSlider.resize();
-				})
-			}, 100);
-		});
+		// var timeoutNewsGridSlider;
+		// $(document).on('specialVersionOff', function () {
+		// 	clearTimeout(timeoutNewsGridSlider);
+		// 	timeoutNewsGridSlider = setTimeout(function () {
+		// 		$.each($newsGridSlider, function () {
+		// 			var $currentSlider = $(this);
+		//
+		// 			$currentSlider.resize();
+		// 		})
+		// 	}, 100);
+		// });
 	}
 
 	/*tape slider*/

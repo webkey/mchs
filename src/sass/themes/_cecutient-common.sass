@@ -33,6 +33,7 @@
 	// section
 	.section__title
 		margin-bottom: $bottom-space
+		+font(round($font-size * 2), 1.3)
 
 	.v-separator
 		text-indent: -9999px
@@ -91,21 +92,21 @@
 			&.depict-visit-share
 				+size(18px)
 
+	// slider arrows
+	.slick-arrow, .swiper-arrow
+		+size(60px)
+
 	// promo slider
 	.promo
-		position: absolute
-		width: 100%
-		left: 9999px
-		top: -9999px
-		z-index: -1
-		opacity: 0
-		visibility: hidden
+		display: none
 
 	//news slider
 	.news-grid-slider
+		white-space: normal
+
 		.slick-track
-			transform: none !important
-			width: auto !important
+			transform: none
+			width: auto
 
 		&::after
 			content: none
@@ -114,10 +115,24 @@
 			display: none
 
 	.news-grid-slider__slide
-		width: auto !important
-		float: none
 		display: block
+		float: none
+		height: auto
+		width: auto
 
+	// tape slider
+	.tape-slider
+		+padding-horizontal(60px)
+
+		.swiper-button-prev
+			left: -2px
+
+		.swiper-button-next
+			right: -2px
+
+	.tape-slider__anchor
+		padding: 13px 15px
+		+font($font-size, 30px)
 
 	// save info
 	.save
@@ -201,6 +216,13 @@
 		a
 			font-family: $font-alt
 			+font(18px, 24px)
+
+	// obzh
+	.obzh__panel
+		padding: 0
+
+	.obzh-banner
+		background-image: none !important
 
 	// news previews
 	.news-previews__list

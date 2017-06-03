@@ -117,8 +117,11 @@
 			background-color: $link-color-inverse
 			color: $link-color
 
-		&:disabled
+		&:disabled, .no-touchevents &:disabled:hover
+			color: $link-color-inverse
 			background-color: $link-color-disabled
+			border-color: $link-color-disabled
+			cursor: no-drop
 
 			.no-touchevents &
 				background-color: $link-color-disabled
@@ -135,9 +138,11 @@
 			background: $link-color
 			color: $link-color-inverse
 
-		&:disabled
-			border-color: $link-color-disabled
+		&:disabled, .no-touchevents &:disabled:hover
 			color: $link-color-disabled
+			background-color: $link-color-inverse
+			border-color: $link-color-disabled
+			cursor: no-drop
 
 			.no-touchevents &
 				background-color: $bg-color
@@ -335,6 +340,7 @@
 			&::after
 				background: $link-color
 				transition-duration: $animation-speed
+				transition-delay: 0s
 
 		&:checked
 			& + label,
@@ -342,6 +348,7 @@
 				&::before
 					border-color: $link-color
 					background-color: $link-color
+					transition-duration: $animation-speed
 
 			& + label span,
 			& + span
@@ -610,7 +617,7 @@
 			background: none
 
 	// section
-	.section__title
+	.section__title, .section__subtitle
 		.v-separator
 			& + a
 				color: $link-color-inverse
@@ -782,6 +789,54 @@
 				color: $link-color-inverse
 				background-color: $link-color
 
+	// slider arrows
+	.slick-arrow, .swiper-arrow
+		transition-duration: $animation-speed
+		background-color: $bg-color
+		border: 2px solid $text-color
+
+		.no-touchevents &:hover
+			background-color: $text-color
+
+		&.slick-disabled, &.swiper-button-disabled, .no-touchevents &.slick-disabled, .no-touchevents &.swiper-button-disabled
+			background-color: $bg-color
+
+		&::after
+			left: 50%
+			top: 50%
+			right: auto
+			bottom: auto
+			transform: translate(-50%, -50%)
+
+	.slick-prev, .swiper-button-prev
+		&::after
+			border: none
+			margin: 0
+			+triangle(left, $text-color, 10px, 1.5)
+
+		.no-touchevents &:hover
+			&::after
+				border-right-color: $bg-color
+
+		&.slick-disabled, &.swiper-button-disabled, .no-touchevents &.slick-disabled, .no-touchevents &.swiper-button-disabled
+			&::after
+				border-right-color: $text-color
+
+	.slick-next, .swiper-button-next
+		&::after
+			border: none
+			margin: 0
+			+triangle(right, $text-color, 10px, 1.5)
+
+		.no-touchevents &:hover
+			&::after
+				border-left-color: $bg-color
+
+		&.slick-disabled, &.swiper-button-disabled, .no-touchevents &.slick-disabled, .no-touchevents &.swiper-button-disabled
+			&::after
+				border-right-color: $text-color
+
+
 	// promo slider
 	.promo-slider__img
 		background: $bg-color !important
@@ -789,6 +844,29 @@
 
 	.promo-slider__text
 		text-shadow: none
+
+	// swiper slider
+	.tape-slider .swiper-container
+		&::before, &::after
+			content: none
+
+	// tape slider
+	.tape-slider
+		border: 2px solid $text-color
+		background-color: $bg-color
+
+	.tape-slider__anchor
+		color: $text-color
+		background-color: $bg-color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover
+			color: $bg-color
+			background-color: $text-color
+
+	.current .tape-slider__anchor
+		color: $bg-color
+		background-color: $text-color
 
 	// save info
 	.save
@@ -818,6 +896,34 @@
 	// events map
 	.events-map
 		+gray()
+
+	// obzh
+	.obzh__tab
+		a
+			color: $text-color
+			background-color: $bg-color
+			border: solid $text-color
+			border-width: 0 0 2px 2px
+			transition-duration: $animation-speed
+
+			span
+				color: inherit
+				transition-duration: inherit
+
+				&::after
+					content: none
+
+			&.active-tab
+				background-color: $text-color
+				color: $bg-color
+
+		&:first-child
+			a
+				border-top-width: 2px
+
+	.obzh-banner
+		background-color: $bg-color
+		border: 2px solid $text-color
 
 	// news previews
 	.news-previews__inner
