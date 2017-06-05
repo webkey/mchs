@@ -34,7 +34,16 @@
     "malihu-custom-scrollbar-plugin": "^3.1.5",
     "flatpickr": "flatpickr-calendar#^2.4.8",
     "swiper": "^3.4.2",
-    "select2": "^4.0.3"
+    "select2": "^4.0.3",
+    "lightgallery": "^1.4.0",
+    "lg-thumbnail": "^1.0.3",
+    "lg-autoplay": "^1.0.4",
+    "lg-video": "^1.0.2",
+    "lg-fullscreen": "^1.0.1",
+    "lg-pager": "^1.0.2",
+    "lg-zoom": "^1.0.4",
+    "lg-hash": "^1.0.2",
+    "lg-share": "^1.0.2"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

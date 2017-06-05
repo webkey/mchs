@@ -88,6 +88,9 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 		,'src/libs/flatpickr/dist/flatpickr.min.css'
 		,'src/libs/swiper/dist/css/swiper.min.css'
 		,'src/libs/select2/dist/css/select2.min.css'
+		,'src/libs/lightgallery/dist/css/lightgallery.min.css'
+		,'src/libs/lightgallery/dist/css/lg-fb-comment-box.min.css'
+		,'src/libs/lightgallery/dist/css/lg-transitions.min.css'
 	]) // Выбираем файлы для конкатенации
 	.pipe(concatCss("src/css/libs.css", {
 		rebaseUrls: false
@@ -118,7 +121,17 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/flatpickr/dist/l10n/ru.js',
 		'src/libs/swiper/dist/js/swiper.min.js',
 		'src/libs/select2/dist/js/select2.full.min.js',
-		'src/libs/select2/dist/js/i18n/ru.js'
+		'src/libs/select2/dist/js/i18n/ru.js',
+		'src/libs/lightgallery/dist/js/lightgallery.min.js',
+		'src/libs/lg-autoplay/dist/lg-autoplay.min.js',
+		'src/libs/lg-autoplay/dist/lg-autoplay.min.js',
+		'src/libs/lg-fullscreen/dist/lg-fullscreen.min.js',
+		'src/libs/lg-hash/dist/lg-hash.min.js',
+		'src/libs/lg-pager/dist/lg-pager.min.js',
+		'src/libs/lg-share/dist/lg-share.min.js',
+		'src/libs/lg-thumbnail/dist/lg-thumbnail.min.js',
+		'src/libs/lg-video/dist/lg-video.min.js',
+		'src/libs/lg-zoom/dist/lg-zoom.min.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(gulp.dest('src/js'))

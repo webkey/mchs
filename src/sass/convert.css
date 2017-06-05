@@ -1,4 +1,71 @@
-/* paging */
+/*tape gallery*/
+.tape-gallery
+	overflow: hidden
+	background-color: #32393f
 
+.tape-gallery__list
+	font-size: 0
+	letter-spacing: -4px
+	white-space: nowrap
 
-/* paging end */
+.tape-gallery__list .swiper-slide
+	display: inline-block
+	vertical-align: top
+	padding: 0
+	font-size: 14px
+	line-height: 1.5
+	letter-spacing: normal
+	white-space: normal
+	box-sizing: border-box
+	width: auto
+	height: auto
+
+.tape-gallery .swiper-container
+	width: 100%
+	height: auto
+	margin-left: auto
+	margin-right: auto
+
+.tape-gallery__list .swiper-slide
+	font-size: 14px
+	line-height: 1.5
+	letter-spacing: normal
+	white-space: normal
+	display: inline-block
+	width: auto
+
+.tape-gallery__list a
+	display: block
+	color: black
+	text-decoration: none
+	box-sizing: border-box
+	height: 100%
+
+.tape-gallery__list a:hover
+	text-decoration: none
+	cursor: url(../userimg/cursor-zoom.png), zoom-out
+
+.tape-gallery__img
+	display: block
+	position: relative
+	overflow: hidden
+	background-color: #000
+	height: 214px
+
+.tape-gallery__img img
+	display: block
+	width: auto
+	max-height: 100%
+	max-width: none
+	position: relative
+	-webkit-transition-property: opacity
+	transition-property: opacity
+	-webkit-transition-duration: 0.2s
+	transition-duration: 0.2s
+	-webkit-backface-visibility: hidden
+	backface-visibility: hidden
+
+.tape-gallery__list a:hover .tape-gallery__img img
+	opacity: 0.55
+
+/*tape gallery end*/

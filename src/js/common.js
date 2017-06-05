@@ -236,7 +236,7 @@ function inputHasValueClass() {
 			$currentFieldWrap.removeClass(_classHasValue);
 
 			//first element of the select must have a value empty ("")
-			if ($currentField.val() != '') {
+			if ($currentField.val() !== '') {
 				$currentFieldWrap.addClass(_classHasValue);
 			}
 		}
@@ -268,7 +268,7 @@ function inputFilledClass() {
 		}).blur(function () {
 			var $thisField = $(this);
 
-			if ($thisField.val() == '') {
+			if ($thisField.val() === '') {
 				$thisField
 					.closest($fieldWrap)
 					.removeClass(_classFilled);
@@ -282,7 +282,7 @@ function inputFilledClass() {
 			$currentFieldWrap.removeClass(_classFilled);
 
 			//first element of the select must have a value empty ("")
-			if ($currentField.val() != '') {
+			if ($currentField.val() !== '') {
 				$currentFieldWrap.addClass(_classFilled);
 			}
 		}
@@ -1711,8 +1711,71 @@ function slidersInit() {
 			}, 1000);
 		});
 	}
+
+	var $tapeGalleryContainer = $('.tape-gallery');
+	if ($tapeGalleryContainer.length) {
+		$tapeGalleryContainer.each(function () {
+			var $thisContainer = $(this);
+			var $thisSlider = $('.swiper-container', $thisContainer);
+			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
+			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
+
+			new Swiper($thisSlider, {
+				loop: false,
+				slidesPerView: 'auto',
+				watchSlidesVisibility: true,
+				keyboardControl: false,
+
+				nextButton: $thisBtnNext,
+				prevButton: $thisBtnPrev
+			});
+		});
+	}
 }
 /*sliders end*/
+
+/**
+ * light gallery initial
+ * */
+function lightGalleryInit() {
+	var $lightGallery = $('.lg-js');
+	var $lightGalleryVideo = $('.lg-video-js');
+
+	if ($lightGallery.length) {
+		$.each($lightGallery, function () {
+			var $thisGallery = $(this);
+			lightGalleryImages($thisGallery);
+		})
+	}
+
+	if ($lightGalleryVideo.length) {
+		$.each($lightGalleryVideo, function () {
+			var $thisGallery = $(this);
+			lightGalleryVideos($thisGallery);
+		})
+	}
+
+	function lightGalleryImages($thisGallery) {
+		$thisGallery.lightGallery({
+			thumbnail: true,
+			animateThumb: true,
+			showThumbByDefault: false,
+			download: false
+		});
+	}
+
+	function lightGalleryVideos($thisGallery) {
+		$thisGallery.lightGallery({
+			thumbnail: true,
+			animateThumb: true,
+			showThumbByDefault: false,
+			download: false,
+			autoplayControls: false,
+			zoom: false
+		});
+	}
+}
+/*light gallery initial end*/
 
 /**
  * !equal height
@@ -3384,6 +3447,7 @@ $(document).ready(function () {
 	toggleDrop();
 	tabSwitcher();
 	slidersInit();
+	lightGalleryInit();
 	equalHeightInit();
 	masonryInit();
 	popupsInit();

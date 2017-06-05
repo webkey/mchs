@@ -20,6 +20,7 @@ gulp.task('changePath', function () {
 
 gulp.task('copyFilesFromLibs', function () {
 
+	// SLICK GALLERY
 	// add fonts for slick slider
 	gulp.src([
 		'src/libs/slick-carousel/slick/fonts/*'
@@ -37,6 +38,19 @@ gulp.task('copyFilesFromLibs', function () {
 		'src/libs/classlist/classList.min.js'
 	])
 	.pipe(gulp.dest('src/js'));
+
+	// LIGHTGALLERY
+	// add fonts for lightgallery
+	gulp.src([
+		'src/libs/lightgallery/dist/fonts/**/*'
+	])
+		.pipe(gulp.dest('src/fonts'));
+
+	// add images and icons for lightgallery
+	gulp.src([
+		'src/libs/lightgallery/dist/img/**/*'
+	])
+		.pipe(gulp.dest('src/img'));
 
 });
 

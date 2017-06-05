@@ -89,17 +89,20 @@
 
 	// social networks
 	.social-networks__item
-		a
 
-			path
-				transition-duration: $animation-speed
+		&, .soc-media-share &
+			a
+				+size(40px)
 
-			.no-touchevents &:hover
-				transform: none
+				path
+					transition-duration: $animation-speed
 
-			&:active, .no-touchevents &:active
-				transform: none
-				transition-duration: $animation-speed
+				.no-touchevents &:hover
+					transform: none
+
+				&:active, .no-touchevents &:active
+					transform: none
+					transition-duration: $animation-speed
 
 	// tags
 	.article-layout .tags
@@ -677,8 +680,11 @@
 	.obzh__tab
 		a
 			border: solid
-			border-width: 0 0 #{$border-width} #{$border-width}
 			transition-duration: $animation-speed
+			border-width: #{$border-width} #{$border-width} #{$border-width} 0
+
+			+media('<desk-hd')
+				border-width: 0 0 #{$border-width} #{$border-width}
 
 			span
 				color: inherit
@@ -689,7 +695,10 @@
 
 		&:first-child
 			a
-				border-top-width: #{$border-width}
+				border-left-width: #{$border-width}
+
+				+media('<desk-hd')
+					border-top-width: #{$border-width}
 
 	.obzh__panel
 		padding: 0
@@ -871,6 +880,14 @@
 		a, .soc-media-share__label, .soc-media__link
 			color: inherit
 
+	.soc-media__visual
+		border-width: 2px
+
+		.video
+			background: none
+			max-width: 640px
+			margin: 0 auto
+
 	.soc-media__img
 		//display: none
 		+size(200px)
@@ -920,6 +937,68 @@
 		.survey__footer [class*="btn-default-"]
 			border: #{$border-width} solid
 			opacity: 1
+
+	// expander
+	.expander-item
+		border: #{$border-width} solid
+
+		+media('<mob-lg')
+			border-width: 0 0 #{$border-width}
+
+			&:first-child
+				border-top-width: #{round($border-width*0.5)}
+
+	.expander-header
+		transition-duration: $animation-speed
+
+	.expander-header__meta
+		float: none
+		width: auto
+		font-weight: bold
+		+font($font-size, $line-height)
+		color: $text-color
+		padding-bottom: $bottom-space
+
+		+media('<mob-lg')
+			+font($font-size, $line-height)
+
+		time
+			font-weight: normal
+
+	.expander-header__text
+		padding-right: 0
+		padding-bottom: 70px
+		+font($font-size, $line-height)
+
+	.expander-angle
+		right: auto
+		top: 100%
+		transform: translate(0, calc(-100% - #{$grid-inside-vertical-space}))
+		+size(auto)
+
+		+media('<tab-lg')
+			transform: translate(0, calc(-100% - #{$article-layout-space-vertical--tab-lg}))
+
+		+media('<mob-lg')
+			transform: translate(0, calc(-100% - #{$article-layout-space-vertical--mob-lg}))
+
+		& > i
+			display: none
+
+		& > span
+			+display-inline-block-top
+			+show-text
+			margin: 0
+			padding: 11px 25px
+			font: normal 18px/24px #{$font-alt}
+			border: #{$border-width} solid
+
+	.expander-panel
+		+font($font-size, $line-height)
+		border-top: #{$border-width} solid
+
+	.expander-header__text, .expander-panel__holder
+		margin-left: 0
 
 	// search page
 	.search-form__btn
