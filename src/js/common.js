@@ -305,7 +305,7 @@ function customSelect(select) {
 	$.each(select, function () {
 		var $thisSelect = $(this);
 		var placeholder = $thisSelect.attr('data-placeholder') || '';
-		console.log("placeholder: ", placeholder);
+		// console.log("placeholder: ", placeholder);
 		$thisSelect.select2({
 			language: "ru",
 			width: '100%',
@@ -735,6 +735,7 @@ function hoverClassInit() {
 
 	PositionDropMenu.prototype.createAlignDropClass = function (item, drop) {
 		var self = this,
+			$navContainer = self.$navContainer,
 			alightRightClass = self.modifiers.alignRight,
 			alightBottomClass = self.modifiers.alignBottom;
 
@@ -748,19 +749,24 @@ function hoverClassInit() {
 		}
 
 		// for align bottom
-		var navContainerPosBottom = $(window).height();
+		var navContainerPosBottom = $(window).height() - $navContainer.outerHeight();
 		var dropHeight = drop.outerHeight();
 		var navDropPosBottom = drop.offset().top + dropHeight - $(window).scrollTop();
 
-		// console.log("navContainerPosBottom: ", navContainerPosBottom);
-		// console.log("dropHeight: ", dropHeight);
-		// console.log("navDropPosBottom: ", navDropPosBottom);
+		console.log("==================: ", drop.children('ul').children('li').first().children('.nav__tab').find('a').text());
+		// console.log("$navContainerHeight: ", $navContainer.outerHeight());
+		console.log("drop: ", drop);
+		console.log("navContainerPosBottom: ", navContainerPosBottom);
+		console.log("dropHeight: ", dropHeight);
+		console.log("navDropPosBottom: ", navDropPosBottom);
+		console.log("margin-top: ", navContainerPosBottom - navDropPosBottom);
 
 		if (navContainerPosBottom < navDropPosBottom) {
-			if (navContainerPosBottom < 500) {
-				return;
-			}
+			// if (navContainerPosBottom < 500) {
+			// 	return;
+			// }
 			item.addClass(alightBottomClass);
+			drop.css('margin-top', 'auto').css('margin-top', navContainerPosBottom - navDropPosBottom);
 		}
 	};
 
@@ -771,7 +777,7 @@ function hoverClassInit() {
 
 		$navContainer.on('click', '' + navMenuItem + '', function () {
 			var $this = $(this);
-			var $drop = $this.find(self.$navDropMenu);
+			var $drop = $this.find(self.$navDropMenu).eq(0);
 
 			if (!device.desktop() && $drop.length) {
 				self.createAlignDropClass($this, $drop);
@@ -780,7 +786,7 @@ function hoverClassInit() {
 
 		$navContainer.on('mouseenter', '' + navMenuItem + '', function () {
 			var $this = $(this);
-			var $drop = $this.find(self.$navDropMenu);
+			var $drop = $this.find(self.$navDropMenu).eq(0);
 
 			if (device.desktop() && $drop.length) {
 				self.createAlignDropClass($this, $drop);
@@ -1136,6 +1142,23 @@ function toggleDrop() {
 
 }
 /*toggle drop end*/
+
+/**
+ * select save
+ * */
+function selectSave() {
+	$('.js-choice-drop').on('click', 'a', function (e) {
+		var $this = $(this);
+		e.preventDefault();
+
+		var yearsValue = $this.find('span').text();
+
+		var $container = $this.closest('.section');
+		$container.find('.save-total-js').text(saveObject[yearsValue]['total']);
+		$container.find('.save-children-js').text(saveObject[yearsValue]['children']);
+	});
+}
+/*select save end*/
 
 /**
  * !tab switcher
@@ -3478,6 +3501,7 @@ $(document).ready(function () {
 	multiAccordionInit();
 	// toggleLanguages();
 	toggleDrop();
+	selectSave();
 	tabSwitcher();
 	slidersInit();
 	lightGalleryInit();
