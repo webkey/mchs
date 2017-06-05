@@ -9,8 +9,26 @@
 	$line-height: round-float(3.0rem/$font-size, 2)
 	$font-size-small: 1.4rem !default
 	$line-height-small: round-float(2.0rem/$font-size, 2) !default
+	// ===============
+	$font-size-h1: 3.6rem !default
+	$line-height-h1: 1.2 !default
+	$font-size-h1--sm: 2.6rem !default
+	$line-height-h1--sm: 1.3 !default
+	// ===============
+	$font-size-h2: round-float($font-size-h1*0.78, 1) !default
+	$line-height-h2: round-float(($line-height-h1*1.08),1) !default
+	$font-size-h2--sm: round-float($font-size-h1--sm*0.85, 1) !default
+	$line-height-h2--sm: round-float(($line-height-h1--sm*1.08),1) !default
+	// ===============
+	$font-size-h3: round-float($font-size-h1*0.56, 1) !default
+	$line-height-h3: round-float(($line-height-h1*1.08),1) !default
+	// ===============
+	$font-size-h4: round-float($font-size-h1*0.44, 1) !default
+	$line-height-h4: round-float(($line-height-h1*1.33),1) !default
 
 	$news-item-height: auto
+
+	$animation-speed: 0s
 
 	//*
 		&, &::before, &::after
@@ -18,12 +36,280 @@
 	&
 		font-weight: 500
 
+	hr
+		border-width: #{$border-width}
+
 	.special-hide
 		display: none
 
-	// layout
+	// buttons
+	// all default
+	.btn-default,
+	.btn-map-site,
+	.btn-default-alt,
+	.btn-default-light,
+	.btn-arrow
+		font-size: 18px
+		border: #{$border-width} solid
+		transition-duration: $animation-speed
+
+		&:disabled, .no-touchevents &:disabled:hover
+			cursor: no-drop
+
+	// btn-arrow
+	.btn-arrow
+
+		& > span
+			padding: 0
+
+			&::before, &::after
+				display: none
+				transition-duration: $animation-speed
+
+	// more button
+	.more
+		.btn-more
+			border: #{$border-width} solid
+			padding: 8px 12px
+			transition-duration: $animation-speed
+
+			&::before
+				content: none
+
+			i
+				display: none
+
+	// button map site
+	.btn-map-site
+		transition-duration: $animation-speed
+
+		& > i
+			display: none
+			transition-duration: $animation-speed
+
+	// social networks
+	.social-networks__item
+		a
+
+			path
+				transition-duration: $animation-speed
+
+			.no-touchevents &:hover
+				transform: none
+
+			&:active, .no-touchevents &:active
+				transform: none
+				transition-duration: $animation-speed
+
+	// tags
+	.article-layout .tags
+		border-width: #{$border-width}
+
+	.tags__list, .#{$user-content} .tags__list
+		a
+			border-width: #{$border-width} #{$border-width} #{$border-width*2}
+
+			&::after, &::before
+				content: none
+
+	// form styles default
+	.label-holder, label
+		+font(18px, 30px)
+
+	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
+		border: #{$border-width} solid
+		padding: 11px 17px
+		+font(20px, 24px)
+
+	.error-note
+		padding: 0 5px
+		+size(100%, 1.7em)
+		+font(16px, 1.7)
+
+	.success-text
+		font-weight: bold
+
+	input[type="checkbox"] + label,
+	input[type="radio"] + label,
+	.check-label,
+	.radio-label
+		+font(16px, 22px)
+
+	input[type="checkbox"],
+	input[type="radio"]
+		& + label,
+		& + span i
+			&::before
+				border: #{$border-width} solid
+
+	input[type="checkbox"]
+		& + label span,
+		& + span
+			&::before,
+			&::after
+				transition-duration: $animation-speed
+				transition-delay: 0s
+
+		&:checked
+			& + label,
+			& + span i
+				&::before
+					transition-duration: $animation-speed
+
+	input[type="radio"]
+		& + label span,
+		& + span i
+			&::after
+				animation-name: none
+				+size(12px)
+				top: 7px
+				left: 7px
+				display: none
+
+		&:checked
+
+			& + label span,
+			& + span i
+
+				&::after
+					display: block
+
+	// select
+	.select
+		select,
+		.select2-container--default .select2-selection--single,
+		.select2-container--default .select2-selection--multiple
+			border: #{$border-width} solid
+			padding: 12px 49px 12px 17px
+			transition-duration: $animation-speed
+
+		select,
+		.select2-container--default .select2-selection--single .select2-selection__rendered,
+		.select2-container--default .select2-selection--multiple .select2-selection__rendered
+			color: $text-color
+
+		select
+			padding-right: 49px
+
+		&::before,
+		&::after,
+		.select2-container--default .select2-selection--single .select2-selection__arrow b::before,
+		.select2-container--default .select2-selection--single .select2-selection__arrow b::after
+			content: none
+			transform: none
+
+		&::before,
+		.select2-container--default .select2-selection--single .select2-selection__arrow b::before
+			content: ''
+			right: 13px
+			top: 50%
+			margin-top: -7px
+
+		.select2-container--default .select2-selection--multiple
+			padding: 8px 49px 8px 17px
+
+			.select2-selection__rendered
+				li
+					padding: 0 4px
+					margin: 4px 8px 4px 0
+					border-radius: 0
+
+					&::before
+						content: none
+
+			.select2-selection__choice__remove
+				position: relative
+				+font(24px, 20px)
+				margin-right: 10px
+				top: 2px
+
+	.select2-dropdown
+		border: solid $text-color
+		border-width: 0 #{$border-width} #{$border-width}
+
+	.select2-container--default
+		.select2-search--dropdown
+			.select2-search__field
+				padding: 8px 8px
+				border: #{$border-width} solid
+
+				&:focus
+					border-color: $text-color
+					box-shadow: inset 0 0 0 1px $text-color
+
+		.select2-results>.select2-results__options
+			max-height: 210px
+
+	.select2-container--default .select2-results__option[aria-selected=true]
+
+		&::before
+			+pseudo($display: inline-block, $pos: relative)
+			+size(15px, 4px)
+			vertical-align: top
+			margin-right: 10px
+			margin-top: 13px
+
+	// LAYOUT
+	.wrapper
+		&::before
+			border-right: #{$border-width} solid
+
 	&.home-page .aside
 		padding-top: calc(2rem * 1.3 + #{$bottom-space})
+
+	// user form
+	.user-form
+		border: #{$border-width} solid
+
+		.form-note__item
+			+font(18px, 24px)
+
+	// jFiler
+	.jFiler-input-dragDrop
+		border: #{$border-width} dashed
+		transition-duration: $animation-speed
+
+	.jFiler-input-icon
+		display: none
+
+	.jFiler-input-text strong
+		+font(20px, 1.3)
+
+	ul .jFiler-item
+		&, .#{$user-content} &
+			&:first-child, &:last-child
+				+font(18px, 1.3)
+				margin: 0
+				padding: 10px 0
+
+	.jFiler-item-others
+
+		&::after
+			border-bottom: #{$border-width} dotted
+
+	.jFiler-item-trash-action
+		border: #{$border-width} solid
+		padding: 2px 5px
+		+size(70px, auto)
+		text-decoration: none
+		text-align: center
+
+		&::before
+			content: 'Delete'
+			position: relative
+			left: auto
+			top: auto
+			transition-duration: $animation-speed
+			margin: 0
+			transform: none
+			background: none
+			+size(auto)
+
+		&::after
+			content: none
+
+		.no-touchevents &:hover::before
+			background: none
 
 	// grid
 	.content [class*="grid-col-"]
@@ -31,9 +317,32 @@
 		width: auto
 
 	// section
+	.section
+		margin-bottom: $bottom-space-lg
+
+		&:last-child
+			margin-bottom: 0
+
+		* ~ &
+			margin-top: $bottom-space-lg
+
+		& > *:last-child
+			margin-bottom: 0
+
+	.section__title, .section__subtitle
+
+		.v-separator
+
+			& + a
+				border: #{$border-width} solid
+
 	.section__title
 		margin-bottom: $bottom-space
-		+font(round($font-size * 2), 1.3)
+		+font($font-size-h2, $line-height-h2)
+
+	.section__subtitle
+		margin-bottom: $bottom-space
+		+font($font-size-h4, $line-height-h4)
 
 	.v-separator
 		text-indent: -9999px
@@ -45,24 +354,101 @@
 			font-weight: bold
 			text-decoration: none
 
+	.section__box
+		padding: 0
+
+	// breadcrumbs
+	.breadcrumbs
+		+font(18px, 21px)
+
+	.breadcrumbs__item
+		margin-right: 15px
+
+		& > a
+			padding-right: 25px
+			transition-duration: $animation-speed
+
+			& > span
+				transition-duration: $animation-speed
+				border-width: #{$border-width}
+
+			& > i
+				top: 4px
+				+size(10px, 12px)
+
+				&::before
+					border-width: 6px 0 6px 10px
+					margin-top: -6px
+
+	.breadcrumbs-drop
+		top: -15px
+		transition-duration: $animation-speed
+
+	.breadcrumbs-drop__item
+		margin: 15px 0
+
+		a
+
+			& > span
+				transition-duration: $animation-speed
+				border-width: #{$border-width}
+
+	// pagination
+	.paging
+
+		a, path
+			transition-duration: $animation-speed
+
+	.paging-list
+
+		a
+			transition-duration: $animation-speed
+
+	// files item
+	.files__item
+		+font($font-size, $line-height)
+
+	.files__inner
+
+		&, .no-touchevents &:hover
+			transition-duration: $animation-speed
+
 	// years
 	.years
 		a
 			position: relative
 			padding: 4px
+			transition-duration: $animation-speed
 
-		& > a > span
-			border: none
-			line-height: inherit
+		& > a
+			border: #{$border-width} solid
+
+			& > span
+				border: none
+				line-height: inherit
+				transition-duration: $animation-speed
 
 	.years-drop
 		padding: 0
 		margin-top: -2px
+		transition-duration: $animation-speed
+
+		&::before
+			content: none
+
+		li
+			border-top: #{$border-width} solid
+
+			&:first-child
+				border: none
 
 	// view print
 	.view-print
-		svg
-			display: none
+		border: #{$border-width} solid
+		transition-duration: $animation-speed
+
+		path
+			transition-duration: $animation-speed
 
 		+media('<tab-lg')
 			display: none
@@ -93,12 +479,73 @@
 				+size(18px)
 
 	// slider arrows
-	.slick-arrow, .swiper-arrow
+	.slick-arrow,
+	.swiper-arrow
 		+size(60px)
+		border: #{$border-width} solid
+
+		&::after
+			+top-left(50%)
+			right: auto
+			bottom: auto
+			transform: translate(-50%, -50%)
+
+	.slick-prev,
+	.slick-next,
+	.swiper-button-prev,
+	.swiper-button-next
+		&::after
+			border: none
+			margin: 0
+
+	.slick-prev-outside
+		right: (60px + 20)
+
+	// swiper slider
+	.tape-slider .swiper-container
+		&::before, &::after
+			content: none
 
 	// promo slider
 	.promo
 		display: none
+
+	.promo-slider__img
+		background: $bg-color !important
+		border: #{$border-width} solid
+
+	.promo-slider__text
+		text-shadow: none
+
+	// tape slider
+	.tape-slider
+		border: #{$border-width} solid
+
+	.tape-slider__anchor
+		transition-duration: $animation-speed
+
+	// images slider
+	.images-slider
+		.slick-arrow
+			top: 100%
+			margin-top: -15px
+
+		.slick-prev
+			right: auto
+			left: 0
+
+		.slider-counter
+			left: 50%
+			transform: translate(-50%, 0)
+			+font(round-float($font-size*1.2, 1), 1.2)
+
+			.slide-curr
+				+font-bold
+				font-size: round-float($font-size*1.5, 1)
+
+	// flashes
+	.flashes
+		padding: 50px 80px 0
 
 	//news slider
 	.news-grid-slider
@@ -122,13 +569,14 @@
 
 	// tape slider
 	.tape-slider
-		+padding-horizontal(60px)
+		+padding-horizontal(calc(60px - #{$border-width}))
+		margin-bottom: $bottom-space-md
 
 		.swiper-button-prev
-			left: -2px
+			left: -#{$border-width}
 
 		.swiper-button-next
-			right: -2px
+			right: -#{$border-width}
 
 	.tape-slider__anchor
 		padding: 13px 15px
@@ -138,6 +586,8 @@
 	.save
 		height: $news-item-height
 		margin-bottom: $bottom-space-md
+		border: solid
+		border-width: #{$border-width} 1px
 
 		&::after
 			display: none
@@ -166,6 +616,8 @@
 
 	.save__align
 		padding: 10px
+		border: solid
+		border-width: 0 1px
 
 		& > strong, & > span
 			+display-inline-block-middle
@@ -214,106 +666,131 @@
 		padding: 0
 
 		a
+			+display-inline-block-top
+			padding: 10px 20px
 			font-family: $font-alt
 			+font(18px, 24px)
+			text-decoration: none
+			border: #{$border-width} solid
 
 	// obzh
+	.obzh__tab
+		a
+			border: solid
+			border-width: 0 0 #{$border-width} #{$border-width}
+			transition-duration: $animation-speed
+
+			span
+				color: inherit
+				transition-duration: inherit
+
+				&::after
+					content: none
+
+		&:first-child
+			a
+				border-top-width: #{$border-width}
+
 	.obzh__panel
 		padding: 0
 
 	.obzh-banner
 		background-image: none !important
-
-	// news previews
-	.news-previews__list
-		height: auto !important
-		+grid-parent(0)
-
-	.news-previews__item
-		position: relative !important
-		left: auto !important
-		top: auto !important
-		right: auto !important
-		bottom: auto !important
-		+font($font-size, $line-height)
-
-	.news-previews .news-previews__item
-		+grid-item(1, 0, $bottom-space-md)
-
-	.news-previews__inner
-		box-shadow: none
-
-	.news__label
-		display: none
-
-	.news-previews__img
-		display: none
-
-	.news-previews__content
-		padding: 5px 10px
-
-		&::before
-			content: none
-
-	.news-previews__text
-		margin-bottom: 1em
-
-	.news-previews__meta, .news-grid__meta
-		+font($font-size-small, $line-height-small)
+		border: #{$border-width} solid
 
 
 
+	// NEWS ALL TYPE
+	// стили для всех типов новостных блоков
 
-	// news grid
-	.news-grid__list
+	.news-previews__list,
+	.news-grid__list,
+	.news-group__list
+		+margin-horizontal(0)
 		margin-bottom: $bottom-space
 
-	.news-grid__item, .news-grid__item--large, .news-grid__item--wide
+	.news-previews__item,
+	.news-grid__item,
+	.news-grid__item--large,
+	.news-grid__item--wide,
+	.news-group__item
+		display: block
+		float: none
+		+size(auto !important)
+		+padding-horizontal(0)
+		margin: 0 0 $bottom-space
 		+font($font-size, $line-height)
-		height: auto !important
-		margin-bottom: $bottom-space
 
 		&:last-child
 			margin-bottom: 0
 
-	.news-grid__item, .news-grid__list > .news-grid__item--large
-		float: none
-		width: auto
+		*
+			transition-duration: $animation-speed !important
 
-	.news-grid__inner
+	.news-previews__title,
+	.news-grid__title,
+	.news-group__title,
+	.news-previews__text,
+	.news-grid__text,
+	.news-group__text,
+	.news-previews__meta,
+	.news-grid__meta,
+	.news-group__meta
+		color: inherit !important // важно! не удалять
+
+	.news-previews__inner,
+	.news-grid__inner,
+	.news-group__inner
 		height: auto
 		box-shadow: none
-		+font($font-size, $line-height)
+		padding: 0 !important // важно! перебивает псевдокласс первого элемента
+		+font(inherit, inherit)
 
-	.news-grid__img
+	.news__label
 		display: none
 
-	.news-grid__content
-		height: auto !important
-		margin-top: 0 !important
-		padding: 5px 10px
+	.news-previews__img,
+	.news-grid__img,
+	.news-group__img
+		display: none
+
+	.news-previews__content,
+	.news-grid__content,
+	.news-group__content
+		height: auto !important // важно! перебивает псевдокласс первого элемента
+		min-height: 0 !important // важно! перебивает псевдокласс первого элемента
+		margin-top: 0 !important // важно! перебивает псевдокласс первого элемента
+		padding: 5px 10px !important // важно! перебивает псевдокласс первого элемента
 
 		&::before
 			content: none
 
-	.news-grid__title, .news-grid__text
-		height: auto
+	.news-previews__title,
+	.news-previews__text,
+	.news-grid__title,
+	.news-grid__text,
+	.news-group__title,
+	.news-group__text,
+	.soc-media__text
+		height: auto !important // важно! перебивает псевдокласс первого элемента
 		margin-bottom: 1em
-
-	.news-grid__text
 		font-family: $font-alt
-		+font(1.3em, 1.4)
-		font-weight: bold
+		font-weight: 700
+		+font($font-size-h3, $line-height-h3)
 
-	.news-grid__title
-		+font(1.3em, 1.4)
+	.news-previews__title,
+	.news-grid__title,
+	.news-group__title
 
-		& ~ .news-grid__text
+		& ~ [class*="__text"]
 			font-family: $font-norm
-			+font(1em, $line-height)
 			font-weight: normal
+			+font($font-size, $line-height)
 
-	.news-grid__meta
+	.news-previews__meta,
+	.news-grid__meta,
+	.news-group__meta
+		+font($font-size-small, $line-height-small)
 		position: relative
 		left: auto
 		top: auto
@@ -322,23 +799,181 @@
 		width: auto
 		+clear
 
+
+	// news links
+	.news-links__inner
+
+		&::before
+			+pseudo()
+			top: -#{round($sidebar-inner-space-horizontal*0.5)}
+			bottom: -#{round($sidebar-inner-space-horizontal*0.5)}
+			left: -#{$sidebar-inner-space-horizontal}
+			right: -#{$sidebar-inner-space-horizontal}
+			z-index: -1
+
+	.news-links__text, .news-links__meta
+		transition-duration: $animation-speed
+		color: inherit
+
+	// news read
+	.news-read__inner
+
+		&::before
+			transition-duration: $animation-speed
+
+
+	// news previews
+	.grid-row .news-group__item:last-child
+		margin-bottom: $bottom-space
+
+	// news grid
+	.news-grid__item, .news-grid__list > .news-grid__item--large
+		float: none
+		width: auto
+
+	.news-grid__item--wide .news-grid__inner::before
+		content: none
+
+	.grid-row .news-grid__item--wide:last-child
+		margin-bottom: $bottom-space
+
+	.others-news .news-grid__list:last-child
+		margin-bottom: 0
+
+	// news group
+	.news-group::before
+		content: none
+
+	// social media
+	.soc-media
+		&::before
+			content: none
+
+	.soc-media__col
+		float: none
+		width: auto
+		margin: 0 0 $bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+		a
+			padding: 5px
+
+		*
+			transition-duration: $animation-speed
+
+		.no-touchevents & a:hover
+
+			.soc-media-share__label, .soc-media__link
+				color: inherit
+
+		a, .soc-media-share__label, .soc-media__link
+			color: inherit
+
+	.soc-media__img
+		//display: none
+		+size(200px)
+		padding: 0
+		margin-bottom: $bottom-space
+
+	.soc-media__link
+		+font-normal
+		+font($font-size, $line-height)
+
+	// side
+
+	.side__depict
+		border-bottom: 1px solid
+
+	.side__text
+
+		span
+			transform: none
+			transition-duration: $animation-speed
+			opacity: 1
+			visibility: visible
+
+	// survey
+	.survey
+		border: #{$border-width} solid
+
+		*
+			font-weight: normal
+
+		.survey__all
+			padding: 5px 10px
+			border: #{$border-width} solid
+			text-decoration: none
+			margin-top: -7px
+			margin-bottom: -7px
+
+		input[type="radio"]
+
+			& + label span,
+			& + span i
+
+				&::after
+					+size(12px)
+					+top-left(4px)
+
+		.survey__footer [class*="btn-default-"]
+			border: #{$border-width} solid
+			opacity: 1
+
 	// search page
 	.search-form__btn
 		height: 100%
 		top: 0
 		margin: 0
+		border: #{$border-width} solid
 
 		svg
 			display: none
 
 		span
 			font-size: 20px
+			transition-duration: $animation-speed
+
+
+	// HEADER
+
+	// logo
+	.logo-wrap
+		border-bottom: none
+
+	// header content
+	.header__content
+
+		.holder
+
+			+media('<tab-lg')
+				border-bottom: 1px solid
+
+		.frame
+
+			+media('<desk-sm')
+				border-bottom: 1px solid
 
 	// header contacts
 	.header__contacts
 		ul
+
 			li
+				+media('<mob-lg')
+					border-bottom: 1px solid
+
+				&::before
+					border: solid
+					border-width: 0 0 0 1px
+					transition-duration: $animation-speed
+
+					+media('<tab-lg')
+						border-width: 0 0 0 1px
+
 				a
+					transition-duration: $animation-speed
+
 					& > div
 						& > em
 							color: $mark-color
@@ -361,32 +996,184 @@
 		+media('<desk-lg')
 			font-size: 1.2rem
 
+		a
+			& > span
+				border-bottom: #{$border-width} solid
+
 	// user options
 	.user-options__item
 		& > a
 			font-weight: normal
 
+			&, & > div, svg, path
+				transition-duration: $animation-speed
+
+		&.cecutient-link
+			z-index: 2
+
+	// lang
+	.lang
+		& > a
+			transition-duration: $animation-speed
+
 	// NAVIGATION
 	.nav
 		a
 			font-weight: normal
+			transition-duration: $animation-speed
 
-	// sidebar bottom
-	//.sidebar-bottom__heading, .popup-news__heading
-		padding-bottom: 50px
+	// nav item arrow
+	.nav__angle
+		+size(15px, 20px)
+		margin-top: -10px
+		right: 15px
 
-		.btn-filters-open
-			top: auto
-			right: auto
-			bottom: 0
-			left: 0
+		&::before, &::after
+			content: none
+			background: none
+			border-radius: 0
+			transition-duration: $animation-speed
 			transform: none
+			margin: 0
 
-			svg
-				display: none
+		&::after
+			content: ''
+			top: 0
 
-			& > span
-				+show-text
+	// общие стили для всех ПОДМЕНЮ
+	.nav__drop
+		border: #{$border-width} solid
+		box-shadow: none
+		transition-duration: $animation-speed
+
+		a
+			border-width: #{$border-width}
+
+	// подменю первого уровня и подменю первого уровня для "priority-nav"
+	.nav__list, .priority-nav__dropdown
+		& > li
+			& > .nav__drop
+				min-width: 100%
+				border-top: #{$border-width} solid
+
+	// priority nav
+	.nav
+		.priority-nav__dropdown-toggle
+			transition-duration: $animation-speed
+
+	.priority-nav__dropdown
+
+		&::after
+			+pseudo()
+			left: 0
+			bottom: 0
+			width: 100%
+			height: 1px
+
+
+	// SIDEBAR
+	.sidebar
+		border-right: #{$border-width} solid
+
+	.sidebar-top__holder
+		border-bottom: #{$border-width} solid
+
+	.sidebar-bottom__heading, .popup-news__heading
+		.btn-filters-open
+			&::before
+				+pseudo()
+				width: 36px
+				height: 36px
+				left: 50%
+				top: 50%
+				margin: -18px 0 0 -18px
+				z-index: -1
+
+			path
+				transition-duration: $animation-speed
+
+	// sidebar menu
+	.sidebar-menu
+		a
+			transition-duration: $animation-speed
+
+			.no-touchevents &:hover
+				transition-duration: $animation-speed
+
+			.no-touchevents &.active-section, &.active-section
+				transition-duration: $animation-speed
+
+				&::before
+					width: 8px
+
+	.nav-menu-opener
+		i
+			$menu-opener-icon-height: 36px
+
+			right: #{$grid-inside-horizontal-space - 6px}
+			+size($menu-opener-icon-height)
+			margin-top: -#{round($menu-opener-icon-height*0.5)}
+
+			&::after
+				left: 50%
+				bottom: 50%
+				margin: 0 0 -7px -10px
+				transition-duration: $animation-speed
+
+	// ASIDE
+	.aside__widget
+		h3
+			+font(1.8rem, 1.3)
+			font-weight: 700
+
+
+
+	// FOOTER
+	.footer,
+	.footer-gov,
+	.footer-common,
+	.footer-bottom
+		border-top: #{$border-width} solid
+
+	.footer
+		border: none
+
+	// footer gov
+	.gov__list
+		.slick-dots
+			li
+				button
+					+size(20px)
+
+					&::before
+						border: #{$border-width} solid
+
+	.gov__link
+		border: none
+		+font-bold
+
+	// footer common
+	.footer-nav__col
+		+font($font-size, $line-height)
+
+	.footer-nav__title
+		+font($font-size, $line-height)
+
+	// developer
+	.developer__logo
+		&::before
+			content: none
+
+	.no-touchevents & a:hover .developer__logo
+		&::after
+			transform: translate(0, 0)
+
+	// orphus
+	.orphus
+		background: none
+		border: #{$border-width} solid
+
+
 
 	// POPUPS
 	.btn-popup-close
@@ -396,11 +1183,48 @@
 		=line-style()
 			+size($btn-lines-width, $btn-lines-height)
 
+		transition-duration: $animation-speed
+
 		& > i
 			+line-style
 
 			&::before, &::after
 				+line-style
 
+	.site-map__container
+		a
+
+			.no-touchevents &:hover, .no-touchevents .current > &, .current > &
+				padding-top: 5px
+
+	.site-map__box
+		+font(20px, 24px)
+
+	// lang list
+	.lang__list
+		a
+			transition-duration: $animation-speed
+			padding-top: 8px
+
+			&.current
+				&, .no-touchevents &:hover
+					text-decoration: none
+
 	.popup-label
 		+font(18px, 24px)
+
+	// share link list
+	.share-link__list
+		a
+
+			&, path
+				transition-duration: $animation-speed
+
+	.popup-label__options
+
+		a
+			border: #{$border-width} solid
+			padding: 5px 10px
+
+		a, path
+			transition-duration: $animation-speed

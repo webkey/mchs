@@ -1,59 +1,48 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
 /*news read*/
 .news-read
 	+grid-parent($grid-space)
 	+clear-spacing
 	margin-bottom: $bottom-space
 
-	=transition()
-		-webkit-transition-property: background-color, color
+.news-read__item
+	+grid-item(1, $grid-space, $bottom-space)
+	+font($font-size-small, $line-height-small)
+	letter-spacing: normal
+
+	&:last-child
+		padding-bottom: 0
+
+.news-read__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: $text-color
+
+	&::before
+		+pseudo()
+		$left: 18px
+		$top: 12px
+		left: -#{$left}
+		top: -#{$top}
+		width: calc(100% + #{$left}*2)
+		height: calc(100% + #{$top}*2)
 		transition-property: background-color, color
-		-webkit-transition-duration: $animation-speed-mouseleave
-		transition-duration: $animation-speed-mouseleave
-		-webkit-transition-timing-function: ease-in-out
-		transition-timing-function: ease-in-out
-
-	=transition-duration()
-		-webkit-transition-duration: $animation-speed
 		transition-duration: $animation-speed
+		z-index: -1
 
-	&__item
-		+grid-item(1, $grid-space, $bottom-space)
-		font-size: $font-size-small
-		line-height: $line-height-small
-		letter-spacing: normal
+	.no-touchevents &:hover::before
+		background-color: #fff
 
-		&:last-child
-			padding-bottom: 0
+.news-read__text
+	margin-bottom: 12px
 
-	&__inner
-		display: block
-		position: relative
-		text-decoration: none
-		color: $text-color
-
-		&::before
-			content: ''
-			position: absolute
-			$left: 18px
-			$top: 12px
-			left: -#{$left}
-			top: -#{$top}
-			width: calc(100% + #{$left}*2)
-			height: calc(100% + #{$top}*2)
-			+transition
-			z-index: -1
-
-		.no-touchevents &:hover::before
-			background-color: #fff
-			+transition-duration
-
-	&__text
-		margin-bottom: 12px
-
-	&__meta
-		display: block
-		font-size: 1.2rem
-		line-height: 1.4
-		color: $text-color-light
+.news-read__meta
+	display: block
+	+font(1.2rem, 1.4)
+	color: $text-color-light
 
 /*news read end*/

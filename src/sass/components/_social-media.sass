@@ -9,8 +9,7 @@
 
 	&::before
 		+pseudo()
-		left: 50%
-		top: 0
+		+top-left(0, 50%)
 		bottom: 0.15em
 		border-right: 1px solid $border-color
 
@@ -172,8 +171,7 @@
 		height: 227px
 
 .soc-media__text
-	font-size: $font-size-small
-	line-height: $line-height-small
+	+font($font-size-small, $line-height-small)
 	overflow: hidden
 	height: round-float($font-size-small*$line-height-small*4, 1)
 	margin-bottom: $bottom-space
@@ -186,8 +184,8 @@
 
 .soc-media__link
 	font-family: $font-alt
-	+font(1.6rem, 1.25)
 	font-weight: 700
+	+font(1.6rem, 1.25)
 	+truncate(100%)
 	transition-property: color
 	transition-duration: $animation-speed

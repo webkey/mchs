@@ -23,7 +23,6 @@
 	$link-color-inverse: white
 	$link-color-disabled: #989898
 	$link-color-visited: #989898
-	$border-color: $text-color
 	$footer-bg-color: white
 	$footer-text-color: black
 
@@ -38,13 +37,10 @@
 	table
 		td, th
 			color: $text-color
-			border-color: $border-color
-
-	img, .news-previews__img
-		+gray()
+			border-color: $text-color
 
 	hr
-		border-bottom-color: $border-color
+		border-bottom-color: $text-color
 
 	a
 		color: $link-color
@@ -76,22 +72,13 @@
 			td, th, th, thead td, tfoot td
 				color: $text-color
 				background-color: $bg-color
-				border: 1px solid $border-color
+				border: 1px solid $text-color
 
 		blockquote q
 			color: $text-color
 
 			&::before, &::after
 				background-image: url(../../img/quote-left--bw.svg)
-
-	// view print
-	.view-print
-		color: $text-color-alt
-		border: 2px solid $text-color-alt
-		transition-duration: 0s
-
-		.no-touchevents &:hover
-			background-color: $text-color-alt
 
 	// text warning
 	.text-warning
@@ -107,11 +94,9 @@
 	// buttons
 	// btn-default
 	.btn-default, .btn-map-site
-		font-size: 18px
 		color: $link-color-inverse
 		background-color: $link-color
-		border: 2px solid $link-color
-		transition-duration: 0s
+		border-color: $link-color
 
 		.no-touchevents &:hover
 			background-color: $link-color-inverse
@@ -121,18 +106,15 @@
 			color: $link-color-inverse
 			background-color: $link-color-disabled
 			border-color: $link-color-disabled
-			cursor: no-drop
 
 			.no-touchevents &
 				background-color: $link-color-disabled
 
 	// btn-default-alt
 	.btn-default-alt
-		font-size: 18px
 		color: $link-color
-		border: 2px solid $link-color
 		background-color: $link-color-inverse
-		transition-duration: 0s
+		border-color: $link-color
 
 		.no-touchevents &:hover
 			background: $link-color
@@ -142,7 +124,6 @@
 			color: $link-color-disabled
 			background-color: $link-color-inverse
 			border-color: $link-color-disabled
-			cursor: no-drop
 
 			.no-touchevents &
 				background-color: $bg-color
@@ -152,9 +133,7 @@
 
 	// btn-default-light
 	.btn-default-light
-		font-size: 18px
 		color: $text-color
-		transition-duration: 0s
 
 		&:disabled
 			background-color: $bg-color
@@ -169,23 +148,16 @@
 
 	// btn-arrow
 	.btn-arrow
-		font-size: 18px
 		color: $link-color-inverse
 		background-color: $link-color
-		border: 2px solid $link-color
-		transition-duration: 0s
-
-		& > span
-			padding: 0
-			&::before, &::after
-				display: none
-				transition-duration: 0s
+		border-color: $link-color
 
 		.no-touchevents &:hover
 			background-color: $link-color-inverse
 			color: $link-color
 
 			& > span
+
 				&::before, &::after
 					background-color: $link-color
 
@@ -193,61 +165,41 @@
 	.more
 		.btn-more
 			color: $text-color-alt
-			border: 2px solid $link-color
+			border-color: $link-color
 			background-color: $link-color-inverse
-			padding: 8px 12px
-			transition-duration: 0s
 
 			.no-touchevents &:hover
 				color: $link-color-inverse
 				background-color: $link-color
 
-			&::before
-				content: none
-
-			i
-				display: none
-
-	// button map site
-	.btn-map-site
-		transition-duration: 0s
-
-		& > i
-			display: none
-			transition-duration: 0s
-
 	// social networks
 	.social-networks__item
 		a
-			background: transparent
-			box-shadow: inset 0 0 0 2px $link-color
+			background: $link-color-inverse // НЕ background-color. Перебить градиент
+			box-shadow: inset 0 0 0 #{$border-width} $link-color
 
 			path
 				fill: $link-color
-				transition-duration: 0s
 
 			.no-touchevents &:hover
-				box-shadow: inset 0 0 0 2px $link-color
-				transform: none
-				background: $link-color
+				box-shadow: inset 0 0 0 #{$border-width} $link-color
+				background: $link-color // НЕ background-color. Перебить градиент
 
 				path
 					fill: $link-color-inverse
 
 			&:active, .no-touchevents &:active
 				box-shadow: none
-				transform: none
-				transition-duration: 0s
+
+	// tags
+	.article-layout .tags
+		border-top-color: $text-color
 
 	.tags__list, .#{$user-content} .tags__list
 		a
 			color: $link-color
 			border-color: $link-color
 			background: $link-color-inverse
-			border-width: 2px 2px 5px
-
-			&::after, &::before
-				content: none
 
 			.no-touchevents &:hover
 				background-color: $link-color
@@ -256,7 +208,6 @@
 	// form styles default
 	.label-holder, label
 		color: $text-color
-		+font(18px, 30px)
 
 	.form-mark
 		color: $mark-color
@@ -264,29 +215,23 @@
 	input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
 		color: $text-color
 		background: $bg-color
-		border: 2px solid $border-color
-		padding: 11px 17px
-		+font(20px, 24px)
+		border-color: $text-color
 
 		.no-touchevents &:hover
-			border-color: $border-color
+			border-color: $text-color
 
 		&:focus,
 		&.error, .error > &, .no-touchevents &.error, .no-touchevents .error > &
 			color: $text-color
-			border-color: $border-color
-			box-shadow: inset 0 0 0 1px $border-color
+			border-color: $text-color
+			box-shadow: inset 0 0 0 1px $text-color
 
 	.error-note
 		color: $bg-color
 		background-color: $text-color
-		padding: 0 5px
-		+size(100%, 1.7em)
-		+font(16px, 1.7)
 
 	.success-text
 		color: $text-color
-		font-weight: bold
 
 	input, textarea
 		&::-webkit-input-placeholder
@@ -320,18 +265,12 @@
 			&.placeholder
 				color: $text-color
 
-	input[type="checkbox"] + label,
-	input[type="radio"] + label,
-	.check-label,
-	.radio-label
-		+font(16px, 22px)
-
 	input[type="checkbox"],
 	input[type="radio"]
 		& + label,
 		& + span i
 			&::before
-				border: 2px solid $link-color
+				border-color: $link-color
 
 	input[type="checkbox"]
 		& + label span,
@@ -339,8 +278,6 @@
 			&::before,
 			&::after
 				background: $link-color
-				transition-duration: $animation-speed
-				transition-delay: 0s
 
 		&:checked
 			& + label,
@@ -348,7 +285,6 @@
 				&::before
 					border-color: $link-color
 					background-color: $link-color
-					transition-duration: $animation-speed
 
 			& + label span,
 			& + span
@@ -371,21 +307,13 @@
 		& + label span,
 		& + span i
 			&::after
-				animation-name: none
-				+size(12px)
-				top: 7px
-				left: 7px
 				background: $link-color-inverse
-				display: none
 
 		&:checked
-			& + label span,
-			& + span i
-				&::after
-					display: block
 
 			& + label,
 			& + span i
+
 				&::before
 					border-color: $link-color
 					background-color: $link-color
@@ -418,20 +346,13 @@
 		select,
 		.select2-container--default .select2-selection--single,
 		.select2-container--default .select2-selection--multiple
-			border: 2px solid $border-color
-			padding: 12px 49px 12px 17px
+			border-color: $text-color
 			background: $bg-color
-			transition-duration: $animation-speed
 
 		select,
 		.select2-container--default .select2-selection--single .select2-selection__rendered,
 		.select2-container--default .select2-selection--multiple .select2-selection__rendered
-			+font(18px, 22px)
-			font-weight: normal
 			color: $text-color
-
-		select
-			padding-right: 49px
 
 		select:focus,
 		.select2-container--default.select2-container--open .select2-selection--single,
@@ -450,74 +371,45 @@
 		&::after,
 		.select2-container--default .select2-selection--single .select2-selection__arrow b::before,
 		.select2-container--default .select2-selection--single .select2-selection__arrow b::after
-			content: none
 			background: none
-			transform: none
 
 		&::before,
 		.select2-container--default .select2-selection--single .select2-selection__arrow b::before
-			content: ''
 			+triangle(bottom, $text-color, 10px, 1.5)
-			right: 13px
-			top: 50%
-			margin-top: -7px
 
 		.select2-container--default .select2-selection--multiple
-			padding: 8px 49px 8px 17px
 
 			.select2-selection__rendered
 				li
-					padding: 0 4px
-					margin: 4px 8px 4px 0
-					border-radius: 0
 					border-color: transparent
 					background-color: $text-color
 					color: $bg-color
-
-					&::before
-						content: none
 
 					&.select2-search--inline
 						background-color: $bg-color
 						color: $text-color
 
 			.select2-selection__choice__remove
-				position: relative
-				font-size: 24px
-				line-height: 20px
-				margin-right: 10px
-				top: 2px
-
 				color: $bg-color
 
 	.select2-dropdown
-		border: solid $text-color
-		border-width: 0 2px 2px
+		border-color: $text-color
 
 	.select2-container--default
 		.select2-search--dropdown
 			.select2-search__field
-				border: 2px solid $text-color
-				padding: 8px 8px
+				border-color: $text-color
 
 				&:focus
 					border-color: $text-color
 					box-shadow: inset 0 0 0 1px $text-color
-
-		.select2-results>.select2-results__options
-			max-height: 210px
 
 	.select2-container--default .select2-results__option[aria-selected=true]
 		background-color: $bg-color
 		color: $text-color
 
 		&::before
-			+pseudo($display: inline-block, $pos: relative)
-			+size(15px, 4px)
-			vertical-align: top
 			background-color: $text-color
-			margin-right: 10px
-			margin-top: 13px
 
 	.select2-container--default .select2-results__option--highlighted[aria-selected]
 		background-color: $text-color
@@ -531,7 +423,7 @@
 	.wrapper
 		&::before
 			background-color: $bg-color
-			border-right: 2px solid $border-color
+			border-right-color: $text-color
 
 		&::after
 			background-color: $text-color
@@ -539,18 +431,14 @@
 	// user form
 	.user-form
 		background-color: $bg-color
-		border: 2px solid $border-color
-
-		.form-note__item
-			+font(18px, 24px)
+		border-color: $text-color
 
 	.form-title
 		color: $text-color-alt
 
 	// jFiler
 	.jFiler-input-dragDrop
-		border: 2px dashed $border-color
-		transition-duration: $animation-speed
+		border-color: $text-color
 
 		.no-touchevents &:hover
 			border-color: $link-color
@@ -560,25 +448,14 @@
 			.jFiler-input-text strong
 				color: $link-color-inverse
 
-	.jFiler-input-icon
-		display: none
-
 	.jFiler-input-text strong
-		+font(20px, 1.3)
 		color: $text-color
-
-	ul .jFiler-item
-		&, .#{$user-content} &
-			&:first-child, &:last-child
-				+font(18px, 1.3)
-				margin: 0
-				padding: 10px 0
 
 	.jFiler-item-others
 		color: $text-color
 
 		&::after
-			border-bottom: 2px dotted $border-color
+			border-bottom-color: $text-color
 
 	.jFiler-item-assets ul,
 	.#{$user-content} ul .jFiler-item-assets ul
@@ -586,11 +463,7 @@
 			background: $bg-color
 
 	.jFiler-item-trash-action
-		border: 2px solid $link-color
-		padding: 2px 5px
-		+size(70px, auto)
-		text-decoration: none
-		text-align: center
+		border-color: $link-color
 		background-color: $link-color-inverse
 		color: $link-color
 
@@ -598,31 +471,15 @@
 			background-color: $link-color
 			color: $link-color-inverse
 
-
-		&::before
-			content: 'Delete'
-			position: relative
-			left: auto
-			top: auto
-			transition-duration: $animation-speed
-			margin: 0
-			transform: none
-			background: none
-			+size(auto)
-
-		&::after
-			content: none
-
-		.no-touchevents &:hover::before
-			background: none
-
 	// section
 	.section__title, .section__subtitle
+
 		.v-separator
+
 			& + a
 				color: $link-color-inverse
 				background-color: $link-color
-				border: 2px solid $link-color
+				border-color: $link-color
 
 				.no-touchevents &:hover
 					color: $link-color
@@ -631,53 +488,123 @@
 	.v-separator
 		background-color: $text-color
 
+	.section__box
+		background-color: $bg-color
+
 	// breadcrumbs
 	.breadcrumbs
 		color: $text-color
-		+font(18px, 21px)
 
 	.breadcrumbs__item
-		margin-right: 15px
 
 		& > a
 			color: $link-color
-			padding-right: 25px
-			transition-duration: $animation-speed
 
 			.no-touchevents &:hover > span
 				border-bottom-color: $link-color
 
-			& > span
-				transition-duration: $animation-speed
-				border-width: 2px
-
 			& > i
-				top: 4px
-				+size(10px, 12px)
 
 				&::before
-					border-width: 6px 0 6px 10px
-					margin-top: -6px
 					border-left-color: $text-color
 
 	.breadcrumbs-drop
 		background: $bg-color
-		box-shadow: 0 0 0 2px $border-color
-		top: -15px
-		transition-duration: $animation-speed
+		box-shadow: 0 0 0 #{$border-width} $text-color
 
 	.breadcrumbs-drop__item
-		margin: 15px 0
 
 		a
 			color: $text-color
 
-			& > span
-				transition-duration: $animation-speed
-				border-width: 2px
-
 			.no-touchevents &:hover > span
 				border-bottom-color: $text-color
+
+	// pagination
+	.paging
+		color: $link-color
+		fill: $link-color
+		
+	.paging-start, .paging-prev, .paging-next, .paging-end
+		.no-touchevents &:hover
+			color: $link-color-inverse
+			fill: $link-color-inverse
+
+			a
+				color: $link-color-inverse
+				background-color: $link-color
+				box-shadow: -3px 0 0 #{$border-width} $link-color, 3px 0 0 #{$border-width} $link-color
+
+	.paging-list
+
+		a
+			color: $link-color
+
+			.no-touchevents &:hover
+				color: $link-color-inverse
+				background-color: $link-color
+
+		.paging-current > span
+			background-color: $link-color-inverse
+			box-shadow: inset 0 0 0 #{$border-width} $link-color
+			color: $link-color
+
+	// files item
+	.files__inner
+		color: $text-color
+		background: $bg-color
+		box-shadow: inset 0 0 0 #{$border-width} $text-color
+
+		.no-touchevents &:hover
+			box-shadow: inset 0 0 0 #{$border-width*3} $text-color
+
+	.files__meta
+		& > span
+			color: $text-color
+
+	.files__size
+		background-image: url(../../img/save--bw.svg)
+
+	.files__date
+		background-image: url(../../img/date--bw.svg)
+
+	// years
+	.years
+		a
+			color: $link-color
+
+		& > a
+			color: $link-color-inverse
+			background-color: $link-color
+			border-color: $link-color
+
+			.no-touchevents &:hover
+				color: $link-color
+				background-color: $link-color-inverse
+
+	.years-drop
+		background: $bg-color
+		box-shadow: inset 0 0 0 #{$border-width} $link-color
+
+		li
+			border-top-color: $link-color
+
+		a
+
+			.no-touchevents &:hover, &.active
+				color: $link-color-inverse
+				background-color: $link-color
+
+	// view print
+	.view-print
+		color: $link-color
+		border-color: $link-color
+
+		path
+			fill: $link-color
+
+		.no-touchevents &:hover
+			background-color: $link-color
 
 	// article meta
 	=article-meta-text-color()
@@ -699,101 +626,11 @@
 		svg path
 			+article-meta-text-color
 
-	// pagination
-	.paging
-		color: $link-color
-		fill: $link-color
-		
-		a, path
-			transition-duration: $animation-speed
-		
-	.paging-start, .paging-prev, .paging-next, .paging-end
-		.no-touchevents &:hover
-			color: $link-color-inverse
-			fill: $link-color-inverse
-
-			a
-				color: $link-color-inverse
-				background-color: $link-color
-				box-shadow: -3px 0 0 2px $link-color, 3px 0 0 2px $link-color
-
-	.paging-list
-		a
-			color: $link-color
-			transition-duration: $animation-speed
-
-			.no-touchevents &:hover
-				color: $link-color-inverse
-				background-color: $link-color
-
-		.paging-current > span
-			background-color: $link-color-inverse
-			box-shadow: inset 0 0 0 2px $link-color
-			color: $link-color
-
-	// files item
-	.files__inner
-		color: $text-color
-		background: $bg-color
-		box-shadow: inset 0 0 0 2px $text-color
-		transition-duration: $animation-speed
-
-		.no-touchevents &:hover
-			box-shadow: inset 0 0 0 7px $text-color
-			transition-duration: $animation-speed
-
-	.files__meta
-		& > span
-			color: $text-color
-
-	.files__size
-		background-image: url(../../img/save--bw.svg)
-
-	.files__date
-		background-image: url(../../img/date--bw.svg)
-
-	// years
-	.years
-		a
-			color: $link-color
-			transition-duration: $animation-speed
-
-		& > a
-			color: $link-color-inverse
-			background-color: $link-color
-			border: 2px solid $link-color
-
-			.no-touchevents &:hover
-				color: $link-color
-				background-color: $link-color-inverse
-
-			& > span
-				transition-duration: $animation-speed
-
-	.years-drop
-		background: $bg-color
-		box-shadow: inset 0 0 0 2px $link-color
-		transition-duration: $animation-speed
-
-		&::before
-			content: none
-
-		li
-			border-top: 2px solid $link-color
-
-			&:first-child
-				border: none
-
-		a
-			.no-touchevents &:hover, &.active
-				color: $link-color-inverse
-				background-color: $link-color
-
 	// slider arrows
 	.slick-arrow, .swiper-arrow
 		transition-duration: $animation-speed
 		background-color: $bg-color
-		border: 2px solid $text-color
+		border-color: $text-color
 
 		.no-touchevents &:hover
 			background-color: $text-color
@@ -801,17 +638,8 @@
 		&.slick-disabled, &.swiper-button-disabled, .no-touchevents &.slick-disabled, .no-touchevents &.swiper-button-disabled
 			background-color: $bg-color
 
-		&::after
-			left: 50%
-			top: 50%
-			right: auto
-			bottom: auto
-			transform: translate(-50%, -50%)
-
 	.slick-prev, .swiper-button-prev
 		&::after
-			border: none
-			margin: 0
 			+triangle(left, $text-color, 10px, 1.5)
 
 		.no-touchevents &:hover
@@ -824,8 +652,6 @@
 
 	.slick-next, .swiper-button-next
 		&::after
-			border: none
-			margin: 0
 			+triangle(right, $text-color, 10px, 1.5)
 
 		.no-touchevents &:hover
@@ -834,31 +660,21 @@
 
 		&.slick-disabled, &.swiper-button-disabled, .no-touchevents &.slick-disabled, .no-touchevents &.swiper-button-disabled
 			&::after
-				border-right-color: $text-color
-
+				border-left-color: $text-color
 
 	// promo slider
 	.promo-slider__img
 		background: $bg-color !important
-		border: 2px solid $text-color
-
-	.promo-slider__text
-		text-shadow: none
-
-	// swiper slider
-	.tape-slider .swiper-container
-		&::before, &::after
-			content: none
+		border-color: $text-color
 
 	// tape slider
 	.tape-slider
-		border: 2px solid $text-color
+		border-color: $text-color
 		background-color: $bg-color
 
 	.tape-slider__anchor
 		color: $text-color
 		background-color: $bg-color
-		transition-duration: $animation-speed
 
 		.no-touchevents &:hover
 			color: $bg-color
@@ -868,65 +684,60 @@
 		color: $bg-color
 		background-color: $text-color
 
+	// images slider
+	.images-slider__item
+		background-color: white
+
+	.images-slider
+		.slider-counter
+			color: $text-color
+
+		.slide-curr
+			color: $text-color
+
 	// save info
 	.save
 		background: $bg-color !important
-		border: solid $text-color
-		border-width: 2px 1px
+		border-color: $text-color
 
 	.save__align
 		color: $text-color
-		border: solid $text-color
-		border-width: 0 1px
+		border-color: $text-color
 
 	// events summary
 	.events-sum__footer
 		a
-			+display-inline-block-top
-			padding: 10px 20px
 			color: $link-color
 			background-color: $link-color-inverse
-			border: 2px solid $link-color
-			text-decoration: none
+			border-color: $link-color
 
 			.no-touchevents &:hover
 				color: $link-color-inverse
 				background-color: $link-color
-
-	// events map
-	.events-map
-		+gray()
 
 	// obzh
 	.obzh__tab
 		a
 			color: $text-color
 			background-color: $bg-color
-			border: solid $text-color
-			border-width: 0 0 2px 2px
-			transition-duration: $animation-speed
-
-			span
-				color: inherit
-				transition-duration: inherit
-
-				&::after
-					content: none
+			border-color: $text-color
 
 			&.active-tab
 				background-color: $text-color
 				color: $bg-color
 
-		&:first-child
-			a
-				border-top-width: 2px
-
 	.obzh-banner
 		background-color: $bg-color
-		border: 2px solid $text-color
+		border-color: $text-color
+
+
+	// NEWS ALL TYPE
+	// стили для всех типов новостных блоков
 
 	// news previews
-	.news-previews__inner
+	.news-previews__inner,
+	.news-grid__inner,
+	.news-group__inner
 		color: $text-color
 		background-color: $bg-color
 
@@ -934,7 +745,7 @@
 			color: $bg-color
 			background-color: $text-color
 
-			.news-previews__meta
+			[class*="__meta"]
 				color: $bg-color
 
 				.visit-view
@@ -942,56 +753,11 @@
 
 				path
 					fill: $bg-color
-					transition-duration: $animation-speed
-
-		*
-			transition-duration: $animation-speed
-
-	.news-previews__meta, .news-grid__meta
-		color: inherit
-
-	// news grid
-	.news-grid__item, .news-grid__item--large, .news-grid__item--wide
-		*
-			transition-duration: $animation-speed
-
-	.news-grid__inner
-		background-color: $bg-color
-		color: $text-color
-
-		.no-touchevents &:hover
-			color: $bg-color
-			background-color: $text-color
-
-			.news-grid__meta
-				color: $bg-color
-
-				.visit-view
-					color: $bg-color
-
-				path
-					fill: $bg-color
-					transition-duration: $animation-speed
-
-	.news-grid__img
-		+gray()
 
 
 	// news links
 	.news-links__inner
 		color: $text-color
-
-		&::before
-			+pseudo()
-			top: -#{round($sidebar-inner-space-horizontal*0.5)}
-			bottom: -#{round($sidebar-inner-space-horizontal*0.5)}
-			left: -#{$sidebar-inner-space-horizontal}
-			right: -#{$sidebar-inner-space-horizontal}
-			z-index: -1
-
-	.news-links__text, .news-links__meta
-		transition-duration: $animation-speed
-		color: inherit
 
 	.no-touchevents & .news-links__inner:hover
 		&::before
@@ -1000,48 +766,376 @@
 		.news-links__text, .news-links__meta
 			color: $bg-color
 
+	// news read
+	.news-read__inner
+		color: $text-color
+
+		.no-touchevents &:hover
+			color: $bg-color
+
+			&::before
+				background-color: $text-color
+
+			.news-read__meta
+				color: $bg-color
+
+	.news-read__meta
+		color: $text-color
+
+	// social media
+	.soc-media__col
+		color: $text-color
+
+		.no-touchevents & a:hover
+			color: $bg-color
+			background-color: $text-color
+
 	// side
 	.side__link
 		color: $text-color
 
 	.side__inner
 		background-color: $bg-color
-		//transition-duration: $animation-speed
-		box-shadow: inset 0 0 0 2px $text-color
+		box-shadow: inset 0 0 0 #{$border-width} $text-color
 
 	.side__depict
 		background-color: $text-color
-		border-bottom: 1px solid $bg-color
+		border-bottom-color: $bg-color
 		box-shadow: inset 0 1px 0 $bg-color
 
 	.no-touchevents & a:hover .side__depict
 		border-bottom-color: transparent
 		box-shadow: none
 
-	.side__text
-		span
-			transform: none
-			transition-duration: $animation-speed
-			opacity: 1
-			visibility: visible
+	// survey
+	.survey
+		background-color: $bg-color
+		border-color: $text-color
+
+		*
+			color: $text-color
+
+		.survey__all, .survey__footer [class*="btn-default-"]
+			border-color: $link-color
+			color: $link-color
+			background-color: $link-color-inverse
+
+			.no-touchevents &:hover
+				color: $link-color-inverse
+				background-color: $link-color
 
 	// search page
 	.search-form__btn
 		background-color: $link-color
-		border: 2px solid $link-color
+		border-color: $link-color
 		transition-duration: $animation-speed
 
 		.no-touchevents &:hover
 			background-color: $link-color-inverse
 			color: $link-color
 
-		span
-			transition-duration: $animation-speed
 
 
+	// HEADER
+	.header__holder
+		background-color: $bg-color
+
+	.header__frame
+		box-shadow: inset 0 -#{$border-width} 0 $text-color
+
+	// logo
+	.logo-wrap
+		box-shadow: inset 0 -#{$border-width} 0 $text-color, inset -#{$border-width} 0 0 $text-color
+
+	// header top
+	.header__top
+		background: $text-color
+
+	// header content
+	.header__content
+
+		.holder
+
+			+media('<tab-lg')
+				border-bottom-color: $text-color
+
+		.frame
+
+			+media('<desk-sm')
+				border-bottom-color: $text-color
+
+	// header contacts
+	.header__contacts
+		ul
+
+			li
+
+				+media('<mob-lg')
+					border-bottom-color: $text-color
+
+				&::before
+					border-color: $text-color
+
+				a
+					color: $text-color
+
+					.no-touchevents &:hover
+						background-color: $bg-color
+						box-shadow: inset 0 -#{$border-width} 0 #{$border-width} $text-color, inset 0 0 0 #{$border-width} $text-color
+
+					& > div
+						& > em
+							color: $mark-color
+
+	// header hot line
+	.header__hot-line
+		li
+			color: $text-color
+
+	// header title
+	.header__title
+		color: $text-color
+
+	// header info
+	.header__info
+
+		li
+			color: $text-color
+
+		a
+			& > span
+				border-bottom-color: transparent
+
+			.no-touchevents &:hover > span
+				border-color: $text-color
+
+		path
+			fill: $text-color
+
+	// user options
+	.user-options__item
+		& > a
+			box-shadow: -1px 0 0 $bg-color
+			color: $bg-color
+
+			& > div
+				color: $bg-color
+
+			path
+				fill: $bg-color
+
+			.no-touchevents &:hover
+				background-color: $bg-color
+				color: $text-color
+
+				path
+					fill: $text-color
+
+		&.cecutient-link
+
+			& > a
+				box-shadow: inset 0 0 0 #{$border-width} $text-color
+				background-color: $bg-color
+				color: $text-color
+
+				path
+					fill: $text-color
+
+	// lang
+	.lang
+		& > a
+			color: $bg-color
 
 
+	// NAVIGATION
+	.nav
+		a
+			color: $bg-color
 
+	// nav item arrow
+	.nav__angle
+
+		&::after
+			+triangle(right, $text-color, 10px, 1.5)
+
+	li
+		&.hover, .no-js &:hover
+			& > .nav__tab .nav__angle
+				&::after
+					border-left-color: $bg-color
+
+	// общие стили для всех ПОДМЕНЮ
+	.nav__drop
+		background-color: $bg-color
+		border-color: $text-color
+
+		a
+			color: $text-color
+			border-color: $text-color
+
+		li
+			&.hover, .no-js &:hover
+				& > .nav__tab > a
+					background: $text-color
+					color: $bg-color
+
+	// подменю первого уровня и подменю первого уровня для "priority-nav"
+	.nav__list, .priority-nav__dropdown
+		& > li
+			& > .nav__drop
+				border-top-color: $text-color
+
+	// пункты меню ПЕРВОГО уровня
+	.nav__list > li, .priority-nav__dropdown > li
+		& > a, & > .nav__tab > a
+			color: $bg-color
+			box-shadow: inset -1px 0 0 $bg-color, 0 -1px 0 $bg-color
+
+		&.hover, &.active, &.current, .no-js &:hover
+			& > .nav__tab > a
+				background: $bg-color
+				color: $text-color
+				box-shadow: -1px 0 0 $text-color, 1px 0 0 $text-color, inset 0 -#{$border-width} 0 $text-color, inset 0 #{$border-width} 0 $text-color, inset -1px 0 0 $text-color, inset 1px 0 0 $text-color
+
+	// priority nav
+	.nav
+		.priority-nav__dropdown-toggle
+			box-shadow: inset -1px 0 0 $bg-color
+
+			.no-touchevents &:hover, &.is-open
+				background-color: $bg-color
+				color: $text-color
+
+	.priority-nav__dropdown
+		background: $text-color
+		box-shadow: 0 -1px 0 $bg-color
+
+		&::after
+			background-color: $text-color
+
+		& > li
+			box-shadow: inset -1px 0 0 $bg-color, 0 -1px 0 $bg-color, inset 0 -1px 0 $bg-color
+
+	// SIDEBAR
+	.sidebar
+		background-color: $bg-color
+		border-right-color: $text-color
+
+	.sidebar-top__holder
+		border-bottom-color: $text-color
+
+	// sidebar bottom
+	.sidebar-bottom__heading
+		background-color: $bg-color
+
+		&::after
+			+linear-gradient(to bottom, $bg-color 0, transparentize($bg-color, 1) 100%)
+
+	.sidebar-bottom__heading, .popup-news__heading
+		.btn-filters-open
+
+			path
+				fill: $text-color
+
+			.no-touchevents &:hover
+				&::before
+					background-color: $text-color
+
+				path
+					fill: $bg-color
+
+	// sidebar menu
+	.sidebar-menu
+		a
+			color: $text-color
+
+			.no-touchevents &:hover
+				color: $bg-color
+				background-color: $text-color
+
+			.no-touchevents &.active-section, &.active-section
+				color: $text-color
+
+				&::before
+					background-color: $text-color
+
+				&:hover
+					color: $bg-color
+
+	.nav-menu-opener
+		i
+
+			&::after
+				+triangle(top, $text-color, 10px, 1.5)
+
+		.no-touchevents &:hover i
+			box-shadow: inset 0 0 0 #{$border-width} $text-color
+			background-color: $text-color
+
+			&::after
+				border-bottom-color: $bg-color
+
+	// FOOTER
+	.footer,
+	.footer-gov,
+	.footer-common,
+	.footer-bottom
+		border-top-color: $text-color
+		color: $footer-text-color
+
+	.footer-common,
+	.footer-bottom
+		background-color: $footer-bg-color
+
+	// footer gov
+	.gov__list
+		.slick-dots
+			li
+				button
+					background-color: $bg-color
+
+					&::before
+						border-color: $link-color
+
+				&.slick-active button::before
+					background: $link-color
+
+	.gov__item
+		color: $text-color
+
+		.no-touchevents &:hover
+			background-color: $bg-color
+			box-shadow: inset 0 0 0 #{$border-width} $link-color
+
+	.gov__link
+		color: $link-color
+
+	// footer common
+	.footer-nav__col
+		color: $text-color
+
+	.footer-nav__title
+		color: $text-color
+
+		.no-touchevents &:hover > span
+			border-bottom-color: $link-color
+
+	.footer-nav__links
+		a
+			.no-touchevents &:hover > span
+				border-bottom-color: $link-color
+
+	// developer
+	.developer__logo
+
+		&::after
+			background-color: $bg-color
+			box-shadow: 0 0 0 #{$border-width} $text-color
+
+	// orphus
+	.orphus
+		color: $text-color
+		border-color: $link-color
 
 
 
@@ -1051,14 +1145,9 @@
 		$btn-lines-color: $text-color
 
 		background: $btn-bg
-		color: #000
-		transition-duration: $animation-speed
-
-		//&::before
-			content: none
+		color: $text-color
 
 		& > i
-			//display: none
 
 			&::before, &::after
 				background-color: $link-color-inverse
@@ -1066,7 +1155,7 @@
 
 		.no-touchevents &:hover
 			background-color: $link-color-inverse
-			box-shadow: inset 0 0 0 2px $link-color
+			box-shadow: inset 0 0 0 #{$border-width} $link-color
 
 			& > i
 				&::before, &::after
@@ -1082,20 +1171,14 @@
 			.no-touchevents &:hover, .no-touchevents .current > &, .current > &
 				background-color: $link-color
 				color: $link-color-inverse
-				padding-top: 5px
 
 				& > span
 					box-shadow: 0 0 0 5px $link-color
-
-	.site-map__box
-		+font(20px, 24px)
 
 	// lang list
 	.lang__list
 		a
 			color: $text-color
-			transition-duration: $animation-speed
-			padding-top: 8px
 
 			.no-touchevents &:hover
 				color: $bg-color
@@ -1106,8 +1189,7 @@
 
 			&.current
 				&, .no-touchevents &:hover
-					color: $text-color-alt
-					text-decoration: none
+					color: $text-color
 
 					& > span
 						background-color: $bg-color
@@ -1120,11 +1202,9 @@
 	.share-link__list
 		a
 			color: $text-color
-			transition-duration: $animation-speed
 
 			path
 				fill: $text-color
-				transition-duration: $animation-speed
 
 			.no-touchevents &:hover
 				color: $bg-color
@@ -1139,397 +1219,11 @@
 		fill: $link-color-inverse
 
 		a
-			border: 2px solid $link-color
-			padding: 5px 10px
 			background-color: $link-color
+			border-color: $link-color
 			color: $link-color-inverse
-
-		a, path
-			transition-duration: $animation-speed
 
 		.no-touchevents & a:hover
 			color: $link-color
 			fill: $link-color
 			background-color: $link-color-inverse
-
-
-
-
-
-	// HEADER
-	.header__holder
-		background-color: $bg-color
-
-	.header__frame
-		box-shadow: inset 0 -2px 0 $border-color
-
-	// logo
-	.logo-wrap
-		border-bottom: none
-		box-shadow: inset 0 -2px 0 $border-color, inset -2px 0 0 $border-color
-
-	// header top
-	.header__top
-		background: $text-color
-
-	// header content
-	.header__content
-		.holder
-			+media('<tab-lg')
-				border-bottom: 1px solid $border-color
-
-		.frame
-			+media('<desk-sm')
-				border-bottom: 1px solid $border-color
-
-	// header contacts
-	.header__contacts
-		ul
-			li
-				+media('<mob-lg')
-					border-bottom: 1px solid $border-color
-
-				&::before
-					border: solid $border-color
-					border-width: 0 0 0 1px
-					transition-duration: $animation-speed
-
-					+media('<tab-lg')
-						border-width: 0 0 0 1px
-
-				a
-					color: $text-color
-					transition-duration: $animation-speed
-
-					.no-touchevents &:hover
-						background-color: $bg-color
-						box-shadow: inset 0 -2px 0 2px $border-color, inset 0 0 0 2px $border-color
-
-					& > div
-						& > em
-							color: $mark-color
-
-	// header hot line
-	.header__hot-line
-		li
-			color: $text-color
-
-	// header title
-	.header__title
-		color: $text-color
-
-		a
-			&::before
-				+gray()
-
-	// header info
-	.header__info
-
-		li
-			color: $text-color
-
-		a
-			& > span
-				border-bottom: 2px solid transparent
-
-			.no-touchevents &:hover > span
-				border-color: $text-color
-
-		path
-			fill: $text-color
-
-	// user options
-	.user-options__item
-		& > a
-			box-shadow: -1px 0 0 $bg-color
-			color: $bg-color
-			transition-duration: $animation-speed
-
-			& > div
-				color: $bg-color
-				transition-duration: $animation-speed
-
-			svg
-				transition-duration: $animation-speed
-
-			path
-				fill: $bg-color
-				transition-duration: $animation-speed
-
-			.no-touchevents &:hover
-				background-color: $bg-color
-				color: $text-color
-
-				path
-					fill: $text-color
-
-		&.cecutient-link
-			z-index: 2
-
-			& > a
-				box-shadow: inset 0 0 0 2px $text-color
-				background-color: $bg-color
-				color: $text-color
-
-				path
-					fill: $text-color
-
-	// lang
-	.lang
-		& > a
-			transition-duration: $animation-speed
-			color: $bg-color
-
-
-	// NAVIGATION
-	.nav
-		a
-			color: $bg-color
-			transition-duration: $animation-speed
-
-	// nav item arrow
-	.nav__angle
-		+size(15px, 20px)
-		margin-top: -10px
-		right: 15px
-
-		&::before, &::after
-			content: none
-			background: none
-			border-radius: 0
-			transition-duration: $animation-speed
-			transform: none
-			margin: 0
-
-		&::after
-			content: ''
-			top: 0
-			+triangle(right, $text-color, 10px, 1.5)
-
-	li
-		&.hover, .no-js &:hover
-			& > .nav__tab .nav__angle
-				&::after
-					border-left-color: $bg-color
-
-	// общие стили для всех ПОДМЕНЮ
-	.nav__drop
-		background-color: $bg-color
-		border: 2px solid $text-color
-		box-shadow: none
-		transition-duration: $animation-speed
-
-		a
-			color: $text-color
-			border-width: 2px
-			border-color: $text-color
-
-		li
-			&.hover, .no-js &:hover
-				& > .nav__tab > a
-					background: $text-color
-					color: $bg-color
-
-	// подменю первого уровня и подменю первого уровня для "priority-nav"
-	.nav__list, .priority-nav__dropdown
-		& > li
-			& > .nav__drop
-				min-width: 100%
-				border-top: 2px solid $text-color
-
-	// пункты меню ПЕРВОГО уровня
-	.nav__list > li, .priority-nav__dropdown > li
-		& > a, & > .nav__tab > a
-			color: $bg-color
-			box-shadow: inset -1px 0 0 $bg-color, 0 -1px 0 $bg-color
-
-		&.hover, &.active, &.current, .no-js &:hover
-			& > .nav__tab > a
-				background: $bg-color
-				color: $text-color
-				box-shadow: -1px 0 0 $text-color, 1px 0 0 $text-color, inset 0 -2px 0 $text-color, inset 0 2px 0 $text-color, inset -1px 0 0 $text-color, inset 1px 0 0 $text-color
-				//box-shadow: inset 0 -2px 0 $text-color, inset 0 2px 0 $text-color
-
-	// priority nav
-	.nav
-		.priority-nav__dropdown-toggle
-			box-shadow: inset -1px 0 0 $bg-color
-			transition-duration: $animation-speed
-
-			.no-touchevents &:hover, &.is-open
-				background-color: $bg-color
-				color: $text-color
-
-	.priority-nav__dropdown
-		background: $text-color
-		box-shadow: 0 -1px 0 $bg-color
-
-		&::after
-			+pseudo()
-			left: 0
-			bottom: 0
-			width: 100%
-			height: 1px
-			background-color: $text-color
-
-		& > li
-			box-shadow: inset -1px 0 0 $bg-color, 0 -1px 0 $bg-color, inset 0 -1px 0 $bg-color
-
-	// SIDEBAR
-	.sidebar
-		background-color: $bg-color
-		border-right: 2px solid $border-color
-
-	.sidebar-top__holder
-		border-bottom: 2px solid $border-color
-
-	// sidebar bottom
-	.sidebar-bottom__heading
-		background-color: $bg-color
-
-		&::after
-			+linear-gradient(to bottom, $bg-color 0, transparentize($bg-color, 1) 100%)
-
-	.sidebar-bottom__heading, .popup-news__heading
-		.btn-filters-open
-			&::before
-				+pseudo()
-				width: 36px
-				height: 36px
-				left: 50%
-				top: 50%
-				margin: -18px 0 0 -18px
-				z-index: -1
-
-			path
-				fill: $text-color
-				transition-duration: $animation-speed
-
-			.no-touchevents &:hover
-				&::before
-					background-color: $text-color
-
-				path
-					fill: $bg-color
-
-	// sidebar menu
-	.sidebar-menu
-		a
-			color: $text-color
-			transition-duration: $animation-speed
-
-			.no-touchevents &:hover
-				color: $bg-color
-				background-color: $text-color
-				transition-duration: $animation-speed
-
-			.no-touchevents &.active-section, &.active-section
-				color: $text-color
-				transition-duration: $animation-speed
-
-				&::before
-					background-color: $text-color
-					width: 8px
-
-				&:hover
-					color: $bg-color
-
-	.nav-menu-opener
-		i
-			$menu-opener-icon-height: 36px
-
-			right: #{$grid-inside-horizontal-space - 6px}
-			+size($menu-opener-icon-height)
-			margin-top: -#{round($menu-opener-icon-height*0.5)}
-
-			&::after
-				left: 50%
-				bottom: 50%
-				margin: 0 0 -7px -10px
-				+triangle(top, $text-color, 10px, 1.5)
-				transition-duration: $animation-speed
-
-		.no-touchevents &:hover i
-			box-shadow: inset 0 0 0 2px $text-color
-			background-color: $text-color
-
-			&::after
-				border-bottom-color: $bg-color
-
-	// FOOTER
-	.footer,
-	.footer-gov,
-	.footer-common,
-	.footer-bottom
-		border-top: 2px solid black
-		color: $footer-text-color
-
-	.footer
-		border: none
-
-	.footer-common,
-	.footer-bottom
-		background-color: $footer-bg-color
-
-	// footer gov
-	.gov__list
-		.slick-dots
-			li
-				button
-					+size(20px)
-					background-color: $bg-color
-
-					&::before
-						border: 2px solid $link-color
-
-				&.slick-active button::before
-					background: $link-color
-
-	.gov__item
-		//+font($font-size, $line-height)
-		color: $text-color
-
-		.no-touchevents &:hover
-			background-color: $bg-color
-			box-shadow: inset 0 0 0 2px $link-color
-
-	.gov__link
-		border: none
-		color: $link-color
-		+font-bold
-
-	// footer common
-	.footer-nav__col
-		+font($font-size, $line-height)
-		color: $text-color
-
-	.footer-nav__title
-		+font($font-size, $line-height)
-		color: $text-color
-
-		.no-touchevents &:hover > span
-			border-bottom-color: $link-color
-
-	.footer-nav__links
-		a
-			.no-touchevents &:hover > span
-				border-bottom-color: $link-color
-
-	// developer
-	.developer__logo
-		&::before
-			content: none
-
-		&::after
-			background-color: $bg-color
-			box-shadow: 0 0 0 2px black
-
-	.no-touchevents & a:hover .developer__logo
-		&::after
-			transform: translate(0, 0)
-
-	// orphus
-	.orphus
-		color: $text-color
-		background: none
-		border: 2px solid $link-color
