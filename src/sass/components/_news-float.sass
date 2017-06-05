@@ -1,0 +1,111 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/*news float
+.news-float
+	position: relative
+	+clear
+
+.news-float__list
+	+grid-parent()
+	+clear-spacing
+	overflow: hidden
+
+	&:last-child
+		margin-bottom: 0
+
+.news-float__item
+	+grid-item(2)
+	position: relative
+	+font()
+	letter-spacing: normal
+
+	&:first-child
+		+grid-item(1)
+
+	+media('<desk-lg')
+		+grid-item(1)
+
+.news-float__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: $text-color
+	background: white
+	height: 100% // для выравнивания высот в ряду
+
+.news-float__img
+	width: 100%
+	background-image: url(../../img/no-img.jpg)
+	background-repeat: no-repeat
+	background-position: center center
+	background-size: cover
+	z-index: 4
+
+	&::before
+		+pseudo($pos: relative)
+		+ratio(35, 21)
+
+	.news-float__item:first-child &
+
+		&::before
+			+ratio(2, 1)
+
+			+media('<desk-lg')
+				+ratio(35, 21)
+
+.news-float__content
+	position: static // для выравнивания высот в ряду, чтобы привязать мета инфу не к контенту
+	overflow: hidden
+	padding: $grid-inside-vertical-space $grid-inside-horizontal-space 48px // Костыль. Нужен больше нижний отступ, чтобы повесить на абсолюте мета инфу
+
+.news-float__title
+	font-family: $font-alt
+	+font($font-size-h3, $line-height-h3)
+	font-weight: 700
+	overflow: hidden
+	margin-bottom: 0.9em
+	transition-property: color
+	transition-duration: $animation-speed
+
+	.no-touchevents .news-float__inner:hover &
+		color: $text-color-alt
+
+.news-float__text
+	overflow: hidden
+	margin-bottom: 0.7em
+	transition-property: color
+	transition-duration: $animation-speed
+
+	.no-touchevents .news-float__inner:hover &
+		color: $text-color-alt
+
+.news-float__meta
+	position: absolute
+	bottom: 1.4em
+	width: calc(100% - #{round($grid-inside-horizontal-space*2)})
+	+font(1.2rem, 1.4)
+	color: $text-color-light
+	transition-property: color
+	transition-duration: $animation-speed
+
+	time
+		font-style: normal
+
+	.visit-view
+		float: right
+
+		svg path
+			transition-property: fill
+			transition-duration: $animation-speed
+
+
+	.no-touchevents a.news-float__inner:hover &
+		color: $text-color
+
+		svg path
+			fill: $text-color
+			transition-duration: $animation-speed
+
+/*news float end

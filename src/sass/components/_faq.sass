@@ -121,6 +121,35 @@
 	> span
 		+hide-text
 
+		&:before, &:after
+			display: none
+			position: relative
+			transition-property: opacity, transform, visibility
+			transition-duration: $animation-speed
+
+		&:before
+			content: 'Показать ответ'
+			transform: translate(0, 0)
+
+			.expander-is-open &
+				opacity: 0
+				visibility: hidden
+				transform: translate(0, -1em)
+
+		&:after
+			content: 'Закрыть ответ'
+			position: absolute
+			+top-left(0)
+			+size(100%)
+			opacity: 0
+			visibility: hidden
+			transform: translate(0, 1em)
+
+			.expander-is-open &
+				opacity: 1
+				visibility: visible
+				transform: translate(0, 0)
+
 		+media('<mob-lg')
 			display: inline-block
 			position: relative
@@ -132,35 +161,9 @@
 			white-space: nowrap
 
 			&:before, &:after
-				position: relative
-				display: inline-block
+				+display-inline-block-top
 				+font($font-size, 1.2)
 				border-bottom: 1px dotted $text-color
-				transition-property: opacity, transform, visibility
-				transition-duration: $animation-speed
-
-			&:before
-				content: 'Показать ответ'
-				transform: translate(0, 0)
-
-				.expander-is-open &
-					opacity: 0
-					visibility: hidden
-					transform: translate(0, -1em)
-
-			&:after
-				position: absolute
-				left: 0
-				top: 0
-				content: 'Закрыть ответ'
-				opacity: 0
-				visibility: hidden
-				transform: translate(0, 1em)
-
-				.expander-is-open &
-					opacity: 1
-					visibility: visible
-					transform: translate(0, 0)
 	> i
 		position: absolute
 		left: 50%

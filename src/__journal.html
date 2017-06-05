@@ -1,0 +1,86 @@
+@@include('_head.tpl', {
+	"title": "Интернет-газета «СПАСАТЕЛЬ»",
+	"pageClass": ""
+})
+<div class="wrapper">
+	<!--HEADER-->
+	@@include('_header.tpl', {
+		"mainNavItemActive": "Электронное обращение"
+	})
+	<!--HEADER end-->
+
+	<!--MAIN-->
+	<div class="main">
+		<div class="layout">
+			<div class="main-holder">
+				<!--CONTENT-->
+				<div class="main-frame">
+					<div class="main-inside">
+						<!--SIDE-->
+						@@include('_side.tpl')
+						<!--SIDE end-->
+						<div class="content-layout">
+							@@include('_breadcrumbs_full.tpl')
+							<div class="content-wrap">
+								<div class="content user-content">
+									<h1>Интернет-газета «СПАСАТЕЛЬ»</h1>
+
+									<div class="section">
+										<div class="filter-item">
+											<div class="select">
+												<select class="cselect">
+													<option value="0">Выбрать выпуск</option>
+													<option value="1">«СПАСАТЕЛЬ» №7</option>
+													<option value="2">«СПАСАТЕЛЬ» №6</option>
+													<option value="3">«СПАСАТЕЛЬ» №5</option>
+													<option value="4">«СПАСАТЕЛЬ» №4</option>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<section class="section" id="regions-anchor">
+										<div class="section__holder">
+											<div class="news-float">
+												<div class="news-float__list">
+													@@loop('_news-float-item.tpl', 'includes-json/news-float-items.json')
+												</div>
+											</div>
+										</div>
+									</section>
+
+									<section class="section banners-panel">
+										<div class="section__holder">
+											<!--banners-->
+											<div class="banners">
+												<div class="banners__list">
+													@@loop('_banners-item.tpl', 'includes-json/banners-items.json')
+												</div>
+											</div>
+											<!--banners end-->
+										</div>
+									</section>
+								</div>
+							</div>
+							<!--ASIDE-->
+							@@include('_aside.tpl')
+							<!--ASIDE end-->
+						</div>
+					</div>
+				</div>
+				<!--CONTENT end-->
+
+				<!--SIDEBAR-->
+				@@include('_sidebar.tpl', {
+				"menu": ""
+				})
+				<!--SIDEBAR-->
+			</div>
+		</div>
+	</div>
+	<!--MAIN end-->
+</div>
+@@include('_foot.tpl', {
+	"mainNavItemActive": "Электронное обращение",
+	"subSiteMenu": ""
+})
