@@ -748,25 +748,29 @@ function hoverClassInit() {
 			item.addClass(alightRightClass);
 		}
 
+		// clear js style
+		drop.attr('style', '');
+
 		// for align bottom
-		var navContainerPosBottom = $(window).height() - $navContainer.outerHeight();
+		// var maxPosBottom = $(window).height() - $navContainer.outerHeight();
+		var maxPosBottom = $(window).height();
 		var dropHeight = drop.outerHeight();
-		var navDropPosBottom = drop.offset().top + dropHeight - $(window).scrollTop();
+		var currentDropPosBottom = drop.offset().top - $(window).scrollTop() + dropHeight;
 
-		console.log("==================: ", drop.children('ul').children('li').first().children('.nav__tab').find('a').text());
+		// console.log("==================: ", drop.children('ul').children('li').first().children('.nav__tab').find('a').text());
 		// console.log("$navContainerHeight: ", $navContainer.outerHeight());
-		console.log("drop: ", drop);
-		console.log("navContainerPosBottom: ", navContainerPosBottom);
-		console.log("dropHeight: ", dropHeight);
-		console.log("navDropPosBottom: ", navDropPosBottom);
-		console.log("margin-top: ", navContainerPosBottom - navDropPosBottom);
+		// console.log("drop: ", drop);
+		// console.log("maxPosBottom: ", maxPosBottom);
+		// console.log("dropHeight: ", dropHeight);
+		// console.log("currentDropPosBottom: ", currentDropPosBottom);
+		// console.log("bottomSpace: ", maxPosBottom - currentDropPosBottom);
 
-		if (navContainerPosBottom < navDropPosBottom) {
-			// if (navContainerPosBottom < 500) {
-			// 	return;
-			// }
+		if (maxPosBottom < currentDropPosBottom) {
+			if (maxPosBottom < 500) {
+				return;
+			}
 			item.addClass(alightBottomClass);
-			drop.css('margin-top', 'auto').css('margin-top', navContainerPosBottom - navDropPosBottom);
+			drop.css('margin-top', maxPosBottom - currentDropPosBottom);
 		}
 	};
 
@@ -1021,9 +1025,11 @@ function multiAccordionInit() {
 		});
 	}
 
+	/*faq*/
 	var faq = '.expander-js';
+	var $faq = $(faq);
 
-	if ($(faq).length) {
+	if ($faq.length) {
 		new MultiAccordion({
 			container: faq,
 			item: '.expander-item-js',
@@ -1034,6 +1040,15 @@ function multiAccordionInit() {
 			animateSpeed: 300
 		});
 	}
+
+	var faqTimeout;
+	$faq.on('mAccordionAfterChange', function () {
+		clearTimeout(faqTimeout);
+
+		faqTimeout = setTimeout(function () {
+			$(document.body).trigger("sticky_kit:recalc");
+		}, 50);
+	})
 }
 /*multi accordion initial end*/
 
