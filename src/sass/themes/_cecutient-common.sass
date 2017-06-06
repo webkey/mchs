@@ -52,6 +52,9 @@
 		&:disabled, .no-touchevents &:disabled:hover
 			cursor: no-drop
 
+		&:active
+			transform: none
+
 	// btn-arrow
 	.btn-arrow
 
@@ -313,19 +316,24 @@
 	.content [class*="grid-col-"]
 		float: none
 		width: auto
+		margin-bottom: $bottom-space
+		min-height: 0
+
+		&:last-child
+			margin-bottom: 0
 
 	// section
 	.section
 		margin-bottom: $bottom-space-lg
 
-		&:last-child
-			margin-bottom: 0
+	.section:last-child
+		margin-bottom: 0
 
-		* ~ &
-			margin-top: $bottom-space-lg
+	* ~ .section
+		margin-top: $bottom-space-lg
 
-		& > *:last-child
-			margin-bottom: 0
+	.section > *:last-child
+		margin-bottom: 0
 
 	.section__title, .section__subtitle
 
@@ -346,8 +354,9 @@
 
 		&::before
 			+pseudo()
-			+top-left(0.45em, 0)
+			+top-left(50%, 0)
 			+size(1em)
+			margin-top: -0.5em
 
 	.v-separator
 		text-indent: -9999px
@@ -361,6 +370,12 @@
 
 	.section__box
 		padding: 0
+
+	.news-date
+		+font($font-size, $line-height)
+
+		*
+			font-size: 1em
 
 	// breadcrumbs
 	.breadcrumbs
@@ -400,11 +415,15 @@
 
 	// pagination
 	.paging
+		+font($font-size-h3, 1.7)
 
 		a, path
 			transition-duration: $animation-speed
 
 	.paging-list
+		display: block
+		+margin-vertical(#{$bottom-space-sm})
+		max-width: none
 
 		a
 			transition-duration: $animation-speed
@@ -419,10 +438,15 @@
 			transition-duration: $animation-speed
 
 	// years
-	.years
+	.years, .sorting-select
+		font-family: $font-alt
+		+font($font-size-h4, $line-height-h4)
+		font-weight: normal
+
 		a
+			font-size: 1em
 			position: relative
-			padding: 4px
+			padding: 5px
 			transition-duration: $animation-speed
 
 		& > a
@@ -433,10 +457,13 @@
 				line-height: inherit
 				transition-duration: $animation-speed
 
-	.years-drop
+	.years-drop, .sorting-select-drop
 		padding: 0
-		margin-top: -2px
+		left: auto
+		right: 0
+		margin: 2px 2px 0 0
 		transition-duration: $animation-speed
+		+font($font-size-h3, $line-height-h3)
 
 		&::before
 			content: none
@@ -446,6 +473,13 @@
 
 			&:first-child
 				border: none
+
+		a
+			padding: 8px 14px
+
+	// sorting
+	.sorting-options
+		+font($font-size, $line-height)
 
 	// view print
 	.view-print
@@ -847,7 +881,7 @@
 
 	// news previews
 	.grid-row .news-group__item:last-child
-		margin-bottom: $bottom-space
+		//margin-bottom: $bottom-space
 
 	// news grid
 	.news-grid__item, .news-grid__list > .news-grid__item--large
@@ -858,7 +892,7 @@
 		content: none
 
 	.grid-row .news-grid__item--wide:last-child
-		margin-bottom: $bottom-space
+		//margin-bottom: $bottom-space
 
 	.others-news .news-grid__list:last-child
 		margin-bottom: 0
@@ -1032,19 +1066,77 @@
 		margin: 0
 		border: #{$border-width} solid
 
+		&:active
+			transform: none
+
 		svg
+			+size(32px)
+			margin-top: -16px
 			display: none
+
+			+media('<mob-lg')
+				display: inline-block
+
+		path
+			transition-duration: $animation-speed
 
 		span
 			font-size: 20px
 			transition-duration: $animation-speed
 
+		+media('<mob-lg')
+			width: 60px
+
+	input.search-form__input
+
+		&, &:hover, &:focus
+			padding-right: #{$search-form-popup-btn-width+10}
+
+			+media('<mob-lg')
+				padding-right: 60px
+
+	.search-page-options
+		+font($font-size, $line-height)
+
+		+media('<tab-sm')
+			+font($font-size, $line-height)
+
+	.popup-label, .search-page-options
+		+media('<desk-lg')
+			display: block
+
+			& > div
+				margin-bottom: $bottom-space-sm
+
+				&:last-child
+					margin-bottom: 0
+
+	.search-result__date, .search-result__path
+		+font($font-size, $line-height)
+
+	.search-result__title
+		+font($font-size-h3, $line-height-h3)
+		max-height: none
+
+		a
+			display: inline-block
+			vertical-align: top
+			padding: 5px
+			transition-duration: $animation-speed
+			max-height: calc(#{$font-size-h3} * #{$line-height-h3} * 3 + 5px*2)
+
+	.search-result__text
+		+font($font-size, $line-height)
+		max-height: calc(#{$font-size} * #{$line-height} * 3)
 
 	// HEADER
-
 	// logo
 	.logo-wrap
 		border-bottom: none
+
+	.header__content .logo
+		+media('<tab-lg')
+			border-bottom: #{$border-width} solid
 
 	// header content
 	.header__content
@@ -1052,12 +1144,15 @@
 		.holder
 
 			+media('<tab-lg')
-				border-bottom: 1px solid
+				border-bottom: #{$border-width} solid
 
 		.frame
 
 			+media('<desk-sm')
-				border-bottom: 1px solid
+				border-right: #{$border-width} solid
+
+			+media('<tab-lg')
+				border-right: none
 
 	// header contacts
 	.header__contacts
@@ -1065,15 +1160,15 @@
 
 			li
 				+media('<mob-lg')
-					border-bottom: 1px solid
+					border-bottom: #{$border-width} solid
 
 				&::before
 					border: solid
-					border-width: 0 0 0 1px
+					border-width: 0 0 0 #{$border-width}
 					transition-duration: $animation-speed
 
 					+media('<tab-lg')
-						border-width: 0 0 0 1px
+						border-width: 0 0 0 #{$border-width}
 
 				a
 					transition-duration: $animation-speed
@@ -1098,7 +1193,7 @@
 		+font($font-size-small, $line-height-small)
 
 		+media('<desk-lg')
-			font-size: 1.2rem
+			font-size: $font-size-small
 
 		a
 			& > span
@@ -1173,6 +1268,8 @@
 			bottom: 0
 			width: 100%
 			height: 1px
+
+
 
 
 	// SIDEBAR
@@ -1279,6 +1376,141 @@
 
 
 
+	// SUB SITES
+	// MENU REGION
+	.region-menu-heading
+		border-bottom: #{$border-width} solid
+		transition-duration: $animation-speed
+
+	.region-menu-btn
+		&::before, &::after
+			transition-duration: $animation-speed
+
+		& > i
+			&, &::before, &::after
+				transition-duration: $animation-speed
+
+
+	.sidebar-region-news__heading
+		border: solid
+		border-width: #{$border-width} 0
+		transition-duration: $animation-speed
+
+	// region menu
+	.region-menu__list
+		a
+			border-bottom: #{$border-width} solid
+			transition-duration: $animation-speed
+
+	// СТРЕЛКИ навигации
+	.region-menu__angle
+		border-width: 0 0 #{$border-width} #{$border-width}
+		transition-duration: $animation-speed
+
+		i
+			transition-duration: $animation-speed
+
+			&::before, &::after
+				transition-duration: $animation-speed
+
+
+
+	// region header
+	.region-header
+		border-bottom: 2px solid
+
+		&::before
+			display: none
+
+	.region-header__caption
+		text-shadow: none
+		width: auto
+		min-height: 0
+
+		+media('<tab-lg')
+			min-height: 0
+
+		+media('<mob-lg')
+			min-height: 0
+
+	.region-header__holder
+		width: auto
+
+	.region-header__info
+		li
+			+font($font-size, $line-height)
+
+
+	// lead
+	.lead__description
+		border-bottom: #{$border-width} solid
+
+	.lead__list
+		+margin($l: -#{$border-width}, $b: -#{$border-width}, $r: -#{$border-width})
+
+	.lead__item
+		padding: 0 0 #{$border-width} #{$border-width}
+
+	.lead__layer, .lead__layer--front, .lead__layer--back
+		transition-duration: $animation-speed
+
+	.lead__layer--back
+		left: #{$border-width}
+		bottom: #{$border-width}
+		min-height: calc(100% - #{$border-width})
+
+	.lead__position
+		+font($font-size-h3, $font-size-h3)
+
+	.lead__name
+		+font($font-size-h3, $line-height-h3)
+
+	.lead__footer
+		a
+			font-family: $font-alt
+			display: inline-block
+			padding: 5px 12px
+			border: #{$border-width} solid
+
+			span
+				border: none !important
+
+
+	// history info
+	.history-info__holder
+		padding: 0
+
+
+	// media block
+	.media-block__nav
+		border-bottom: #{$border-width} solid
+
+	.media-block__tab
+		margin-bottom: -#{$border-width}
+
+		a
+			border: #{$border-width} solid transparent
+
+	.media-list__item
+		font-family: $font-alt
+		+font($font-size-h3, $line-height-h3)
+
+	.media-list__inner
+		transition-duration: $animation-speed
+
+	.media-list__img
+		display: none
+
+
+	// banners
+	.banners__item
+		+font($font-size, $line-height)
+
+	// context banners
+	.context-banner
+		max-width: 320px
+
+
 	// POPUPS
 	.btn-popup-close
 		$btn-lines-width: 40px
@@ -1288,9 +1520,12 @@
 			+size($btn-lines-width, $btn-lines-height)
 
 		transition-duration: $animation-speed
+		box-shadow: none
 
 		& > i
+			transition-duration: $animation-speed
 			+line-style
+			transform: none !important
 
 			&::before, &::after
 				+line-style
@@ -1332,3 +1567,26 @@
 
 		a, path
 			transition-duration: $animation-speed
+
+	// banner opener
+	.banner-opener
+
+		a
+
+			svg
+				transform: scale(1)
+
+	// banner closer
+	.btn-popup-banners-close
+
+		.no-touchevents &:hover
+
+			& > i
+				transform: scale(1)
+
+	// filters popup
+	.filters-form
+		.check-label, .radio-label, input[type="checkbox"], input[type="radio"]
+			font-size: 16px
+			font-weight: normal
+			text-transform: none

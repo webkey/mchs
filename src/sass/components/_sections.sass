@@ -87,6 +87,10 @@
 	.section__title &
 		color: $text-color
 
+	& + a
+		+display-inline-block-middle
+		top: auto
+
 .section__box
 	background-color: white
 	padding: $grid-inside-horizontal-space
@@ -96,7 +100,7 @@
 
 .news-date
 	position: relative
-	+display-inline-block-top
+	+display-inline-block-middle
 
 	.touchevents & > a
 		display: none
@@ -104,7 +108,7 @@
 .datepicker-input
 	position: relative
 	top: 0.1em
-	+display-inline-block-top
+	+display-inline-block-middle
 	padding: 0
 	margin: 0
 	font-family: $font-alt

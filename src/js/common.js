@@ -1725,6 +1725,12 @@ function slidersInit() {
 
 			var panelsSliderInit = $panelsSlider.on('init', function (event, target) {
 				addCurrentClass(target.currentSlide);
+
+				var $currentBtnMore = $(target.$slides[target.currentSlide]).find('.section__footer').find('a');
+
+				var $targetBtnMore = $(target.$slider).closest('.section').find('.all-news-project-js');
+				$targetBtnMore.text($currentBtnMore.text());
+				$targetBtnMore.attr('href', $currentBtnMore.attr('href'));
 			}).slick({
 				accessibility: false,
 				swipe: false,
@@ -1738,6 +1744,12 @@ function slidersInit() {
 				arrows: false
 			}).on('beforeChange', function (event, target, currentSlide, nextSlide) {
 				addCurrentClass(nextSlide);
+
+				var $currentBtnMore = $(target.$slides[nextSlide]).find('.section__footer').find('a');
+
+				var $targetBtnMore = $(target.$slider).closest('.section').find('.all-news-project-js');
+				$targetBtnMore.text($currentBtnMore.text());
+				$targetBtnMore.attr('href', $currentBtnMore.attr('href'));
 			});
 
 			thumbsSliderInit.on('tap', function (swiper, event) {

@@ -573,9 +573,10 @@
 		background-image: url(../../img/date--bw.svg)
 
 	// years
-	.years
+	.years, .sorting-select
 		a
 			color: $link-color
+			background-color: $link-color-inverse
 
 		& > a
 			color: $link-color-inverse
@@ -586,9 +587,9 @@
 				color: $link-color
 				background-color: $link-color-inverse
 
-	.years-drop
+	.years-drop, .sorting-select-drop
 		background: $bg-color
-		box-shadow: inset 0 0 0 #{$border-width} $link-color
+		box-shadow: 0 0 0 #{$border-width} $link-color
 
 		li
 			border-top-color: $link-color
@@ -598,6 +599,10 @@
 			.no-touchevents &:hover, &.active
 				color: $link-color-inverse
 				background-color: $link-color
+
+	// sorting
+	.sorting-options
+		color: $text-color
 
 	// view print
 	.view-print
@@ -851,6 +856,7 @@
 		border-top-color: $text-color
 
 	// search page
+
 	.search-form__btn
 		background-color: $link-color
 		border-color: $link-color
@@ -859,6 +865,25 @@
 		.no-touchevents &:hover
 			background-color: $link-color-inverse
 			color: $link-color
+
+			path
+				fill: $link-color
+
+	.search-page-options
+		color: $text-color
+
+	.search-result__date, .search-result__path
+		color: $text-color
+
+	.search-result__title
+		color: $text-color
+		background-color: $bg-color
+
+		a
+
+			.no-touchevents &:hover
+				color: $bg-color
+				background-color: $text-color
 
 
 	// HEADER
@@ -871,6 +896,11 @@
 	// logo
 	.logo-wrap
 		box-shadow: inset 0 -#{$border-width} 0 $text-color, inset -#{$border-width} 0 0 $text-color
+		background-color: $bg-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+	.header__content .logo
+		+media('<tab-lg')
+			border-bottom-color: $text-color
 
 	// header top
 	.header__top
@@ -882,12 +912,7 @@
 		.holder
 
 			+media('<tab-lg')
-				border-bottom-color: $text-color
-
-		.frame
-
-			+media('<desk-sm')
-				border-bottom-color: $text-color
+				border-color: $text-color
 
 	// header contacts
 	.header__contacts
@@ -906,7 +931,11 @@
 
 					.no-touchevents &:hover
 						background-color: $bg-color
-						box-shadow: inset 0 -#{$border-width} 0 #{$border-width} $text-color, inset 0 0 0 #{$border-width} $text-color
+						box-shadow: inset 0 0 0 #{$border-width} $text-color
+
+						+media('<tab-lg')
+							background-color: transparent
+							box-shadow: none
 
 					& > div
 						& > em
@@ -946,15 +975,27 @@
 			& > div
 				color: $bg-color
 
+			& > i
+
+				&, &::before, &::after
+					background-color: $bg-color
+
 			path
 				fill: $bg-color
 
 			.no-touchevents &:hover
 				background-color: $bg-color
 				color: $text-color
+				box-shadow: inset 0 0 0 #{$border-width} $text-color
 
 				path
 					fill: $text-color
+
+				& > i
+
+					&, &::before, &::after
+						background-color: $text-color
+						transform: none
 
 		&.cecutient-link
 
@@ -1032,7 +1073,7 @@
 				color: $text-color
 
 	.priority-nav__dropdown
-		background: $text-color
+		background: $text-color !important // !important нужен, чтобы перебить на всех подсайтах
 		box-shadow: 0 -1px 0 $bg-color
 
 		&::after
@@ -1040,6 +1081,16 @@
 
 		& > li
 			box-shadow: inset -1px 0 0 $bg-color, 0 -1px 0 $bg-color, inset 0 -1px 0 $bg-color
+
+	.go-to-mchs, .go-to-mchs--mob
+		background: $bg-color
+		color: $text-color
+		box-shadow: inset 0 0 0 #{$border-width} $text-color
+
+	.header__hot-line
+		li:first-child a
+			&, .no-touchevents &:hover
+				color: $text-color
 
 	// SIDEBAR
 	.sidebar
@@ -1164,6 +1215,196 @@
 
 
 
+	// SUB SITES
+	// MENU REGION
+	.region-menu-heading
+		color: $bg-color
+		background-color: $text-color
+		border-bottom-color: $text-color
+
+		.no-touchevents &:hover
+			color: $text-color
+			background-color: $bg-color
+
+			.region-menu-btn
+				&::before, &::after
+					background-color: $text-color
+
+				& > i
+					&, &:before, &:after
+						background-color: $text-color
+
+	.is-expanded
+		.region-menu-btn
+			& > i
+				background: none
+
+	.no-touchevents & .is-expanded .region-menu-heading:hover .region-menu-btn
+		& > i
+			background: none
+
+	.region-menu-btn
+		&::before, &::after
+			background-color: $bg-color
+
+		& > i
+			&:before, &:after
+				background-color: $bg-color
+
+	.sidebar-region-news__heading
+		background-color: $bg-color
+		border-bottom-color: $text-color
+
+		.no-touchevents &:hover
+			background-color: $bg-color
+			box-shadow: inset 0 0 0 #{$border-width*2} $text-color
+
+	.sidebar-region-news__content
+		background-color: $bg-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+	// region menu
+	.region-menu__list, .region-menu__drop
+		background-color: $bg-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+	.region-menu__list, .region-menu__list > li
+		a
+			color: $text-color !important // !important нужен, чтобы перебить на всех подсайтах
+			background-color: $bg-color !important // !important нужен, чтобы перебить на всех подсайтах
+			border-bottom-color: $text-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+			.no-touchevents &:hover
+				color: $bg-color !important // !important нужен, чтобы перебить на всех подсайтах
+				background-color: $text-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+	.region-menu__list li.current > .region-menu__tab
+
+		&, .no-touchevents &
+
+			a, a:hover
+				color: $bg-color !important // !important нужен, чтобы перебить на всех подсайтах
+				box-shadow: inset 5px 0 0 $bg-color !important // !important нужен, чтобы перебить на всех подсайтах
+				background-color: $text-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+	// СТРЕЛКИ навигации
+	.region-menu__angle
+		background-color: $bg-color !important // !important нужен, чтобы перебить на всех подсайтах
+		border-color: $text-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+		i
+
+			&::before, &::after
+				background-color: $text-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+		.no-touchevents &:hover
+			background-color: $text-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+			i
+
+				&::before, &::after
+					background-color: $bg-color !important // !important нужен, чтобы перебить на всех подсайтах
+
+
+
+	// region header
+	.region-header
+		border-bottom-color: $text-color
+
+	.region-header__bg
+		background: $bg-color !important // не background-color!
+
+	.region-header__caption
+		color: $text-color
+
+	.region-header__info
+		color: $text-color
+
+		path
+			fill: $text-color
+
+	// lead
+	.lead
+		background-color: $bg-color
+
+	.lead__description
+		padding: 0 0 $bottom-space
+		border-bottom-color: $text-color
+
+	.lead__layer, .lead__layer--front, .lead__layer--back
+		box-shadow: -#{$border-width} 0 0 $text-color, #{$border-width} 0 0 $text-color, 0 #{$border-width} 0 $text-color, 0 -#{$border-width} 0 $text-color, inset 0 -#{$border-width} 0 $text-color
+
+	.lead__layer--back
+		background-color: $bg-color
+
+	.lead__position
+		color: $text-color
+
+	.lead__footer
+		a
+			color: $bg-color
+			border-color: $text-color
+			background-color: $text-color
+
+			span
+				border: none !important
+
+			.no-touchevents &:hover
+				color: $text-color
+				background-color: $bg-color
+
+
+	// history info
+	.history-info__holder
+		background-color: $bg-color
+
+	.history-info__img
+		border-color: $text-color
+
+
+	// media block
+	.media-block__nav
+		border-bottom-color: $text-color
+
+	.media-block__tab
+		a
+			color: $text-color
+			border-bottom-color: $text-color
+			background-color: $bg-color
+			transition-duration: $animation-speed
+
+			.no-touchevents &:hover
+				color: $bg-color
+				background-color: $text-color
+
+			&.active-tab
+				border-color: $text-color
+				border-bottom-color: transparent
+				color: $text-color
+
+			.no-touchevents &:hover
+				border-color: $text-color
+				border-bottom-color: transparent
+				color: $bg-color
+				background-color: $text-color
+
+	.media-list__inner
+		color: $text-color
+		background-color: $bg-color
+
+		.no-touchevents &:hover
+			color: $bg-color
+			background-color: $text-color
+
+	// banners
+	.banners__item
+
+		a
+			color: $text-color
+
+	// context banners
+	.context-banner
+		color: $text-color
+
+
 	// POPUPS
 	.btn-popup-close
 		$btn-bg: $text-color
@@ -1252,3 +1493,18 @@
 			color: $link-color
 			fill: $link-color
 			background-color: $link-color-inverse
+
+	// banner opener
+	.banner-opener
+
+		a
+			background-color: $text-color
+
+			path
+				fill: $bg-color
+
+			.no-touchevents &:hover
+				background-color: $bg-color
+
+				path
+					fill: $text-color
