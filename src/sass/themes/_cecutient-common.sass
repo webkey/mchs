@@ -44,11 +44,7 @@
 
 	// buttons
 	// all default
-	.btn-default,
-	.btn-map-site,
-	.btn-default-alt,
-	.btn-default-light,
-	.btn-arrow
+	.btn-default, .btn-map-site, .btn-default-alt, .btn-default-light, .btn-arrow
 		font-size: 18px
 		border: #{$border-width} solid
 		transition-duration: $animation-speed
@@ -343,8 +339,15 @@
 		+font($font-size-h2, $line-height-h2)
 
 	.section__subtitle
+		position: relative
 		margin-bottom: $bottom-space
 		+font($font-size-h4, $line-height-h4)
+		padding-left: 2em
+
+		&::before
+			+pseudo()
+			+top-left(0.45em, 0)
+			+size(1em)
 
 	.v-separator
 		text-indent: -9999px

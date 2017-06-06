@@ -104,7 +104,7 @@
 
 	&::before
 		transform: rotate(45deg)
-		margin: -4px 0 0 -1px
+		margin: -3px 0 0 -1px
 
 	&::after
 		transform: rotate(-45deg)
@@ -128,8 +128,8 @@
 	opacity: 0
 	visibility: hidden
 	//for animation
-	transform-origin: center top
-	transform: rotateX(-30deg)
+	//transform-origin: center top // пока не будет анимации
+	//transform: rotateX(-30deg) // неправильно работает расчет высоты в js
 	transition-property: opacity, visibility, transform
 	transition-duration: $animation-speed
 	transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
@@ -149,7 +149,7 @@
 	li.hover > &, .no-js li:hover > &, li.active > &
 		opacity: 1
 		visibility: visible
-		transform: rotateX(0deg)
+		//transform: rotateX(0deg) // пока не будет анимации
 
 	a
 		color: $text-color

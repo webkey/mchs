@@ -12,6 +12,9 @@
 	* ~ &
 		margin-top: $bottom-space-md
 
+	script ~ &
+		margin-top: 0
+
 	& > *:last-child
 		margin-bottom: 0
 
@@ -132,19 +135,15 @@
 	margin-bottom: $bottom-space-sm
 	font-family: $font-alt
 	font-weight: normal
-	font-size: 1.2rem
-	line-height: 1.6
+	+font(1.2rem, 1.6)
 	text-transform: uppercase
 	color: $text-color
 
 	h2, h3, h4
-		display: inline-block
-		vertical-align: top
-		font-family: inherit
+		+display-inline-block-middle
 		font-weight: inherit
-		font-size: inherit
-		line-height: inherit
-		text-transform: inherit
+		font-family: inherit
+		+font(inherit, inherit)
 		color: inherit
 		margin-bottom: 0
 

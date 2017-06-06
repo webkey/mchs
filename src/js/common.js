@@ -758,6 +758,11 @@ function hoverClassInit() {
 		var currentDropPosBottom = drop.offset().top - $(window).scrollTop() + dropHeight;
 
 		// console.log("==================: ", drop.children('ul').children('li').first().children('.nav__tab').find('a').text());
+
+		// console.log("drop.offset().top: ", drop.offset().top);
+		// console.log("$(window).scrollTop(): ", $(window).scrollTop());
+		// console.log("dropHeight: ", dropHeight);
+
 		// console.log("$navContainerHeight: ", $navContainer.outerHeight());
 		// console.log("drop: ", drop);
 		// console.log("maxPosBottom: ", maxPosBottom);
