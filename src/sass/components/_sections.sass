@@ -29,7 +29,7 @@
 	.home-page &
 		color: $text-color-alt
 
-	h2, h3, a
+	h2, h3, & > a
 		+display-inline-block-middle
 		position: relative
 		font-family: inherit
@@ -41,10 +41,10 @@
 			display: block
 			margin-bottom: (round-float($bottom-space-sm*0.5, 1))
 
-		a
+		& > a
 			font-weight: inherit
 
-	a
+	& > a
 		font-size: 0.9em
 		font-weight: normal
 		top: 0.1em

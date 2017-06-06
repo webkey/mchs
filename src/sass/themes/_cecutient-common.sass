@@ -342,6 +342,9 @@
 			& + a
 				border: #{$border-width} solid
 
+				+media('<tab-lg')
+					font-size: 12px
+
 	.section__title
 		margin-bottom: $bottom-space
 		+font($font-size-h2, $line-height-h2)
@@ -619,7 +622,10 @@
 
 	.tape-slider__anchor
 		padding: 13px 15px
-		+font($font-size, 30px)
+		+font(16px, 30px)
+
+		+media('<tab-lg')
+			font-size: 12px
 
 	// save info
 	.save
@@ -660,12 +666,11 @@
 
 		& > strong, & > span
 			+display-inline-block-middle
-
-		& > strong
-			margin-right: 20px
+			margin-right: 10px
+			margin-left: 10px
 
 	// events summary
-	.events-sum
+	.events-sum, .section__title.hide-tab-lg
 		height: $news-item-height
 		display: none
 
@@ -721,6 +726,9 @@
 
 			+media('<desk-hd')
 				border-width: 0 0 #{$border-width} #{$border-width}
+
+			+media('<tab-lg')
+				border-width: #{$border-width}
 
 			span
 				color: inherit
@@ -828,6 +836,7 @@
 	.news-float__text,
 	.soc-media__text
 		height: auto !important // важно! перебивает псевдокласс первого элемента
+		max-height: none !important // важно! перебивает псевдокласс первого элемента
 		margin-bottom: 1em
 		font-family: $font-alt
 		font-weight: 700
@@ -842,6 +851,7 @@
 			font-family: $font-norm
 			font-weight: normal
 			+font($font-size, $line-height)
+			max-height: none !important // важно! перебивает псевдокласс первого элемента
 
 	.news-previews__meta,
 	.news-grid__meta,
@@ -1377,7 +1387,7 @@
 
 
 	// SUB SITES
-	// MENU REGION
+	// MENU REGION and NAV MOBILE
 	.region-menu-heading
 		border-bottom: #{$border-width} solid
 		transition-duration: $animation-speed
@@ -1397,13 +1407,13 @@
 		transition-duration: $animation-speed
 
 	// region menu
-	.region-menu__list
+	.region-menu__list, .nav-mobile__list
 		a
 			border-bottom: #{$border-width} solid
 			transition-duration: $animation-speed
 
 	// СТРЕЛКИ навигации
-	.region-menu__angle
+	.region-menu__angle, .nav-mobile__angle
 		border-width: 0 0 #{$border-width} #{$border-width}
 		transition-duration: $animation-speed
 

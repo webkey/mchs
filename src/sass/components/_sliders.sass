@@ -593,47 +593,40 @@
 	&:last-child
 		margin-bottom: 0
 
+	.swiper-container
+		position: relative
+		width: 100%
+		height: auto
+		margin-left: auto
+		margin-right: auto
+
 .tape-gallery__list
 	font-size: 0
 	letter-spacing: -4px
 	white-space: nowrap
 
-.tape-gallery__list .swiper-slide
-	display: inline-block
-	vertical-align: top
-	padding: 0
-	font-size: 14px
-	line-height: 1.5
-	letter-spacing: normal
-	white-space: normal
-	box-sizing: border-box
-	width: auto
-	height: auto
+	.swiper-slide
+		display: inline-block
+		vertical-align: top
+		padding: 0
+		font-size: 14px
+		line-height: 1.5
+		letter-spacing: normal
+		white-space: normal
+		box-sizing: border-box
+		width: auto
+		height: auto
 
-.tape-gallery .swiper-container
-	width: 100%
-	height: auto
-	margin-left: auto
-	margin-right: auto
+		a
+			display: block
+			color: black
+			text-decoration: none
+			box-sizing: border-box
+			height: 100%
 
-.tape-gallery__list .swiper-slide
-	font-size: 14px
-	line-height: 1.5
-	letter-spacing: normal
-	white-space: normal
-	display: inline-block
-	width: auto
-
-.tape-gallery__list a
-	display: block
-	color: black
-	text-decoration: none
-	box-sizing: border-box
-	height: 100%
-
-.tape-gallery__list a:hover
-	text-decoration: none
-	cursor: url(../../img/cursor-zoom.png), zoom-out
+			&:hover
+				text-decoration: none
+				cursor: url(../../img/cursor-zoom.png), zoom-out
 
 .tape-gallery__img
 	display: block
@@ -642,12 +635,45 @@
 	background-color: #000
 	height: 214px
 
-.tape-gallery__img img
-	+object-fit()
-	transition-property: opacity
-	transition-duration: $animation-speed
+	img
+		+object-fit()
+		transition-property: opacity
+		transition-duration: $animation-speed
 
 .tape-gallery__list a:hover .tape-gallery__img img
 	opacity: 0.55
+
+.tape-gallery
+	.swiper-button-prev, .swiper-button-next
+		position: absolute
+		top: 0
+		bottom: 0
+		+size(50px, auto)
+		margin: 0
+
+		&::before
+			+pseudo()
+			+centering()
+
+		&.swiper-button-disabled
+			pointer-events: auto
+
+	.swiper-button-prev
+		+linear-gradient(to right, white 0, rgba(255, 255, 255, 0) 100%)
+
+		&::before
+			+triangle(left, black, 20px, 1)
+
+		.no-touchevents &:not(.swiper-button-disabled):hover
+			+linear-gradient(to right, white 0, rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 0) 100%)
+
+	.swiper-button-next
+		+linear-gradient(to left, white 0, rgba(255, 255, 255, 0) 100%)
+
+		&::before
+			+triangle(right, black, 20px, 1)
+
+		.no-touchevents &:not(.swiper-button-disabled):hover
+			+linear-gradient(to left, white 0, rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 0) 100%)
 
 /*tape gallery end
