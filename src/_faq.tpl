@@ -1,10 +1,9 @@
 <div class="expander expander-js">
 	<div class="expander-item expander-item-js">
 		<div class="expander-header expander-header-js">
-			<div class="expander-angle expander-angle-js"><span>Показать ответ</span><i>&nbsp;</i></div>
 			<div class="expander-header__meta">
-				<time datetime="2017-02-11T14:05">11.02.2017 14:05</time>
 				<span class="name">Евгений</span>
+				<time datetime="2017-02-11T14:05">11.02.2017 14:05</time>
 			</div>
 			<div class="expander-header__text">
 				Здравствуйте.<br>
@@ -16,6 +15,7 @@
 				Вопрос: что я могу сделать, чтобы получить разрешение на выход за текущие габариты на расстояние не более 300 мм? Ведь что такое 30 см? Мне видется это расстояние несущественным. Тем временем я улучшаю класс пожароопасности стен! Может ли какая-то организация произвести соответствующий расчет? Или кто-то произвести обоснование, при котором я могу выйти за границы дома на 300 мм, но улучшить класс пожароопасности. Возможно, этот вопрос реально решить в индивидуальном порядке, составив прошение/заявление на имя начальника управления МЧС по городу/области?<br>
 				Спасибо за внимание, очень жду Ваших советов.
 			</div>
+			<div class="expander-angle expander-angle-js"><span>Показать ответ</span><i>&nbsp;</i></div>
 		</div>
 		<div class="expander-panel expander-panel-js">
 			<div class="expander-panel__holder">
@@ -36,14 +36,14 @@
 	</div>
 	<div class="expander-item expander-item-js">
 		<div class="expander-header expander-header-js">
-			<div class="expander-angle expander-angle-js"><span>Показать ответ</span><i>&nbsp;</i></div>
 			<div class="expander-header__meta">
-				<time datetime="2017-02-11T14:05">01.12.2016 15:07</time>
 				<span class="name">Ип Буслаев</span>
+				<time datetime="2017-02-11T14:05">01.12.2016 15:07</time>
 			</div>
 			<div class="expander-header__text">
 				Здравствуйте подскажите пожалуйста, где посмотреть правила подсчета площади пожарного отсека для жилых одноквартирных домов, желательно с примером. Заранее благодарю.
 			</div>
+			<div class="expander-angle expander-angle-js"><span>Показать ответ</span><i>&nbsp;</i></div>
 		</div>
 		<div class="expander-panel expander-panel-js">
 			<div class="expander-panel__holder">
@@ -52,16 +52,16 @@
 			</div>
 		</div>
 	</div>
-	<div class="expander-item expander-item-js">
+	<!--<div class="expander-item expander-item-js">
 		<div class="expander-header expander-header-js">
-			<div class="expander-angle expander-angle-js"><span>Показать ответ</span><i>&nbsp;</i></div>
 			<div class="expander-header__meta">
-				<time datetime="2017-02-11T14:05">25.11.2016 12:10</time>
 				<span class="name">Сергей</span>
+				<time datetime="2017-02-11T14:05">25.11.2016 12:10</time>
 			</div>
 			<div class="expander-header__text">
 				Здравствуйте. Хотелось бы узнать информацию на каком уровне от земли должна находиться крышка колодца пожарного гидранта в частном секторе? Какие при этом используются нормативные документы, СНиПы? Спасибо.
 			</div>
+			<div class="expander-angle expander-angle-js"><span>Показать ответ</span><i>&nbsp;</i></div>
 		</div>
 		<div class="expander-panel expander-panel-js">
 			<div class="expander-panel__holder">
@@ -69,17 +69,17 @@
 				Согласно п. 10.6 ТКП 45-2.02-138-2009* «Противопожарное водоснабжение. Строительные нормы проектирования» пожарные гидранты необходимо устанавливать в колодцах на расстоянии не более 2,5 м от края проезжей части автомобильных дорог и проездов с твердым и гравийно-щебеночным покрытием, но не менее 5 м от стен зданий. Допускается устанавливать пожарные гидранты в водопроводных колодцах на проезжей части автомобильных дорог, на полосах для проезда пожарных автомобилей и на тупиковых ответвлениях от кольцевых сетей объединенного хозяйственно-питьевого и противопожарного водопровода при условии выполнения мероприятий, исключающих замерзание воды в гидрантах, и длине тупикового ответвления не более 5 м.
 			</div>
 		</div>
-	</div>
+	</div>-->
 	<div class="expander-item expander-item-js">
 		<div class="expander-header expander-header-js">
-			<div class="expander-angle expander-angle-js"><span>Показать ответ</span><i>&nbsp;</i></div>
 			<div class="expander-header__meta">
-				<time datetime="2017-02-11T14:05">08.06.2016 14:36</time>
 				<span class="name">новополоцк филиал "институт витебскгражданпроект"</span>
+				<time datetime="2017-02-11T14:05">08.06.2016 14:36</time>
 			</div>
 			<div class="expander-header__text">
 				Подскажите, пожалуйста, какие документы необходимо получить от изготовителя и какие требования предъявляются к пожарной безопасности вендинговых аппаратов по розливу газированных напитков. Спасибо
 			</div>
+			<div class="expander-angle expander-angle-js"><span>Показать ответ</span><i>&nbsp;</i></div>
 		</div>
 		<div class="expander-panel expander-panel-js">
 			<div class="expander-panel__holder">

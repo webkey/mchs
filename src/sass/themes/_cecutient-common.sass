@@ -371,6 +371,9 @@
 		margin-bottom: $bottom-space
 		+font($font-size-h2, $line-height-h2)
 
+		h2, h3
+			vertical-align: middle
+
 	.section__subtitle
 		position: relative
 		margin-bottom: $bottom-space
@@ -460,6 +463,10 @@
 			transition-duration: $animation-speed
 
 	// years
+	.years
+		vertical-align: middle
+		top: auto
+
 	.years, .sorting-select
 		font-family: $font-alt
 		+font($font-size-h4, $line-height-h4)
@@ -505,6 +512,7 @@
 
 	.news-date
 		+font(0.8em, inherit)
+		vertical-align: middle
 
 		a
 			& > span
@@ -1053,31 +1061,31 @@
 			font-weight: normal
 
 	.expander-header__text
-		padding-right: 0
-		padding-bottom: 70px
+		//padding-right: 0
+		//padding-bottom: 70px
 		+font($font-size, $line-height)
 
 	.expander-angle
-		right: auto
-		top: 100%
-		bottom: auto
-		transform: translate(0, calc(-100% - #{$grid-inside-vertical-space}))
-		+size(auto)
+		//right: auto
+		//top: 100%
+		//bottom: auto
+		//transform: translate(0, calc(-100% - #{$grid-inside-vertical-space}))
+		//+size(auto)
 
-		+media('<tab-lg')
+		//+media('<tab-lg')
 			transform: translate(0, calc(-100% - #{$article-layout-space-vertical--tab-lg}))
 
-		+media('<mob-lg')
+		//+media('<mob-lg')
 			transform: translate(0, calc(-100% - #{$article-layout-space-vertical--mob-lg}))
 
-		& > i
+		//& > i
 			display: none
 
 		& > span
-			+display-inline-block-top
-			+show-text
-			+font(0, 0)
-			margin: 0
+			//+display-inline-block-top
+			//+show-text
+			//+font(0, 0)
+			//margin: 0
 			border: #{$border-width} solid
 
 			&::before, &::after

@@ -51,10 +51,9 @@
 		+padding-vertical($article-layout-space-vertical--mob-lg)
 
 .expander-header__meta
-	float: left
-	width: $faq-meta-width
 	+font(1.2rem, 1.7)
 	color: $text-color-light
+	margin-bottom: $bottom-space
 
 	+media('<desk-lg')
 		display: block
@@ -67,63 +66,75 @@
 
 	time
 		+font-normal
-		display: block
 
 		+media('<mob-lg')
 			display: inline-block
 			margin-right: 20px
 
+	.name
+		display: inline-block
+		margin-right: 8px
+
+		& ~ time
+			&::before
+				+pseudo($content: '/', $display: inline-block, $pos: relative)
+				margin-right: 8px
+
 .expander-header__text
-	padding-right: #{$grid-inside-horizontal-space + $faq-angle-size}
 	font-family: $font-alt
 	+font(1.6rem, 1.25)
 	font-weight: normal
 	color: $text-color
 	transition-property: color
 	transition-duration: $animation-speed
-
-	.no-js &
-		padding-right: 0
-
-	+media('<mob-lg')
-		padding-right: 0
-		padding-bottom: 45px
+	margin-bottom: $bottom-space
 
 .expander-angle
-	$btn-size: $header-top-height
-	$btn-lines-width: 17px
-	$btn-lines-height: 3px
-	$btn-lines-color: $text-color
-
-	=line-style()
+	//$btn-size: $header-top-height
+	//$btn-lines-width: 17px
+	//$btn-lines-height: 3px
+	//$btn-lines-color: $text-color
+	//
+	//=line-style()
 		+size($btn-lines-width, $btn-lines-height)
 		background-color: $btn-lines-color
 
-	position: absolute
-	right: 0
-	top: 50%
-	+size($faq-angle-size)
+	//position: absolute
+	//right: 0
+	//top: 50%
+	//+size($faq-angle-size)
+	//transform: translate(0, -50%)
+	//bottom: $article-layout-space-vertical--mob-lg
+	//+size(auto)
+	+display-inline-block-top
+	position: relative
 	cursor: pointer
-	transform: translate(0, -50%)
+	line-height: 18px
 	+antialiased
-
-	+media('<mob-lg')
-		top: auto
-		right: auto
-		left: 0
-		bottom: $article-layout-space-vertical--mob-lg
-		+size(auto)
-		transform: none
 
 	.no-js &
 		display: none
 
-	> span
-		+hide-text
+	& > span
+		+display-inline-block-top
+		position: relative
+		font-family: $font-alt
+		text-transform: uppercase
+		+font(0, 0)
+		font-weight: normal
+		white-space: nowrap
 
-		&:before, &:after
+		//&:before, &:after
 			display: none
 			position: relative
+			transition-property: opacity, transform, visibility
+			transition-duration: $animation-speed
+
+		&:before, &:after
+			+display-inline-block-top
+			+font(12px, 18px)
+			position: relative
+			border-bottom: 1px dotted $text-color
 			transition-property: opacity, transform, visibility
 			transition-duration: $animation-speed
 
@@ -143,6 +154,7 @@
 			+size(100%)
 			opacity: 0
 			visibility: hidden
+			width: auto
 			transform: translate(0, 1em)
 
 			.expander-is-open &
@@ -150,20 +162,16 @@
 				visibility: visible
 				transform: translate(0, 0)
 
-		+media('<mob-lg')
-			display: inline-block
-			+show-text
-			overflow: visible
-			margin: 0
-			+font(0, 0)
-			font-weight: bold
-			white-space: nowrap
+		.no-touchevents &:hover
+			color: $text-color-alt
 
 			&:before, &:after
-				+display-inline-block-top
-				+font($font-size, 1.2)
-				border-bottom: 1px dotted $text-color
-	> i
+				border-bottom-color: $text-color-alt
+
+	& > i
+		display: none
+
+	//> i
 		position: absolute
 		left: 50%
 		top: 50%
@@ -191,7 +199,7 @@
 		&::after
 			transform: rotate(90deg)
 
-	.no-touchevents &:hover i
+	//.no-touchevents &:hover i
 		&::before, &::after
 			background-color: $text-color-alt
 
@@ -202,7 +210,7 @@
 	display: none
 	+font($font-size-small, $line-height-small)
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
 		border-top: none
 
 	.no-js &
@@ -215,16 +223,7 @@
 		+padding-vertical($article-layout-space-vertical--tab-lg)
 
 	+media('<mob-lg')
-		+padding-vertical(0, $article-layout-space-vertical--mob-lg)
-
-.expander-header__text, .expander-panel__holder
-	margin-left: #{$faq-meta-width + $grid-inside-horizontal-space}
-
-	+media('<desk-lg')
-		margin-left: 0
-
-	& > p:last-child, & > ul:last-child, & > ol:last-child
-		margin-bottom: 0
+		+padding-vertical($article-layout-space-vertical--mob-lg)
 
 /*expander end
 

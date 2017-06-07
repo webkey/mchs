@@ -26,13 +26,33 @@
 									<div class="sheet">
 										<div class="article-layout">
 											<h1>Вопрос - ответ</h1>
-											<h2>Сертификация и лицензирование</h2>
 											<footer class="article-meta text-layout">
-												{{Какие-то дополнительные элементы}}
+												{{Какие-то дополнительные элементы, если нужно}}
 											</footer>
-											<!--faq-->
-											@@include('_faq.tpl')
-											<!--faq end-->
+											<section class="section">
+												<div class="section__title">
+													<h2>Сертификация и лицензирование</h2>
+													<span class="v-separator">|</span>
+													<a href="#">Все вопросы рубрики</a>
+												</div>
+												<div class="section__holder">
+													<!--faq-->
+													@@include('_faq.tpl')
+													<!--faq end-->
+												</div>
+											</section>
+											<section class="section">
+												<div class="section__title">
+													<h2>Надзор и профилактика</h2>
+													<span class="v-separator">|</span>
+													<a href="#">Все вопросы рубрики</a>
+												</div>
+												<div class="section__holder">
+													<!--faq-->
+													@@include('_faq.tpl')
+													<!--faq end-->
+												</div>
+											</section>
 											<div class="faq-form-wrap toggle-block-js">
 												<div class="user-section toggle-block-content-js" style="display: none;">
 													<!--faq-->
