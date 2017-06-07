@@ -12,7 +12,7 @@
 	* ~ &
 		margin-top: $bottom-space-md
 
-	script ~ &
+	script ~ &, input ~ &
 		margin-top: 0
 
 	& > *:last-child
@@ -97,13 +97,6 @@
 
 	+media('<mob-lg')
 		padding: $grid-layout-space--mob-lg
-
-.news-date
-	position: relative
-	+display-inline-block-middle
-
-	.touchevents & > a
-		display: none
 
 .datepicker-input
 	position: relative

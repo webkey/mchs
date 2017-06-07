@@ -1952,10 +1952,14 @@ function datePickerInit() {
 
 	var $newsDate = $('.news-date');
 	if ($newsDate) {
+		var _defaultDate = $newsDate.find('.datepicker-default-date').val() || 'today';
+
+		// console.log("_defaultDate: ", _defaultDate);
+
 		var calendar = $newsDate.flatpickr({
 			"locale": "ru",
 			// mode: "range",
-			defaultDate: 'today',
+			defaultDate: _defaultDate,
 			altInput: true,
 			clickopens: false,
 			wrap: true,

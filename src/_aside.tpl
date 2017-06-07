@@ -1,6 +1,6 @@
 <aside class="aside">
 	<div class="aside__holder">
-		<div class="aside__widget">
+		<div class="aside__widget special-hide">
 			<!--banners-->
 			<div class="banners">
 				<div class="banners__list">

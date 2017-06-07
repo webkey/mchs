@@ -1,7 +1,7 @@
 <!--years-->
-<div class="years js-choice-wrap" data-parent-position="true">
+<div class="years js-choice-wrap">
 	<a href="#" class="js-choice-open">
-		<span>2017</span>
+		<span>2017</span> <i>г.</i>
 	</a>
 	<ul class="years-drop js-choice-drop">
 		<li><a class="active" href="#"><span>2017</span></a></li>

@@ -38,10 +38,27 @@
 			</div>
 			<i>&nbsp;</i>
 		</div>
-		<div class="breadcrumbs__item breadcrumbs__item_has-drop breadcrumbs__item_last">
-			<span>В гаражах в Мачулищах произошёл взрыв – трое пострадавших, разрушены 6 гаражей</span><i>&nbsp;</i>
+		<div class="breadcrumbs__item breadcrumbs__item_has-drop">
+			<a href="#"><span>В гаражах в Мачулищах произошёл взрыв – трое пострадавших, разрушены 6 гаражей</span><i>&nbsp;</i></a>
+			<div class="breadcrumbs-drop">
+				<div class="breadcrumbs-drop__holder">
+					@@loop('_breadcrumbs-drop-items.tpl', [
+						{ "text": "В гаражах в Мачулищах произошёл взрыв – трое пострадавших, разрушены 6 <гаражей></гаражей>" },
+						{ "text": "Основные новости" },
+						{ "text": "СМИ о нас" },
+						{ "text": "Живой эфир" },
+						{ "text": "В гаражах в Мачулищах произошёл взрыв – трое пострадавших, разрушены 6 гаражей" },
+						{ "text": "Будь готов!" },
+						{ "text": "История одной ЧС" }
+					])
+				</div>
+			</div>
 			<i>&nbsp;</i>
 		</div>
+		<!--<div class="breadcrumbs__item breadcrumbs__item_has-drop breadcrumbs__item_last">
+			<span>В гаражах в Мачулищах произошёл взрыв – трое пострадавших, разрушены 6 гаражей</span><i>&nbsp;</i>
+			<i>&nbsp;</i>
+		</div>-->
 	</div>
 </div>
 <!--breadcrumbs end-->

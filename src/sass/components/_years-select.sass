@@ -4,9 +4,8 @@
 
 /*years*/
 .years
-	position: absolute
-	top: 0
-	right: 0
+	+display-inline-block-middle
+	position: relative
 	perspective: 1500px
 	//width: 82px
 	//height: 48px
@@ -26,7 +25,8 @@
 		font-weight: 700
 		transition-property: background, border
 		transition-duration: $animation-speed
-		z-index: 10
+		color: $text-color-alt
+		z-index: 40
 
 		+clear-spacing
 
@@ -36,12 +36,14 @@
 			height: 100%
 			vertical-align: middle
 
-		& > span
+		& > span, & > i
 			+display-inline-block-middle
 			position: relative
-			text-transform: uppercase
+			margin-right: 6px
+			font-family: $font-norm
+			font-style: normal
+			font-weight: inherit
 			line-height: 1
-			border-bottom: 1px dotted $text-color-alt
 			transition-property: border
 			transition-duration: $animation-speed
 			z-index: 1
@@ -50,6 +52,9 @@
 			font-size: 2rem
 			letter-spacing: normal
 
+		& > span
+			border-bottom: 1px dotted $text-color-alt
+
 		.no-touchevents &:hover
 
 			& > span
@@ -57,7 +62,7 @@
 
 .years-drop, .#{$user-content} .years-drop
 	padding: 10px 0
-	margin: 0 0 0 -40px
+	margin: 0 0 0 -4px
 
 	li
 		padding: 0
@@ -69,15 +74,14 @@
 .years-drop
 	position: absolute
 	top: 100%
-	left: 50%
-	width: 80px
+	left: 0
+	width: calc(100% + 4px*2)
 	text-align: center
 	background: white
 	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15)
 	box-sizing: border-box
 	opacity: 0
 	visibility: hidden
-	-webkit-transform-origin: center top
 	transform-origin: center top
 	transform: rotateX(-30deg)
 	transition-property: opacity, visibility, transform

@@ -42,6 +42,28 @@
 	.special-hide
 		display: none
 
+	// ASIDE
+	.aside
+		width: 100% !important
+		margin: $bottom-space-md 0 0
+
+	.aside__holder
+		width: auto !important
+		position: relative!important
+		top: auto !important
+		bottom: auto !important
+
+	.aside__holder + div
+		display: none !important
+
+	//.main-frame, .content-wrap
+		float: none
+		width: auto
+
+	.content
+		margin-right: 0
+		padding-right: 0
+
 	// buttons
 	// all default
 	.btn-default, .btn-map-site, .btn-default-alt, .btn-default-light, .btn-arrow
@@ -374,9 +396,6 @@
 	.section__box
 		padding: 0
 
-	.news-date
-		+font($font-size, $line-height)
-
 		*
 			font-size: 1em
 
@@ -483,6 +502,13 @@
 	// sorting
 	.sorting-options
 		+font($font-size, $line-height)
+
+	.news-date
+		+font(0.8em, inherit)
+
+		a
+			& > span
+				border-width: 2px
 
 	// view print
 	.view-print
@@ -755,6 +781,9 @@
 
 	// NEWS ALL TYPE
 	// стили для всех типов новостных блоков
+
+	.news-grid--main
+		max-width: none
 
 	.news-previews__list,
 	.news-grid__list,
@@ -1513,6 +1542,9 @@
 
 
 	// banners
+	.aside .banners-group
+		display: none
+
 	.banners__item
 		+font($font-size, $line-height)
 
@@ -1600,3 +1632,13 @@
 			font-size: 16px
 			font-weight: normal
 			text-transform: none
+
+	// flatpickr
+	.numInputWrapper
+		input[type="text"], input[type="password"], input[type="email"], input[type="search"], textarea
+			border: none
+			padding: 0 5px
+			+font(20px, 24px)
+
+			&:focus
+				box-shadow: none

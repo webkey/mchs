@@ -85,18 +85,35 @@
 
 
 .news-date
+	position: relative
+	font-size: 18px
+	+display-inline-block-middle
+	border-color: $text-color
+
 	a
 		+display-inline-block-top
 		text-decoration: none
-		color: $text-color
+		color: inherit
 		cursor: pointer
 		top: auto
+		border-color: inherit
 
 		& > span
 			+display-inline-block-middle
 			line-height: 1
 			position: relative
-			border-bottom: 1px dotted $text-color
+			border-bottom: 1px dotted
+			border-color: inherit
 			z-index: 1
+
+	.touchevents & > a
+		display: none
+
+.home-page
+	.section__title, .section__subtitle
+		.news-date
+			font-weight: bold
+			color: $text-color-alt
+			border-color: $text-color-alt
 
 /*sorting end*/
