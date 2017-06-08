@@ -5,11 +5,11 @@
 /*button popup close*/
 .btn-popup-close
 	//<a href="#" class="btn-popup-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
-	$btn-bg: #f3f3f3
+	$btn-bg: $mark-color
 	$btn-size: $header-top-height
 	$btn-lines-width: 20px
 	$btn-lines-height: 3px
-	$btn-lines-color: $text-color
+	$btn-lines-color: white
 
 	=line-style()
 		+size($btn-lines-width, $btn-lines-height)
@@ -144,6 +144,20 @@ html.before-extra-popup-open
 	position: absolute
 	top: 0
 	right: 0
+
+
+.popup-footer
+	padding-top: $bottom-space-md
+	border-top: 1px solid $border-color
+
+	* + &
+		margin-top: $bottom-space-md
+
+.popup-search
+	.popup-footer, * + .popup-footer
+		border: none
+		margin-top: 0
+		padding-top: 0
 
 /*extra popup end*/
 
@@ -608,7 +622,7 @@ $nav-small-tabs-height: 60px
 
 .popup-title
 	position: relative
-	margin-bottom: $bottom-space-lg
+	margin-bottom: $bottom-space-md
 	display: flex
 	justify-content: space-between
 	//align-items: center
@@ -628,7 +642,7 @@ $nav-small-tabs-height: 60px
 .popup-label
 	+font($font-size-small, $line-height-small)
 	color: $text-color-light
-	margin-bottom: $bottom-space
+	margin-bottom: $bottom-space-md
 	+antialiased
 	display: flex
 	justify-content: space-between
@@ -808,6 +822,20 @@ $nav-small-tabs-height: 60px
 //================== FILTERS POPUP =================//
 /*filters popup
 .filters-form
+	.checkbox-list
+		&, .#{$user-content} &
+			line-height: 1
+			margin: 0
+
+			li
+				margin: 0 0 $bottom-space-sm
+
+				&:last-child
+					margin-bottom: 0
+
+	.grid-row
+		margin-bottom: $bottom-space-md
+
 	.form-buttons
 		//opacity: 0
 		//visibility: hidden

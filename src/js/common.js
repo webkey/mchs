@@ -3213,31 +3213,7 @@ function textSlide() {
  * */
 function toggleFormButtons() {
 	var $toggleButtonForm = $('.toggle-button-js');
-
-	function checkProp($form) {
-		var $input = $form.find(':radio, :checkbox');
-
-		var hasCheckedInput = false;
-
-		$.each($input, function () {
-			if ($(this).prop('checked')) {
-				hasCheckedInput = true;
-				return false;
-			}
-		});
-
-		return hasCheckedInput;
-	}
-
-	function enabledButton($thisForm, $button) {
-		$thisForm.addClass('form-has-checked');
-		$button.prop('disabled', false);
-	}
-
-	function disabledButton($thisForm, $button) {
-		$thisForm.removeClass('form-has-checked');
-		$button.prop('disabled', true);
-	}
+	var activeClass = 'is-checked-all';
 
 	if ($toggleButtonForm.length) {
 		$.each($toggleButtonForm, function () {
@@ -3250,6 +3226,15 @@ function toggleFormButtons() {
 
 			if (checkProp($thisForm)) {
 				enabledButton($thisForm, $btnReset);
+			}
+
+			var $toggle = $thisForm.find('.toggle-all-filters-js');
+			if (checkProp($thisForm, true)) {
+				$toggle.prop('checked', true);
+				checkedToggleBtn($toggle, activeClass)
+			} else {
+				$toggle.prop('checked', false);
+				uncheckedToggleBtn($toggle, activeClass)
 			}
 		});
 	}
@@ -3264,6 +3249,15 @@ function toggleFormButtons() {
 
 		if (checkProp($thisForm)) {
 			enabledButton($thisForm, $btnReset);
+		}
+
+		var $toggle = $thisForm.find('.toggle-all-filters-js');
+		if (checkProp($thisForm, true)) {
+			$toggle.prop('checked', true);
+			checkedToggleBtn($toggle, activeClass)
+		} else {
+			$toggle.prop('checked', false);
+			uncheckedToggleBtn($toggle, activeClass)
 		}
 	});
 
@@ -3286,8 +3280,74 @@ function toggleFormButtons() {
 	$(':reset', $toggleButtonForm).on('click', function (e) {
 		e.preventDefault();
 
-		$(':checked').prop('checked', false).trigger('change');
-	})
+		$(this).closest($toggleButtonForm).find(':checked').prop('checked', false).trigger('change');
+	});
+
+	$('.toggle-all-filters-js', $toggleButtonForm).on('change', function () {
+
+		var $thisToggle = $(this);
+		var $allFilters = $thisToggle.closest($toggleButtonForm).find(':checkbox').not($thisToggle);
+
+		if($thisToggle.prop('checked')){
+			$allFilters.prop('checked', true);
+			checkedToggleBtn($thisToggle, activeClass);
+		} else {
+			$allFilters.prop('checked', false);
+			uncheckedToggleBtn($thisToggle, activeClass);
+		}
+		$allFilters.trigger('change');
+	});
+
+	function checkProp($form, cond) { // если cond === true, происходит сравнение количества все фильтров к отмеченым
+		var $input = $form.find(':checkbox').not('.filters-options-js :checkbox');
+
+		var hasCheckedInput = false;
+		var countChecked = 0;
+
+		$.each($input, function () {
+
+			if ($(this).prop('checked')) {
+				hasCheckedInput = true;
+
+				if (cond !== true) {
+					return false;
+				}
+
+				countChecked++;
+			}
+		});
+
+
+		if (cond === true) {
+			console.log("$input.length: ", $input.length);
+			console.log("countChecked: ", countChecked);
+			return $input.length === countChecked;
+		} else {
+			return hasCheckedInput;
+		}
+	}
+
+	function checkedToggleBtn($thisToggle, activeClass) {
+		$thisToggle.addClass(activeClass);
+		var $thiToggleParent = $thisToggle.parent();
+		$thiToggleParent.children('span').html($thiToggleParent.data('text-alt'));
+	}
+
+	function uncheckedToggleBtn($thisToggle, activeClass) {
+		$thisToggle.removeClass(activeClass);
+		var $thiToggleParent = $thisToggle.parent();
+		$thiToggleParent.children('span').html($thiToggleParent.data('text'));
+	}
+
+	function enabledButton($thisForm, $button) {
+		$thisForm.addClass('form-has-checked');
+		$button.prop('disabled', false);
+	}
+
+	function disabledButton($thisForm, $button) {
+		$thisForm.removeClass('form-has-checked');
+		$button.prop('disabled', true);
+	}
 
 }
 /*toggle state form buttons end*/
@@ -3455,6 +3515,32 @@ function footerBottom() {
 /*footer at bottom end*/
 
 /**
+ * !department changer
+ * */
+function departmentChanger() {
+	var $region = $('select.region');
+
+	if ($region.length) {
+		var $department = $('select.department');
+		var changed = false;
+
+		$(document).on('change', 'select.region', function(event){
+			if(!changed){
+				var department_id = $region.find('option:selected').data('department');
+
+				if(department_id){
+					var value = $department.find('option[data-department="' + department_id + '"]').val();
+					$department.val(value).change();
+				}
+
+				changed = true;
+			}
+		});
+	}
+}
+/*department changer end*/
+
+/**
  * !form success for example
  * */
 function formSuccessExample() {
@@ -3556,4 +3642,5 @@ $(document).ready(function () {
 	toggleBlockInit();
 	footerBottom();
 	formSuccessExample();
+	departmentChanger();
 });
