@@ -1,5 +1,5 @@
 <!--sorting-->
-<div class="sorting-select js-choice-wrap" data-window-location="true">
+<div class="sorting-select js-choice-wrap">
 	<a href="#" class="js-choice-open">
 		<span>Дате публикации</span>
 	</a>

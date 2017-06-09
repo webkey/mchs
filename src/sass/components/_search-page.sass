@@ -209,3 +209,24 @@ input.search-form__input
 		z-index: 999
 
 /*search form end
+
+.count-checked-filters
+	+display-inline-block-middle
+	+size(22px)
+	background-color: $mark-color-alt
+	text-align: center
+	font-weight: bold
+	font-style: normal
+	+font(16px, 24px)
+	color: white
+	margin-right: 10px
+
+	.extended-search-reset &
+		margin-right: 0
+		margin-left: 10px
+
+.extended-search-reset
+	&, .popup-label__options &
+		+display-inline-block-middle
+		margin-right: 10px
+		color: $text-color-light

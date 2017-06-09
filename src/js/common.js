@@ -1167,7 +1167,7 @@ function toggleDrop() {
  * select save
  * */
 function selectSave() {
-	$('.js-choice-drop').on('click', 'a', function (e) {
+	$('.js-save-select').on('click', 'a', function (e) {
 		var $this = $(this);
 		e.preventDefault();
 
@@ -1973,11 +1973,17 @@ function datePickerInit() {
 		'class': "datepicker-overlay"
 	});
 
+	var $dataTarget = $('.news-date-output-js');
+	if ($dataTarget.length) {
+		$.each($dataTarget, function () {
+			var $this = $(this);
+			$this.attr('data-default', $this.find('span').text());
+		});
+	}
+
 	var $newsDate = $('.news-date');
 	if ($newsDate) {
-		var _defaultDate = $newsDate.find('.datepicker-default-date').val() || 'today';
-
-		// console.log("_defaultDate: ", _defaultDate);
+		var _defaultDate = $('#main-news-date').val() || 'today';
 
 		var calendar = $newsDate.flatpickr({
 			"locale": "ru",
@@ -2014,9 +2020,57 @@ function datePickerInit() {
 		});
 	}
 
+	var $resultDate = $('.result-date-js');
+	if ($resultDate) {
+		var calendarResult = $resultDate.flatpickr({
+			"locale": "ru",
+			// mode: "range",
+			altInput: true,
+			clickopens: false,
+			wrap: true,
+			altFormat: 'd M Y',
+			maxDate: 'today',
+			disableMobile: false,
+			onValueUpdate: function () {
+				$(this.element).find('.news-date-output-js').find('span').text($(this.altInput).val());
+			},
+			onOpen: function () {
+				if (DESKTOP) {
+					$(this.calendarContainer).before(datepickerOverlay.clone());
+					setTimeout(function () {
+						$('html').addClass('datepicker-overlay-is-visible');
+					}, 10);
+				}
+			},
+			onClose: function () {
+				if (DESKTOP) {
+					$('html').removeClass('datepicker-overlay-is-visible');
+					setTimeout(function () {
+						$('.datepicker-overlay').remove();
+					}, 200);
+				}
+			},
+			onChange: function () {
+				var $thisDateInput = $(this.element);
+				var $dataOutput = $thisDateInput.find('.news-date-output-js');
+				$dataOutput.find('span').text($(this.altInput).val() || $dataOutput.data('default'));
+				$thisDateInput.closest('form').find('input[type=submit]').prop('disabled', false);
+
+				$thisDateInput.trigger('changeFlatpickr');
+			}
+		});
+
+		$resultDate.on('clearFlatpickr', function () {
+			calendarResult.clear();
+			$('#from').val('');
+			$('#to').val('');
+		})
+	}
+
 	$('body').on('click', '.datepicker-overlay', function () {
 		if ($('html').hasClass('extra-popup-opened')) {
 			calendar.close();
+			calendarResult.close();
 		}
 	});
 
@@ -3254,15 +3308,17 @@ function toggleFormButtons() {
 			var $toggle = $thisForm.find('.toggle-all-filters-js');
 			if (checkProp($thisForm, true)) {
 				$toggle.prop('checked', true);
-				checkedToggleBtn($toggle, activeClass)
+				checkedToggleBtn($toggle, activeClass);
 			} else {
 				$toggle.prop('checked', false);
-				uncheckedToggleBtn($toggle, activeClass)
+				uncheckedToggleBtn($toggle, activeClass);
 			}
+
+			setTotalCheckedInputs($thisForm);
 		});
 	}
 
-	$toggleButtonForm.on('change', 'input', function () {
+	$toggleButtonForm.on('change', ':checkbox', function () {
 		var $thisForm = $(this).closest($toggleButtonForm);
 		var $btnSubmit = $('input[type=submit]', $thisForm);
 		var $btnReset = $('input[type=reset]', $thisForm);
@@ -3277,11 +3333,22 @@ function toggleFormButtons() {
 		var $toggle = $thisForm.find('.toggle-all-filters-js');
 		if (checkProp($thisForm, true)) {
 			$toggle.prop('checked', true);
-			checkedToggleBtn($toggle, activeClass)
+			checkedToggleBtn($toggle, activeClass);
 		} else {
 			$toggle.prop('checked', false);
-			uncheckedToggleBtn($toggle, activeClass)
+			uncheckedToggleBtn($toggle, activeClass);
 		}
+
+		setTotalCheckedInputs($thisForm);
+	});
+
+	$('.result-date-js').on('changeFlatpickr', function () {
+		var $this = $(this);
+		var $thisForm = $this.closest($toggleButtonForm);
+		// var $val = $this.find('.flatpickr-input').val();
+
+		enabledButton($thisForm, $thisForm.find('input[type=reset]'));
+		enabledButton($thisForm, $thisForm.find('input[type=submit]'));
 	});
 
 	var closePopupTimeout;
@@ -3300,10 +3367,34 @@ function toggleFormButtons() {
 		}, 350);
 	});
 
-	$(':reset', $toggleButtonForm).on('click', function (e) {
+	$toggleButtonForm.on('click', ':reset', function (e) {
 		e.preventDefault();
 
-		$(this).closest($toggleButtonForm).find(':checked').prop('checked', false).trigger('change');
+		var $thisContainer = $(this).closest($toggleButtonForm);
+
+		var $filterDate = $thisContainer.find('.result-date-js');
+		if($filterDate.length) {
+			$filterDate.trigger('clearFlatpickr');
+		}
+
+		$thisContainer.find(':checked').prop('checked', false).trigger('change');
+	});
+
+	$('.search-area').on('click', '.extended-search-reset-js', function (e) {
+		e.preventDefault();
+
+		var $thisContainer = $(this).closest('.search-area');
+
+		var $filterDate = $thisContainer.find('.result-date-js');
+		if($filterDate.length) {
+			$filterDate.trigger('clearFlatpickr');
+		}
+
+		$thisContainer.find(':checked').prop('checked', false).trigger('change');
+
+		setTimeout(function () {
+			$thisContainer.find('form').submit();
+		}, 200);
 	});
 
 	$('.toggle-all-filters-js', $toggleButtonForm).on('change', function () {
@@ -3320,6 +3411,34 @@ function toggleFormButtons() {
 		}
 		$allFilters.trigger('change');
 	});
+
+	function setTotalCheckedInputs($thisForm) {
+		var $targetCountElement = $thisForm.closest('.search-area').find('.count-checked-filters-js');
+		var totalLengthChecked = getTotalCheckedInputs($thisForm);
+
+		$targetCountElement.text(totalLengthChecked);
+		if (totalLengthChecked > 0) {
+			$targetCountElement.closest('a').stop().fadeIn();
+		} else {
+			$targetCountElement.closest('a').stop().fadeOut();
+		}
+	}
+
+	function getTotalCheckedInputs($form) {
+		var $input = $form.find(':checkbox').not('.filters-options-js :checkbox');
+
+		var totalCheckedInput = 0;
+
+		$.each($input, function () {
+
+			if ($(this).prop('checked')) {
+
+				totalCheckedInput++;
+			}
+		});
+
+		return totalCheckedInput;
+	}
 
 	function checkProp($form, cond) { // если cond === true, происходит сравнение количества все фильтров к отмеченым
 		var $input = $form.find(':checkbox').not('.filters-options-js :checkbox');
@@ -3340,9 +3459,8 @@ function toggleFormButtons() {
 			}
 		});
 
-
 		if (cond === true) {
-			return $input.length === countChecked;
+			return $input.length === getTotalCheckedInputs($form);
 		} else {
 			return hasCheckedInput;
 		}
