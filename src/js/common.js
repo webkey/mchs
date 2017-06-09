@@ -1190,20 +1190,20 @@ function tabSwitcher() {
 
 	/*
 	 <!--html-->
-	 <div class="some-class js-tabs" data-collapsed="true" data-auto-height="true" data-to-queue="480">
+	 <div class="some-class tabs-js" data-collapsed="true" data-auto-height="true" data-to-queue="480">
 	 <!--if has data-collapsed="true" one click open tab content, two click close collapse tab content-->
 	 <div class="some-class__nav">
 	 <div class="some-class__tab">
-	 <a href="#" class="js-tab-anchor" data-for="some-id-01">Text tab 01</a>
+	 <a href="#" class="tab-anchor-js" data-for="some-id-01">Text tab 01</a>
 	 </div>
 	 <div class="some-class__tab">
-	 <a href="#" class="js-tab-anchor" data-for="some-id-02">Text tab 02</a>
+	 <a href="#" class="tab-anchor-js" data-for="some-id-02">Text tab 02</a>
 	 </div>
 	 </div>
 
-	 <div class="some-class__panels js-tab-container">
-	 <div class="some-class__panel js-tab-content" data-id="some-id-01">Text content 01</div>
-	 <div class="some-class__panel js-tab-content" data-id="some-id-02">Text content 02</div>
+	 <div class="some-class__panels tab-container-js">
+	 <div class="some-class__panel tab-content-js" data-id="some-id-01">Text content 01</div>
+	 <div class="some-class__panel tab-content-js" data-id="some-id-02">Text content 02</div>
 	 </div>
 	 </div>
 	 <!--html end-->
@@ -1218,6 +1218,7 @@ function tabSwitcher() {
 		var $anchor = $('.js-tab-anchor'),
 			$content = $('.js-tab-content'),
 			activeClass = 'active-tab',
+			collapseAllClass = 'collapsed-all-tab',
 			animationSpeed = 0.2,
 			animationHeightSpeed = 0.08;
 
@@ -1226,7 +1227,9 @@ function tabSwitcher() {
 				$thisAnchor = $this.find($anchor),
 				$thisContainer = $this.find($container),
 				$thisContent = $this.find($content);
-			var initialTab = $this.find('.' + activeClass).attr('href').substring(1);
+			if ($this.find('.' + activeClass).length > 0) {
+				var initialTab = $this.find('.' + activeClass).attr('href').substring(1);
+			}
 			// var toQueue = $this.data('to-queue'); // transform tab for toQueue value layout width
 			// var tabInitedFlag = false;
 			var valDataAutoHeight = $this.data('auto-height');
@@ -1276,6 +1279,18 @@ function tabSwitcher() {
 				initialTab = selfTab;
 
 				switchContent();
+			});
+
+			// collapse current tab method
+			$thisAnchor.eq(0).on('tabSwitcherCollapse', function () {
+				var $self = $(this);
+				var selfTab = $self.attr('href').substring(1);
+
+				if (activeTab === selfTab) {
+					toggleActiveClass();
+					toggleContent(false);
+					changeHeightContainer(false);
+				}
 			});
 
 			// switch content
@@ -1354,11 +1369,15 @@ function tabSwitcher() {
 			function toggleActiveClass() {
 				$thisAnchor.removeClass(activeClass);
 				$thisContent.removeClass(activeClass);
+				$this.removeClass(collapseAllClass);
 
 				if (initialTab !== activeTab) {
 
 					$thisAnchor.filter('[href="#' + initialTab + '"]').addClass(activeClass);
 					$thisContent.filter('[id="' + initialTab + '"]').addClass(activeClass);
+					if($this.data('collapsed') === true){
+						$this.addClass(collapseAllClass);
+					}
 
 					activeTab = initialTab;
 
@@ -1387,6 +1406,10 @@ function tabSwitcher() {
 			// });
 		});
 	}
+
+	$('.popup-label__text').on('click', function () {
+		$('a[href*="#expanded-search"]').trigger('tabSwitcherCollapse');
+	})
 }
 /* tab switcher end */
 
@@ -1963,7 +1986,7 @@ function datePickerInit() {
 			altInput: true,
 			clickopens: false,
 			wrap: true,
-			altFormat: 'd M. Y',
+			altFormat: 'd M Y',
 			maxDate: 'today',
 			disableMobile: false,
 			onValueUpdate: function () {
@@ -2005,7 +2028,7 @@ function datePickerInit() {
 			altInput: true,
 			clickopens: false,
 			// wrap: true,
-			altFormat: 'd M. Y',
+			altFormat: 'd M Y',
 			maxDate: 'today',
 			disableMobile: false
 		});
@@ -2025,7 +2048,7 @@ function datePickerInit() {
 				"locale": "ru",
 				altInput: true,
 				clickopens: false,
-				altFormat: 'd M. Y',
+				altFormat: 'd M Y',
 				maxDate: 'today',
 				disableMobile: false,
 				onChange: function (el, date) {
@@ -2040,7 +2063,7 @@ function datePickerInit() {
 				"locale": "ru",
 				altInput: true,
 				clickopens: false,
-				altFormat: 'd M. Y',
+				altFormat: 'd M Y',
 				maxDate: 'today',
 				disableMobile: false,
 				onChange: function (el, date) {
@@ -3319,8 +3342,6 @@ function toggleFormButtons() {
 
 
 		if (cond === true) {
-			console.log("$input.length: ", $input.length);
-			console.log("countChecked: ", countChecked);
 			return $input.length === countChecked;
 		} else {
 			return hasCheckedInput;

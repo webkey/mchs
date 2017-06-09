@@ -88,12 +88,20 @@
 /*search page end
 
 /*search form
-.search-form
+.search-form, .search-form__field
 	position: relative
-	margin-bottom: $bottom-space-lg
+	margin-bottom: $bottom-space-md
 
 	&:last-child
 		margin-bottom: 0
+
+.search-extended-panel
+	padding-bottom: $bottom-space-md
+
+.search-extended-panel__holder
+	border: 1px solid $border-color
+	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
+	background-color: $bg-color-light
 
 .search-form__field
 	overflow: hidden
@@ -103,7 +111,7 @@
 input.search-form__input
 	cursor: pointer
 
-	+search-form-placeholder($color: $text-color, $tsp: color, $tsd: $animation-speed)
+	+search-form-placeholder($color: $text-color-light, $tsp: color, $tsd: $animation-speed)
 
 	&, &:hover, &:focus
 		display: block

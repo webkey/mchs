@@ -545,4 +545,77 @@ input[type="radio"]
 
 /*multiselect menu end*/
 /*select end*/
+
+.add-function-link
+	+display-inline-block-top
+	+font($font-size-small, $line-height-small)
+	font-weight: normal
+	color: $text-color-light
+
+	.form-buttons &
+		float: right
+		padding-top: 28px
+
+	& > a
+		color: inherit
+		text-decoration: none
+		position: relative
+		padding-right: 16px
+
+		& > span
+			border-bottom: 1px dotted $text-color-light
+			transition-property: border-color
+			transition-duration: $animation-speed
+
+		// arrow or close icon
+
+		& > i
+			$this-icon-lines-width: 10px
+			$this-icon-lines-height: 2px
+			$this-icon-lines-color: $text-color-light
+
+			$this-icon-position: rc // tl, tc, tr, rc, bl, bc, br, lc
+			// if $this-icon-position !== null, add position: "relative" and padding: "some" to parent
+
+			@if $this-icon-position == null
+				+display-inline-block-top
+				position: relative
+
+			@if $this-icon-position
+				position: absolute
+				right: 0
+				top: 50%
+				margin-top: -#{round($this-icon-lines-height*0.5)}
+
+			backface-visibility: hidden
+			+size($this-icon-lines-width, $this-icon-lines-height)
+
+			&::before, &::after
+				+pseudo()
+				left: 0
+				backface-visibility: hidden
+				+size($this-icon-lines-width, $this-icon-lines-height)
+				background-color: $this-icon-lines-color
+				transition-property: background-color
+				transition-duration: $animation-speed
+
+			&::before
+				top: 0
+				transform: rotate(-45deg)
+
+			&::after
+				top: 0
+				transform: rotate(45deg)
+
+		//.no-touchevents &:hover
+			& > i
+				&::before, &::after
+					background-color: tomato
+
+		// arrow or close icon end
+
+		.no-touchevents &:hover
+			& > span
+				border-color: transparent
+
 /*FORM STYLE DEFAULT end*/
