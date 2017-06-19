@@ -10,6 +10,7 @@ $events-map-side-width: 290px
 .events-map
 	background-color: white
 	padding: $events-map-space
+	position: relative
 	+clear
 
 	+media('<mob-lg')
@@ -59,6 +60,7 @@ $events-map-side-width: 290px
 
 #phenomena_map .info_block
 	right: -10px !important
+	font-size: 1.4rem!important
 
 /* events map end
 
@@ -85,9 +87,46 @@ $events-map-side-width: 290px
 
 	&#phenomena_map .more,
 	&#phenomena_map .more2
-		font-size: 1.1rem
+		//font-size: 1.1rem
+		font-size: 14px
 
 	&#phenomena_map .svg_legenda_text
 		font-size: 2rem
+
+
+
+	.phen_info
+		font-size: 14px
+
+	.phen_item,
+	.copyright,
+	.copyright_podtopl,
+	.dev_info
+		font-size: 14px!important
+
+	.phen_info_hover
+		font-size: 14px!important
+
+	.phen_info_hover a
+		font-size: 14px !important
+
+	.rep_link_s
+		font-size: 14px !important
+
+	.phenomenon_info_inner
+		left: 50% !important
+		top: 0 !important
+		-webkit-transform: translateX(-50%)
+		-ms-transform: translateX(-50%)
+		-o-transform: translateX(-50%)
+		transform: translateX(-50%)
+
+.weather
+	background: #fff
+	margin: 0 auto
+	padding: 1rem
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
 
 /* phenomena map restyling end

@@ -356,7 +356,9 @@
 			display: block
 			max-width: none
 			+margin-horizontal(0)
-			height: 60px
+			//height: 60px
+			//height: 89px
+			height: 85px
 
 		+media('<mob-lg')
 			height: auto
@@ -389,7 +391,8 @@
 			+media('<tab-lg')
 				float: left
 				display: block
-				+size(50%, 100%)
+				//+size(50%, 100%)
+				+size(100%, 100%)
 				text-align: center
 
 			+media('<mob-lg')
@@ -490,9 +493,13 @@
 							width: 70px
 
 					& > em
+						+display-inline-block-middle
 						font: normal bold 30px/1.2 $font-alt
 						color: $mark-color
 						letter-spacing: normal
+
+						&.color--orange
+							color: $mark-color-alt
 
 					& > span
 						display: block
@@ -504,6 +511,26 @@
 
 						+media('<tab-lg')
 							font-size: 1.4rem
+
+.get-minister
+	display: block
+	background: #fff
+
+.get-minister ul
+	margin: 0
+	padding: 0
+
+.get-minister li
+	padding: 0!important
+	margin: 0!important
+
++media('>=tab-lg')
+	.show-960
+		display: none!important
+
++media('<tab-lg')
+	.hide-960
+		display: none!important
 
 /*header contacts end
 

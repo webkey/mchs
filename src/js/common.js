@@ -1818,7 +1818,7 @@ function slidersInit() {
  * */
 function lightGalleryInit() {
 	var $lightGallery = $('.lg-js');
-	var $lightGalleryVideo = $('.lg-video-js');
+	var $contentImg = $('.lg-video-js');
 
 	if ($lightGallery.length) {
 		$.each($lightGallery, function () {
@@ -1827,8 +1827,8 @@ function lightGalleryInit() {
 		})
 	}
 
-	if ($lightGalleryVideo.length) {
-		$.each($lightGalleryVideo, function () {
+	if ($contentImg.length) {
+		$.each($contentImg, function () {
 			var $thisGallery = $(this);
 			lightGalleryVideos($thisGallery);
 		})
@@ -1851,6 +1851,22 @@ function lightGalleryInit() {
 			download: false,
 			autoplayControls: false,
 			zoom: false
+		});
+	}
+
+	var $contentImg = $('.img-zoom');
+	if ($contentImg.length) {
+		$contentImg.lightGallery({
+			thumbnail: false,
+			animateThumb: false,
+			showThumbByDefault: false,
+			download: false,
+			counter: false,
+			share: false,
+			hash: false,
+			selector: 'this',
+			addClass: 'zoom-img-popup',
+			backdropDuration: 0.5
 		});
 	}
 }
