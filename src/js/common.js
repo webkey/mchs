@@ -1818,7 +1818,7 @@ function slidersInit() {
  * */
 function lightGalleryInit() {
 	var $lightGallery = $('.lg-js');
-	var $contentImg = $('.lg-video-js');
+	var $lightGalleryVideo = $('.lg-video-js');
 
 	if ($lightGallery.length) {
 		$.each($lightGallery, function () {
@@ -1827,8 +1827,8 @@ function lightGalleryInit() {
 		})
 	}
 
-	if ($contentImg.length) {
-		$.each($contentImg, function () {
+	if ($lightGalleryVideo.length) {
+		$.each($lightGalleryVideo, function () {
 			var $thisGallery = $(this);
 			lightGalleryVideos($thisGallery);
 		})
@@ -3636,6 +3636,39 @@ function toggleBlockInit() {
 /*toggle block*/
 
 /**
+ * toggle contacts info
+ */
+function toggleContacts() {
+	var $container = $('.header__info');
+
+	if($container.length) {
+		var activeClass = 'is-show';
+
+		var $opener = $('<div />', {
+			class: 'h-contacts-opener h-contacts-opener-js',
+			html: '<i>&nbsp;</i>',
+			click: function(e) {
+				e.preventDefault();
+				console.log(1);
+			}
+		});
+
+		$container.append($opener.clone());
+
+		$container.on('click', '.h-contacts-opener-js', function (e) {
+			e.preventDefault();
+
+			console.log(1);
+
+			var $wrap = $(this).parent();
+
+			$wrap.toggleClass(activeClass);
+		});
+	}
+}
+/*toggle contacts info end*/
+
+/**
  * !footer at bottom
  * */
 function footerBottom() {
@@ -3795,6 +3828,7 @@ $(document).ready(function () {
 	textSlide();
 	toggleFormButtons();
 	toggleBlockInit();
+	toggleContacts();
 	footerBottom();
 	formSuccessExample();
 	departmentChanger();

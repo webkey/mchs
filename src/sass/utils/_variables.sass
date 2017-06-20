@@ -110,7 +110,7 @@ $news-item-content-height: $news-item-height - $news-item-img-height !default //
 $news-item-sm-height: round($news-item-height/2)-(round($grid-space/2)) !default // высота элемента превью новостей без изображения
 $news-item-sm-width: $news-item-width !default // ширина элемента превью новостей без изображения (такая же как и у стандартного)
 $news-item-sm-content-height: $news-item-sm-height !default // высота контента превью новостей без изображения
-$news-item-lg-height: $news-item-height*2+$grid-space !default // высота большого элемета
+$news-item-lg-height: ($news-item-height*2+$grid-space)-0.1 !default // высота большого элемета
 $news-item-lg-width: $news-item-width*2 !default // ширина большого элемета
 $news-item-lg-img-height: 350px !default // высота картикнки в большом блоке
 $news-item-lg-img-height-mob-lg: 200px !default // для разрешений до 640

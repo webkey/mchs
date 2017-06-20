@@ -90,8 +90,18 @@ $events-map-side-width: 290px
 		//font-size: 1.1rem
 		font-size: 14px
 
+	&#phenomena_map .svg_legenda
+		top: 30px
+		position: relative
+
+		+media('<mob-lg')
+			width: 100%
+
 	&#phenomena_map .svg_legenda_text
 		font-size: 2rem
+
+		+media('<mob-lg')
+			font-size: 2.3rem
 
 
 
@@ -116,9 +126,6 @@ $events-map-side-width: 290px
 	.phenomenon_info_inner
 		left: 50% !important
 		top: 0 !important
-		-webkit-transform: translateX(-50%)
-		-ms-transform: translateX(-50%)
-		-o-transform: translateX(-50%)
 		transform: translateX(-50%)
 
 .weather

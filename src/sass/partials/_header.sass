@@ -654,8 +654,9 @@
 
 /*header info
 .header__info
-	+font($font-size-small, $line-height-small)
+	position: relative
 	margin: 8px 0 0
+	+font($font-size-small, $line-height-small)
 	cursor: default
 
 	+media('<desk-lg')
@@ -680,6 +681,16 @@
 
 	+media('<mob-lg')
 		padding-left: 70px
+		padding-right: 10px
+
+	li
+		+media('<mob-lg')
+			&:nth-child(n + 3)
+				display: none
+
+	&.is-show
+		li
+			display: inline-block
 
 	li
 		display: inline-block
@@ -727,6 +738,64 @@
 			fill: lighten($text-color-light, 20%)
 
 /*header info end
+
+/*contacts-opener
+.h-contacts-opener
+	display: none
+	+size(40px, 40px)
+	cursor: pointer
+
+	+media('<mob-lg')
+		display: block
+
+	.header__info &
+		position: absolute
+		right: -5px
+		top: 50%
+		margin-top: -20px
+
+	& > i
+		$this-icon-lines-width: 12px
+		$this-icon-lines-height: 3px
+		$this-icon-lines-color: $text-color-light
+
+		display: block
+		position: absolute
+		left: 50%
+		top: 50%
+		+size(12px, 10px)
+		margin: -6px 0 0 -5px
+		backface-visibility: hidden
+
+		&::before, &::after
+			+pseudo()
+			bottom: 0
+			backface-visibility: hidden
+			+size($this-icon-lines-width, $this-icon-lines-height)
+			background-color: $this-icon-lines-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		&::before
+			right: 50%
+			transform-origin: right bottom
+			transform: rotate(45deg)
+
+		&::after
+			left: 50%
+			transform-origin: left bottom
+			transform: rotate(-45deg)
+
+	.no-touchevents &:hover
+		& > i
+			&::before, &::after
+				background-color: tomato
+
+	.is-show &
+		transform: rotate(0.5turn)
+
+
+/*contacts-opener end
 
 /*user options*/
 .user-options
