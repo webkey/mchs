@@ -836,6 +836,19 @@ $nav-small-tabs-height: 60px
 	.grid-row
 		margin-bottom: $bottom-space-md
 
+		h3
+			min-height: calc(2rem*1.3*2)
+
+			+media('<tab-sm')
+				min-height: 0
+
+		+media('<tab-sm')
+			.grid-col-sm-12
+				margin-bottom: $bottom-space-md
+
+				&:last-child
+					margin-bottom: 0
+
 	.form-buttons
 		//opacity: 0
 		//visibility: hidden
