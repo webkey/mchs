@@ -1839,7 +1839,10 @@ function lightGalleryInit() {
 			thumbnail: true,
 			animateThumb: true,
 			showThumbByDefault: false,
-			download: false
+			download: false,
+			counter: true,
+			share: false,
+			hash: false
 		});
 	}
 
@@ -1849,8 +1852,25 @@ function lightGalleryInit() {
 			animateThumb: true,
 			showThumbByDefault: false,
 			download: false,
+			counter: true,
+			share: false,
+			hash: false,
 			autoplayControls: false,
 			zoom: false
+		});
+	}
+
+	var $imagesSlider = $('.images-slider');
+	if ($imagesSlider.length) {
+		$imagesSlider.lightGallery({
+			thumbnail: false,
+			animateThumb: false,
+			showThumbByDefault: false,
+			download: false,
+			counter: false,
+			share: false,
+			hash: false,
+			selector: '.images-slider__item'
 		});
 	}
 
@@ -3056,7 +3076,7 @@ function stickyLayout() {
 			clearTimeout(timeoutAsideSticky);
 			timeoutAsideSticky = setTimeout(function () {
 				$aside.stick_in_parent({
-					parent: '.main-inside',
+					parent: '.content-layout',
 					offset_top: offsetTop
 				});
 			}, 200);

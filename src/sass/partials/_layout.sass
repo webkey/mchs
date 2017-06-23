@@ -109,9 +109,12 @@ body
 	margin: 0 0 0 $sidebar-left-width
 	padding-bottom: $bottom-space-lg
 	//padding: $grid-layout-space #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
-	min-height: 50px
+	min-height: calc(100vh - #{$header-height})
 	position: relative
 	+clear
+
+	+media('<desk-md')
+		min-height: 50px
 
 	//+media('<desk-hd')
 		padding: #{$grid-layout-space--desk-hd} #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
@@ -185,25 +188,9 @@ body
 	margin-bottom: $bottom-space
 
 .sheet
+	position: relative
 	background: $bg-color-alt
 	margin-bottom: $bottom-space-md
-
-	.page-404 &
-		position: relative
-		overflow: hidden
-		z-index: 1
-
-		&::before
-			z-index: -1
-			+pseudo('404')
-			left: 50%
-			top: -12.5rem
-			transform: translate(-50%, 0)
-			font-family: $font-alt
-			font-weight: 700
-			color: $bg-color
-			font-size: 24rem
-			line-height: 1.2
 
 	+media('<mob-lg')
 		+margin-horizontal(-#{$grid-layout-space--mob-lg})
@@ -348,5 +335,36 @@ body
 
 	&:last-child
 		margin-bottom: 0
+
+.bg-404
+	position: absolute
+	left: 0
+	top: 0
+	overflow: hidden
+	+size(100%)
+
+	& ~ *
+		position: relative
+
+	&::before
+		+pseudo('404')
+		left: 50%
+		top: -12.5rem
+		transform: translate(-50%, 0)
+		font-family: $font-alt
+		font-weight: 700
+		color: $bg-color
+		font-size: 24rem
+		line-height: 1.2
+
+.map-columns
+	+media('<desk-lg')
+		display: block
+
+		tr, td
+			display: block
+
+		tr
+			margin-bottom: $bottom-space
 
 /*LAYOUT end*/
