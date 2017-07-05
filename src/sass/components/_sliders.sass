@@ -586,13 +586,19 @@
 /*others news slider end
 
 /*tape gallery
-.tape-gallery
-	overflow: hidden
-	background-color: black
+.tape-gallery-wrap
 	margin-bottom: $bottom-space
+	text-align: center
 
 	&:last-child
 		margin-bottom: 0
+
+.tape-gallery
+	+display-inline-block-top
+	max-width: 100%
+	text-align: left
+	overflow: hidden
+	background-color: black
 
 	.swiper-container
 		position: relative
@@ -637,9 +643,15 @@
 	height: 214px
 
 	img
-		+object-fit()
+		min-width: 0
+		min-height: 0
+		max-width: none
+		max-height: none
+		height: 100%
+		width: auto
 		transition-property: opacity
 		transition-duration: $animation-speed
+		backface-visibility: hidden
 
 .tape-gallery__list a:hover .tape-gallery__img img
 	opacity: 0.55
