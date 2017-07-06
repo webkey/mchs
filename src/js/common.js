@@ -3331,11 +3331,11 @@ function toggleFormButtons() {
 	if ($toggleButtonForm.length) {
 		$.each($toggleButtonForm, function () {
 			var $thisForm = $(this);
-			var $btnSubmit = $('input[type=submit]', $thisForm);
+			// var $btnSubmit = $('input[type=submit]', $thisForm);
 			var $btnReset = $('input[type=reset]', $thisForm);
 
 			disabledButton($thisForm, $btnReset);
-			disabledButton($thisForm, $btnSubmit);
+			// disabledButton($thisForm, $btnSubmit);
 
 			if (checkProp($thisForm)) {
 				enabledButton($thisForm, $btnReset);
