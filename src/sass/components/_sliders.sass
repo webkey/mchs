@@ -150,12 +150,16 @@
 	margin-bottom: $bottom-space
 
 	+media('<tab-lg')
-		margin-bottom: $bottom-space-lg
+		margin-bottom: $bottom-space
 
 .images-slider__list
 	padding-bottom: $bottom-space
 	position: relative
 	z-index: 2
+
+	+media('<tab-lg')
+		padding-bottom: 0
+		margin-bottom: $bottom-space
 
 .images-slider__item
 	float: none
@@ -166,6 +170,7 @@
 	overflow: hidden
 	position: relative
 	background: #494949
+	cursor: url(../../img/cursor-zoom.png), zoom-in
 
 	.slick-initialized &
 		display: block
@@ -191,7 +196,6 @@
 		max-width: none
 		height: calc(100% + 4px)
 		transform: translate(-50%, 0)
-		cursor: url(../../img/cursor-zoom.png), zoom-in
 
 .images-slider
 
@@ -200,6 +204,11 @@
 		left: auto
 		top: 100%
 		transform: translate(0, 0)
+		background-color: rgba(255, 255, 255, 0.4)
+
+		+media('<tab-lg')
+			top: auto
+			bottom: 0
 
 	.slick-prev
 		right: 40px
@@ -214,14 +223,30 @@
 		.slide-curr
 			color: $text-color
 
+		+media('<tab-lg')
+			top: 0
+			color: white
+			text-shadow: 1px 1px 2px black
+			background-color: black
+			padding: 0 6px
+
+			.slide-curr
+				color: white
+
+	& ~ br
+		display: none
+
 /*images slider end*/
 
 /*flashes*/
 .flashes
 	padding: 0 90px
 
+	+media('<desk-lg')
+		padding: 0 90px 0 50px
+
 	+media('<tab-lg')
-		display: none
+		padding: 0
 
 .flashes__item
 	overflow: hidden
