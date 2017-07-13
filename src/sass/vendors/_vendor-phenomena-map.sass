@@ -62,6 +62,66 @@ $events-map-side-width: 290px
 	//right: -10px !important
 	font-size: 1.4rem!important
 
+	+media('>=960px')
+		right: -300px !important
+
+		&.info_closed
+			right: -23px !important
+
+	+media('<960px')
+		right: 0 !important
+
+		// делаем инверсию. при загрузке закрыто. на клик открываем
+		width: 23px!important
+		overflow: hidden !important
+		max-height: 90% !important
+
+		.info_activity
+			background: url(http://101.belta.by/desimages/menu_icon_open.png) no-repeat !important
+			left: auto !important
+			right: 5px !important
+			width: 9px !important
+			height: 17px !important
+			-webkit-transform: rotate(0.5turn)
+			-ms-transform: rotate(0.5turn)
+			transform: rotate(0.5turn)
+
+		.obl_gr
+			padding-left: 50px
+
+			&:hover .phen_item, &:hover .phen_item2
+				display: none !important
+
+		&.info_closed
+			width: 300px !important
+			overflow: visible !important
+			max-height: none !important
+
+			.info_activity
+				background: url(http://101.belta.by/desimages/close.png) no-repeat !important
+				right: 10px !important
+				width: 24px !important
+				height: 24px !important
+
+			.obl_gr
+				padding-left: 0 !important
+
+				&:hover .phen_item, &:hover .phen_item2
+					display: block !important
+
+//@media screen and (min-width:1101px) and (max-width:1200px){
+	#phenomena_map .info_block
+		right: -170px
+
+//@media screen and (min-width:1001px) and (max-width:1100px){
+	#phenomena_map .info_block
+		right: -70px;
+
+//@media screen and (max-width:1000px)
+	#phenomena_map .info_block
+		right: 0px
+
+
 /* events map end
 
 /* phenomena map restyling
