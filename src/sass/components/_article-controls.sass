@@ -32,6 +32,12 @@
 		margin-right: $grid-layout-space--desk-hd
 		margin-bottom: 0
 
+		&:nth-child(3)
+			clear: left
+
+			&, & ~ a
+				margin-top: 20px
+
 		&.view-print
 			+media('<desk-hd')
 				float: right
