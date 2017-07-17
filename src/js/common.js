@@ -1810,6 +1810,36 @@ function slidersInit() {
 			});
 		});
 	}
+
+	/*soc media slider*/
+	var $socMediaSlider = $('.soc-media-slider__list');
+
+	if ($socMediaSlider.length) {
+
+		$socMediaSlider.each(function () {
+			var $currentSlider = $(this);
+			var dur = 500;
+			var autoplaySpeed = $socMediaSlider.data('autoplay-speed');
+
+			$currentSlider.slick({
+				fade: true,
+				speed: dur,
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				// initialSlide: 2,
+				// lazyLoad: 'ondemand',
+				autoplay: true,
+				autoplaySpeed: autoplaySpeed,
+				infinite: true,
+				dots: false,
+				arrows: false,
+				accessibility: false,
+				swipe: false,
+				touchMove: false
+			});
+
+		});
+	}
 }
 /*sliders end*/
 
