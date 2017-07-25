@@ -10,26 +10,6 @@
 		"anchor": "#multimedia-anchor"
 	},
 	{
-		"text": "Интерактивная карта",
-		"active": false,
-		"anchor": "#map-anchor"
-	},
-	{
-		"text": "Другие проекты",
-		"active": false,
-		"anchor": "#other-projects-anchor"
-	},
-	{
-		"text": "Территориальные управления",
-		"active": false,
-		"anchor": "#regions-anchor"
-	},
-	{
-		"text": "Департаменты",
-		"active": false,
-		"anchor": "#branches-anchor"
-	},
-	{
 		"text": "Информация",
 		"active": false,
 		"anchor": "#information-anchor"

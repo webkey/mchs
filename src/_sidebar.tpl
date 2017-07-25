@@ -2,13 +2,13 @@
 	<div class="sidebar__holder">
 		<div class="sidebar-top">
 			@@if(context.menu) {
-			<div class="sidebar-top__holder">
+			<!--<div class="sidebar-top__holder">
 				<div class="sidebar-menu-wrap sidebar-menu-wrap-js">
 					<ul class="sidebar-menu sidebar-menu-js">
 						@@loop('_sidebar-menu-item.tpl', './includes-json/sidebar-menu-items.json')
 					</ul>
 				</div>
-			</div>
+			</div>-->
 			} @@if(context.typography) {
 			<div class="sidebar-top__holder">
 				<div class="sidebar-menu-wrap sidebar-menu-wrap-js">
