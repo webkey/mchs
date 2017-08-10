@@ -1,0 +1,143 @@
+@@include('_head.tpl', {
+	"title": "Главная",
+	"pageClass": "home-page"
+})
+<div class="wrapper">
+	<!--HEADER-->
+	@@include('_header.tpl', {
+		"mainNavItemActive": "index"
+	})
+	<!--HEADER end-->
+
+	<script>
+		var saveObject = {
+			"2017": {
+				"total": "27",
+				"children": "12"
+			},
+			"2016": {
+				"total": "370",
+				"children": "23"
+			},
+			"2015": {
+				"total": "8",
+				"children": "1"
+			}
+		}
+	</script>
+
+	<!--MAIN-->
+	<div class="main">
+		<div class="layout">
+			<div class="main-holder">
+				<!--CONTENT-->
+				<div class="main-frame">
+					<div class="main-inside">
+						<!--SIDE-->
+						@@include('_side.tpl')
+						<!--SIDE end-->
+						<div class="content-layout">
+							@@include('_breadcrumbs.tpl')
+							<h1 class="hide">МЧС Республики Беларусь</h1>
+							<div class="promo">
+								<div class="promo-slider">
+									@@loop('_promo-slider-item.tpl', 'includes-json/promo-slider-item.json')
+								</div>
+							</div>
+							<div class="content-wrap">
+								<div class="content user-content">
+									<section class="section" id="main-new-anchor">
+										<div class="grid-row">
+											<div class="grid-col-3 grid-col-hd-4 grid-col-lg-12 grid-layout-right grid-col-md-width-auto">
+												<div class="section__holder">
+													<div class="grid-row">
+														<div class="grid-col-12 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
+															<div class="section__title">
+																<h2>Спасены в</h2>
+																@@include('_years-select.tpl')
+															</div>
+															@@include('_save-info.tpl')
+														</div>
+														<div class="grid-col-12 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
+															<div class="section__title hide-tab-lg">
+																<h2>Суточные сводки</h2>
+															</div>
+															@@include('_events-summary.tpl')
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="grid-col-9 grid-col-hd-8 grid-col-lg-12 grid-col-width-auto">
+												<div class="section__title">
+													<h2>Главные новости,</h2>
+													<div class="news-date datepicker-alt">
+														<a data-toggle class="type-anchor news-date-output-js"><span>18.04.2017</span></a>
+														<input data-input type="text" class="datepicker-input" value="2017-04-18" title="Дата публикации новостей" data-date-format="Y-m-d"/>
+													</div>
+													<span class="v-separator">|</span>
+													<a href="#">Все новости</a>
+												</div>
+												<div class="section__holder">
+													<!--news grid-->
+													<div class="news-grid news-grid--main">
+														<div class="news-grid__list">
+															@@loop('_news-grid-item.tpl', 'includes-json/news-grid-items-main.json')
+														</div>
+													</div>
+													<!--news grid end-->
+												</div>
+											</div>
+										</div>
+										<!--tags list-->
+										<div class="tags-wrap">
+											<ul class="tags__list">
+												@@loop('_tags-list-item.tpl', 'includes-json/tags-list-02.json')
+											</ul>
+										</div>
+										<!--tags list end-->
+									</section>
+									<section class="section" id="multimedia-anchor">
+										<div class="section__title"><h2>Мультимедиа по ОБЖ</h2></div>
+										<div class="section__holder">
+											@@include('_obzh.tpl')
+										</div>
+									</section>
+									<section class="section banners-panel" id="information-anchor">
+										<div class="section__title"><h2>Инфомрация МЧС</h2></div>
+										<div class="section__holder">
+											@@include('_infoblock.tpl')
+										</div>
+									</section>
+									<section class="section show-960">
+										<div class="header__contacts get-minister">
+											<ul>
+												<li>
+													<a href="#">
+														<div><img src="img/ava.png" alt="Министр" /></div>
+														<div><span>Задать вопрос Министру</span></div>
+													</a>
+												</li>
+											</ul>
+										</div>
+									</section>
+								</div>
+							</div>
+							<!--ASIDE-->
+							@@include('_aside.tpl')
+							<!--ASIDE end-->
+						</div>
+					</div>
+				</div>
+				<!--CONTENT end-->
+
+				<!--SIDEBAR-->
+				@@include('_sidebar.tpl', {
+					"menu": "true"
+				})
+				<!--SIDEBAR-->
+			</div>
+		</div>
+	</div>
+	<!--MAIN end-->
+</div>
+@@include('_foot.tpl', {"mainNavItemActive": "О министерстве", "subSiteMenu": ""})

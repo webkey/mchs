@@ -224,6 +224,9 @@
 				"classKey": "nav-mobile",
 				"navTag": ""
 			})
+			<div class="to-mchs">
+				<a href="#" class="btn-default btn-with-icon"><i class="depict-mchs">&nbsp;</i><span>На главную МЧС</span></a>
+			</div>
 		</div>
 	</div>
 </div>

@@ -2476,7 +2476,7 @@ function datePickerInit() {
 				$html.addClass(classAfterOpen);
 				$buttonClose.addClass(classAfterOpen);
 
-				noScroll();
+				// noScroll();
 			}
 		});
 
@@ -2537,7 +2537,7 @@ function datePickerInit() {
 						autoAlpha: 0
 					});
 
-					canScroll();
+					// canScroll();
 
 					if (self.cssScrollBlocked) {
 						self.cssScrollUnfixed();
@@ -2558,7 +2558,7 @@ function datePickerInit() {
 						autoAlpha: 0
 					});
 
-					canScroll();
+					// canScroll();
 
 					if (self.cssScrollBlocked) {
 						self.cssScrollUnfixed();
@@ -2576,7 +2576,7 @@ function datePickerInit() {
 						self.preparationAnimation();
 					}
 
-					canScroll();
+					// canScroll();
 
 					if (self.cssScrollBlocked) {
 						self.cssScrollUnfixed();
@@ -2746,7 +2746,8 @@ function popupsInit() {
 			closeOnResize: true,
 			// mediaWidth: 1280,
 			animationSpeed: 300,
-			overlayAlpha: 0.35
+			overlayAlpha: 0.35,
+			cssScrollBlocked: true
 		});
 
 	}
@@ -2764,7 +2765,8 @@ function popupsInit() {
 			closeOnResize: true,
 			animationType: 'rtl',
 			animationSpeed: 300,
-			overlayAlpha: 0.35
+			overlayAlpha: 0.35,
+			cssScrollBlocked: true
 		});
 
 	}
@@ -2781,7 +2783,8 @@ function popupsInit() {
 			overlayAppendTo: 'body',
 			closeOnResize: true,
 			animationSpeed: 300,
-			overlayAlpha: 0.35
+			overlayAlpha: 0.3,
+			cssScrollBlocked: true
 		});
 
 	}
@@ -3719,6 +3722,14 @@ function toggleContacts() {
 /*toggle contacts info end*/
 
 /**
+ * fit video to content
+ */
+function fitVidsInit() {
+	$('.user-content iframe[src*="youtube"]').parent().fitVids();
+}
+/*fit video to content end*/
+
+/**
  * !footer at bottom
  * */
 function footerBottom() {
@@ -3873,13 +3884,25 @@ $(document).ready(function () {
 	stickyLayout();
 	regionMenu();
 	datePickerInit();
-	blockedScrollOnPage();
+	// blockedScrollOnPage();
 	frontBackSwitcher();
 	textSlide();
 	toggleFormButtons();
 	toggleBlockInit();
 	toggleContacts();
+	fitVidsInit();
 	footerBottom();
 	formSuccessExample();
 	departmentChanger();
+
+	// console.log(document.querySelectorAll('.popup-nav-small__holder'));
+	// document.ontouchmove = function (e) {
+	// 	// alert(e);
+	// 	console.log(1);
+	// }
+	console.log(document.querySelectorAll('.popup-nav-small__holder'));
+	document.onscroll = function (e) {
+		console.log("e: ", e);
+		e.preventDefault();
+	}
 });

@@ -20,7 +20,8 @@
 		height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
 
 	+media('<mob-lg')
-		height: 180px
+		height: auto
+		+padding-vertical(10px)
 
 	//&::before
 		+pseudo($pos: relative)
@@ -48,6 +49,14 @@
 	width: 100%
 	z-index: 5
 
+	+media('<mob-lg')
+		display: block
+		position: relative
+		top: auto
+		left: auto
+		width: auto
+		padding-bottom: 0
+
 .save__holder
 	position: absolute
 	left: 0
@@ -59,10 +68,20 @@
 	z-index: 1
 	+padding-horizontal($grid-inside-horizontal-space)
 
+	+media('<mob-lg')
+		position: relative
+		left: auto
+		top: auto
+		height: auto
+
 .save__box
 	height: 50%
 	position: relative
 	letter-spacing: normal
+
+	+media('<mob-lg')
+		height: auto
+		+padding-vertical(10px)
 
 .save__box:first-child
 	border-bottom: 1px solid #fff
@@ -77,6 +96,12 @@
 	transform: translate(-50%, -50%)
 	+antialiased
 	z-index: 5
+
+	+media('<mob-lg')
+		position: relative
+		left: auto
+		top: auto
+		transform: none
 
 	& > strong, & > span
 		display: block

@@ -131,7 +131,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/lg-share/dist/lg-share.min.js',
 		'src/libs/lg-thumbnail/dist/lg-thumbnail.min.js',
 		'src/libs/lg-video/dist/lg-video.min.js',
-		'src/libs/lg-zoom/dist/lg-zoom.min.js'
+		'src/libs/lg-zoom/dist/lg-zoom.min.js',
+		'src/libs/fitvids/jquery.fitvids.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(gulp.dest('src/js'))

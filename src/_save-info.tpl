@@ -1,6 +1,6 @@
 <!--save info-->
 <a href="#" class="save" style="background-image: url(img/img-save.jpg);">
-	<header class="save__header">При ликвидации ЧС природного и техногенного характера</header>
+	<header class="save__header">При ликвидации ЧС природного и техногенного характера спасены и эвакуированы</header>
 	<div class="save__holder">
 		<div class="save__box">
 			<div class="save__align">
