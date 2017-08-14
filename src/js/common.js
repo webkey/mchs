@@ -2475,6 +2475,7 @@ function datePickerInit() {
 			onComplete: function () {
 				$html.addClass(classAfterOpen);
 				$buttonClose.addClass(classAfterOpen);
+				$container.trigger('extraPopupAfterOpen');
 
 				// noScroll();
 			}
@@ -2829,8 +2830,9 @@ function popupsInit() {
 
 	/*search popup*/
 	var popupSearch = '.popup-search-js';
+	var $popupSearch = $(popupSearch);
 
-	if ($(popupSearch).length) {
+	if ($popupSearch.length) {
 
 		new ExtraPopup({
 			container: popupSearch,
@@ -2845,6 +2847,10 @@ function popupsInit() {
 		});
 
 	}
+
+	$popupSearch.on('extraPopupAfterOpen', function () {
+		$(this).find('.search-form__input').focus();
+	});
 
 	/*filters popup*/
 	var popupFilters = '.filters-popup-js';
@@ -3894,15 +3900,4 @@ $(document).ready(function () {
 	footerBottom();
 	formSuccessExample();
 	departmentChanger();
-
-	// console.log(document.querySelectorAll('.popup-nav-small__holder'));
-	// document.ontouchmove = function (e) {
-	// 	// alert(e);
-	// 	console.log(1);
-	// }
-	console.log(document.querySelectorAll('.popup-nav-small__holder'));
-	document.onscroll = function (e) {
-		console.log("e: ", e);
-		e.preventDefault();
-	}
 });
