@@ -3796,6 +3796,24 @@ function departmentChanger() {
 /*department changer end*/
 
 /**
+ * remove attribute from img on content
+ * */
+function removeAttrFromImg() {
+	var $elem = $('.user-content').find('img');
+
+	$.each($elem, function () {
+		var $currentElem = $(this);
+		if($currentElem.attr('width')) {
+			$currentElem.attr('width', '');
+		}
+		if($currentElem.attr('height')) {
+			$currentElem.attr('height', '');
+		}
+	})
+}
+/*remove attribute from img on content end*/
+
+/**
  * !form success for example
  * */
 function formSuccessExample() {
@@ -3853,9 +3871,10 @@ function formSuccessExample() {
 /** ready/load/resize document **/
 
 $(window).on('load', function () {
-	$('html').addClass('page-loaded');
+	// $('html').addClass('page-loaded');
 	customScrollInit();
 	navExpander();
+	removeAttrFromImg();
 });
 
 $(document).ready(function () {

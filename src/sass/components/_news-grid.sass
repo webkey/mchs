@@ -28,6 +28,9 @@
 		height: $news-item-height // костыль для малекнького элемента, чтобы высоты блоков были четко по дизу
 		+padding-horizontal(round($grid-space/2))
 
+		+media('<desk-lg')
+			width: 49.98%
+
 		+media('<mob-lg')
 			width: 100%
 
@@ -53,6 +56,9 @@
 .news-grid .news-grid__item--large
 	width: $news-item-lg-width // костыль для большого элемента, чтобы высоты блоков были четко по дизу
 	height: $news-item-lg-height // костыль для большого элемента, чтобы высоты блоков были четко по дизу
+
+	+media('<desk-lg')
+		width: 100%
 
 	+media('<mob-lg')
 		width: 100%
