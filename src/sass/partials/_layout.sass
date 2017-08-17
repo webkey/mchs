@@ -12,7 +12,7 @@ html
 	&.css-scroll-fixed
 		+scroll-blocked
 
-body
+//body
 	//&::before
 		+pseudo($pos: fixed)
 		+size(100%, 400px)
@@ -140,22 +140,26 @@ body
 	+media('<desk-hd')
 		padding: #{$grid-layout-space--desk-hd - 9px} #{$grid-layout-space--desk-hd - 9px} 0 // -9 для компенсации вертикального скролла
 
-		//.home-page &
+		.home-page &
 			+push-auto
 			right: round($side-width*0.5)
 			max-width: $section-layout-width-desk-hd + ($grid-layout-space--desk-hd - 9px)*2
 
-	//+media('<desk-lg')
+	+media('<desk-lg')
 		.home-page &
-			max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-hd - 9px)*2
+			max-width: none
+			margin-right: 60px
+			right: auto
+			//max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-hd - 9px)*2
 
 	+media('<desk-md')
-		+padding-horizontal($grid-layout-space--desk-md)
-		margin-right: 0
+		&, .home-page &
+			+padding-horizontal($grid-layout-space--desk-md)
+			margin-right: 0
 
-		//.home-page &
-			right: auto
-			max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-md)*2
+			//.home-page &
+				right: auto
+				max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-md)*2
 
 	+media('<tab-lg')
 		padding: $grid-layout-space--desk-md $grid-layout-space--desk-md 0

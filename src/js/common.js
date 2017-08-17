@@ -845,7 +845,7 @@ function navExpander() {
 	});
 
 	var $page = $('html');
-	var $nav = $('.nav');
+	// var $nav = $('.nav');
 	var classResize = 'window-is-resize';
 	var timeout;
 
@@ -3814,6 +3814,24 @@ function removeAttrFromImg() {
 /*remove attribute from img on content end*/
 
 /**
+ * wrap table to table-auto container
+ * */
+function wrapTable() {
+	var $elem = $('.user-content').find('table');
+
+	$.each($elem, function () {
+		var $currentElem = $(this);
+		var $parentCurrentElem = $currentElem.parent();
+		var classAuto = "table-auto";
+
+		if(!$parentCurrentElem.hasClass(classAuto)){
+			$currentElem.wrap('<div class="' + classAuto + '"></div>');
+		}
+	})
+}
+/*wrap table to table-auto container end*/
+
+/**
  * !form success for example
  * */
 function formSuccessExample() {
@@ -3875,6 +3893,7 @@ $(window).on('load', function () {
 	customScrollInit();
 	navExpander();
 	removeAttrFromImg();
+	wrapTable();
 });
 
 $(document).ready(function () {
