@@ -32,7 +32,18 @@
 /*nav common
 .nav
 	max-width: 1100px
+	overflow: hidden
+	opacity: 0
+	visibility: hidden
+	transition:
+		property: opacity, visibility
+		duration: $animation-speed
 	//margin: 0 0 0 -#{$nav-item-space}
+
+	.no-js &, &.priority-nav
+		overflow: visible
+		opacity: 1
+		visibility: visible
 
 	.nav__list
 		position: relative

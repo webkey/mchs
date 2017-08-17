@@ -1,3 +1,4 @@
+
 @import ../utils/variables
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
@@ -86,6 +87,9 @@
 
 	+media('<mob-lg')
 		display: none
+
+		.news-date + &
+			display: inline-block
 
 	.section__title &
 		color: $text-color

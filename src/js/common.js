@@ -3818,15 +3818,44 @@ function removeAttrFromImg() {
  * */
 function wrapTable() {
 	var $elem = $('.user-content').find('table');
+	var tplTopScroll = $('<div class="topscroll"><div class="topscroll-hand"></div></div>');
+	var classAuto = "table-auto";
+	var classAutoWrap = "table-auto-wrap";
 
 	$.each($elem, function () {
 		var $currentElem = $(this);
 		var $parentCurrentElem = $currentElem.parent();
-		var classAuto = "table-auto";
 
 		if(!$parentCurrentElem.hasClass(classAuto)){
 			$currentElem.wrap('<div class="' + classAuto + '"></div>');
 		}
+
+		if(DESKTOP) {
+			$currentElem.closest('.' + classAuto).wrap('<div class="' + classAutoWrap + '"></div>');
+			$currentElem.closest('.' + classAuto).before(tplTopScroll.clone());
+
+			$currentElem.closest('.' + classAutoWrap).find('.topscroll-hand').width($currentElem.width());
+		}
+	});
+
+	if(DESKTOP) {
+		$('.topscroll').scroll(function(e){
+			$(this).closest('.' + classAutoWrap).find('.' + classAuto).scrollLeft($(this).scrollLeft());
+		});
+
+		$('.' + classAuto).scroll(function(e){
+			$(this).closest('.' + classAutoWrap).find('.topscroll').scrollLeft($(this).scrollLeft());
+		});
+	}
+
+	$(window).on('debouncedresize', function () {
+		$.each($elem, function () {
+			var $currentElem = $(this);
+
+			if(DESKTOP) {
+				$currentElem.closest('.' + classAutoWrap).find('.topscroll-hand').width($currentElem.width());
+			}
+		});
 	})
 }
 /*wrap table to table-auto container end*/
