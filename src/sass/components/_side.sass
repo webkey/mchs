@@ -20,7 +20,10 @@
 	&.is_stuck
 		left: $main-layout-width
 
-		+media('<1937px')
+		&.is_bottom
+			left: $main-layout-width - $sidebar-left-width
+
+		+media('<desk-hd')
 			.no-touchevents &
 				left: 100%
 

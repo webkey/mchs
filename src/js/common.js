@@ -3817,7 +3817,7 @@ function removeAttrFromImg() {
  * wrap table to table-auto container
  * */
 function wrapTable() {
-	var $elem = $('.user-content').find('table');
+	var $elem = $('.sheet').find('table');
 	var tplTopScroll = $('<div class="topscroll"><div class="topscroll-hand"></div></div>');
 	var classAuto = "table-auto";
 	var classAutoWrap = "table-auto-wrap";

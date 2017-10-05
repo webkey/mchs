@@ -5,6 +5,7 @@
 /*ASIDE*/
 .aside__holder
 	position: relative
+	padding-bottom: $bottom-space
 	z-index: 10
 
 	& > *:last-child
@@ -20,5 +21,20 @@
 		font: 400 1.2rem/1.4 $font-alt
 		color: $text-color-light
 		text-transform: uppercase
+
+	table
+		margin-bottom: 0
+
+		img
+			width: auto
+
+		td, th
+			padding: 0
+
+	& > table
+		& > tbody
+			& > tr
+				& > td
+					padding: 5px 15px
 
 /*ASIDE end*/
