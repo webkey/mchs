@@ -126,7 +126,7 @@
 .media-list__figure
 	position: relative
 	+ratio(1, 1)
-	transition-property: transform
+	transition-property: transform, opacity
 	transition-duration: $animation-speed
 
 	img
@@ -149,9 +149,13 @@
 			height: 100%
 			
 .no-touchevents .media-list__inner:hover .media-list__figure
-	transform: scale(1.1)
+	//transform: scale(1.1)
+	//opacity: 0.85
 
 .media-list__title
 	padding-bottom: 5px
 
 /*media block end
+
+.popup-gallery
+	display: none

@@ -1799,10 +1799,15 @@ function slidersInit() {
 			var $thisBtnNext = $('.swiper-button-next', $thisSlider);
 			var $thisBtnPrev = $('.swiper-button-prev', $thisSlider);
 
+			var loop = $thisContainer.find('.swiper-slide').length > 2;
+			// var loop =  true;
+			console.log("loop: ", loop);
+
 			new Swiper($thisSlider, {
-				loop: false,
+				loop: loop,
 				slidesPerView: 'auto',
 				watchSlidesVisibility: true,
+				centeredSlides: true,
 				keyboardControl: false,
 
 				nextButton: $thisBtnNext,
@@ -1868,7 +1873,7 @@ function lightGalleryInit() {
 		$thisGallery.lightGallery({
 			thumbnail: true,
 			animateThumb: true,
-			showThumbByDefault: false,
+			showThumbByDefault: true,
 			download: false,
 			counter: true,
 			share: false,
@@ -1919,6 +1924,14 @@ function lightGalleryInit() {
 			backdropDuration: 0.5
 		});
 	}
+
+	$('.popup-gallery-opener-js').on('click', function(e) {
+
+		e.preventDefault();
+
+		$(this).parent().find('.lg-js').children().eq(1).trigger('click');
+
+	});
 }
 /*light gallery initial end*/
 

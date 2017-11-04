@@ -624,7 +624,7 @@
 	max-width: 100%
 	text-align: left
 	overflow: hidden
-	background-color: black
+	background-color: white
 
 	.swiper-container
 		position: relative
@@ -649,6 +649,13 @@
 		box-sizing: border-box
 		width: auto
 		height: auto
+		opacity: 0.5
+		transition:
+			property: opacity
+			duration: $animation-speed
+
+		&.swiper-slide-active
+			opacity: 1
 
 		a
 			display: block
@@ -676,12 +683,15 @@
 		max-height: none
 		height: 100%
 		width: auto
-		transition-property: opacity
-		transition-duration: $animation-speed
 		backface-visibility: hidden
+		transition:
+			property: transform
+			duration: $animation-speed
 
 .tape-gallery__list a:hover .tape-gallery__img img
-	opacity: 0.55
+	//opacity: 0.85
+	//transform: scale(1.2)
+	//transition-duration: 15s
 
 .tape-gallery
 	.swiper-button-prev, .swiper-button-next
