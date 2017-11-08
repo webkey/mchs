@@ -1929,7 +1929,7 @@ function lightGalleryInit() {
 
 		e.preventDefault();
 
-		$(this).parent().find('.lg-js').children().eq(1).trigger('click');
+		$(this).parent().find('.popup-gallery').children().eq(0).trigger('click');
 
 	});
 }
