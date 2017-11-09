@@ -3826,6 +3826,138 @@ function removeAttrFromImg() {
 }
 /*remove attribute from img on content end*/
 
+/* branches map popup */
+/*add ui position add class*/
+function addPositionClass(position, feedback, obj){
+	removePositionClass(obj);
+	obj.css( position );
+	obj
+		.addClass( feedback.vertical )
+		.addClass( feedback.horizontal );
+}
+/*add ui position remove class*/
+function removePositionClass(obj){
+	obj.removeClass('top');
+	obj.removeClass('bottom');
+	obj.removeClass('center');
+	obj.removeClass('left');
+	obj.removeClass('right');
+}
+
+function infoMapPopup(){
+	// external js:
+	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
+	// 2) resizeByWidth (resize only width);
+	// 3) addPositionClass, removePositionClass;
+
+	var $popup = $('.info-map-popup-js');
+	if ($popup.length) {
+
+		var $corner = $('.info-map-popup__corner');
+		var animateSpeed = 300;
+		var popupIsOpen = false;
+		var classActive = 'active';
+
+		$('.logo').on('mouseenter', function(e){
+
+			console.log(1);
+		}).on('mouseleave', function () {
+			console.log(2);
+		});
+
+
+		$('.info-map-js svg a polygon').on('mouseenter', function(e){
+			console.log(3);
+
+			e.preventDefault();
+			var $this = $(this);
+			var $thisPopup = $($this.attr('href'));
+
+			e.stopPropagation();
+
+			if (popupIsOpen) {
+				closePopup();
+			}
+
+			$this.addClass(classActive);
+			$thisPopup.stop().fadeIn(0, function () {
+				$thisPopup.addClass(classActive);
+				popupIsOpen = true;
+			});
+
+			var withinElement = $this.closest('.extra-popup__content');
+			if ($('body').hasClass('home-page')) {
+				withinElement = $(window);
+			}
+
+			$thisPopup.position({
+				my: "center bottom-20",
+				of: e,
+				collision: "flipfit flip",
+				within: withinElement
+			});
+
+			$corner.position({
+				my: "center bottom-21",
+				of: e,
+				collision: "flipfit flip",
+				within: withinElement,
+				using: function( position, feedback ) {
+					addPositionClass(position, feedback, $(this));
+				}
+			});
+		}).on('mouseleave', function () {
+			closePopup();
+		});
+
+		$(document).on('click', function () {
+			if (popupIsOpen) {
+				closePopup();
+			}
+		});
+
+		$popup.on('click', function (e) {
+			e.stopPropagation();
+		});
+
+		$('.btn-close-popup-js').on('click', function (e) {
+			e.preventDefault();
+			if (popupIsOpen) {
+				closePopup();
+			}
+		});
+
+		$('.extra-popup').on('click', function (e) {
+			e.preventDefault();
+			if (popupIsOpen) {
+				closePopup();
+			}
+		});
+
+		$(document).keyup(function(e) {
+			if (popupIsOpen && e.keyCode == 27) {
+				closePopup();
+			}
+		});
+
+		$(window).on('resizeByWidth', function () {
+			if (popupIsOpen) {
+				closePopup();
+			}
+		});
+
+		function closePopup() {
+			$('.info-map-js svg a').removeClass(classActive);
+			$popup.removeClass(classActive);
+
+			$popup.filter(':visible').stop().fadeOut(0, function () {
+				popupIsOpen = false;
+			});
+		}
+	}
+}
+/* branches map popup end */
+
 /**
  * wrap table to table-auto container
  * */
@@ -3978,6 +4110,7 @@ $(document).ready(function () {
 	toggleContacts();
 	fitVidsInit();
 	footerBottom();
+	infoMapPopup();
 	formSuccessExample();
 	departmentChanger();
 });

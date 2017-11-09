@@ -103,6 +103,7 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск для мераж js библиотек
 	return gulp.src([
+		'src/js/temp/jquery-ui.min.js',
 		'src/libs/device.js/lib/device.min.js',
 		'src/libs/jquery-smartresize/jquery.debouncedresize.js',
 		'src/libs/jquery-placeholder/jquery.placeholder.min.js',
