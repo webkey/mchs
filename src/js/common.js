@@ -3850,63 +3850,75 @@ function infoMapPopup(){
 	// 2) resizeByWidth (resize only width);
 	// 3) addPositionClass, removePositionClass;
 
+
+	var svgElement = document.querySelector('[data-href="mi-vd"]');
+	var svgE = svgElement.getBoundingClientRect();
+
+	var draw = SVG('infoMapSvg');
+
+	// draw.viewbox(0, 0, 181, 181);
+
+	var use = draw.use('svg-ico-tech');
+
+	// var rect = draw.rect(100, 100).attr({ fill: '#f06' });
+
+	console.log("rect: ", svgE);
+
 	var $popup = $('.info-map-popup-js');
 	if ($popup.length) {
 
+		var $container = $('.info-map-js');
+		var $region = $container.find('g[data-href]');
 		var $corner = $('.info-map-popup__corner');
-		var animateSpeed = 300;
+		var animateSpeed = 0;
 		var popupIsOpen = false;
 		var classActive = 'active';
 
-		$('.logo').on('mouseenter', function(e){
-
-			console.log(1);
-		}).on('mouseleave', function () {
-			console.log(2);
-		});
-
-
-		$('.info-map-js svg a polygon').on('mouseenter', function(e){
-			console.log(3);
+		$region.mouseenter(function(e){
 
 			e.preventDefault();
 			var $this = $(this);
-			var $thisPopup = $($this.attr('href'));
+			var $thisPopup = $('#' + $this.attr('data-href'));
+
+			if(!$thisPopup.length){
+				return;
+			}
 
 			e.stopPropagation();
 
-			if (popupIsOpen) {
-				closePopup();
-			}
+			// if (popupIsOpen) {
+			// 	closePopup();
+			// }
 
 			$this.addClass(classActive);
-			$thisPopup.stop().fadeIn(0, function () {
+			$thisPopup.stop().fadeIn(animateSpeed, function () {
 				$thisPopup.addClass(classActive);
 				popupIsOpen = true;
 			});
 
-			var withinElement = $this.closest('.extra-popup__content');
-			if ($('body').hasClass('home-page')) {
-				withinElement = $(window);
-			}
-
 			$thisPopup.position({
-				my: "center bottom-20",
-				of: e,
+				// my: "center bottom-20",
+				my: "center bottom",
+				at: "center top",
+				of: $this,
 				collision: "flipfit flip",
-				within: withinElement
-			});
-
-			$corner.position({
-				my: "center bottom-21",
-				of: e,
-				collision: "flipfit flip",
-				within: withinElement,
+				within: $container,
 				using: function( position, feedback ) {
 					addPositionClass(position, feedback, $(this));
 				}
 			});
-		}).on('mouseleave', function () {
+
+			$corner.position({
+				my: "center bottom-1",
+				at: "center top",
+				of: $this,
+				collision: "flipfit flip",
+				within: $container,
+				using: function( position, feedback ) {
+					addPositionClass(position, feedback, $(this));
+				}
+			});
+		}).mouseleave(function () {
 			closePopup();
 		});
 
@@ -3927,13 +3939,6 @@ function infoMapPopup(){
 			}
 		});
 
-		$('.extra-popup').on('click', function (e) {
-			e.preventDefault();
-			if (popupIsOpen) {
-				closePopup();
-			}
-		});
-
 		$(document).keyup(function(e) {
 			if (popupIsOpen && e.keyCode == 27) {
 				closePopup();
@@ -3947,10 +3952,10 @@ function infoMapPopup(){
 		});
 
 		function closePopup() {
-			$('.info-map-js svg a').removeClass(classActive);
+			$region.removeClass(classActive);
 			$popup.removeClass(classActive);
 
-			$popup.filter(':visible').stop().fadeOut(0, function () {
+			$popup.filter(':visible').stop().fadeOut(animateSpeed, function () {
 				popupIsOpen = false;
 			});
 		}

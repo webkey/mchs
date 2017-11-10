@@ -1531,26 +1531,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	background-image: url(../img/depict-tech.svg);
 }
 
-.svg-depict-tech {
-	fill: #006bb8;
-}
-
-.svg-depict-nature {
-	fill: #006bb8;
-}
-
-.svg-depict-fire {
-	fill: #006bb8;
-}
-
-.svg-depict-man-save {
-	fill: #006bb8;
-}
-
-.svg-depict-man-dead {
-	fill: #006bb8;
-}
-
 /* depicts end */
 /*btn-default*/
 .btn-default {
@@ -1943,10 +1923,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-}
-
-.no-touchevents .btn-map-site:hover {
-	background-color: #005593;
 }
 
 .btn-map-site:active {
@@ -10363,12 +10339,15 @@ html.before-extra-popup-open .wrapper {
 }
 
 .news-previews__meta .visit-view path {
-	-webkit-transition-property: color, fill, -webkit-transform;
-	transition-property: color, fill, -webkit-transform;
-	transition-property: transform, color, fill;
-	transition-property: transform, color, fill, -webkit-transform;
+	-webkit-transition-property: fill;
+	transition-property: fill;
 	-webkit-transition-duration: 0.2s;
 	        transition-duration: 0.2s;
+}
+
+.news-previews__meta .visit-view > em {
+	-webkit-transition: none;
+	transition: none;
 }
 
 .no-touchevents a.news-previews__inner:hover .news-previews__meta {
@@ -10697,10 +10676,8 @@ html.before-extra-popup-open .wrapper {
 }
 
 .news-grid__meta .visit-view svg path {
-	-webkit-transition-property: color, fill, -webkit-transform;
-	transition-property: color, fill, -webkit-transform;
-	transition-property: transform, color, fill;
-	transition-property: transform, color, fill, -webkit-transform;
+	-webkit-transition-property: fill;
+	transition-property: fill;
 	-webkit-transition-duration: 0.2s;
 	        transition-duration: 0.2s;
 }
@@ -10719,6 +10696,11 @@ html.before-extra-popup-open .wrapper {
 	position: relative;
 	bottom: auto;
 	width: auto;
+}
+
+.news-grid__meta .visit-view > em {
+	-webkit-transition: none;
+	transition: none;
 }
 
 .news-grid__footer {
@@ -14346,8 +14328,116 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	height: 32px;
 }
 
-.info-map-svg a:hover polygon, .info-map-svg a.active polygon {
-	fill: #eee;
+.info-map-svg g[data-href].active polygon {
+	fill: #006ab8;
+}
+
+.info-map-svg g[data-href].active text {
+	color: white;
+	fill: white;
+}
+
+.info-map-labels {
+	width: 100px;
+	height: 5px;
+	background-color: cadetblue;
+	text-align: center;
+}
+
+.info-map-labels svg {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.info-map-label {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.info-map-label:nth-child(1) {
+	z-index: 9;
+	margin-top: -0px;
+}
+
+.info-map-label:nth-child(2) {
+	z-index: 8;
+	margin-top: -5px;
+}
+
+.info-map-label:nth-child(2) {
+	margin-left: -22px;
+}
+
+.info-map-label:nth-child(3) {
+	z-index: 7;
+	margin-top: -10px;
+}
+
+.info-map-label:nth-child(3) {
+	margin-left: -22px;
+}
+
+.info-map-label:nth-child(4) {
+	z-index: 6;
+	margin-top: -15px;
+}
+
+.info-map-label:nth-child(4) {
+	margin-left: -22px;
+}
+
+.info-map-label:nth-child(5) {
+	z-index: 5;
+	margin-top: -20px;
+}
+
+.info-map-label:nth-child(5) {
+	margin-left: -22px;
+}
+
+.info-map-label:nth-child(6) {
+	z-index: 4;
+	margin-top: -25px;
+}
+
+.info-map-label:nth-child(6) {
+	margin-left: -22px;
+}
+
+.info-map-label:nth-child(7) {
+	z-index: 3;
+	margin-top: -30px;
+}
+
+.info-map-label:nth-child(7) {
+	margin-left: -22px;
+}
+
+.info-map-label:nth-child(8) {
+	z-index: 2;
+	margin-top: -35px;
+}
+
+.info-map-label:nth-child(8) {
+	margin-left: -22px;
+}
+
+.info-map-label:nth-child(9) {
+	z-index: 1;
+	margin-top: -40px;
+}
+
+.info-map-label:nth-child(9) {
+	margin-left: -22px;
+}
+
+.info-map-label:nth-child(10) {
+	z-index: 0;
+	margin-top: -45px;
+}
+
+.info-map-label:nth-child(10) {
+	margin-left: -22px;
 }
 
 /*info-map popup */
@@ -14381,9 +14471,11 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 .info-map-popup__corner {
 	position: absolute;
+	top: 0;
 	width: 0;
 	height: 100%;
 	background: red;
+	pointer-events: none;
 }
 
 .info-map-popup__corner.top {
@@ -14427,47 +14519,47 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	margin-bottom: 20px;
 }
 
-.info-map__list, .user-content .info-map__list {
+.info-map-popup__list, .user-content .info-map-popup__list {
 	margin: 0 0 20px;
 	padding: 0;
 }
 
-.info-map__list:last-child, .user-content .info-map__list:last-child {
+.info-map-popup__list:last-child, .user-content .info-map-popup__list:last-child {
 	margin-bottom: 0;
 }
 
-.info-map__list li, .user-content .info-map__list li {
+.info-map-popup__list li, .user-content .info-map-popup__list li {
 	padding: 0;
 	margin: 0 0 10px;
 }
 
-.info-map__list li:last-child, .user-content .info-map__list li:last-child {
+.info-map-popup__list li:last-child, .user-content .info-map-popup__list li:last-child {
 	margin-bottom: 0;
 }
 
-.info-map__list li::before, .user-content .info-map__list li::before {
+.info-map-popup__list li::before, .user-content .info-map-popup__list li::before {
 	content: none;
 }
 
-.info-map__list {
+.info-map-popup__list {
 	font-size: 14px;
 	line-height: 24px;
 }
 
-.info-map__list li::after {
+.info-map-popup__list li::after {
 	content: '';
 	display: table;
 	clear: both;
 }
 
-.info-map__list li > i {
+.info-map-popup__list li > i {
 	float: left;
 	width: 24px;
 	height: 24px;
 	margin-right: 5px;
 }
 
-.info-map__list li .text-inner {
+.info-map-popup__list li .text-inner {
 	display: block;
 	overflow: hidden;
 }
@@ -14488,7 +14580,12 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	transition-property: transform;
 	transition-property: transform, -webkit-transform;
 	-webkit-transition-duration: 0.2s;
-	transition-duration: 0.2s;
+	        transition-duration: 0.2s;
+	display: none;
+}
+
+.touchevents .info-map-popup__close {
+	display: block;
 }
 
 .info-map-popup__close::before, .info-map-popup__close::after {
@@ -14497,8 +14594,8 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	height: 2em;
 	width: 22em;
+	height: 2em;
 	border-radius: 2em;
 	background: #d9d9d9;
 	-webkit-transition-property: background;
@@ -14900,312 +14997,6 @@ span.flatpickr-weekday {
 /*================================*/
 /*=========== SQUAD end ===========*/
 /*================================*/
-/*=================================*/
-/*=========== DEPARTMENTS ===========*/
-/*=================================*/
-/*=========== DEPARTMENTS CHERNOBIL ===========*/
-.department-chernobil-styles .mark {
-	color: #9b2813;
-}
-
-.department-chernobil-styles .text-color-alt {
-	color: #9b2813;
-}
-
-.department-chernobil-styles .user-content ul > li::before {
-	border-left-color: #9b2813;
-}
-
-.department-chernobil-styles .user-content ol > li::before {
-	color: #9b2813;
-}
-
-.department-chernobil-styles .user-content .tbl td, .department-chernobil-styles .user-content .tbl th {
-	background-color: #fff;
-}
-
-.department-chernobil-styles .user-content .tbl th, .department-chernobil-styles .user-content .tbl thead td, .department-chernobil-styles .user-content .tbl tfoot td {
-	background: #9b2813;
-	color: #fff;
-	border-color: #9b2813;
-}
-
-.department-chernobil-styles .user-content blockquote q::before, .department-chernobil-styles .user-content blockquote q::after {
-	background-image: url(../img/quote-left-department-chernobil.svg);
-}
-
-.department-chernobil-styles .view-print {
-	color: #9b2813;
-	border: 1px solid #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .view-print:hover {
-	background-color: #9b2813;
-}
-
-.department-chernobil-styles .view-print path {
-	fill: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .view-print:hover path {
-	fill: white;
-}
-
-.department-chernobil-styles .wrapper::before {
-	background-color: #172534;
-}
-
-.department-chernobil-styles .btn-default {
-	background-color: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .btn-default:hover {
-	background-color: #7c200f;
-}
-
-.department-chernobil-styles .btn-default-alt {
-	background-color: #fff;
-	border-color: #9b2813;
-	color: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .btn-default-alt:hover {
-	background: #7c200f;
-	color: #fff;
-}
-
-.department-chernobil-styles .btn-arrow {
-	color: #fff;
-	background-color: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .btn-arrow:hover {
-	background-color: #7c200f;
-}
-
-.department-chernobil-styles .more .btn-more {
-	color: #262626;
-}
-
-.department-chernobil-styles .more i::before, .department-chernobil-styles .more i::after {
-	background: #262626;
-}
-
-.department-chernobil-styles .btn-map-site {
-	background-color: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .btn-map-site:hover {
-	background-color: #842210;
-}
-
-.department-chernobil-styles .form-mark {
-	color: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles input[type="text"]:hover, .no-touchevents .department-chernobil-styles input[type="password"]:hover, .no-touchevents .department-chernobil-styles input[type="email"]:hover, .no-touchevents .department-chernobil-styles input[type="search"]:hover, .no-touchevents .department-chernobil-styles textarea:hover {
-	border-color: #9b2813;
-}
-
-.department-chernobil-styles input[type="text"]:focus, .department-chernobil-styles input[type="password"]:focus, .department-chernobil-styles input[type="email"]:focus, .department-chernobil-styles input[type="search"]:focus, .department-chernobil-styles textarea:focus {
-	border-color: #9b2813;
-	box-shadow: inset 0 0 0 1px #9b2813;
-}
-
-.department-chernobil-styles .select select:focus, .department-chernobil-styles .select button.cselect:focus .select-inner, .department-chernobil-styles .select button.cselect.ui-state-active .select-inner {
-	border-color: #9b2813;
-}
-
-.department-chernobil-styles .select::before, .department-chernobil-styles .select::after, .department-chernobil-styles .select button.cselect .ui-icon .arrow-select::before, .department-chernobil-styles .select button.cselect .ui-icon .arrow-select::after {
-	background-color: #9b2813;
-}
-
-.department-chernobil-styles .select div.cselect .ui-multiselect-checkboxes {
-	border-color: #9b2813;
-}
-
-.department-chernobil-styles .form-title {
-	color: #9b2813;
-}
-
-.department-chernobil-styles .breadcrumbs__item a > i::before {
-	border-left-color: #9b2813;
-}
-
-.department-chernobil-styles .logo-wrap {
-	background-color: #172534;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.elements-is-transform .department-chernobil-styles .logo a {
-	text-align: center;
-}
-
-.department-chernobil-styles .header__top {
-	background: #395b7e;
-}
-
-.department-chernobil-styles .nav__list > li.hover > .nav__tab > a, .department-chernobil-styles .nav__list > li.active > .nav__tab > a, .department-chernobil-styles .nav__list > li.current > .nav__tab > a, .no-js .department-chernobil-styles .nav__list > li:hover > .nav__tab > a, .department-chernobil-styles .priority-nav__dropdown > li.hover > .nav__tab > a, .department-chernobil-styles .priority-nav__dropdown > li.active > .nav__tab > a, .department-chernobil-styles .priority-nav__dropdown > li.current > .nav__tab > a, .no-js .department-chernobil-styles .priority-nav__dropdown > li:hover > .nav__tab > a {
-	background: #9b2813;
-	color: white;
-}
-
-.department-chernobil-styles .nav .priority-nav__dropdown {
-	background: #395b7e;
-}
-
-.department-chernobil-styles .header__hot-line li:first-child a, .no-touchevents .department-chernobil-styles .header__hot-line li:first-child a:hover {
-	color: #9b2813;
-}
-
-.department-chernobil-styles .region-menu-heading {
-	background-color: #172534;
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.no-touchevents .department-chernobil-styles .region-menu-heading:hover {
-	background-color: #121e2a;
-}
-
-.department-chernobil-styles .region-menu__list a {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.department-chernobil-styles .region-menu__list > li > .region-menu__tab a {
-	background-color: #172534;
-}
-
-.department-chernobil-styles .region-menu__angle {
-	background-color: #172534;
-	border: solid rgba(255, 255, 255, 0.1);
-	border-width: 0 0 1px 1px;
-}
-
-.department-chernobil-styles .region-menu__drop ul, .department-chernobil-styles .region-menu__drop a, .department-chernobil-styles .region-menu__drop .region-menu__angle {
-	background-color: #121e2a;
-}
-
-.no-touchevents .department-chernobil-styles .region-menu__drop ul:hover, .no-touchevents .department-chernobil-styles .region-menu__drop a:hover, .no-touchevents .department-chernobil-styles .region-menu__drop .region-menu__angle:hover {
-	color: white;
-}
-
-.department-chernobil-styles .region-menu__drop .region-menu__drop ul, .department-chernobil-styles .region-menu__drop .region-menu__drop a, .department-chernobil-styles .region-menu__drop .region-menu__drop .region-menu__angle {
-	background-color: #0e1720;
-}
-
-.department-chernobil-styles .region-menu__drop .region-menu__drop .region-menu__drop ul, .department-chernobil-styles .region-menu__drop .region-menu__drop .region-menu__drop a, .department-chernobil-styles .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__angle {
-	background-color: #0b1219;
-}
-
-.department-chernobil-styles .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__drop ul, .department-chernobil-styles .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__drop a, .department-chernobil-styles .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__angle {
-	background-color: #090e14;
-}
-
-.department-chernobil-styles .side__depict {
-	background: #9b2813;
-}
-
-.department-chernobil-styles .flatpickr-day.endRange, .department-chernobil-styles .flatpickr-day.endRange.inRange, .department-chernobil-styles .flatpickr-day.endRange.nextMonthDay, .department-chernobil-styles .flatpickr-day.endRange.prevMonthDay, .department-chernobil-styles .flatpickr-day.endRange:focus, .department-chernobil-styles .flatpickr-day.endRange:hover, .department-chernobil-styles .flatpickr-day.selected, .department-chernobil-styles .flatpickr-day.selected.inRange, .department-chernobil-styles .flatpickr-day.selected.nextMonthDay, .department-chernobil-styles .flatpickr-day.selected.prevMonthDay, .department-chernobil-styles .flatpickr-day.selected:focus, .department-chernobil-styles .flatpickr-day.selected:hover, .department-chernobil-styles .flatpickr-day.startRange, .department-chernobil-styles .flatpickr-day.startRange.inRange, .department-chernobil-styles .flatpickr-day.startRange.nextMonthDay, .department-chernobil-styles .flatpickr-day.startRange.prevMonthDay, .department-chernobil-styles .flatpickr-day.startRange:focus, .department-chernobil-styles .flatpickr-day.startRange:hover {
-	background: #9b2813;
-	border-color: #9b2813;
-}
-
-.department-chernobil-styles .news-grid__inner, .department-chernobil-styles .news-previews__inner {
-	box-shadow: inset 0 -3px 0 #9b2813;
-}
-
-.department-chernobil-styles .news-grid__content::before, .department-chernobil-styles .news-previews__content::before {
-	background: #9b2813;
-}
-
-.department-chernobil-styles .news-grid__item--wide .news-grid__inner::before {
-	background: url("../img/no-img-department-chernobil.jpg") no-repeat center;
-	background-size: cover;
-}
-
-.no-touchevents .department-chernobil-styles a.news-grid__inner:hover .news-grid__content, .no-touchevents .department-chernobil-styles a.news-grid__inner:hover .news-grid__meta {
-	color: white;
-}
-
-.no-touchevents .department-chernobil-styles a.news-grid__inner:hover path {
-	fill: white;
-}
-
-.no-touchevents .department-chernobil-styles a.news-previews__inner:hover .news-previews__content, .no-touchevents .department-chernobil-styles a.news-previews__inner:hover .news-previews__meta {
-	color: white;
-}
-
-.no-touchevents .department-chernobil-styles a.news-previews__inner:hover path {
-	fill: white;
-}
-
-.department-chernobil-styles .gov__list .slick-dots li.slick-active button::before {
-	background: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .btn-popup-close:hover {
-	background-color: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .btn-popup-close:hover > i::before, .no-touchevents .department-chernobil-styles .btn-popup-close:hover > i::after {
-	background-color: white;
-}
-
-.no-touchevents .department-chernobil-styles .lang__list a:hover, .no-touchevents .department-chernobil-styles .lang__list a.current {
-	color: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .share-link__list a:hover {
-	color: #9b2813;
-}
-
-.department-chernobil-styles input.search-form__input, .department-chernobil-styles input.search-form__input:focus {
-	border: none;
-	box-shadow: none;
-}
-
-.department-chernobil-styles .search-form__btn::after {
-	background-color: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .search-form__btn:hover path {
-	fill: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .search-form__btn:hover span {
-	color: #9b2813;
-}
-
-.department-chernobil-styles .bitrix-search-page ul .active span {
-	color: white !important;
-	background-color: #9b2813 !important;
-}
-
-.no-touchevents .department-chernobil-styles .bitrix-search-page ul a:hover {
-	color: white;
-}
-
-.no-touchevents .department-chernobil-styles .bitrix-search-page ul a:hover span {
-	background-color: #9b2813;
-}
-
-.no-touchevents .department-chernobil-styles .bitrix-search-page .p-nav:hover {
-	background: #9b2813;
-	box-shadow: inset 0 0 0 1px #9b2813;
-}
-
-.department-chernobil-styles .nav-small-tabs a:first-child {
-	background-color: #172534;
-}
-
-.department-chernobil-styles .nav-small-tabs a.active-tab:first-child {
-	border-color: rgba(255, 255, 255, 0.1);
-}
-
-/*=========== DEPARTMENTS CHERNOBIL end ===========*/
-/*=====================================*/
-/*=========== DEPARTMENTS end ===========*/
-/*=====================================*/
 /*======================================================*/
 /*PRINT STYLES*/
 /*======================================================*/

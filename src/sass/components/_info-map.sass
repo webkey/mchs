@@ -56,14 +56,44 @@
 		+size(32px)
 
 	// hover
-	a
-		&:hover, &.active
+	g[data-href]
+		&.active
 			polygon
-				fill: #eee
+				fill: $base-color
 
-			//text
+			text
 				color: white
 				fill: white
+
+.info-map-labels
+	width: 100px
+	height: 5px
+	background-color: cadetblue
+	text-align: center
+
+	svg
+		+display-inline-block-top
+
+.info-map-label
+	+display-inline-block-top
+
+	$minGroup1: 1 !default
+	$maxGroup1: 10 !default
+
+	@for $item from $minGroup1 through $maxGroup1
+
+		$cur-item: $maxGroup1 - $item
+
+		&:nth-child(#{$item})
+			z-index: $cur-item
+			margin-top: -#{5px*$item - 5px}
+
+		@if $item > $minGroup1
+			&:nth-child(#{$item})
+				margin-left: -22px
+
+//& + svg
+	margin-left: -22px
 
 /*info-map popup
 .info-map-popup
@@ -74,6 +104,7 @@
 	padding: 0 10px
 	box-sizing: border-box
 	z-index: 999
+	//pointer-events: none
 
 	/*opacity: 0;
 	/*visibility: hidden;
@@ -92,9 +123,11 @@
 
 .info-map-popup__corner
 	position: absolute
+	top: 0
 	width: 0
 	height: 100%
 	background: red
+	pointer-events: none
 
 	&.top
 		transform: rotate(180deg)
@@ -127,7 +160,7 @@
 	margin-bottom: 20px
 
 // list
-.info-map__list
+.info-map-popup__list
 	&, .#{$user-content} &
 		margin: 0 0 20px
 		padding: 0
@@ -165,24 +198,24 @@
 	position: absolute
 	right: 10px
 	top: 10px
-	width: 18px
-	height: 18px
+	+size(18px)
 	font-size: 1px
 	background: #fff
 	text-decoration: none
 	text-indent: -9999px
 	overflow: hidden
-	-webkit-transition-property: -webkit-transform
 	transition-property: transform
-	-webkit-transition-duration: 0.2s
 	transition-duration: 0.2s
+	display: none
+
+	.touchevents &
+		display: block
 
 	&::before, &::after
 		+pseudo()
 		left: 50%
 		top: 50%
-		height: 2em
-		width: 22em
+		+size(22em, 2em)
 		border-radius: 2em
 		background: #d9d9d9
 		transition-property: background

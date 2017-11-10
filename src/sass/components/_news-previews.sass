@@ -125,8 +125,12 @@
 		float: right
 
 		path
-			+news-transition
+			transition:
+				property: fill
+				duration: $animation-speed
 
+		& > em
+			transition: none
 
 	.no-touchevents a.news-previews__inner:hover &
 		color: $text-color

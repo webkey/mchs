@@ -29,6 +29,9 @@
 	<!--Style-->
 	<link rel="stylesheet" href="css/libs.min.css">
 	<link rel="stylesheet" href="css/main.css">
+	@@if(context.depCss) {
+	<link rel="stylesheet" href="css/@@depCss">
+	}
 	<!--Modernizr-->
 	<script src="js/modernizr.min.js"></script>
 	<script>

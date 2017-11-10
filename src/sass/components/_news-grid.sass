@@ -236,8 +236,8 @@
 		float: right
 
 		svg path
-			+news-transition
-
+			transition-property: fill
+			transition-duration: $animation-speed
 
 	.no-touchevents a.news-grid__inner:hover &
 		color: $text-color
@@ -250,6 +250,9 @@
 		position: relative
 		bottom: auto
 		width: auto
+
+	.visit-view > em
+		transition: none
 
 .news-grid__footer
 	position: relative
