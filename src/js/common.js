@@ -3826,7 +3826,7 @@ function removeAttrFromImg() {
 }
 /*remove attribute from img on content end*/
 
-/* branches map popup */
+/* info map popup */
 /*add ui position add class*/
 function addPositionClass(position, feedback, obj){
 	removePositionClass(obj);
@@ -3844,25 +3844,57 @@ function removePositionClass(obj){
 	obj.removeClass('right');
 }
 
+/**
+ * Add labels on info map
+ * */
+function addLabelsOnMap() {
+	var $infoMapSvg = $('#infoMapSvg');
+
+
+	var getElementCenter = function (element) {
+		var bbox = element[0].getBBox(),
+			middleX = bbox.x + (bbox.width / 2),
+			middleY = bbox.y + (bbox.height / 2);
+
+		return {x: middleX, y: middleY};
+	};
+
+	var $foreignObject = $(document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject' ));
+
+	function addLabelsGroup() {
+		$.each(regionsEvents, function (key, val) {
+			console.log("val: ", key);
+			var $elem = $('[data-href="' + key + '"]');
+
+			var elementCenter = getElementCenter($elem);
+			var middleX = elementCenter.x;
+			var middleY = elementCenter.y;
+
+			var $labelGroup = $foreignObject.clone();
+			$labelGroup
+				.attr('transform', 'translate(' + middleX + ',' + middleY + ')')
+				.append($('script[data-template="info-map-labels"]').html())
+				.appendTo($infoMapSvg);
+
+			$.each(val, function (event, count) {
+				var $label = $labelGroup.find('[data-event="' +event+ '"]');
+				$label.addClass('show-label');
+
+				var valCount = count <= 1 ? false : count;
+				if(valCount){
+					$label.find('.info-map-count').addClass('show-count').find('span').text(valCount);
+				}
+			})
+		});
+	}
+
+	addLabelsGroup();
+}
+
 function infoMapPopup(){
 	// external js:
-	// 1) TweetMax VERSION: 1.19.0 (widgets.js);
 	// 2) resizeByWidth (resize only width);
 	// 3) addPositionClass, removePositionClass;
-
-
-	var svgElement = document.querySelector('[data-href="mi-vd"]');
-	var svgE = svgElement.getBoundingClientRect();
-
-	var draw = SVG('infoMapSvg');
-
-	// draw.viewbox(0, 0, 181, 181);
-
-	var use = draw.use('svg-ico-tech');
-
-	// var rect = draw.rect(100, 100).attr({ fill: '#f06' });
-
-	console.log("rect: ", svgE);
 
 	var $popup = $('.info-map-popup-js');
 	if ($popup.length) {
@@ -3890,34 +3922,34 @@ function infoMapPopup(){
 			// 	closePopup();
 			// }
 
-			$this.addClass(classActive);
-			$thisPopup.stop().fadeIn(animateSpeed, function () {
-				$thisPopup.addClass(classActive);
-				popupIsOpen = true;
-			});
+			// $this.addClass(classActive);
+			// $thisPopup.stop().fadeIn(animateSpeed, function () {
+			// 	$thisPopup.addClass(classActive);
+			// 	popupIsOpen = true;
+			// });
 
-			$thisPopup.position({
-				// my: "center bottom-20",
-				my: "center bottom",
-				at: "center top",
-				of: $this,
-				collision: "flipfit flip",
-				within: $container,
-				using: function( position, feedback ) {
-					addPositionClass(position, feedback, $(this));
-				}
-			});
-
-			$corner.position({
-				my: "center bottom-1",
-				at: "center top",
-				of: $this,
-				collision: "flipfit flip",
-				within: $container,
-				using: function( position, feedback ) {
-					addPositionClass(position, feedback, $(this));
-				}
-			});
+			// $thisPopup.position({
+			// 	// my: "center bottom-20",
+			// 	my: "center bottom",
+			// 	at: "center top",
+			// 	of: $this,
+			// 	collision: "fit fit",
+			// 	within: $container,
+			// 	using: function( position, feedback ) {
+			// 		addPositionClass(position, feedback, $(this));
+			// 	}
+			// });
+			//
+			// $corner.position({
+			// 	my: "center bottom-1",
+			// 	at: "center top",
+			// 	of: $this,
+			// 	collision: "fit fit",
+			// 	within: $container,
+			// 	using: function( position, feedback ) {
+			// 		addPositionClass(position, feedback, $(this));
+			// 	}
+			// });
 		}).mouseleave(function () {
 			closePopup();
 		});
@@ -3961,7 +3993,6 @@ function infoMapPopup(){
 		}
 	}
 }
-/* branches map popup end */
 
 /**
  * wrap table to table-auto container
@@ -4115,6 +4146,7 @@ $(document).ready(function () {
 	toggleContacts();
 	fitVidsInit();
 	footerBottom();
+	addLabelsOnMap();
 	infoMapPopup();
 	formSuccessExample();
 	departmentChanger();

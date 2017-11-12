@@ -12,6 +12,10 @@
 .info-map-svg
 	max-width: 100%
 	max-height: 100%
+	position: relative
+
+	&, &:not(:root)
+		overflow: visible
 
 	//.st0
 		fill: $base-color
@@ -30,7 +34,7 @@
 	polygon
 		fill: white
 		stroke-width: 1
-		stroke: $base-color
+		stroke: $text-color
 		stroke-miterlimit: 10
 
 	#all-rb .st0
@@ -65,32 +69,75 @@
 				color: white
 				fill: white
 
+.info-map-labels, .info-map-labels__holder
+	width: 140px
+	height: 0
+
+// info map labels
+$info-map-label-size: 50px
 .info-map-labels
-	width: 100px
-	height: 5px
-	background-color: cadetblue
 	text-align: center
 
-	svg
-		+display-inline-block-top
+	//background-color: coral
+	//height: 5px
+
+.info-map-labels__holder
+	margin-left: -#{70 - round($info-map-label-size/2)+10}
+
+	//background-color: cadetblue
+	//height: 5px
 
 .info-map-label
-	+display-inline-block-top
+	vertical-align: top
+	margin-top: -#{round($info-map-label-size/2)}
+	margin-left: -#{round($info-map-label-size/2)+10}
+	display: none
 
-	$minGroup1: 1 !default
-	$maxGroup1: 10 !default
+	&.show-label
+		display: inline-block
 
-	@for $item from $minGroup1 through $maxGroup1
+	//$minGroup1: 1 !default
+	//$maxGroup1: 10 !default
+
+	//@for $item from $minGroup1 through $maxGroup1
 
 		$cur-item: $maxGroup1 - $item
 
 		&:nth-child(#{$item})
 			z-index: $cur-item
-			margin-top: -#{5px*$item - 5px}
+			//margin-top: -#{5px*$item - 5px}
 
 		@if $item > $minGroup1
 			&:nth-child(#{$item})
-				margin-left: -22px
+				margin-left: -#{round($label-size/2)+10}
+
+	svg
+		+display-inline-block-top
+		+size($info-map-label-size)
+
+	.info-map-count
+		margin: -#{$info-map-label-size} 0 0
+		+size($info-map-label-size)
+		+font-bold
+		font-size: 14px
+		line-height: 18px
+		color: white
+		text-align: center
+		display: none
+
+		&.show-count
+			display: block
+
+		span
+			$number-size: 18px
+			display: inline-block
+			vertical-align: top
+			height: $number-size
+			min-width: $number-size
+			background-color: #a6a6a6
+			border-radius: round($number-size/2)
+			padding: 0 5px
+			margin-top: round(($info-map-label-size - $number-size)/2)
 
 //& + svg
 	margin-left: -22px
