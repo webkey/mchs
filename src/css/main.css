@@ -14269,9 +14269,18 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 /*info-map */
 .info-map {
 	position: relative;
-	padding: 0 0 30px;
 	max-width: 1100px;
-	margin: 0 auto;
+	margin: 0 auto 4.5rem;
+}
+
+.info-map-regions {
+	margin-left: 5%;
+}
+
+@media (max-width: 767px) {
+	.info-map-regions {
+		margin-left: 0;
+	}
 }
 
 .info-map-svg {
@@ -14300,7 +14309,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 .info-map-svg polygon {
 	fill: white;
 	stroke-width: 1;
-	stroke: #262626;
+	stroke: #006ab8;
 	stroke-miterlimit: 10;
 }
 
@@ -14310,7 +14319,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	fill: none;
 }
 
-.info-map-svg #oblasti .st0 {
+.info-map-svg #oblasti .st0, .info-map-svg #minsk .st0 {
 	stroke-width: 2;
 	stroke: #d63700;
 	fill: none;
@@ -14334,7 +14343,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 }
 
 .info-map-svg g[data-href].active polygon {
-	fill: #006ab8;
+	fill: #ff9a09;
 }
 
 .info-map-svg g[data-href].active text {
@@ -14349,16 +14358,17 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 .info-map-labels {
 	text-align: center;
+	pointer-events: none;
 }
 
 .info-map-labels__holder {
-	margin-left: -55px;
+	margin-left: -60px;
 }
 
 .info-map-label {
 	vertical-align: top;
-	margin-top: -25px;
-	margin-left: -35px;
+	margin-top: -40px;
+	margin-left: -30px;
 	display: none;
 }
 
@@ -14369,18 +14379,23 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 .info-map-label svg {
 	display: inline-block;
 	vertical-align: top;
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
+}
+
+.info-map-label svg path, .info-map-label svg use {
+	stroke: #262626;
+	stroke-width: 2px;
 }
 
 .info-map-label .info-map-count {
-	margin: -50px 0 0;
-	width: 50px;
-	height: 50px;
+	margin: -40px 0 0;
+	width: 40px;
+	height: 40px;
 	font-family: "Roboto", sans-serif;
-	font-weight: 700;
-	font-size: 14px;
-	line-height: 18px;
+	font-weight: 300;
+	font-size: 12px;
+	line-height: 16px;
 	color: white;
 	text-align: center;
 	display: none;
@@ -14393,12 +14408,13 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 .info-map-label .info-map-count span {
 	display: inline-block;
 	vertical-align: top;
-	height: 18px;
-	min-width: 18px;
-	background-color: #a6a6a6;
-	border-radius: 9px;
+	height: 16px;
 	padding: 0 5px;
-	margin-top: 16px;
+	margin-top: 12px;
+	min-width: 16px;
+	background-color: #d63700;
+	border-radius: 8px;
+	box-sizing: border-box;
 }
 
 /*info-map popup */
@@ -14419,7 +14435,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	position: relative;
 	padding: 28px 30px;
 	background-color: white;
-	border: 1px solid #e6e6e6;
+	border: 1px solid #d63700;
 	font-size: 0;
 	letter-spacing: -4px;
 }
@@ -14465,7 +14481,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 .info-map-popup__corner::before {
 	border-color: rgba(230, 230, 230, 0);
-	border-top-color: #e6e6e6;
+	border-top-color: #d63700;
 	border-width: 14px;
 	margin-left: -14px;
 }
@@ -14513,11 +14529,16 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	clear: both;
 }
 
-.info-map-popup__list li > i {
+.info-map-popup__list li > svg {
 	float: left;
 	width: 24px;
 	height: 24px;
 	margin-right: 5px;
+}
+
+.info-map-popup__list li path, .info-map-popup__list li use {
+	stroke-width: 2px;
+	stroke: #262626;
 }
 
 .info-map-popup__list li .text-inner {
@@ -14584,6 +14605,138 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 /*info-map popup end */
 /*info-map end */
+/*map legend */
+.map-legend__list, .user-content .map-legend__list {
+	margin: 0 0 20px;
+	padding: 0;
+}
+
+.map-legend__list:last-child, .user-content .map-legend__list:last-child {
+	margin-bottom: 0;
+}
+
+.map-legend__list li, .user-content .map-legend__list li {
+	padding: 0;
+	margin: 0 0 10px;
+}
+
+.map-legend__list li:last-child, .user-content .map-legend__list li:last-child {
+	margin-bottom: 0;
+}
+
+.map-legend__list li::before, .user-content .map-legend__list li::before {
+	content: none;
+}
+
+.map-legend__list {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.map-legend__list li::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.map-legend__list li > svg, .map-legend__list li > i {
+	float: left;
+	width: 32px;
+	height: 32px;
+	margin-right: 5px;
+}
+
+.map-legend__list li path, .map-legend__list li use {
+	stroke-width: 2px;
+	stroke: #262626;
+}
+
+.map-legend__list li .text-inner {
+	display: block;
+	overflow: hidden;
+	padding: 4px 0;
+}
+
+/*map legend end */
+/*map oblast */
+.info-map-oblast {
+	width: 30%;
+	max-width: 320px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 5;
+}
+
+@media (max-width: 767px) {
+	.info-map-oblast {
+		position: relative;
+		left: auto;
+		top: auto;
+		margin: 0 auto 4.5rem;
+		width: auto;
+	}
+}
+
+.info-map-oblast .info-map-svg polygon {
+	stroke-width: 3;
+}
+
+.info-map-oblast .info-map-svg text {
+	font-size: 36px;
+	line-height: 1;
+	left: -20px;
+}
+
+.info-map-oblast .info-map-svg #minsk .st0 {
+	stroke-width: 8;
+}
+
+.info-map-oblast .info-map-labels, .info-map-oblast .info-map-labels__holder {
+	width: 280px;
+}
+
+.info-map-oblast .info-map-label {
+	margin-top: -110px;
+	margin-left: -65px;
+}
+
+.info-map-oblast .info-map-label svg {
+	width: 110px;
+	height: 110px;
+}
+
+.info-map-oblast .info-map-label svg path, .info-map-oblast .info-map-label svg use {
+	stroke-width: 2px;
+}
+
+.info-map-oblast .info-map-label .info-map-count {
+	margin-top: -110px;
+	width: 110px;
+	height: 110px;
+	font-size: 38px;
+	line-height: 42px;
+}
+
+.info-map-oblast .info-map-label .info-map-count span {
+	height: 42px;
+	padding: 0 5px;
+	margin-top: 34px;
+	min-width: 42px;
+	border-radius: 21px;
+}
+
+.info-map-oblast__title {
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 18px;
+	line-height: 1.2;
+	text-align: center;
+	margin-bottom: 1.5rem;
+}
+
+/*map oblast end */
 /*======================================================*/
 /*VENDOR*/
 /*======================================================*/

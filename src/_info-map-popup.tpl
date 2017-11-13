@@ -8,19 +8,39 @@
 		<div class="info-map-popup__title">В @@region районе зафиксировано происшествий</div>
 		<ul class="info-map-popup__list">
 			@@if(context.tech){
-			<li><i class="depict-tech"></i><div class="text-inner">Крупная ЧС техногенного характера: <span>@@tech</span></div></li>
+			<li>
+				<svg viewBox="0 0 181 181" width="32" height="32">
+					<use xlink:href="#svg-ico-tech"></use>
+				</svg>
+				<div class="text-inner">Крупная ЧС техногенного характера: <b>@@tech</b></div></li>
 			}
 			@@if(context.nature){
-			<li><i class="depict-nature"></i><div class="text-inner">Крупная ЧС природного характера: <span>@@nature</span></div></li>
+			<li>
+				<svg viewBox="0 0 122.8 118.7" width="32" height="32">
+					<use xlink:href="#svg-ico-nature"></use>
+				</svg>
+				<div class="text-inner">Крупная ЧС природного характера: <b>@@nature</b></div></li>
 			}
 			@@if(context.fire){
-			<li><i class="depict-fire"></i><div class="text-inner">Крупные пожары: <span>@@fire</span></div></li>
+			<li>
+				<svg viewBox="0 0 47.9 66.4" width="32" height="32">
+					<use xlink:href="#svg-ico-fire"></use>
+				</svg>
+				<div class="text-inner">Крупные пожары: <b>@@fire</b></div></li>
 			}
 			@@if(context.dead){
-			<li><i class="depict-man-dead"></i><div class="text-inner">Погибло в ЧС: <span>@@dead</span></div></li>
+			<li>
+				<svg viewBox="0 0 51 94.9" width="32" height="32">
+					<use xlink:href="#svg-ico-dead"></use>
+				</svg>
+				<div class="text-inner">Погибло в ЧС: <b>@@dead</b></div></li>
 			}
 			@@if(context.save){
-			<li><i class="depict-man-save"></i><div class="text-inner">Спасено при ликвидации ЧС и прочих инцидентах: <span>@@save</span></div></li>
+			<li>
+				<svg viewBox="0 0 51.046 94.95" width="32" height="32">
+					<use xlink:href="#svg-ico-save"></use>
+				</svg>
+				<div class="text-inner">Спасено при ликвидации ЧС и прочих инцидентах: <b>@@save</b></div></li>
 			}
 		</ul>
 	</div>

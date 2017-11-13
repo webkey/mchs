@@ -3631,6 +3631,26 @@
 	color: white;
 }
 
+.color-scheme-bw .info-map {
+	-webkit-filter: saturate(0);
+	        filter: saturate(0);
+}
+
+.color-scheme-bw .info-map-count {
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+}
+
+.color-scheme-bw .info-map-count span {
+	color: black !important;
+	background-color: white !important;
+}
+
+.color-scheme-bw .info-map-popup {
+	-webkit-filter: saturate(0);
+	        filter: saturate(0);
+}
+
 /*=========== BLACK AND WHITE scheme end ===========*/
 /*=========== BLACK AND WHITE images ===========*/
 .images-bw img,

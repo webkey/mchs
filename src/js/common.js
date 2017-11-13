@@ -3826,6 +3826,124 @@ function removeAttrFromImg() {
 }
 /*remove attribute from img on content end*/
 
+/**
+ * Add labels on info map
+ * */
+
+(function($){
+	var defaults = {
+		obj: {},
+		containerClass: 'added-labels-to-map',
+		tpl: null,
+		dataEvent: 'data-event',
+		counter: null,
+		number: null,
+		modifiers: {
+			showLabel: "show-label",
+			showCount: "show-count"
+		}
+
+		// Add callback functions
+		// created: function () {} // Возов вконце функции init()
+	};
+
+	function AddLabelsEvents(element, options) {
+		var self = this;
+
+		self.config = $.extend(true, {}, defaults, options);
+
+		self.element = element;
+
+		// create jquery foreignObject
+		self.foreignObject = $(document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject' ));
+
+		self.callbacks();
+		self.event(); // example event
+		self.init(); // create DOM structure of the plugins
+	}
+
+	/** get coordinates of an element's center */
+	AddLabelsEvents.prototype.getElementCenter = function (element) {
+		var bbox = element[0].getBBox(),
+			middleX = bbox.x + (bbox.width / 2),
+			middleY = bbox.y + (bbox.height / 2);
+
+		return {x: middleX, y: middleY};
+	};
+
+	/** track events */
+	AddLabelsEvents.prototype.callbacks = function () {
+		var self = this;
+		$.each(self.config, function (key, value) {
+			if(typeof value === 'function') {
+				self.element.on(key + '.addLabelsEvents', function (e, param) {
+					return value(e, self.element, param);
+				});
+			}
+		});
+	};
+
+	AddLabelsEvents.prototype.event = function () {
+		var self = this;
+		var obj = self.config.obj;
+
+		$.each(obj, function (key, val) {
+			var $item = self.element.find('[data-href="' + key + '"]');
+
+			var labelGroupTpl = self.foreignObject.clone();
+
+			var elementCenter = self.getElementCenter($item);
+			labelGroupTpl
+				.attr('transform', 'translate(' + elementCenter.x + ',' + elementCenter.y + ')')
+				.append(self.config.tpl)
+				.appendTo(self.element);
+
+			$.each(val, function (event, count) {
+				var $label = labelGroupTpl.find('[' + self.config.dataEvent + '="' +event+ '"]');
+				$label.addClass(self.config.modifiers.showLabel);
+
+				var valCount = count <= 1 ? false : count;
+				if(valCount){
+					$label.find(self.config.counter).addClass(self.config.modifiers.showCount);
+					$label.find(self.config.number).text(valCount);
+				}
+			})
+		});
+	};
+
+	AddLabelsEvents.prototype.init = function () {
+
+		this.element.addClass(this.config.containerClass);
+
+		this.element.trigger('created.addLabelsEvents');
+
+	};
+
+	$.fn.addLabelsEvents = function (options) {
+		'use strict';
+
+		new AddLabelsEvents(this, options);
+
+		return this;
+	};
+})(jQuery);
+
+function addLabelsOnMap() {
+	$('#infoMapSvg').addLabelsEvents({
+		obj: regionsEvents,
+		tpl: $('script[data-template="info-map-labels"]').html(),
+		counter: '.info-map-count',
+		number: '.info-map-number'
+	});
+
+	$('#infoMapMinskSvg').addLabelsEvents({
+		obj: minskEvents,
+		tpl: $('script[data-template="info-map-labels"]').html(),
+		counter: '.info-map-count',
+		number: '.info-map-number'
+	});
+}
+
 /* info map popup */
 /*add ui position add class*/
 function addPositionClass(position, feedback, obj){
@@ -3843,54 +3961,6 @@ function removePositionClass(obj){
 	obj.removeClass('left');
 	obj.removeClass('right');
 }
-
-/**
- * Add labels on info map
- * */
-function addLabelsOnMap() {
-	var $infoMapSvg = $('#infoMapSvg');
-
-
-	var getElementCenter = function (element) {
-		var bbox = element[0].getBBox(),
-			middleX = bbox.x + (bbox.width / 2),
-			middleY = bbox.y + (bbox.height / 2);
-
-		return {x: middleX, y: middleY};
-	};
-
-	var $foreignObject = $(document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject' ));
-
-	function addLabelsGroup() {
-		$.each(regionsEvents, function (key, val) {
-			console.log("val: ", key);
-			var $elem = $('[data-href="' + key + '"]');
-
-			var elementCenter = getElementCenter($elem);
-			var middleX = elementCenter.x;
-			var middleY = elementCenter.y;
-
-			var $labelGroup = $foreignObject.clone();
-			$labelGroup
-				.attr('transform', 'translate(' + middleX + ',' + middleY + ')')
-				.append($('script[data-template="info-map-labels"]').html())
-				.appendTo($infoMapSvg);
-
-			$.each(val, function (event, count) {
-				var $label = $labelGroup.find('[data-event="' +event+ '"]');
-				$label.addClass('show-label');
-
-				var valCount = count <= 1 ? false : count;
-				if(valCount){
-					$label.find('.info-map-count').addClass('show-count').find('span').text(valCount);
-				}
-			})
-		});
-	}
-
-	addLabelsGroup();
-}
-
 function infoMapPopup(){
 	// external js:
 	// 2) resizeByWidth (resize only width);
@@ -3912,7 +3982,11 @@ function infoMapPopup(){
 			var $this = $(this);
 			var $thisPopup = $('#' + $this.attr('data-href'));
 
-			if(!$thisPopup.length){
+
+			if(popupIsOpen){
+				return
+			}
+			if(!$thisPopup.length || popupIsOpen){
 				return;
 			}
 
@@ -3922,34 +3996,34 @@ function infoMapPopup(){
 			// 	closePopup();
 			// }
 
-			// $this.addClass(classActive);
-			// $thisPopup.stop().fadeIn(animateSpeed, function () {
-			// 	$thisPopup.addClass(classActive);
-			// 	popupIsOpen = true;
-			// });
+			$this.addClass(classActive);
+			$thisPopup.stop().fadeIn(animateSpeed, function () {
+				$thisPopup.addClass(classActive);
+				popupIsOpen = true;
+			});
 
-			// $thisPopup.position({
-			// 	// my: "center bottom-20",
-			// 	my: "center bottom",
-			// 	at: "center top",
-			// 	of: $this,
-			// 	collision: "fit fit",
-			// 	within: $container,
-			// 	using: function( position, feedback ) {
-			// 		addPositionClass(position, feedback, $(this));
-			// 	}
-			// });
-			//
-			// $corner.position({
-			// 	my: "center bottom-1",
-			// 	at: "center top",
-			// 	of: $this,
-			// 	collision: "fit fit",
-			// 	within: $container,
-			// 	using: function( position, feedback ) {
-			// 		addPositionClass(position, feedback, $(this));
-			// 	}
-			// });
+			$thisPopup.position({
+				// my: "center bottom-20",
+				my: "center bottom",
+				at: "center top",
+				of: $this,
+				collision: "flipfit flip",
+				within: $container,
+				using: function( position, feedback ) {
+					addPositionClass(position, feedback, $(this));
+				}
+			});
+
+			$corner.position({
+				my: "center bottom-1",
+				at: "center top",
+				of: $this,
+				collision: "flipfit flip",
+				within: $container,
+				using: function( position, feedback ) {
+					addPositionClass(position, feedback, $(this));
+				}
+			});
 		}).mouseleave(function () {
 			closePopup();
 		});
@@ -3972,7 +4046,7 @@ function infoMapPopup(){
 		});
 
 		$(document).keyup(function(e) {
-			if (popupIsOpen && e.keyCode == 27) {
+			if (popupIsOpen && e.keyCode === 27) {
 				closePopup();
 			}
 		});
