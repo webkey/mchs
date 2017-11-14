@@ -3646,7 +3646,12 @@
 	background-color: white !important;
 }
 
-.color-scheme-bw .info-map-popup {
+.color-scheme-bw .info-map-popup, .color-scheme-bw .map-legend {
+	-webkit-filter: saturate(0);
+	        filter: saturate(0);
+}
+
+.color-scheme-bw .page-nav {
 	-webkit-filter: saturate(0);
 	        filter: saturate(0);
 }

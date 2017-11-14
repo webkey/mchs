@@ -190,6 +190,12 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .hide
 	display: none
 
+.float-left
+	float: left
+
+.float-right
+	float: right
+
 +media('<desk-hd')
 	.hide-desk-lg
 		display: none !important
@@ -595,3 +601,81 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	background-size: contain
 	+size(42px)
 	backface-visibility: hidden
+
+/* page-nav
+.page-nav
+	+clear
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+	.page-prev, .page-next
+		position: relative
+		+display-inline-block-top
+		+margin-horizontal($grid-space)
+		+font-title
+		+font(20px, round-float(28/20, 2))
+		text-decoration: none
+		color: $base-color
+
+		+media('<mob-lg')
+			font-size: 14px
+
+		&::before,
+		&::after
+			content: ''
+			position: absolute
+			top: 50%
+			height: 2px
+			width: 10px
+			border-radius: 2px
+			background: $base-color
+			transition-property: background-color
+			transition-duration: $animation-speed
+
+		&::before
+			margin: -2px 0 0 0
+			transform: rotate(-45deg)
+
+		&::after
+			margin: 0
+			transform: rotate(45deg)
+
+		span
+			border-bottom: 1px dotted $base-color
+
+		// hover
+		&:hover
+			span
+				border-bottom-color: transparent
+
+	.page-prev
+		float: left
+		padding-left: 18px
+		margin-left: 0
+
+		&::before, &::after
+			left: 0
+
+		&::before
+			margin: -2px 0 0
+
+		&::after
+			margin: 4px 0 0
+
+	.page-next
+		float: right
+		padding-right: 18px
+		margin-right: 0
+
+		&::before, &::after
+			right: 0
+
+		&::before
+			margin: 4px 0 0
+
+		&::after
+			margin: -2px 0 0
+
+/* page-nav end

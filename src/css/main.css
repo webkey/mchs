@@ -913,6 +913,14 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	display: none;
 }
 
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
 @media (max-width: 1919px) {
 	.hide-desk-lg {
 		display: none !important;
@@ -1473,6 +1481,115 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	        backface-visibility: hidden;
 }
 
+/* page-nav */
+.page-nav {
+	margin-bottom: 3rem;
+}
+
+.page-nav::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.page-nav:last-child {
+	margin-bottom: 0;
+}
+
+.page-nav .page-prev, .page-nav .page-next {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 20px;
+	margin-left: 20px;
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 20px;
+	line-height: 1.4;
+	text-decoration: none;
+	color: #006ab8;
+}
+
+@media (max-width: 639px) {
+	.page-nav .page-prev, .page-nav .page-next {
+		font-size: 14px;
+	}
+}
+
+.page-nav .page-prev::before, .page-nav .page-prev::after, .page-nav .page-next::before, .page-nav .page-next::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	height: 2px;
+	width: 10px;
+	border-radius: 2px;
+	background: #006ab8;
+	-webkit-transition-property: background-color;
+	transition-property: background-color;
+	-webkit-transition-duration: 0.2s;
+	        transition-duration: 0.2s;
+}
+
+.page-nav .page-prev::before, .page-nav .page-next::before {
+	margin: -2px 0 0 0;
+	-webkit-transform: rotate(-45deg);
+	    -ms-transform: rotate(-45deg);
+	        transform: rotate(-45deg);
+}
+
+.page-nav .page-prev::after, .page-nav .page-next::after {
+	margin: 0;
+	-webkit-transform: rotate(45deg);
+	    -ms-transform: rotate(45deg);
+	        transform: rotate(45deg);
+}
+
+.page-nav .page-prev span, .page-nav .page-next span {
+	border-bottom: 1px dotted #006ab8;
+}
+
+.page-nav .page-prev:hover span, .page-nav .page-next:hover span {
+	border-bottom-color: transparent;
+}
+
+.page-nav .page-prev {
+	float: left;
+	padding-left: 18px;
+	margin-left: 0;
+}
+
+.page-nav .page-prev::before, .page-nav .page-prev::after {
+	left: 0;
+}
+
+.page-nav .page-prev::before {
+	margin: -2px 0 0;
+}
+
+.page-nav .page-prev::after {
+	margin: 4px 0 0;
+}
+
+.page-nav .page-next {
+	float: right;
+	padding-right: 18px;
+	margin-right: 0;
+}
+
+.page-nav .page-next::before, .page-nav .page-next::after {
+	right: 0;
+}
+
+.page-nav .page-next::before {
+	margin: 4px 0 0;
+}
+
+.page-nav .page-next::after {
+	margin: -2px 0 0;
+}
+
+/* page-nav end */
 /*BUTTONS*/
 [class|="btn"], [class*=" btn-"], input[type="submit"], input[type="button"], input[type="reset"], button {
 	display: inline-block;
@@ -14309,7 +14426,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 .info-map-svg polygon {
 	fill: white;
 	stroke-width: 1;
-	stroke: #006ab8;
+	stroke: #262626;
 	stroke-miterlimit: 10;
 }
 
@@ -14606,6 +14723,10 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 /*info-map popup end */
 /*info-map end */
 /*map legend */
+.map-legend {
+	margin-bottom: 3rem;
+}
+
 .map-legend__list, .user-content .map-legend__list {
 	margin: 0 0 20px;
 	padding: 0;
@@ -15228,7 +15349,7 @@ span.flatpickr-weekday {
 		visibility: visible !important;
 		z-index: auto !important;
 	}
-	.wrapper::before, .page-404 .sheet::before, .sidebar, .aside, .print-hidden, .view-print, .nav, .nav-list, .breadcrumbs, .breadcrumbs__list, form, .spacer, [class*="btn-"], .side, .header__top, .header__contacts, .header__info li svg, .header__info li a::after, .user-form, .ctrl, .news-previews__img, .news__label, .banners-panel, .footer-gov, .footer-common, .news-previews__footer, .developer__logo, .promo, .years, .events-sum__nav, .events-sum__footer, .news-grid__img, .news__label_video, .news-grid__slider, #multimedia-anchor, .tape-slider, .v-separator, .news-group::before, .news-group__img, .soc-media .soc-media__col:first-child, .soc-media::before, .soc-media__img, .logo-short-text, .header__content .logo, .go-to-mchs, .news-float__img, .filter-item, .extra-popup-opened .wrapper, .extra-popup-opened .footer, .expander-angle {
+	.wrapper::before, .page-404 .sheet::before, .sidebar, .aside, .print-hidden, .view-print, .nav, .nav-list, .breadcrumbs, .breadcrumbs__list, form, .spacer, [class*="btn-"], .side, .header__top, .header__contacts, .header__info li svg, .header__info li a::after, .user-form, .ctrl, .news-previews__img, .news__label, .banners-panel, .footer-gov, .footer-common, .news-previews__footer, .developer__logo, .promo, .years, .events-sum__nav, .events-sum__footer, .news-grid__img, .news__label_video, .news-grid__slider, #multimedia-anchor, .tape-slider, .v-separator, .news-group::before, .news-group__img, .soc-media .soc-media__col:first-child, .soc-media::before, .soc-media__img, .logo-short-text, .header__content .logo, .go-to-mchs, .news-float__img, .filter-item, .extra-popup-opened .wrapper, .extra-popup-opened .footer, .expander-angle, .page-nav {
 		display: none !important;
 		content: none !important;
 	}
