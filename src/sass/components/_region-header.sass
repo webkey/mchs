@@ -45,6 +45,7 @@
 	+font(36px, 1.2)
 	color: white
 	text-shadow: 1px 1px 0 black
+	+clear
 
 	+media('<tab-lg')
 		min-height: calc(1em*1.3*2)
@@ -54,12 +55,40 @@
 		min-height: calc(1em*1.4*2)
 		+font(22px, 1.4)
 
-	h1, h2
+	.col
+		float: left
+		width: 49.98%
+		padding-right: $grid-space
+
+		+media('<mob-lg')
+			width: 100%
+			padding: 0
+			margin-bottom: $grid-space
+
+			&:last-child
+				margin-bottom: 0
+
+		& > img
+			float: left
+			+size(48px)
+			margin-right: 10px
+
+			+media('<tab-lg')
+				+size(36px)
+
+			+media('<mob-lg')
+				+size(32px)
+
+	h1, h2, h3
+		overflow: hidden
 		font-family: inherit
 		font-weight: inherit
 		+font(inherit, inherit)
 		color: inherit
 		margin: 0
+
+	h3
+		+font($font-size, $line-height)
 
 .region-header__caption, .region-header__holder
 	max-width: 100%

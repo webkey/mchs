@@ -1801,7 +1801,6 @@ function slidersInit() {
 
 			var loop = $thisContainer.find('.swiper-slide').length > 2;
 			// var loop =  true;
-			console.log("loop: ", loop);
 
 			new Swiper($thisSlider, {
 				loop: loop,
@@ -1845,6 +1844,11 @@ function slidersInit() {
 
 		});
 	}
+
+	// gallery
+	var $gallery = $('.gallery-js');
+
+	// $gallery.fotorama();
 }
 /*sliders end*/
 
@@ -3929,19 +3933,25 @@ function removeAttrFromImg() {
 })(jQuery);
 
 function addLabelsOnMap() {
-	$('#infoMapSvg').addLabelsEvents({
-		obj: regionsEvents,
-		tpl: $('script[data-template="info-map-labels"]').html(),
-		counter: '.info-map-count',
-		number: '.info-map-number'
-	});
+	var $infoMapSvg = $('#infoMapSvg');
+	if($infoMapSvg.length){
+		$infoMapSvg.addLabelsEvents({
+			obj: regionsEvents,
+			tpl: $('script[data-template="info-map-labels"]').html(),
+			counter: '.info-map-count',
+			number: '.info-map-number'
+		});
+	}
 
-	$('#infoMapMinskSvg').addLabelsEvents({
-		obj: minskEvents,
-		tpl: $('script[data-template="info-map-labels"]').html(),
-		counter: '.info-map-count',
-		number: '.info-map-number'
-	});
+	var $infoMapMinskSvg = $('#infoMapMinskSvg');
+	if($infoMapSvg.length){
+		$infoMapMinskSvg.addLabelsEvents({
+			obj: minskEvents,
+			tpl: $('script[data-template="info-map-labels"]').html(),
+			counter: '.info-map-count',
+			number: '.info-map-number'
+		});
+	}
 }
 
 /* info map popup */

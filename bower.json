@@ -44,7 +44,8 @@
     "lg-zoom": "^1.0.4",
     "lg-hash": "^1.0.2",
     "lg-share": "^1.0.2",
-    "fitvids": "^1.2.0"
+    "fitvids": "^1.2.0",
+    "fotorama": "^4.6.4"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

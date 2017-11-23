@@ -91,6 +91,7 @@ gulp.task('mergeCssLibs', function () { // Таск для мержа css биб
 		,'src/libs/lightgallery/dist/css/lightgallery.min.css'
 		,'src/libs/lightgallery/dist/css/lg-fb-comment-box.min.css'
 		,'src/libs/lightgallery/dist/css/lg-transitions.min.css'
+		,'src/css/temp/fotorama.css' // копируем css с измененными путями к изображениям
 	]) // Выбираем файлы для конкатенации
 	.pipe(concatCss("src/css/libs.css", {
 		rebaseUrls: false
@@ -134,7 +135,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/lg-video/dist/lg-video.min.js',
 		'src/libs/lg-zoom/dist/lg-zoom.min.js',
 		'src/libs/fitvids/jquery.fitvids.js',
-		'src/libs/svg.js/dist/svg.min.js'
+		'src/libs/svg.js/dist/svg.min.js',
+		'src/libs/fotorama/fotorama.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(gulp.dest('src/js'))

@@ -1,0 +1,46 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* fotorama
+.fotorama:not(.fotorama--fullscreen)
+	.fotorama__arr
+		position: absolute
+		top: 0
+		bottom: 0
+		+size(50px, auto)
+		margin: 0
+
+		&::before
+			+pseudo()
+			+centering()
+
+		&.swiper-button-disabled
+			pointer-events: auto
+
+	.fotorama__arr--prev
+		left: 0
+		+linear-gradient(to right, white 0, rgba(255, 255, 255, 0) 100%)
+
+		&::before
+			+triangle(left, black, 20px, 1)
+
+		&:hover
+			+linear-gradient(to right, white 0, rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 0) 100%)
+
+	.fotorama__arr--next
+		right: 0
+		+linear-gradient(to left, white 0, rgba(255, 255, 255, 0) 100%)
+
+		&::before
+			+triangle(right, black, 20px, 1)
+
+		&:hover
+			+linear-gradient(to left, white 0, rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 0) 100%)
+
+// caption
+.fotorama__caption__wrap
+	background-color: rgba(0, 0, 0, 0.5)
+	color: white
+
+/* fotorama end

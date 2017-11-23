@@ -2,11 +2,13 @@
 
 var gulp = require('gulp'), // Подключаем Gulp
 	sass = require('gulp-sass'), // Подключаем Sass пакет https://github.com/dlmanning/gulp-sass
-	sassVariables = require('gulp-sass-variables')
+	sassVariables = require('gulp-sass-variables'),
+	replace = require('gulp-string-replace')
 	;
 
 gulp.task('changePath', function () {
-	return gulp.src([
+	// SLICK GALLERY
+	gulp.src([
 		'src/libs/slick-carousel/slick/slick-theme.scss',
 		'src/libs/slick-carousel/slick/slick.scss'
 	])
@@ -16,6 +18,14 @@ gulp.task('changePath', function () {
 	}))
 	.pipe(sass())
 	.pipe(gulp.dest('src/css/temp')); // Выгружаем в папку src/css
+
+	// FOTORAMA
+	gulp.src([
+		'src/libs/fotorama/fotorama.css'
+	])
+		.pipe(replace('fotorama@2x.png', '../img/fotorama/fotorama@2x.png'))
+		.pipe(replace('fotorama.png', '../img/fotorama/fotorama.png'))
+		.pipe(gulp.dest('src/css/temp')); // Выгружаем в папку src/css
 });
 
 gulp.task('copyFilesFromLibs', function () {
@@ -51,6 +61,13 @@ gulp.task('copyFilesFromLibs', function () {
 		'src/libs/lightgallery/dist/img/**/*'
 	])
 		.pipe(gulp.dest('src/img'));
+
+	// FOTORAMA
+	// add images and icons for fotorama
+	gulp.src([
+		'src/libs/fotorama/**/*.png'
+	])
+		.pipe(gulp.dest('src/img/fotorama'));
 
 });
 

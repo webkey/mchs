@@ -21,7 +21,10 @@
 		left: $main-layout-width
 
 		&.is_bottom[style*="absolute"]
-			left: $main-layout-width - $sidebar-left-width
+			//left: $main-layout-width - $sidebar-left-width
+			left: auto
+			right: 0
+			margin-right: 0 !important
 
 		+media('<desk-hd')
 			.no-touchevents &
