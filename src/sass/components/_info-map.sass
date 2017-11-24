@@ -11,10 +11,14 @@ $info-map-border-color: #d63700 !default
 	margin: 0 auto $bottom-space-md
 
 .info-map-regions
+	position: relative
 	margin-left: 5%
 
 	+media('<tab-sm')
 		margin-left: 0
+
+.info-map-figure
+	position: relative
 
 .info-map-svg
 	max-width: 100%
@@ -85,15 +89,21 @@ $info-map-label-size: 40px
 .info-map-labels
 	text-align: center
 	pointer-events: none
+	position: absolute
+	left: 0
+	top: 0
+	z-index: 9999
 
-	//background-color: coral
-	//height: 5px
+	background-color: coral
+	height: 6px
 
 .info-map-labels__holder
 	margin-left: -#{70 - round($info-map-label-size/2)+10}
 
-	//background-color: cadetblue
-	//height: 5px
+	position: relative
+	background-color: cadetblue
+	height: 2px
+	top: 2px
 
 .info-map-label
 	vertical-align: top
@@ -374,11 +384,11 @@ $info-map-label-size: 40px
 			//stroke: $base-color
 			stroke-width: 8
 
-	$info-map-label-size: 110px
-	.info-map-labels, .info-map-labels__holder
+	//$info-map-label-size: 110px
+	//.info-map-labels, .info-map-labels__holder
 		width: 280px
 
-	.info-map-label
+	//.info-map-label
 		margin-top: -#{round($info-map-label-size)}
 		margin-left: -#{round($info-map-label-size/2)+10}
 

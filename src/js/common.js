@@ -3853,20 +3853,29 @@ function removeAttrFromImg() {
 		self.element = element;
 
 		// create jquery foreignObject
-		self.foreignObject = $(document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject' ));
+		// self.foreignObject = $(document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject' ));
+		self.labelsTpl = $('<div class="info-map-labels"></div>');
 
 		self.callbacks();
-		self.event(); // example event
+		self.createLabels(); //
 		self.init(); // create DOM structure of the plugins
 	}
 
 	/** get coordinates of an element's center */
-	AddLabelsEvents.prototype.getElementCenter = function (element) {
+	AddLabelsEvents.prototype.getElementCenter = function (container, element) {
+		var bboxContainer = container[0].getBBox(),
+			containerWidth = bboxContainer.width,
+			containerHeight = bboxContainer.height;
+
 		var bbox = element[0].getBBox(),
 			middleX = bbox.x + (bbox.width / 2),
 			middleY = bbox.y + (bbox.height / 2);
 
-		return {x: middleX, y: middleY};
+		var middleXPercent = middleX/containerWidth*100 + '%',
+			middleYPercent = middleY/containerHeight*100 + '%';
+
+
+		return {x: middleXPercent, y: middleYPercent};
 	};
 
 	/** track events */
@@ -3881,20 +3890,26 @@ function removeAttrFromImg() {
 		});
 	};
 
-	AddLabelsEvents.prototype.event = function () {
+	AddLabelsEvents.prototype.createLabels = function () {
 		var self = this;
 		var obj = self.config.obj;
 
 		$.each(obj, function (key, val) {
 			var $item = self.element.find('[data-href="' + key + '"]');
 
-			var labelGroupTpl = self.foreignObject.clone();
+			var labelGroupTpl = self.labelsTpl.clone();
 
-			var elementCenter = self.getElementCenter($item);
+			console.log("labelGroupTpl: ", labelGroupTpl);
+
+			var elementCenter = self.getElementCenter(self.element, $item);
+			console.log("elementCenter: ", elementCenter);
 			labelGroupTpl
-				.attr('transform', 'translate(' + elementCenter.x + ',' + elementCenter.y + ')')
+				.css({
+					left: elementCenter.x,
+					top: elementCenter.y
+				})
 				.append(self.config.tpl)
-				.appendTo(self.element);
+				.insertAfter(self.element);
 
 			$.each(val, function (event, count) {
 				var $label = labelGroupTpl.find('[' + self.config.dataEvent + '="' +event+ '"]');

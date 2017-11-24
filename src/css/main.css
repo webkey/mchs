@@ -14445,6 +14445,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 }
 
 .info-map-regions {
+	position: relative;
 	margin-left: 5%;
 }
 
@@ -14452,6 +14453,10 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	.info-map-regions {
 		margin-left: 0;
 	}
+}
+
+.info-map-figure {
+	position: relative;
 }
 
 .info-map-svg {
@@ -14530,10 +14535,20 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 .info-map-labels {
 	text-align: center;
 	pointer-events: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 9999;
+	background-color: coral;
+	height: 6px;
 }
 
 .info-map-labels__holder {
 	margin-left: -60px;
+	position: relative;
+	background-color: cadetblue;
+	height: 2px;
+	top: 2px;
 }
 
 .info-map-label {
@@ -14865,40 +14880,6 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 .info-map-oblast .info-map-svg #minsk .st0 {
 	stroke-width: 8;
-}
-
-.info-map-oblast .info-map-labels, .info-map-oblast .info-map-labels__holder {
-	width: 280px;
-}
-
-.info-map-oblast .info-map-label {
-	margin-top: -110px;
-	margin-left: -65px;
-}
-
-.info-map-oblast .info-map-label svg {
-	width: 110px;
-	height: 110px;
-}
-
-.info-map-oblast .info-map-label svg path, .info-map-oblast .info-map-label svg use {
-	stroke-width: 2px;
-}
-
-.info-map-oblast .info-map-label .info-map-count {
-	margin-top: -110px;
-	width: 110px;
-	height: 110px;
-	font-size: 38px;
-	line-height: 42px;
-}
-
-.info-map-oblast .info-map-label .info-map-count span {
-	height: 42px;
-	padding: 0 5px;
-	margin-top: 34px;
-	min-width: 42px;
-	border-radius: 21px;
 }
 
 .info-map-oblast__title {
