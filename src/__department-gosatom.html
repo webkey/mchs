@@ -1,0 +1,351 @@
+@@include('_head.tpl', {
+	"title": "Госатомнадзор",
+	"pageClass": "department-gosatom-styles",
+	"depCss": "department-gosatom.css"
+})
+<div class="wrapper">
+	<!--HEADER-->
+	@@include('_header-department.tpl', {
+		"mainNavItemActive": "Подведомственные организации",
+		"title": "Департамент по ядерной и радиационной безопасности МЧС РБ / госатомнадзор",
+		"imgSrc": "logo-gosatom.png"
+	})
+	<!--HEADER end-->
+
+	<!--MAIN-->
+	<div class="main">
+		<div class="layout">
+			<div class="main-holder">
+				<!--CONTENT-->
+				<div class="main-frame">
+					<div class="main-inside">
+						<!--SIDE-->
+						@@include('_side.tpl')
+						<!--SIDE end-->
+						<div class="content-layout">
+							<div class="content-wrap">
+								<div class="content user-content">
+									<div class="content-news">
+										<section class="section">
+											<div class="section__title">
+												<h2>Новости</h2>
+												<span class="v-separator">|</span>
+												<div class="news-date datepicker-alt">
+													<a data-toggle class="type-anchor news-date-output-js"><span>18.04.2017</span></a>
+													<input data-input type="text" class="datepicker-input" value="18.04.2017" title="Дата публикации новостей"/>
+												</div>
+											</div>
+											<div class="section__holder">
+												<div class="grid-row">
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "img/img-news-14.jpg",
+														"label": "",
+														"title": "",
+														"text": "О принятии инициированной Беларусью резолюции ГА ООН по Чернобылю.",
+														"meta": "01.03.2017, 13:10",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "img/img-news-15.jpg",
+														"label": "video",
+														"title": "",
+														"text": "Депутаты Палаты представителей Национального собрания Республики Беларусь провели рабочую встречу в Департаменте.",
+														"meta": "02.03.2017, 17:10",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+												</div>
+												<div class="grid-row">
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Эксперты МАГАТЭ провели семинар в Полесском заповеднике.",
+														"meta": "05.03.2017, 09:05",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "img/img-news-16.jpg",
+														"label": "",
+														"title": "",
+														"text": "Делегация иностранных фотографов посетила Департамент по ликвидации последствий катастрофы на Чернобыльской АЭС МЧС Республики Беларусь.",
+														"meta": "17.03.2017, 18:18",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+												</div>
+												<div class="grid-row">
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Информационный материал сети Интернет по вопросам предупреждения и ликвидации чрезвычайных ситуаций техногенного характера (за период с 28.01.2017 по 03.02.2017).",
+														"meta": "02.04.2017, 09:05",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Состоялось открытие выставки «Человек и безопасность».",
+														"meta": "21.04.2017, 18:18",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+												</div>
+											</div>
+										</section>
+										<section class="section">
+											<div class="section__holder">
+												<div class="grid-row">
+													@@loop('_context-banners.tpl', [
+														{"src": "img/img-banner-09.jpg"},
+														{"src": "img/img-banner-10.jpg"}
+													])
+												</div>
+											</div>
+										</section>
+										<section class="section">
+											<div class="section__holder">
+												<div class="grid-row">
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "img/img-news-15.jpg",
+														"label": "",
+														"title": "",
+														"text": "О принятии инициированной Беларусью резолюции ГА ООН по Чернобылю.",
+														"meta": "01.03.2017, 13:10",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "img/img-news-16.jpg",
+														"label": "video",
+														"title": "",
+														"text": "Депутаты Палаты представителей Национального собрания Республики Беларусь провели рабочую встречу в Департаменте.",
+														"meta": "02.03.2017, 17:10",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+												</div>
+												<div class="grid-row">
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Эксперты МАГАТЭ провели семинар в Полесском заповеднике.",
+														"meta": "05.03.2017, 09:05",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "img/img-news-14.jpg",
+														"label": "",
+														"title": "",
+														"text": "Делегация иностранных фотографов посетила Департамент по ликвидации последствий катастрофы на Чернобыльской АЭС МЧС Республики Беларусь.",
+														"meta": "17.03.2017, 18:18",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+												</div>
+												<div class="grid-row">
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Информационный материал сети Интернет по вопросам предупреждения и ликвидации чрезвычайных ситуаций техногенного характера (за период с 28.01.2017 по 03.02.2017).",
+														"meta": "02.04.2017, 09:05",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Состоялось открытие выставки «Человек и безопасность».",
+														"meta": "21.04.2017, 18:18",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+												</div>
+											</div>
+										</section>
+										<section class="section">
+											<div class="section__holder">
+												<div class="grid-row">
+													@@loop('_context-banners.tpl', [
+													{"src": "img/img-promo-slider-03.jpg"},
+													{"src": "img/img-promo-slider-05.jpg"}
+													])
+												</div>
+											</div>
+										</section>
+										<section class="section">
+											<div class="section__holder">
+												<div class="grid-row">
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "img/img-news-14.jpg",
+														"label": "",
+														"title": "",
+														"text": "О принятии инициированной Беларусью резолюции ГА ООН по Чернобылю.",
+														"meta": "01.03.2017, 13:10",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "img/img-news-15.jpg",
+														"label": "video",
+														"title": "",
+														"text": "Депутаты Палаты представителей Национального собрания Республики Беларусь провели рабочую встречу в Департаменте.",
+														"meta": "02.03.2017, 17:10",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+												</div>
+												<div class="grid-row">
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Эксперты МАГАТЭ провели семинар в Полесском заповеднике.",
+														"meta": "05.03.2017, 09:05",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "img/img-news-16.jpg",
+														"label": "",
+														"title": "",
+														"text": "Делегация иностранных фотографов посетила Департамент по ликвидации последствий катастрофы на Чернобыльской АЭС МЧС Республики Беларусь.",
+														"meta": "17.03.2017, 18:18",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+												</div>
+												<div class="grid-row">
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Информационный материал сети Интернет по вопросам предупреждения и ликвидации чрезвычайных ситуаций техногенного характера (за период с 28.01.2017 по 03.02.2017).",
+														"meta": "02.04.2017, 09:05",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+													<div class="grid-col-6 grid-col-hd-12">
+														@@include('_news-grid-item.tpl', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Состоялось открытие выставки «Человек и безопасность».",
+														"meta": "21.04.2017, 18:18",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+														})
+													</div>
+												</div>
+											</div>
+										</section>
+									</div>
+									<div class="news-previews__footer">
+										<div class="more">
+											<a href="#" class="btn-more"><span>Загрузить ещё</span><i></i></a>
+										</div>
+									</div>
+									<section class="section banners-panel">
+										<div class="section__holder">
+											<!--banners-->
+											<div class="banners">
+												<div class="banners__list">
+													@@loop('_banners-item.tpl', 'includes-json/banners-items-bottom-department.json')
+												</div>
+											</div>
+											<!--banners end-->
+										</div>
+									</section>
+								</div>
+							</div>
+							<!--ASIDE-->
+							@@include('_aside.tpl', { "pageDepartment": "true" })
+							<!--ASIDE end-->
+						</div>
+					</div>
+				</div>
+				<!--CONTENT end-->
+
+				<!--SIDEBAR-->
+				@@include('_sidebar-region.tpl', {
+					"hasRegionMenu": "true",
+					"hasSquadMenu": "",
+					"regionMenuActiveItem": "Об управлении",
+					"headingText": "Меню"
+				})
+				<!--SIDEBAR-->
+			</div>
+		</div>
+	</div>
+	<!--MAIN end-->
+</div>
+@@include('_foot.tpl', {
+	"mainNavItemActive": "О министерстве",
+	"regionMenuActiveItem": "Об управлении",
+	"subSiteMenu": "true",
+	"hasRegionMenu": "true",
+	"hasSquadMenu": "",
+	"titleSub": "Разделы",
+	"titleMain": "Главное Меню"
+})

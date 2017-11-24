@@ -1844,14 +1844,8 @@ function slidersInit() {
 
 		});
 	}
-
-	// gallery
-	var $gallery = $('.gallery-js');
-
-	// $gallery.fotorama();
 }
 /*sliders end*/
-
 /**
  * light gallery initial
  * */

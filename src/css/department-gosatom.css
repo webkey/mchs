@@ -1,18 +1,18 @@
-/*=========== DEPARTMENTS: CHERNOBIL ===========*/
+/*=========== DEPARTMENTS: GOSATOM ===========*/
 .mark {
-	color: #9b2813;
+	color: #ca9b68;
 }
 
 .text-color-alt {
-	color: #9b2813;
+	color: #ca9b68;
 }
 
 .user-content ul > li::before {
-	border-left-color: #9b2813;
+	border-left-color: #ca9b68;
 }
 
 .user-content ol > li::before {
-	color: #9b2813;
+	color: #ca9b68;
 }
 
 .user-content .tbl td, .user-content .tbl th {
@@ -20,26 +20,26 @@
 }
 
 .user-content .tbl th, .user-content .tbl thead td, .user-content .tbl tfoot td {
-	background: #9b2813;
+	background: #ca9b68;
 	color: #fff;
-	border-color: #9b2813;
+	border-color: #ca9b68;
 }
 
 .user-content blockquote q::before, .user-content blockquote q::after {
-	background-image: url("../img/quote-left-department-chernobil.svg");
+	background-image: url("../img/quote-left-department-gosatom.svg");
 }
 
 .view-print {
-	color: #9b2813;
-	border: 1px solid #9b2813;
+	color: #ca9b68;
+	border: 1px solid #ca9b68;
 }
 
 .no-touchevents .view-print:hover {
-	background-color: #9b2813;
+	background-color: #ca9b68;
 }
 
 .view-print path {
-	fill: #9b2813;
+	fill: #ca9b68;
 }
 
 .no-touchevents .view-print:hover path {
@@ -47,35 +47,35 @@
 }
 
 .wrapper::before {
-	background-color: #172534;
+	background-color: #2b343b;
 }
 
 .btn-default {
-	background-color: #9b2813;
+	background-color: #ca9b68;
 }
 
 .no-touchevents .btn-default:hover {
-	background-color: #7c200f;
+	background-color: #a27c53;
 }
 
 .btn-default-alt {
 	background-color: #fff;
-	border-color: #9b2813;
-	color: #9b2813;
+	border-color: #ca9b68;
+	color: #ca9b68;
 }
 
 .no-touchevents .btn-default-alt:hover {
-	background: #7c200f;
+	background: #a27c53;
 	color: #fff;
 }
 
 .btn-arrow {
 	color: #fff;
-	background-color: #9b2813;
+	background-color: #ca9b68;
 }
 
 .no-touchevents .btn-arrow:hover {
-	background-color: #7c200f;
+	background-color: #a27c53;
 }
 
 .more .btn-more {
@@ -87,7 +87,7 @@
 }
 
 .btn-map-site {
-	background-color: #9b2813;
+	background-color: #ca9b68;
 	color: white;
 }
 
@@ -96,40 +96,40 @@
 }
 
 .form-mark {
-	color: #9b2813;
+	color: #ca9b68;
 }
 
 .no-touchevents input[type="text"]:hover, .no-touchevents input[type="password"]:hover, .no-touchevents input[type="email"]:hover, .no-touchevents input[type="search"]:hover, .no-touchevents textarea:hover {
-	border-color: #9b2813;
+	border-color: #ca9b68;
 }
 
 input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus, input[type="search"]:focus, textarea:focus {
-	border-color: #9b2813;
-	box-shadow: inset 0 0 0 1px #9b2813;
+	border-color: #ca9b68;
+	box-shadow: inset 0 0 0 1px #ca9b68;
 }
 
 .select select:focus, .select button.cselect:focus .select-inner, .select button.cselect.ui-state-active .select-inner {
-	border-color: #9b2813;
+	border-color: #ca9b68;
 }
 
 .select::before, .select::after, .select button.cselect .ui-icon .arrow-select::before, .select button.cselect .ui-icon .arrow-select::after {
-	background-color: #9b2813;
+	background-color: #ca9b68;
 }
 
 .select div.cselect .ui-multiselect-checkboxes {
-	border-color: #9b2813;
+	border-color: #ca9b68;
 }
 
 .form-title {
-	color: #9b2813;
+	color: #ca9b68;
 }
 
 .breadcrumbs__item a > i::before {
-	border-left-color: #9b2813;
+	border-left-color: #ca9b68;
 }
 
 .logo-wrap {
-	background-color: #172534;
+	background-color: #2b343b;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -138,29 +138,29 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 
 .header__top {
-	background: #395b7e;
+	background: #4b5a66;
 }
 
 .nav__list > li.hover > .nav__tab > a, .nav__list > li.active > .nav__tab > a, .nav__list > li.current > .nav__tab > a, .no-js .nav__list > li:hover > .nav__tab > a, .priority-nav__dropdown > li.hover > .nav__tab > a, .priority-nav__dropdown > li.active > .nav__tab > a, .priority-nav__dropdown > li.current > .nav__tab > a, .no-js .priority-nav__dropdown > li:hover > .nav__tab > a {
-	background: #9b2813;
+	background: #ca9b68;
 	color: white;
 }
 
 .nav .priority-nav__dropdown {
-	background: #395b7e;
+	background: #4b5a66;
 }
 
 .header__hot-line li:first-child a, .no-touchevents .header__hot-line li:first-child a:hover {
-	color: #9b2813;
+	color: #ca9b68;
 }
 
 .region-menu-heading {
-	background-color: #172534;
+	background-color: #2b343b;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .no-touchevents .region-menu-heading:hover {
-	background-color: #121e2a;
+	background-color: #222a2f;
 }
 
 .region-menu__list a {
@@ -168,17 +168,17 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 
 .region-menu__list > li > .region-menu__tab a {
-	background-color: #172534;
+	background-color: #2b343b;
 }
 
 .region-menu__angle {
-	background-color: #172534;
+	background-color: #2b343b;
 	border: solid rgba(255, 255, 255, 0.1);
 	border-width: 0 0 1px 1px;
 }
 
 .region-menu__drop ul, .region-menu__drop a, .region-menu__drop .region-menu__angle {
-	background-color: #121e2a;
+	background-color: #222a2f;
 }
 
 .no-touchevents .region-menu__drop ul:hover, .no-touchevents .region-menu__drop a:hover, .no-touchevents .region-menu__drop .region-menu__angle:hover {
@@ -186,36 +186,36 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 
 .region-menu__drop .region-menu__drop ul, .region-menu__drop .region-menu__drop a, .region-menu__drop .region-menu__drop .region-menu__angle {
-	background-color: #0e1720;
+	background-color: #1b2025;
 }
 
 .region-menu__drop .region-menu__drop .region-menu__drop ul, .region-menu__drop .region-menu__drop .region-menu__drop a, .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__angle {
-	background-color: #0b1219;
+	background-color: #15191c;
 }
 
 .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__drop ul, .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__drop a, .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__drop .region-menu__angle {
-	background-color: #090e14;
+	background-color: #101416;
 }
 
 .side__depict {
-	background: #9b2813;
+	background: #ca9b68;
 }
 
 .flatpickr-day.endRange, .flatpickr-day.endRange.inRange, .flatpickr-day.endRange.nextMonthDay, .flatpickr-day.endRange.prevMonthDay, .flatpickr-day.endRange:focus, .flatpickr-day.endRange:hover, .flatpickr-day.selected, .flatpickr-day.selected.inRange, .flatpickr-day.selected.nextMonthDay, .flatpickr-day.selected.prevMonthDay, .flatpickr-day.selected:focus, .flatpickr-day.selected:hover, .flatpickr-day.startRange, .flatpickr-day.startRange.inRange, .flatpickr-day.startRange.nextMonthDay, .flatpickr-day.startRange.prevMonthDay, .flatpickr-day.startRange:focus, .flatpickr-day.startRange:hover {
-	background: #9b2813;
-	border-color: #9b2813;
+	background: #ca9b68;
+	border-color: #ca9b68;
 }
 
 .news-grid__inner, .news-previews__inner {
-	box-shadow: inset 0 -3px 0 #9b2813;
+	box-shadow: inset 0 -3px 0 #ca9b68;
 }
 
 .news-grid__content::before, .news-previews__content::before {
-	background: #9b2813;
+	background: #ca9b68;
 }
 
 .news-grid__item--wide .news-grid__inner::before {
-	background: url("../img/no-img-department-chernobil.jpg") no-repeat center;
+	background: url("../img/no-img-department-gosatom.jpg") no-repeat center;
 	background-size: cover;
 }
 
@@ -223,7 +223,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 	color: white;
 }
 
-.no-touchevents a.news-grid__inner:hover path {
+.no-touchevents a.news-grid__inner:hover .news-grid__content path, .no-touchevents a.news-grid__inner:hover .news-grid__meta path {
 	fill: white;
 }
 
@@ -231,20 +231,20 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 	color: white;
 }
 
-.no-touchevents a.news-previews__inner:hover path {
+.no-touchevents a.news-previews__inner:hover .news-previews__content path, .no-touchevents a.news-previews__inner:hover .news-previews__meta path {
 	fill: white;
 }
 
 .footer-common, .footer-bottom {
-	background-color: #001e33;
+	background-color: #1c2226;
 }
 
 .gov__list .slick-dots li.slick-active button::before {
-	background: #9b2813;
+	background: #ca9b68;
 }
 
 .no-touchevents .btn-popup-close:hover {
-	background-color: #9b2813;
+	background-color: #ca9b68;
 }
 
 .no-touchevents .btn-popup-close:hover > i::before, .no-touchevents .btn-popup-close:hover > i::after {
@@ -252,11 +252,11 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 }
 
 .no-touchevents .lang__list a:hover, .no-touchevents .lang__list a.current {
-	color: #9b2813;
+	color: #ca9b68;
 }
 
 .no-touchevents .share-link__list a:hover {
-	color: #9b2813;
+	color: #ca9b68;
 }
 
 input.search-form__input, input.search-form__input:focus {
@@ -265,7 +265,7 @@ input.search-form__input, input.search-form__input:focus {
 }
 
 .search-form__btn {
-	background-color: #9b2813;
+	background-color: #ca9b68;
 }
 
 .search-form__btn::after {
@@ -273,7 +273,7 @@ input.search-form__input, input.search-form__input:focus {
 }
 
 .no-touchevents .search-form__btn:hover {
-	background-color: #9b2813;
+	background-color: #ca9b68;
 }
 
 .no-touchevents .search-form__btn:hover path {
@@ -286,7 +286,7 @@ input.search-form__input, input.search-form__input:focus {
 
 .bitrix-search-page ul .active span {
 	color: white !important;
-	background-color: #9b2813 !important;
+	background-color: #ca9b68 !important;
 }
 
 .no-touchevents .bitrix-search-page ul a:hover {
@@ -294,16 +294,16 @@ input.search-form__input, input.search-form__input:focus {
 }
 
 .no-touchevents .bitrix-search-page ul a:hover span {
-	background-color: #9b2813;
+	background-color: #ca9b68;
 }
 
 .no-touchevents .bitrix-search-page .p-nav:hover {
-	background: #9b2813;
-	box-shadow: inset 0 0 0 1px #9b2813;
+	background: #ca9b68;
+	box-shadow: inset 0 0 0 1px #ca9b68;
 }
 
 .nav-small-tabs a:first-child {
-	background-color: #172534;
+	background-color: #2b343b;
 }
 
 .nav-small-tabs a.active-tab:first-child {
@@ -311,7 +311,7 @@ input.search-form__input, input.search-form__input:focus {
 }
 
 .no-touchevents .jFiler-input-dragDrop:hover {
-	border-color: #9b2813;
+	border-color: #ca9b68;
 }
 
 .jFiler-item-trash-action::before, .jFiler-item-trash-action::after {
@@ -319,9 +319,9 @@ input.search-form__input, input.search-form__input:focus {
 }
 
 .no-touchevents .jFiler-item-trash-action:hover::before, .no-touchevents .jFiler-item-trash-action:hover::after {
-	background-color: #9b2813;
+	background-color: #ca9b68;
 }
 
-/*=========== DEPARTMENTS: CHERNOBIL end ===========*/
+/*=========== DEPARTMENTS: GOSATOM end ===========*/
 
-/*# sourceMappingURL=department-chernobil.css.map */
+/*# sourceMappingURL=department-gosatom.css.map */

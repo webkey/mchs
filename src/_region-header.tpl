@@ -6,14 +6,14 @@
 		<h1>@@title</h1>
 		}
 		@@if(context.severalHeading){
-		<div class="col">
+		<a href="#" class="col">
 			<h2>Отдел БО РБИЦ</h2>
 			<h3><i>Возрождаем родную землю вместе!</i></h3>
-		</div>
-		<div class="col">
+		</a>
+		<a href="#" class="col">
 			<img width="48" src="http://niipb.mchs.gov.by/local/templates/.default/img/logo.png" height="48">
 			<h2>НИИ ПБ и ЧС Беларуси</h2>
-		</div>
+		</a>
 		}
 	</div>
 	<div class="region-header__holder">

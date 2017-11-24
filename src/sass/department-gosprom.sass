@@ -2,7 +2,7 @@
 @import utils/mixins
 @import ../libs/include-media/dist/include-media
 
-/*=========== DEPARTMENTS GOSPROM ===========*/
+/*=========== DEPARTMENTS: GOSPROM ===========*/
 // VARIABLES
 //.department-gosprom-styles
 // base
@@ -22,6 +22,9 @@ $footer-bg-color: #053d4e
 
 // side
 $side-bg-color: #0c86ab
+
+// navigation
+$color-nav-bg-hover: $mark-color-alt
 
 // subsite menu
 $subsite-menu-bg-color: #095f78
@@ -122,8 +125,8 @@ $path-quote: '../../img/quote-left-department-gosprom.svg'
 	.btn-more
 		color: $text-color
 
-	i::before, i::after
-		background: $text-color
+		i::before, i::after
+			background: $text-color
 
 .btn-map-site
 	background-color: $base-color-alt
@@ -359,4 +362,17 @@ input.search-form__input
 		&:first-child
 			border-color: $subsite-menu-border-color
 
-/*=========== DEPARTMENTS GOSPROM end ===========*/
+// jFiler
+.no-touchevents .jFiler-input-dragDrop:hover
+	border-color: $base-color
+
+.jFiler-item-trash-action
+	&::before, &::after
+		background-color: $text-color
+
+.no-touchevents
+	.jFiler-item-trash-action:hover
+		&::before, &::after
+			background-color: $base-color
+
+/*=========== DEPARTMENTS GOSPROM: end ===========*/

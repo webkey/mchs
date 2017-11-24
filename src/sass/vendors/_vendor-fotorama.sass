@@ -3,7 +3,7 @@
 @import ../../libs/include-media/dist/include-media
 
 /* fotorama
-.fotorama:not(.fotorama--fullscreen)
+//.fotorama:not(.fotorama--fullscreen)
 	.fotorama__arr
 		position: absolute
 		top: 0
@@ -38,9 +38,133 @@
 		&:hover
 			+linear-gradient(to left, white 0, rgba(255, 255, 255, 0.5) 80%, rgba(255, 255, 255, 0) 100%)
 
+//.fotorama:not(.fotorama--fullscreen)
+.fotorama
+	.fotorama__arr
+		top: 0
+		+size(50px, 100%)
+		display: block
+		margin-top: 0
+		position: absolute
+		background: none
+		outline: none
+		color: white
+
+		+media('<mob-lg')
+			width: 40px
+
+		&:hover
+			opacity: 1
+
+		&.fotorama__arr--disabled
+			opacity: 0.25
+			cursor: default
+
+		&::before
+			+pseudo()
+			+size(50px)
+			top: 50%
+			transform: translate(0, -50%)
+			background-color: $base-color
+
+			+media('<mob-lg')
+				+size(40px)
+				background-color: rgba($base-color, 0.80)
+
+		&::after
+			+pseudo()
+			top: 50%
+			opacity: 1
+			pointer-events: none
+			+size(12px)
+			transform: rotate(45deg)
+			border: 0 solid white
+
+	.fotorama__arr--prev
+		left: 0
+
+		&::after
+			left: 50%
+			border-width: 0 0 2px 2px
+			margin: -6px 0 0 -4px
+
+	.fotorama__arr--next
+		right: 0
+
+		&::after
+			right: 50%
+			border-width: 2px 2px 0 0
+			margin: -6px -4px 0 0
+
+.fotorama__fullscreen-icon
+	+size(auto, 50px)
+	top: 0
+	right: 0
+	background-image: url(../../img/zoom.svg)
+	background-color: rgba(0, 0, 0, 0.36)
+	background-position: 20px 50%
+	background-size: 20px
+	padding: 15px 20px 15px 50px
+	+font-alt-norm
+	+font(16px, 20px)
+	color: white
+	z-index: 20
+
+	+media('<desk-lg')
+		+font(0, 0)
+		padding: 0
+		+size(50px)
+		background-position: 50% 50%
+
+	+media('<mob-lg')
+		+size(40px)
+
+	&::before
+		content: "Увеличить фото"
+
+		html[lang*="be"] &
+			content: "Павялічыць фота"
+
+		html[lang*="en"] &
+			content: "Enlarge picture"
+
+	.fotorama--fullscreen &
+		background-image: url(../../img/close.svg)
+		background-position: 50% 50%
+		background-size: 20px
+		+size(50px)
+		padding: 0
+
+		+media('<mob-lg')
+			+size(40px)
+
+		&::before, &::after
+			content: none
+
 // caption
+.fotorama__caption
+	display: none
+
+	.fotorama--fullscreen &
+		display: block
+
 .fotorama__caption__wrap
 	background-color: rgba(0, 0, 0, 0.5)
 	color: white
+	margin: 0 auto
+	max-width: calc(100% - 120px)
+
+	.fotorama--fullscreen &
+		max-width: none
+
+// thumb
+//.fotorama__nav-wrap
+	display: none
+
+	.fotorama--fullscreen &
+		display: block
+
+.fotorama__thumb-border
+	border-color: $base-color
 
 /* fotorama end

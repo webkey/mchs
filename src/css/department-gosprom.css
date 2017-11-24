@@ -1,4 +1,4 @@
-/*=========== DEPARTMENTS GOSPROM ===========*/
+/*=========== DEPARTMENTS: GOSPROM ===========*/
 .mark {
 	color: #0c86ab;
 }
@@ -82,7 +82,7 @@
 	color: #262626;
 }
 
-.more i::before, .more i::after {
+.more .btn-more i::before, .more .btn-more i::after {
 	background: #262626;
 }
 
@@ -310,6 +310,18 @@ input.search-form__input, input.search-form__input:focus {
 	border-color: rgba(255, 255, 255, 0.1);
 }
 
-/*=========== DEPARTMENTS GOSPROM end ===========*/
+.no-touchevents .jFiler-input-dragDrop:hover {
+	border-color: #0c86ab;
+}
+
+.jFiler-item-trash-action::before, .jFiler-item-trash-action::after {
+	background-color: #262626;
+}
+
+.no-touchevents .jFiler-item-trash-action:hover::before, .no-touchevents .jFiler-item-trash-action:hover::after {
+	background-color: #0c86ab;
+}
+
+/*=========== DEPARTMENTS GOSPROM: end ===========*/
 
 /*# sourceMappingURL=department-gosprom.css.map */

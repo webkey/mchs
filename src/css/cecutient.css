@@ -3656,6 +3656,11 @@
 	        filter: saturate(0);
 }
 
+.color-scheme-bw .fotorama {
+	-webkit-filter: saturate(0);
+	        filter: saturate(0);
+}
+
 /*=========== BLACK AND WHITE scheme end ===========*/
 /*=========== BLACK AND WHITE images ===========*/
 .images-bw img,
