@@ -45,7 +45,7 @@ $info-map-border-color: #d63700 !default
 	polygon
 		fill: white
 		stroke-width: 1
-		stroke: $text-color
+		stroke: #989898
 		stroke-miterlimit: 10
 
 	#all-rb .st0
@@ -85,31 +85,31 @@ $info-map-border-color: #d63700 !default
 	height: 0
 
 // info map labels
-$info-map-label-size: 40px
+$info-map-label-size: 32px
 .info-map-labels
 	text-align: center
 	pointer-events: none
 	position: absolute
 	left: 0
 	top: 0
-	z-index: 9999
+	z-index: 5
 
-	background-color: coral
-	height: 6px
+	//background-color: coral
+	//height: 6px
 
 .info-map-labels__holder
+	position: relative
 	margin-left: -#{70 - round($info-map-label-size/2)+10}
 
-	position: relative
-	background-color: cadetblue
-	height: 2px
-	top: 2px
+	//background-color: cadetblue
+	//height: 2px
+	//top: 2px
 
 .info-map-label
 	vertical-align: top
 	//margin-top: -#{round($info-map-label-size/2)}
 	margin-top: -#{round($info-map-label-size)}
-	margin-left: -#{round($info-map-label-size/2)+10}
+	margin-left: -#{round($info-map-label-size/2)}
 	display: none
 
 	&.show-label
@@ -134,18 +134,17 @@ $info-map-label-size: 40px
 		+display-inline-block-top
 		+size($info-map-label-size)
 
-		path, use
+		//path, use
 			stroke: $text-color
 			stroke-width: 2px
 
 	.info-map-count
 		$number-size: 16px
-		margin: -#{$info-map-label-size} 0 0
-		+size($info-map-label-size)
+		margin: -#{$number-size} 0 0
+		+size(100%, $number-size)
 		+font-normal
 		+font(12px, $number-size)
-		color: white
-		text-align: center
+		text-align: left
 		display: none
 
 		&.show-count
@@ -154,10 +153,13 @@ $info-map-label-size: 40px
 		span
 			+display-inline-block-top
 			height: $number-size
-			padding: 0 5px
-			margin-top: round(($info-map-label-size - $number-size)/2)
+			padding: 0 3px
+			//margin-top: round(($info-map-label-size - $number-size)/2)
+			margin-top: 0
 			min-width: $number-size
-			background-color: $info-map-border-color
+			color: white
+			text-align: center
+			background-color: #636363
 			border-radius: round($number-size/2)
 			//box-shadow: inset 0 0 0 1px white
 			box-sizing: border-box
@@ -176,6 +178,12 @@ $info-map-label-size: 40px
 	z-index: 999
 	//pointer-events: none
 
+	+media('<tab-sm')
+		width: 380px
+
+	+media('<mob-md')
+		width: 280px
+
 	/*opacity: 0;
 	/*visibility: hidden;
 	display: none
@@ -186,6 +194,9 @@ $info-map-label-size: 40px
 	background-color: white
 	border: 1px solid $info-map-border-color
 	+clear-spacing
+
+	+media('<tab-sm')
+		+padding-horizontal(20px)
 
 	& > *
 		+font(14px, 24px)
@@ -198,6 +209,9 @@ $info-map-label-size: 40px
 	height: 100%
 	background: red
 	pointer-events: none
+
+	+media('<tab-lg')
+		display: none
 
 	&.top
 		transform: rotate(180deg)
@@ -259,7 +273,7 @@ $info-map-label-size: 40px
 			+size(24px)
 			margin-right: 5px
 
-		path, use
+		//path, use
 			stroke-width: 2px
 			stroke: $text-color
 
@@ -345,7 +359,7 @@ $info-map-label-size: 40px
 			+size(32px)
 			margin-right: 5px
 
-		path, use
+		//path, use
 			stroke-width: 2px
 			stroke: $text-color
 

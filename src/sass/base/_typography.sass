@@ -433,7 +433,10 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	transition-property: background-color, color
 	transition-duration: $animation-speed
 
-	.no-touchevents &:hover
+	+media('<tab-lg')
+		display: none
+
+	&:hover
 		background-color: $text-color-alt
 		color: white
 

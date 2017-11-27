@@ -16,20 +16,30 @@
 	</symbol>
 </svg>-->
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
-	<symbol id="svg-ico-tech" xmlns="http://www.w3.org/2000/svg">
-		<path fill="#f8a000" d="M181 90.6l-39.9-13.1 28.1-20.3h-45.4V11.8l-20.3 28.1L90.6 0l-13 39.9L57.2 11.8v45.4H11.8l28.1 20.3L0 90.6l39.9 12.8 -28.1 20.3h45.4v45.4L77.5 141l13.1 40 12.8-39.9 20.3 28.1v-45.4h45.4L141 103.5 181 90.6zM90.6 113C78 113 68 103 68 90.7 68 78.1 78.1 68 90.6 68c12.3 0 22.3 10 22.3 22.6C113 102.9 102.9 113 90.6 113z"></path>
+	<symbol viewBox="0 0 138 138" id="svg-ico-tech" xmlns="http://www.w3.org/2000/svg">
+		<path class="st0" fill="#f8a000" d="M69 135.5c-36.7 0-66.5-29.8-66.5-66.5C2.5 32.3 32.3 2.5 69 2.5c36.7 0 66.5 29.8 66.5 66.5C135.5 105.7 105.7 135.5 69 135.5z"></path>
+		<path class="st1" fill="#fff" d="M69 5c35.3 0 64 28.7 64 64s-28.7 64-64 64S5 104.3 5 69 33.7 5 69 5M69 0C30.9 0 0 30.9 0 69s30.9 69 69 69 69-30.9 69-69S107.1 0 69 0L69 0z"></path>
+		<path class="st1" fill="#fff" d="M109 69l-17.6-5.8 12.4-9H83.7V34.2l-9 12.4L69 29l-5.7 17.6 -9-12.4v20.1H34.2l12.4 9L29 69l17.6 5.7 -12.4 9h20.1v20.1l9-12.4 5.8 17.7 5.7-17.6 9 12.4V83.7h20.1l-12.4-9L109 69zM69 78.9c-5.6 0-10-4.4-10-9.9 0-5.6 4.5-10 10-10 5.4 0 9.9 4.4 9.9 10C78.9 74.5 74.5 78.9 69 78.9z"></path>
 	</symbol>
-	<symbol id="svg-ico-nature" xmlns="http://www.w3.org/2000/svg">
-		<path fill="#e0e004" d="M122.8 76.3L87.4 56.5l23.3-33L73 38.6 61.4 0 49.8 38.6 12.1 23.5l23.3 33L0 76.3l40.6 2.6 -6.5 39.8 27.3-29.8 27.3 29.8 -6.5-39.8L122.8 76.3zM61.4 70.8L50.9 82.2l2.5-15.3 -15.6-1 13.6-7.6 -8.9-12.7L57 51.4l4.5-14.8 4.4 14.8 14.4-5.8 -8.9 12.7L85 65.9l-15.6 1 2.5 15.3L61.4 70.8z"></path>
+	<symbol viewBox="0 0 138 138" id="svg-ico-nature" xmlns="http://www.w3.org/2000/svg">
+		<path class="st0" fill="#e0e004" d="M69 135.5c-36.7 0-66.5-29.8-66.5-66.5C2.5 32.3 32.3 2.5 69 2.5c36.7 0 66.5 29.8 66.5 66.5C135.5 105.7 105.7 135.5 69 135.5z"></path>
+		<path class="st1" fill="#fff" d="M69 5c35.3 0 64 28.7 64 64s-28.7 64-64 64S5 104.3 5 69 33.7 5 69 5M69 0C30.9 0 0 30.9 0 69s30.9 69 69 69 69-30.9 69-69S107.1 0 69 0L69 0z"></path>
+		<path class="st1" fill="#fff" d="M110.4 80.4L86.5 67.1l15.7-22.2L76.8 55 69 29l-7.8 26L35.8 44.8l15.7 22.2L27.6 80.4l27.4 1.8L50.6 109 69 88.9 87.4 109l-4.4-26.8L110.4 80.4zM69 76.7L61.9 84.4l1.7-10.3 -10.5-0.7 9.2-5.1 -6-8.6 9.8 3.9 3-10 3 10 9.7-3.9 -6 8.6 9.2 5.1 -10.5 0.7L76.1 84.4 69 76.7z"></path>
 	</symbol>
-	<symbol id="svg-ico-fire" xmlns="http://www.w3.org/2000/svg">
-		<path  fill="#f03a03" d="M45.9 39.3C38.4 23.2 43.2 18 43.3 18c0.1-0.1 0.1-0.2 0-0.3 -0.1-0.1-0.2-0.1-0.3-0.1s-10.5 4.4-9.2 14C31 29 17.7 15.9 25.8 0.5c0.1-0.1 0-0.2 0-0.3C25.7 0 25.6 0 25.5 0c-0.2 0.1-4.3 1.8-7.6 6.3 -3 4.1-5.9 11.4-2.1 22.7 1.4 5.3-1.2 9.6-2.6 11.4 0.3-1.3 0.8-3.4 0.7-5.9C13.8 30.9 12.5 26 7 22.8c-0.1-0.1-0.2 0-0.3 0 -0.1 0.1-0.1 0.2-0.1 0.3 0 0.1 2.1 9.5-1.5 13.9C2 40.8-1.1 47.3 0.6 53.4c1.4 5.1 5.8 9 12.9 11.5 1.9 0.6 3.6 1 5.6 1.4 0.1 0 0.2-0.1 0.3-0.2 0-0.1 0-0.3-0.1-0.3 -3.7-1.6-7.5-4.9-4.7-11.7 2.7-5.8 2.2-8.8 1.7-10.1 1.4 0.8 4.1 2.8 3.5 6.4 0 0.1 0 0.2 0.1 0.3s0.2 0 0.3 0c0.1-0.1 8.4-6.9 4.6-15.3 1.9 1.1 6.8 4.8 3.9 13.5 -1 3.7 1.7 6.4 1.8 6.5 0.1 0.1 0.2 0.1 0.3 0 0.1-0.1 0.1-0.2 0.1-0.3 -0.1-0.2-2.1-5.5 2.2-8.5 -0.2 1.4-0.6 4.7 0.9 6.6 1.4 1.7 2.7 4.4 2.3 7 -0.3 1.9-1.4 3.4-3.3 4.7 -0.1 0.1-0.1 0.2-0.1 0.3s0.2 0.2 0.3 0.1c4.7-1.6 10.8-4.6 13.5-10.5C48.6 50.5 48.3 45.3 45.9 39.3z"></path>
+	<symbol viewBox="0 0 138 138" id="svg-ico-fire" xmlns="http://www.w3.org/2000/svg">
+		<path class="st0" fill="#f03a03" d="M69 135.5c-36.7 0-66.5-29.8-66.5-66.5C2.5 32.3 32.3 2.5 69 2.5c36.7 0 66.5 29.8 66.5 66.5C135.5 105.7 105.7 135.5 69 135.5z"></path>
+		<path class="st1" fill="#fff" d="M69 5c35.3 0 64 28.7 64 64s-28.7 64-64 64S5 104.3 5 69 33.7 5 69 5M69 0C30.9 0 0 30.9 0 69s30.9 69 69 69 69-30.9 69-69S107.1 0 69 0L69 0z"></path>
+		<path class="st1" fill="#fff" d="M92.1 75.5c-7.9-17-2.9-22.5-2.7-22.5 0.1-0.1 0.1-0.2 0-0.3 -0.1-0.1-0.2-0.1-0.3-0.1s-11.1 4.6-9.7 14.8c-3-2.7-17-16.6-8.4-32.8 0.1-0.1 0-0.2 0-0.3C70.8 34 70.7 34 70.6 34c-0.2 0.1-4.5 1.9-8 6.7 -3.2 4.3-6.2 12-2.2 24 1.5 5.6-1.3 10.1-2.7 12 0.3-1.4 0.8-3.6 0.7-6.2 -0.1-3.8-1.5-9-7.3-12.4 -0.1-0.1-0.2 0-0.3 0 -0.1 0.1-0.1 0.2-0.1 0.3 0 0.1 2.2 10-1.6 14.7 -3.3 4-6.5 10.9-4.8 17.3 1.5 5.4 6.1 9.5 13.6 12.1 2 0.6 3.8 1.1 5.9 1.5 0.1 0 0.2-0.1 0.3-0.2 0-0.1 0-0.3-0.1-0.3 -3.9-1.7-7.9-5.2-5-12.4 2.9-6.1 2.3-9.3 1.8-10.7 1.5 0.8 4.3 3 3.7 6.8 0 0.1 0 0.2 0.1 0.3 0.1 0.1 0.2 0 0.3 0 0.1-0.1 8.9-7.3 4.9-16.2 2 1.2 7.2 5.1 4.1 14.3 -1.1 3.9 1.8 6.8 1.9 6.9 0.1 0.1 0.2 0.1 0.3 0 0.1-0.1 0.1-0.2 0.1-0.3 -0.1-0.2-2.2-5.8 2.3-9 -0.2 1.5-0.6 5 1 7 1.5 1.8 2.9 4.6 2.4 7.4 -0.3 2-1.5 3.6-3.5 5 -0.1 0.1-0.1 0.2-0.1 0.3 0 0.1 0.2 0.2 0.3 0.1 5-1.7 11.4-4.9 14.3-11.1C94.9 87.3 94.6 81.8 92.1 75.5z"></path>
 	</symbol>
-	<symbol id="svg-ico-save" xmlns="http://www.w3.org/2000/svg">
-		<path  fill="#006bb8" d="M25.7,29c8,0,14.5-6.5,14.5-14.5S33.8,0,25.7,0S11.2,6.5,11.2,14.5S17.7,29,25.7,29z M44.9,35.5H6  c-4.3,0-7.2,4.4-5.6,8.3l19.5,47.4c2,5,9.1,5,11.2,0l19.5-47.4C52.1,39.9,49.2,35.5,44.9,35.5z M26.133,58.051l-1.58,1.702  l-1.783-1.54l-5.673-4.862l2.146-2.504l2.595,2.225l2.363,2.041l2.095-2.256l7.071-7.66l2.49,2.32L26.133,58.051z"></path>
+	<symbol viewBox="0 0 138 138" id="svg-ico-save" xmlns="http://www.w3.org/2000/svg">
+		<path class="st0" fill="#006bb8" d="M69 135.5c-36.7 0-66.5-29.8-66.5-66.5C2.5 32.3 32.3 2.5 69 2.5c36.7 0 66.5 29.8 66.5 66.5C135.5 105.7 105.7 135.5 69 135.5z"></path>
+		<path class="st1" fill="#fff" d="M69 5c35.3 0 64 28.7 64 64s-28.7 64-64 64S5 104.3 5 69 33.7 5 69 5M69 0C30.9 0 0 30.9 0 69s30.9 69 69 69 69-30.9 69-69S107.1 0 69 0L69 0z"></path>
+		<polygon class="st1" fill="#fff" points="87.7 44 61.5 72.3 49 61.6 38.9 73.4 57.1 89.1 62.8 94 67.9 88.5 99.1 54.7 "></polygon>
 	</symbol>
-	<symbol id="svg-ico-dead" xmlns="http://www.w3.org/2000/svg">
-		<path fill="#000" d="M25.746,29c8,0,14.5-6.5,14.5-14.5S33.846,0,25.746,0c-8.1,0-14.5,6.5-14.5,14.5S17.746,29,25.746,29z M44.946,35.5h-38.9  c-4.3,0-7.2,4.4-5.6,8.3l19.5,47.4c2,5,9.1,5,11.2,0l19.5-47.4C52.146,39.9,49.246,35.5,44.946,35.5z M33.286,57.788l-2.45,2.451  l-5.313-5.313l-5.313,5.313l-2.451-2.451l5.313-5.313l-5.313-5.313l2.451-2.451l5.313,5.313l5.313-5.313l2.45,2.451l-5.313,5.313  L33.286,57.788z"></path>
+	<symbol viewBox="0 0 138 138" id="svg-ico-dead" xmlns="http://www.w3.org/2000/svg">
+		<path class="st0" d="M69 135.5c-36.7 0-66.5-29.8-66.5-66.5S32.3 2.5 69 2.5s66.5 29.8 66.5 66.5S105.7 135.5 69 135.5z"></path>
+		<path class="st1" fill="#fff" d="M69 5c35.3 0 64 28.7 64 64s-28.7 64-64 64c-35.3 0-64-28.7-64-64S33.7 5 69 5M69 0C30.9 0 0 30.9 0 69s30.9 69 69 69 69-30.9 69-69S107.1 0 69 0L69 0z"></path>
+		<polygon class="st1" fill="#fff" points="96.5 50.2 87.8 41.5 69 60.3 50.2 41.5 41.5 50.2 60.3 69 41.5 87.8 50.2 96.5 69 77.7 87.8 96.5 96.5 87.8 77.7 69 "></polygon>
 	</symbol>
 </svg>
 
@@ -37,7 +47,7 @@
 
 <div class="map-legend">
 	<h3>Условные обозначения</h3>
-	<ul class="map-legend__list">
+	<!--<ul class="map-legend__list">
 		<li>
 			<svg viewBox="0 0 181 181" width="32" height="32">
 				<use xlink:href="#svg-ico-tech"></use>
@@ -60,6 +70,33 @@
 			<div class="text-inner">Погибло в ЧС</div></li>
 		<li>
 			<svg viewBox="0 0 51.046 94.95" width="32" height="32">
+				<use xlink:href="#svg-ico-save"></use>
+			</svg>
+			<div class="text-inner">Спасено при ликвидации ЧС и прочих инцидентах</div></li>
+	</ul>-->
+	<ul class="map-legend__list">
+		<li>
+			<svg viewBox="0 0 138 138" width="32" height="32">
+				<use xlink:href="#svg-ico-tech"></use>
+			</svg>
+			<div class="text-inner">Крупная ЧС техногенного характера</div></li>
+		<li>
+			<svg viewBox="0 0 138 138" width="32" height="32">
+				<use xlink:href="#svg-ico-nature"></use>
+			</svg>
+			<div class="text-inner">Крупная ЧС природного характера</div></li>
+		<li>
+			<svg viewBox="0 0 138 138" width="32" height="32">
+				<use xlink:href="#svg-ico-fire"></use>
+			</svg>
+			<div class="text-inner">Крупные пожары</div></li>
+		<li>
+			<svg viewBox="0 0 138 138" width="32" height="32">
+				<use xlink:href="#svg-ico-dead"></use>
+			</svg>
+			<div class="text-inner">Погибло в ЧС</div></li>
+		<li>
+			<svg viewBox="0 0 138 138" width="32" height="32">
 				<use xlink:href="#svg-ico-save"></use>
 			</svg>
 			<div class="text-inner">Спасено при ликвидации ЧС и прочих инцидентах</div></li>
@@ -766,31 +803,31 @@
 	<script type="text/template" data-template="info-map-labels">
 		<div class="info-map-labels__holder">
 			<div class="info-map-label" data-event="tech">
-				<svg viewBox="0 0 181 181" width="32" height="32">
+				<svg viewBox="0 0 138 138" width="32" height="32">
 					<use xlink:href="#svg-ico-tech"></use>
 				</svg>
 				<div class="info-map-count"><span class="info-map-number">&nbsp;</span></div>
 			</div>
 			<div class="info-map-label" data-event="nature">
-				<svg viewBox="0 0 122.8 118.7" width="32" height="32">
+				<svg viewBox="0 0 138 138" width="32" height="32">
 					<use xlink:href="#svg-ico-nature"></use>
 				</svg>
 				<div class="info-map-count"><span class="info-map-number">&nbsp;</span></div>
 			</div>
 			<div class="info-map-label" data-event="fire">
-				<svg viewBox="0 0 47.9 66.4" width="32" height="32">
+				<svg viewBox="0 0 138 138" width="32" height="32">
 					<use xlink:href="#svg-ico-fire"></use>
 				</svg>
 				<div class="info-map-count"><span class="info-map-number">&nbsp;</span></div>
 			</div>
 			<div class="info-map-label" data-event="save">
-				<svg viewBox="0 0 51 94.9" width="32" height="32">
+				<svg viewBox="0 0 138 138" width="32" height="32">
 					<use xlink:href="#svg-ico-save"></use>
 				</svg>
 				<div class="info-map-count"><span class="info-map-number">&nbsp;</span></div>
 			</div>
 			<div class="info-map-label" data-event="dead">
-				<svg viewBox="0 0 51.046 94.95" width="32" height="32">
+				<svg viewBox="0 0 138 138" width="32" height="32">
 					<use xlink:href="#svg-ico-dead"></use>
 				</svg>
 				<div class="info-map-count"><span class="info-map-number">&nbsp;</span></div>

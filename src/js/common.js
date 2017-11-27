@@ -3995,57 +3995,86 @@ function infoMapPopup(){
 		var popupIsOpen = false;
 		var classActive = 'active';
 
-		$region.mouseenter(function(e){
+		if (DESKTOP) {
+			$region.mouseenter(function (e) {
 
-			e.preventDefault();
-			var $this = $(this);
-			var $thisPopup = $('#' + $this.attr('data-href'));
+				e.preventDefault();
+				var $this = $(this);
+				var $thisPopup = $('#' + $this.attr('data-href'));
 
+				if (popupIsOpen) {
+					return;
+				}
+				if (!$thisPopup.length || popupIsOpen) {
+					return;
+				}
 
-			if(popupIsOpen){
-				return
-			}
-			if(!$thisPopup.length || popupIsOpen){
-				return;
-			}
+				e.stopPropagation();
 
-			e.stopPropagation();
+				// if (popupIsOpen) {
+				// 	closePopup();
+				// }
 
-			// if (popupIsOpen) {
-			// 	closePopup();
-			// }
+				openPopup($this, $thisPopup, $corner);
 
-			$this.addClass(classActive);
-			$thisPopup.stop().fadeIn(animateSpeed, function () {
-				$thisPopup.addClass(classActive);
+			}).mouseleave(function () {
+				closePopup();
+			});
+		} else {
+			$region.on('click', function (e) {
+
+				e.preventDefault();
+				var $this = $(this);
+				var $thisPopup = $('#' + $this.attr('data-href'));
+
+				if (popupIsOpen) {
+					return;
+				}
+				if (!$thisPopup.length || popupIsOpen) {
+					return;
+				}
+
+				e.stopPropagation();
+
+				if (popupIsOpen) {
+					closePopup();
+				}
+
+				openPopup($this, $thisPopup, $corner);
+
+			});
+		}
+
+		function openPopup(element, popup, corner) {
+			element.addClass(classActive);
+			popup.stop().fadeIn(animateSpeed, function () {
+				popup.addClass(classActive);
 				popupIsOpen = true;
 			});
 
-			$thisPopup.position({
+			popup.position({
 				// my: "center bottom-20",
 				my: "center bottom",
 				at: "center top",
-				of: $this,
+				of: element,
 				collision: "flipfit flip",
 				within: $container,
-				using: function( position, feedback ) {
+				using: function (position, feedback) {
 					addPositionClass(position, feedback, $(this));
 				}
 			});
 
-			$corner.position({
+			corner.position({
 				my: "center bottom-1",
 				at: "center top",
-				of: $this,
+				of: element,
 				collision: "flipfit flip",
 				within: $container,
-				using: function( position, feedback ) {
+				using: function (position, feedback) {
 					addPositionClass(position, feedback, $(this));
 				}
 			});
-		}).mouseleave(function () {
-			closePopup();
-		});
+		}
 
 		$(document).on('click', function () {
 			if (popupIsOpen) {
