@@ -237,10 +237,12 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 	ul > li::before
 		content: ''
-		position: absolute
+		//position: absolute
+		display: block
+		float: left
 		left: 0
-		top: calc(1em * #{$line-height} / 2)
-		margin-top: -5px
+		//top: calc(1em * #{$line-height} / 2)
+		margin: 0.5em 0 -0.5em -30px
 		height: 0
 		width: 0
 		border: solid transparent
@@ -253,8 +255,10 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 
 		& > li
 			counter-increment: section
-			height: 1%
-			overflow: hidden
+			//height: 1%
+			//overflow: hidden
+			display: inline-block
+			vertical-align: top
 
 			&::before
 				position: relative
@@ -326,9 +330,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			border-color: $color-table-bg-alt
 			border-top-width: 0
 
-	.tbl:not([border="1"])
+	//.tbl:not([border="1"])
 		tbody tr:first-child td
-			border-top-width: 0
+			border-top-width: 1px
 
 /*table end
 
@@ -400,13 +404,13 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .imgl
 	text-align: left
 	float: left
-	margin: $bottom-space*0.3 $bottom-space-lg $bottom-space-lg 0
+	margin: $bottom-space*0.3 $bottom-space-lg $bottom-space-md 0
 	max-width: 50%
 
 .imgr
 	text-align: right
 	float: right
-	margin: $bottom-space*0.3 0 $bottom-space-lg $bottom-space-lg
+	margin: $bottom-space*0.3 0 $bottom-space-lg $bottom-space-md
 	max-width: 50%
 
 +media('<desk-lg')

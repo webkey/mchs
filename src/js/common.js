@@ -837,8 +837,10 @@ function addAlignClass() {
  * !nav expander
  * */
 function navExpander() {
+	var label = $('.nav').attr('data-btn-more') || "More...";
+
 	var nav = priorityNav.init({
-		navDropdownLabel: 'Eще...',
+		navDropdownLabel: label,
 		navDropdownBreakpointLabel: 'Меню',
 		throttleDelay: 200,
 		breakPoint: 768

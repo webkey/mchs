@@ -1,4 +1,4 @@
-<div class="files__item">
+<div class="files__item@@if(context.class){ @@class}">
 	<a class="files__inner files_@@alt" href="#" title="@@title">
 		<div class="files__depict">
 			<img src="@@src" alt="@@alt" />

@@ -1016,10 +1016,10 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 
 .user-content ul > li::before {
 	content: '';
-	position: absolute;
+	display: block;
+	float: left;
 	left: 0;
-	top: calc(1em * 1.88 / 2);
-	margin-top: -5px;
+	margin: 0.5em 0 -0.5em -30px;
 	height: 0;
 	width: 0;
 	border: solid transparent;
@@ -1034,8 +1034,8 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 
 .user-content ol > li {
 	counter-increment: section;
-	height: 1%;
-	overflow: hidden;
+	display: inline-block;
+	vertical-align: top;
 }
 
 .user-content ol > li::before {
@@ -1119,10 +1119,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	background-color: #006ab8;
 	color: #fff;
 	border-color: #006ab8;
-	border-top-width: 0;
-}
-
-.user-content .tbl:not([border="1"]) tbody tr:first-child td {
 	border-top-width: 0;
 }
 
@@ -1221,14 +1217,14 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 .imgl {
 	text-align: left;
 	float: left;
-	margin: 0.9rem 6rem 6rem 0;
+	margin: 0.9rem 6rem 4.5rem 0;
 	max-width: 50%;
 }
 
 .imgr {
 	text-align: right;
 	float: right;
-	margin: 0.9rem 0 6rem 6rem;
+	margin: 0.9rem 0 6rem 4.5rem;
 	max-width: 50%;
 }
 
@@ -6541,6 +6537,10 @@ script ~ .section, input ~ .section {
 	box-shadow: inset 0 0 0 2px #259deb;
 }
 
+.no-touchevents .files__inner.files_rtf:hover {
+	box-shadow: inset 0 0 0 2px #0868f8;
+}
+
 .files__depict {
 	float: left;
 	width: 38px;
@@ -6617,6 +6617,39 @@ script ~ .section, input ~ .section {
 .files__date {
 	background-size: 15px;
 	background: url(../img/date.svg) no-repeat left center;
+}
+
+.files__item--title, .files .files__item--title {
+	width: 100%;
+}
+
+.files__item--title .files__inner {
+	border: none;
+	padding: 0;
+	box-shadow: none !important;
+	cursor: default;
+}
+
+.files__item--title .files__depict {
+	display: none;
+}
+
+.files__item--title .files__description {
+	padding: 0;
+}
+
+.files__item--title .files__meta {
+	display: none;
+}
+
+.files__item--title .files__title {
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 2rem;
+	line-height: 1.3;
+	margin-bottom: 0;
+	padding-top: 10px;
 }
 
 /*files item end*/

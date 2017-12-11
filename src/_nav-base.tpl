@@ -2,7 +2,7 @@
 <!-- @@if(mainNavItemActive === "biography"){current} -->
 <!-- @@if(mainNavItemActive === "biography"){ class="current"} -->
 <div class="@@classKey-wrap">
-	<@@if(context.navTag){nav}@@if(!context.navTag){div} class="@@classKey">
+	<@@if(context.navTag){nav}@@if(!context.navTag){div} class="@@classKey" data-btn-more="Еще...">
 		<ul class="@@classKey__list @@classKey-js">
 			<!--@@classKey item start-->
 			<li class="has-drop @@if(mainNavItemActive === "О министерстве"){current}">

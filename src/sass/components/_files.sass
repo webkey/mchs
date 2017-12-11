@@ -44,7 +44,7 @@
 	+media('<mob-lg')
 		padding: #{round($grid-inside-vertical-space*0.5)} #{round($grid-inside-horizontal-space*0.5)}
 
-	$files-border-colors: (pdf: #a00, word: #2b5797, excel: #02723b, audio: #ff9a09, link: #259deb)
+	$files-border-colors: (pdf: #a00, word: #2b5797, excel: #02723b, audio: #ff9a09, link: #259deb, rtf: #0868f8)
 
 	.files &
 		height: 100%
@@ -112,6 +112,33 @@
 .files__date
 	background-size: 15px
 	background: url(../../img/date.svg) no-repeat left center
+
+// title
+.files__item--title
+
+	&, .files &
+		width: 100%
+
+	.files__inner
+		border: none
+		padding: 0
+		box-shadow: none !important
+		cursor: default
+
+	.files__depict
+		display: none
+
+	.files__description
+		padding: 0
+
+	.files__meta
+		display: none
+
+	.files__title
+		+font-alt-norm
+		+font($font-size-h3, $line-height-h3)
+		margin-bottom: 0
+		padding-top: 10px
 
 /*files item end*/
 /*download files items end*/
