@@ -1036,6 +1036,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	counter-increment: section;
 	display: inline-block;
 	vertical-align: top;
+	width: 100%;
 }
 
 .user-content ol > li::before {
@@ -10388,6 +10389,10 @@ html.before-extra-popup-open .wrapper {
 	z-index: 5;
 }
 
+.news__place ~ .news__label {
+	left: 50px;
+}
+
 .news__label_none {
 	display: none;
 }
@@ -10400,6 +10405,24 @@ html.before-extra-popup-open .wrapper {
 .news__label_photos {
 	background: #ff9a09 url(../img/depict-photos.svg) no-repeat center;
 	background-size: 26px;
+}
+
+.news__place {
+	position: absolute;
+	top: 0;
+	width: 50px;
+	height: 50px;
+	pointer-events: none;
+	background-color: #006ab8;
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 700;
+	font-style: normal;
+	color: white;
+	text-align: center;
+	font-size: 18px;
+	line-height: 50px;
+	letter-spacing: normal;
+	z-index: 5;
 }
 
 .news-previews__img {
@@ -10911,6 +10934,16 @@ html.before-extra-popup-open .wrapper {
 @media (max-width: 639px) {
 	.news-grid__item--wide .news__label {
 		display: none;
+	}
+}
+
+@media (max-width: 639px) {
+	.news-grid__item--wide .news__place {
+		width: 30px;
+		height: 30px;
+		font-size: 14px;
+		line-height: 30px;
+		left: 0;
 	}
 }
 

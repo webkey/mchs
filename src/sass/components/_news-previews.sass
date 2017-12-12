@@ -45,6 +45,9 @@
 	overflow: hidden
 	z-index: 5
 
+	.news__place ~ &
+		left: $news-label-size
+
 	&_none
 		display: none
 
@@ -57,6 +60,21 @@
 		background: $mark-color-alt url(../../img/depict-photos.svg) no-repeat center
 		-webkit-background-size: 26px
 		background-size: 26px
+
+.news__place
+	position: absolute
+	top: 0
+	width: $news-label-size
+	height: $news-label-size
+	pointer-events: none
+	background-color: $base-color
+	+font-title
+	color: white
+	text-align: center
+	font-size: 18px
+	line-height: $news-label-size
+	letter-spacing: normal
+	z-index: 5
 
 .news-previews__img
 	min-height: $news-label-size
