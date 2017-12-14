@@ -36,6 +36,22 @@
 	<script src="js/modernizr.min.js"></script>
 	<script>
 		var cssPath = 'css/';
+		var fileInputObj = {
+			title: '222 Кликните по полю или перетащите сюда файл',
+			caption: {
+				button: "Выберите файлы",
+				feedback: "Выберите файлы для загрузки",
+				feedback2: "Файлы выбраны",
+				drop: "Перетащите файлы в это поле для загрузки",
+				removeConfirmation: "Вы уверены, что хотите удалить этот файл?",
+				errors: {
+					filesLimit: "1111111 Максиальное количество файлов: {{fi-limit}}",
+					filesType: "Загружать можно только изображения!",
+					filesSize: "{{fi-name}} слишком велик! Пожалуйста, загрузите файл до {{fi-maxSize}} MB.",
+					filesSizeAll: "Файлы, которые Вы выбрали слишком велики! Пожалуйста, загружайте файлы до {{fi-maxSize}} MB."
+				}
+			}
+		};
 	</script>
 </head>
 <body @@if (pageClass !== "") {class="@@pageClass"}>
