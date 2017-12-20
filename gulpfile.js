@@ -121,6 +121,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
 		'src/libs/flatpickr/dist/flatpickr.min.js',
 		'src/libs/flatpickr/dist/l10n/ru.js',
+		'src/js/temp/by.js',
 		'src/libs/swiper/dist/js/swiper.min.js',
 		'src/libs/select2/dist/js/select2.full.min.js',
 		'src/libs/select2/dist/js/i18n/ru.js',

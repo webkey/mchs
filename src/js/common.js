@@ -2051,6 +2051,7 @@ function datePickerInit() {
 	var datepickerOverlay = $('<div/>', {
 		'class': "datepicker-overlay"
 	});
+	var _dataLocation = $('html').attr('lang');
 
 	var $dataTarget = $('.news-date-output-js');
 	if ($dataTarget.length) {
@@ -2065,7 +2066,7 @@ function datePickerInit() {
 		var _defaultDate = $('#main-news-date').val() || 'today';
 
 		var calendar = $newsDate.flatpickr({
-			"locale": "ru",
+			"locale": _dataLocation,
 			// mode: "range",
 			defaultDate: _defaultDate,
 			altInput: true,
@@ -2102,7 +2103,7 @@ function datePickerInit() {
 	var $resultDate = $('.result-date-js');
 	if ($resultDate) {
 		var calendarResult = $resultDate.flatpickr({
-			"locale": "ru",
+			"locale": _defaultDate,
 			// mode: "range",
 			altInput: true,
 			clickopens: false,
@@ -2156,7 +2157,7 @@ function datePickerInit() {
 	var $customDate = $('.custom-date');
 	if ($customDate) {
 		$customDate.flatpickr({
-			"locale": "ru",
+			"locale": _defaultDate,
 			// defaultDate: 'today',
 			altInput: true,
 			clickopens: false,
@@ -2178,7 +2179,7 @@ function datePickerInit() {
 
 			dateFrom = $thisContainer.find($customDateFrom).flatpickr({
 				// minDate: 'today',
-				"locale": "ru",
+				"locale": _defaultDate,
 				altInput: true,
 				clickopens: false,
 				altFormat: 'd M Y',
@@ -2193,7 +2194,7 @@ function datePickerInit() {
 
 			dateTo = $thisContainer.find($customDateTo).flatpickr({
 				// minDate: 'today',
-				"locale": "ru",
+				"locale": _defaultDate,
 				altInput: true,
 				clickopens: false,
 				altFormat: 'd M Y',
