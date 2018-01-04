@@ -3058,6 +3058,12 @@ html.css-scroll-fixed {
 	}
 }
 
+.without-aside .content {
+	padding-right: 0;
+	margin-right: 0;
+	right: 0;
+}
+
 .content-news {
 	margin-bottom: 3rem;
 }
@@ -3140,6 +3146,10 @@ html.css-scroll-fixed {
 	.aside {
 		display: none;
 	}
+}
+
+.without-aside .aside {
+	display: none;
 }
 
 .footer {
