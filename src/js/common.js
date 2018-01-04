@@ -3698,7 +3698,7 @@ function toggleContacts() {
 			html: '<i>&nbsp;</i>',
 			click: function(e) {
 				e.preventDefault();
-				console.log(1);
+				// console.log(1);
 			}
 		});
 
@@ -3707,7 +3707,7 @@ function toggleContacts() {
 		$container.on('click', '.h-contacts-opener-js', function (e) {
 			e.preventDefault();
 
-			console.log(1);
+			// console.log(1);
 
 			var $wrap = $(this).parent();
 
@@ -3878,10 +3878,10 @@ function removeAttrFromImg() {
 
 			var labelGroupTpl = self.labelsTpl.clone();
 
-			console.log("labelGroupTpl: ", labelGroupTpl);
+			// console.log("labelGroupTpl: ", labelGroupTpl);
 
 			var elementCenter = self.getElementCenter(self.element, $item);
-			console.log("elementCenter: ", elementCenter);
+			// console.log("elementCenter: ", elementCenter);
 			labelGroupTpl
 				.css({
 					left: elementCenter.x,
@@ -3923,8 +3923,9 @@ function removeAttrFromImg() {
 function addLabelsOnMap() {
 	var $infoMapSvg = $('#infoMapSvg');
 	if($infoMapSvg.length){
+		var regionsEventsObj = (window.regionsEvents !== undefined) ? regionsEvents : {};
 		$infoMapSvg.addLabelsEvents({
-			obj: regionsEvents,
+			obj: regionsEventsObj,
 			tpl: $('script[data-template="info-map-labels"]').html(),
 			counter: '.info-map-count',
 			number: '.info-map-number'
@@ -3933,8 +3934,9 @@ function addLabelsOnMap() {
 
 	var $infoMapMinskSvg = $('#infoMapMinskSvg');
 	if($infoMapSvg.length){
+		var minskEventsObj = (window.minskEvents !== undefined) ? minskEvents : {};
 		$infoMapMinskSvg.addLabelsEvents({
-			obj: minskEvents,
+			obj: minskEventsObj,
 			tpl: $('script[data-template="info-map-labels"]').html(),
 			counter: '.info-map-count',
 			number: '.info-map-number'
