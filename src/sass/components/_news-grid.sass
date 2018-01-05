@@ -372,3 +372,69 @@
 		margin-bottom: 0
 
 /*news footer end
+
+/*dep-banner
+.dep-banner
+	height: auto
+
+.dep-banner__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: white
+	overflow: hidden
+	padding: 30px
+	background: #fff
+	background-repeat: no-repeat
+	background-size: cover
+	+clear-spacing
+
+	&::before
+		content: ""
+		display: inline-block
+		vertical-align: middle
+		height: 120px
+
+		+media('<mob-md')
+			content: none
+
+	.gosdep-banner &
+		background-color: #2d1c74
+		background-image: url(../../img/bg-gosdep.jpg)
+
+.dep-banner__img
+	display: inline-block
+	vertical-align: middle
+	width: 120px
+	height: 120px
+	margin-right: 30px
+
+	+media('<mob-md')
+		display: block
+		width: auto
+		margin: 0 0 20px
+
+.dep-banner__content
+	display: inline-block
+	vertical-align: middle
+	width: calc(100% - 120px - 40px)
+	letter-spacing: normal
+
+	+media('<mob-md')
+		display: block
+		width: auto
+
+.dep-banner__title
+	+font-title
+	+font(2.0rem, round-float(24/20, 2))
+	margin-bottom: 0.6em
+	
+	&:last-child
+		margin-bottom: 0
+
+.dep-banner__text
+	+font-title
+	+font(1.4rem, round-float(24/14, 2))
+	color: #b2b2ab
+
+/*dep-banner end

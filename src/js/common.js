@@ -3888,6 +3888,7 @@ function removeAttrFromImg() {
 					top: elementCenter.y
 				})
 				.append(self.config.tpl)
+				.attr('data-region', key)
 				.insertAfter(self.element);
 
 			$.each(val, function (event, count) {
@@ -3975,6 +3976,8 @@ function infoMapPopup(){
 		var animateSpeed = 0;
 		var popupIsOpen = false;
 		var classActive = 'active';
+		var tplOverlayClass = "info-map-popup__overlay";
+		var tplOverlay = $('<div class="'+ tplOverlayClass +'"></div>');
 
 		if (DESKTOP) {
 			$region.mouseenter(function (e) {
@@ -3992,17 +3995,13 @@ function infoMapPopup(){
 
 				e.stopPropagation();
 
-				// if (popupIsOpen) {
-				// 	closePopup();
-				// }
-
-				openPopup($this, $thisPopup, $corner);
+				openPopupForDesktop($this, $thisPopup, $corner);
 
 			}).mouseleave(function () {
 				closePopup();
 			});
 		} else {
-			$region.on('click', function (e) {
+			$region.on('mousedown touchstart vmousedown', function (e) {
 
 				e.preventDefault();
 				var $this = $(this);
@@ -4021,12 +4020,58 @@ function infoMapPopup(){
 					closePopup();
 				}
 
-				openPopup($this, $thisPopup, $corner);
+				openPopupForTouchscreen($this, $thisPopup);
 
 			});
 		}
 
-		function openPopup(element, popup, corner) {
+		if (DESKTOP) {
+			$('.info-map-labels').mouseenter(function (e) {
+
+				e.preventDefault();
+				var $this = $(this);
+				var $thisPopup = $('#' + $this.attr('data-region'));
+
+				if (popupIsOpen) {
+					return;
+				}
+				if (!$thisPopup.length || popupIsOpen) {
+					return;
+				}
+
+				e.stopPropagation();
+
+				openPopupForDesktop($container.find('g[data-href*='+$this.attr('data-region')+']'), $thisPopup, $corner);
+
+			}).mouseleave(function () {
+				closePopup();
+			});
+		} else {
+			$('.info-map-labels').on('mousedown touchstart vmousedown', function (e) {
+
+				e.preventDefault();
+				var $this = $(this);
+				var $thisPopup = $('#' + $this.attr('data-region'));
+
+				if (popupIsOpen) {
+					return;
+				}
+				if (!$thisPopup.length || popupIsOpen) {
+					return;
+				}
+
+				e.stopPropagation();
+
+				if (popupIsOpen) {
+					closePopup();
+				}
+
+				openPopupForTouchscreen($container.find('g[data-href*='+$this.attr('data-region')+']'), $thisPopup);
+
+			});
+		}
+
+		function openPopupForDesktop(element, popup, corner) {
 			element.addClass(classActive);
 			popup.stop().fadeIn(animateSpeed, function () {
 				popup.addClass(classActive);
@@ -4057,15 +4102,46 @@ function infoMapPopup(){
 			});
 		}
 
-		$(document).on('click', function () {
-			if (popupIsOpen) {
-				closePopup();
+		function openPopupForTouchscreen(element, popup) {
+			/* css */
+			/* if touchscreen */
+			/*
+			* position: fixed;
+			* left: 50%;
+			* top: 50%;
+			* transform: translate(-50%, -50%)
+			* */
+
+			element.addClass(classActive);
+			popup.stop().fadeIn(animateSpeed, function () {
+				popup.addClass(classActive);
+				popupIsOpen = true;
+			});
+			$('html').addClass('css-scroll-fixed mapPopupIsOpen');
+			tplOverlay.clone().appendTo(popup.parent());
+
+		}
+
+		// $(document).on('click', function () {
+		// 	if (popupIsOpen) {
+		// 		closePopup();
+		// 	}
+		// });
+
+		$(document).on('click', function(event){
+			if(!popupIsOpen) return;
+
+			if( $(event.target).closest($popup).length) {
+				return;
 			}
+
+			closePopup();
+			event.stopPropagation();
 		});
 
-		$popup.on('click', function (e) {
-			e.stopPropagation();
-		});
+		// $popup.on('click', function (e) {
+		// 	e.stopPropagation();
+		// });
 
 		$('.btn-close-popup-js').on('click', function (e) {
 			e.preventDefault();
@@ -4089,6 +4165,8 @@ function infoMapPopup(){
 		function closePopup() {
 			$region.removeClass(classActive);
 			$popup.removeClass(classActive);
+			$("." + tplOverlayClass).remove();
+			$('html').removeClass('css-scroll-fixed mapPopupIsOpen');
 
 			$popup.filter(':visible').stop().fadeOut(animateSpeed, function () {
 				popupIsOpen = false;

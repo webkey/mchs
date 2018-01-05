@@ -163,6 +163,14 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 	background-color: #074c60;
 }
 
+.menu-sub-site {
+	background-color: #095f78;
+}
+
+.region-menu__list {
+	background-color: #095f78;
+}
+
 .region-menu__list a {
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

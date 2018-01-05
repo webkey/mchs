@@ -6,7 +6,9 @@
 $info-map-border-color: #d63700 !default
 $info-map-label-container-size: 140px !default
 $info-map-label-size: 32px
-$info-map-label-size--sm: 24px
+$info-map-label-size--sm: 20px
+$number-size: 16px
+$number-size--sm: 12px
 
 .info-map
 	position: relative
@@ -90,7 +92,7 @@ $info-map-label-size--sm: 24px
 // info map labels
 .info-map-labels
 	text-align: center
-	pointer-events: none
+	//pointer-events: none
 	position: absolute
 	left: 0
 	top: 0
@@ -104,8 +106,12 @@ $info-map-label-size--sm: 24px
 	margin-left: -#{round($info-map-label-container-size/2) - round($info-map-label-size/4)}
 	+clear-spacing
 
-	+media('<tab-sm')
+	+media('<tab-lg')
 		margin-left: -#{round($info-map-label-container-size/2) - round($info-map-label-size--sm/4)}
+		margin-top: -10px
+
+	+media('<mob-lg')
+		margin-top: -5px
 
 	//background-color: cadetblue
 	//height: 2px
@@ -118,7 +124,7 @@ $info-map-label-size--sm: 24px
 	margin-left: -#{round($info-map-label-size/2)}
 	display: none
 
-	+media('<tab-sm')
+	+media('<tab-lg')
 		margin-top: -#{round($info-map-label-size--sm)}
 		margin-left: -#{round($info-map-label-size--sm/2)}
 
@@ -144,7 +150,7 @@ $info-map-label-size--sm: 24px
 		+display-inline-block-top
 		+size($info-map-label-size)
 
-		+media('<tab-sm')
+		+media('<tab-lg')
 			+size($info-map-label-size--sm)
 
 		//path, use
@@ -152,7 +158,6 @@ $info-map-label-size--sm: 24px
 			stroke-width: 2px
 
 	.info-map-count
-		$number-size: 16px
 		margin: -#{$number-size} 0 0
 		+size(100%, $number-size)
 		+font-normal
@@ -160,6 +165,12 @@ $info-map-label-size--sm: 24px
 		letter-spacing: normal
 		text-align: left
 		display: none
+
+		+media('<tab-lg')
+			margin: -#{$number-size--sm} 0 0
+			+size(100%, $number-size--sm)
+			+font(12px, $number-size--sm)
+			font-size: 8px
 
 		&.show-count
 			display: block
@@ -178,6 +189,11 @@ $info-map-label-size--sm: 24px
 			//box-shadow: inset 0 0 0 1px white
 			box-sizing: border-box
 
+			+media('<tab-lg')
+				height: $number-size--sm
+				min-width: $number-size--sm
+				border-radius: round($number-size--sm/2)
+
 //& + svg
 	margin-left: -22px
 
@@ -190,7 +206,6 @@ $info-map-label-size--sm: 24px
 	padding: 0 10px
 	box-sizing: border-box
 	z-index: 999
-	//pointer-events: none
 
 	+media('<tab-sm')
 		width: 380px
@@ -198,9 +213,13 @@ $info-map-label-size--sm: 24px
 	+media('<mob-md')
 		width: 280px
 
-	/*opacity: 0;
-	/*visibility: hidden;
 	display: none
+
+	.touchevents &
+		position: fixed
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
 
 .info-map-popup__holder
 	position: relative
@@ -256,6 +275,22 @@ $info-map-label-size--sm: 24px
 	+font(16px, 20px)
 	color: $text-color
 	margin-bottom: 20px
+
+.info-map-popup__overlay
+	position: fixed
+	+size(100%)
+	left: 0
+	top: 0
+	background-color: rgba(0, 0, 0, 0.5)
+	z-index: 15
+
+.mapPopupIsOpen
+	.header
+		visibility: hidden
+		opacity: 0
+
+	.footer
+		z-index: 0
 
 // list
 .info-map-popup__list

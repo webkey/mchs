@@ -10,7 +10,8 @@
 	"regionMenuActiveItem": "@@regionMenuActiveItem",
 	"subSiteMenu": "@@subSiteMenu",
 	"titleSub": "@@titleSub",
-	"titleMain": "@@titleMain"
+	"titleMain": "@@titleMain",
+	"departments": "@@departments"
 })
 <!--POPUPS end-->
 

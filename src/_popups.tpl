@@ -215,6 +215,19 @@
 	</div>
 </div>
 }
+@@if(context.departments) {
+<div class="popup-nav-small hide-on-load popup-nav-small-js">
+	<div class="nav-small-container">
+		<div class="popup-nav-small__holder menu-sub-site">
+			@@include('_region-menu.tpl', {
+				"regionMenuActiveItem": "@@regionMenuActiveItem",
+				"classKey": "region-menu",
+				"navTag": ""
+			})
+		</div>
+	</div>
+</div>
+}
 @@if(!context.subSiteMenu) {
 <div class="popup-nav-small hide-on-load popup-nav-small-js">
 	<div class="nav-small-container">

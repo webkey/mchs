@@ -3672,6 +3672,19 @@
 	        filter: saturate(0);
 }
 
+.color-scheme-bw .dep-banner {
+	-webkit-filter: saturate(0);
+	        filter: saturate(0);
+}
+
+.color-scheme-bw .dep-banner__inner {
+	color: white !important;
+}
+
+.color-scheme-bw .dep-banner__text, .color-scheme-bw .dep-banner__title {
+	color: white !important;
+}
+
 /*=========== BLACK AND WHITE scheme end ===========*/
 /*=========== BLACK AND WHITE images ===========*/
 .images-bw img,

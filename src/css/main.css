@@ -1672,9 +1672,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 .btn-default:active {
-	-webkit-transform: scale(0.95);
-	    -ms-transform: scale(0.95);
-	        transform: scale(0.95);
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
 }
 
 @media (max-width: 639px) {
@@ -1944,9 +1944,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 .more .btn-more:active {
-	-webkit-transform: scale(0.95);
-	    -ms-transform: scale(0.95);
-	        transform: scale(0.95);
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
 }
 
 .more .btn-more::before {
@@ -2046,9 +2046,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 .btn-map-site:active {
-	-webkit-transform: scale(0.95);
-	    -ms-transform: scale(0.95);
-	        transform: scale(0.95);
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
 }
 
 .btn-map-site::before {
@@ -11082,6 +11082,96 @@ html.before-extra-popup-open .wrapper {
 }
 
 /*news footer end */
+/*dep-banner */
+.dep-banner {
+	height: auto;
+}
+
+.dep-banner__inner {
+	display: block;
+	position: relative;
+	text-decoration: none;
+	color: white;
+	overflow: hidden;
+	padding: 30px;
+	background: #fff;
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-size: 0;
+	letter-spacing: -4px;
+}
+
+.dep-banner__inner::before {
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 120px;
+}
+
+@media (max-width: 479px) {
+	.dep-banner__inner::before {
+		content: none;
+	}
+}
+
+.gosdep-banner .dep-banner__inner {
+	background-color: #2d1c74;
+	background-image: url(../img/bg-gosdep.jpg);
+}
+
+.dep-banner__img {
+	display: inline-block;
+	vertical-align: middle;
+	width: 120px;
+	height: 120px;
+	margin-right: 30px;
+}
+
+@media (max-width: 479px) {
+	.dep-banner__img {
+		display: block;
+		width: auto;
+		margin: 0 0 20px;
+	}
+}
+
+.dep-banner__content {
+	display: inline-block;
+	vertical-align: middle;
+	width: calc(100% - 120px - 40px);
+	letter-spacing: normal;
+}
+
+@media (max-width: 479px) {
+	.dep-banner__content {
+		display: block;
+		width: auto;
+	}
+}
+
+.dep-banner__title {
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 2rem;
+	line-height: 1.2;
+	margin-bottom: 0.6em;
+}
+
+.dep-banner__title:last-child {
+	margin-bottom: 0;
+}
+
+.dep-banner__text {
+	font-family: 'Roboto Slab', sans-serif;
+	font-weight: 700;
+	font-style: normal;
+	font-size: 1.4rem;
+	line-height: 1.71;
+	color: #b2b2ab;
+}
+
+/*dep-banner end */
 /*news group */
 .news-group {
 	position: relative;
@@ -12705,9 +12795,9 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 }
 
 .search-form__btn:active {
-	-webkit-transform: scale(0.95);
-	    -ms-transform: scale(0.95);
-	        transform: scale(0.95);
+	-webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	        transform: scale(1);
 }
 
 @media (max-width: 639px) {
@@ -14626,7 +14716,6 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 .info-map-labels {
 	text-align: center;
-	pointer-events: none;
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -14640,9 +14729,16 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	letter-spacing: -4px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 959px) {
 	.info-map-labels__holder {
-		margin-left: -64px;
+		margin-left: -65px;
+		margin-top: -10px;
+	}
+}
+
+@media (max-width: 639px) {
+	.info-map-labels__holder {
+		margin-top: -5px;
 	}
 }
 
@@ -14653,10 +14749,10 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	display: none;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 959px) {
 	.info-map-label {
-		margin-top: -24px;
-		margin-left: -12px;
+		margin-top: -20px;
+		margin-left: -10px;
 	}
 }
 
@@ -14671,10 +14767,10 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	height: 32px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 959px) {
 	.info-map-label svg {
-		width: 24px;
-		height: 24px;
+		width: 20px;
+		height: 20px;
 	}
 }
 
@@ -14689,6 +14785,17 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	letter-spacing: normal;
 	text-align: left;
 	display: none;
+}
+
+@media (max-width: 959px) {
+	.info-map-label .info-map-count {
+		margin: -12px 0 0;
+		width: 100%;
+		height: 12px;
+		font-size: 12px;
+		line-height: 12px;
+		font-size: 8px;
+	}
 }
 
 .info-map-label .info-map-count.show-count {
@@ -14709,6 +14816,14 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	box-sizing: border-box;
 }
 
+@media (max-width: 959px) {
+	.info-map-label .info-map-count span {
+		height: 12px;
+		min-width: 12px;
+		border-radius: 6px;
+	}
+}
+
 /*info-map popup */
 .info-map-popup {
 	position: absolute;
@@ -14718,8 +14833,6 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	padding: 0 10px;
 	box-sizing: border-box;
 	z-index: 999;
-	/*opacity: 0; */
-	/*visibility: hidden; */
 	display: none;
 }
 
@@ -14733,6 +14846,15 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	.info-map-popup {
 		width: 280px;
 	}
+}
+
+.touchevents .info-map-popup {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 }
 
 .info-map-popup__holder {
@@ -14811,6 +14933,25 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	line-height: 20px;
 	color: #262626;
 	margin-bottom: 20px;
+}
+
+.info-map-popup__overlay {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 15;
+}
+
+.mapPopupIsOpen .header {
+	visibility: hidden;
+	opacity: 0;
+}
+
+.mapPopupIsOpen .footer {
+	z-index: 0;
 }
 
 .info-map-popup__list, .user-content .info-map-popup__list {
@@ -15249,6 +15390,10 @@ span.flatpickr-weekday {
 	.phenomena-map#phenomena_map .svg_legenda_text {
 		font-size: 2.3rem;
 	}
+}
+
+.phenomena-map .all_svg {
+	margin-bottom: 40px;
 }
 
 .phenomena-map .phen_info {
