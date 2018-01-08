@@ -16,7 +16,10 @@
 	transition-duration: $animation-speed
 	+clear-spacing
 
-	.no-touchevents &:hover
+	.disabled-js &
+		cursor: default
+
+	.no-touchevents .sidebar:not(.disabled-js) &:hover
 		background-color: shade($subsite-menu-bg-color, 70%)
 
 	&::before
@@ -87,6 +90,11 @@ $btn-region-menu-margin-right: 20px
 				transform: rotate(-45deg)
 				opacity: 1
 
+		.disabled-js &
+			&::before, &::after
+				transform: rotate(0deg)
+				opacity: 0
+
 		> span
 			+hide-text
 
@@ -126,6 +134,13 @@ $btn-region-menu-margin-right: 20px
 			&::after
 				transform: translate(0, -#{$btn-region-menu-lines-space+$btn-region-menu-lines-height})
 				opacity: 0
+
+		.disabled-js & > i
+			background-color: $btn-region-menu-lines-color
+
+			&::before, &::after
+				transform: translate(0, 0)
+				opacity: 1
 
 /*region menu button end*/
 
@@ -191,6 +206,12 @@ $btn-region-menu-margin-right: 20px
 
 	.elements-is-transform &
 		height: calc(100vh - #{$header-top-height} - #{round($subsite-menu-tab-height*2)})
+
+	.hasnt-news &
+		height: calc(100vh - #{$header-height} - #{$subsite-menu-tab-height})
+
+	.elements-is-transform .hasnt-news &
+		height: calc(100vh - #{$header-top-height} - #{$subsite-menu-tab-height})
 
 /*region menu
 // общие стили для главного списка навигации

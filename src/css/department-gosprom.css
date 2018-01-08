@@ -159,7 +159,7 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.no-touchevents .region-menu-heading:hover {
+.no-touchevents .sidebar:not(.disabled-js) .region-menu-heading:hover {
 	background-color: #074c60;
 }
 

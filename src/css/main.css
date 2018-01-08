@@ -12932,7 +12932,11 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 	letter-spacing: -4px;
 }
 
-.no-touchevents .region-menu-heading:hover {
+.disabled-js .region-menu-heading {
+	cursor: default;
+}
+
+.no-touchevents .sidebar:not(.disabled-js) .region-menu-heading:hover {
 	background-color: #424f5a;
 }
 
@@ -12995,6 +12999,13 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 	    -ms-transform: rotate(-45deg);
 	        transform: rotate(-45deg);
 	opacity: 1;
+}
+
+.disabled-js .region-menu-btn::before, .disabled-js .region-menu-btn::after {
+	-webkit-transform: rotate(0deg);
+	    -ms-transform: rotate(0deg);
+	        transform: rotate(0deg);
+	opacity: 0;
 }
 
 .region-menu-btn > span {
@@ -13067,6 +13078,17 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 	    -ms-transform: translate(0, -8px);
 	        transform: translate(0, -8px);
 	opacity: 0;
+}
+
+.disabled-js .region-menu-btn > i {
+	background-color: white;
+}
+
+.disabled-js .region-menu-btn > i::before, .disabled-js .region-menu-btn > i::after {
+	-webkit-transform: translate(0, 0);
+	    -ms-transform: translate(0, 0);
+	        transform: translate(0, 0);
+	opacity: 1;
 }
 
 /*region menu button end*/
@@ -13158,6 +13180,14 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 
 .elements-is-transform .region-menu-panel {
 	height: calc(100vh - 60px - 140px);
+}
+
+.hasnt-news .region-menu-panel {
+	height: calc(100vh - 210px - 70px);
+}
+
+.elements-is-transform .hasnt-news .region-menu-panel {
+	height: calc(100vh - 60px - 70px);
 }
 
 /*region menu */

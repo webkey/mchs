@@ -1877,7 +1877,8 @@ function lightGalleryInit() {
 			download: false,
 			counter: true,
 			share: false,
-			hash: false
+			hash: false,
+			preload: 1
 		});
 	}
 
@@ -3129,6 +3130,10 @@ function regionMenu() {
 		var $thisContainer = $(this).closest('.region-expand-container-js');
 		var activeClass = 'is-expanded';
 
+		if($thisContainer.hasClass('disabled-js')) {
+			return;
+		}
+
 		if ($thisContainer.hasClass(activeClass)) {
 			$thisContainer.removeClass(activeClass);
 		} else {
@@ -3721,7 +3726,9 @@ function toggleContacts() {
  * fit video to content
  */
 function fitVidsInit() {
-	$('.user-content iframe[src*="youtube"]').parent().fitVids();
+	$('.user-content iframe[src*="youtube"]').parent().fitVids({
+		ignore: '.soc-media iframe'
+	});
 }
 /*fit video to content end*/
 
