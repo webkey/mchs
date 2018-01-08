@@ -721,6 +721,9 @@
 					"save": "3",
 					"dead": "1"
 				},
+				"mi-minsk-pervomaiskiy": {
+					"save": "1"
+				},
 				"mi-minsk-zavodskoy": {
 					"tech": "3",
 					"nature": "1",
