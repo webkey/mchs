@@ -3989,7 +3989,6 @@ function infoMapPopup(){
 		if (DESKTOP) {
 			$region.mouseenter(function (e) {
 
-				e.preventDefault();
 				var $this = $(this);
 				var $thisPopup = $('#' + $this.attr('data-href'));
 
@@ -4008,9 +4007,9 @@ function infoMapPopup(){
 				closePopup();
 			});
 		} else {
-			$region.on('mousedown touchstart vmousedown', function (e) {
+			// $region.on('mousedown touchstart vmousedown', function (e) {
+			$region.on('click', function (e) {
 
-				e.preventDefault();
 				var $this = $(this);
 				var $thisPopup = $('#' + $this.attr('data-href'));
 
@@ -4035,7 +4034,6 @@ function infoMapPopup(){
 		if (DESKTOP) {
 			$('.info-map-labels').mouseenter(function (e) {
 
-				e.preventDefault();
 				var $this = $(this);
 				var $thisPopup = $('#' + $this.attr('data-region'));
 
@@ -4054,9 +4052,9 @@ function infoMapPopup(){
 				closePopup();
 			});
 		} else {
-			$('.info-map-labels').on('mousedown touchstart vmousedown', function (e) {
+			// $('.info-map-labels').on('mousedown touchstart vmousedown', function (e) {
+			$('.info-map-labels').on('click', function (e) {
 
-				e.preventDefault();
 				var $this = $(this);
 				var $thisPopup = $('#' + $this.attr('data-region'));
 
