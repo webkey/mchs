@@ -1593,6 +1593,108 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 /* page-nav end */
+/* phenomena map */
+.events-map {
+	padding: 0;
+}
+
+@media (max-width: 639px) {
+	.events-map {
+		margin-right: -30px;
+		margin-left: -30px;
+	}
+}
+
+.events-map__content {
+	width: auto;
+	margin-bottom: 0;
+}
+
+.events-map__iframe__wrap {
+	position: relative;
+}
+
+.events-map__iframe__wrap::before {
+	content: "";
+	display: block;
+	padding-top: 98%;
+}
+
+@media (max-width: 1799px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 125%;
+	}
+}
+
+@media (max-width: 1599px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 126%;
+	}
+}
+
+@media (max-width: 1439px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 130%;
+	}
+}
+
+@media (max-width: 1365px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 134%;
+	}
+}
+
+@media (max-width: 1279px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 130%;
+	}
+}
+
+@media (max-width: 1023px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 132%;
+	}
+}
+
+@media (max-width: 959px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 130%;
+	}
+}
+
+@media (max-width: 767px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 135%;
+	}
+}
+
+@media (max-width: 639px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 150%;
+	}
+}
+
+@media (max-width: 479px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 167%;
+	}
+}
+
+@media (max-width: 359px) {
+	.events-map__iframe__wrap::before {
+		padding-top: 188%;
+	}
+}
+
+.events-map__iframe {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* phenomena map end */
 /*BUTTONS*/
 [class|="btn"], [class*=" btn-"], input[type="submit"], input[type="button"], input[type="reset"], button {
 	display: inline-block;
@@ -15241,230 +15343,6 @@ span.flatpickr-weekday {
 }
 
 /*flatpickr end */
-/* events map */
-.events-map {
-	background-color: white;
-	padding: 30px;
-	position: relative;
-}
-
-.events-map::after {
-	content: '';
-	display: table;
-	clear: both;
-}
-
-@media (max-width: 639px) {
-	.events-map {
-		padding: 20px;
-	}
-}
-
-@media (max-width: 1599px) {
-	.events-map__main:last-child .events-map__content {
-		margin-bottom: 0;
-	}
-}
-
-.events-map__content {
-	margin-right: auto;
-	margin-left: auto;
-	width: 735px;
-	max-width: 100%;
-}
-
-@media (max-width: 1599px) {
-	.events-map__content {
-		margin-bottom: 30px;
-	}
-}
-
-@media (max-width: 1599px) {
-	.events-map__side {
-		float: none;
-		margin-right: auto;
-		margin-left: auto;
-	}
-}
-
-.events-map__banner {
-	margin-bottom: 3rem;
-	max-width: 420px;
-	display: none;
-}
-
-.events-map__banner:last-child {
-	margin-bottom: 0;
-}
-
-.events-map__banner a {
-	display: block;
-}
-
-.events-map__banner img {
-	width: auto;
-}
-
-.events-map__banner table {
-	margin-bottom: 0;
-}
-
-.events-map__banner table td, .events-map__banner table th {
-	padding: 0;
-}
-
-.events-map__banner > table > tbody > tr > td {
-	padding: 5px 15px;
-}
-
-#phenomena_map .info_block {
-	font-size: 1.4rem !important;
-}
-
-@media (min-width: 960px) {
-	#phenomena_map .info_block {
-		right: -300px !important;
-	}
-	#phenomena_map .info_block.info_closed {
-		right: -23px !important;
-	}
-}
-
-@media (max-width: 959px) {
-	#phenomena_map .info_block {
-		right: 0 !important;
-		width: 23px !important;
-		overflow: hidden !important;
-		max-height: 90% !important;
-	}
-	#phenomena_map .info_block .info_activity {
-		background: url(http://101.belta.by/desimages/menu_icon_open.png) no-repeat !important;
-		left: auto !important;
-		right: 5px !important;
-		width: 9px !important;
-		height: 17px !important;
-		-webkit-transform: rotate(0.5turn);
-		-ms-transform: rotate(0.5turn);
-		transform: rotate(0.5turn);
-	}
-	#phenomena_map .info_block .obl_gr {
-		padding-left: 50px;
-	}
-	#phenomena_map .info_block .obl_gr:hover .phen_item, #phenomena_map .info_block .obl_gr:hover .phen_item2 {
-		display: none !important;
-	}
-	#phenomena_map .info_block.info_closed {
-		width: 300px !important;
-		overflow: visible !important;
-		max-height: none !important;
-	}
-	#phenomena_map .info_block.info_closed .info_activity {
-		background: url(http://101.belta.by/desimages/close.png) no-repeat !important;
-		right: 10px !important;
-		width: 24px !important;
-		height: 24px !important;
-	}
-	#phenomena_map .info_block.info_closed .obl_gr {
-		padding-left: 0 !important;
-	}
-	#phenomena_map .info_block.info_closed .obl_gr:hover .phen_item, #phenomena_map .info_block.info_closed .obl_gr:hover .phen_item2 {
-		display: block !important;
-	}
-}
-
-/* events map end */
-/* phenomena map restyling */
-.phenomena-map#phenomena_map .svg_map {
-	max-width: 900px;
-	background: white !important;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-.phenomena-map#phenomena_map .menu_pozar_b div,
-.phenomena-map#phenomena_map .menu_pozar_sel div,
-.phenomena-map#phenomena_map .menu_main_sel,
-.phenomena-map#phenomena_map .obl_title,
-.phenomena-map#phenomena_map .phen_img {
-	font-size: 1.4rem;
-}
-
-.phenomena-map#phenomena_map .phen_item,
-.phenomena-map#phenomena_map .copyright,
-.phenomena-map#phenomena_map .copyright_podtopl,
-.phenomena-map#phenomena_map .dev_info {
-	font-size: 1.2rem;
-}
-
-.phenomena-map#phenomena_map .more,
-.phenomena-map#phenomena_map .more2 {
-	font-size: 14px;
-}
-
-.phenomena-map#phenomena_map .svg_legenda {
-	top: 30px;
-	position: relative;
-}
-
-@media (max-width: 639px) {
-	.phenomena-map#phenomena_map .svg_legenda {
-		width: 100%;
-	}
-}
-
-.phenomena-map#phenomena_map .svg_legenda_text {
-	font-size: 2rem;
-}
-
-@media (max-width: 639px) {
-	.phenomena-map#phenomena_map .svg_legenda_text {
-		font-size: 2.3rem;
-	}
-}
-
-.phenomena-map .all_svg {
-	margin-bottom: 40px;
-}
-
-.phenomena-map .phen_info {
-	font-size: 14px;
-}
-
-.phenomena-map .phen_item,
-.phenomena-map .copyright,
-.phenomena-map .copyright_podtopl,
-.phenomena-map .dev_info {
-	font-size: 14px !important;
-}
-
-.phenomena-map .phen_info_hover {
-	font-size: 14px !important;
-}
-
-.phenomena-map .phen_info_hover a {
-	font-size: 14px !important;
-}
-
-.phenomena-map .rep_link_s {
-	font-size: 14px !important;
-}
-
-.phenomena-map .phenomenon_info_inner {
-	left: 50% !important;
-	top: 0 !important;
-	-webkit-transform: translateX(-50%);
-	    -ms-transform: translateX(-50%);
-	        transform: translateX(-50%);
-}
-
-.weather {
-	background: #fff;
-	margin: 0 auto;
-	padding: 1rem;
-	box-sizing: border-box;
-}
-
-/* phenomena map restyling end */
 .lg-sub-html h4, .lg-sub-html h3 {
 	color: inherit;
 	font-family: "Roboto", sans-serif;

@@ -687,3 +687,64 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 			margin: -2px 0 0
 
 /* page-nav end
+
+/* phenomena map
+.events-map
+	padding: 0
+
+	+media('<mob-lg')
+		+margin-horizontal(-$grid-layout-space--desk-md)
+
+.events-map__content
+	width: auto
+	margin-bottom: 0
+
+.events-map__iframe__wrap
+	position: relative
+
+	&::before
+		content: ""
+		display: block
+		padding-top: 98%
+
+		+media('<1800px')
+			padding-top: 125%
+
+		+media('<1600px')
+			padding-top: 126%
+
+		+media('<1440px')
+			padding-top: 130%
+
+		+media('<1366px')
+			padding-top: 134%
+
+		+media('<1280px')
+			padding-top: 130%
+
+		+media('<1024px')
+			padding-top: 132%
+
+		+media('<960px')
+			padding-top: 130%
+
+		+media('<768px')
+			padding-top: 135%
+
+		+media('<640px')
+			padding-top: 150%
+
+		+media('<480px')
+			padding-top: 167%
+
+		+media('<360px')
+			padding-top: 188%
+
+.events-map__iframe
+	position: absolute
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+
+/* phenomena map end
