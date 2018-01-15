@@ -442,6 +442,7 @@ function behaviorLogoOnScroll() {
 	// 			});
 	//
 	// 			TweenMax.set(slideViewElement, {
+
 	// 				y: 'auto'
 	// 			});
 	// 		}

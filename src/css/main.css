@@ -6172,6 +6172,14 @@ script ~ .section, input ~ .section {
 	font-weight: inherit;
 }
 
+@media (max-width: 639px) {
+	.section__title.has-date h2, .section__title.has-date h3 {
+		display: inline-block;
+		margin-right: 4px;
+		margin-bottom: 0;
+	}
+}
+
 .section__title h2, .section__title h3 {
 	vertical-align: top;
 }
@@ -6218,6 +6226,15 @@ script ~ .section, input ~ .section {
 	font-size: 0.6em;
 	line-height: 1;
 	vertical-align: middle;
+}
+
+.touchevents .section__title .news-date {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.touchevents .section__title .news-date ~ a {
+	margin-bottom: 0;
 }
 
 .v-separator {
@@ -10934,6 +10951,11 @@ html.before-extra-popup-open .wrapper {
 	        transition-duration: 0.2s;
 }
 
+.news-grid__item--large .news-grid__title {
+	height: auto;
+	max-height: 7rem;
+}
+
 .news-grid__text {
 	overflow: hidden;
 	color: inherit;
@@ -10942,6 +10964,11 @@ html.before-extra-popup-open .wrapper {
 	transition-property: color;
 	-webkit-transition-duration: 0.2s;
 	        transition-duration: 0.2s;
+}
+
+.news-grid__item--large .news-grid__text {
+	height: auto;
+	max-height: 14rem;
 }
 
 @media (max-width: 639px) {
@@ -11998,6 +12025,15 @@ html.before-extra-popup-open .wrapper {
 	display: none;
 }
 
+.touchevents .news-date input[type="text"], .touchevents .result-date input[type="text"] {
+	margin-bottom: 0;
+	padding: 8px 6px;
+	height: 42px;
+	width: 120px;
+	text-align: center;
+	font-size: 14px;
+}
+
 .home-page .section__title .news-date, .home-page .section__title .result-date, .home-page .section__subtitle .news-date, .home-page .section__subtitle .result-date {
 	font-weight: bold;
 	color: #006ab8;
@@ -12294,7 +12330,7 @@ html.before-extra-popup-open .wrapper {
 	display: block;
 	position: relative;
 	background-color: white;
-	padding: 0 30px 80px;
+	padding: 10px 30px 50px;
 	height: 100%;
 	overflow: hidden;
 }
@@ -12306,7 +12342,7 @@ html.before-extra-popup-open .wrapper {
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	height: 80px;
+	height: 50px;
 	background: white;
 	background: -webkit-linear-gradient(bottom, white 0, white 80%, rgba(255, 255, 255, 0) 100%);
 	background: linear-gradient(to top, white 0, white 80%, rgba(255, 255, 255, 0) 100%);
@@ -12321,8 +12357,8 @@ html.before-extra-popup-open .wrapper {
 	border-bottom: 1px solid #d9d9d9;
 	font-size: 1.4rem;
 	line-height: 1.43;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .events-list__item:last-child {
@@ -12331,12 +12367,16 @@ html.before-extra-popup-open .wrapper {
 
 .events-list__item h3 {
 	font-size: 1.8rem;
-	line-height: 1.3;
-	margin-bottom: 20px;
+	line-height: 1.2;
+	margin-bottom: 8px;
+}
+
+.events-list__item h3:last-child {
+	margin-bottom: 0;
 }
 
 .events-list__item p {
-	margin-bottom: 4px;
+	margin-bottom: 0;
 }
 
 .events-list__item img {
@@ -12349,12 +12389,13 @@ html.before-extra-popup-open .wrapper {
 	left: 0;
 	bottom: 0;
 	width: 100%;
-	padding: 13px 30px 26px;
+	padding: 14px 30px 20px;
 	z-index: 10;
 	max-width: 100%;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
+	line-height: 1;
 }
 
 /*save info end*/
@@ -13475,31 +13516,31 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 .region-header {
 	position: relative;
 	z-index: 5;
-	padding: 51px 51px;
+	padding: 30px 51px;
 	min-height: 100px;
 }
 
 @media (max-width: 1919px) {
 	.region-header {
-		padding: 43px 41px;
+		padding: 25px 41px;
 	}
 }
 
 @media (max-width: 1279px) {
 	.region-header {
-		padding: 26px 30px;
+		padding: 15px 30px;
 	}
 }
 
 @media (max-width: 959px) {
 	.region-header {
-		padding: 26px 30px;
+		padding: 15px 30px;
 	}
 }
 
 @media (max-width: 639px) {
 	.region-header {
-		padding: 17px 20px;
+		padding: 10px 20px;
 	}
 }
 
@@ -13536,8 +13577,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 }
 
 .region-header__caption {
-	margin-bottom: 3rem;
-	min-height: calc(1em*1.2*2);
+	margin-bottom: 0.5em;
 	font-family: "Roboto Slab", serif;
 	font-weight: 700;
 	font-size: 36px;
@@ -13550,6 +13590,12 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	content: '';
 	display: table;
 	clear: both;
+}
+
+@media (max-width: 1279px) {
+	.region-header__caption {
+		font-size: 32px;
+	}
 }
 
 @media (max-width: 959px) {
@@ -13643,14 +13689,15 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 .region-header__holder .region-logo {
 	float: left;
-	width: 100px;
-	margin-right: 30px;
+	width: 80px;
+	margin-right: 20px;
 }
 
 @media (max-width: 639px) {
 	.region-header__holder .region-logo {
 		float: none;
-		width: 80px;
+		width: 70px;
+		margin-right: 15px;
 	}
 }
 
@@ -13669,8 +13716,8 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	font-size: 1.4rem;
 	line-height: 1.5;
 	letter-spacing: normal;
-	margin-top: 1.2rem;
-	margin-bottom: 1.2rem;
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
 }
 
 .region-header__info li::after {
@@ -14773,10 +14820,24 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	position: relative;
 }
 
-.info-map-svg {
-	max-width: 100%;
-	max-height: 100%;
-	position: relative;
+.info-map-regions .info-map-figure::before {
+	content: "";
+	display: block;
+	padding-top: 86%;
+}
+
+.info-map-oblast.minsk .info-map-figure::before {
+	content: "";
+	display: block;
+	padding-top: 68%;
+}
+
+.info-map-figure .info-map-svg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
 }
 
 .info-map-svg, .info-map-svg:not(:root) {

@@ -90,12 +90,12 @@
 	height: calc(100% - #{$events-summary-nav-height}) // высота блока минус высота переключателей табов
 
 .events-sum__panel
-	$events-sum-bottom: 80px // нижний отступ больше, чем верхний
+	$events-sum-bottom: 50px // нижний отступ больше, чем верхний
 
 	display: block
 	position: relative
 	background-color: white
-	padding: 0 $grid-inside-horizontal-space $events-sum-bottom
+	padding: 10px $grid-inside-horizontal-space $events-sum-bottom
 	height: 100%
 	overflow: hidden
 
@@ -114,18 +114,21 @@
 .events-list__item
 	border-bottom: 1px solid $border-color
 	+font(1.4rem, 1.43)
-	+padding-vertical(round($grid-inside-vertical-space*0.75))
+	+padding-vertical(round($grid-inside-vertical-space*0.4))
 
 	&:last-child
 		border-color: transparent
 
 	h3
 		font-size: 1.8rem
-		line-height: 1.3
-		margin-bottom: 20px
+		line-height: 1.2
+		margin-bottom: 8px
+
+		&:last-child
+			margin-bottom: 0
 
 	p
-		margin-bottom: 4px
+		margin-bottom: 0
 
 	img
 		display: block
@@ -136,8 +139,9 @@
 	left: 0
 	bottom: 0
 	width: 100%
-	padding: #{round($grid-inside-vertical-space/2)} $grid-inside-horizontal-space $grid-inside-vertical-space
+	padding: 14px $grid-inside-horizontal-space 20px
 	z-index: 10
 	+truncate(100%)
+	line-height: 1
 
 /*save info end*/

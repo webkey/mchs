@@ -45,6 +45,13 @@
 		& > a
 			font-weight: inherit
 
+	&.has-date
+		h2, h3
+			+media('<mob-lg')
+				display: inline-block
+				margin-right: 4px
+				margin-bottom: 0
+
 	h2, h3
 		vertical-align: top
 
@@ -80,6 +87,13 @@
 			text-transform: uppercase
 			+font(0.6em, 1)
 			vertical-align: middle
+
+	.touchevents & .news-date
+		display: inline-block
+		vertical-align: middle
+
+		& ~ a
+			margin-bottom: 0
 
 .v-separator
 	+display-inline-block-middle
