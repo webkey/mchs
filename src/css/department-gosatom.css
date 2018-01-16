@@ -137,6 +137,10 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 	text-align: center;
 }
 
+.header__holder::before {
+	background-color: #2b343b;
+}
+
 .header__top {
 	background: #4b5a66;
 }

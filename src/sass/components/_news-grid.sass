@@ -33,6 +33,7 @@
 
 		+media('<mob-lg')
 			width: 100%
+			height: auto
 
 	.news-grid__slider &
 		margin-bottom: 0
@@ -47,6 +48,9 @@
 .news-grid--main .news-grid__item:nth-child(n + 4), .news-grid .news-grid__item--no-img // Костыль. Все элементы начиная с четвертого должны быть без картинок и лейблов
 	height: $news-item-sm-height // костыль для элемента без картинок, чтобы высоты блоков были четко по дизу
 
+	+media('<mob-lg')
+		height: auto
+
 	.news__label
 		display: none
 
@@ -60,9 +64,14 @@
 	+media('<desk-lg')
 		width: 100%
 
-	+media('<mob-lg')
-		width: 100%
+	//+media('<mob-lg')
+	+media('<desk-lg')
+		//width: 100%
 		height: auto
+
+.news-grid .news-grid-slider__slide
+	+media('<desk-lg')
+		height: 100%
 
 .news-grid__inner
 	display: block
@@ -102,6 +111,33 @@
 	background-position: center top
 	background-size: cover
 	z-index: 4
+
+	&.position--left-top
+		background-position: left top
+
+	&.position--center-top
+		background-position: center top
+
+	&.position--right-top
+		background-position: right top
+
+	&.position--left-center
+		background-position: left center
+
+	&.position--center-center
+		background-position: center center
+
+	&.position--right-center
+		background-position: right center
+
+	&.position--left-bottom
+		background-position: left bottom
+
+	&.position--center-bottom
+		background-position: center bottom
+
+	&.position--right-bottom
+		background-position: right bottom
 
 	img
 		width: 100%
@@ -146,16 +182,22 @@
 		// Костыль. Жесткая высота контента. Высота элемета - высота картинки
 		height: $news-item-content-height
 
+		+media('<mob-lg')
+			height: auto
+
 	.news-grid .news-grid__item--large &
 		// Костыль. Для больших блоков своя высота контента. Высота элемета - высота картинки
 		height: $news-item-lg-content-height
 
-		+media('<mob-lg')
+		//+media('<mob-lg')
 			height: auto
 
 	.news-grid--main .news-grid__item:nth-child(n+4) &
 		// Костыль. Для мленьких блоков своя высота контента. По дизу.
 		height: $news-item-sm-content-height
+
+		+media('<mob-lg')
+			height: auto
 
 	// специальные свойства для блока "Главные новости" (`.news-grid--main`)
 	// или специальные свойства элемета новостей с классом `.news-grid__item--has-img`
@@ -171,6 +213,22 @@
 
 		+media('<mob-lg')
 			margin-top: $news-item-lg-img-height-mob-lg
+
+	// сложный селектор нужен, чтобы перебить предыдущие стили с nth-child
+	.news-grid .news-grid-slider .news-grid-slider__slide &
+
+		+media('<desk-lg')
+			height: 100%
+			margin-top: 0
+			padding-top: $grid-inside-vertical-space + $news-item-lg-img-height
+			//height: calc(100% - #{$news-item-lg-img-height})
+
+			//.news-grid__text
+				max-height: none
+
+		+media('<mob-lg')
+			padding-top: $grid-inside-vertical-space + $news-item-lg-img-height-mob-lg
+			//height: calc(100% - #{$news-item-lg-img-height-mob-lg})
 
 	.news-simple &
 		padding: 0
@@ -217,11 +275,16 @@
 	transition-property: color
 	transition-duration: $animation-speed
 
+	+media('<mob-lg')
+		height: auto
+		max-height: round-float($font-size-small*$line-height-small*3, 1) // костыль, чтобы высоты блоков были четко по дизу
+
 	.news-grid__item--large &
 		height: auto
 		max-height: round-float($font-size-small*$line-height-small*7, 1)
 
-	+media('<mob-lg')
+	//+media('<mob-lg')
+	+media('<desk-lg')
 		margin-bottom: $bottom-space-sm
 
 	.news-simple &
@@ -269,6 +332,9 @@
 .news-grid__item--wide
 	height: 180px
 
+	+media('<mob-lg')
+		height: auto
+
 	.news-grid__inner
 		padding-left: 180px
 
@@ -308,10 +374,17 @@
 	.news-grid__content
 		height: 180px
 
+		+media('<mob-lg')
+			height: auto
+
 	.news-grid__text
 		overflow: hidden
 		height: round-float($font-size-small*$line-height-small*4, 1) // костыль, чтобы высоты блоков были четко по дизу
 		margin-bottom: 20px
+
+		+media('<mob-lg')
+			height: auto
+			max-height: round-float($font-size-small*$line-height-small*4, 1) // костыль, чтобы высоты блоков были четко по дизу
 
 /*news grid view end
 /*news grid end*/

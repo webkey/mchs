@@ -13,6 +13,13 @@
 	min-height: $header-left-space-desk-sm
 	+clear
 
+	//&::before
+		+pseudo()
+		left: 0
+		top: 0
+		+size($sidebar-left-width, 100%)
+		background-color: white
+
 	+media('<desk-sm')
 		padding-left: 0
 
@@ -51,6 +58,7 @@
 	//.header-fixed &
 		position: fixed
 
+	//.logo-is-transform &
 	.elements-is-transform &
 		height: $header-top-height
 
@@ -87,6 +95,7 @@
 		text-align: center
 		+clear-spacing
 
+		//.logo-is-transform &
 		.elements-is-transform &
 			text-align: left
 			+padding-vertical(5px)
@@ -108,6 +117,7 @@
 			transition-property: opacity, visibility
 			transition-duration: $animation-speed
 
+			//.logo-is-transform &
 			.elements-is-transform &
 				opacity: 1
 				visibility: visible

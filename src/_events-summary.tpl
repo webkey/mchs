@@ -25,7 +25,7 @@
 		<div class="events-sum__panel js-tab-content" id="events-sum-id-01">
 			<div class="events-list">
 				<div class="events-list__item">
-					<p>15 Января 2018</p>
+					<div class="events-sum__date">15 Января 2018</div>
 				</div>
 				<div class="events-list__item">
 					<h3>Произошли</h3>

@@ -12,6 +12,7 @@
 	background-position: center center
 	background-size: cover
 	text-decoration: none
+	overflow: hidden
 
 	+media('<desk-hd')
 		height: $news-item-lg-img-height - $events-summary-nav-height - $grid-space // Хардкод. Высота должна равняться высоте изображения (или слайдера) большой новости минус высота переключателей табов блока ниже
@@ -26,7 +27,7 @@
 	//&::before
 		+pseudo($pos: relative)
 		+ratio(1, 1)
-	
+
 	&::after
 		+pseudo()
 		left: 0
@@ -60,11 +61,9 @@
 .save__holder
 	position: absolute
 	left: 0
-	//top: 0
-	top: 3rem
+	top: 4rem
 	width: 100%
-	//height: 100%
-	height: calc(100% - 3rem)
+	height: calc(100% - 4rem)
 	z-index: 1
 	+padding-horizontal($grid-inside-horizontal-space)
 
@@ -77,14 +76,20 @@
 .save__box
 	height: 50%
 	position: relative
-	letter-spacing: normal
+	border-top: 1px solid #fff
+
+	&:last-child
+		height: 100%
+
+	& ~ .save__box
+		height: 50%
 
 	+media('<mob-lg')
 		height: auto
 		+padding-vertical(10px)
 
 .save__box:first-child
-	border-bottom: 1px solid #fff
+	border-top: none
 
 .save__align
 	position: absolute
