@@ -4951,6 +4951,13 @@ li.hover > .nav__drop, .no-js li:hover > .nav__drop, li.active > .nav__drop {
 	border-top: 1px solid #e0e0e0;
 }
 
+@media (max-width: 1599px) {
+	.nav__drop a {
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+}
+
 .nav__drop li:first-child > .nav__tab > a {
 	border-top: none;
 }
@@ -16041,5 +16048,3 @@ html[lang*="en"] .fotorama__fullscreen-icon::before {
 		width: 5cm !important;
 	}
 }
-
-/*# sourceMappingURL=main.css.map */

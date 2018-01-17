@@ -28,7 +28,8 @@
 	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	<!--Style-->
 	<link rel="stylesheet" href="css/libs.min.css">
-	<link rel="stylesheet" href="css/main.css">
+	<!--<link rel="stylesheet" href="css/main.css">-->
+	<link rel="stylesheet" href="css/main.min.css">
 	@@if(context.depCss) {
 	<link rel="stylesheet" href="css/@@depCss">
 	}

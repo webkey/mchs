@@ -692,9 +692,15 @@
 		height: auto
 		+display-inline-block-middle
 		width: 50%
-
-	.save__box:first-child
+		letter-spacing: normal
 		border: none
+
+		&:last-child
+			width: 100%
+			border: none
+
+		& ~ .save__box
+			width: 50%
 
 	.save__align
 		padding: 10px

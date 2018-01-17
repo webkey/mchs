@@ -66,8 +66,11 @@ gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Созд
 		], {
 			cascade: true
 		})) // Создаем префиксы
-		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('./src/css')) // Выгружаем результата в папку src/css
+		.pipe(cssnano()) // Сжимаем файл
+		.pipe(rename({suffix: '.min'})) // Добавляем суффикс .min
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('./src/css')) // Выгружаем после сжатия в папку src/css
 		.pipe(browserSync.reload({
 			stream: true
 		})); // Обновляем CSS на странице при изменении
@@ -137,11 +140,15 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/lg-zoom/dist/lg-zoom.min.js',
 		'src/libs/fitvids/jquery.fitvids.js',
 		'src/libs/svg.js/dist/svg.min.js',
-		'src/libs/fotorama/fotorama.js'
+		'src/libs/fotorama/fotorama.js',
+
+		// вконце добавляем common.js
+		'src/js/common.js'
 	])
 	.pipe(concat('libs.js')) // Собираем их в кучу в новом файле libs.min.js
 	.pipe(gulp.dest('src/js'))
-	.pipe(rename({suffix: '.min'}))
+	// .pipe(rename({suffix: '.min'}))
+	.pipe(rename({basename: 'all.min'})) // Изменяем имя конечного файла
 	.pipe(uglify()) // Сжимаем JS файл
 	.pipe(gulp.dest('src/js')); // Выгружаем в папку src/js
 });

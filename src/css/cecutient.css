@@ -820,10 +820,17 @@
 	display: inline-block;
 	vertical-align: middle;
 	width: 50%;
+	letter-spacing: normal;
+	border: none;
 }
 
-.cecutient-version .save__box:first-child {
+.cecutient-version .save__box:last-child {
+	width: 100%;
 	border: none;
+}
+
+.cecutient-version .save__box ~ .save__box {
+	width: 50%;
 }
 
 .cecutient-version .save__align {
@@ -3714,5 +3721,3 @@
 }
 
 /*=========== BLACK AND WHITE images end ===========*/
-
-/*# sourceMappingURL=cecutient.css.map */
