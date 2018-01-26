@@ -15709,6 +15709,13 @@ html[lang*="en"] .fotorama__fullscreen-icon::before {
 }
 
 /* fotorama end */
+/* flatpickr */
+.flatpickr-calendar.open {
+	-webkit-animation: none;
+	        animation: none;
+}
+
+/* flatpickr end */
 /*======================================================*/
 /*PAGES*/
 /*======================================================*/

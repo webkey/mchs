@@ -2817,7 +2817,7 @@ function popupsInit() {
 
 		new ExtraPopup({
 			container: popupLang,
-			// btnMenu: '.btn-language-open-js',
+			btnMenu: '.btn-language-open-js',
 			btnMenuClose: '.btn-popup-close-js',
 			overlayAppendTo: 'body',
 			closeOnResize: false,
@@ -4231,6 +4231,62 @@ function wrapTable() {
 	})
 }
 /*wrap table to table-auto container end*/
+
+/**
+ * !form success for example
+ * */
+function formSuccessExample() {
+	var $form = $('.user-form form');
+
+	if ($form.length) {
+
+		$form.submit(function (event) {
+			var $thisForm = $(this);
+
+			if ($thisForm.parent().hasClass('success-form')) return;
+
+			event.preventDefault();
+
+			testValidateForm($thisForm);
+		});
+
+		// $(':text, input[type="email"], textarea', $form).on('keyup change', function () {
+		// 	var $form = $(this).closest('form');
+		// 	if ($form.parent().hasClass('error-form')) {
+		// 		testValidateForm($form);
+		// 	}
+		// })
+
+	}
+
+	function testValidateForm(form) {
+		var $thisFormWrap = form.parent();
+
+		var $inputs = $(':text, input[type="email"], input[type="password"], textarea', form);
+
+		var inputsLength = $inputs.length;
+		var inputsHasValueLength = $inputs.filter(function () {
+			return $(this).val().length;
+		}).length;
+
+		$thisFormWrap.toggleClass('error-form', inputsLength !== inputsHasValueLength);
+		$thisFormWrap.toggleClass('success-form', inputsLength === inputsHasValueLength);
+
+		$.each($inputs, function () {
+			var $thisInput = $(this);
+			var thisInputVal = $thisInput.val();
+			var $thisInputWrap = $thisInput.parent();
+
+			$thisInput.toggleClass('error', !thisInputVal.length);
+			$thisInput.toggleClass('success', !!thisInputVal.length);
+
+			$thisInputWrap.toggleClass('error', !thisInputVal.length);
+			$thisInputWrap.toggleClass('success', !!thisInputVal.length);
+		});
+	}
+}
+/* form success for example end */
+
 /** ready/load/resize document **/
 
 $(window).on('load', function () {
@@ -4283,5 +4339,6 @@ $(document).ready(function () {
 	footerBottom();
 	addLabelsOnMap();
 	infoMapPopup();
+	formSuccessExample();
 	departmentChanger();
 });
