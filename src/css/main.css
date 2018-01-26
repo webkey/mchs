@@ -1695,6 +1695,64 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 /* phenomena map end */
+/* preloader-sm */
+.preload-sm {
+	width: 48px;
+	height: 48px;
+	background-image: url(../img/preloader.svg);
+	background-repeat: no-repeat;
+	background-size: contain;
+	z-index: 9999;
+	pointer-events: none;
+}
+
+.news-grid__slider .preload-sm {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	    -ms-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+}
+
+.slider-inited .preload-sm {
+	display: none;
+}
+
+/* preloader-sm end */
+/* img-fit-js */
+.img-fit-js,
+.img-fit-js--contain {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+}
+
+.img-fit-js {
+	-o-object-fit: cover;
+	   object-fit: cover;
+	font-family: "object-fit: cover";
+}
+
+.img-fit-js--contain {
+	-o-object-fit: contain;
+	   object-fit: contain;
+	font-family: "object-fit: contain";
+}
+
+/* img-fit-js end */
+/* lazy */
+.news-grid__img.lazy {
+	background-size: auto;
+	background-position: center;
+}
+
+.news-grid__img.lazy.initial {
+	background-size: cover;
+}
+
+/* lazy end */
 /*BUTTONS*/
 [class|="btn"], [class*=" btn-"], input[type="submit"], input[type="button"], input[type="reset"], button {
 	display: inline-block;
@@ -7274,8 +7332,13 @@ script ~ .section, input ~ .section {
 
 /*promo slider end*/
 /*news slider*/
+.news-grid__slider {
+	background-color: white;
+}
+
 .news-grid-slider {
 	white-space: nowrap;
+	opacity: 0;
 	margin-bottom: 0;
 	position: relative;
 	overflow: hidden;
@@ -7283,6 +7346,7 @@ script ~ .section, input ~ .section {
 
 .news-grid-slider.slick-initialized, .no-js .news-grid-slider {
 	white-space: normal;
+	opacity: 1;
 }
 
 .news-grid-slider::after {
@@ -7405,10 +7469,18 @@ script ~ .section, input ~ .section {
 	border-color: white;
 }
 
-.news-grid-slider__slide {
+.news-grid .news-grid-slider .news-grid-slider__slide {
 	float: none;
 	display: inline-block;
 	vertical-align: top;
+}
+
+.slick-initialized .news-grid .news-grid-slider .news-grid-slider__slide {
+	float: left;
+	display: block;
+}
+
+.news-grid-slider__slide {
 	height: 350px;
 	width: 100%;
 	background-position: center center;
@@ -7420,11 +7492,6 @@ script ~ .section, input ~ .section {
 	.news-grid-slider__slide {
 		height: 200px;
 	}
-}
-
-.slick-initialized .news-grid-slider__slide {
-	float: left;
-	display: block;
 }
 
 .news-grid-slider__slide span {
@@ -10151,6 +10218,7 @@ html.before-extra-popup-open .wrapper {
 	line-height: 1.4;
 	color: #999;
 	fill: #999;
+	display: none;
 }
 
 .visit__item {
@@ -11085,6 +11153,7 @@ html.before-extra-popup-open .wrapper {
 
 .news-grid__meta .visit-view {
 	float: right;
+	display: none;
 }
 
 .news-grid__meta .visit-view svg path {
@@ -11643,6 +11712,7 @@ html.before-extra-popup-open .wrapper {
 
 .news-group__meta .visit-view {
 	float: right;
+	display: none;
 }
 
 .news-group__meta .visit-view svg path {
@@ -15713,6 +15783,31 @@ html[lang*="en"] .fotorama__fullscreen-icon::before {
 .flatpickr-calendar.open {
 	-webkit-animation: none;
 	        animation: none;
+}
+
+@media (max-width: 479px) {
+	.flatpickr-calendar.rangeMode {
+		position: fixed !important;
+		left: 50% !important;
+		top: 50% !important;
+		background-color: #fff;
+		box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+		-webkit-transform: translate(-50%, -50%);
+		    -ms-transform: translate(-50%, -50%);
+		        transform: translate(-50%, -50%);
+	}
+}
+
+@media (max-width: 479px) {
+	.scroll-fixed {
+		width: 100% !important;
+		height: 100% !important;
+		max-width: 100% !important;
+		max-height: 100% !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		overflow: hidden !important;
+	}
 }
 
 /* flatpickr end */

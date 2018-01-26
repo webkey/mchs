@@ -188,6 +188,7 @@
 		<a href="#region-menu-mobile-anchor" class="js-tab-anchor active-tab"><span>@@titleSub</span></a>
 		<a href="#nav-mobile-anchor" class="js-tab-anchor"><span>@@titleMain</span></a>
 	</div>
+
 	<div class="nav-small-container js-tab-container">
 		<div class="popup-nav-small__holder js-tab-content menu-sub-site" id="region-menu-mobile-anchor">
 			@@if(context.hasRegionMenu){

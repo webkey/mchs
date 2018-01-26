@@ -399,9 +399,13 @@
 /*promo slider end*/
 
 /*news slider*/
+.news-grid__slider
+	background-color: white
+
 .news-grid-slider
 	// before slide load
 	white-space: nowrap
+	opacity: 0
 	// before slide load end
 	margin-bottom: 0
 	position: relative
@@ -410,6 +414,7 @@
 	&.slick-initialized, .no-js &
 		// before slide load
 		white-space: normal
+		opacity: 1
 		// before slide load end
 
 	&::after
@@ -488,12 +493,20 @@
 		&::after
 			border-color: white
 
-.news-grid-slider__slide
+.news-grid .news-grid-slider .news-grid-slider__slide
 	// before slide load
 	float: none
 	display: inline-block
 	vertical-align: top
 	// before slide load end
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+.news-grid-slider__slide
 	height: $news-item-lg-img-height
 	width: 100%
 	background-position: center center
@@ -502,12 +515,6 @@
 
 	+media('<mob-lg')
 		height: $news-item-lg-img-height-mob-lg
-
-	.slick-initialized &
-		// after slide load
-		float: left
-		display: block
-		// after slide load end
 
 	span
 		+hide-text

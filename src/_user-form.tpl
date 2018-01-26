@@ -6,7 +6,7 @@
 		@@if(context.warning) {
 			<div class="text-warning">@@warning</div>
 		}
-		<form action="#" method="get">
+		<form action="/submit" method="post" enctype="multipart/form-data">
 			<div class="input-wrap">
 				<div class="label-holder">
 					<label for="user-form-example__name-field">Имя<span class="form-mark">*</span></label>
@@ -39,7 +39,8 @@
 					<span class="label">Прикрепить файл</span>
 				</div>
 				<div class="input-holder upload-file__container">
-					<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">
+					<input class="upload-file" name="filesss" type="file" data-jfiler-limit="1">
+					<!--<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">-->
 				</div>
 			</div>
 			<div class="input-wrap has--value">

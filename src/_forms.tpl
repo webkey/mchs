@@ -113,30 +113,57 @@
 	<div class="input-wrap" style="width: 200px;">
 		<div class="label-holder">
 			<label for="date-example-02">Выбрать дату:</label>
-		</div><input class="custom-date" type="text" placeholder="Выбирите дату" id="date-example-02"/>
+		</div>
+		<input class="custom-date" type="text" placeholder="Выбирите дату" id="date-example-02"/>
 	</div>
+
+	<div class="input-wrap custom-date--range" style="width: 320px;">
+		<div class="label-holder">
+			<label for="date-example-002"><span class="mark">Выбрать диапазон дат:</span></label>
+		</div>
+		<input type="text" placeholder="Выбирите даты" id="date-example-002" data-input/>
+		<a class="input-button" title="clear" data-clear>
+			<i class="icon-close">Очистить</i>
+		</a>
+	</div>
+
+
 	<div class="label-holder">
-		<label for="date-example-03">Дата начала и конца события (1):</label>
+		<label for="date-example-03"><span class="mark">Дата начала и конца события:</span></label>
 	</div>
+
+
 	<div class="form-row">
-		<div class="input-wrap">
-			<input class="custom-date--from" type="text" placeholder="Дата начала" id="date-example-03"/>
+		<div class="input-wrap custom-date--from">
+			<input class="" type="text" placeholder="Дата начала" id="date-example-03" data-input/>
+			<a class="input-button" title="clear" data-clear>
+				<i class="icon-close">Очистить</i>
+			</a>
 		</div>
-		<div class="input-wrap">
-			<input class="custom-date--to" type="text" placeholder="Дата конца"/>
+		<div class="input-wrap custom-date--to">
+			<input class="" type="text" placeholder="Дата конца" data-input/>
+			<a class="input-button" title="clear" data-clear>
+				<i class="icon-close">Очистить</i>
+			</a>
 		</div>
 	</div>
-	<div class="label-holder">
+
+
+	<!--<div class="label-holder">
 		<label for="date-example-04">Дата начала и конца события (2):</label>
 	</div>
+
+
 	<div class="form-row">
-		<div class="input-wrap">
-			<input class="custom-date--from" type="text" placeholder="Дата начала" id="date-example-04"/>
+		<div class="input-wrap custom-date--from">
+			<input class="" type="text" placeholder="Дата начала" id="date-example-04" data-input/>
 		</div>
-		<div class="input-wrap">
-			<input class="custom-date--to" type="text" placeholder="Дата конца"/>
+		<div class="input-wrap custom-date--to">
+			<input class="" type="text" placeholder="Дата конца" data-input/>
 		</div>
-	</div>
+	</div>-->
+
+
 	<div class="input-wrap">
 		<div class="label-holder">
 			<label for="expl-label-07">Сообщение:</label>

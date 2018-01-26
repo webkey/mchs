@@ -1655,6 +1655,7 @@ function slidersInit() {
 				$(el.$slides).matchHeight({
 					byRow: true, property: 'height', target: null, remove: false
 				});
+				$(el.$slider).parent().addClass('slider-inited');
 			}).slick({
 				fade: false,
 				speed: dur,
@@ -2109,7 +2110,7 @@ function datePickerInit() {
 	var $resultDate = $('.result-date-js');
 	if ($resultDate) {
 		var calendarResult = $resultDate.flatpickr({
-			"locale": _defaultDate,
+			"locale": _dataLocation,
 			// mode: "range",
 			altInput: true,
 			clickopens: false,
@@ -2163,7 +2164,7 @@ function datePickerInit() {
 	var $customDate = $('.custom-date');
 	if ($customDate) {
 		$customDate.flatpickr({
-			"locale": _defaultDate,
+			"locale": _dataLocation,
 			// defaultDate: 'today',
 			altInput: true,
 			clickopens: false,
@@ -2171,6 +2172,27 @@ function datePickerInit() {
 			altFormat: 'd M Y',
 			maxDate: 'today',
 			disableMobile: false
+		});
+	}
+
+	var $customDateRange = $('.custom-date--range');
+	if ($customDateRange) {
+		$customDateRange.flatpickr({
+			"locale": _dataLocation,
+			// defaultDate: 'today',
+			mode: "range",
+			altInput: true,
+			clickopens: false,
+			wrap: true,
+			altFormat: 'd M Y',
+			maxDate: 'today',
+			disableMobile: false,
+			onOpen: function () {
+				$('html').addClass('scroll-fixed');
+			},
+			onClose: function () {
+				$('html').removeClass('scroll-fixed');
+			}
 		});
 	}
 
@@ -2185,29 +2207,38 @@ function datePickerInit() {
 
 			dateFrom = $thisContainer.find($customDateFrom).flatpickr({
 				// minDate: 'today',
-				"locale": _defaultDate,
+				"locale": _dataLocation,
 				altInput: true,
 				clickopens: false,
+				wrap: true,
 				altFormat: 'd M Y',
 				maxDate: 'today',
 				disableMobile: false,
 				onChange: function (el, date) {
-					// console.log("dateTo: ", dateTo);
-					// console.log("new Date().fp_incr(1): ", new Date(el).fp_incr(1));
-					dateTo.set("minDate", date)
+					var minDateVal = date || null;
+
+					dateTo.set("minDate", minDateVal);
+
+					if(date) {
+					}
 				}
 			});
 
 			dateTo = $thisContainer.find($customDateTo).flatpickr({
 				// minDate: 'today',
-				"locale": _defaultDate,
+				"locale": _dataLocation,
 				altInput: true,
 				clickopens: false,
+				wrap: true,
 				altFormat: 'd M Y',
 				maxDate: 'today',
 				disableMobile: false,
 				onChange: function (el, date) {
-					dateFrom.set("maxDate", date)
+					var maxDateVal = date || 'today';
+					dateFrom.set("maxDateVal", maxDateVal);
+
+					if (date) {
+					}
 				}
 			});
 		});
@@ -2457,7 +2488,6 @@ function datePickerInit() {
 
 	// open nav
 	ExtraPopup.prototype.openNav = function () {
-		// console.log("openNav");
 
 		var self = this,
 			$html = self.$mainContainer,
@@ -2937,15 +2967,10 @@ function fileInput() {
 			templates: {
 				box: '<ul class="jFiler-items-list jFiler-items-default list-reset"></ul>'
 			},
-			addMore: true,
+			addMore: false,
 			allowDuplicates: false,
 			clipBoardPaste: true,
-			dragDrop: {
-				dragEnter: null,
-				dragLeave: null,
-				drop: null,
-				dragContainer: null
-			}
+			dragDrop: false
 		});
 	});
 }
@@ -4242,6 +4267,11 @@ $(window).on('load', function () {
 });
 
 $(document).ready(function () {
+	objectFitImages('.img-fit-js'); // object-fit-images initial
+	var myLazyLoad = new LazyLoad({
+		elements_selector: ".lazy",
+		threshold: 5000
+	});
 	switchSpecialVersion();
 	checkCecutientVersionCookie();
 	placeholderInit();

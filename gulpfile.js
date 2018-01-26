@@ -141,6 +141,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () { // Таск �
 		'src/libs/fitvids/jquery.fitvids.js',
 		'src/libs/svg.js/dist/svg.min.js',
 		'src/libs/fotorama/fotorama.js'
+		, 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
+		, 'src/libs/lazyload/build/lazyload.min.js' // lazyload images
 
 		// вконце добавляем common.js
 		// 'src/js/common.js'

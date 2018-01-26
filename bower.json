@@ -45,7 +45,8 @@
     "lg-hash": "^1.0.2",
     "lg-share": "^1.0.2",
     "fitvids": "^1.2.0",
-    "fotorama": "^4.6.4"
+    "fotorama": "^4.6.4",
+    "lazyload": "^3.2.2"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"

@@ -1,37 +1,37 @@
 [
 	{
-		"smallSrc": "http://avia.mchs.gov.by/upload/iblock/8e3/8e3b6a3c43f9ed9afc23e83777919dbd.jpg",
-		"largeSrc": "http://avia.mchs.gov.by/upload/iblock/8e3/8e3b6a3c43f9ed9afc23e83777919dbd.jpg",
+		"smallSrc": "__temp-img-01.jpg",
+		"largeSrc": "__temp-img-01.jpg",
 		"title": "<h4>Двум из владельцев поврежденных</h4><p></p>"
 	},
 	{
-		"smallSrc": "http://avia.mchs.gov.by/upload/iblock/0e0/0e091e056fcf8c64de1f5cab61a2a11e.jpg",
-		"largeSrc": "http://avia.mchs.gov.by/upload/iblock/0e0/0e091e056fcf8c64de1f5cab61a2a11e.jpg",
+		"smallSrc": "__temp-img-02.jpg",
+		"largeSrc": "__temp-img-02.jpg",
 		"title": "<h4>В гаражах в Мачулищах произошел взрыв</h4><p></p>"
 	},
 	{
-		"smallSrc": "http://avia.mchs.gov.by/upload/iblock/ef7/ef74f832e942fc4769c321daf3e358d9.jpg",
-		"largeSrc": "http://avia.mchs.gov.by/upload/iblock/ef7/ef74f832e942fc4769c321daf3e358d9.jpg",
+		"smallSrc": "__temp-img-03.jpg",
+		"largeSrc": "__temp-img-03.jpg",
 		"title": "<h4>Двум из владельцев поврежденных</h4><p></p>"
 	},
 	{
-		"smallSrc": "http://avia.mchs.gov.by/upload/iblock/08f/08f2e4224fb62c75eb687c38f29a4512.jpg",
-		"largeSrc": "http://avia.mchs.gov.by/upload/iblock/08f/08f2e4224fb62c75eb687c38f29a4512.jpg",
+		"smallSrc": "img-banner-01.jpg",
+		"largeSrc": "img-banner-01.jpg",
 		"title": "<h4>В гаражах в Мачулищах произошел взрыв</h4><p></p>"
 	},
 	{
-		"smallSrc": "http://avia.mchs.gov.by/upload/iblock/66c/66ced6df0dbe1cfbece72c70f0235a94.jpg",
-		"largeSrc": "http://avia.mchs.gov.by/upload/iblock/66c/66ced6df0dbe1cfbece72c70f0235a94.jpg",
+		"smallSrc": "img-banner-02.jpg",
+		"largeSrc": "img-banner-02.jpg",
 		"title": "<h4>Двум из владельцев поврежденных</h4><p></p>"
 	},
 	{
-		"smallSrc": "http://avia.mchs.gov.by/upload/iblock/8ad/8ade2a73245a609b0399ae2e1062f71b.jpg",
-		"largeSrc": "http://avia.mchs.gov.by/upload/iblock/8ad/8ade2a73245a609b0399ae2e1062f71b.jpg",
+		"smallSrc": "img-banner-03.jpg",
+		"largeSrc": "img-banner-03.jpg",
 		"title": "<h4>В гаражах в Мачулищах произошел взрыв</h4><p></p>"
 	},
 	{
-		"smallSrc": "img/img-news-14.jpg",
-		"largeSrc": "img/img-news-14.jpg",
+		"smallSrc": "img-news-14.jpg",
+		"largeSrc": "img-news-14.jpg",
 		"title": "<h4>Двум из владельцев поврежденных</h4><p></p>"
 	}
 ]

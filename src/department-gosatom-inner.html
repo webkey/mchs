@@ -39,7 +39,8 @@
 	<script>
 		var cssPath = 'css/';
 		var fileInputObj = {
-			title: '222 Кликните по полю или перетащите сюда файл',
+			// title: '222 Кликните по полю или перетащите сюда файл',
+			title: 'Кликните по полю, чтобы добавить файл',
 			caption: {
 				button: "Выберите файлы",
 				feedback: "Выберите файлы для загрузки",
@@ -1425,7 +1426,7 @@
 												<div class="user-form">
 													<div class="text-layout">
 														<div class="form-title">Форма обратной связи</div>
-														<form action="#" method="get">
+														<form action="/submit" method="post" enctype="multipart/form-data">
 															<div class="input-wrap">
 																<div class="label-holder">
 																	<label for="user-form-example__name-field">Имя<span class="form-mark">*</span></label>
@@ -1458,7 +1459,8 @@
 																	<span class="label">Прикрепить файл</span>
 																</div>
 																<div class="input-holder upload-file__container">
-																	<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">
+																	<input class="upload-file" name="filesss" type="file" data-jfiler-limit="1">
+																	<!--<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">-->
 																</div>
 															</div>
 															<div class="input-wrap has--value">
@@ -5981,7 +5983,8 @@
 	<!--[if lte IE 9]><script src="js/classList.min.js"></script><![endif]-->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/libs.min.js"></script>
-	<script src="js/common.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.6.0/lazyload.min.js"></script>
+	<script src="js/common.js"></script>
 </body>
 
 </html>

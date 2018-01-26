@@ -38,7 +38,8 @@
 	<script>
 		var cssPath = 'css/';
 		var fileInputObj = {
-			title: '222 Кликните по полю или перетащите сюда файл',
+			// title: '222 Кликните по полю или перетащите сюда файл',
+			title: 'Кликните по полю, чтобы добавить файл',
 			caption: {
 				button: "Выберите файлы",
 				feedback: "Выберите файлы для загрузки",
@@ -1708,30 +1709,48 @@
 													<div class="input-wrap" style="width: 200px;">
 														<div class="label-holder">
 															<label for="date-example-02">Выбрать дату:</label>
-														</div><input class="custom-date" type="text" placeholder="Выбирите дату" id="date-example-02" />
+														</div>
+														<input class="custom-date" type="text" placeholder="Выбирите дату" id="date-example-02" />
+													</div>
+													<div class="input-wrap custom-date--range" style="width: 320px;">
+														<div class="label-holder">
+															<label for="date-example-002"><span class="mark">Выбрать диапазон дат:</span></label>
+														</div>
+														<input type="text" placeholder="Выбирите даты" id="date-example-002" data-input/>
+														<a class="input-button" title="clear" data-clear>
+															<i class="icon-close">Очистить</i>
+														</a>
 													</div>
 													<div class="label-holder">
-														<label for="date-example-03">Дата начала и конца события (1):</label>
+														<label for="date-example-03"><span class="mark">Дата начала и конца события:</span></label>
 													</div>
 													<div class="form-row">
-														<div class="input-wrap">
-															<input class="custom-date--from" type="text" placeholder="Дата начала" id="date-example-03" />
+														<div class="input-wrap custom-date--from">
+															<input class="" type="text" placeholder="Дата начала" id="date-example-03" data-input/>
+															<a class="input-button" title="clear" data-clear>
+																<i class="icon-close">Очистить</i>
+															</a>
 														</div>
-														<div class="input-wrap">
-															<input class="custom-date--to" type="text" placeholder="Дата конца" />
-														</div>
-													</div>
-													<div class="label-holder">
-														<label for="date-example-04">Дата начала и конца события (2):</label>
-													</div>
-													<div class="form-row">
-														<div class="input-wrap">
-															<input class="custom-date--from" type="text" placeholder="Дата начала" id="date-example-04" />
-														</div>
-														<div class="input-wrap">
-															<input class="custom-date--to" type="text" placeholder="Дата конца" />
+														<div class="input-wrap custom-date--to">
+															<input class="" type="text" placeholder="Дата конца" data-input/>
+															<a class="input-button" title="clear" data-clear>
+																<i class="icon-close">Очистить</i>
+															</a>
 														</div>
 													</div>
+													<!--<div class="label-holder">
+		<label for="date-example-04">Дата начала и конца события (2):</label>
+	</div>
+
+
+	<div class="form-row">
+		<div class="input-wrap custom-date--from">
+			<input class="" type="text" placeholder="Дата начала" id="date-example-04" data-input/>
+		</div>
+		<div class="input-wrap custom-date--to">
+			<input class="" type="text" placeholder="Дата конца" data-input/>
+		</div>
+	</div>-->
 													<div class="input-wrap">
 														<div class="label-holder">
 															<label for="expl-label-07">Сообщение:</label>
@@ -1862,7 +1881,7 @@
 												<div class="user-form">
 													<div class="text-layout">
 														<div class="form-title">Заголовок формы</div>
-														<form action="#" method="get">
+														<form action="/submit" method="post" enctype="multipart/form-data">
 															<div class="input-wrap">
 																<div class="label-holder">
 																	<label for="user-form-example__name-field">Имя<span class="form-mark">*</span></label>
@@ -1895,7 +1914,8 @@
 																	<span class="label">Прикрепить файл</span>
 																</div>
 																<div class="input-holder upload-file__container">
-																	<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">
+																	<input class="upload-file" name="filesss" type="file" data-jfiler-limit="1">
+																	<!--<input class="upload-file" name="files[]" type="file" multiple="multiple" data-jfiler-limit="2">-->
 																</div>
 															</div>
 															<div class="input-wrap has--value">
@@ -2010,37 +2030,37 @@
 													<div class="tape-gallery">
 														<div class="swiper-container">
 															<div class="tape-gallery__list swiper-wrapper lg-js">
-																<div class="swiper-slide" data-src="http://avia.mchs.gov.by/upload/iblock/8e3/8e3b6a3c43f9ed9afc23e83777919dbd.jpg" data-sub-html="<h4>Двум из владельцев поврежденных</h4><p></p>">
+																<div class="swiper-slide" data-src="__temp-img-01.jpg" data-sub-html="<h4>Двум из владельцев поврежденных</h4><p></p>">
 																	<a href="#">
-																		<div class="tape-gallery__img"><img src="http://avia.mchs.gov.by/upload/iblock/8e3/8e3b6a3c43f9ed9afc23e83777919dbd.jpg" alt="image description" /></div>
+																		<div class="tape-gallery__img"><img src="img/__temp-img-01.jpg" alt="image description" /></div>
 																	</a>
 																</div>
-																<div class="swiper-slide" data-src="http://avia.mchs.gov.by/upload/iblock/0e0/0e091e056fcf8c64de1f5cab61a2a11e.jpg" data-sub-html="<h4>В гаражах в Мачулищах произошел взрыв</h4><p></p>">
+																<div class="swiper-slide" data-src="__temp-img-02.jpg" data-sub-html="<h4>В гаражах в Мачулищах произошел взрыв</h4><p></p>">
 																	<a href="#">
-																		<div class="tape-gallery__img"><img src="http://avia.mchs.gov.by/upload/iblock/0e0/0e091e056fcf8c64de1f5cab61a2a11e.jpg" alt="image description" /></div>
+																		<div class="tape-gallery__img"><img src="img/__temp-img-02.jpg" alt="image description" /></div>
 																	</a>
 																</div>
-																<div class="swiper-slide" data-src="http://avia.mchs.gov.by/upload/iblock/ef7/ef74f832e942fc4769c321daf3e358d9.jpg" data-sub-html="<h4>Двум из владельцев поврежденных</h4><p></p>">
+																<div class="swiper-slide" data-src="__temp-img-03.jpg" data-sub-html="<h4>Двум из владельцев поврежденных</h4><p></p>">
 																	<a href="#">
-																		<div class="tape-gallery__img"><img src="http://avia.mchs.gov.by/upload/iblock/ef7/ef74f832e942fc4769c321daf3e358d9.jpg" alt="image description" /></div>
+																		<div class="tape-gallery__img"><img src="img/__temp-img-03.jpg" alt="image description" /></div>
 																	</a>
 																</div>
-																<div class="swiper-slide" data-src="http://avia.mchs.gov.by/upload/iblock/08f/08f2e4224fb62c75eb687c38f29a4512.jpg" data-sub-html="<h4>В гаражах в Мачулищах произошел взрыв</h4><p></p>">
+																<div class="swiper-slide" data-src="img-banner-01.jpg" data-sub-html="<h4>В гаражах в Мачулищах произошел взрыв</h4><p></p>">
 																	<a href="#">
-																		<div class="tape-gallery__img"><img src="http://avia.mchs.gov.by/upload/iblock/08f/08f2e4224fb62c75eb687c38f29a4512.jpg" alt="image description" /></div>
+																		<div class="tape-gallery__img"><img src="img/img-banner-01.jpg" alt="image description" /></div>
 																	</a>
 																</div>
-																<div class="swiper-slide" data-src="http://avia.mchs.gov.by/upload/iblock/66c/66ced6df0dbe1cfbece72c70f0235a94.jpg" data-sub-html="<h4>Двум из владельцев поврежденных</h4><p></p>">
+																<div class="swiper-slide" data-src="img-banner-02.jpg" data-sub-html="<h4>Двум из владельцев поврежденных</h4><p></p>">
 																	<a href="#">
-																		<div class="tape-gallery__img"><img src="http://avia.mchs.gov.by/upload/iblock/66c/66ced6df0dbe1cfbece72c70f0235a94.jpg" alt="image description" /></div>
+																		<div class="tape-gallery__img"><img src="img/img-banner-02.jpg" alt="image description" /></div>
 																	</a>
 																</div>
-																<div class="swiper-slide" data-src="http://avia.mchs.gov.by/upload/iblock/8ad/8ade2a73245a609b0399ae2e1062f71b.jpg" data-sub-html="<h4>В гаражах в Мачулищах произошел взрыв</h4><p></p>">
+																<div class="swiper-slide" data-src="img-banner-03.jpg" data-sub-html="<h4>В гаражах в Мачулищах произошел взрыв</h4><p></p>">
 																	<a href="#">
-																		<div class="tape-gallery__img"><img src="http://avia.mchs.gov.by/upload/iblock/8ad/8ade2a73245a609b0399ae2e1062f71b.jpg" alt="image description" /></div>
+																		<div class="tape-gallery__img"><img src="img/img-banner-03.jpg" alt="image description" /></div>
 																	</a>
 																</div>
-																<div class="swiper-slide" data-src="img/img-news-14.jpg" data-sub-html="<h4>Двум из владельцев поврежденных</h4><p></p>">
+																<div class="swiper-slide" data-src="img-news-14.jpg" data-sub-html="<h4>Двум из владельцев поврежденных</h4><p></p>">
 																	<a href="#">
 																		<div class="tape-gallery__img"><img src="img/img-news-14.jpg" alt="image description" /></div>
 																	</a>
@@ -2163,7 +2183,7 @@
 													<div class="grid-col-12">
 														<div class="news-grid__item--wide">
 															<a href="#" class="news-grid__inner">
-																<div class="news-grid__img" style="background-image: url(img/img-news-13.jpg);"></div>
+																<div class="news-grid__img lazy" data-src="img/img-news-13.jpg" style="background-image: url(img/preloader.svg);"></div>
 																<div class="news-grid__content">
 																	<div class="news-grid__text">В гимназии №2 г.Пинска состоялся необычный открытый урок по основам безопасности жизнедеятельности.</div>
 																	<div class="news-grid__meta">
@@ -2189,7 +2209,7 @@
 													<div class="grid-col-6 grid-col-hd-12">
 														<div class="news-grid__item--wide">
 															<a href="#" class="news-grid__inner">
-																<div class="news-grid__img" style="background-image: url(img/img-news-11.jpg);"></div>
+																<div class="news-grid__img lazy" data-src="img/img-news-11.jpg" style="background-image: url(img/preloader.svg);"></div>
 																<div class="news-grid__content">
 																	<div class="news-grid__text">Представитель службы по ЧС провела профилактическую беседу с воспитанниками средней группы по теме предупреждения происшествий по причине детской шалости с огнем.</div>
 																	<div class="news-grid__meta">
@@ -2207,7 +2227,7 @@
 														<div class="news-grid__item--wide">
 															<div class="news__label news__label_video">video</div>
 															<a href="#" class="news-grid__inner">
-																<div class="news-grid__img" style="background-image: url(img/img-news-12.jpg);"></div>
+																<div class="news-grid__img lazy" data-src="img/img-news-12.jpg" style="background-image: url(img/preloader.svg);"></div>
 																<div class="news-grid__content">
 																	<div class="news-grid__text">Руслан Олексюк провел занятие в детском садике д.Тельмы и рассказал малышам об опасностях, которые могут их подстерегать в жизни.</div>
 																	<div class="news-grid__meta">
@@ -2242,7 +2262,7 @@
 													<div class="grid-col-6 grid-col-hd-12">
 														<div class="news-grid__item--wide">
 															<a href="#" class="news-grid__inner">
-																<div class="news-grid__img" style="background-image: url(img/img-news-13.jpg);"></div>
+																<div class="news-grid__img lazy" data-src="img/img-news-13.jpg" style="background-image: url(img/preloader.svg);"></div>
 																<div class="news-grid__content">
 																	<div class="news-grid__text">Работники районного отдела по чрезвычайным ситуациям провели разъяснительную профилактическую работу с трудовым коллективом Малоритского районного центра гигиены и эпидемиологии.</div>
 																	<div class="news-grid__meta">
@@ -5148,7 +5168,8 @@
 	<!--[if lte IE 9]><script src="js/classList.min.js"></script><![endif]-->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/libs.min.js"></script>
-	<script src="js/common.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.6.0/lazyload.min.js"></script>
+	<script src="js/common.js"></script>
 </body>
 
 </html>
