@@ -3696,6 +3696,10 @@
 	color: white !important;
 }
 
+.color-scheme-bw .nav-small-tabs a:first-child {
+	background-color: black;
+}
+
 /*=========== BLACK AND WHITE scheme end ===========*/
 /*=========== BLACK AND WHITE images ===========*/
 .images-bw img,

@@ -1742,17 +1742,6 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 /* img-fit-js end */
-/* lazy */
-.news-grid__img.lazy {
-	background-size: auto;
-	background-position: center;
-}
-
-.news-grid__img.lazy.initial {
-	background-size: cover;
-}
-
-/* lazy end */
 /*BUTTONS*/
 [class|="btn"], [class*=" btn-"], input[type="submit"], input[type="button"], input[type="reset"], button {
 	display: inline-block;
@@ -3025,6 +3014,12 @@ input[type="radio"]:disabled + span i::before {
 
 .no-touchevents .add-function-link > a:hover > span {
 	border-color: transparent;
+}
+
+.form_ok {
+	text-align: center;
+	font-size: 1.4em;
+	font-weight: 700;
 }
 
 /*FORM STYLE DEFAULT end*/
@@ -7249,12 +7244,13 @@ script ~ .section, input ~ .section {
 	float: none;
 	display: inline-block;
 	vertical-align: top;
+	position: relative;
 	height: 300px;
 	width: 100%;
 	padding: 45px 50px;
 	text-decoration: none;
 	color: white;
-	background-color: #006ab8;
+	background-color: #ddd;
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -7284,7 +7280,32 @@ script ~ .section, input ~ .section {
 	display: block;
 }
 
+.promo-slider__figure {
+	position: absolute;
+	display: block;
+	left: 50%;
+	top: 50%;
+	width: 48px;
+	height: 48px;
+	margin: -24px 0 0 -24px;
+}
+
+.promo-slider__figure.loaded {
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	font-family: "object-fit: cover";
+}
+
 .promo-slider__text {
+	position: relative;
 	overflow: hidden;
 	height: calc(3 * 3.6rem * 1.2);
 	font-family: "Roboto Slab", serif;
@@ -7318,6 +7339,10 @@ script ~ .section, input ~ .section {
 		font-size: 1.8rem;
 		line-height: 1.6;
 	}
+}
+
+.promo-slider__footer {
+	position: relative;
 }
 
 .promo-slider__text ~ .promo-slider__footer {
@@ -8415,8 +8440,14 @@ script ~ .section, input ~ .section {
 	text-decoration: none;
 }
 
-.banners__item a img {
+.banners__item img {
+	margin-right: auto;
+	margin-left: auto;
 	width: 100%;
+}
+
+.banners__item img[src*="preloader.svg"] {
+	width: 48px;
 }
 
 /*banners end*/
@@ -8470,6 +8501,18 @@ script ~ .section, input ~ .section {
 .slick-initialized .infoblock__item {
 	float: left;
 	display: block;
+}
+
+.infoblock__item a {
+	display: block;
+}
+
+.infoblock__item img {
+	display: block;
+}
+
+.infoblock__item img[src*="preloader.svg"] {
+	width: 48px;
 }
 
 .infoblock__list .slick-arrow {
@@ -10903,6 +10946,12 @@ html.before-extra-popup-open .wrapper {
 	z-index: 4;
 }
 
+.news-grid__img[style*="preloader.svg"] {
+	background-size: 48px;
+	background-position: center;
+	background-color: #f3f3f3;
+}
+
 .news-grid__img.position--left-top {
 	background-position: left top;
 }
@@ -10951,6 +11000,7 @@ html.before-extra-popup-open .wrapper {
 	position: relative;
 	height: 154px;
 	z-index: 4;
+	overflow: hidden;
 }
 
 .news-grid__item--large .news-grid__img {
@@ -10977,6 +11027,32 @@ html.before-extra-popup-open .wrapper {
 	left: 10px;
 	right: 10px;
 	width: auto;
+}
+
+.news-grid-slider .news-grid__img {
+	background: #ddd;
+}
+
+.news-grid-slider .news-grid__img img {
+	position: absolute;
+	display: block;
+	left: 50%;
+	top: 50%;
+	width: 48px;
+	height: 48px;
+	margin: -24px 0 0 -24px;
+}
+
+.news-grid-slider .news-grid__img img.loaded {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	max-width: none;
+	-o-object-fit: cover;
+	   object-fit: cover;
+	font-family: "object-fit: cover";
 }
 
 .news-grid__content {
@@ -11587,6 +11663,10 @@ html.before-extra-popup-open .wrapper {
 	background-position: center center;
 	background-size: cover;
 	z-index: 4;
+}
+
+.news-group__img[style*="preloader.svg"] {
+	background-size: 48px;
 }
 
 .news-group__item:nth-child(n+2) .news-group__img {
@@ -12812,6 +12892,10 @@ html.before-extra-popup-open .wrapper {
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+.obzh-banner[style*="preloader.svg"] {
+	background-size: 48px;
 }
 
 .obzh-banner__content {

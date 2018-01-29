@@ -332,14 +332,16 @@
 	display: inline-block
 	vertical-align: top
 	// before slide load end
+	position: relative
 	height: 300px
 	width: 100%
 	padding: $article-layout-space-vertical $article-layout-space-horizontal
 	text-decoration: none
 	color: white
-	background-color: $base-color
+	background-color: #ddd
 	background-position: center center
 	background-repeat: no-repeat
+
 	background-size: cover
 
 	+media('<desk-hd')
@@ -358,7 +360,27 @@
 		display: block
 		// after slide load end
 
+.promo-slider__figure
+	position: absolute
+	display: block
+	left: 50%
+	top: 50%
+	width: 48px
+	height: 48px
+	margin: -24px 0 0 -24px
+
+	&.loaded
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		max-width: none
+		margin: 0
+		+size(100%)
+		+object-fit(cover)
+
 .promo-slider__text
+	position: relative
 	overflow: hidden
 	height: calc(3 * #{$font-size-h1} * #{$line-height-h1})
 	font-family: $font-alt
@@ -390,6 +412,8 @@
 		+font(round-float($font-size-h1*$fz-kef, 1), round-float($line-height-h1*$lh-kef, 1))
 
 .promo-slider__footer
+	position: relative
+
 	.promo-slider__text ~ &
 		padding-top: $bottom-space
 

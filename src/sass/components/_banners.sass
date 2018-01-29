@@ -35,8 +35,12 @@
 		color: $text-color
 		text-decoration: none
 
-		img
-			width: 100%
+	img
+		+push-auto
+		width: 100%
+
+		&[src*="preloader.svg"]
+			width: 48px
 
 /*banners end*/
 

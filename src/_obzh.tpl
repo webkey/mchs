@@ -61,7 +61,7 @@
 
 	<div class="obzh__panels js-tab-container">
 		<div class="obzh__panel js-tab-content" id="obzh-id-01">
-			<div class="obzh-banner" style="background-image: url(img/img-bozh-banner-01.jpg);">
+			<div class="obzh-banner lazy" data-src="img/img-bozh-banner-01.jpg" style="background-image: url(img/preloader.svg);">
 				<div class="obzh-banner__content">
 					<div class="obzh-banner__text">
 						<ul>
@@ -77,7 +77,7 @@
 			</div>
 		</div>
 		<div class="obzh__panel js-tab-content" id="obzh-id-02">
-			<div class="obzh-banner" style="background-image: url(img/img-promo-slider-02.jpg);">
+			<div class="obzh-banner lazy" data-src="img/img-promo-slider-02.jpg" style="background-image: url(img/preloader.svg);">
 				<div class="obzh-banner__content">
 					<div class="obzh-banner__text">
 						<p>Изменение климатических условий является серьезным фактором риска для здоровья населения, вызванного такими неблагоприятными явлениями погоды, как экстремальная жара, ливни, наводнения, ураганы и другие, поэтому докладчики основное внимание уделили не  вопросам снижения уровня выбросов вредных веществ в атмосферу, а сделали акцент на адаптации к изменениям климата.</p>
@@ -89,7 +89,7 @@
 			</div>
 		</div>
 		<div class="obzh__panel js-tab-content" id="obzh-id-03">
-			<div class="obzh-banner" style="background-image: url(img/img-promo-slider-03.jpg);">
+			<div class="obzh-banner lazy" data-src="img/img-promo-slider-03.jpg" style="background-image: url(img/preloader.svg);">
 				<div class="obzh-banner__content">
 					<div class="obzh-banner__text">
 						<h4>В Дрогичинском районе бабушка и 3-летняя внучка получили ожоги.</h4>
@@ -103,7 +103,7 @@
 			</div>
 		</div>
 		<div class="obzh__panel js-tab-content" id="obzh-id-04">
-			<div class="obzh-banner" style="background-image: url(img/img-promo-slider-04.jpg);">
+			<div class="obzh-banner lazy" data-src="img/img-promo-slider-04.jpg" style="background-image: url(img/preloader.svg);">
 				<div class="obzh-banner__content">
 					<div class="obzh-banner__text">
 						<p>Самые читаемые материалы сайта МЧС за 2016 год.</p>
@@ -118,7 +118,7 @@
 			</div>
 		</div>
 		<div class="obzh__panel js-tab-content" id="obzh-id-05">
-			<div class="obzh-banner" style="background-image: url(img/img-promo-slider-05.jpg);">
+			<div class="obzh-banner lazy" data-src="img/img-promo-slider-05.jpg" style="background-image: url(img/preloader.svg);">
 				<div class="obzh-banner__content">
 					<div class="obzh-banner__text">
 						<ul>
@@ -134,7 +134,7 @@
 			</div>
 		</div>
 		<div class="obzh__panel js-tab-content" id="obzh-id-06">
-			<div class="obzh-banner" style="background-image: url(img/img-promo-slider-06.jpg);">
+			<div class="obzh-banner lazy" data-src="img/img-promo-slider-06.jpg" style="background-image: url(img/preloader.svg);">
 				<div class="obzh-banner__content">
 					<div class="obzh-banner__text">
 						<h4>Технического регламента Евразийского</h4>

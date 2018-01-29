@@ -1,7 +1,7 @@
 <div class="news-grid-slider__slide news-grid__item@@if(context.size){--@@size}">
 	@@if (context.label) { <div class="news__label news__label_@@label">@@label</div>}
 	<a href="#" class="news-grid__inner">
-		@@if (context.src) { <div class="news-grid__img" style="background-image: url(@@src);"></div>}
+		@@if (context.src) { <div class="news-grid__img"><img src="img/preloader.svg" data-lazy="@@src" alt="image description" /></div>}
 		<div class="news-grid__content">
 			@@if(context.title){ <div class="news-grid__title">@@title</div>}
 			<div class="news-grid__text">@@text</div>

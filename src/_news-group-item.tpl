@@ -1,7 +1,7 @@
 <div class="news-group__item">
 	@@if (context.label) { <div class="news__label news__label_@@label">@@label</div>}
 	<a href="#" class="news-group__inner">
-		@@if (context.src) { <div class="news-group__img" style="background-image: url(@@src);"></div>}
+		@@if (context.src) { <div class="news-group__img lazy" data-src="@@src" style="background-image: url(img/preloader.svg);"></div>}
 		<div class="news-group__content">
 			@@if(context.title){ <div class="news-group__title">@@title</div>}
 			<div class="news-group__text">@@text</div>

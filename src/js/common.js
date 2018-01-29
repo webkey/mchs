@@ -1557,38 +1557,26 @@ function slidersInit() {
 
 	/*promo slider*/
 	var $promoSlider = $('.promo-slider');
-	var dur = 200;
-
 	if ($promoSlider.length && getCookie('cecutientVersion') !== 'true') {
 		$.each($promoSlider, function () {
 			var $currentSlider = $(this);
 
 			$currentSlider.slick({
 				fade: false,
-				speed: dur,
+				speed: 200,
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				// initialSlide: 2,
-				// lazyLoad: 'ondemand',
+				lazyLoad: 'ondemand',
 				autoplay: true,
 				autoplaySpeed: 8000,
 				infinite: true,
 				dots: true,
 				arrows: false
+			}).on('lazyLoaded', function (event, slick, image, imageSource) {
+				$(image).addClass('loaded');
+				objectFitImages($(image));
 			});
 		});
-
-		// var timeoutPromoSlider;
-		// $(document).on('specialVersionOff', function () {
-		// 	clearTimeout(timeoutPromoSlider);
-		// 	timeoutPromoSlider = setTimeout(function () {
-		// 		$.each($promoSlider, function () {
-		// 			var $currentSlider = $(this);
-		//
-		// 			$currentSlider.resize();
-		// 		})
-		// 	}, 100);
-		// });
 	}
 
 	/*infoblock slider*/
@@ -1661,13 +1649,13 @@ function slidersInit() {
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
-				// initialSlide: 2,
-				// lazyLoad: 'ondemand',
-				// autoplay: true,
-				// autoplaySpeed: 8000,
+				lazyLoad: 'ondemand',
 				infinite: true,
 				dots: true,
 				arrows: true
+			}).on('lazyLoaded', function (event, slick, image, imageSource) {
+				$(image).addClass('loaded');
+				objectFitImages($(image));
 			});
 
 		});
@@ -4270,26 +4258,23 @@ $(document).ready(function () {
 	objectFitImages('.img-fit-js'); // object-fit-images initial
 	var myLazyLoad = new LazyLoad({
 		elements_selector: ".lazy",
-		threshold: 5000
+		callback_set: function () {
+			console.log(1);
+		}
 	});
 	switchSpecialVersion();
 	checkCecutientVersionCookie();
 	placeholderInit();
 	inputHasValueClass();
 	inputFilledClass();
-	// if (!Modernizr.touchevents) {
-	// 	customSelect($('select.cselect'));
-	// }
 	customSelect($('select.cselect'));
 	printShow();
 	toggleHeader();
 	fixedHeader();
-	// behaviorLogoOnScroll();
 	hoverClassInit();
 	addAlignClass();
 	scrollToSection();
 	multiAccordionInit();
-	// toggleLanguages();
 	toggleDrop();
 	selectSave();
 	tabSwitcher();
@@ -4303,7 +4288,6 @@ $(document).ready(function () {
 	stickyLayout();
 	regionMenu();
 	datePickerInit();
-	// blockedScrollOnPage();
 	frontBackSwitcher();
 	textSlide();
 	toggleFormButtons();
