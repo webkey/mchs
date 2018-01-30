@@ -182,8 +182,9 @@ gulp.task('browserSync', function (done) { // Таск browserSync
 	done();
 });
 
-gulp.task('watch', ['createCustomModernizr', 'browserSync', 'htmlCompilation', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs','minifyCommonJs'], function () {
+gulp.task('watch', ['createCustomModernizr', 'browserSync', 'htmlCompilation', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs', 'minifyCommonJs'], function () {
 	gulp.watch(['src/*.tpl', 'src/__*.html', 'src/includes-json/**/*.json'], ['htmlCompilation']); // Наблюдение за tpl
+	gulp.watch(['src/js/common.js'], ['minifyCommonJs']); // Наблюдение за common.js
 	// файлами в папке include
 	gulp.watch('src/sass/**/*.+(scss|sass)', ['sassCompilation']); // Наблюдение за sass файлами в папке sass
 });
@@ -232,4 +233,3 @@ gulp.task('cleanDistFolder', function () {
 gulp.task('clearCache', function () { // Создаем такс для очистки кэша
 	return cache.clearAll();
 });
-

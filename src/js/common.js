@@ -758,19 +758,6 @@ function hoverClassInit() {
 		var dropHeight = drop.outerHeight();
 		var currentDropPosBottom = drop.offset().top - $(window).scrollTop() + dropHeight;
 
-		// console.log("==================: ", drop.children('ul').children('li').first().children('.nav__tab').find('a').text());
-
-		// console.log("drop.offset().top: ", drop.offset().top);
-		// console.log("$(window).scrollTop(): ", $(window).scrollTop());
-		// console.log("dropHeight: ", dropHeight);
-
-		// console.log("$navContainerHeight: ", $navContainer.outerHeight());
-		// console.log("drop: ", drop);
-		// console.log("maxPosBottom: ", maxPosBottom);
-		// console.log("dropHeight: ", dropHeight);
-		// console.log("currentDropPosBottom: ", currentDropPosBottom);
-		// console.log("bottomSpace: ", maxPosBottom - currentDropPosBottom);
-
 		if (maxPosBottom < currentDropPosBottom) {
 			if (maxPosBottom < 500) {
 				return;
@@ -1659,58 +1646,10 @@ function slidersInit() {
 			});
 
 		});
-
-		// var timeoutNewsGridSlider;
-		// $(document).on('specialVersionOff', function () {
-		// 	clearTimeout(timeoutNewsGridSlider);
-		// 	timeoutNewsGridSlider = setTimeout(function () {
-		// 		$.each($newsGridSlider, function () {
-		// 			var $currentSlider = $(this);
-		//
-		// 			$currentSlider.resize();
-		// 		})
-		// 	}, 100);
-		// });
 	}
 
 	/*tape slider*/
 	var $othersNews = $('.others-news-wrap');
-	// if($othersNews.length){
-	// 	$.each($othersNews, function () {
-	// 		var $currentSlider = $(this);
-	// 		var dur = 300;
-	// 		var $thumbsSlider = $currentSlider.find('.tape-slider-js');
-	// 		var $panelsSlider = $currentSlider.find('.others-news-slider-js');
-	//
-	// 		$thumbsSlider.slick({
-	// 			fade: false,
-	// 			speed: dur,
-	// 			slidesToShow: 1,
-	// 			// slidesToScroll: 1,
-	// 			infinite: true,
-	// 			dots: false,
-	// 			arrows: true,
-	// 			focusOnSelect: true,
-	// 			variableWidth: true,
-	// 			asNavFor: $panelsSlider
-	// 		});
-	//
-	// 		$panelsSlider.slick({
-	// 			accessibility: false,
-	// 			swipe: false,
-	// 			touchMove: false,
-	// 			fade: false,
-	// 			speed: dur,
-	// 			slidesToShow: 1,
-	// 			slidesToScroll: 1,
-	// 			infinite: true,
-	// 			dots: false,
-	// 			arrows: false,
-	// 			asNavFor: $thumbsSlider
-	// 		});
-	//
-	// 	});
-	// }
 
 	if ($othersNews.length) {
 		$othersNews.each(function () {
@@ -3610,28 +3549,27 @@ function toggleFormButtons() {
 			openContent: options.openClass + '--content'
 		};
 
-		this.toggleBlock();
+		this.toggleInit();
 	};
 
 	ToggleBlock.prototype.openerText = false;
 
 	// toggle block
-	ToggleBlock.prototype.toggleBlock = function () {
+	ToggleBlock.prototype.toggleInit = function () {
 		var self = this;
 		var $container = self.$container;
 
 		self.$container.on('click', self.options.opener, function (e) {
+
+
 			e.preventDefault();
 
 			if ($container.hasClass(self.modifiers.open)) {
 				self.closeBlock();
-
-				return;
+			} else {
+				self.openBlock();
 			}
-
-			self.openBlock();
-
-		})
+		});
 	};
 
 	// open block
@@ -3721,7 +3659,6 @@ function toggleContacts() {
 			html: '<i>&nbsp;</i>',
 			click: function(e) {
 				e.preventDefault();
-				// console.log(1);
 			}
 		});
 
@@ -3729,8 +3666,6 @@ function toggleContacts() {
 
 		$container.on('click', '.h-contacts-opener-js', function (e) {
 			e.preventDefault();
-
-			// console.log(1);
 
 			var $wrap = $(this).parent();
 
@@ -4244,6 +4179,16 @@ function wrapTable() {
 	})
 }
 /*wrap table to table-auto container end*/
+
+/**
+ * Lazy load images and iframes
+ * */
+(function () {
+	var myLazyLoad = new LazyLoad({
+		elements_selector: ".lazy",
+		threshold: 0
+	});
+})();
 /** ready/load/resize document **/
 
 $(window).on('load', function () {
@@ -4256,12 +4201,6 @@ $(window).on('load', function () {
 
 $(document).ready(function () {
 	objectFitImages('.img-fit-js'); // object-fit-images initial
-	var myLazyLoad = new LazyLoad({
-		elements_selector: ".lazy",
-		callback_set: function () {
-			console.log(1);
-		}
-	});
 	switchSpecialVersion();
 	checkCecutientVersionCookie();
 	placeholderInit();

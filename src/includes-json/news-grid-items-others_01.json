@@ -1,0 +1,46 @@
+[
+	{
+		"src": "img/img-news-04.jpg",
+		"label": "video",
+		"title": "",
+		"text": "Женщина получила ожоги на базе отдыха в Витебском районе.",
+		"meta": "25.12.2016, 01:30",
+		"size": "",
+		"slider": "",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
+	},
+	{
+		"src": "img/no-img.jpg",
+		"label": "",
+		"title": "",
+		"text": "История одной ЧС: Наводнение в Воложине.",
+		"meta": "23.12.2016, 13:30",
+		"size": "",
+		"slider": "",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
+	},
+	{
+		"src": "img/img-news-03.jpg",
+		"label": "",
+		"title": "",
+		"text": "Указом Президента присвоены специальные звания «полковник внутренней службы».",
+		"meta": "18.12.2016, 14:30",
+		"size": "",
+		"slider": "",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
+	},
+	{
+		"src": "img/img-bozh-banner-01.jpg",
+		"label": "",
+		"title": "",
+		"text": "Представители регулирующих органов в области ядерной и радиационной безопасности Беларуси и России обсудили дальнейшие шаги двустороннего взаимодействия.",
+		"meta": "11.12.2016, 08:30",
+		"size": "",
+		"slider": "",
+		"hasntImgSuffix": "",
+		"hasImgSuffix": ""
+	}
+]
