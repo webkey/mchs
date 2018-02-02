@@ -6294,6 +6294,7 @@ script ~ .section, input ~ .section {
 .touchevents .section__title .news-date {
 	display: inline-block;
 	vertical-align: middle;
+	line-height: 1;
 }
 
 .touchevents .section__title .news-date ~ a {
@@ -6352,6 +6353,14 @@ script ~ .section, input ~ .section {
 	cursor: pointer;
 	border: 1px solid #262626;
 	background: white;
+}
+
+@media (min-width: 1600px) {
+	.datepicker-input {
+		vertical-align: top;
+		height: 20px;
+		line-height: 20px;
+	}
 }
 
 .no-touchevents .datepicker-alt .datepicker-input {
@@ -10948,12 +10957,30 @@ html.before-extra-popup-open .wrapper {
 }
 
 .news-grid__img {
+	position: relative;
+	height: 154px;
+	z-index: 4;
+	overflow: hidden;
 	min-height: 50px;
 	background-image: url(../img/no-img.jpg);
 	background-repeat: no-repeat;
-	background-position: center top;
+	background-position: 250% 250%;
+	background-size: auto;
+}
+
+.news-grid__img::before {
+	content: "";
+	position: absolute;
+	left: -20px;
+	top: -20px;
+	width: calc(100% + 40px);
+	height: calc(100% + 40px);
+	background-repeat: no-repeat;
+	background-position: center;
 	background-size: cover;
-	z-index: 4;
+	background-image: inherit;
+	-webkit-filter: blur(8px);
+	        filter: blur(8px);
 }
 
 .news-grid__img[style*="preloader.svg"] {
@@ -10961,40 +10988,19 @@ html.before-extra-popup-open .wrapper {
 	background-position: center;
 }
 
-.news-grid__img.position--left-top {
-	background-position: left top;
-}
-
-.news-grid__img.position--center-top {
-	background-position: center top;
-}
-
-.news-grid__img.position--right-top {
-	background-position: right top;
-}
-
-.news-grid__img.position--left-center {
-	background-position: left center;
-}
-
-.news-grid__img.position--center-center {
-	background-position: center center;
-}
-
-.news-grid__img.position--right-center {
-	background-position: right center;
-}
-
-.news-grid__img.position--left-bottom {
-	background-position: left bottom;
-}
-
-.news-grid__img.position--center-bottom {
-	background-position: center bottom;
-}
-
-.news-grid__img.position--right-bottom {
-	background-position: right bottom;
+.news-grid__img .img-content {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	font-size: 0;
+	line-height: 0;
+	color: transparent;
+	background-image: inherit;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
 }
 
 .news-grid__img img {
@@ -11003,13 +11009,6 @@ html.before-extra-popup-open .wrapper {
 
 .news-grid__slider + .news-grid__inner .news-grid__img {
 	display: none;
-}
-
-.news-grid__img {
-	position: relative;
-	height: 154px;
-	z-index: 4;
-	overflow: hidden;
 }
 
 .news-grid__item--large .news-grid__img {
@@ -11039,29 +11038,24 @@ html.before-extra-popup-open .wrapper {
 }
 
 .news-grid-slider .news-grid__img {
-	background: #ddd;
+	background-color: #fff;
+	background-repeat: no-repeat;
+	background-position: 250% 250%;
+	background-size: auto;
 }
 
 .news-grid-slider .news-grid__img img {
 	position: absolute;
 	display: block;
-	left: 50%;
-	top: 50%;
-	width: 48px;
-	height: 48px;
-	margin: -24px 0 0 -24px;
-}
-
-.news-grid-slider .news-grid__img img.loaded {
 	margin: 0;
 	width: 100%;
 	height: 100%;
 	left: 0;
 	top: 0;
 	max-width: none;
-	-o-object-fit: cover;
-	   object-fit: cover;
-	font-family: "object-fit: cover";
+	-o-object-fit: contain;
+	   object-fit: contain;
+	font-family: "object-fit: contain";
 }
 
 .news-grid__content {
@@ -11191,11 +11185,16 @@ html.before-extra-popup-open .wrapper {
 	max-height: 9.4rem;
 }
 
+@media (max-width: 1599px) {
+	.news-grid__item--large .news-grid__title {
+		max-height: none;
+	}
+}
+
 @media (max-width: 639px) {
 	.news-grid__item--large .news-grid__title {
 		font-size: 1.7rem;
 		line-height: 1.2;
-		max-height: 8.2rem;
 	}
 }
 
@@ -11219,6 +11218,12 @@ html.before-extra-popup-open .wrapper {
 .news-grid__item--large .news-grid__text {
 	height: auto;
 	max-height: 8rem;
+}
+
+@media (max-width: 1599px) {
+	.news-grid__item--large .news-grid__text {
+		max-height: none;
+	}
 }
 
 @media (max-width: 1599px) {

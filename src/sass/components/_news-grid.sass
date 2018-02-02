@@ -104,58 +104,113 @@
 		height: $news-item-lg-img-height
 // высота как у большой картинки. см. выше
 
-.news-grid__img
-	min-height: $news-label-size
-	background-image: url(../../img/no-img.jpg)
-	background-repeat: no-repeat
-	background-position: center top
-	background-size: cover
-	z-index: 4
-
-	&[style*="preloader.svg"]
-		background-size: 48px
-		background-position: center
-		//background-color: #f3f3f3
-
-	&.position--left-top
-		background-position: left top
-
-	&.position--center-top
-		background-position: center top
-
-	&.position--right-top
-		background-position: right top
-
-	&.position--left-center
-		background-position: left center
-
-	&.position--center-center
-		background-position: center center
-
-	&.position--right-center
-		background-position: right center
-
-	&.position--left-bottom
-		background-position: left bottom
-
-	&.position--center-bottom
-		background-position: center bottom
-
-	&.position--right-bottom
-		background-position: right bottom
-
-	img
-		width: 100%
-
-	.news-grid__slider + .news-grid__inner &
-		display: none
-
 //.news-grid__slider,
 .news-grid__img
 	position: relative
 	height: $news-item-img-height // костыль, чтобы высоты блоков были четко по дизу
 	z-index: 4
 	overflow: hidden
+	min-height: $news-label-size
+	background-image: url(../../img/no-img.jpg)
+	//background-repeat: no-repeat
+	//background-position: center
+	//background-size: contain
+	background-repeat: no-repeat // запрещаем повторение изображения
+	background-position: 250% 250% // выносим за границы видимой области
+	background-size: auto // обнуляем сайзинг фонового изображение
+
+	&::before
+		content: ""
+		position: absolute
+		left: -20px
+		top: -20px
+		width: calc(100% + 40px)
+		height: calc(100% + 40px)
+		background-repeat: no-repeat
+		background-position: center
+		background-size: cover
+		background-image: inherit
+		//opacity: 0.5
+		filter: blur(8px)
+
+	&[style*="preloader.svg"]
+		background-size: 48px
+		background-position: center
+		//background-color: #f3f3f3
+
+	//&.position--left-top
+		background-position: left top
+		+object-fit(cover, left top)
+
+	//&.position--center-top,
+	//&.position--top
+		background-position: center top
+
+		img
+			+object-fit(cover, center top)
+
+	//&.position--right-top
+		background-position: right top
+
+		img
+			+object-fit(cover, right top)
+
+	//&.position--left-center
+		background-position: left center
+
+		img
+			+object-fit(cover, left center)
+
+	//&.position--center-center,
+	//&.position--center
+		background-position: center center
+
+		img
+			+object-fit(cover, center center)
+
+	//&.position--right-center
+		background-position: right center
+
+		img
+			+object-fit(cover, right center)
+
+	//&.position--left-bottom
+		background-position: left bottom
+
+		img
+			+object-fit(cover, left bottom)
+
+	//&.position--center-bottom
+		background-position: center bottom
+
+		img
+			+object-fit(cover, center bottom)
+
+	//&.position--right-bottom
+		background-position: right bottom
+
+		img
+			+object-fit(cover, right bottom)
+
+	.img-content
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		font-size: 0
+		line-height: 0
+		color: transparent
+		background-image: inherit
+		background-repeat: no-repeat
+		background-position: center
+		background-size: contain
+
+	img
+		width: 100%
+
+	.news-grid__slider + .news-grid__inner &
+		display: none
 
 	.news-grid__item--large &
 		height: $news-item-lg-img-height
@@ -179,25 +234,47 @@
 
 .news-grid-slider
 	.news-grid__img
-		background: #ddd
+		//background-color: #ddd
+		background-color: #fff
+
+		background-repeat: no-repeat // запрещаем повторение изображения
+		background-position: 250% 250% // выносим за границы видимой области
+		background-size: auto // обнуляем сайзинг фонового изображение
+
+		//&::before
+			content: ""
+			position: absolute
+			left: -5%
+			top: -5%
+			width: 110%
+			height: 110%
+			background-repeat: no-repeat
+			background-position: center
+			background-size: cover
+			background-image: inherit
+			//opacity: 0.5
+			filter: blur(8px)
 
 		img
+			// если есть прелоадер
+			//position: absolute
+			//display: block
+			//left: 50%
+			//top: 50%
+			//width: 48px
+			//height: 48px
+			//margin: -24px 0 0 -24px
+
+			//&.loaded
 			position: absolute
 			display: block
-			left: 50%
-			top: 50%
-			width: 48px
-			height: 48px
-			margin: -24px 0 0 -24px
-
-			&.loaded
-				margin: 0
-				width: 100%
-				height: 100%
-				left: 0
-				top: 0
-				max-width: none
-				+object-fit(cover)
+			margin: 0
+			width: 100%
+			height: 100%
+			left: 0
+			top: 0
+			max-width: none
+			+object-fit(contain)
 
 .news-grid__content
 	position: relative
@@ -298,9 +375,12 @@
 		height: auto
 		max-height: round-float(1.8rem*1.3*4, 1) // костыль, для больших новостных элементов
 
+		+media('<desk-lg')
+			max-height: none
+
 		+media('<mob-lg')
 			+font(1.7rem, 1.2)
-			max-height: round-float(1.7rem*1.2*4, 1) // костыль, для больших новостных элементов
+			//max-height: round-float(1.7rem*1.2*4, 1) // костыль, для больших новостных элементов
 
 .news-grid__text
 	overflow: hidden
@@ -316,6 +396,9 @@
 	.news-grid__item--large &
 		height: auto
 		max-height: round-float($font-size-small*$line-height-small*4, 1)
+
+		+media('<desk-lg')
+			max-height: none
 
 	//+media('<mob-lg')
 	+media('<desk-lg')
