@@ -95,6 +95,9 @@
 	overflow: hidden
 	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
 
+	+media('<tab-lg')
+		+padding-horizontal(round($grid-inside-horizontal-space*0.7))
+
 	.news__label + &
 		padding-top: $grid-inside-vertical-space + $news-label-size
 

@@ -115,7 +115,7 @@
 	&[style*="preloader.svg"]
 		background-size: 48px
 		background-position: center
-		background-color: #f3f3f3
+		//background-color: #f3f3f3
 
 	&.position--left-top
 		background-position: left top
@@ -205,6 +205,9 @@
 	padding: $grid-inside-vertical-space $grid-inside-horizontal-space 48px
 	// Костыль. Нужен больше нижний отступ, чтобы повесить на абсолюте мета инфу
 
+	+media('<mob-lg')
+		+padding-horizontal(round($grid-inside-horizontal-space*0.7))
+
 	.news-grid &
 		// Костыль. Жесткая высота контента. Высота элемета - высота картинки
 		height: $news-item-content-height
@@ -293,22 +296,26 @@
 
 	.news-grid__item--large &
 		height: auto
-		max-height: round-float(1.8rem*1.3*3, 1) // костыль, для больших новостных элементов
+		max-height: round-float(1.8rem*1.3*4, 1) // костыль, для больших новостных элементов
+
+		+media('<mob-lg')
+			+font(1.7rem, 1.2)
+			max-height: round-float(1.7rem*1.2*4, 1) // костыль, для больших новостных элементов
 
 .news-grid__text
 	overflow: hidden
 	color: inherit
-	height: round-float($font-size-small*$line-height-small*3, 1) // костыль, чтобы высоты блоков были четко по дизу
+	height: round-float($font-size-small*$line-height-small*4, 1) // костыль, чтобы высоты блоков были четко по дизу
 	transition-property: color
 	transition-duration: $animation-speed
 
 	+media('<mob-lg')
 		height: auto
-		max-height: round-float($font-size-small*$line-height-small*3, 1) // костыль, чтобы высоты блоков были четко по дизу
+		max-height: round-float($font-size-small*$line-height-small*4, 1) // костыль, чтобы высоты блоков были четко по дизу
 
 	.news-grid__item--large &
 		height: auto
-		max-height: round-float($font-size-small*$line-height-small*7, 1)
+		max-height: round-float($font-size-small*$line-height-small*4, 1)
 
 	//+media('<mob-lg')
 	+media('<desk-lg')
@@ -326,6 +333,9 @@
 	line-height: 1.4
 	color: $text-color-light
 	+news-transition
+
+	+media('<mob-lg')
+		width: calc(100% - #{round($grid-inside-horizontal-space*0.7)*2})
 
 	time
 		font-style: normal

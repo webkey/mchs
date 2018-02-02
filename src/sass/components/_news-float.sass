@@ -60,6 +60,9 @@
 	overflow: hidden
 	padding: $grid-inside-vertical-space $grid-inside-horizontal-space 48px // Костыль. Нужен больше нижний отступ, чтобы повесить на абсолюте мета инфу
 
+	+media('<mob-lg')
+		+padding-horizontal(round($grid-inside-horizontal-space*0.7))
+
 .news-float__title
 	font-family: $font-alt
 	+font($font-size-h3, $line-height-h3)
@@ -89,6 +92,9 @@
 	color: $text-color-light
 	transition-property: color
 	transition-duration: $animation-speed
+
+	+media('<mob-lg')
+		width: calc(100% - #{round($grid-inside-horizontal-space*0.7*2)})
 
 	time
 		font-style: normal
