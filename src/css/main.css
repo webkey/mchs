@@ -667,7 +667,7 @@ body {
 	min-width: 320px;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1919px) {
 	body {
 		font-size: 1.6rem;
 		line-height: 1.7;
@@ -686,7 +686,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 639px) {
 	h1, h2, h3, h4, h5, h6 {
-		margin: 0 0 2.6rem;
+		margin: 0 0 2rem;
 	}
 }
 
@@ -695,7 +695,7 @@ h1, .popup-title h2 {
 	line-height: 1.2;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1919px) {
 	h1, .popup-title h2 {
 		font-size: 2.6rem;
 		line-height: 1.3;
@@ -707,7 +707,7 @@ h2, .popup-title h3 {
 	line-height: 1.3;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1919px) {
 	h2, .popup-title h3 {
 		font-size: 2.2rem;
 		line-height: 1.4;
@@ -1217,11 +1217,32 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 	clear: both;
 }
 
+@media (max-width: 639px) {
+	.imgc {
+		padding-bottom: 2rem;
+	}
+}
+
 .imgl {
 	text-align: left;
 	float: left;
 	margin: 0.9rem 6rem 4.5rem 0;
 	max-width: 50%;
+}
+
+@media (max-width: 1599px) {
+	.imgl {
+		float: none;
+		display: block;
+		margin: 0 auto 3rem;
+		max-width: none;
+	}
+}
+
+@media (max-width: 639px) {
+	.imgl {
+		margin-bottom: 2rem;
+	}
 }
 
 .imgr {
@@ -1232,11 +1253,17 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 @media (max-width: 1599px) {
-	.imgl, .imgr {
+	.imgr {
 		float: none;
 		display: block;
 		margin: 0 auto 3rem;
 		max-width: none;
+	}
+}
+
+@media (max-width: 639px) {
+	.imgr {
+		margin-bottom: 2rem;
 	}
 }
 
@@ -3138,7 +3165,7 @@ html.css-scroll-fixed {
 
 .content-layout {
 	position: relative;
-	padding: 51px 51px 0;
+	padding: 39px 51px 0;
 	margin-right: 60px;
 }
 
@@ -3150,7 +3177,7 @@ html.css-scroll-fixed {
 
 @media (max-width: 1919px) {
 	.content-layout {
-		padding: 41px 41px 0;
+		padding: 31px 41px 0;
 	}
 	.home-page .content-layout {
 		margin-right: auto;
@@ -3178,14 +3205,14 @@ html.css-scroll-fixed {
 
 @media (max-width: 959px) {
 	.content-layout {
-		padding: 30px 30px 0;
+		padding: 24px 30px 0;
 	}
 }
 
 @media (max-width: 639px) {
 	.content-layout {
 		max-width: none;
-		padding: 20px 20px 0;
+		padding: 16px 20px 0;
 	}
 }
 
@@ -4106,7 +4133,7 @@ html.css-scroll-fixed {
 	.header__contacts ul li a {
 		display: block;
 		text-align: left;
-		padding: 10px 20px;
+		padding: 6px 20px;
 	}
 }
 
@@ -6450,9 +6477,15 @@ script ~ .section, input ~ .section {
 	clear: both;
 }
 
+@media (max-width: 1599px) {
+	.breadcrumbs {
+		margin-bottom: 1.5rem;
+	}
+}
+
 @media (max-width: 639px) {
 	.breadcrumbs {
-		margin-bottom: 15px;
+		margin-bottom: 0.5rem;
 	}
 }
 
@@ -10008,7 +10041,7 @@ html.before-extra-popup-open .wrapper {
 
 @media (max-width: 1919px) {
 	.side {
-		margin-top: 41px;
+		margin-top: calc(40px - 9px);
 	}
 }
 
@@ -10213,6 +10246,12 @@ html.before-extra-popup-open .wrapper {
 	clear: both;
 }
 
+@media (max-width: 639px) {
+	.article-meta {
+		margin-bottom: 2rem;
+	}
+}
+
 /*article meta end*/
 /*date*/
 .datetime {
@@ -10224,6 +10263,12 @@ html.before-extra-popup-open .wrapper {
 	color: #999;
 	fill: #999;
 	font-style: normal;
+}
+
+@media (max-width: 639px) {
+	.datetime {
+		margin-bottom: 2rem;
+	}
 }
 
 .article-meta .datetime {
@@ -11346,10 +11391,10 @@ html.before-extra-popup-open .wrapper {
 
 @media (max-width: 639px) {
 	.news-grid__item--wide .news__place {
-		width: 30px;
-		height: 30px;
+		width: 26px;
+		height: 26px;
 		font-size: 14px;
-		line-height: 30px;
+		line-height: 26px;
 		left: 0;
 	}
 }
@@ -13841,25 +13886,25 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 @media (max-width: 1919px) {
 	.region-header {
-		padding: 25px 41px;
+		padding: 15px 41px;
 	}
 }
 
 @media (max-width: 1279px) {
 	.region-header {
-		padding: 15px 30px;
+		padding: 9px 30px;
 	}
 }
 
 @media (max-width: 959px) {
 	.region-header {
-		padding: 15px 30px;
+		padding: 9px 30px;
 	}
 }
 
 @media (max-width: 639px) {
 	.region-header {
-		padding: 10px 20px;
+		padding: 6px 20px;
 	}
 }
 
@@ -13899,8 +13944,8 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	margin-bottom: 0.5em;
 	font-family: "Roboto Slab", serif;
 	font-weight: 700;
-	font-size: 36px;
-	line-height: 1.2;
+	font-size: 24px;
+	line-height: 1.3;
 	color: white;
 	text-shadow: 1px 1px 0 black;
 }
@@ -13911,24 +13956,16 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	clear: both;
 }
 
-@media (max-width: 1279px) {
-	.region-header__caption {
-		font-size: 32px;
-	}
-}
-
 @media (max-width: 959px) {
 	.region-header__caption {
 		min-height: calc(1em*1.3*2);
-		font-size: 28px;
-		line-height: 1.3;
 	}
 }
 
 @media (max-width: 639px) {
 	.region-header__caption {
 		min-height: calc(1em*1.4*2);
-		font-size: 22px;
+		font-size: 20px;
 		line-height: 1.4;
 	}
 }
@@ -13945,7 +13982,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	.region-header__caption .col {
 		width: 100%;
 		padding: 0;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 	}
 	.region-header__caption .col:last-child {
 		margin-bottom: 0;
@@ -13954,8 +13991,8 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 .region-header__caption .col > img {
 	float: left;
-	width: 48px;
-	height: 48px;
+	width: 32px;
+	height: 32px;
 	margin-right: 10px;
 }
 
@@ -14015,9 +14052,19 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 @media (max-width: 639px) {
 	.region-header__holder .region-logo {
 		float: none;
-		width: 70px;
+		width: 60px;
 		margin-right: 15px;
 	}
+}
+
+@media (max-width: 479px) {
+	.region-header__holder .region-logo {
+		width: 50px;
+	}
+}
+
+.region-header__holder .region-logo a {
+	display: block;
 }
 
 .region-header__info {
@@ -14047,9 +14094,12 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 
 @media (max-width: 639px) {
 	.region-header__info li {
-		font-size: 1.6rem;
 		width: 100%;
 		padding-right: 0;
+		margin-top: 0.4em;
+		margin-bottom: 0.4em;
+		font-size: 14px;
+		line-height: 18px;
 	}
 }
 
@@ -14063,6 +14113,14 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	width: 24px;
 	height: 24px;
 	margin-right: 20px;
+}
+
+@media (max-width: 639px) {
+	.region-header__info svg {
+		width: 18px;
+		height: 18px;
+		margin-right: 10px;
+	}
 }
 
 .region-header__info path {

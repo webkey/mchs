@@ -136,12 +136,12 @@ html
 
 .content-layout
 	position: relative
-	padding: #{$grid-layout-space - 9px} #{$grid-layout-space - 9px} 0 // -9 для компенсации вертикального скролла
+	padding: #{round($grid-layout-space*0.8 - 9px)} #{$grid-layout-space - 9px} 0 // -9 для компенсации вертикального скролла
 	margin-right: 60px // width .side menu
 	+clear
 
 	+media('<desk-hd')
-		padding: #{$grid-layout-space--desk-hd - 9px} #{$grid-layout-space--desk-hd - 9px} 0 // -9 для компенсации вертикального скролла
+		padding: #{round($grid-layout-space--desk-hd*0.8 - 9px)} #{$grid-layout-space--desk-hd - 9px} 0 // -9 для компенсации вертикального скролла
 
 		.home-page &
 			+push-auto
@@ -165,14 +165,14 @@ html
 				max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-md)*2
 
 	+media('<tab-lg')
-		padding: $grid-layout-space--desk-md $grid-layout-space--desk-md 0
+		padding: round($grid-layout-space--desk-md*0.8) $grid-layout-space--desk-md 0
 
 		//.home-page &
 			max-width: $section-layout-width-tab-lg + ($grid-layout-space--desk-md)*2
 
 	+media('<mob-lg')
 		max-width: none
-		padding: $grid-layout-space--mob-lg $grid-layout-space--mob-lg 0
+		padding: round($grid-layout-space--mob-lg*0.8) $grid-layout-space--mob-lg 0
 
 .content-wrap
 	@extend .main-frame

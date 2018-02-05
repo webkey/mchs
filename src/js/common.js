@@ -3052,7 +3052,7 @@ function stickyLayout() {
 
 		$(window).on('load resizeByWidth', function () {
 
-			var offsetTop = offsetTopBase + 50;
+			var offsetTop = offsetTopBase + 30;
 
 			// if(window.innerWidth < 1600){
 			// 	// $sidebar.trigger("sticky_kit:detach").attr('style','');

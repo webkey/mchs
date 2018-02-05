@@ -15,7 +15,7 @@ body
 	background: $bg-color url(../../img/empty.png) repeat fixed
 	min-width: 320px
 
-	+media('<mob-lg')
+	+media('<desk-hd')
 		+font($font-size, 1.7)
 
 h1, h2, h3, h4, h5, h6
@@ -26,18 +26,18 @@ h1, h2, h3, h4, h5, h6
 	text-align: left
 
 	+media('<mob-lg')
-		margin: 0 0 round-float($bottom-space*0.85, 1)
+		margin: 0 0 2rem
 
 h1, .popup-title h2
 	+font($font-size-h1, $line-height-h1)
 
-	+media('<mob-lg')
+	+media('<desk-hd')
 		+font($font-size-h1--sm, $line-height-h1--sm)
 
 h2, .popup-title h3
 	+font($font-size-h2, $line-height-h2)
 
-	+media('<mob-lg')
+	+media('<desk-hd')
 		+font($font-size-h2--sm, $line-height-h2--sm)
 
 h3
@@ -404,11 +404,23 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	padding-bottom: $bottom-space-lg
 	clear: both
 
+	+media('<mob-lg')
+		padding-bottom: 2rem
+
 .imgl
 	text-align: left
 	float: left
 	margin: $bottom-space*0.3 $bottom-space-lg $bottom-space-md 0
 	max-width: 50%
+
+	+media('<desk-lg')
+		float: none
+		display: block
+		margin: 0 auto $bottom-space
+		max-width: none
+
+	+media('<mob-lg')
+		margin-bottom: 2rem
 
 .imgr
 	text-align: right
@@ -416,12 +428,14 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	margin: $bottom-space*0.3 0 $bottom-space-lg $bottom-space-md
 	max-width: 50%
 
-+media('<desk-lg')
-	.imgl, .imgr
+	+media('<desk-lg')
 		float: none
 		display: block
 		margin: 0 auto $bottom-space
 		max-width: none
+
+	+media('<mob-lg')
+		margin-bottom: 2rem
 
 /*content img end
 
