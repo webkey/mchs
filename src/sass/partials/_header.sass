@@ -29,6 +29,9 @@
 	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05)
 	+clear
 
+	+media('<desk-lg')
+		padding-top: $header-top-height--md
+
 	+media('<mob-lg')
 		padding-top: $header-top-height--sm
 
@@ -42,11 +45,11 @@
 	height: $header-height
 	width: $header-left-space
 	background-color: white
-	//transition-property: height
-	//transition-duration: $animation-speed
-	//transition-timing-function: linear
 	border-bottom: 1px solid $bg-color
 	z-index: 20
+
+	+media('<desk-lg')
+		height: $header-height--md
 
 	+media('<desk-sm')
 		display: none
@@ -55,31 +58,30 @@
 		transition-property: height
 		transition-duration: 0.1s
 
-	//.header-fixed &
-		position: fixed
-
-	//.logo-is-transform &
 	.elements-is-transform &
 		height: $header-top-height
 
-		//img
-			backface-visibility: hidden
-
-	//.header-fixed.touchevents &
-		height: $header-top-height
+		+media('<desk-lg')
+			height: $header-top-height--md
 
 	+media('<desk-sm')
 		width: $header-left-space-desk-sm
 
 	+media('<tab-lg')
-		width: $header-top-height
-		height: $header-top-height !important
+		//width: $header-top-height
+		//height: $header-top-height !important
+		width: $header-top-height--md
+		height: $header-top-height--md !important
 
 	+media('<mob-lg')
 		width: $header-top-height--sm
 		height: $header-top-height--sm !important
 
 .logo
+	$logo-size: 120px 120px // width height
+	$logo-size--md: 60px 60px // width height
+	$logo-size--sm: 50px 50px // width height
+
 	display: block
 	height: 100%
 	margin: 0
@@ -90,7 +92,7 @@
 		text-decoration: none
 		color: $text-color
 		height: 100%
-		padding: round($sidebar-inner-space-horizontal*0.8) $sidebar-inner-space-horizontal
+		padding: round($sidebar-inner-space-horizontal*0.5) $sidebar-inner-space-horizontal
 		white-space: nowrap
 		text-align: center
 		+clear-spacing
@@ -130,32 +132,33 @@
 		position: relative
 		top: 50%
 		transform: translate(0, -50%)
-		height: 120px
+		height: nth($logo-size, 2)
 		max-height: 100%
 		font-size: $font-size-small
 		letter-spacing: normal
 
 	.header__content &
 		display: none
+		float: left
+		width: nth($logo-size--md, 1)
+		height: 100%
+		position: relative
+		margin-right: $grid-layout-space--desk-md
 
 		+media('<desk-sm')
 			display: block
-			float: left
-			width: 80px
-			height: 100%
-			position: relative
-			margin-right: $grid-layout-space--desk-md
+			margin-right: 15px
 
 		+media('<tab-lg')
 			float: none
 			width: auto
 			height: auto
 			margin: 0
-			padding: 10px 20px
+			padding: 5px 30px
 			border-bottom: 1px solid $border-color
 
 		+media('<mob-lg')
-			+padding-vertical(round($grid-layout-space--mob-lg/2))
+			padding: 4px 20px
 
 		a
 			height: auto
@@ -192,6 +195,7 @@
 				+media('<tab-lg')
 					display: inline-block
 					vertical-align: middle
+					font-size: 1.5rem
 
 				+media('<mob-lg')
 					+font(1.4rem, 1.429)
@@ -204,25 +208,21 @@
 				position: relative
 				left: auto
 				top: auto
-				+size(60px)
 				max-width: 100%
 				transform: none
 
 				+media('<desk-sm')
-					+size(80px)
+					+size(nth($logo-size--md, 1), nth($logo-size--md, 2))
 
 				+media('<tab-lg')
 					float: none
 					display: inline-block
 					vertical-align: middle
-					+size(60px)
 					margin-right: $grid-layout-space--mob-lg
+					+size(nth($logo-size--sm, 1), nth($logo-size--sm, 2))
 
 				+media('<mob-lg')
 					margin-right: #{round($grid-layout-space--mob-lg/2)}
-
-				+media('<mob-md')
-					width: 60px
 
 /*logo end*/
 
@@ -237,6 +237,9 @@
 	//overflow: hidden
 	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
 	+clear
+
+	+media('<desk-lg')
+		height: $header-top-height--md
 
 	.window-is-resize &
 		overflow: hidden
@@ -261,11 +264,15 @@
 
 /*header content
 .header__content
-	padding: 0 $grid-layout-space
+	padding: 0 #{$grid-layout-space - 9px}
 	height: $header-content-height
 
+	+media('<desk-hd')
+		+padding-horizontal(#{$grid-layout-space--desk-hd - 9px})
+
 	+media('<desk-lg')
-		padding: 0 $grid-layout-space--desk-md
+		padding: 0 10px 0 30px
+		height: $header-content-height--md
 
 	//+media('<desk-md')
 		padding: 0 $grid-layout-space--desk-md
@@ -312,7 +319,10 @@
 				border: none
 				max-width: none
 				width: auto
-				padding: 10px 20px
+				padding: 10px 30px
+
+			+media('<mob-lg')
+				padding: 7px 20px
 
 		.gerb
 			//display: inline-block
@@ -322,7 +332,7 @@
 			backface-visibility: hidden
 
 			+media('<desk-lg')
-				width: 50px
+				width: 40px
 
 			+media('<desk-md')
 				display: none
@@ -333,7 +343,10 @@
 .header__contacts
 	float: right
 	height: 100%
-	margin-left: #{$grid-space}
+	margin-left: 20px
+
+	+media('<desk-lg')
+		margin-left: 10px
 
 	+media('<desk-md')
 		&::before
@@ -367,9 +380,6 @@
 			display: block
 			max-width: none
 			+margin-horizontal(0)
-			//height: 60px
-			//height: 89px
-			height: 85px
 
 		+media('<mob-lg')
 			height: auto
@@ -410,6 +420,7 @@
 				float: none
 				display: block
 				width: auto
+				text-align: center
 				border-bottom: 1px solid $border-color
 
 				&:last-child
@@ -430,13 +441,6 @@
 
 				+media('<desk-md')
 					content: none
-
-				//+media('<tab-lg')
-					content: ""
-					height: 100%
-					top: 0
-					border-width: 0 0 0 1px
-					margin-top: 0
 
 				+media('<mob-lg')
 					content: none
@@ -459,7 +463,7 @@
 					padding: 0 #{round($grid-space/2)}
 
 				+media('<desk-md')
-					padding: 5px #{round($grid-space/2)}
+					padding: 4px #{round($grid-space/2)}
 
 				.no-touchevents &:hover
 					background-color: white
@@ -468,23 +472,31 @@
 					+vertical-align()
 
 				+media('<tab-lg')
-					text-align: center
+					+padding-horizontal(30px)
 
 				+media('<mob-lg')
+					text-align: center
 					display: block
-					text-align: left
 					padding: 6px 20px
 
 				& > div
 					$width-icon: 78px
-					$width-icon-sm: 60px
+					$width-icon--md: 54px
+					$width-icon--sm: 50px
 
 					+display-inline-block-middle
 					max-width: calc(100% - #{$width-icon})
 					text-align: left
 
+					+media('<desk-lg')
+						max-width: calc(100% - #{$width-icon--md})
+
+					+media('<desk-sm')
+						max-width: calc(100% - #{$width-icon--sm})
+
 					+media('<tab-lg')
 						text-align: center
+						max-width: none
 
 						img
 							width: 34px
@@ -492,15 +504,20 @@
 					&:first-child
 						width: $width-icon
 						padding-right: #{$grid-space}
+						text-align: center
 
 						+media('<desk-lg')
-							width: $width-icon-sm
+							width: $width-icon--md
 							padding-right: #{round($grid-space*0.5)}
 
-						+media('<tab-lg')
-							padding-right: #{$grid-layout-space--mob-lg}
+						+media('<desk-md')
+							width: $width-icon--sm
 
-						+media('<mob-lg')
+						+media('<tab-lg')
+							padding-right: 0
+							width: auto
+
+						//+media('<mob-lg')
 							width: 70px
 
 					& > em
@@ -508,6 +525,20 @@
 						font: normal bold 30px/1.2 $font-alt
 						color: $mark-color
 						letter-spacing: normal
+
+						+media('<desk-lg')
+							font-size: 22px
+
+						+media('<desk-md')
+							display: block
+							font-size: 16px
+							line-height: 1
+
+						+media('<tab-lg')
+							display: inline-block
+							font-size: 20px
+							margin-right: 15px
+							padding-bottom: 3px
 
 						&.color--orange
 							color: $mark-color-alt
@@ -561,7 +592,7 @@
 	+media('<tab-lg')
 		float: none
 		height: auto
-		padding: $grid-layout-space--mob-lg
+		padding: 5px 30px
 		margin-left: 0
 		text-align: left
 
@@ -570,6 +601,7 @@
 
 	+media('<mob-lg')
 		overflow: visible
+		+padding-horizontal(20px)
 
 .header__hot-line--align
 	display: inline-block
@@ -581,12 +613,15 @@
 		display: block
 
 .header__hot-line
+	+media('<tab-lg')
+		border-bottom: 1px solid $border-color
+	
 	ul
 		position: relative
 
 		+media('<tab-lg')
 			+margin-horizontal(0)
-			height: 60px
+			//height: 60px
 
 			&::before
 				content: none
@@ -597,6 +632,12 @@
 	li
 		position: relative
 		+margin-vertical(#{$bottom-space-sm})
+
+		+media('<desk-lg')
+			+margin-vertical(10px)
+
+		+media('<tab-lg')
+			+margin-vertical(5px)
 
 		&:first-child
 			font-family: $font-alt
@@ -622,39 +663,51 @@
 	color: $text-color
 
 	+media('<desk-lg')
-		+font(1.4rem, 1.2)
+		+font(1.3rem, 1.2)
+		margin-bottom: 2px
 
 	+media('<tab-lg')
 		display: none
 
 	a
+		$size: 38px
+		$size--md: 30px
+		//==============
 		position: relative
 		+display-inline-block-top
 		color: inherit
 		text-decoration: none
 		width: 100%
-		padding-left: 50px
+		padding-left: $size + 12
+
+		+media('<desk-lg')
+			padding-left: $size--md + 10
 
 		&::before
 			+pseudo()
 			left: 0
 			top: 50%
-			+size(38px)
-			margin-top: -19px
+			+size($size)
+			margin-top: -#{round($size/2)}
 			backface-visibility: hidden
 			background: url(../../img/gerb.png) no-repeat
 			background-size: contain
 
+			+media('<desk-lg')
+				+size($size--md)
+				margin-top: -#{round($size--md/2)}
+
 		&::after
 			+pseudo($display: null, $pos: relative)
 			+display-inline-block-middle
-			min-height: 38px
+			min-height: $size
 
-		+media('<desk-md')
-			&::after
+			+media('<desk-lg')
+				min-height: $size--md
+
+			+media('<desk-md')
 				+pseudo($display: inline-block, $pos: relative)
 				vertical-align: middle
-				min-height: 40px
 
 		& > span
 			display: inline-block
@@ -667,7 +720,7 @@
 .header__info
 	position: relative
 	margin: 8px 0 0
-	+font($font-size-small, $line-height-small)
+	+font(1.4rem, 1.2)
 	cursor: default
 
 	+media('<desk-lg')
@@ -676,23 +729,27 @@
 
 	+media('<tab-lg')
 		font-size: 1.4rem
-		padding-left: 80px
+		padding: 2px 0 2px 65px
 		position: relative
-		min-height: 50px
-
-		&::before
-			+pseudo()
-			left: 5px
-			top: 50%
-			+size(50px)
-			margin-top: -25px
-			backface-visibility: hidden
-			background: url(../../img/gerb.png) no-repeat
-			background-size: contain
 
 	+media('<mob-lg')
 		padding-left: 70px
 		padding-right: 10px
+
+	&::before
+		+pseudo()
+		left: 5px
+		top: 50%
+		+size(40px)
+		margin-top: -20px
+		backface-visibility: hidden
+		background: url(../../img/gerb.png) no-repeat
+		background-size: contain
+		display: none
+
+		+media('<tab-lg')
+			display: block
+			left: 0
 
 	li
 		+media('<mob-lg')
@@ -714,10 +771,9 @@
 			margin-top: 4px
 
 		+media('<desk-lg')
-			margin-top: 8px
+			margin-right: 20px
 
 		+media('<tab-lg')
-			margin-top: 4px
 			margin-bottom: 4px
 
 		a
@@ -743,7 +799,8 @@
 			margin-right: 5px
 
 			+media('<desk-lg')
-				+size(18px)
+				+size(16px)
+				margin-right: 3px
 
 		path
 			fill: lighten($text-color-light, 20%)
@@ -822,6 +879,9 @@
 	vertical-align: top
 	position: relative
 	width: $header-top-height
+
+	+media('<desk-lg')
+		width: $header-top-height--md
 
 	+media('<mob-lg')
 		width: $header-top-height--sm
@@ -918,6 +978,9 @@
 	height: $header-top-height
 	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
 	+padding-horizontal(52px, 12px)
+
+	+media('<desk-lg')
+		height: $header-top-height--md
 
 	+media('<mob-lg')
 		height: $header-top-height--sm

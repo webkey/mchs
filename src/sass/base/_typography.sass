@@ -25,8 +25,11 @@ h1, h2, h3, h4, h5, h6
 	margin: 0 0 $bottom-space
 	text-align: left
 
+	+media('<desk-hd')
+		margin-bottom: 1.5rem
+
 	+media('<mob-lg')
-		margin: 0 0 2rem
+		margin-bottom: 1rem
 
 h1, .popup-title h2
 	+font($font-size-h1, $line-height-h1)
@@ -43,8 +46,14 @@ h2, .popup-title h3
 h3
 	+font($font-size-h3, $line-height-h3)
 
+	+media('<desk-hd')
+		+font($font-size-h3--sm, $line-height-h3--sm)
+
 h4
 	+font($font-size-h4, $line-height-h4)
+
+	+media('<desk-hd')
+		+font($font-size-h4--sm, $line-height-h4--sm)
 
 h5, h6
 	font-weight: 400
@@ -64,6 +73,8 @@ p
 	padding: 0
 	margin: 0 0 $bottom-space
 
+	+media('<desk-hd')
+		margin-bottom: $bottom-space-sm
 hr
 	line-height: 1px
 	height: 0
@@ -72,9 +83,12 @@ hr
 	border-bottom: 1px solid $border-color
 	margin-bottom: $bottom-space
 
+	+media('<desk-hd')
+		margin-bottom: $bottom-space-sm
+
 a
 	color: $link-color
-	outline: none
+	//outline: none
 	text-decoration: underline
 	cursor: default
 
@@ -109,6 +123,9 @@ img
 	max-width: 100%
 	-webkit-overflow-scrolling: touch
 	margin: 0 0 $bottom-space
+
+	+media('<desk-hd')
+		margin-bottom: $bottom-space-sm
 
 	table
 		margin-bottom: 0
@@ -163,6 +180,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	font-weight: 700
 	margin-bottom: $bottom-space
 
+	+media('<desk-hd')
+		margin-bottom: $bottom-space-sm
+
 	.#{$user-content} & p, ul, ol
 		max-width: none
 
@@ -215,10 +235,13 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		p + #{$tags},
 		ul + #{$tags},
 		ol + #{$tags}
-			margin-top: $bottom-space-md
+			margin-top: 4rem
+
+			+media('<desk-hd')
+				margin-top: 2rem
 
 			+media('<mob-lg')
-				margin-top: round-float($bottom-space-md*0.85, 1)
+				margin-top: 1rem
 
 /*base end
 
@@ -229,13 +252,22 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 		padding: 0
 		list-style: none
 
+		+media('<desk-hd')
+			+margin-vertical($bottom-space-sm)
+
 		ul, ol
-			+margin-vertical(#{$bottom-space/2})
+			+margin-vertical(round($bottom-space/2))
+
+			+media('<desk-hd')
+				+margin-vertical(round($bottom-space-sm/2))
 
 	ul li, ol li
 		padding-left: 30px
 		margin: #{$bottom-space-sm} 0
 		position: relative
+
+		+media('<desk-hd')
+			+margin-vertical(round($bottom-space-sm/2))
 
 	ul > li::before
 		content: ''
@@ -292,6 +324,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	table
 		margin-bottom: $bottom-space
 
+		+media('<desk-hd')
+			margin-bottom: $bottom-space-sm
+
 	.table-auto table
 		margin-bottom: 0
 
@@ -343,6 +378,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 .#{$user-content}
 	.blockquote
 		margin: $bottom-space-md 0
+
+		+media('<desk-hd')
+			margin-bottom: $bottom-space-sm
 
 	blockquote
 		display: block
@@ -404,8 +442,11 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	padding-bottom: $bottom-space-lg
 	clear: both
 
+	+media('<desk-hd')
+		padding-bottom: $bottom-space
+
 	+media('<mob-lg')
-		padding-bottom: 2rem
+		padding-bottom: $bottom-space-sm
 
 .imgl
 	text-align: left
@@ -413,14 +454,18 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	margin: $bottom-space*0.3 $bottom-space-lg $bottom-space-md 0
 	max-width: 50%
 
+	+media('<desk-hd')
+		margin-bottom: $bottom-space
+
 	+media('<desk-lg')
 		float: none
 		display: block
-		margin: 0 auto $bottom-space
+		margin-left: auto
+		margin-right: auto
 		max-width: none
 
 	+media('<mob-lg')
-		margin-bottom: 2rem
+		margin-bottom: $bottom-space-sm
 
 .imgr
 	text-align: right
@@ -428,14 +473,18 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	margin: $bottom-space*0.3 0 $bottom-space-lg $bottom-space-md
 	max-width: 50%
 
+	+media('<desk-hd')
+		margin-bottom: $bottom-space
+
 	+media('<desk-lg')
 		float: none
 		display: block
-		margin: 0 auto $bottom-space
+		margin-left: auto
+		margin-right: auto
 		max-width: none
 
 	+media('<mob-lg')
-		margin-bottom: 2rem
+		margin-bottom: $bottom-space-sm
 
 /*content img end
 

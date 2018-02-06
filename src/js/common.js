@@ -128,7 +128,7 @@ function toggleSpecialVersion() {
 
 		setCookie('cecutientVersion', false, {
 			// expires: expiresValue,
-			// domain: "localhost:3000",
+			domain: ".mchs.gov.by",
 			path: "/"
 		});
 
@@ -141,7 +141,7 @@ function toggleSpecialVersion() {
 	} else {
 		setCookie('cecutientVersion', true, {
 			// expires: expiresValue,
-			// domain: "localhost:3000",
+			domain: ".mchs.gov.by",
 			path: "/"
 		});
 

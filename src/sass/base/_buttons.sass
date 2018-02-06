@@ -63,9 +63,12 @@
 	+btn-hover
 	+btn-active
 
+	+media('<desk-hd')
+		font-size: 1.4rem
+		line-height: 18px
+
 	+media('<mob-lg')
 		padding: 6px 20px
-		font-size: 1.4rem
 
 	&:disabled
 		cursor: default
@@ -88,9 +91,12 @@
 	transition-property: background-color, color, border-color
 	transition-duration: $animation-speed
 
+	+media('<desk-hd')
+		font-size: 1.4rem
+		line-height: 18px
+
 	+media('<mob-lg')
 		padding: 6px 20px
-		font-size: 1.4rem
 
 	.no-touchevents &:hover
 		background: $btn-bg-color
@@ -122,9 +128,12 @@
 	transition-property: opacity
 	transition-duration: $animation-speed
 
+	+media('<desk-hd')
+		font-size: 1.4rem
+		line-height: 18px
+
 	+media('<mob-lg')
 		padding: 6px 20px
-		font-size: 1.4rem
 
 	.no-touchevents &:hover
 		opacity: 0.5
@@ -154,6 +163,10 @@
 	padding: 7px 20px
 	transition-property: background-color, color, border-color
 	transition-duration: $animation-speed
+
+	+media('<desk-hd')
+		font-size: 1.4rem
+		line-height: 18px
 
 	.no-touchevents &:hover
 		background-color: $btn-bg-color-hover

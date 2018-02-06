@@ -66,9 +66,9 @@ gulp.task('sassCompilation', ['compressNormalizeCss'], function () { // Созд
 		], {
 			cascade: true
 		})) // Создаем префиксы
-		.pipe(gulp.dest('./src/css')) // Выгружаем результата в папку src/css
-		.pipe(cssnano()) // Сжимаем файл
-		.pipe(rename({suffix: '.min'})) // Добавляем суффикс .min
+		// .pipe(gulp.dest('./src/css')) // Выгружаем результата в папку src/css
+		// .pipe(cssnano()) // Сжимаем файл
+		// .pipe(rename({suffix: '.min'})) // Добавляем суффикс .min
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('./src/css')) // Выгружаем после сжатия в папку src/css
 		.pipe(browserSync.reload({

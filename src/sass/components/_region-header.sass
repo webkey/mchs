@@ -6,24 +6,19 @@
 .region-header
 	position: relative
 	z-index: 5
-	//padding: round($grid-layout-space*0.85) #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
-	padding: round($grid-layout-space*0.5) #{$grid-layout-space - 9px} // -9 для компенсации вертикального скролла
+	padding: round($grid-layout-space*0.5) #{$grid-layout-space - 9px} // -9 для компенсации горизонтального скролла
 	min-height: 100px
 
 	+media('<desk-hd')
-		//padding: round($grid-layout-space--desk-hd*0.85) #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
-		padding: round($grid-layout-space--desk-hd*0.3) #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
+		padding: round($grid-layout-space--desk-hd*0.3) #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации горизонтального скролла
 
 	+media('<desk-md')
-		//padding: round($grid-layout-space--desk-md*0.85) $grid-layout-space--desk-md
 		padding: round($grid-layout-space--desk-md*0.3) $grid-layout-space--desk-md
 
 	+media('<tab-lg')
-		//padding: round($grid-layout-space--desk-md*0.85) $grid-layout-space--desk-md
 		padding: round($grid-layout-space--desk-md*0.3) $grid-layout-space--desk-md
 
 	+media('<mob-lg')
-		//padding: round($grid-layout-space--mob-lg*0.85) $grid-layout-space--mob-lg
 		padding: round($grid-layout-space--mob-lg*0.3) $grid-layout-space--mob-lg
 
 	&::before
@@ -44,20 +39,19 @@
 
 .region-header__caption
 	margin-bottom: 0.5em
-	//min-height: calc(1em*1.2*2)
 	font-family: $font-alt
 	font-weight: 700
-	+font(24px, 1.3)
+	+font(2.4rem, 1.3)
 	color: white
 	text-shadow: 1px 1px 0 black
 	+clear
 
-	//+media('<desk-md')
-		font-size: 32px
+	+media('<desk-lg')
+		font-size: 2.2rem
 
 	+media('<tab-lg')
 		min-height: calc(1em*1.3*2)
-		//+font(28px, 1.3)
+		font-size: 2.0rem
 
 	+media('<mob-lg')
 		min-height: calc(1em*1.4*2)
@@ -65,7 +59,7 @@
 
 	.col
 		float: left
-		width: 49.98%
+		width: 46%
 		padding-right: $grid-space
 		text-decoration: none
 		color: inherit
@@ -82,6 +76,9 @@
 			float: left
 			+size(32px)
 			margin-right: 10px
+
+			+media('<desk-lg')
+				+size(28px)
 
 			+media('<tab-lg')
 				+size(36px)
@@ -100,6 +97,9 @@
 	h3
 		+font(1.8rem, round-float(24/18, 2))
 
+		+media('<desk-lg')
+			font-size: 1.4rem
+
 .region-header__caption, .region-header__holder
 	max-width: 100%
 
@@ -117,11 +117,12 @@
 		width: 80px
 		margin-right: 20px
 
-		+media('<mob-lg')
-			float: none
-			width: 60px
+		+media('<desk-lg')
+			width: 54px
 			margin-right: 15px
-			//margin-bottom: $grid-inside-vertical-space
+
+		//+media('<mob-lg')
+			float: none
 
 		+media('<mob-md')
 			width: 50px
@@ -145,10 +146,13 @@
 		+margin-vertical(0.6em)
 		+clear
 
+		+media('<desk-lg')
+			+margin-vertical(0.2em)
+
 		+media('<mob-lg')
 			width: 100%
 			padding-right: 0
-			+margin-vertical(0.4em)
+			+margin-vertical(0.2em)
 			font-size: 14px
 			line-height: 18px
 
@@ -162,10 +166,14 @@
 		height: 24px
 		margin-right: $grid-space
 
+		+media('<desk-lg')
+			width: 20px
+			height: 20px
+			margin-right: 10px
+
 		+media('<mob-lg')
 			width: 18px
 			height: 18px
-			margin-right: 10px
 
 	path
 		fill: white

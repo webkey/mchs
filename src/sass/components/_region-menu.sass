@@ -19,6 +19,9 @@
 	.disabled-js &
 		cursor: default
 
+	body[class*="department-"] .disabled-js &
+		display: none
+
 	.no-touchevents .sidebar:not(.disabled-js) &:hover
 		background-color: shade($subsite-menu-bg-color, 70%)
 
@@ -204,14 +207,38 @@ $btn-region-menu-margin-right: 20px
 	height: calc(100vh - #{$header-height} - #{round($subsite-menu-tab-height*2)})
 	+overflow($x: hidden, $y: auto)
 
+	+media('<desk-lg')
+		height: calc(100vh - #{$header-height--md} - #{round($subsite-menu-tab-height*2)})
+
 	.elements-is-transform &
 		height: calc(100vh - #{$header-top-height} - #{round($subsite-menu-tab-height*2)})
+
+		+media('<desk-lg')
+			height: calc(100vh - #{$header-top-height--md} - #{round($subsite-menu-tab-height*2)})
 
 	.hasnt-news &
 		height: calc(100vh - #{$header-height} - #{$subsite-menu-tab-height})
 
+		+media('<desk-lg')
+			height: calc(100vh - #{$header-height--md} - #{$subsite-menu-tab-height})
+
+	body[class*="department-"] .hasnt-news &
+		height: calc(100vh - #{$header-height})
+
+		+media('<desk-lg')
+			height: calc(100vh - #{$header-height--md})
+
 	.elements-is-transform .hasnt-news &
 		height: calc(100vh - #{$header-top-height} - #{$subsite-menu-tab-height})
+
+		+media('<desk-lg')
+			height: calc(100vh - #{$header-top-height--md} - #{$subsite-menu-tab-height})
+
+	.elements-is-transform body[class*="department-"] .hasnt-news &
+		height: calc(100vh - #{$header-top-height})
+
+		+media('<desk-lg')
+			height: calc(100vh - #{$header-top-height--md})
 
 /*region menu
 // общие стили для главного списка навигации

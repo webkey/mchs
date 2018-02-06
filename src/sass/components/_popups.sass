@@ -7,6 +7,8 @@
 	//<a href="#" class="btn-popup-close js-btn-menu-close"><i></i><span>Закрыть</span></a>
 	$btn-bg: $mark-color
 	$btn-size: $header-top-height
+	$btn-size--md: $header-top-height--md
+	$btn-size--sm: $header-top-height--sm
 	$btn-lines-width: 20px
 	$btn-lines-height: 3px
 	$btn-lines-color: white
@@ -24,8 +26,11 @@
 	transition-property: background-color, opacity, visibility
 	transition-duration: $animation-speed
 
+	+media('<desk-lg')
+		+size($btn-size--md)
+
 	+media('<mob-lg')
-		+size(45px)
+		+size($btn-size--sm)
 
 	&::before
 		content: ''
@@ -34,8 +39,11 @@
 		min-height: 100%
 		vertical-align: middle
 
+		+media('<desk-lg')
+			height: $btn-size--md
+
 		+media('<mob-lg')
-			height: $header-top-height--sm
+			height: $btn-size--sm
 
 	> span
 		+hide-text
@@ -121,11 +129,14 @@ html.before-extra-popup-open
 	+media('<desk-hd')
 		padding: $article-layout-space-horizontal--desk-hd
 
+	+media('<desk-lg')
+		padding-top: #{$header-top-height--md + 10}
+
 	+media('<desk-md')
-		padding: #{$header-top-height + 10} $article-layout-space-horizontal--desk-hd $article-layout-space-horizontal--desk-hd
+		padding: #{$header-top-height--md + 10} $article-layout-space-horizontal--desk-hd $article-layout-space-horizontal--desk-hd
 
 	+media('<tab-lg')
-		padding: #{$header-top-height + 10} $article-layout-space-horizontal--tab-lg $article-layout-space-horizontal--tab-lg
+		padding: #{$header-top-height--md + 10} $article-layout-space-horizontal--tab-lg $article-layout-space-horizontal--tab-lg
 
 	+media('<mob-lg')
 		padding: #{$header-top-height--sm + 10} $article-layout-space-horizontal--mob-lg $article-layout-space-horizontal--mob-lg
@@ -215,6 +226,10 @@ html.before-extra-popup-open
 	background: white
 	z-index: 998
 
+	+media('<desk-lg')
+		top: $header-top-height--md
+		height: calc(100% - #{$header-top-height--md})
+
 	+media('<mob-lg')
 		top: #{$header-top-height--sm}
 		height: calc(100% - #{$header-top-height--sm})
@@ -296,6 +311,9 @@ html.before-extra-popup-open
 	transition-duration: $animation-speed
 	z-index: 999
 
+	+media('<desk-lg')
+		+size($header-top-height--md)
+
 	+media('<mob-lg')
 		+size($header-top-height--sm)
 
@@ -331,6 +349,10 @@ html.before-extra-popup-open
 	height: calc(100% - #{$header-top-height})
 	background: white
 	z-index: 998
+
+	+media('<desk-lg')
+		top: #{$header-top-height--md}
+		height: calc(100% - #{$header-top-height--md})
 
 	+media('<mob-lg')
 		top: #{$header-top-height--sm}
@@ -393,6 +415,10 @@ html.before-extra-popup-open
 	z-index: 998
 	box-shadow: inset 0 -1px 0 $border-color
 
+	+media('<desk-lg')
+		left: $header-top-height--md
+		+size($header-top-height--md)
+
 	+media('<mob-lg')
 		left: $header-top-height--sm
 		+size($header-top-height--sm)
@@ -429,6 +455,10 @@ html.before-extra-popup-open
 	height: calc(100% - #{$header-top-height})
 	background: white
 	z-index: 998
+
+	+media('<desk-lg')
+		top: #{$header-top-height--md}
+		height: calc(100% - #{$header-top-height--md})
 
 	+media('<mob-lg')
 		top: #{$header-top-height--sm}
@@ -532,6 +562,9 @@ $nav-small-tabs-height: 60px
 	z-index: 999
 	box-shadow: inset 0 -1px 0 $border-color
 
+	+media('<desk-lg')
+		+size($header-top-height--md)
+
 	+media('<mob-lg')
 		+size($header-top-height--sm)
 
@@ -565,36 +598,18 @@ $nav-small-tabs-height: 60px
 	top: 0
 	width: 100%
 	height: 100%
-	//padding-top: $header-top-height
 	max-width: $main-layout-width
 	background: white
 	z-index: 998
-
-	//+media('<mob-lg')
-		padding-top: $header-top-height--sm
 
 	&.hide-on-load
 		opacity: 0
 		visibility: hidden
 
-	// for ios add bg after inertia scroll
-	//&::after
-		+pseudo()
-		+cover(null, 0, 100%, 50%, 100%)
-		background: inherit
-		margin-top: -10px
-		z-index: -1
-
 	.btn-popup-close
 		position: absolute
 		right: 0
 		top: 0
-		//opacity: 0
-		//visibility: hidden
-
-		//.extra-popup-opened &
-			opacity: 1
-			visibility: visible
 
 .user-options-popup__holder
 	overflow-y: auto

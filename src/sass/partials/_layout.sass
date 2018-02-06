@@ -113,6 +113,9 @@ html
 	position: relative
 	+clear
 
+	+media('<desk-lg')
+		min-height: calc(100vh - #{$header-height--md})
+
 	+media('<desk-md')
 		min-height: 50px
 
@@ -136,12 +139,12 @@ html
 
 .content-layout
 	position: relative
-	padding: #{round($grid-layout-space*0.8 - 9px)} #{$grid-layout-space - 9px} 0 // -9 для компенсации вертикального скролла
+	padding: #{round($grid-layout-space*0.8 - 9px)} #{$grid-layout-space - 9px} 0 // -9 для компенсации горизонтального скролла
 	margin-right: 60px // width .side menu
 	+clear
 
 	+media('<desk-hd')
-		padding: #{round($grid-layout-space--desk-hd*0.8 - 9px)} #{$grid-layout-space--desk-hd - 9px} 0 // -9 для компенсации вертикального скролла
+		padding: round($grid-layout-space--desk-hd*0.5) #{$grid-layout-space--desk-hd - 9px} 0 // -9 для компенсации горизонтального скролла
 
 		.home-page &
 			+push-auto
@@ -153,26 +156,18 @@ html
 			max-width: none
 			margin-right: 60px
 			right: auto
-			//max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-hd - 9px)*2
 
 	+media('<desk-md')
 		&, .home-page &
 			+padding-horizontal($grid-layout-space--desk-md)
 			margin-right: 0
 
-			//.home-page &
-				right: auto
-				max-width: $section-layout-width-desk-lg + ($grid-layout-space--desk-md)*2
-
 	+media('<tab-lg')
-		padding: round($grid-layout-space--desk-md*0.8) $grid-layout-space--desk-md 0
-
-		//.home-page &
-			max-width: $section-layout-width-tab-lg + ($grid-layout-space--desk-md)*2
+		padding: round($grid-layout-space--desk-md*0.5) $grid-layout-space--desk-md 0
 
 	+media('<mob-lg')
 		max-width: none
-		padding: round($grid-layout-space--mob-lg*0.8) $grid-layout-space--mob-lg 0
+		padding: round($grid-layout-space--mob-lg*0.5) $grid-layout-space--mob-lg 0
 
 .content-wrap
 	@extend .main-frame
@@ -221,15 +216,6 @@ html
 
 .sidebar
 	//position: relative // нельзя задавать position, кроме static. нужно для работы sticky-kit
-
-	//float: left
-	//margin: 0 0 0 -100%
-
-	//position: fixed
-	//overflow: hidden
-	//left: 0
-	//bottom: 0
-	//height: calc(100% - #{$header-height})
 	position: static
 	left: auto
 	bottom: auto
@@ -240,10 +226,6 @@ html
 	width: $sidebar-left-width
 	background: $bg-color-alt
 	z-index: 20
-
-	//transition-property: height
-	//transition-duration: $animation-speed
-	//transition-timing-function: linear
 
 	.elements-is-transform &
 		position: static
@@ -259,6 +241,9 @@ html
 		bottom: 0
 		margin: 0
 		height: calc(100% - #{$header-top-height})
+
+		+media('<desk-lg')
+			height: calc(100% - #{$header-top-height--md})
 
 	+media('<desk-sm')
 		display: none

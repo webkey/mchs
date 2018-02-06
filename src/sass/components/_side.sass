@@ -5,14 +5,14 @@
 /*SIDE*/
 .side
 	position: absolute
-	margin-top: $grid-layout-space - 9px
+	margin-top: $grid-layout-space*0.8 - 9px
 	margin-left: -#{$side-width}
 	left: 100%
 	width: $side-width
 	z-index: 50
 
 	+media('<desk-hd')
-		margin-top: calc(#{round($grid-layout-space--desk-hd*0.8)} - 9px)
+		margin-top: round($grid-layout-space--desk-hd*0.5)
 
 	+media('<desk-md')
 		display: none

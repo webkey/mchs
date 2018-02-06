@@ -4,20 +4,18 @@
 
 /*article meta*/
 =article-meta-text-size()
-	+font(1.2rem, 1.4)
-
-=article-meta-text-color()
-	color: $text-color-light
-	fill: $text-color-light
+	+font(1.4rem, round-float(18/14, 2))
 
 .article-meta
-	+article-meta-text-size
-	+article-meta-text-color
+	color: $text-color-light
 	margin-bottom: $bottom-space-md
 	+clear
 
+	+media('<desk-hd')
+		margin-bottom: 1rem
+
 	+media('<mob-lg')
-		margin-bottom: 2rem
+		margin-bottom: 0.5rem
 
 /*article meta end*/
 
@@ -26,12 +24,16 @@
 	float: left
 	display: block
 	margin-bottom: $bottom-space
+	+font-bold
 	+article-meta-text-size
-	+article-meta-text-color
+	color: $base-color
 	font-style: normal
 
+	+media('<desk-hd')
+		margin-bottom: 1rem
+
 	+media('<mob-lg')
-		margin-bottom: 2rem
+		margin-bottom: 0.5rem
 
 	.article-meta &
 		margin-right: 20px
@@ -41,15 +43,13 @@
 
 /*visit*/
 .visit-view
-	//cursor: default
-
 	svg
 		+display-inline-block-middle
 		+size(18px)
 		margin-right: 10px
 
 		path
-			+article-meta-text-color
+			fill: currentColor
 			transition-property: fill
 			transition-duration: $animation-speed
 
@@ -59,21 +59,13 @@
 	& > em
 		+display-inline-block-middle
 		font-style: normal
-		transition-property: color
-		transition-duration: $animation-speed
-
-	//.no-touchevents &:hover path
-		fill: $text-color
-
-	//.no-touchevents &:hover > em
-		color: $text-color
 
 .visit
 	overflow: hidden
 	margin-left: 20px
 	text-align: right
 	+article-meta-text-size
-	+article-meta-text-color
+	color: $text-color-light
 	//cursor: default
 	display: none
 
@@ -88,6 +80,6 @@
 .visit__inner
 	display: inline-block
 	text-decoration: none
-	+article-meta-text-color
+	color: $text-color-light
 
 /*visit end*/
