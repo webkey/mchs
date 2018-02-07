@@ -64,6 +64,15 @@
 	opacity: 0
 	visibility: hidden
 
+	.no-js &
+		opacity: 1
+		visibility: visible
+		position: relative
+		left: auto
+		top: auto
+		right: auto
+		bottom: auto
+
 	.fb-switcher-active &
 		opacity: 1
 		visibility: visible
@@ -84,6 +93,9 @@
 	left: 0
 	width: 100%
 	bottom: $grid-inside-vertical-space
+
+	.no-js &
+		display: none
 
 	a
 		color: $text-color-alt

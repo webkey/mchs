@@ -22,6 +22,9 @@
 	+font(0, 0)
 	color: transparent
 
+	.no-js &
+		display: none
+
 	.no-touchevents &:hover
 		opacity: 1
 		background: #e6e6e6
@@ -452,6 +455,9 @@
 		pointer-events: none
 		z-index: 4
 
+		.no-js &
+			content: none
+
 		+media('<mob-lg')
 			top: $news-item-lg-img-height-mob-lg
 
@@ -564,6 +570,10 @@
 				content: none
 
 	.tape-slider__list
+
+		.no-js &
+			display: block
+
 		li
 			display: inline-block
 			vertical-align: top

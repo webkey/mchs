@@ -35,6 +35,11 @@
 			width: 100%
 			height: auto
 
+		.no-js &
+			height: auto !important
+			width: auto
+			float: none
+
 	.news-grid__slider &
 		margin-bottom: 0
 		+padding-horizontal(0)
@@ -119,6 +124,10 @@
 	background-position: 250% 250% // выносим за границы видимой области
 	background-size: auto // обнуляем сайзинг фонового изображение
 
+	.no-js &
+		height: auto !important
+		min-height: 0
+
 	&::before
 		content: ""
 		position: absolute
@@ -136,61 +145,6 @@
 	&[style*="preloader.svg"]
 		background-size: 48px
 		background-position: center
-		//background-color: #f3f3f3
-
-	//&.position--left-top
-		background-position: left top
-		+object-fit(cover, left top)
-
-	//&.position--center-top,
-	//&.position--top
-		background-position: center top
-
-		img
-			+object-fit(cover, center top)
-
-	//&.position--right-top
-		background-position: right top
-
-		img
-			+object-fit(cover, right top)
-
-	//&.position--left-center
-		background-position: left center
-
-		img
-			+object-fit(cover, left center)
-
-	//&.position--center-center,
-	//&.position--center
-		background-position: center center
-
-		img
-			+object-fit(cover, center center)
-
-	//&.position--right-center
-		background-position: right center
-
-		img
-			+object-fit(cover, right center)
-
-	//&.position--left-bottom
-		background-position: left bottom
-
-		img
-			+object-fit(cover, left bottom)
-
-	//&.position--center-bottom
-		background-position: center bottom
-
-		img
-			+object-fit(cover, center bottom)
-
-	//&.position--right-bottom
-		background-position: right bottom
-
-		img
-			+object-fit(cover, right bottom)
 
 	.img-content
 		position: absolute
@@ -281,6 +235,11 @@
 	overflow: hidden
 	padding: $grid-inside-vertical-space $grid-inside-horizontal-space 48px
 	// Костыль. Нужен больше нижний отступ, чтобы повесить на абсолюте мета инфу
+
+	.no-js &
+		margin-top: 0 !important
+		height: auto !important
+		padding-top: $news-label-size + 10 !important
 
 	+media('<mob-lg')
 		+padding-horizontal(round($grid-inside-horizontal-space*0.7))
@@ -389,6 +348,10 @@
 	transition-property: color
 	transition-duration: $animation-speed
 
+	.no-js &
+		height: auto !important
+		max-height: none !important
+
 	+media('<mob-lg')
 		height: auto
 		max-height: round-float($font-size-small*$line-height-small*4, 1) // костыль, чтобы высоты блоков были четко по дизу
@@ -416,6 +379,12 @@
 	line-height: 1.4
 	color: $text-color-light
 	+news-transition
+
+	.no-js &
+		position: relative
+		left: auto
+		bottom: auto
+		width: auto
 
 	+media('<mob-lg')
 		width: calc(100% - #{round($grid-inside-horizontal-space*0.7)*2})

@@ -3696,6 +3696,7 @@ function footerBottom() {
 
 		setTimeout(function () {
 			layoutFooter();
+			$('.footer').addClass('isBottoming');
 		}, 50);
 
 		$(window).on('resizeByWidth', function () {

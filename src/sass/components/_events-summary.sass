@@ -13,11 +13,17 @@
 	+media('<desk-hd')
 		height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
 
+	.no-js &
+		height: auto
+
 	&:last-child
 		margin-bottom: 0
 
 .events-sum__nav
 	height: $events-summary-nav-height
+
+	.no-js &
+		display: none
 
 .events-sum__tab
 	height: 100%
@@ -88,6 +94,9 @@
 
 .events-sum__panels
 	height: calc(100% - #{$events-summary-nav-height}) // высота блока минус высота переключателей табов
+
+	.no-js &
+		height: auto
 
 .events-sum__panel
 	$events-sum-bottom: 50px // нижний отступ больше, чем верхний

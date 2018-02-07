@@ -16,6 +16,10 @@
 	.go-to-mchs ~ &
 		margin-left: $go-to-mchs-width
 
+	//no-js
+	.no-js &
+		+margin-horizontal(0)
+
 /*nav layout end
 
 /*nav common
@@ -32,6 +36,7 @@
 		overflow: visible
 		opacity: 1
 		visibility: visible
+		max-width: none
 
 	.nav__list
 		position: relative
@@ -40,19 +45,8 @@
 		vertical-align: top
 		z-index: 10
 
-		//temporarily 2016.04.05
-		//overflow: hidden
-		//white-space: nowrap
-
-		// ГРАДИЕНТНАЯ МАСКА вконце списка для плавного скрытия лишних пунктов
-		//&::after
-			+pseudo()
-			top: 0
-			right: 0
-			height: 100%
-			width: 80px
-			+linear-gradient(to left, #00487c 0, #00487c 20%, rgba(0, 72, 124, 0) 100%)
-			z-index: 5
+		.no-js &
+			letter-spacing: normal
 
 	li
 		position: relative

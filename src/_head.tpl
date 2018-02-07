@@ -56,5 +56,6 @@
 	</script>
 </head>
 <body @@if (pageClass !== "") {class="@@pageClass"}>
+<noscript><div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div></noscript>
 <!--[if lt IE 9]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 <!-- >>> head.tpl END <<< -->

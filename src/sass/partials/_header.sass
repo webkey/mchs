@@ -29,6 +29,9 @@
 	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05)
 	+clear
 
+	.no-js &
+		padding-top: 0
+
 	+media('<desk-lg')
 		padding-top: $header-top-height--md
 
@@ -53,6 +56,14 @@
 
 	+media('<desk-sm')
 		display: none
+
+	// no-js
+	.no-js &
+		position: relative
+		left: auto
+		top: auto
+		float: left
+		margin: 0 0 0 -#{$header-left-space}
 
 	.touchevents &
 		transition-property: height
@@ -244,9 +255,12 @@
 	.window-is-resize &
 		overflow: hidden
 
-	//.no-js &, .page-loaded &
+	//.no-js &
 	.no-js &
 		overflow: visible
+		height: auto
+		position: relative
+		top: auto
 
 	.header-fixed &
 		position: fixed
@@ -873,6 +887,10 @@
 	line-height: 0
 	letter-spacing: -4px
 	z-index: 100
+
+	// no-js
+	.no-js &
+		display: none
 
 .user-options__item
 	display: inline-block

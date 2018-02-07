@@ -3,26 +3,32 @@
 
 /*FOOTER*/
 .footer
+	position: relative
+	clear: both
+	z-index: 100
 	color: #b2b2b2
+
+	&.isBottoming
+		height: 0
 
 	.layout
 		position: relative
 
-	@at-root
-	.footer__holder
+.footer__holder
+	overflow: hidden
+	cursor: default
+
+	.isBottoming &
 		position: absolute
-		overflow: hidden
-		cursor: default
-		left: $sidebar-left-width
-		bottom: 0
-		width: calc(100% - #{$sidebar-left-width})
 		top: auto
 		right: auto
+		left: $sidebar-left-width
+		width: calc(100% - #{$sidebar-left-width})
+		bottom: 0
 
 		+media('<desk-sm')
 			left: 0
 			width: 100%
-
 
 /*footer gov*/
 .footer-gov
@@ -56,7 +62,17 @@
 	position: relative
 
 .gov__list
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	// before slide load end
 	margin: 0 -#{round($grid-space/2)}
+
+	&.slick-initialized, .no-js &
+		// after slide load
+		white-space: normal
+		overflow: visible
+		// after slide load end
 
 	.slick-dots
 		bottom: 0
@@ -83,7 +99,11 @@
 				background: $text-color-alt
 
 .gov__item
-	display: block
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
 	padding: $grid-space/2
 	+font($font-size-small, $line-height-small)
 	letter-spacing: normal
@@ -91,6 +111,12 @@
 	text-decoration: none
 	transition-property: background-color
 	transition-duration: $animation-speed
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
 
 	.no-touchevents &:hover
 		background-color: $text-color-ultralight

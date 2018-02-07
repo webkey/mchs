@@ -207,6 +207,9 @@ $btn-region-menu-margin-right: 20px
 	height: calc(100vh - #{$header-height} - #{round($subsite-menu-tab-height*2)})
 	+overflow($x: hidden, $y: auto)
 
+	.no-js &
+		height: auto !important
+
 	+media('<desk-lg')
 		height: calc(100vh - #{$header-height--md} - #{round($subsite-menu-tab-height*2)})
 
