@@ -1,6 +1,12 @@
 <footer class="footer">
 	<div class="layout">
 		<div class="footer__holder">
+			@@if(context.depSite == "true"){
+			<!--go to site mchs (for mobile) departments-->
+			<a href="index.html" class="go-to-mchs--dep" title="Перейти на главный сайт Министерство по чрезвычайным ситуациям Республики Беларусь"><span>Сайт Министерство по чрезвычайным ситуациям Республики Беларусь</span></a>
+			<!--go to site mchs (for mobile) departments end -->
+			}
+
 			<!--footer gov-->
 			<div class="footer-gov">
 				<div class="gov">

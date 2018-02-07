@@ -115,24 +115,13 @@ html
 
 	+media('<desk-lg')
 		min-height: calc(100vh - #{$header-height--md})
+		padding-bottom: $grid-layout-space--desk-lg
 
 	+media('<desk-md')
 		min-height: 50px
 
-	//+media('<desk-hd')
-		padding: #{$grid-layout-space--desk-hd} #{$grid-layout-space--desk-hd - 9px} // -9 для компенсации вертикального скролла
-
-	//+media('<desk-md')
-		padding: $grid-layout-space--desk-hd $grid-layout-space--desk-md
-
 	+media('<desk-sm')
 		margin-left: 0
-
-	//+media('<tab-lg')
-		padding: $grid-layout-space--desk-md
-
-	//+media('<mob-lg')
-		padding: $grid-layout-space--mob-lg
 
 	+media('<mob-lg')
 		padding-bottom: $grid-layout-space--mob-lg
@@ -160,6 +149,7 @@ html
 	+media('<desk-md')
 		&, .home-page &
 			+padding-horizontal($grid-layout-space--desk-md)
+			//+padding-horizontal($grid-layout-space--mob-lg)
 			margin-right: 0
 
 	+media('<tab-lg')
@@ -167,7 +157,7 @@ html
 
 	+media('<mob-lg')
 		max-width: none
-		padding: round($grid-layout-space--mob-lg*0.5) $grid-layout-space--mob-lg 0
+		padding: $grid-layout-space--mob-lg $grid-layout-space--mob-lg 0
 
 .content-wrap
 	@extend .main-frame

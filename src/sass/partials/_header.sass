@@ -191,7 +191,7 @@
 				transform: none
 
 			& > strong
-				font: 700 1.6rem/1.875 $font-alt
+				font: 700 1.6rem/1.2 $font-alt
 				letter-spacing: normal
 				text-transform: uppercase
 				visibility: visible
@@ -572,21 +572,27 @@
 	display: block
 	background: #fff
 
-.get-minister ul
-	margin: 0
-	padding: 0
+	ul
+		margin: 0
+		padding: 0
+		+clear
 
-.get-minister li
-	padding: 0!important
-	margin: 0!important
+		li
+			padding: 0!important
+			margin: 0!important
 
-+media('>=tab-lg')
-	.show-960
-		display: none!important
+			a
+				+padding-horizontal(5px)
 
-+media('<tab-lg')
-	.hide-960
-		display: none!important
+				& > div
+					&:first-child
+						padding-right: 10px
+
+					img
+						width: 48px
+
+					& > span
+						font-size: 1.6rem
 
 /*header contacts end
 
@@ -648,10 +654,10 @@
 		+margin-vertical(#{$bottom-space-sm})
 
 		+media('<desk-lg')
-			+margin-vertical(10px)
+			+margin-vertical(5px)
 
 		+media('<tab-lg')
-			+margin-vertical(5px)
+			+margin-vertical(3px)
 
 		&:first-child
 			font-family: $font-alt
@@ -747,7 +753,7 @@
 		position: relative
 
 	+media('<mob-lg')
-		padding-left: 70px
+		padding-left: 60px
 		padding-right: 10px
 
 	&::before
@@ -983,59 +989,6 @@
 
 /*user options end*/
 
-/*go to site mchs
-.go-to-mchs, .go-to-mchs--mob
-	float: left
-	position: relative
-	width: $go-to-mchs-width
-	text-align: center
-	font-size: 1.4rem
-	line-height: 1.4
-	text-decoration: none
-	color: white
-	height: $header-top-height
-	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
-	+padding-horizontal(52px, 12px)
-
-	+media('<desk-lg')
-		height: $header-top-height--md
-
-	+media('<mob-lg')
-		height: $header-top-height--sm
-
-	+media('<mob-md')
-		display: none
-
-	&::before
-		+vertical-align()
-
-	&::after
-		+pseudo()
-		left: 10px
-		top: 50%
-		+size(40px)
-		transform: translate(0, -50%)
-		background: url(../../img/logo.png) no-repeat center
-		background-size: contain
-
-	span
-		display: inline-block
-		vertical-align: middle
-		width: 98%
-
-.go-to-mchs--mob
-	float: none
-	width: 100%
-	clear: both
-	padding-left: 60px
-	text-align: left
-	display: none
-
-	+media('<mob-md')
-		display: block
-
-/*go to site mchs end
-
 /*lang*/
 .lang
 	position: relative
@@ -1063,49 +1016,6 @@
 	.no-touchevents &:hover > a, .no-touchevents & > a:hover, &.choice-opened > a
 		color: rgba(255, 255, 255, 1)
 		background-color: rgba(255, 255, 255, 0.15)
-
-//.user-options
-
-	.lang__list
-		list-style: none
-		position: absolute
-		top: 100%
-		right: 0
-		left: -1px
-		margin: -1px 0 0
-		padding: 0
-		font-size: 16px
-		letter-spacing: 0.05em
-		box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1)
-		opacity: 0
-		visibility: hidden
-		transition-property: opacity, visibility
-		transition-duration: $animation-speed
-
-		.choice-opened &
-			opacity: 1
-			visibility: visible
-
-		li
-			padding: 0
-			background: shade($text-color-alt, 70%)
-
-		a
-			display: block
-			text-decoration: none
-			text-align: center
-			color: rgba(255, 255, 255, 0.50)
-			padding: 18px 4px
-			font-size: 16px
-			line-height: 24px
-			letter-spacing: normal
-			box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15)
-			transition-property: background-color, color
-			transition-duration: $animation-speed
-
-			.no-touchevents &:hover
-				background-color: rgba(255, 255, 255, 0.15)
-				color: rgba(255, 255, 255, 1)
 
 /*lang end*/
 /*HEADER end*/

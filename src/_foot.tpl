@@ -1,6 +1,8 @@
 <!-- >>> foot.tpl <<< -->
 <!--FOOTER-->
-@@include('_footer.tpl')
+@@include('_footer.tpl', {
+	"depSite": "@@depSite"
+})
 <!--FOOTER end-->
 <!--POPUPS-->
 @@include('_popups.tpl', {

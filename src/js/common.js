@@ -3694,9 +3694,9 @@ function footerBottom() {
 	if ($footer.length) {
 		$('.main-frame').append($('<div class="spacer"></div>')); // need for sidebar's element sticky of bottom page
 
+		$('.footer').addClass('isBottoming');
 		setTimeout(function () {
 			layoutFooter();
-			$('.footer').addClass('isBottoming');
 		}, 50);
 
 		$(window).on('resizeByWidth', function () {

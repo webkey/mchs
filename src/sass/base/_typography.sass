@@ -230,6 +230,14 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	.hide-desk-sm
 		display: none !important
 
++media('>=tab-lg')
+	.show-960
+		display: none!important
+
++media('<tab-lg')
+	.hide-960
+		display: none!important
+
 .#{$user-content}
 	@each $tags in h2, h3, h4, h5
 		p + #{$tags},
@@ -850,10 +858,75 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
 	+object-fit(contain)
 
 /* img-fit-js end
-
 .no-js-warning
 	border: 2px solid #f00
 	color: #f00
 	background: #fff
 	padding: 5px 20px
 	font-size: 18px
+
+/*go to site mchs
+.go-to-mchs, .go-to-mchs--mob, .go-to-mchs--dep
+	float: left
+	position: relative
+	width: $go-to-mchs-width
+	text-align: center
+	font-size: 1.4rem
+	line-height: 1.4
+	text-decoration: none
+	color: white
+	height: $header-top-height
+	+linear-gradient(to right, #006ab8 0%, #00487c 100%)
+	+padding-horizontal(52px, 12px)
+
+	+media('<desk-lg')
+		height: $header-top-height--md
+
+	+media('<tab-lg')
+		display: none
+
+	&::before
+		+vertical-align()
+
+	&::after
+		+pseudo()
+		left: 10px
+		top: 50%
+		+size(40px)
+		transform: translate(0, -50%)
+		background: url(../../img/logo.png) no-repeat center
+		background-size: contain
+
+	span
+		display: inline-block
+		vertical-align: middle
+		width: 98%
+
+.go-to-mchs--dep
+	height: auto
+	float: none
+	width: 100%
+	clear: both
+	padding: 3px 10px 3px 60px
+	text-align: left
+	display: none
+
+	+media('<tab-lg')
+		min-height: $header-top-height--md
+		display: block
+
+		&::before
+			height: $header-top-height--md - 6
+
+.go-to-mchs--mob
+	float: none
+	width: 100%
+	clear: both
+	padding-left: 60px
+	text-align: left
+	display: none
+
+	+media('<mob-md')
+		display: block
+
+/*go to site mchs end
