@@ -210,7 +210,6 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 	.no-touchevents .sidebar:not(.disabled-js) &:hover
 		background-color: $subsite-menu-bg-color-s
 
-// REGION MENU
 .menu-sub-site
 	background-color: $subsite-menu-bg-color
 
@@ -256,6 +255,87 @@ input[type="text"], input[type="password"], input[type="email"], input[type="sea
 			.region-menu__drop
 				// особые стили для пунктов навигации ПЯТОГО урованя
 				ul, a, .region-menu__angle
+					background-color: $subsite-menu-bg-color-ssss
+
+// NAV MOBILE MENU
+// общие стили для пунктов навигации
+.nav-mobile__list
+	background-color: $subsite-menu-bg-color
+
+	a
+		border-bottom: 1px solid $subsite-menu-border-color
+
+// особые стили для пунктов навигации ПЕРВОГО урованя
+.nav-mobile__list > li
+
+	& > .nav-mobile__tab
+		a
+			background-color: $subsite-menu-bg-color
+			color: rgba(255, 255, 255, 0.5)
+			font-weight: 300
+
+		// angle
+		.nav-mobile__angle
+			i
+				&::before, &::after
+					background-color: rgba(255, 255, 255, 0.5)
+
+			// ховер
+			.no-touchevents &:hover i
+				&::before, &::after
+					background-color: white
+
+	// hover
+	&, .no-touchevents &
+		& > .nav-mobile__tab
+			a:hover
+				color: white
+
+	// current
+	&.current, .no-touchevents &.current
+		& > .nav-mobile__tab
+			a, a:hover
+				color: white
+				box-shadow: inset 5px 0 0 white
+
+// СТРЕЛКИ навигации
+.nav-mobile__angle
+	background-color: $subsite-menu-bg-color
+	border: solid $subsite-menu-border-color
+	border-width: 0 0 1px 1px
+
+	i
+		&::before, &::after
+			background-color: rgba(255, 255, 255, 0.5)
+
+	// ховер
+	.no-touchevents li > .region-menu__tab &:hover i
+		&::before, &::after
+			background-color: white
+
+// особые стили для пунктов ПОДМЕНЮ
+.nav-mobile__drop
+
+	// особые стили для пунктов навигации ВТОРОГО урованя
+	ul, a, .nav-mobile__angle
+		background-color: $subsite-menu-bg-color-s
+
+		.no-touchevents &:hover
+			color: white
+
+	.nav-mobile__drop
+		// особые стили для пунктов навигации ТРЕТЬЕГО урованя
+		ul, a, .nav-mobile__angle
+			background-color: $subsite-menu-bg-color-ss
+
+		.nav-mobile__drop
+			// особые стили для пунктов навигации ЧЕТВЕРТОГО урованя
+			ul, a, .nav-mobile__angle
+				background-color: $subsite-menu-bg-color-sss
+
+			.nav-mobile__drop
+				// особые стили для пунктов навигации ПЯТОГО урованя
+				ul, a, .nav-mobile__angle
 					background-color: $subsite-menu-bg-color-ssss
 
 // SIDE

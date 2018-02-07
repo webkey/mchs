@@ -209,6 +209,71 @@ input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focu
 	background-color: #090e14;
 }
 
+.nav-mobile__list {
+	background-color: #172534;
+}
+
+.nav-mobile__list a {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-mobile__list > li > .nav-mobile__tab a {
+	background-color: #172534;
+	color: rgba(255, 255, 255, 0.5);
+	font-weight: 300;
+}
+
+.nav-mobile__list > li > .nav-mobile__tab .nav-mobile__angle i::before, .nav-mobile__list > li > .nav-mobile__tab .nav-mobile__angle i::after {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.no-touchevents .nav-mobile__list > li > .nav-mobile__tab .nav-mobile__angle:hover i::before, .no-touchevents .nav-mobile__list > li > .nav-mobile__tab .nav-mobile__angle:hover i::after {
+	background-color: white;
+}
+
+.nav-mobile__list > li > .nav-mobile__tab a:hover, .no-touchevents .nav-mobile__list > li > .nav-mobile__tab a:hover {
+	color: white;
+}
+
+.nav-mobile__list > li.current > .nav-mobile__tab a, .nav-mobile__list > li.current > .nav-mobile__tab a:hover, .no-touchevents .nav-mobile__list > li.current > .nav-mobile__tab a, .no-touchevents .nav-mobile__list > li.current > .nav-mobile__tab a:hover {
+	color: white;
+	box-shadow: inset 5px 0 0 white;
+}
+
+.nav-mobile__angle {
+	background-color: #172534;
+	border: solid rgba(255, 255, 255, 0.1);
+	border-width: 0 0 1px 1px;
+}
+
+.nav-mobile__angle i::before, .nav-mobile__angle i::after {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.no-touchevents li > .region-menu__tab .nav-mobile__angle:hover i::before, .no-touchevents li > .region-menu__tab .nav-mobile__angle:hover i::after {
+	background-color: white;
+}
+
+.nav-mobile__drop ul, .nav-mobile__drop a, .nav-mobile__drop .nav-mobile__angle {
+	background-color: #121e2a;
+}
+
+.no-touchevents .nav-mobile__drop ul:hover, .no-touchevents .nav-mobile__drop a:hover, .no-touchevents .nav-mobile__drop .nav-mobile__angle:hover {
+	color: white;
+}
+
+.nav-mobile__drop .nav-mobile__drop ul, .nav-mobile__drop .nav-mobile__drop a, .nav-mobile__drop .nav-mobile__drop .nav-mobile__angle {
+	background-color: #0e1720;
+}
+
+.nav-mobile__drop .nav-mobile__drop .nav-mobile__drop ul, .nav-mobile__drop .nav-mobile__drop .nav-mobile__drop a, .nav-mobile__drop .nav-mobile__drop .nav-mobile__drop .nav-mobile__angle {
+	background-color: #0b1219;
+}
+
+.nav-mobile__drop .nav-mobile__drop .nav-mobile__drop .nav-mobile__drop ul, .nav-mobile__drop .nav-mobile__drop .nav-mobile__drop .nav-mobile__drop a, .nav-mobile__drop .nav-mobile__drop .nav-mobile__drop .nav-mobile__drop .nav-mobile__angle {
+	background-color: #090e14;
+}
+
 .side__depict {
 	background: #9b2813;
 }

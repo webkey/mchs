@@ -181,8 +181,8 @@
 <a href="#" class="btn-popup-close btn-popup-news-close btn-news-close-js"><i></i><span>Закрыть</span></a>
 <!--popup news end-->
 
-<!--main navigation for small screen-->
-@@if(context.subSiteMenu) {
+@@if(context.subSiteMenu == "true") {
+<!--main navigation for small screen (regions)-->
 <div class="popup-nav-small hide-on-load popup-nav-small-js js-tabs" data-auto-height="false">
 	<div class="nav-small-tabs">
 		<a href="#region-menu-mobile-anchor" class="js-tab-anchor active-tab"><span>@@titleSub</span></a>
@@ -191,14 +191,14 @@
 
 	<div class="nav-small-container js-tab-container">
 		<div class="popup-nav-small__holder js-tab-content menu-sub-site" id="region-menu-mobile-anchor">
-			@@if(context.hasRegionMenu){
+			@@if(context.hasRegionMenu == "true"){
 				@@include('_region-menu.tpl', {
 					"regionMenuActiveItem": "@@regionMenuActiveItem",
 					"classKey": "region-menu",
 					"navTag": ""
 				})
 			}
-			@@if(context.hasSquadMenu){
+			@@if(context.hasSquadMenu == "true"){
 				@@include('_squad-menu.tpl', {
 					"regionMenuActiveItem": "@@regionMenuActiveItem",
 					"classKey": "region-menu",
@@ -215,25 +215,14 @@
 		</div>
 	</div>
 </div>
+<!--main navigation for small screen (regions) end-->
 }
-@@if(context.departments) {
+@@if(context.depSite == "true") {
+<!--main navigation for small screen (departments)-->
 <div class="popup-nav-small hide-on-load popup-nav-small-js">
 	<div class="nav-small-container">
 		<div class="popup-nav-small__holder menu-sub-site">
-			@@include('_region-menu.tpl', {
-				"regionMenuActiveItem": "@@regionMenuActiveItem",
-				"classKey": "region-menu",
-				"navTag": ""
-			})
-		</div>
-	</div>
-</div>
-}
-@@if(!context.subSiteMenu) {
-<div class="popup-nav-small hide-on-load popup-nav-small-js">
-	<div class="nav-small-container">
-		<div class="popup-nav-small__holder">
-			@@include('_nav-base.tpl', {
+			@@include('_department-nav-base.tpl', {
 				"mainNavItemActive": "@@mainNavItemActive",
 				"classKey": "nav-mobile",
 				"navTag": ""
@@ -244,9 +233,24 @@
 		</div>
 	</div>
 </div>
+<!--main navigation for small screen (departments) end-->
+}
+@@if(context.subSiteMenu != "true" && context.depSite != "true") {
+<!--main navigation for small screen (main nav)-->
+<div class="popup-nav-small hide-on-load popup-nav-small-js">
+	<div class="nav-small-container">
+		<div class="popup-nav-small__holder">
+			@@include('_nav-base.tpl', {
+				"mainNavItemActive": "@@mainNavItemActive",
+				"classKey": "nav-mobile",
+				"navTag": ""
+			})
+		</div>
+	</div>
+</div>
+<!--main navigation for small screen (main nav) end-->
 }
 <a href="#" class="btn-popup-close btn-popup-nav-small-close btn-nav-small-close-js"><i></i><span>Закрыть</span></a>
-<!--main navigation for small screen end-->
 
 <!--languages popup-->
 <div class="user-options-popup hide-on-load languages-popup-js">

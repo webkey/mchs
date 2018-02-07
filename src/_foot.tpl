@@ -13,7 +13,7 @@
 	"subSiteMenu": "@@subSiteMenu",
 	"titleSub": "@@titleSub",
 	"titleMain": "@@titleMain",
-	"departments": "@@departments"
+	"depSite": "@@depSite"
 })
 <!--POPUPS end-->
 

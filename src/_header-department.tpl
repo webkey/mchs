@@ -23,7 +23,6 @@
 						</li>
 					</ul>
 					<!--user options end-->
-
 					<!--user options-->
 					<ul class="user-options">
 						<li class="user-options__item search-link">

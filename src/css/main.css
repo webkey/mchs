@@ -10072,10 +10072,6 @@ html.before-extra-popup-open .wrapper {
 	background: white;
 	opacity: 0;
 	visibility: hidden;
-	-webkit-transition-property: opacity, visibility;
-	transition-property: opacity, visibility;
-	-webkit-transition-duration: 0.2s;
-	        transition-duration: 0.2s;
 	z-index: 999;
 	box-shadow: inset 0 -1px 0 #d9d9d9;
 }
@@ -10099,27 +10095,12 @@ html.before-extra-popup-open .wrapper {
 	visibility: visible;
 }
 
-.btn-popup-nav-small-close > i {
-	-webkit-transition-property: -webkit-transform;
-	transition-property: -webkit-transform;
-	transition-property: transform;
-	transition-property: transform, -webkit-transform;
-	-webkit-transition-duration: 0.2s;
-	        transition-duration: 0.2s;
-}
-
 .btn-popup-nav-small-close > i::before, .btn-popup-nav-small-close > i::after {
 	background-color: #006ab8;
 }
 
 .no-touchevents .btn-popup-nav-small-close:hover {
 	background-color: white;
-}
-
-.no-touchevents .btn-popup-nav-small-close:hover > i {
-	-webkit-transform: scale(1.2);
-	    -ms-transform: scale(1.2);
-	        transform: scale(1.2);
 }
 
 .no-touchevents .btn-popup-nav-small-close:hover > i::before, .no-touchevents .btn-popup-nav-small-close:hover > i::after {
