@@ -128,7 +128,7 @@ function toggleSpecialVersion() {
 
 		setCookie('cecutientVersion', false, {
 			// expires: expiresValue,
-			domain: ".mchs.gov.by",
+			// domain: ".mchs.gov.by",
 			path: "/"
 		});
 
@@ -141,7 +141,7 @@ function toggleSpecialVersion() {
 	} else {
 		setCookie('cecutientVersion', true, {
 			// expires: expiresValue,
-			domain: ".mchs.gov.by",
+			// domain: ".mchs.gov.by",
 			path: "/"
 		});
 
@@ -3649,29 +3649,16 @@ function toggleBlockInit() {
  * toggle contacts info
  */
 function toggleContacts() {
-	var $container = $('.header__info');
+	var $opener = $('.h-contacts-opener-js');
+	var activeClass = 'is-show';
 
-	if($container.length) {
-		var activeClass = 'is-show';
+	$opener.on('click', function (e) {
+		e.preventDefault();
 
-		var $opener = $('<div />', {
-			class: 'h-contacts-opener h-contacts-opener-js',
-			html: '<i>&nbsp;</i>',
-			click: function(e) {
-				e.preventDefault();
-			}
-		});
+		var $wrap = $(this).closest('.h-contacts-js');
 
-		$container.append($opener.clone());
-
-		$container.on('click', '.h-contacts-opener-js', function (e) {
-			e.preventDefault();
-
-			var $wrap = $(this).parent();
-
-			$wrap.toggleClass(activeClass);
-		});
-	}
+		$wrap.toggleClass(activeClass);
+	});
 }
 /*toggle contacts info end*/
 

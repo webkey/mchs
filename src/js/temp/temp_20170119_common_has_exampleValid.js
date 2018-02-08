@@ -3698,7 +3698,7 @@ function toggleBlockInit() {
  * toggle contacts info
  */
 function toggleContacts() {
-	var $container = $('.header__info');
+	var $container = $('.header__info__list');
 
 	if($container.length) {
 		var activeClass = 'is-show';

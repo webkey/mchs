@@ -1459,12 +1459,12 @@
 }
 
 @media (max-width: 639px) {
-	.cecutient-version .header__contacts ul li {
+	.cecutient-version .header__contacts__item {
 		border-bottom: 2px solid;
 	}
 }
 
-.cecutient-version .header__contacts ul li::before {
+.cecutient-version .header__contacts__item::before {
 	border: solid;
 	border-width: 0 0 0 2px;
 	-webkit-transition-duration: 0s;
@@ -1472,51 +1472,51 @@
 }
 
 @media (max-width: 959px) {
-	.cecutient-version .header__contacts ul li::before {
+	.cecutient-version .header__contacts__item::before {
 		border-width: 0 0 0 2px;
 	}
 }
 
-.cecutient-version .header__contacts ul li a {
+.cecutient-version .header__contacts__inner {
 	-webkit-transition-duration: 0s;
 	        transition-duration: 0s;
 }
 
-.cecutient-version .header__contacts ul li a > div > em {
+.cecutient-version .header__contacts__inner > div > em {
 	color: #ec3c01;
 }
 
-.cecutient-version .header__contacts ul li a > div > span {
+.cecutient-version .header__contacts__inner > div > span {
 	font-size: 16px;
 	line-height: 20px;
 	font-weight: normal;
 }
 
 @media (max-width: 1599px) {
-	.cecutient-version .header__contacts ul li a > div > span {
+	.cecutient-version .header__contacts__inner > div > span {
 		font-size: 12px;
 	}
 }
 
 @media (max-width: 959px) {
-	.cecutient-version .header__contacts ul li a > div > span {
+	.cecutient-version .header__contacts__inner > div > span {
 		font-size: 14px;
 	}
 }
 
-.cecutient-version .header__info {
+.cecutient-version .header__info__list {
 	font-weight: normal;
 	font-size: 1.4rem;
 	line-height: 1.43;
 }
 
 @media (max-width: 1599px) {
-	.cecutient-version .header__info {
+	.cecutient-version .header__info__list {
 		font-size: 1.4rem;
 	}
 }
 
-.cecutient-version .header__info a > span {
+.cecutient-version .header__info__list a > span {
 	border-bottom: 2px solid;
 }
 
@@ -2993,33 +2993,43 @@
 }
 
 @media (max-width: 639px) {
-	.color-scheme-bw .header__contacts ul li {
+	.color-scheme-bw .header__contacts__item {
 		border-bottom-color: black;
 	}
 }
 
-.color-scheme-bw .header__contacts ul li::before {
+.color-scheme-bw .header__contacts__item::before {
 	border-color: black;
 }
 
-.color-scheme-bw .header__contacts ul li a {
-	color: black;
+.color-scheme-bw .header__contacts__inner {
+	color: black !important;
 }
 
-.no-touchevents .color-scheme-bw .header__contacts ul li a:hover {
-	background-color: white;
-	box-shadow: inset 0 0 0 2px black;
+.no-touchevents .color-scheme-bw .header__contacts__inner:hover {
+	background-color: white !important;
+	box-shadow: inset 0 0 0 2px black !important;
 }
 
 @media (max-width: 959px) {
-	.no-touchevents .color-scheme-bw .header__contacts ul li a:hover {
+	.no-touchevents .color-scheme-bw .header__contacts__inner:hover {
 		background-color: transparent;
 		box-shadow: none;
 	}
 }
 
-.color-scheme-bw .header__contacts ul li a > div > em {
-	color: black;
+.color-scheme-bw .header__contacts__inner > div > em, .color-scheme-bw .header__contacts__inner > div > a {
+	color: black !important;
+}
+
+@media (max-width: 959px) {
+	.color-scheme-bw .header__contacts__inner > div > em, .color-scheme-bw .header__contacts__inner > div > a {
+		border-color: black !important;
+	}
+}
+
+.color-scheme-bw .h-contacts-opener i::before, .color-scheme-bw .h-contacts-opener i::after {
+	background-color: black;
 }
 
 .color-scheme-bw .header__hot-line li {
@@ -3030,19 +3040,19 @@
 	color: black;
 }
 
-.color-scheme-bw .header__info li {
+.color-scheme-bw .header__info__list li {
 	color: black;
 }
 
-.color-scheme-bw .header__info a > span {
+.color-scheme-bw .header__info__list a > span {
 	border-bottom-color: transparent;
 }
 
-.no-touchevents .color-scheme-bw .header__info a:hover > span {
+.no-touchevents .color-scheme-bw .header__info__list a:hover > span {
 	border-color: black;
 }
 
-.color-scheme-bw .header__info path {
+.color-scheme-bw .header__info__list path {
 	fill: black;
 }
 
@@ -3712,7 +3722,7 @@
 .images-bw .news-group__img,
 .images-bw .header__title a::before,
 .images-bw .soc-media__img,
-.images-bw .header__info::before,
+.images-bw .header__info__list::before,
 .images-bw .context-banner,
 .images-bw .go-to-mchs::after,
 .images-bw .go-to-mchs--mob::after {

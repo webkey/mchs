@@ -930,31 +930,36 @@
 				border-color: $text-color
 
 	// header contacts
-	.header__contacts
-		ul
+	.header__contacts__item
 
-			li
+		+media('<mob-lg')
+			border-bottom-color: $text-color
 
-				+media('<mob-lg')
-					border-bottom-color: $text-color
+		&::before
+			border-color: $text-color
 
-				&::before
-					border-color: $text-color
+	.header__contacts__inner
+		color: $text-color !important
 
-				a
-					color: $text-color
+		.no-touchevents &:hover
+			background-color: $bg-color !important
+			box-shadow: inset 0 0 0 #{$border-width} $text-color !important
 
-					.no-touchevents &:hover
-						background-color: $bg-color
-						box-shadow: inset 0 0 0 #{$border-width} $text-color
+			+media('<tab-lg')
+				background-color: transparent
+				box-shadow: none
 
-						+media('<tab-lg')
-							background-color: transparent
-							box-shadow: none
+		& > div
+			& > em, & > a
+				color: $mark-color !important
 
-					& > div
-						& > em
-							color: $mark-color
+				+media('<tab-lg')
+					border-color: black !important
+
+	.h-contacts-opener
+		i
+			&::before, &::after
+				background-color: black
 
 	// header hot line
 	.header__hot-line
@@ -966,7 +971,7 @@
 		color: $text-color
 
 	// header info
-	.header__info
+	.header__info__list
 
 		li
 			color: $text-color

@@ -117,18 +117,18 @@
 	overflow: hidden
 	min-height: $news-label-size
 	background-image: url(../../img/no-img.jpg)
-	//background-repeat: no-repeat
-	//background-position: center
-	//background-size: contain
-	background-repeat: no-repeat // запрещаем повторение изображения
-	background-position: 250% 250% // выносим за границы видимой области
-	background-size: auto // обнуляем сайзинг фонового изображение
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	//background-repeat: no-repeat // запрещаем повторение изображения
+	//background-position: 250% 250% // выносим за границы видимой области
+	//background-size: auto // обнуляем сайзинг фонового изображение
 
 	.no-js &
 		height: auto !important
 		min-height: 0
 
-	&::before
+	//&::before
 		content: ""
 		position: absolute
 		left: -20px
@@ -169,7 +169,15 @@
 	.news-grid__item--large &
 		height: $news-item-lg-img-height
 
-		+media('<mob-lg')
+		+media('<desk-lg')
+			height: auto
+
+			&::after
+				content: ""
+				display: block
+				+ratio(16, 9)
+
+		//+media('<mob-lg')
 			height: $news-item-lg-img-height-mob-lg
 
 	.news-grid--main &, .news-grid__item--has-img &
@@ -191,9 +199,9 @@
 		//background-color: #ddd
 		background-color: #fff
 
-		background-repeat: no-repeat // запрещаем повторение изображения
-		background-position: 250% 250% // выносим за границы видимой области
-		background-size: auto // обнуляем сайзинг фонового изображение
+		//background-repeat: no-repeat // запрещаем повторение изображения
+		//background-position: 250% 250% // выносим за границы видимой области
+		//background-size: auto // обнуляем сайзинг фонового изображение
 
 		//&::before
 			content: ""
@@ -211,24 +219,24 @@
 
 		img
 			// если есть прелоадер
-			//position: absolute
-			//display: block
-			//left: 50%
-			//top: 50%
-			//width: 48px
-			//height: 48px
-			//margin: -24px 0 0 -24px
-
-			//&.loaded
 			position: absolute
 			display: block
-			margin: 0
-			width: 100%
-			height: 100%
-			left: 0
-			top: 0
-			max-width: none
-			+object-fit(contain)
+			left: 50%
+			top: 50%
+			width: 48px
+			height: 48px
+			margin: -24px 0 0 -24px
+
+			&.loaded
+				position: absolute
+				display: block
+				margin: 0
+				width: 100%
+				height: 100%
+				left: 0
+				top: 0
+				max-width: none
+				+object-fit(cover)
 
 .news-grid__content
 	position: relative
@@ -286,13 +294,18 @@
 		+media('<desk-lg')
 			height: 100%
 			margin-top: 0
-			padding-top: $grid-inside-vertical-space + $news-item-lg-img-height
+			//padding-top: $grid-inside-vertical-space + $news-item-lg-img-height
 			//height: calc(100% - #{$news-item-lg-img-height})
+			padding-top: calc(56.25% + #{$grid-inside-vertical-space})
+			padding-bottom: 100px
 
-			//.news-grid__text
-				max-height: none
+			.news-grid__meta
+				bottom: 70px
 
-		+media('<mob-lg')
+	//.news-grid__text
+		max-height: none
+
+		//+media('<mob-lg')
 			padding-top: $grid-inside-vertical-space + $news-item-lg-img-height-mob-lg
 			//height: calc(100% - #{$news-item-lg-img-height-mob-lg})
 

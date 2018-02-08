@@ -30,6 +30,13 @@
 		+media('<mob-lg')
 			background: rgba(0, 0, 0, 0.35)
 
+	.h-contacts-opener
+		right: 0
+
+		i
+			&:after, &:before
+				background-color: #fff
+
 .region-header__bg
 	+cover()
 	background-position: center
@@ -107,7 +114,11 @@
 	width: 1000px
 
 .region-header__holder
+	position: relative
 	width: 850px
+
+	+media('<mob-lg')
+		padding-right: 50px
 
 .region-header__holder
 	+clear
@@ -155,6 +166,22 @@
 			+margin-vertical(0.2em)
 			font-size: 14px
 			line-height: 18px
+
+			display: none
+
+			.h-contacts-js.is-show &
+				display: inline-block
+
+		&.region-header__info__label
+			display: none
+
+			+media('<mob-lg')
+				display: inline-block
+				margin: 0
+				padding: 18px 0
+
+				.h-contacts-js.is-show &
+					display: none
 
 		& > span
 			display: block

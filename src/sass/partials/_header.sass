@@ -165,11 +165,15 @@
 			width: auto
 			height: auto
 			margin: 0
-			padding: 5px 30px
+			padding: 5px $grid-layout-space--desk-md
 			border-bottom: 1px solid $border-color
 
 		+media('<mob-lg')
-			padding: 4px 20px
+			padding: 4px $grid-layout-space--mob-lg
+			height: 60px
+
+			[class*="department-"] &
+				height: auto
 
 		a
 			height: auto
@@ -211,8 +215,12 @@
 				+media('<mob-lg')
 					+font(1.4rem, 1.429)
 
-				+media('<mob-md')
-					+font(1.2rem, 1.5)
+				body[class*="department-"] &
+					+media('<mob-lg')
+						+font(1.4rem, 1.429)
+
+					+media('<mob-md')
+						+font(1.2rem, 1.5)
 
 			img
 				float: left
@@ -280,6 +288,7 @@
 .header__content
 	padding: 0 #{$grid-layout-space - 9px}
 	height: $header-content-height
+	position: relative
 
 	+media('<desk-hd')
 		+padding-horizontal(#{$grid-layout-space--desk-hd - 9px})
@@ -297,6 +306,9 @@
 		height: auto
 		display: table
 		width: 100%
+
+	+media('<mob-lg')
+		display: block
 
 	.holder
 		overflow: hidden
@@ -330,6 +342,7 @@
 
 			+media('<tab-lg')
 				display: block
+				position: relative
 				border: none
 				max-width: none
 				width: auto
@@ -377,196 +390,244 @@
 		margin-left: 0
 		display: table-footer-group
 
-	+media('<mob-lg')
-		overflow: visible
+	.header &
+		+media('<mob-lg')
+			overflow: visible
+			display: block
+			position: absolute
+			right: 0
+			top: 0
+			z-index: 2
+			height: 60px
 
-	ul
+			[class*="department-"] &
+				position: relative
+				right: auto
+				top: auto
+				z-index: auto
+
+.header__contacts__list
+	height: 100%
+	margin-right: -#{$grid-space}
+	+clear-spacing
+
+	+media('<desk-md')
+		+display-inline-block-middle
+		height: auto
+		max-width: calc(100% - 6px)
+
+	+media('<tab-lg')
+		display: block
+		max-width: none
+		+margin-horizontal(0)
+
+	+media('<mob-lg')
 		height: 100%
-		margin-right: -#{$grid-space}
-		+clear-spacing
+
+		[class*="department-"] &
+			height: auto
+
+	&::before
+		+pseudo('', inline-block, relative)
+		vertical-align: middle
+		height: 100%
 
 		+media('<desk-md')
-			+display-inline-block-middle
-			height: auto
-			max-width: calc(100% - 6px)
+			content: none
 
-		+media('<tab-lg')
-			display: block
-			max-width: none
-			+margin-horizontal(0)
+.header__contacts__item
+	+display-inline-block-middle
+	position: relative
+	+size(230px, 100%)
+
+	+media('<desk-lg')
+		width: 180px
+
+	+media('<desk-md')
+		display: block
+		height: auto
+		width: auto
+
+	+media('<tab-lg')
+		float: left
+		display: block
+		//+size(50%, 100%)
+		+size(100%, 100%)
+		text-align: center
+
+	+media('<mob-lg')
+		float: none
+		display: block
+		width: auto
+		text-align: center
+		border-bottom: 1px solid $border-color
+
+		&:last-child
+			border: none
+
+	&::before
+		content: ''
+		position: absolute
+		left: 0
+		top: 50%
+		$height: 18px
+		+size(0, $height)
+		margin-top: -(round($height/2))
+		border: solid $border-color
+		border-width: 0 0 0 1px
+		transition-property: border-color
+		transition-duration: $animation-speed
+
+		+media('<desk-md')
+			content: none
 
 		+media('<mob-lg')
-			height: auto
+			content: none
 
+	&:first-child::before
+		content: none
+
+	&.hover, &.hover_pref, &.hover_next
 		&::before
-			+pseudo('', inline-block, relative)
-			vertical-align: middle
-			height: 100%
+			border-color: transparent
 
-			+media('<desk-md')
-				content: none
+.header__contacts__inner
+	display: block
+	+size(100%)
+	padding: 0 $grid-space
+	text-decoration: none
+	color: $text-color
+	text-align: left
+	transition-property: background-color
+	transition-duration: $animation-speed
 
-		li.hover, li.hover_pref, li.hover_next
-			&::before
-				border-color: transparent
+	+media('<desk-lg')
+		padding: 0 #{round($grid-space/2)}
 
-		li
-			+display-inline-block-middle
-			position: relative
-			+size(230px, 100%)
+	+media('<desk-md')
+		padding: 4px #{round($grid-space/2)}
+
+	.no-touchevents &:hover
+		background-color: white
+
+	&::after
+		+vertical-align()
+
+	+media('<tab-lg')
+		+padding-horizontal(30px)
+
+	+media('<mob-lg')
+		text-align: center
+		display: block
+		padding: 0
+
+		[class*="department-"] &
+			padding: 6px 20px
+
+	& > div
+		$width-icon: 78px
+		$width-icon--md: 54px
+		$width-icon--sm: 50px
+
+		+display-inline-block-middle
+		max-width: calc(100% - #{$width-icon})
+		text-align: left
+
+		+media('<desk-lg')
+			max-width: calc(100% - #{$width-icon--md})
+
+		+media('<desk-sm')
+			max-width: calc(100% - #{$width-icon--sm})
+
+		+media('<tab-lg')
+			text-align: center
+			max-width: none
+
+			img
+				width: 34px
+
+		&:first-child
+			width: $width-icon
+			padding-right: #{$grid-space}
+			text-align: center
 
 			+media('<desk-lg')
-				width: 180px
+				width: $width-icon--md
+				padding-right: #{round($grid-space*0.5)}
+
+			+media('<desk-md')
+				width: $width-icon--sm
+
+			+media('<tab-lg')
+				padding-right: 0
+				width: auto
+
+			//+media('<mob-lg')
+				width: 70px
+
+			& + div
+				+media('<mob-lg')
+					display: none
+
+					[class*="department-"] &
+						display: inline-block
+
+		& > em, & > a
+			+display-inline-block-middle
+			font: normal bold 30px/1.2 $font-alt
+			letter-spacing: normal
+
+			+media('<desk-lg')
+				font-size: 22px
 
 			+media('<desk-md')
 				display: block
-				height: auto
-				width: auto
+				font-size: 16px
+				line-height: 1
 
 			+media('<tab-lg')
-				float: left
-				display: block
-				//+size(50%, 100%)
-				+size(100%, 100%)
-				text-align: center
+				display: inline-block
+				font-size: 20px
+				margin-right: 15px
+				padding-bottom: 3px
 
 			+media('<mob-lg')
-				float: none
-				display: block
-				width: auto
+				width: 60px
+				height: 60px
+				font-size: 24px
+				line-height: 60px
+				border: 1px solid $border-color
 				text-align: center
-				border-bottom: 1px solid $border-color
+				padding: 0
+				margin: 0 -1px 0 0
 
-				&:last-child
+				[class*="department-"] &
+					position: relative
+					width: auto
+					height: auto
+					font-size: 20px
+					margin: 0 15px 0 0
+					padding-bottom: 3px
+					text-align: left
 					border: none
 
-			&::before
-				content: ''
-				position: absolute
-				left: 0
-				top: 50%
-				$height: 18px
-				+size(0, $height)
-				margin-top: -(round($height/2))
-				border: solid $border-color
-				border-width: 0 0 0 1px
-				transition-property: border-color
-				transition-duration: $animation-speed
+		& > a, & > a:hover, .no-touchevents > a:hover, & > a[href^="tel"], & > a[href^="tel"]:hover, .no-touchevents > a[href^="tel"]:hover
+			color: $mark-color
+			cursor: pointer
 
-				+media('<desk-md')
-					content: none
+			&.color--orange
+				color: $mark-color-alt
 
-				+media('<mob-lg')
-					content: none
-					
-			&:first-child::before
-				content: none
+		& > span
+			display: block
+			+font($font-size-small, $line-height-small)
+			letter-spacing: normal
 
-			a
-				display: block
-				+size(100%)
-				padding: 0 $grid-space
-				text-decoration: none
-				color: $text-color
-				text-align: left
-				transition-property: background-color
-				transition-duration: $animation-speed
-				cursor: pointer !important
+			+media('<desk-lg')
+				font-size: 1.2rem
 
-				+media('<desk-lg')
-					padding: 0 #{round($grid-space/2)}
-
-				+media('<desk-md')
-					padding: 4px #{round($grid-space/2)}
-
-				.no-touchevents &:hover
-					background-color: white
-
-				&::after
-					+vertical-align()
-
-				+media('<tab-lg')
-					+padding-horizontal(30px)
-
-				+media('<mob-lg')
-					text-align: center
-					display: block
-					padding: 6px 20px
-
-				& > div
-					$width-icon: 78px
-					$width-icon--md: 54px
-					$width-icon--sm: 50px
-
-					+display-inline-block-middle
-					max-width: calc(100% - #{$width-icon})
-					text-align: left
-
-					+media('<desk-lg')
-						max-width: calc(100% - #{$width-icon--md})
-
-					+media('<desk-sm')
-						max-width: calc(100% - #{$width-icon--sm})
-
-					+media('<tab-lg')
-						text-align: center
-						max-width: none
-
-						img
-							width: 34px
-
-					&:first-child
-						width: $width-icon
-						padding-right: #{$grid-space}
-						text-align: center
-
-						+media('<desk-lg')
-							width: $width-icon--md
-							padding-right: #{round($grid-space*0.5)}
-
-						+media('<desk-md')
-							width: $width-icon--sm
-
-						+media('<tab-lg')
-							padding-right: 0
-							width: auto
-
-						//+media('<mob-lg')
-							width: 70px
-
-					& > em
-						+display-inline-block-middle
-						font: normal bold 30px/1.2 $font-alt
-						color: $mark-color
-						letter-spacing: normal
-
-						+media('<desk-lg')
-							font-size: 22px
-
-						+media('<desk-md')
-							display: block
-							font-size: 16px
-							line-height: 1
-
-						+media('<tab-lg')
-							display: inline-block
-							font-size: 20px
-							margin-right: 15px
-							padding-bottom: 3px
-
-						&.color--orange
-							color: $mark-color-alt
-
-					& > span
-						display: block
-						+font($font-size-small, $line-height-small)
-						letter-spacing: normal
-
-						+media('<desk-lg')
-							font-size: 1.2rem
-
-						+media('<tab-lg')
-							font-size: 1.4rem
+			+media('<tab-lg')
+				font-size: 1.4rem
 
 .get-minister
 	display: block
@@ -612,7 +673,7 @@
 	+media('<tab-lg')
 		float: none
 		height: auto
-		padding: 5px 30px
+		padding: 5px $grid-layout-space--desk-md
 		margin-left: 0
 		text-align: left
 
@@ -621,7 +682,12 @@
 
 	+media('<mob-lg')
 		overflow: visible
-		+padding-horizontal(20px)
+		+padding-horizontal($grid-layout-space--mob-lg)
+
+		display: none
+
+		.h-contacts-js.is-show &
+			display: block
 
 .header__hot-line--align
 	display: inline-block
@@ -737,7 +803,7 @@
 /*header title end
 
 /*header info
-.header__info
+.header__info__list
 	position: relative
 	margin: 8px 0 0
 	+font(1.4rem, 1.2)
@@ -753,7 +819,7 @@
 		position: relative
 
 	+media('<mob-lg')
-		padding-left: 60px
+		padding-left: 52px
 		padding-right: 10px
 
 	&::before
@@ -772,15 +838,6 @@
 			left: 0
 
 	li
-		+media('<mob-lg')
-			&:nth-child(n + 3)
-				display: none
-
-	&.is-show
-		li
-			display: inline-block
-
-	li
 		display: inline-block
 		vertical-align: top
 		margin-top: 10px
@@ -795,6 +852,24 @@
 
 		+media('<tab-lg')
 			margin-bottom: 4px
+
+		+media('<mob-lg')
+			display: none
+
+			.h-contacts-js.is-show &
+				display: inline-block
+
+		&.header__info__label
+			display: none
+			+margin-vertical(0)
+			+padding-vertical(10px)
+			color: #595959
+
+			+media('<mob-lg')
+				display: block
+
+				.h-contacts-js.is-show &
+					display: none
 
 		a
 			text-decoration: none
@@ -832,19 +907,17 @@
 	display: none
 	+size(40px, 40px)
 	cursor: pointer
+	position: absolute
+	right: 15px
+	top: 50%
+	margin-top: -20px
 
 	+media('<mob-lg')
 		display: block
 
-	.header__info &
-		position: absolute
-		right: -5px
-		top: 50%
-		margin-top: -20px
-
 	& > i
-		$this-icon-lines-width: 12px
-		$this-icon-lines-height: 3px
+		$this-icon-lines-width: 10px
+		$this-icon-lines-height: 2px
 		$this-icon-lines-color: $text-color-light
 
 		display: block
@@ -879,9 +952,8 @@
 			&::before, &::after
 				background-color: tomato
 
-	.is-show &
+	.h-contacts-js.is-show &
 		transform: rotate(0.5turn)
-
 
 /*contacts-opener end
 

@@ -455,11 +455,18 @@
 		pointer-events: none
 		z-index: 4
 
+		+media('<desk-lg')
+			top: auto
+			bottom: 0
+			transform: none
+			height: 60px
+			pointer-events: auto
+
+		//+media('<mob-lg')
+			top: $news-item-lg-img-height-mob-lg
+
 		.no-js &
 			content: none
-
-		+media('<mob-lg')
-			top: $news-item-lg-img-height-mob-lg
 
 	&.slick-dotted
 		margin-bottom: 0
@@ -468,11 +475,16 @@
 		position: absolute
 		bottom: auto
 		top: $news-item-lg-img-height
-		margin-top: -20px
+		margin: -20px 0 20px
 		transform: translate(0, -100%)
 		z-index: 5
 
-		+media('<mob-lg')
+		+media('<desk-lg')
+			top: auto
+			bottom: 0
+			transform: none
+
+		//+media('<mob-lg')
 			top: $news-item-lg-img-height-mob-lg
 
 		li
@@ -508,7 +520,13 @@
 		transition-property: transfrom
 		transition-duration: $animation-speed
 
-		+media('<mob-lg')
+		+media('<desk-lg')
+			top: auto
+			bottom: 0
+			transform: none
+			margin: 0
+
+		//+media('<mob-lg')
 			top: $news-item-lg-img-height-mob-lg
 
 		.no-touchevents &:hover

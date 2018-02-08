@@ -155,9 +155,15 @@ html
 	+media('<tab-lg')
 		padding: round($grid-layout-space--desk-md*0.5) $grid-layout-space--desk-md 0
 
+		.home-page &
+			+padding-horizontal($grid-layout-space--desk-md)
+
 	+media('<mob-lg')
 		max-width: none
 		padding: $grid-layout-space--mob-lg $grid-layout-space--mob-lg 0
+
+		.home-page &
+			+padding-horizontal($grid-layout-space--mob-lg)
 
 .content-wrap
 	@extend .main-frame

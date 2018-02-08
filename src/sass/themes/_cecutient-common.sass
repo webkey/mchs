@@ -1220,40 +1220,37 @@
 				border-right: none
 
 	// header contacts
-	.header__contacts
-		ul
+	.header__contacts__item
+		+media('<mob-lg')
+			border-bottom: #{$border-width} solid
 
-			li
-				+media('<mob-lg')
-					border-bottom: #{$border-width} solid
+		&::before
+			border: solid
+			border-width: 0 0 0 #{$border-width}
+			transition-duration: $animation-speed
 
-				&::before
-					border: solid
-					border-width: 0 0 0 #{$border-width}
-					transition-duration: $animation-speed
+			+media('<tab-lg')
+				border-width: 0 0 0 #{$border-width}
 
-					+media('<tab-lg')
-						border-width: 0 0 0 #{$border-width}
+	.header__contacts__inner
+		transition-duration: $animation-speed
 
-				a
-					transition-duration: $animation-speed
+		& > div
+			& > em
+				color: $mark-color
 
-					& > div
-						& > em
-							color: $mark-color
+			& > span
+				+font(16px, 20px)
+				font-weight: normal
 
-						& > span
-							+font(16px, 20px)
-							font-weight: normal
+				+media('<desk-lg')
+					font-size: 12px
 
-							+media('<desk-lg')
-								font-size: 12px
-
-							+media('<tab-lg')
-								font-size: 14px
+				+media('<tab-lg')
+					font-size: 14px
 
 	// header info
-	.header__info
+	.header__info__list
 		font-weight: normal
 		+font($font-size-small, $line-height-small)
 
