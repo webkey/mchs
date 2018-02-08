@@ -23,8 +23,8 @@
 	text-decoration: none
 	+clear-spacing
 	white-space: nowrap
-	transition-property: background-color, opacity, visibility
-	transition-duration: $animation-speed
+	//transition-property: background-color, opacity, visibility
+	//transition-duration: $animation-speed
 
 	+media('<desk-lg')
 		+size($btn-size--md)
@@ -62,8 +62,8 @@
 			backface-visibility: hidden
 			+line-style
 			background-color: $btn-lines-color
-			transition-property: background-color
-			transition-duration: $animation-speed
+			//transition-property: background-color
+			//transition-duration: $animation-speed
 
 		&::before
 			top: 0
@@ -74,7 +74,7 @@
 			transform: rotate(45deg)
 
 	.no-touchevents &:hover
-		background-color: $mark-color-alt
+		background-color: $base-color
 
 		//& > i::before, & > i::after
 			background-color: white
@@ -96,6 +96,9 @@ html.before-extra-popup-open
 	max-width: $main-layout-width
 	background-color: white
 	z-index: 998
+
+	.css-scroll-fixed &
+		max-width: 1920px
 
 	&.hide-on-load
 		opacity: 0
@@ -438,7 +441,7 @@ html.before-extra-popup-open
 		background-color: white
 
 		& > i
-			transform: scale(1.2)
+			//transform: scale(1.2)
 
 			&::before, &::after
 				background-color: $text-color-alt
@@ -601,6 +604,9 @@ $nav-small-tabs-height: 60px
 	max-width: $main-layout-width
 	background: white
 	z-index: 998
+
+	.css-scroll-fixed &
+		max-width: 1920px
 
 	&.hide-on-load
 		opacity: 0

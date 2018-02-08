@@ -348,13 +348,16 @@
 	transition-property: color
 	transition-duration: $animation-speed
 
-	.no-js &
-		height: auto !important
-		max-height: none !important
-
 	+media('<mob-lg')
 		height: auto
 		max-height: round-float($font-size-small*$line-height-small*4, 1) // костыль, чтобы высоты блоков были четко по дизу
+
+	+media('<desk-lg')
+		margin-bottom: $bottom-space-sm
+
+	.no-js &
+		height: auto !important
+		max-height: none !important
 
 	.news-grid__item--large &
 		height: auto
@@ -363,13 +366,13 @@
 		+media('<desk-lg')
 			max-height: none
 
-	//+media('<mob-lg')
-	+media('<desk-lg')
-		margin-bottom: $bottom-space-sm
-
 	.news-simple &
 		height: auto
 		margin-bottom: $bottom-space
+
+	p, ul, ol, table, blockquote, h2, h3, h4
+		margin-bottom: 0
+		padding-bottom: 0
 
 .news-grid__meta
 	position: absolute
