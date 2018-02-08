@@ -6667,7 +6667,7 @@ script ~ .section, input ~ .section {
 	color: #006ab8;
 }
 
-.section__title h2, .section__title h3, .section__title > a {
+.section__title h1, .section__title h2, .section__title h3, .section__title > a {
 	display: inline-block;
 	vertical-align: middle;
 	position: relative;
@@ -6679,25 +6679,25 @@ script ~ .section, input ~ .section {
 }
 
 @media (max-width: 639px) {
-	.section__title h2, .section__title h3, .section__title > a {
+	.section__title h1, .section__title h2, .section__title h3, .section__title > a {
 		display: block;
 		margin-bottom: 0.8rem;
 	}
 }
 
-.section__title h2 > a, .section__title h3 > a, .section__title > a > a {
+.section__title h1 > a, .section__title h2 > a, .section__title h3 > a, .section__title > a > a {
 	font-weight: inherit;
 }
 
 @media (max-width: 639px) {
-	.section__title.has-date h2, .section__title.has-date h3 {
+	.section__title.has-date h1, .section__title.has-date h2, .section__title.has-date h3 {
 		display: inline-block;
 		margin-right: 4px;
 		margin-bottom: 0;
 	}
 }
 
-.section__title h2, .section__title h3 {
+.section__title h1, .section__title h2, .section__title h3 {
 	vertical-align: top;
 }
 
@@ -6840,7 +6840,7 @@ script ~ .section, input ~ .section {
 	color: #262626;
 }
 
-.section__subtitle h2, .section__subtitle h3, .section__subtitle h4 {
+.section__subtitle h1, .section__subtitle h2, .section__subtitle h3, .section__subtitle h4 {
 	display: inline-block;
 	vertical-align: middle;
 	font-weight: inherit;
@@ -6852,7 +6852,7 @@ script ~ .section, input ~ .section {
 }
 
 @media (max-width: 639px) {
-	.section__subtitle h2, .section__subtitle h3, .section__subtitle h4 {
+	.section__subtitle h1, .section__subtitle h2, .section__subtitle h3, .section__subtitle h4 {
 		font-size: 1.4rem;
 		display: block;
 		margin-bottom: 1.5rem;
@@ -7317,7 +7317,7 @@ script ~ .section, input ~ .section {
 	font-size: 2rem;
 	line-height: 1.3;
 	margin-bottom: 0;
-	padding-top: 10px;
+	padding: 10px 15px;
 }
 
 /*files item end*/
@@ -14468,7 +14468,7 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	}
 }
 
-.region-header__caption h1, .region-header__caption h2, .region-header__caption h3 {
+.region-header__caption h1, .region-header__caption h2, .region-header__caption h3, .region-header__caption .subtitle {
 	overflow: hidden;
 	font-family: inherit;
 	font-weight: inherit;
@@ -14478,13 +14478,13 @@ li.is-open > .region-menu__tab .region-menu__angle i {
 	margin: 0;
 }
 
-.region-header__caption h3 {
+.region-header__caption h3, .region-header__caption .subtitle-slogan {
 	font-size: 1.8rem;
 	line-height: 1.33;
 }
 
 @media (max-width: 1599px) {
-	.region-header__caption h3 {
+	.region-header__caption h3, .region-header__caption .subtitle-slogan {
 		font-size: 1.4rem;
 	}
 }
