@@ -1,7 +1,7 @@
 <div class="news-grid__item@@if(context.size){--@@size}@@if(context.hasntImgSuffix){ news-grid__item--@@hasntImgSuffix}@@if(context.hasImgSuffix){ news-grid__item--@@hasImgSuffix}@@if(context.wideClass){--@@wideClass}@@if(context.hasJs){ @@hasJs}">
 	@@if (context.place) { <div class="news__place">@@place</div>}
 	@@if (context.label) { <div class="news__label news__label_@@label">@@label</div>}
-	@@if(context.slider){ <div class="news-grid__slider"><div class="preload-sm">&nbsp;</div>@@include('_news-grid-slider.tpl')</div>}
+	@@if(context.slider){ <div class="news-grid__slider"><div class="preload-sm">&nbsp;</div>@@include('_tpl_news-grid-slider.html')</div>}
 	@@if(!context.slider){
 	<a href="#" class="news-grid__inner">
 		@@if (context.src) { <div class="news-grid__img lazy" data-src="@@src" style="background-image: url(img/preloader.svg);"><div class="img-content">&nbsp;</div></div>}

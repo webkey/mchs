@@ -195,15 +195,19 @@
 		width: auto
 
 .news-grid-slider
+	// !!! с лейзилоад плохо работает подстановка размытого дубликата изображения
+	// !!! мигает на копиях слайдов, которые используются для бесконечного листания
 	.news-grid__img
 		//background-color: #ddd
 		background-color: #fff
 
-		//background-repeat: no-repeat // запрещаем повторение изображения
-		//background-position: 250% 250% // выносим за границы видимой области
-		//background-size: auto // обнуляем сайзинг фонового изображение
+		// для добавления размытого дубликата изображения
+		background-repeat: no-repeat // запрещаем повторение изображения
+		background-position: 250% 250% // выносим за границы видимой области
+		background-size: auto // обнуляем сайзинг фонового изображение
 
-		//&::before
+		// создаем подложку с размытым дубликатом изображения
+		&::before
 			content: ""
 			position: absolute
 			left: -5%
@@ -214,29 +218,38 @@
 			background-position: center
 			background-size: cover
 			background-image: inherit
-			//opacity: 0.5
 			filter: blur(8px)
+			// если в слайдере включен lazyload, то до загрузки изображения нужно скрыть фон
+			//opacity: 0
 
 		img
 			// если есть прелоадер
+			//position: absolute
+			//display: block
+			//left: 50%
+			//top: 50%
+			//width: 48px
+			//height: 48px
+			//margin: -24px 0 0 -24px
+
+			//&.loaded
+			$increase: 4px
+			//===============
 			position: absolute
 			display: block
-			left: 50%
-			top: 50%
-			width: 48px
-			height: 48px
-			margin: -24px 0 0 -24px
+			margin: 0
+			width: calc(100% + #{$increase})
+			height: calc(100% + #{$increase})
+			left: -#{round($increase/2)}
+			top: -#{round($increase/2)}
+			max-width: none
+			+object-fit(contain)
 
-			&.loaded
-				position: absolute
-				display: block
-				margin: 0
-				width: 100%
-				height: 100%
-				left: 0
-				top: 0
-				max-width: none
-				+object-fit(cover)
+	// если в слайдере включен lazyload, то после загрузки изображения показываем фон
+	//.loaded-img
+		.news-grid__img
+			&::before
+				opacity: 1
 
 .news-grid__content
 	position: relative
