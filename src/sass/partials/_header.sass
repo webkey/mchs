@@ -13,15 +13,11 @@
 	min-height: $header-left-space-desk-sm
 	+clear
 
-	//&::before
-		+pseudo()
-		left: 0
-		top: 0
-		+size($sidebar-left-width, 100%)
-		background-color: white
-
 	+media('<desk-sm')
 		padding-left: 0
+
+	+media('<mob-lg')
+		min-height: 0
 
 .header__frame
 	position: relative
@@ -318,6 +314,12 @@
 
 		+media('<tab-lg')
 			border-bottom: 1px solid $border-color
+
+		+media('<mob-lg')
+			display: none
+
+			.home-page &, [class*="department-"] &
+				display: block
 
 		&::before
 			content: ''

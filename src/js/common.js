@@ -128,7 +128,7 @@ function toggleSpecialVersion() {
 
 		setCookie('cecutientVersion', false, {
 			// expires: expiresValue,
-			// domain: ".mchs.gov.by",
+			domain: ".mchs.gov.by",
 			path: "/"
 		});
 
@@ -141,7 +141,7 @@ function toggleSpecialVersion() {
 	} else {
 		setCookie('cecutientVersion', true, {
 			// expires: expiresValue,
-			// domain: ".mchs.gov.by",
+			domain: ".mchs.gov.by",
 			path: "/"
 		});
 
@@ -1255,6 +1255,8 @@ function tabSwitcher() {
 				var $self = $(this),
 					selfTab = $self.attr('href').substring(1);
 
+				$tabWrapper.trigger('tabSwitcherChanged');
+
 				if ($this.data('collapsed') === true && activeTab === selfTab) {
 
 					toggleActiveClass();
@@ -1376,24 +1378,6 @@ function tabSwitcher() {
 
 				activeTab = false;
 			}
-
-			// to queue
-			// $(window).on('load debouncedresize', function () {
-			// 	console.log("toQueue.length: ", !!toQueue);
-			// 	if (toQueue && window.innerWidth < toQueue){
-			// 		tabInitedFlag = false;
-			// 		$thisContainer.attr('style', "");
-			// 		$thisContent.attr('style', "");
-			//
-			// 		return;
-			// 	}
-			//
-			// 	console.log("tabInitedFlag: ", tabInitedFlag);
-			// 	if(!tabInitedFlag) {
-			// 		prepareTabsContent();
-			// 		tabInitedFlag = true;
-			// 	}
-			// });
 		});
 	}
 
@@ -4175,6 +4159,9 @@ function wrapTable() {
 	var myLazyLoad = new LazyLoad({
 		elements_selector: ".lazy",
 		threshold: 0
+		// callback_set: function(el, src) {
+		// 	objectFitImages($(el));
+		// }
 	});
 })();
 

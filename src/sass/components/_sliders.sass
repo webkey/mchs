@@ -461,6 +461,9 @@
 			transform: none
 			height: 60px
 			pointer-events: auto
+			background: $base-color
+
+			//content: none
 
 		//+media('<mob-lg')
 			top: $news-item-lg-img-height-mob-lg
@@ -664,6 +667,9 @@
 
 	.news-grid__list:last-child
 		margin-bottom: -#{$grid-space}
+
+		+media('<mob-lg')
+			margin-bottom: 0
 
 	.section__footer
 		display: none
