@@ -5,7 +5,7 @@
 })
 <!--FOOTER end-->
 <!--POPUPS-->
-@@include('_popups.tpl', {
+@@include('_tpl_popups.html', {
 	"hasRegionMenu": "@@hasRegionMenu",
 	"hasSquadMenu": "@@hasSquadMenu",
 	"mainNavItemActive": "@@mainNavItemActive",

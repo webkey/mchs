@@ -2813,6 +2813,7 @@ input[type="radio"] + label span,
 input[type="radio"] + span {
 	display: inline-block;
 	vertical-align: top;
+	text-align: left;
 	position: relative;
 	padding: 2px 0 2px 45px;
 	z-index: 2;
@@ -10196,6 +10197,7 @@ html.before-extra-popup-open .wrapper {
 	.popup-label {
 		font-size: 1.6rem;
 		line-height: 1.88;
+		margin-bottom: 2rem;
 	}
 }
 
@@ -11928,7 +11930,7 @@ a:hover .side__text span {
 	top: 0;
 	width: 180px;
 	height: 180px;
-	background-position: 0 0;
+	background-position: center;
 	background-size: cover;
 }
 
@@ -13753,6 +13755,18 @@ a:hover .side__text span {
 	margin-bottom: 4.5rem;
 }
 
+@media (max-width: 959px) {
+	.search-form, .search-form__field {
+		margin-bottom: 3rem;
+	}
+}
+
+@media (max-width: 479px) {
+	.search-form, .search-form__field {
+		margin-bottom: 2rem;
+	}
+}
+
 .search-form:last-child, .search-form__field:last-child {
 	margin-bottom: 0;
 }
@@ -13815,7 +13829,7 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 	border: none;
 	height: 64px;
 	width: 100%;
-	padding: 11px 140px 11px 0;
+	padding: 11px 291px 11px 0;
 	margin: 0;
 	font-family: "Roboto Slab", serif;
 	font-weight: bold;
@@ -13838,15 +13852,62 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 	}
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1365px) {
 	input.search-form__input, input.search-form__input:hover, input.search-form__input:focus {
 		font-size: 18px;
-		padding-right: 54px;
+		padding-right: 201px;
+	}
+}
+
+@media (max-width: 479px) {
+	input.search-form__input, input.search-form__input:hover, input.search-form__input:focus {
+		margin-bottom: 2rem;
+		height: 54px;
+		padding: 6px 0 5px;
 	}
 }
 
 .input--filled input.search-form__input, input.search-form__input:focus {
 	cursor: text;
+}
+
+.search-form__select {
+	width: 150px;
+	position: absolute;
+	top: 50%;
+	right: 129px;
+	margin-top: -20px;
+}
+
+@media (max-width: 1365px) {
+	.search-form__select {
+		right: 39px;
+	}
+}
+
+@media (max-width: 479px) {
+	.search-form__select {
+		position: relative;
+		top: auto;
+		right: auto;
+		width: 100%;
+		margin: 0 0 2rem;
+	}
+}
+
+.search-form__select::before {
+	right: 13px;
+}
+
+.search-form__select::after {
+	right: 8px;
+}
+
+.search-form__select select {
+	font-size: 14px;
+	line-height: 20px;
+	height: 40px;
+	padding: 9px 25px 9px 12px;
 }
 
 .search-form__btn {
@@ -13861,7 +13922,6 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 	letter-spacing: -4px;
 	text-align: center;
 	color: white;
-	fill: white;
 	z-index: 5;
 	background-color: #006ab8;
 	-webkit-transition-property: color;
@@ -13880,9 +13940,19 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 	        transform: scale(1);
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1365px) {
 	.search-form__btn {
 		width: 40px;
+	}
+}
+
+@media (max-width: 479px) {
+	.search-form__btn {
+		position: relative;
+		right: auto;
+		top: 0;
+		margin-top: 0;
+		width: 100%;
 	}
 }
 
@@ -13917,14 +13987,20 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 	margin-right: 10px;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1365px) {
 	.search-form__btn svg {
 		margin-right: 0;
 	}
 }
 
+@media (max-width: 479px) {
+	.search-form__btn svg {
+		margin-right: 10px;
+	}
+}
+
 .search-form__btn path {
-	fill: inherit;
+	fill: currentColor;
 	-webkit-transition: fill 0.2s;
 	transition: fill 0.2s;
 }
@@ -13949,7 +14025,7 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 	user-select: none;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 1365px) {
 	.search-form__btn span {
 		border: 0;
 		clip: rect(0 0 0 0);
@@ -13959,6 +14035,18 @@ input.search-form__input, input.search-form__input:hover, input.search-form__inp
 		padding: 0;
 		position: absolute;
 		width: 1px;
+	}
+}
+
+@media (max-width: 479px) {
+	.search-form__btn span {
+		clip: auto;
+		height: auto;
+		position: relative;
+		width: auto;
+	}
+	.search-form__btn span:active, .search-form__btn span:focus {
+		position: relative;
 	}
 }
 

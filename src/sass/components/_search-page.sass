@@ -92,6 +92,12 @@
 	position: relative
 	margin-bottom: $bottom-space-md
 
+	+media('<tab-lg')
+		margin-bottom: $bottom-space
+
+	+media('<mob-md')
+		margin-bottom: 2rem
+
 	&:last-child
 		margin-bottom: 0
 
@@ -106,7 +112,7 @@
 .search-form__field
 	overflow: hidden
 	position: relative
-
+	//padding-right: $search-form-popup-btn-width
 
 input.search-form__input
 	cursor: pointer
@@ -119,7 +125,8 @@ input.search-form__input
 		border: none
 		height: 64px
 		width: 100%
-		padding: 11px #{$search-form-popup-btn-width+10} 11px 0
+		padding: 11px #{$search-form-popup-btn-width+nth($search-form--select-size, 1)+11} 11px 0
+		//padding: 11px 11px 11px 0
 		margin: 0
 		font-family: $font-alt
 		font-weight: bold
@@ -136,13 +143,49 @@ input.search-form__input
 		+media('<desk-lg')
 			font-size: 20px
 
-		+media('<mob-lg')
+		+media('<desk-ml')
 			font-size: 18px
-			padding-right: $search-form-popup-btn-width--mob-lg
+			padding-right: $search-form-popup-btn-width--mob-lg + nth($search-form--select-size, 1) + 11
+
+		+media('<mob-md')
+			margin-bottom: 2rem
+			height: 54px
+			padding: 6px 0 5px
 
 	// если поле ввода В ФОКУСЕ, или ЗАПОЛНЕННО
 	.input--filled &, &:focus
 		cursor: text
+
+// селект выбора разделов
+.search-form__select
+	width: nth($search-form--select-size, 1)
+	position: absolute
+	top: 50%
+	right: #{$search-form-popup-btn-width - 1}
+	margin-top: -#{round(nth($search-form--select-size, 2)/2)}
+
+	+media('<desk-ml')
+		right: #{$search-form-popup-btn-width--mob-lg - 1}
+
+	+media('<mob-md')
+		position: relative
+		top: auto
+		right: auto
+		width: 100%
+		margin: 0 0 2rem
+
+	&::before
+		right: 13px
+
+	&::after
+		right: 8px
+
+	select
+		$select-space-v: round((nth($search-form--select-size, 2)-20-2)/2)
+		//==============
+		+font(14px, 20px)
+		height: nth($search-form--select-size, 2)
+		padding: $select-space-v 25px $select-space-v 12px
 
 // кнопка поиска
 .search-form__btn
@@ -155,7 +198,6 @@ input.search-form__input
 	+clear-spacing
 	text-align: center
 	color: white
-	fill: white
 	z-index: 5
 	background-color: $text-color-alt
 	transition-property: color
@@ -164,8 +206,15 @@ input.search-form__input
 	+btn-hover
 	+btn-active
 
-	+media('<mob-lg')
-		width: $search-form-popup-btn-height
+	+media('<desk-ml')
+		width: $search-form-popup-btn-width--mob-lg
+
+	+media('<mob-md')
+		position: relative
+		right: auto
+		top: 0
+		margin-top: 0
+		width: 100%
 
 	&::before
 		+vertical-align()
@@ -186,11 +235,14 @@ input.search-form__input
 		margin-top: -8px
 		margin-right: 10px
 
-		+media('<mob-lg')
+		+media('<desk-ml')
 			margin-right: 0
 
+		+media('<mob-md')
+			margin-right: 10px
+
 	path
-		fill: inherit
+		fill: currentColor
 		transition: fill $animation-speed
 
 	span
@@ -202,8 +254,11 @@ input.search-form__input
 		transition-duration: $animation-speed
 		+antialiased
 
-		+media('<mob-lg')
+		+media('<desk-ml')
 			+hide-text
+
+		+media('<mob-md')
+			+show-text
 
 	.input--filled &
 		z-index: 999
