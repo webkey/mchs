@@ -2,6 +2,9 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+//
+/*social*/
+///*=================*/
 /*social networks*/
 .social-networks
 	margin-bottom: $bottom-space
@@ -76,44 +79,198 @@
 
 /*social networks end*/
 
-/*share link list*/
-//.user-options
-	.share-link__list
-		position: absolute
-		top: 100%
-		right: 0
-		margin: 0
-		padding: 0
-		width: 100%
-		text-align: center
-		box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1)
-		opacity: 0
-		visibility: hidden
-		transition-property: opacity, visibility
-		transition-duration: $animation-speed
+/*social media
+.soc-media
+	position: relative
+	+clear
 
-		.choice-opened &
-			opacity: 1
-			visibility: visible
+	&::before
+		+pseudo()
+		+top-left(0, 50%)
+		bottom: 0.15em
+		border-right: 1px solid $border-color
 
-		.social-networks__list
-			margin: 0
+		+media('<mob-lg')
+			content: none
 
-		.social-networks__item
-			display: block
-			width: auto
-			margin: 0
-			padding: 0
+.soc-media__col
+	position: relative
+
+	&:first-child
+		float: left
+		width: calc(50% - #{$grid-inside-horizontal-space})
+
+		+media('<mob-lg')
+			float: none
+			width: 100%
+
+	&:nth-child(2)
+		margin-left: calc(50% + #{$grid-inside-horizontal-space})
+
+		+media('<mob-lg')
+			margin-left: 0
+
+	a
+		display: block
+		text-decoration: none
+		color: $text-color
+
+.soc-media__visual
+	margin-bottom: $bottom-space
+	padding-bottom: $bottom-space
+	border-bottom: 1px solid $border-color
+
+	.video
+		padding-bottom: 26px
+		background: url(../../img/bg-video.png) no-repeat center bottom
+		background-size: 100%
+		margin-bottom: 0
+
+		+media("<desk-hd")
+			padding-bottom: 40px
+
+		+media("<desk-lg")
+			padding-bottom: 26px
+
+		+media("<mob-lg")
+			padding-bottom: 40px
+
+		+media("<mob-md")
+			padding-bottom: 26px
+
+	.video-holder
+		padding-bottom: 62.5%
+		padding-top: 25px
+
+.soc-media__footer
+	padding-top: $bottom-space
+
+	+media("<desk-hd")
+		padding-top: 0
+
+	+media("<desk-lg")
+		padding-top: $bottom-space
+
+	+media('<mob-lg')
+		padding-top: 0
+		padding-bottom: $bottom-space
+
+.soc-media-share
+	text-align: center
+
+.soc-media-share__label
+	text-align: center
+	font-family: $font-alt
+	+font(1.2rem, 1.6)
+	color: $text-color-light
+	text-transform: uppercase
+	margin-bottom: $bottom-space-sm
+
+.soc-media-share
+	.social-networks__list
+		+media("<desk-hd")
+			+margin-horizontal(-15px)
+
+		+media("<desk-lg")
+			+margin-horizontal(-5px)
+
+		+media("<mob-lg")
+			+margin-horizontal(-15px)
+
+		+media("<mob-md")
+			+margin-horizontal(-5px)
+
+	.social-networks__item
+		+media("<desk-hd")
+			+margin-horizontal(15px)
+
+		+media("<desk-lg")
+			+margin-horizontal(5px)
+
+		+media("<mob-lg")
+			+margin-horizontal(15px)
+
+		+media("<mob-md")
+			+margin-horizontal(5px)
 
 		a
-			+size($header-top-height)
+			background: none
+			+size(32px)
 
 			.no-touchevents &:hover
-				box-shadow: none
 				transform: none
-
-			&:active, .no-touchevents &:active
 				box-shadow: none
-				transform: none
 
-/*share link list end*/
+			svg
+				+size(22px)
+
+			path
+				fill: $text-color-light
+
+			.no-touchevents &.fb:hover
+
+				path
+					fill: $facebook-color
+
+			.no-touchevents &.twitter:hover
+
+				path
+					fill: $twitter-color
+
+			.no-touchevents &.vk:hover
+
+				path
+					fill: $vkontakte-color
+
+			.no-touchevents &.ok:hover
+
+				path
+					fill: $odnoklassniki-color
+
+			.no-touchevents &.instagram:hover
+
+				path
+					fill: $instagram-color-end
+
+.soc-media__img
+	height: 227px
+	background-position: center
+	background-repeat: no-repeat
+	-webkit-background-size: cover
+	background-size: cover
+	margin-bottom: $bottom-space
+
+	+media("<desk-hd")
+		height: 0
+		padding-bottom: 100%
+
+	+media("<desk-lg")
+		height: 227px
+
+.soc-media__text
+	+font($font-size-small, $line-height-small)
+	overflow: hidden
+	height: round-float($font-size-small*$line-height-small*4, 1)
+	margin-bottom: $bottom-space
+
+	+media("<desk-hd")
+		height: auto
+
+	+media("<desk-lg")
+		height: round-float($font-size-small*$line-height-small*4, 1)
+
+.soc-media__link
+	font-family: $font-alt
+	font-weight: 700
+	+font(1.6rem, 1.25)
+	+truncate(100%)
+	transition-property: color
+	transition-duration: $animation-speed
+
+	.no-touchevents .soc-media__col a:hover &
+		color: $text-color-alt
+
+/*social media end
+///*=================*/
+/*social end*/
+///*=================*/

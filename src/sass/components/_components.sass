@@ -2,7 +2,9 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+///*=================*/
 /*section*/
+///*=================*/
 .section
 	margin-bottom: $bottom-space-md
 
@@ -197,4 +199,1973 @@
 .filter-item
 	max-width: 320px
 
+///*=================*/
 /*section end*/
+///*=================*/
+
+///*=================*/
+/*datepicker*/
+///*=================*/
+.datepicker-overlay
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	background: rgba(0, 0, 0, 0.5)
+	z-index: 99998
+	opacity: 0
+	visibility: hidden
+	transition-property: opacity, visibility
+	transition-duration: $animation-speed
+
+	.datepicker-overlay-is-visible &
+		opacity: 1
+		visibility: visible
+
+///*=================*/
+/*datepicker end*/
+///*=================*/
+
+///*=================*/
+/*banners*/
+///*=================*/
+.banners
+	+grid-parent($grid-space)
+	+clear-spacing
+	margin-bottom: $bottom-space
+
+	.section &
+		margin-bottom: 0
+
+.banners__item
+	+font($font-size, $line-height)
+	letter-spacing: normal
+
+	.banners &
+		+grid-item(1, $grid-space)
+
+		&:last-child
+			margin-bottom: 0
+
+	.banners-panel &
+		+grid-item(4, $grid-space)
+
+		//+media('<desk-lg')
+			+grid-item(3, $grid-space)
+
+		+media('<tab-lg')
+			+grid-item(2, $grid-space)
+
+	a
+		display: block
+		color: $text-color
+		text-decoration: none
+
+	img
+		+push-auto
+		width: 100%
+
+		&[src*="preloader.svg"]
+			width: 48px
+
+///*=================*/
+/*banners end*/
+///*=================*/
+
+///*=================*/
+/*context banners
+///*=================*/
+.context-banner
+	display: block
+	background-position: center top
+	background-repeat: no-repeat
+	background-size: cover
+	text-decoration: none
+	color: $text-color
+
+	&::before
+		content: ""
+		display: block
+		+ratio(16, 9)
+
+///*=================*/
+/*context banners end
+///*=================*/
+
+///*=================*/
+/*infoblock*/
+///*=================*/
+.infoblock
+	margin-bottom: $bottom-space
+	overflow: hidden
+
+	&:last-child
+		margin-bottom: 0
+
+.infoblock__list
+	// перед загрузкой слайды нужно выставить в один ряд, чтобы не прыгал контент
+	// before slide load
+	white-space: nowrap
+	overflow: hidden
+	// before slide load end
+	+margin-horizontal(-#{round($grid-space/2)})
+	margin-bottom: 0
+
+	&.slick-initialized, .no-js &
+		// после загрузки вернуть стили по дефолту
+		// after slide load
+		white-space: normal
+		overflow: visible
+		// after slide load end
+
+	&.slick-dotted
+		margin-bottom: 0 // обнуляем отступ снизу
+
+.infoblock__item
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+	+padding-horizontal(round($grid-space/2))
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+	a
+		display: block
+
+	img
+		display: block
+
+		&[src*="preloader.svg"]
+			width: 48px
+
+.infoblock__list
+	.slick-arrow
+		width: 30px
+		height: 30px
+		background-color: $text-color-alt
+
+///*=================*/
+/*infoblock end*/
+///*=================*/
+
+///*=================*/
+/*news links*/
+///*=================*/
+.news-links
+	+grid-parent($grid-space)
+	+clear-spacing
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+	.popup-news & + a
+		margin: 0 0 25px 25px
+
+.news-links__item
+	+grid-item(1, $grid-space, $bottom-space)
+	+font($font-size-small, $line-height-small)
+	letter-spacing: normal
+
+	&:last-child
+		margin-bottom: 0
+
+.news-links__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: $text-color
+	z-index: 1
+
+.news-links__text
+	margin-bottom: 12px
+	transition-property: background-color, color
+	transition-duration: $animation-speed-mouseleave
+
+.no-touchevents .news-links__inner:hover .news-links__text
+	color: $text-color-alt
+
+.news-links__meta
+	display: block
+	+font(12px, 1.4)
+	color: $text-color-light
+	transition-property: background-color, color
+	transition-duration: $animation-speed-mouseleave
+
+///*=================*/
+/*news links end*/
+///*=================*/
+
+///*=================*/
+/*news read*/
+///*=================*/
+.news-read
+	+grid-parent($grid-space)
+	+clear-spacing
+	margin-bottom: $bottom-space
+
+.news-read__item
+	+grid-item(1, $grid-space, $bottom-space)
+	+font($font-size-small, $line-height-small)
+	letter-spacing: normal
+
+	&:last-child
+		margin-bottom: 0
+
+.news-read__inner
+	display: block
+	position: relative
+	text-decoration: none
+	color: $text-color
+
+	&::before
+		+pseudo()
+		$left: 18px
+		$top: 12px
+		left: -#{$left}
+		top: -#{$top}
+		width: calc(100% + #{$left}*2)
+		height: calc(100% + #{$top}*2)
+		transition-property: background-color, color
+		transition-duration: $animation-speed
+		z-index: -1
+
+	.no-touchevents &:hover::before
+		background-color: #fff
+
+.news-read__text
+	margin-bottom: 12px
+
+.news-read__meta
+	display: block
+	+font(1.2rem, 1.4)
+	color: $text-color-light
+
+///*=================*/
+/*news read end*/
+///*=================*/
+
+///*=================*/
+/*SIDE*/
+///*=================*/
+.side
+	position: absolute
+	margin-top: $grid-layout-space*0.8 - 9px
+	margin-left: -#{$side-width}
+	left: 100%
+	width: $side-width
+	z-index: 50
+
+	+media('<desk-hd')
+		margin-top: round($grid-layout-space--desk-hd*0.5)
+
+	+media('<desk-md')
+		display: none
+
+	&.is_stuck
+		left: $main-layout-width
+
+		&.is_bottom[style*="absolute"]
+			//left: $main-layout-width - $sidebar-left-width
+			left: auto
+			right: 0
+			margin-right: 0 !important
+
+		+media('<desk-hd')
+			.no-touchevents &
+				left: 100%
+
+		+media('<desk-hd')
+			.touchevents &
+				left: 100%
+
+			.touchevents &.is_bottom
+				margin-left: 0
+
+		& + div
+			z-index: -1
+
+	+media('<desk-lg')
+		margin-right: -#{$grid-layout-space--desk-hd + $side-width}
+
+.side__list
+	width: $side-width
+	position: relative
+	z-index: 10
+
+.side__item
+	position: relative
+
+	&::before
+		content: ""
+		display: block
+		padding-top: calc(100% + 1px)
+
+.side__link
+	position: absolute
+	top: 0
+	left: 0
+	+size(100%)
+	color: $text-color
+	white-space: nowrap
+	text-decoration: none
+
+.side__inner
+	background: none
+	position: absolute
+	top: 0
+	left: 100%
+	height: 100%
+	+clear-spacing
+	white-space: nowrap
+	pointer-events: none
+	background: white
+	+antialiased
+	transform: translate(-#{$side-width}, 0)
+	transition-property: background-color, transform, box-shadow, border-color, opacity
+	transition-duration: $animation-speed-mouseleave
+	transition-timing-function: $side-transition-timing-function
+
+	a:hover &
+		transform: translate(-100%, 0)
+		transition-duration: $animation-speed
+		pointer-events: auto
+
+.side__depict
+	display: inline-block
+	vertical-align: middle
+	position: relative
+	padding-right:
+	height: 100%
+	width: $side-width
+	background-color: $text-color-alt
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25)
+	transition-property: background-color, transform, box-shadow, border-color, opacity
+	transition-duration: $animation-speed-mouseleave
+	transition-timing-function: $side-transition-timing-function
+
+	a:hover &
+		border-color: transparent
+		transition-duration: $animation-speed
+
+	svg
+		width: 30px
+		height: 30px
+		position: absolute
+		left: 50%
+		top: 50%
+		-webkit-backface-visibility: hidden
+		backface-visibility: hidden
+		transform: translate(-50%, -50%)
+
+	path
+		fill: #fff
+
+.side__text
+	display: inline-block
+	vertical-align: middle
+	padding: 0 20px
+	max-height: 100%
+	font: 400 #{$side-font-size}/#{$side-line-height} $font-alt
+	letter-spacing: normal
+
+	span
+		display: block
+		overflow: hidden
+		max-height: $side-line-height*2
+		opacity: 0
+		transform: translate(20px, 0)
+		transition-property: background-color, transform, box-shadow, border-color, opacity
+		transition-duration: $animation-speed-mouseleave
+		transition-timing-function: $side-transition-timing-function
+
+		a:hover &
+			transform: translate(0, 0)
+			opacity: 1
+			transition-duration: 0.5s
+
+///*=================*/
+/*SIDE end*/
+///*=================*/
+
+///*=================*/
+/*tags*/
+///*=================*/
+.tags
+	.article-layout &
+		border-top: 1px solid $border-color
+
+		&:last-child
+			margin-bottom: -#{$article-layout-space-vertical}
+
+			+media('<desk-hd')
+				margin-bottom: -#{$article-layout-space-vertical--desk-hd }
+
+			+media('<tab-lg')
+				margin-bottom: -#{$article-layout-space-vertical--tab-lg}
+
+			+media('<mob-lg')
+				margin-bottom: -#{$article-layout-space-vertical--mob-lg}
+
+	h3
+		margin-bottom: $bottom-space
+
+.tags-wrap
+	overflow: hidden
+
+.tags__list, .#{$user-content} .tags__list
+	font-size: 0
+	//letter-spacing: -4px
+	margin: 0 #{-(round($grid-space*0.5))}
+
+	.tags-wrap &:last-child
+		margin-bottom: -#{$grid-space}
+
+	.article-layout &
+		max-width: none
+
+	li
+		display: inline-block
+		vertical-align: top
+		white-space: nowrap
+		font-family: $font-alt
+		font-weight: 400
+		font-size: 1.4rem
+		line-height: 2.1
+		letter-spacing: normal
+		text-transform: uppercase
+		margin-top: 0
+		margin-bottom: $grid-space
+		padding: 0 round($grid-space*0.5)
+
+		&::before
+			content: none
+
+		a
+			position: relative
+			display: inline-block
+			vertical-align: top
+			overflow: hidden
+			padding: 0 16px
+			color: $text-color
+			text-decoration: none
+			text-transform: uppercase
+			border: solid $mark-color-alt
+			border-width: 1px 1px 4px
+			background: white
+			//transition-property: transform
+			//transition-duration: $animation-speed-mouseleave
+			+antialiased
+
+			&::before
+				+pseudo('#', inline-block, relative)
+				z-index: 5
+
+			&::after
+				+pseudo()
+				+cover($position: null, $height: 102%)
+				background-color: $mark-color-alt
+				transform: translate(0, 100%)
+				transition-property: transform
+				transition-duration: $animation-speed-mouseleave
+
+			.no-touchevents &:hover::after
+				transform: translate(0)
+
+			&:active
+				transform: scale(0.95)
+
+			& > span
+				display: inline-block
+				position: relative
+				z-index: 5
+
+.tags .tags__list
+	margin-bottom: -($bottom-space/2)
+
+///*=================*/
+/*tags end*/
+///*=================*/
+
+///*=================*/
+/*years*/
+///*=================*/
+.years
+	+display-inline-block-top
+	position: relative
+	top: 2px
+	perspective: 1500px
+	//width: 82px
+	//height: 48px
+	z-index: 10
+
+	a
+		display: block
+		position: relative
+		line-height: 24px
+		color: $text-color
+		text-align: center
+		text-decoration: none
+
+	& > a
+		height: 100%
+		font-family: inherit
+		font-weight: 700
+		transition-property: background, border
+		transition-duration: $animation-speed
+		color: $text-color-alt
+		z-index: 40
+
+		+clear-spacing
+
+		//&::before
+			content: ''
+			display: inline-block
+			height: 100%
+			vertical-align: middle
+
+		& > span, & > i
+			+display-inline-block-middle
+			position: relative
+			margin-right: 6px
+			font-family: inherit
+			font-style: normal
+			font-weight: inherit
+			line-height: 1
+			transition-property: border
+			transition-duration: $animation-speed
+			z-index: 1
+
+			color: inherit
+			font-size: 2rem
+			letter-spacing: normal
+
+		& > span
+			border-bottom: 1px dotted $text-color-alt
+
+		.no-touchevents &:hover
+
+			& > span
+				border-color: transparent
+
+.years-drop, .#{$user-content} .years-drop
+	padding: 10px 0
+	margin: 0 0 0 -4px
+
+	li
+		padding: 0
+		margin: 0
+
+		&::before
+			content: none
+
+.years-drop
+	position: absolute
+	top: 100%
+	left: 0
+	width: calc(100% + 4px*2)
+	text-align: center
+	background: white
+	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15)
+	box-sizing: border-box
+	opacity: 0
+	visibility: hidden
+	transform-origin: center top
+	transform: rotateX(-30deg)
+	transition-property: opacity, visibility, transform
+	transition-duration: $animation-speed
+	transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
+	z-index: 35
+
+	&::before
+		+pseudo()
+		left: 0
+		bottom: 100%
+		height: 34px
+		width: 100%
+		background: white
+		z-index: -1
+
+	.choice-opened &
+		opacity: 1
+		visibility: visible
+		-webkit-transform: rotateX(0deg)
+		transform: rotateX(0deg)
+
+	a
+		display: block
+		padding: 5px 10px
+		text-align: center
+		position: relative
+		transition-property: color
+		transition-duration: $animation-speed
+		top: auto
+
+		.no-touchevents &:hover, &.active
+			color: $text-color-alt
+
+		& > span
+			border-bottom: none
+
+///*=================*/
+/*years end*/
+///*=================*/
+
+///*=================*/
+/*sorting
+///*=================*/
+.sorting-options
+	+font($font-size-small, $line-height-small)
+	font-weight: normal
+	color: $text-color-light
+
+	.popup-title &
+		padding-top: 13px
+
+.sorting-select
+	//perspective: 1500px
+	position: relative
+	z-index: 10
+
+	a
+		display: block
+		position: relative
+		color: $text-color
+		text-decoration: none
+
+	& > a
+		z-index: 10
+
+		& > span
+			display: inline-block
+			position: relative
+			border-bottom: 1px dotted $text-color
+			z-index: 1
+
+	.sorting-label + &
+		+display-inline-block-top
+
+.sorting-label
+	+display-inline-block-top
+	margin-right: 6px
+
+.sorting-select-drop
+	&
+		width: calc(100% + 40px)
+
+	&, .#{$user-content} &
+		padding: 10px 0
+		margin: 0 0 0 -20px
+
+		li
+			padding: 0
+			margin: 0
+
+			&::before
+				content: none
+
+.sorting-select-drop
+	position: absolute
+	top: 100%
+	left: 0
+	min-width: 100%
+	background: white
+	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15)
+	box-sizing: border-box
+	opacity: 0
+	visibility: hidden
+	white-space: nowrap
+	transform-origin: center top
+	transform: rotateX(-30deg)
+	transition-property: opacity, visibility, transform
+	transition-duration: $animation-speed
+	transition-timing-function: cubic-bezier(0.25, 1, 0.25, 1)
+	z-index: 5
+
+	.choice-opened &
+		opacity: 1
+		visibility: visible
+		-webkit-transform: rotateX(0deg)
+		transform: rotateX(0deg)
+
+	a
+		white-space: normal
+		display: block
+		padding: 5px 20px
+		position: relative
+		transition-property: color
+		transition-duration: $animation-speed
+
+		.no-touchevents &:hover, &.active
+			color: $text-color-alt
+
+
+.news-date, .result-date
+	position: relative
+	font-size: inherit
+	+display-inline-block-top
+	border-color: $text-color
+
+	.no-js &
+		display: none
+
+	.sorting-options &
+		font-size: 14px
+		border-color: $text-color-light
+
+	a
+		+display-inline-block-top
+		text-decoration: none
+		color: inherit
+		cursor: pointer
+		top: auto
+		border-color: inherit
+
+		& > span
+			//+display-inline-block-middle
+			display: inline-block
+			line-height: 1
+			position: relative
+			border-bottom: 1px dotted
+			border-color: inherit
+			z-index: 1
+
+	.touchevents & > a
+		display: none
+
+	.touchevents & input[type="text"]
+		margin-bottom: 0
+		padding: 8px 6px
+		height: 42px
+		width: 120px
+		text-align: center
+		font-size: 14px
+
+.home-page
+	.section__title, .section__subtitle
+		.news-date, .result-date
+			font-weight: bold
+			color: $text-color-alt
+			border-color: $text-color-alt
+
+///*=================*/
+/*sorting end*/
+///*=================*/
+
+///*=================*/
+/*save info*/
+///*=================*/
+.save
+	display: block
+	position: relative
+	//margin-bottom: $grid-space
+	height: $news-item-height // Хардкод. Высота должна быть равно высоте элемета новостей
+	background-repeat: no-repeat
+	background-position: center center
+	background-size: cover
+	text-decoration: none
+	overflow: hidden
+
+	+media('<desk-hd')
+		height: $news-item-lg-img-height - $events-summary-nav-height - $grid-space // Хардкод. Высота должна равняться высоте изображения (или слайдера) большой новости минус высота переключателей табов блока ниже
+
+	+media('<desk-lg')
+		height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
+
+	+media('<mob-lg')
+		height: auto
+		+padding-vertical(10px)
+
+	//&::before
+		+pseudo($pos: relative)
+		+ratio(1, 1)
+
+	&::after
+		+pseudo()
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		background-color: $text-color-alt
+		opacity: 0.65
+
+.save__header
+	font-size: 14px
+	text-align: center
+	padding: 1rem
+	font-weight: 700
+	color: #fff
+	line-height: 1.1
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	z-index: 5
+
+	+media('<mob-lg')
+		display: block
+		position: relative
+		top: auto
+		left: auto
+		width: auto
+		padding-bottom: 0
+
+.save__holder
+	position: absolute
+	left: 0
+	top: 4rem
+	width: 100%
+	height: calc(100% - 4rem)
+	z-index: 1
+	+padding-horizontal($grid-inside-horizontal-space)
+
+	+media('<mob-lg')
+		position: relative
+		left: auto
+		top: auto
+		height: auto
+
+.save__box
+	height: 50%
+	position: relative
+	border-top: 1px solid #fff
+
+	&:last-child
+		height: 100%
+
+	& ~ .save__box
+		height: 50%
+
+	+media('<mob-lg')
+		height: auto
+		+padding-vertical(10px)
+
+.save__box:first-child
+	border-top: none
+
+.save__align
+	position: absolute
+	left: 50%
+	top: 50%
+	width: 100%
+	color: white
+	text-align: center
+	transform: translate(-50%, -50%)
+	+antialiased
+	z-index: 5
+
+	+media('<mob-lg')
+		position: relative
+		left: auto
+		top: auto
+		transform: none
+
+	& > strong, & > span
+		display: block
+		font-family: $font-alt
+		font-weight: 700
+
+	& > strong
+		font-size: 3.6rem
+		line-height: 1.1
+
+	& > span
+		font-size: 1.8rem
+		line-height: 1.3
+
+///*=================*/
+/*save info end*/
+///*=================*/
+
+///*=================*/
+/*events summary*/
+///*=================*/
+.events-sum
+	position: relative
+	margin-bottom: $bottom-space
+	height: $news-item-height // Хардкод. Высота должна равняться блоку новостей с картинкой
+	overflow: hidden
+	background-color: white
+
+	+media('<desk-hd')
+		height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
+
+	.no-js &
+		height: auto
+
+	&:last-child
+		margin-bottom: 0
+
+.events-sum__nav
+	height: $events-summary-nav-height
+
+	.no-js &
+		display: none
+
+.events-sum__tab
+	height: 100%
+
+	$min: 1 !default
+	$max: 3 !default
+
+	@for $item from $min through $max
+
+		$cur-item: $item - 1
+
+		$percentage: 100/($max - 1)*$cur-item*1%
+
+		&:nth-child(#{$item}) a
+			background-color: mix($mark-color-alt, $mark-color, $percentage)
+
+	//.no-touchevents &:hover
+		background-color: mix(shade($mark-color-alt, 90%), shade($mark-color, 90%), $percentage)
+
+	a
+		display: block
+		position: relative
+		overflow: hidden // для обрезания стрелки активного таба
+		height: 100%
+		text-decoration: none
+		color: $text-color
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+		&::after
+			+pseudo()
+			+triangle(top, white, 8px, 1.2)
+			top: 100%
+			left: 50%
+			margin-left: -8px
+			will-change: transform
+			transition-property: transform
+			transition-duration: $animation-speed
+
+		//.no-touchevents &:hover
+			opacity: 0.8
+
+		&.active-tab
+			&::after
+				transform: translate(0, -100%)
+
+		& > span
+			+hide-text
+			+antialiased
+
+		svg
+			display: block
+			position: absolute
+			left: 50%
+			top: 50%
+			width: 30px
+			height: 30px
+			margin: -15px 0 0 -15px
+			transform: scale(0.8)
+			transition-property: transform
+			transition-duration: $animation-speed
+
+			path, polygon
+				fill: white
+
+		.no-touchevents &:hover svg
+			transform: scale(1)
+
+.events-sum__panels
+	height: calc(100% - #{$events-summary-nav-height}) // высота блока минус высота переключателей табов
+
+	.no-js &
+		height: auto
+
+.events-sum__panel
+	$events-sum-bottom: 50px // нижний отступ больше, чем верхний
+
+	display: block
+	position: relative
+	background-color: white
+	padding: 10px $grid-inside-horizontal-space $events-sum-bottom
+	height: 100%
+	overflow: hidden
+
+	&::after
+		+pseudo()
+		bottom: 0
+		left: 0
+		width: 100%
+		height: $events-sum-bottom
+		+linear-gradient(to top, white 0, white 80%, rgba(255, 255, 255, 0) 100%)
+		z-index: 5
+
+.events-sum__date
+	display: block
+	font-size: 1.2rem
+	line-height: 1.2
+	color: #999
+
+.events-list
+	position: relative
+
+.events-list__item
+	border-bottom: 1px solid $border-color
+	+font(1.4rem, 1.43)
+	+padding-vertical(round($grid-inside-vertical-space*0.4))
+
+	&:last-child
+		border-color: transparent
+
+	h3
+		font-size: 1.8rem
+		line-height: 1.2
+		margin-bottom: 8px
+
+		&:last-child
+			margin-bottom: 0
+
+	p
+		margin-bottom: 0
+
+	img
+		display: block
+		margin: 0 auto
+
+.events-sum__footer
+	position: absolute
+	left: 0
+	bottom: 0
+	width: 100%
+	padding: 14px $grid-inside-horizontal-space 20px
+	z-index: 10
+	+truncate(100%)
+	line-height: 1
+
+///*=================*/
+/*events summary end*/
+///*=================*/
+
+///*=================*/
+/*obzh*/
+///*=================*/
+.obzh
+	position: relative
+	margin-bottom: $bottom-space
+	background-color: white
+
+	&:last-child
+		margin-bottom: 0
+
+.obzh__nav
+	display: table
+	table-layout: fixed
+	width: 100%
+
+	+media('<desk-hd')
+		display: block
+		width: 160px
+		float: left
+
+	+media('<tab-lg')
+		display: none
+
+	.no-js &
+		display: none
+
+.obzh__links
+	display: none
+	column-count: 2
+	column-gap: 0
+	+clear
+
+	+media('<tab-lg')
+		display: block
+
+	+media('<mob-lg')
+		column-count: auto
+		column-gap: 0
+
+.obzh__tab
+	display: table-cell
+	vertical-align: top
+
+	$minGroup1: 1 !default
+	$maxGroup1: 3 !default
+
+	@for $item from $minGroup1 through $maxGroup1
+
+		$cur-item: $item - 1
+
+		$percentage: 100/($maxGroup1 - 1)*$cur-item*1%
+
+		&:nth-child(#{$item}) a
+			background-color: mix($mark-color-alt, $mark-color, $percentage)
+
+	//.no-touchevents &:hover
+		background-color: mix(shade($mark-color-alt, 90%), shade($mark-color, 90%), $percentage)
+
+	$minGroup2: 4 !default
+	$maxGroup2: 6 !default
+
+	@for $item from $minGroup2 through $maxGroup2
+
+		$cur-item: $item - 1
+
+		$percentage: 100/($maxGroup2 - 1)*$cur-item*1%
+
+		&:nth-child(#{$item}) a
+			background-color: mix(#004a80, #0982db, $percentage)
+
+	//.no-touchevents &:hover
+		background-color: mix(shade(#004a80, 95%), shade(#0982db, 95%), $percentage)
+
+	.obzh__links &
+		display: inline-block
+		vertical-align: top
+		width: 100%
+
+		+media('<mob-lg')
+			display: block
+
+	+media('<desk-hd')
+		display: block
+
+	a
+		display: table
+		width: 100%
+		position: relative
+		height: $obzh-tabs-nav-height
+		text-decoration: none
+		color: $text-color
+		transition-property: background-color
+		transition-duration: $animation-speed
+
+		& > span
+			display: table-cell
+			font-family: $font-alt
+			font-weight: 700
+			+font(18px, 20px)
+			color: white
+			vertical-align: middle
+			position: relative
+			+antialiased
+			+padding-horizontal($grid-inside-horizontal-space)
+			transition-property: padding
+			transition-duration: $animation-speed
+
+			&::after
+				+pseudo()
+				+triangle(top, white, 8px, 1.2)
+				bottom: 0
+				left: 50%
+				margin-left: -8px
+				opacity: 0
+				pointer-events: none
+				transition-property: opacity
+				transition-duration: $animation-speed
+
+				.obzh__links &
+					display: none !important
+					content: none !important
+
+			+media('<desk-hd')
+				+padding-horizontal(20px)
+				+font(16px, 20px)
+
+				&::after
+					+triangle(left, white, 8px, 1.2)
+					bottom: auto
+					left: auto
+					top: 50%
+					right: 0
+					margin-left: 0
+					margin-top: -8px
+
+		&.active-tab > span::after
+			opacity: 1
+
+.obzh__panels
+	height: #{$obzh-tabs-nav-height*6} // количество переключателей на их высоту
+
+	+media('<tab-lg')
+		display: none !important
+
+	.no-js &
+		height: auto !important
+
+.obzh__panel
+	display: block
+	position: relative
+	background-color: white
+	padding: 20px
+	height: 100%
+	overflow: hidden
+
+	.no-js &
+		padding: 0
+
+.obzh-banner
+	position: relative
+	height: 100%
+	//min-height: 280px // Хардкод. Необязательный ораничитель минимальной высоты
+	background-position: center center
+	background-repeat: no-repeat
+	background-size: cover
+
+	&[style*="preloader.svg"]
+		background-size: 48px
+
+.obzh-banner__content
+	+cover()
+	padding: 40px 45px
+	display: flex
+	flex-flow: column nowrap
+	justify-content: space-between
+	+linear-gradient(to right, rgba(255, 255, 255, 0.80) 0, rgba(255, 255, 255, 0) 100%)
+	+font($font-size-small, $line-height-small)
+	font-weight: 400
+
+	+media('<desk-hd')
+		padding: round(30px*0.85) 30px
+
+	.no-js &
+		position: relative
+		display: block
+		left: auto
+		top: auto
+
+.obzh-banner__text
+	overflow: hidden
+	margin-bottom: 1em
+	max-height: 176px // Магическое число. Примерно обрезает контент для браузеров не поддерживающих `flex: box`
+	width: 480px
+	max-width: 80%
+
+	.no-js &
+		max-width: none
+		max-height: none
+
+	ul, ol
+		li
+			margin: 0 0 1em
+
+			&:last-child
+				margin-bottom: 0
+
+	ul li
+		&::before
+			top: calc(1em * #{$line-height-small} / 2)
+
+	ul, ol, p, h2, h3, h4, h5
+		+margin-vertical(1em)
+
+	& > *:first-child
+		margin-top: 0
+
+	& > *:last-child
+		margin-bottom: 0
+
+///*=================*/
+/*obzh end*/
+///*=================*/
+
+///*=================*/
+/*lead
+///*=================*/
+.lead
+	position: relative
+	background-color: white
+	overflow: hidden
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.lead__description
+	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
+	border-bottom: 1px solid $border-color
+	overflow: hidden
+
+	p:last-child
+		margin-bottom: 0
+
+.lead__list
+	margin-left: -1px
+	margin-bottom: -1px
+	margin-right: -1px
+	+clear
+
+.lead__item
+	position: relative
+	float: left
+	width: 33.33%
+	padding: 0 0 1px 1px
+	text-align: center
+
+	+media('<mob-lg')
+		width: 100%
+
+.lead__layer, .lead__layer--front, .lead__layer--back
+	position: relative
+	padding: $grid-inside-vertical-space $grid-inside-horizontal-space 80px
+	background: white
+	box-shadow: -1px 0 0 $border-color, 1px 0 0 $border-color, 0 1px 0 $border-color, 0 -1px 0 $border-color
+	min-height: 100%
+
+	transition-property: opacity, visibiltiy
+	transition-duration: $animation-speed
+
+.lead__layer--front
+
+	.fb-switcher-active &
+		opacity: 0
+		visibility: hidden
+
+.lead__layer--back
+	position: absolute
+	left: 1px
+	top: 0
+	right: 0
+	bottom: 1px
+	background-color: #fff
+	min-height: calc(100% - 1px)
+
+	opacity: 0
+	visibility: hidden
+
+	.no-js &
+		opacity: 1
+		visibility: visible
+		position: relative
+		left: auto
+		top: auto
+		right: auto
+		bottom: auto
+
+	.fb-switcher-active &
+		opacity: 1
+		visibility: visible
+
+.lead__position
+	+font(1.6rem, 1.2)
+	color: $text-color-light
+	margin-bottom: $bottom-space-sm
+
+.lead__name
+	font-family: $font-alt
+	font-weight: bold
+	+font(1.8rem, 1.3)
+	margin-bottom: $bottom-space-sm
+
+.lead__footer
+	position: absolute
+	left: 0
+	width: 100%
+	bottom: $grid-inside-vertical-space
+
+	.no-js &
+		display: none
+
+	a
+		color: $text-color-alt
+		text-decoration: none
+
+		span
+			border-bottom: 1px dotted $text-color-alt
+			transition-property: border-color
+			transition-duration: $animation-speed
+
+		.no-touchevents &:hover span
+			border-bottom-color: transparent
+
+.lead__schedule
+	text-align: left
+	+antialiased
+
+	dl
+		padding: 0
+		margin: 0 0 $bottom-space-sm
+
+		&:last-child
+			margin-bottom: 0
+
+		dt, dd
+			margin: 0
+			padding: 0
+
+		dt
+			float: left
+			margin-right: 6px
+			+font-bold
+
+///*=================*/
+/*lead end
+///*=================*/
+
+///*=================*/
+/*history info
+///*=================*/
+$history-info-inside-space: 80px
+
+.history-info
+	+clear
+
+.history-info__holder
+	background-color: white
+	padding: $history-info-inside-space
+
+	+media('<desk-hd')
+		padding: $article-layout-space-horizontal--desk-hd
+
+	+media('<tab-lg')
+		padding: $article-layout-space-horizontal--tab-lg
+
+	+media('<mob-lg')
+		padding: $article-layout-space-horizontal--mob-lg
+
+.history-info__img
+	float: right
+	border: 10px solid $bg-color
+	margin-left: $history-info-inside-space
+
+	+media('<desk-lg')
+		border-width: 6px
+		margin-left: $article-layout-space-horizontal--tab-lg
+		width: 36%
+
+	+media('<mob-md')
+		display: block
+		float: none
+		+push-auto
+		width: 240px
+		max-width: 100%
+		margin-bottom: $bottom-space
+
+.history-info__text
+	overflow: hidden
+	+font(1.6rem, 1.875)
+	margin-bottom: $bottom-space
+	max-height: (1.6rem*1.875*9)
+
+	.no-js &
+		max-height: none
+
+	p:last-child
+		margin-bottom: 0
+
+.text-slide__button
+	.btn-arrow--bottom.active > span
+		&::before
+			transform: rotate(-45deg)
+
+		&::after
+			transform: rotate(45deg)
+
+///*=================*/
+/*history info end
+///*=================*/
+
+///*=================*/
+/*media block
+///*=================*/
+.media-block
+	margin-bottom: $bottom-space
+
+	&:last-child
+		margin-bottom: 0
+
+.media-block__nav
+	border-bottom: 1px solid shade($border-color, 80%)
+	margin-bottom: 20px
+	+clear
+
+	+media('<mob-md')
+		display: none
+
+.media-block__tab
+	float: left
+	margin-bottom: -1px
+
+	a
+		display: inline-block
+		vertical-align: top
+		padding: 12px 20px
+		font-family: $font-alt
+		font-weight: 400
+		font-size: 1.2rem
+		line-height: 1.5
+		text-decoration: none
+		color: $text-color-light
+		text-transform: uppercase
+		border: 1px solid transparent
+		border-bottom-color: shade($border-color, 80%)
+		background-color: $bg-color
+		transition-property: border-color, color
+		transition-duration: $animation-speed
+
+		+media('<mob-md')
+			font-size: 1.0rem
+			padding: 10px 8px
+
+		.no-touchevents &:hover
+			color: $text-color-alt
+
+		&.active-tab
+			&, .no-touchevents &:hover
+				border-color: shade($border-color, 80%)
+				border-bottom-color: transparent
+				color: $text-color
+				cursor: default
+
+	&:first-child a
+		&, .no-touchevents &:hover
+			border-left-color: transparent
+
+.media-block__panel
+	overflow: hidden
+
+	+media('<mob-md')
+		opacity: 1 !important
+		visibility: visible !important
+		position: relative !important
+		left: auto !important
+		top: auto !important
+		margin-bottom: $bottom-space
+
+		&:last-child
+			margin-bottom: 0
+
+	.section__subtitle
+		display: none
+
+		+media('<mob-md')
+			display: block
+
+.media-list
+	margin-bottom: $bottom-space
+	+grid-parent($grid-space)
+	+clear-spacing
+
+	&:last-child
+		margin-bottom: 0
+
+	.media-block__panel &
+		margin-bottom: -$grid-space
+
+	+media('<mob-md')
+		+grid-parent(2px)
+
+		.media-block__panel &
+			margin-bottom: -2px
+
+.media-list__item
+	+grid-item(4, $grid-space)
+	+font(1.4rem, 1.3)
+	letter-spacing: normal
+	text-align: center
+
+	+media('<desk-lg')
+		+grid-item(2, $grid-space)
+
+	+media('<mob-md')
+		+grid-item(2, 2px)
+
+.media-list__inner
+	display: block
+	height: 100% // для js equalHeight
+	text-decoration: none
+	color: $text-color
+	padding: 10px
+	background-color: white
+	transition-property: color
+	transition-duration: $animation-speed
+
+	.no-touchevents &:hover
+		color: $text-color-alt
+
+.media-list__img
+	position: relative
+	overflow: hidden
+	margin-bottom: $bottom-space-sm
+
+.media-list__figure
+	position: relative
+	+ratio(1, 1)
+	transition-property: transform, opacity
+	transition-duration: $animation-speed
+
+	img
+		position: absolute
+		left: 50%
+		top: 50%
+		max-width: 100%
+		max-height: none
+		min-width: 0
+		min-height: 0
+		width: calc(100% + 4px)
+		height: calc(100% + 4px)
+		transform: translate(-50%, -50%)
+		text-align: left
+		object-fit: cover
+		backface-visibility: hidden
+
+		.no-objectfit &
+			width: auto
+			height: 100%
+
+//.no-touchevents .media-list__inner:hover .media-list__figure
+	transform: scale(1.1)
+	opacity: 0.85
+
+.media-list__item .video-play
+	background-color: rgba(0, 0, 0, 0.1)
+	bottom: 0
+	left: 0
+	right: 0
+	top: 0
+	position: absolute
+	transition: background-color 0.15s ease 0s
+
+	img
+		position: absolute
+		left: 50%
+		top: 50%
+		+size(50px)
+		transform: translate(-50%, -50%)
+
+.media-list__title
+	padding-bottom: 5px
+
+.popup-gallery
+	display: none
+
+///*=================*/
+/*media block end
+///*=================*/
+
+///*=================*/
+/*survey
+///*=================*/
+.survey
+	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
+	background-color: $text-color-alt
+	color: white
+
+.survey__header
+	margin-bottom: 20px
+	+font(1.4rem, 1.5)
+	color: rgba(255, 255, 255, 0.51)
+	+clear
+
+	& > span
+		display: block
+		overflow: hidden
+
+.survey__all
+	float: right
+	margin-left: 15px
+	color: inherit
+
+.survey__title
+	text-align: center
+	margin-bottom: 30px
+	font-family: $font-alt
+	+font(1.6rem, 1.2)
+	color: white
+
+.survey__answers
+	&, .#{$user-content} &
+		margin-bottom: 30px
+
+		&:last-child
+			margin-bottom: 0
+
+	li
+		margin: 2rem 0
+
+.survey__answers
+	line-height: 1
+	min-height: 188px
+
+	input[type="checkbox"] + label,
+	input[type="radio"] + label,
+	.check-label,
+	.radio-label
+		+font(14px, 18px)
+		color: white
+
+	input[type="checkbox"],
+	input[type="radio"]
+		& + label,
+		& + span i
+			&::before
+				+size(20px)
+				border-width: 0
+				background-color: white
+
+		& + label span,
+		& + span
+			padding: 1px 0 1px 35px
+
+	input[type="checkbox"]
+
+		& + label span,
+		& + span
+			&::before,
+			&::after
+				+size(0, 4px)
+				top: 10px
+
+			&::after
+				left: 22px
+
+		// checkbox checked
+		&:checked
+
+			& + label span,
+			& + span
+				&::before, &::after
+					background-color: $mark-color
+
+				&::before
+					width: 9px
+					margin: -5px 0 0 0
+
+				&::after
+					width: 12px
+					margin: 0 0 0 -8px
+
+		// checkbox disabled
+		&:disabled
+
+			& + label span,
+			& + span
+				&::before, &::after
+					background: lighten($text-color, 30%)
+
+	// radio
+	input[type="radio"]
+
+		& + label span,
+		& + span i
+
+			&::after
+				+size(12px)
+				top: 4px
+				left: 4px
+				background: $mark-color
+
+		// radio disabled
+		&:disabled
+			& + label,
+			& + span
+				color: white
+
+			& + label span,
+			& + span i
+				&::after
+					background: $text-color
+
+.survey__footer
+	display: table
+	width: 100%
+	height: 40px
+
+	a
+		display: table-cell
+		vertical-align: middle
+		text-align: center
+		color: rgba(255, 255, 255, 0.51)
+
+	[class*="btn-default-"]
+		padding: 8px
+
+
+///*=================*/
+/*survey end
+///*=================*/
+
+///*=================*/
+/*faq
+///*=================*/
+/*expander
+.expander
+	margin-bottom: $bottom-space-lg
+
+	+media('<mob-lg')
+		+margin-horizontal(-#{$article-layout-space-horizontal--mob-lg})
+
+	&:last-child
+		margin-bottom: 0
+
+.expander-item
+	border: 1px solid $border-color
+	margin-bottom: $bottom-space
+	padding: 0 $grid-inside-horizontal-space
+
+	+media('<tab-lg')
+		+padding-horizontal($article-layout-space-horizontal--tab-lg)
+
+	+media('<mob-lg')
+		+padding-horizontal($article-layout-space-horizontal--mob-lg)
+		margin-bottom: 0
+		border-width: 0 0 1px
+
+		&:first-child
+			border-top-width: 1px
+
+	&:last-child
+		margin-bottom: 0
+
+	p, ul, ol
+		max-width: none
+
+	.#{$user-content} & ul > li::before
+		top: calc(1em * #{1.25} / 2)
+
+.expander-header
+	position: relative
+	padding: $grid-inside-vertical-space 0
+	transition-property: border-color
+	transition-duration: $animation-speed
+	+clear
+
+	+media('<tab-lg')
+		+padding-vertical($article-layout-space-vertical--tab-lg)
+
+	+media('<mob-lg')
+		+padding-vertical($article-layout-space-vertical--mob-lg)
+
+.expander-header__meta
+	+font(1.2rem, 1.7)
+	color: $text-color-light
+	margin-bottom: $bottom-space
+
+	+media('<desk-lg')
+		display: block
+		float: none
+		width: auto
+		margin-bottom: $bottom-space-sm
+
+	+media('<mob-lg')
+		+font($font-size, $line-height)
+
+	time
+		+font-normal
+
+		+media('<mob-lg')
+			display: inline-block
+			margin-right: 20px
+
+	.name
+		display: inline-block
+		margin-right: 8px
+
+		& ~ time
+			&::before
+				+pseudo($content: '/', $display: inline-block, $pos: relative)
+				margin-right: 8px
+
+.expander-header__text
+	font-family: $font-alt
+	+font(1.6rem, 1.25)
+	font-weight: normal
+	color: $text-color
+	transition-property: color
+	transition-duration: $animation-speed
+	margin-bottom: $bottom-space
+
+.expander-angle
+	+display-inline-block-top
+	position: relative
+	cursor: pointer
+	line-height: 18px
+	+antialiased
+
+	.no-js &
+		display: none
+
+	& > span
+		+display-inline-block-top
+		position: relative
+		font-family: $font-alt
+		text-transform: uppercase
+		+font(0, 0)
+		font-weight: normal
+		white-space: nowrap
+
+		&:before, &:after
+			+display-inline-block-top
+			+font(12px, 18px)
+			position: relative
+			border-bottom: 1px dotted $text-color
+			transition-property: opacity, transform, visibility
+			transition-duration: $animation-speed
+
+		&:before
+			content: 'Показать ответ'
+			transform: translate(0, 0)
+
+			.expander-is-open &
+				opacity: 0
+				visibility: hidden
+				transform: translate(0, -1em)
+
+		&:after
+			content: 'Закрыть ответ'
+			position: absolute
+			+top-left(0)
+			+size(100%)
+			opacity: 0
+			visibility: hidden
+			width: auto
+			transform: translate(0, 1em)
+
+			.expander-is-open &
+				opacity: 1
+				visibility: visible
+				transform: translate(0, 0)
+
+		.no-touchevents &:hover
+			color: $text-color-alt
+
+			&:before, &:after
+				border-bottom-color: $text-color-alt
+
+	& > i
+		display: none
+
+.expander-panel
+	position: relative
+	overflow: hidden
+	border-top: 1px solid $border-color
+	display: none
+	+font($font-size-small, $line-height-small)
+
+	.no-js &
+		display: block
+
+.expander-panel__holder
+	padding: $grid-inside-vertical-space 0
+
+	+media('<tab-lg')
+		+padding-vertical($article-layout-space-vertical--tab-lg)
+
+	+media('<mob-lg')
+		+padding-vertical($article-layout-space-vertical--mob-lg)
+
+/*expander end
+
+/*faq form
+.faq-form-wrap
+	margin-bottom: $bottom-space-lg
+
+	&:last-child
+		margin-bottom: 0
+
+/*faq form end
+///*=================*/
+/*faq end
+///*=================*/
