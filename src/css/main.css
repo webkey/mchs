@@ -11781,7 +11781,7 @@ a:hover .side__text span {
 
 .news-grid__item--large .news-grid__text {
 	height: auto;
-	max-height: 8rem;
+	max-height: 16rem;
 }
 
 @media (max-width: 1599px) {
