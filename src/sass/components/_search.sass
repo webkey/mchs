@@ -115,9 +115,9 @@
 	//padding-right: $search-form-popup-btn-width
 
 input.search-form__input
-	cursor: pointer
+	$search-form-placeholder-color: #d9d9d9
 
-	+search-form-placeholder($color: $text-color-light, $tsp: color, $tsd: $animation-speed)
+	cursor: pointer
 
 	&, &:hover, &:focus
 		display: block
@@ -151,6 +151,25 @@ input.search-form__input
 			margin-bottom: 2rem
 			height: 54px
 			padding: 6px 0 5px
+
+	+search-form-placeholder($color: $search-form-placeholder-color, $tsp: color, $tsd: $animation-speed)
+
+	//form placeholder hide
+	&:focus
+		&::-webkit-input-placeholder
+			color: $search-form-placeholder-color !important
+
+		&:-moz-placeholder
+			color: $search-form-placeholder-color !important
+
+		&::-moz-placeholder
+			color: $search-form-placeholder-color !important
+
+		&:-ms-input-placeholder
+			color: $search-form-placeholder-color !important
+
+	&.placeholder:focus
+		color: $search-form-placeholder-color !important
 
 	// если поле ввода В ФОКУСЕ, или ЗАПОЛНЕННО
 	.input--filled &, &:focus

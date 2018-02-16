@@ -3725,9 +3725,9 @@ function removeAttrFromImg() {
 
 	$.each($elem, function () {
 		var $currentElem = $(this);
-		if($currentElem.attr('width')) {
-			$currentElem.attr('width', '');
-		}
+		// if($currentElem.attr('width')) {
+		// 	$currentElem.attr('width', '');
+		// }
 		if($currentElem.attr('height')) {
 			$currentElem.attr('height', '');
 		}
