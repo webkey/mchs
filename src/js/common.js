@@ -1681,6 +1681,7 @@ function slidersInit() {
 				speed: dur,
 				slidesToShow: 1,
 				slidesToScroll: 1,
+				adaptiveHeight: true,
 				infinite: infinite,
 				dots: false,
 				arrows: false

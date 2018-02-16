@@ -6756,6 +6756,12 @@ li.is-open > .nav-mobile__tab .nav-mobile__angle i {
 	}
 }
 
+@media (max-width: 639px) {
+	* ~ .section {
+		margin-bottom: 2rem;
+	}
+}
+
 script ~ .section, input ~ .section {
 	margin-top: 0;
 }
