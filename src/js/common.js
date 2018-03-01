@@ -1860,6 +1860,17 @@ function lightGalleryInit() {
  * !equal height
  * */
 function equalHeightInit() {
+
+	// test
+	var $test = $('.news-previews__list');
+
+	if ($test.length) {
+		$test.children().matchHeight({
+			byRow: true, property: 'height', target: null, remove: false
+		});
+	}
+	// test test
+
 	var $files = $('.files');
 
 	if ($files.length) {

@@ -1179,7 +1179,19 @@
 			display: block
 			float: left
 
-			&:nth-child(4)
+			&:nth-child(1),
+			&:nth-child(2)
+				display: inline-block
+				float: none
+
+			//&:nth-child(4)
+				clear: left
+
+				+media('<desk-hd')
+					clear: none
+
+			//&:nth-child(4n+1)
+			&:nth-child(4n-1)
 				clear: left
 
 				+media('<desk-hd')
@@ -1232,12 +1244,22 @@
 		.news-previews__inner
 			background: none
 			box-shadow: none
+			height: 100%
+			position: relative
 
 		.news-previews__content
+			position: static
 			+padding-horizontal(0)
+			overflow: visible
 
 			&::before
 				content: none
+
+		.news-previews__meta
+			position: absolute
+			width: 100%
+			left: 0
+			bottom: 0
 
 		.stamp
 			position: absolute
@@ -1245,31 +1267,41 @@
 			.news-previews__inner
 				height: 100%
 
-		.news-grid-slider__slide
-			height: auto !important
+	.news-grid__slider
+		//background: none
 
-			.news-grid__inner
-				background: none
-				box-shadow: none
+	.news-grid-slider__slide
+		height: auto !important
 
-			.news-grid__content
-				+media('<desk-lg')
-					padding-bottom: 80px
+		.news-grid__inner
+			background: none
+			box-shadow: none
 
-				&::before
-					content: none
+		.news-grid__content
+			box-shadow: none
+			min-height: 324px
+			//+padding-horizontal(0)
+			padding-top: 34px
 
-			.news-grid__text
-				+media('<desk-lg')
-					margin-bottom: 10px
+			+media('<desk-lg')
+				padding-bottom: 80px
 
-			.news-grid__meta
-				+media('<desk-lg')
-					position: relative
-					left: auto
-					bottom: auto
-					right: auto
-					width: auto
+			&::before
+				content: none
+
+		.news-grid__text
+			+media('<desk-lg')
+				margin-bottom: 10px
+
+		.news-grid__meta
+			//bottom: 0
+
+			+media('<desk-lg')
+				position: relative
+				left: auto
+				bottom: auto
+				right: auto
+				width: auto
 
 	.stamp1
 		right: 0
@@ -1287,3 +1319,27 @@
 	.events-sum
 		+media('<desk-hd')
 			height: auto
+
+.fl-w
+	position: relative
+	z-index: 1
+
+	+media('<desk-hd')
+		display: flex
+		align-items: stretch
+		justify-content: stretch
+
+.fl-l,
+.fl-r
+	margin-bottom: 20px
+	//border-bottom: 20px solid transparent
+
+.fl-l
+	width: 50%
+	float: left
+	padding-right: 10px
+
+.fl-r
+	width: 50%
+	float: right
+	padding-left: 10px
