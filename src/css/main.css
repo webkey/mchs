@@ -11957,20 +11957,6 @@ a:hover .side__text span {
 	z-index: 5;
 }
 
-.news-previews__img {
-	min-height: 50px;
-	background-position: center top;
-	background-repeat: no-repeat;
-	background-size: cover;
-	padding-top: 100%;
-}
-
-@media (max-width: 479px) {
-	.news-previews__img {
-		padding-top: 60%;
-	}
-}
-
 .news-previews__img img {
 	width: 100%;
 }
@@ -13383,6 +13369,180 @@ a:hover .side__text span {
 }
 
 /*news float end */
+.home-page-new .news-previews {
+	overflow: visible;
+}
+
+.home-page-new .news-previews .news-previews__list {
+	margin-bottom: 0;
+}
+
+.home-page-new .news-previews .news-previews__item {
+	display: block;
+	float: left;
+}
+
+.home-page-new .news-previews .news-previews__item:nth-child(4) {
+	clear: left;
+}
+
+@media (max-width: 1919px) {
+	.home-page-new .news-previews .news-previews__item:nth-child(4) {
+		clear: none;
+	}
+}
+
+@media (max-width: 1919px) {
+	.home-page-new .news-previews .news-previews__item:nth-child(3n-1) {
+		clear: left;
+	}
+}
+
+@media (max-width: 1599px) {
+	.home-page-new .news-previews .news-previews__item:nth-child(3n-1) {
+		clear: none;
+	}
+}
+
+@media (max-width: 1599px) {
+	.home-page-new .news-previews .news-previews__item:nth-child(3n+1) {
+		clear: left;
+	}
+}
+
+@media (max-width: 1365px) {
+	.home-page-new .news-previews .news-previews__item:nth-child(3n+1) {
+		clear: none;
+	}
+}
+
+@media (max-width: 1365px) {
+	.home-page-new .news-previews .news-previews__item:nth-child(2n) {
+		clear: left;
+	}
+}
+
+@media (max-width: 479px) {
+	.home-page-new .news-previews .news-previews__item:nth-child(2n) {
+		clear: none;
+		float: none;
+		display: block;
+	}
+}
+
+.home-page-new .news-previews .news-previews__item, .home-page-new .news-previews .grid-sizer {
+	width: 25.00%;
+}
+
+@media (max-width: 1919px) {
+	.home-page-new .news-previews .news-previews__item, .home-page-new .news-previews .grid-sizer {
+		width: 33.3%;
+	}
+}
+
+@media (max-width: 1365px) {
+	.home-page-new .news-previews .news-previews__item, .home-page-new .news-previews .grid-sizer {
+		width: 50%;
+	}
+}
+
+@media (max-width: 479px) {
+	.home-page-new .news-previews .news-previews__item, .home-page-new .news-previews .grid-sizer {
+		width: 100%;
+	}
+}
+
+.home-page-new .news-previews .news-previews__item--large {
+	width: 50%;
+}
+
+@media (max-width: 1919px) {
+	.home-page-new .news-previews .news-previews__item--large {
+		width: 66.6%;
+	}
+}
+
+@media (max-width: 1365px) {
+	.home-page-new .news-previews .news-previews__item--large {
+		width: 100%;
+	}
+}
+
+.home-page-new .news-previews .news-previews__inner {
+	background: none;
+	box-shadow: none;
+}
+
+.home-page-new .news-previews .news-previews__content {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.home-page-new .news-previews .news-previews__content::before {
+	content: none;
+}
+
+.home-page-new .news-previews .stamp {
+	position: absolute;
+}
+
+.home-page-new .news-previews .stamp .news-previews__inner {
+	height: 100%;
+}
+
+.home-page-new .news-previews .news-grid-slider__slide {
+	height: auto !important;
+}
+
+.home-page-new .news-previews .news-grid-slider__slide .news-grid__inner {
+	background: none;
+	box-shadow: none;
+}
+
+@media (max-width: 1599px) {
+	.home-page-new .news-previews .news-grid-slider__slide .news-grid__content {
+		padding-bottom: 80px;
+	}
+}
+
+.home-page-new .news-previews .news-grid-slider__slide .news-grid__content::before {
+	content: none;
+}
+
+@media (max-width: 1599px) {
+	.home-page-new .news-previews .news-grid-slider__slide .news-grid__text {
+		margin-bottom: 10px;
+	}
+}
+
+@media (max-width: 1599px) {
+	.home-page-new .news-previews .news-grid-slider__slide .news-grid__meta {
+		position: relative;
+		left: auto;
+		bottom: auto;
+		right: auto;
+		width: auto;
+	}
+}
+
+.home-page-new .stamp1 {
+	right: 0;
+}
+
+.home-page-new .stamp2 {
+	right: 25.00%;
+}
+
+.home-page-new .hide-tab-lg {
+	display: block;
+}
+
+@media (max-width: 1919px) {
+	.home-page-new .events-sum {
+		height: auto;
+	}
+}
+
 /*search page */
 .search-page {
 	margin-bottom: 6rem;
@@ -13854,6 +14014,7 @@ input.search-form__input.placeholder:focus {
 /*MENU REGION */
 /*region menu heading */
 .region-menu-heading {
+	display: block;
 	overflow: hidden;
 	height: 70px;
 	padding: 0 30px;

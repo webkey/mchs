@@ -1,0 +1,20 @@
+{
+	"short_name": "МЧС Республики Беларусь",
+	"name": "Министерство по чрезвычайным ситуациям Республики Беларусь",
+	"icons": [
+		{
+			"src": "favicon.ico",
+			"type": "icon/ico",
+			"sizes": "16x16"
+		},
+		{
+			"src": "apple-touch-icon.png",
+			"type": "image/png",
+			"sizes": "256x256"
+		}
+	],
+	"start_url": "index.html",
+	"background_color": "#ffffff",
+	"display": "browser",
+	"theme_color": "#006ab8"
+}

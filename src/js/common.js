@@ -510,10 +510,12 @@ function scrollToSection() {
 	var classIcon = 'nav-menu-opener';
 	var timeout;
 
-	var $tplOpener = $('<div class="' + classIcon + '"><i>&nbsp;</i></div>');
+	var $tplOpener = $('<a href="#" class="' + classIcon + '"><i>&nbsp;</i></a>');
 	$tplOpener.clone().appendTo($wrap);
 
-	$wrap.on('click', '.' + classIcon, function () {
+	$wrap.on('click', '.' + classIcon, function (e) {
+		e.preventDefault();
+
 		var $currentWrap = $(this).parent();
 		var $currentItem = getActiveItem();
 
@@ -1954,10 +1956,16 @@ function equalHeightInit() {
 function masonryInit() {
 	var $newsPreviews = $('.news-previews__list');
 	if ($newsPreviews.length && getCookie('cecutientVersion') !== 'true') {
-		$newsPreviews.masonry({
+		var $gridM = $newsPreviews.masonry({
 			// options
 			itemSelector: '.news-previews__item',
-			percentPosition: true
+			columnWidth: '.grid-sizer',
+			percentPosition: true,
+			// stamp elements
+			stamp: '.stamp'
+		});
+		$gridM.on( 'layoutComplete', function( event, items ) {
+			alert('woo!');
 		});
 	}
 }
@@ -3067,9 +3075,10 @@ function stickyLayout() {
  * */
 function regionMenu() {
 	var timeoutSlide;
-	$('.region-expand-tab-js').on('click', function () {
+	$('.region-expand-tab-js').on('click', function (e) {
+		e.preventDefault();
 		var $this = $(this);
-		var $thisContainer = $(this).closest('.region-expand-container-js');
+		var $thisContainer = $this.closest('.region-expand-container-js');
 		var activeClass = 'is-expanded';
 
 		if($thisContainer.hasClass('disabled-js')) {
@@ -4197,7 +4206,7 @@ $(document).ready(function () {
 	slidersInit();
 	lightGalleryInit();
 	equalHeightInit();
-	masonryInit();
+	// masonryInit();
 	popupsInit();
 	fileInput();
 	breadcrumbsBehavior();

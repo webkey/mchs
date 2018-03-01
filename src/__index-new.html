@@ -1,0 +1,441 @@
+@@include('_head.tpl', {
+	"title": "Главная",
+	"pageClass": "home-page home-page-new"
+})
+<div class="wrapper">
+	<!--HEADER-->
+	@@include('_tpl_header.html', {
+		"mainNavItemActive": "index"
+	})
+	<!--HEADER end-->
+
+	<script>
+		var saveObject = {
+			"2017": {
+				"total": "27",
+				"children": "12"
+			},
+			"2016": {
+				"total": "370",
+				"children": "23"
+			},
+			"2015": {
+				"total": "8",
+				"children": "1"
+			}
+		}
+	</script>
+
+	<!--MAIN-->
+	<div class="main">
+		<div class="layout">
+			<div class="main-holder">
+				<!--CONTENT-->
+				<div class="main-frame">
+					<div class="main-inside">
+						<!--SIDE-->
+						@@include('_side.tpl')
+						<!--SIDE end-->
+						<div class="content-layout">
+							@@include('_breadcrumbs.tpl')
+							<div class="content-wrap">
+								<div class="content user-content">
+									<section class="section" id="main-new-anchor">
+										<div class="grid-row">
+											<div class="grid-col-6 grid-col-hd-4 grid-col-lg-12 grid-layout-right grid-col-md-width-auto">
+												<div class="section__holder">
+													<div class="grid-row">
+														<div class="grid-col-6 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
+															<div class="section__title has-date">
+																<h2>Спасены в</h2>
+																@@include('_years-select.tpl')
+															</div>
+															@@include('_save-info.tpl')
+														</div>
+														<div class="grid-col-6 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
+															<div class="section__title hide-tab-lg">
+																<h2>Суточные сводки</h2>
+															</div>
+															@@include('_events-summary.tpl')
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="grid-col-6 grid-col-hd-8 grid-col-lg-12 grid-col-width-auto">
+												<div class="section__title">
+													<h2>Главные новости,</h2>
+													<div class="news-date datepicker-alt">
+														<a data-toggle class="type-anchor news-date-output-js"><span>&nbsp;</span></a>
+														<input data-input type="text" class="datepicker-input" value="" title="Дата публикации новостей" data-date-format="Y-m-d"/>
+													</div>
+													<span class="v-separator">|</span>
+													<a href="#">Все новости</a>
+												</div>
+												<div class="section__holder">
+													<!--news previews-->
+													<div class="news-previews">
+														<div class="news-previews__list">
+															<!--<div class="grid-sizer"></div>-->
+
+															@@loop('_tpl_news-previews.html', 'includes-json/news-grid-items-main--test-1.json')
+															@@loop('_tpl_news-previews.html', 'includes-json/news-grid-items-main--test-2.json')
+														</div>
+													</div>
+													<!--news previews end-->
+												</div>
+											</div>
+										</div>
+										<!--tags list-->
+										<div class="tags-wrap">
+											<ul class="tags__list">
+												@@loop('_tags-list-item.tpl', 'includes-json/tags-list-02.json')
+											</ul>
+										</div>
+										<!--tags list end-->
+									</section>
+									<section class="section" id="multimedia-anchor">
+										<div class="section__title"><h2>Мультимедиа по ОБЖ</h2></div>
+										<div class="section__holder">
+											@@include('_obzh.tpl')
+										</div>
+									</section>
+									<section class="section" id="map-anchor">
+										<div class="section__title"><h2>Карта неблагоприятных явлений</h2></div>
+										<div class="section__holder">
+											<!--events map-->
+											<div class="events-map">
+												<div class="events-map__main">
+													<div class="events-map__content">
+														<!--<div class="phenomena-map" id="phenomena_map"></div>
+														<script type="text/javascript" src="http://101.belta.by/jscript/script.js" charset="utf-8"></script>
+														<script type="text/javascript" src="http://101.belta.by/jscript/jquery-1.11.0.min.js"></script>
+														<script type="text/javascript" src="http://101.belta.by/jscript/jquery-ui-1.10.4.custom.min.js"></script>
+														<script type="text/javascript">
+															window.onload = start_ajax;
+														</script>-->
+														<div class="events-map__iframe__wrap">
+															<iframe class="events-map__iframe" src="http://101.belta.by/ru" frameborder="0"></iframe>
+														</div>
+													</div>
+												</div>
+												<div class="events-map__side">
+													<div class="events-map__banner">
+														<!--<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+															<img src="img/_temp-map-events-banner.jpg" alt="Текст поясняющий содержание изображения">
+														</a>-->
+														<!--pogoda.by-->
+														<!--Информер распространяется свободно и на безвозмездной основе. Однако, в случае изменения кода информера (в частности, удаления ссылок), POGODA.BY снимает с себя ответственность за конечный результат.-->
+
+													</div>
+												</div>
+											</div>
+											<!--events map end-->
+										</div>
+									</section>
+									<section class="section" id="other-projects-anchor">
+										<div class="section__title">
+											<h2>Другие проекты</h2>
+											<span class="v-separator">|</span>
+											<a href="#" class="all-news-project-js">Все новости</a>
+										</div>
+										<div class="section__holder">
+											<div class="others-news-wrap">
+												<div class="tape-slider">
+													<div class="swiper-container tape-slider-js">
+														<ul class="tape-slider__list swiper-wrapper">
+															@@loop('_tape-slider-item.tpl', 'includes-json/other-news-tabs.json')
+														</ul>
+													</div>
+													<div class="swiper-arrow swiper-button-prev">Назад</div>
+													<div class="swiper-arrow swiper-button-next">Вперед</div>
+												</div>
+
+												<div class="others-news others-news-slider-js">
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-others_01.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-others_02.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-others_03.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-others_04.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-others_05.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-others_06.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-others.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-others-alt.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+													<div class="others-news-slider__item">
+														<div class="news-grid news-grid--boxes">
+															<div class="news-grid__list">
+																@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-others.json')
+															</div>
+														</div>
+														<div class="section__footer">
+															<a href="#" class="btn-default">Все новости проекта</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
+									<section class="section" id="regions-anchor">
+										<div class="section__title"><h2><a href="#">Новости региональных управлений</a></h2></div>
+										<div class="section__holder">
+											<div class="grid-row">
+												<div class="grid-col-6 grid-col-hd-12">
+													@@include('_tpl_news-group-full.html', {
+														"groupTitle": "Минск",
+														"groupLink": "Все новости Минска",
+														"groupSrc": "img/img-news-08.jpg",
+														"groupLabel": "video"
+													})
+												</div>
+												<div class="grid-col-6 grid-col-hd-12">
+													@@include('_tpl_news-group-full.html', {
+														"groupTitle": "Минская область",
+														"groupLink": "Все новости Минской области",
+														"groupSrc": "img/img-news-09.jpg",
+														"groupLabel": "photos"
+													})
+												</div>
+											</div>
+											<div class="grid-row">
+												<div class="grid-col-6 grid-col-hd-12">
+													@@include('_tpl_news-group-full.html', {
+														"groupTitle": "Гомельская область",
+														"groupLink": "Все новости Гомельской области",
+														"groupSrc": "img/img-news-01.jpg",
+														"groupLabel": ""
+													})
+												</div>
+												<div class="grid-col-6 grid-col-hd-12">
+													@@include('_tpl_news-group-full.html', {
+														"groupTitle": "Гродненская область",
+														"groupLink": "Все новости Гродненской области",
+														"groupSrc": "img/img-news-02.jpg",
+														"groupLabel": "video"
+													})
+												</div>
+											</div>
+											<div class="grid-row">
+												<div class="grid-col-6 grid-col-hd-12">
+													@@include('_tpl_news-group-full.html', {
+														"groupTitle": "Брестская область",
+														"groupLink": "Все новости Брестской области",
+														"groupSrc": "img/img-news-03.jpg",
+														"groupLabel": ""
+													})
+												</div>
+												<div class="grid-col-6 grid-col-hd-12">
+													@@include('_tpl_news-group-full.html', {
+														"groupTitle": "Могилёвская область",
+														"groupLink": "Все новости Могилёвской области",
+														"groupSrc": "img/img-news-04.jpg",
+														"groupLabel": ""
+													})
+												</div>
+											</div>
+											<div class="grid-row">
+												<div class="grid-col-6 grid-col-hd-12">
+													@@include('_tpl_news-group-full.html', {
+														"groupTitle": "Витебская область",
+														"groupLink": "Все новости Витебской области",
+														"groupSrc": "img/img-news-05.jpg",
+														"groupLabel": ""
+													})
+												</div>
+												<div class="grid-col-6 grid-col-hd-12">
+													<div class="section__subtitle">
+														<h3>Социальные сети</h3>
+													</div>
+													<div class="section__box">
+														@@include('_social-media.tpl')
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
+									<section class="section" id="branches-anchor">
+										<div class="section__title"><h2><a href="#">Новости департаментов МЧС</a></h2></div>
+										<div class="section__holder">
+											<div class="grid-row">
+												<div class="grid-col-6 grid-col-hd-12">
+													<div class="section__subtitle">
+														<h3><a href="#">Госатомнадзор</a></h3>
+													</div>
+													@@include('_tpl_news-grid-item.html', {
+														"src": "img/img-news-05.jpg",
+														"label": "",
+														"title": "",
+														"text": "Представители регулирующих органов в области ядерной и радиационной безопасности Беларуси и России обсудили дальнейшие шаги двустороннего взаимодействия.",
+														"meta": "01.03.2017, 13:10",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+													})
+												</div>
+												<div class="grid-col-6 grid-col-hd-12">
+													<div class="section__subtitle">
+														<h3><a href="#">Госпромнадзор</a></h3>
+													</div>
+													@@include('_tpl_news-grid-item.html', {
+														"src": "img/img-news-06.jpg",
+														"label": "video",
+														"title": "",
+														"text": "Информационный день с молодыми специалистами в Госатомнадзоре.",
+														"meta": "02.03.2017, 17:10",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+													})
+												</div>
+											</div>
+											<div class="grid-row">
+												<div class="grid-col-6 grid-col-hd-12">
+													<div class="section__subtitle">
+														<h3><a href="#">Госчернобыль</a></h3>
+													</div>
+													@@include('_tpl_news-grid-item.html', {
+														"src": "img/img-news-07.jpg",
+														"label": "",
+														"title": "",
+														"text": "Возобновлено действие лицензии УЗ «Бешенковичская центральная районная больница».",
+														"meta": "05.03.2017, 09:05",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+													})
+												</div>
+												<div class="grid-col-6 grid-col-hd-12">
+													<div class="section__subtitle">
+														<h3><a href="#">Госрезерв</a></h3>
+													</div>
+													<!--@@include('_tpl_news-grid-item.html', {
+														"src": "",
+														"label": "",
+														"title": "",
+														"text": "Регулирующие органы ядерной и радиационной безопасности Беларуси и стран Северной Европы заключили меморандум о сотрудничестве. Регулирующие органы ядерной и радиационной безопасности Беларуси и стран Северной Европы заключили меморандум о сотрудничестве.",
+														"meta": "17.03.2017, 18:18",
+														"hasntImgSuffix": "",
+														"hasImgSuffix": "",
+														"wideClass": "wide"
+													})-->
+													<div class="news-grid__item--wide dep-banner gosdep-banner" title="">
+														<a href="/ministerstvo/struktura/departamenty/gosrezerv/" class="dep-banner__inner">
+															<div class="dep-banner__img">
+																<img src="img/logo-gosatom.png" alt="gosdep" />
+															</div>
+															<div class="dep-banner__content">
+																<div class="dep-banner__title">Департамент по материальным резервам</div>
+																<div class="dep-banner__text">Многолетний опыт в складировании, хранении, учете материальных ценностей.</div>
+															</div>
+														</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</section>
+									<section class="section banners-panel" id="information-anchor">
+										<div class="section__title"><h2>Инфомрация МЧС</h2></div>
+										<div class="section__holder">
+											@@include('_infoblock.tpl')
+										</div>
+									</section>
+									<section class="section show-960">
+										<div class="get-minister">
+											<a href="#">
+												<img src="img/ava.png" alt="Министр" />
+												<span>Задать вопрос Министру</span>
+											</a>
+										</div>
+									</section>
+								</div>
+							</div>
+							<!--ASIDE-->
+							@@include('_aside.tpl')
+							<!--ASIDE end-->
+						</div>
+					</div>
+				</div>
+				<!--CONTENT end-->
+
+				<!--SIDEBAR-->
+				@@include('_sidebar.tpl', {
+					"menu": "true"
+				})
+				<!--SIDEBAR-->
+			</div>
+		</div>
+	</div>
+	<!--MAIN end-->
+
+
+</div>
+@@include('_tpl_foot.html', {"mainNavItemActive": "О министерстве", "subSiteMenu": ""})

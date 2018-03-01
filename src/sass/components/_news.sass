@@ -78,7 +78,7 @@
 	letter-spacing: normal
 	z-index: 5
 
-.news-previews__img
+//.news-previews__img
 	min-height: $news-label-size
 	background-position: center top
 	background-repeat: no-repeat
@@ -89,6 +89,10 @@
 	+media('<mob-md')
 		+ratio(10, 6)
 
+	img
+		width: 100%
+
+.news-previews__img
 	img
 		width: 100%
 
@@ -1158,3 +1162,128 @@
 ///*=================*/
 /*news float end
 ///*=================*/
+
+
+
+
+
+
+.home-page-new
+	.news-previews
+		overflow: visible
+
+		.news-previews__list
+			margin-bottom: 0
+
+		.news-previews__item
+			display: block
+			float: left
+
+			&:nth-child(4)
+				clear: left
+
+				+media('<desk-hd')
+					clear: none
+
+			&:nth-child(3n-1)
+				+media('<desk-hd')
+					clear: left
+
+				+media('<desk-lg')
+					clear: none
+
+			&:nth-child(3n+1)
+				+media('<desk-lg')
+					clear: left
+
+				+media('<desk-ml')
+					clear: none
+
+			&:nth-child(2n)
+				+media('<desk-ml')
+					clear: left
+
+				+media('<mob-md')
+					clear: none
+					float: none
+					display: block
+
+		.news-previews__item, .grid-sizer
+			width: 25.00%
+
+			+media('<desk-hd')
+				width: 33.3%
+
+			+media('<desk-ml')
+				width: 50%
+
+			+media('<mob-md')
+				width: 100%
+
+		.news-previews__item--large
+			width: 50%
+
+			+media('<desk-hd')
+				width: 66.6%
+
+			+media('<desk-ml')
+				width: 100%
+
+		.news-previews__inner
+			background: none
+			box-shadow: none
+
+		.news-previews__content
+			+padding-horizontal(0)
+
+			&::before
+				content: none
+
+		.stamp
+			position: absolute
+
+			.news-previews__inner
+				height: 100%
+
+		.news-grid-slider__slide
+			height: auto !important
+
+			.news-grid__inner
+				background: none
+				box-shadow: none
+
+			.news-grid__content
+				+media('<desk-lg')
+					padding-bottom: 80px
+
+				&::before
+					content: none
+
+			.news-grid__text
+				+media('<desk-lg')
+					margin-bottom: 10px
+
+			.news-grid__meta
+				+media('<desk-lg')
+					position: relative
+					left: auto
+					bottom: auto
+					right: auto
+					width: auto
+
+	.stamp1
+		right: 0
+		//top: 0
+		//height: 100px
+
+	.stamp2
+		right: 25.00%
+		//top: 130px
+		//height: 130px
+
+	.hide-tab-lg
+		display: block
+
+	.events-sum
+		+media('<desk-hd')
+			height: auto

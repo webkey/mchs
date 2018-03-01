@@ -1,9 +1,9 @@
 <aside class="sidebar sidebar-region region-expand-container-js is-expanded@@if(context.disabledJs){ disabled-js}@@if(context.noNews){ hasnt-news}">
 	<div class="sidebar__holder">
-		<div class="region-menu-heading region-expand-tab-js">
+		<a href="#" class="region-menu-heading region-expand-tab-js">
 			<div class="region-menu-btn"><i>&nbsp;</i></div>
 			<div class="region-menu-heading-text">@@headingText</div>
-		</div>
+		</a>
 		<div class="region-expand-panel-js">
 			<div class="region-menu-panel menu-sub-site">
 				@@if(context.hasRegionMenu){

@@ -221,7 +221,7 @@ gulp.task('build', ['cleanDistFolder', 'htmlCompilation', 'copyImgToDist', 'sass
 	gulp.src(['!src/__*.html', '!src/_tpl_*.html', 'src/*.html']) // Переносим HTML в продакшен
 		.pipe(gulp.dest('dist'));
 
-	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess']) // Переносим favicon и др. файлы в продакшин
+	gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess', 'src/manifest.json']) // Переносим favicon и др. файлы в продакшин
 		.pipe(gulp.dest('dist'));
 
 });
