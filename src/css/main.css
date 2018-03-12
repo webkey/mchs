@@ -7535,6 +7535,7 @@ a:hover .side__text span {
 .tags__list, .user-content .tags__list {
 	font-size: 0;
 	margin: 0 -10px;
+	text-align: left;
 }
 
 .tags-wrap .tags__list:last-child, .tags-wrap .user-content .tags__list:last-child {
@@ -7632,6 +7633,7 @@ a:hover .side__text span {
 
 .tags .tags__list {
 	margin-bottom: -1.5rem;
+	text-align: left;
 }
 
 /*tags end*/
