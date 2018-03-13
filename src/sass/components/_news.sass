@@ -1,6 +1,6 @@
 @import ../utils/variables
 @import ../utils/mixins
-@import ../utils/placeholders
+@import ../../libs/include-media/dist/include-media
 
 ///*=================*/
 /*news previews*/
@@ -364,10 +364,10 @@
 		+media('<desk-lg')
 			height: auto
 
-			&::after
-				content: ""
-				display: block
-				+ratio(16, 9)
+		&::after
+			content: ""
+			display: block
+			+ratio(16, 9)
 
 	.news-grid--main &, .news-grid__item--has-img &
 		position: absolute
@@ -554,6 +554,7 @@
 	.news-grid__item--large &
 		height: auto
 		max-height: round-float(1.8rem*1.3*4, 1) // костыль, для больших новостных элементов
+		margin-bottom: 11px
 
 		+media('<desk-lg')
 			max-height: none
@@ -1168,7 +1169,7 @@
 
 
 
-.home-page-new
+.home-page-01
 	.news-previews
 		overflow: visible
 
@@ -1184,34 +1185,25 @@
 				display: inline-block
 				float: none
 
-			//&:nth-child(4)
-				clear: left
-
 				+media('<desk-hd')
-					clear: none
+					display: block
+					float: left
 
-			//&:nth-child(4n+1)
 			&:nth-child(4n-1)
 				clear: left
 
 				+media('<desk-hd')
 					clear: none
 
-			&:nth-child(3n-1)
+			&:nth-child(3n+1)
+
 				+media('<desk-hd')
 					clear: left
 
 				+media('<desk-lg')
 					clear: none
 
-			&:nth-child(3n+1)
-				+media('<desk-lg')
-					clear: left
-
-				+media('<desk-ml')
-					clear: none
-
-			&:nth-child(2n)
+			&:nth-child(2n+1)
 				+media('<desk-ml')
 					clear: left
 
@@ -1224,7 +1216,7 @@
 			width: 25.00%
 
 			+media('<desk-hd')
-				width: 33.3%
+				width: 33.33%
 
 			+media('<desk-ml')
 				width: 50%
@@ -1255,6 +1247,9 @@
 			&::before
 				content: none
 
+		.news-previews__text
+			margin-bottom: 10px
+
 		.news-previews__meta
 			position: absolute
 			width: 100%
@@ -1267,41 +1262,61 @@
 			.news-previews__inner
 				height: 100%
 
-	.news-grid__slider
-		//background: none
+		//hover
+		.no-touchevents & .news-previews__inner:hover
+			.news-previews__text
+				color: $link-color
+
+	//.news-grid__slider
+		background: none
 
 	.news-grid-slider__slide
-		height: auto !important
+		//height: auto !important
 
 		.news-grid__inner
 			background: none
 			box-shadow: none
 
+		.news-grid__img
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+
 		.news-grid__content
 			box-shadow: none
-			min-height: 324px
+			min-height: 297px
 			//+padding-horizontal(0)
-			padding-top: 34px
+			padding-top: 20px
+			padding-bottom: 27px
+			margin-top: $news-item-lg-img-height
 
 			+media('<desk-lg')
-				padding-bottom: 80px
+				padding-top: calc(56.25% + 20px)
+				padding-bottom: 34px
+				min-height: 0
+				height: 100%
+				margin-top: 0
 
 			&::before
 				content: none
 
 		.news-grid__text
+			margin-bottom: 10px
+
 			+media('<desk-lg')
 				margin-bottom: 10px
 
 		.news-grid__meta
-			//bottom: 0
+			bottom: 12px
 
 			+media('<desk-lg')
-				position: relative
-				left: auto
-				bottom: auto
-				right: auto
-				width: auto
+				bottom: 20px
+
+		//hover
+		.no-touchevents & .news-grid__inner:hover
+			.news-grid__content
+				color: $link-color
 
 	.stamp1
 		right: 0
@@ -1320,26 +1335,149 @@
 		+media('<desk-hd')
 			height: auto
 
+	.save
+		display: flex
+		flex-direction: column
+		align-items: stretch
+		justify-content: space-between
+
+		+media('<desk-hd')
+			min-height: 100px
+			height: auto
+
+		&::after
+			background-color: #1782ce
+			opacity: 0.9
+
+	.save__header
+		position: relative
+		left: auto
+		top: auto
+		width: auto
+		height: auto
+		font-weight: normal
+		text-align: left
+		padding: 24px 25px
+		line-height: 1.4
+
+	.save__sep
+		padding: 0 25px
+		position: relative
+		display: block
+		height: 1px
+		z-index: 5
+
+		&::before
+			content: ""
+			display: block
+			width: 50px
+			height: 0
+			border-top: 1px solid #fff
+
+	.save__holder
+		position: relative
+		left: auto
+		top: auto
+		width: auto
+		height: auto
+		padding: 24px 25px
+
+	.save__align
+		position: relative
+		left: auto
+		top: auto
+		transform: none
+		width: auto
+		text-align: left
+
 .fl-w
 	position: relative
 	z-index: 1
+	+margin-horizontal(-10px)
 
 	+media('<desk-hd')
 		display: flex
 		align-items: stretch
-		justify-content: stretch
+		justify-content: space-between
+		flex-direction: row-reverse
+
+	+media('<desk-lg')
+		display: block
+		+clear
 
 .fl-l,
 .fl-r
 	margin-bottom: 20px
+	+padding-horizontal(10px)
 	//border-bottom: 20px solid transparent
 
 .fl-l
 	width: 50%
 	float: left
-	padding-right: 10px
+
+	+media('<desk-hd')
+		width: 66.66%
+
+	+media('<desk-lg')
+		width: auto
+		float: none
 
 .fl-r
 	width: 50%
 	float: right
-	padding-left: 10px
+
+	+media('<desk-hd')
+		width: 33.33%
+
+	+media('<desk-lg')
+		width: auto
+		float: none
+
+	.section__holder
+		+media('<desk-hd')
+			height: 100%
+
+		+media('<desk-lg')
+			height: auto
+
+		& > .grid-row
+			margin-bottom: 0
+
+			+media('<desk-hd')
+				height: 100%
+				display: flex
+				flex-direction: column
+				align-items: stretch
+				justify-content: space-between
+
+			+media('<desk-lg')
+				//display: block
+				flex-direction: row
+				height: auto
+				flex-basis: 50%
+
+			+media('<mob-lg')
+				display: block
+
+			&::after
+				+media('<desk-hd')
+					content: none
+
+				+media('<desk-lg')
+					content: ""
+
+	[class*="grid-col-"]
+		display: flex
+		flex-direction: column
+		margin-bottom: 0
+
+		+media('<mob-lg')
+			display: block
+
+		& > .events-sum, & > .save
+			flex: 1 1
+
+	.section__title
+		h2
+			+media('<mob-lg')
+				margin-bottom: 0

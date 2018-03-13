@@ -1219,6 +1219,7 @@ function tabSwitcher() {
 				$thisAnchor = $this.find($anchor),
 				$thisContainer = $this.find($container),
 				$thisContent = $this.find($content);
+			$this.addClass('js-tabs-initialized');
 			if ($this.find('.' + activeClass).length > 0) {
 				var initialTab = $this.find('.' + activeClass).attr('href').substring(1);
 			}
@@ -1610,6 +1611,7 @@ function slidersInit() {
 
 		$.each($newsGridSlider, function () {
 			var $currentSlider = $(this);
+			var $thumbs = $('.news-grid-thumbs');
 			var dur = 200;
 
 			$currentSlider.on('init', function (event, el) {
@@ -1617,6 +1619,7 @@ function slidersInit() {
 					byRow: true, property: 'height', target: null, remove: false
 				});
 				$(el.$slider).parent().addClass('slider-inited');
+				// $(el.$slider).append('<div class="news-grid-mask"></div>');
 			}).slick({
 				fade: false,
 				speed: dur,
@@ -1625,7 +1628,9 @@ function slidersInit() {
 				lazyLoad: 'ondemand',
 				infinite: true,
 				dots: true,
-				arrows: true
+				arrows: true,
+				appendDots: $thumbs,
+				appendArrows: $thumbs
 			}).on('lazyLoaded', function (event, slick, image, imageSource) {
 				$(image).addClass('loaded');
 				objectFitImages($(image));

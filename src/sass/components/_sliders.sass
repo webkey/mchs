@@ -426,13 +426,14 @@
 
 /*news slider*/
 .news-grid__slider
-	background-color: white
+	position: relative
 
 .news-grid-slider
 	// before slide load
 	white-space: nowrap
 	opacity: 0
 	// before slide load end
+	background-color: white
 	margin-bottom: 0
 	position: relative
 	overflow: hidden // обрезает стрелки при увеличении на ховер
@@ -443,53 +444,70 @@
 		opacity: 1
 		// before slide load end
 
-	&::after
+	&.slick-dotted
+		margin-bottom: 0
+
+.news-grid__slider .news-grid-slider .news-grid-slider__slide
+	// before slide load
+	float: none
+	display: inline-block
+	vertical-align: top
+	// before slide load end
+
+	.slick-initialized &
+		// after slide load
+		float: left
+		display: block
+		// after slide load end
+
+	.news-grid__inner
+		outline: none
+
+.news-grid-thumbs
+	$thumb-size: 60px
+	//============
+	opacity: 0
+	visibility: hidden
+	pointer-events: none
+	position: absolute
+	top: $news-item-lg-img-height
+	margin-top: -$thumb-size
+	left: 0
+	width: 100%
+	padding-top: $thumb-size
+	z-index: 5
+
+	.slider-inited &, .no-js &
+		opacity: 1
+
+	+media('<desk-lg')
+		top: 0
+		padding-top: 56.25%
+		margin-top: 0
+
+	&::before
 		+pseudo()
+		visibility: visible
+		left: 0
+		bottom: 0
 		width: 100%
 		height: 120px
-		max-height: 100%
 		+linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.12) 17%,rgba(0,0,0,0.58) 61%,rgba(0,0,0,0.69) 73%,rgba(0,0,0,0.75) 83%,rgba(0,0,0,0.75) 100%)
-		top: $news-item-lg-img-height
-		transform: translate(0, -100%)
-		pointer-events: none
-		z-index: 4
-
-		+media('<desk-lg')
-			top: auto
-			bottom: 0
-			transform: none
-			height: 60px
-			pointer-events: auto
-			background: $base-color
-
-			//content: none
-
-		//+media('<mob-lg')
-			top: $news-item-lg-img-height-mob-lg
 
 		.no-js &
 			content: none
 
-	&.slick-dotted
-		margin-bottom: 0
-
 	.slick-dots, .#{$user-content} & .slick-dots
 		position: absolute
-		bottom: auto
-		top: $news-item-lg-img-height
+		top: auto
+		bottom: 0
 		margin: -20px 0 20px
-		transform: translate(0, -100%)
+		transform: none
 		z-index: 5
 
-		+media('<desk-lg')
-			top: auto
-			bottom: 0
-			transform: none
-
-		//+media('<mob-lg')
-			top: $news-item-lg-img-height-mob-lg
-
 		li
+			visibility: visible
+			pointer-events: auto
 			+padding-horizontal(7px)
 
 			button
@@ -513,16 +531,20 @@
 				transform: scale(2)
 
 	.slick-arrow
-		top: $news-item-lg-img-height
+		visibility: visible
+		pointer-events: auto
+		top: auto
+		bottom: 0
 		transform: none
-		margin-top: -60px
-		width: 60px
-		height: 60px
+		margin-top: 0
+		width: $thumb-size
+		height: $thumb-size
 		z-index: 6
-		transition-property: transfrom
-		transition-duration: $animation-speed
+		transition:
+			property: transfrom
+			duration: $animation-speed
 
-		+media('<desk-lg')
+		//+media('<desk-lg')
 			top: auto
 			bottom: 0
 			transform: none
@@ -543,19 +565,6 @@
 		&::after
 			border-color: white
 
-.news-grid .news-grid-slider .news-grid-slider__slide
-	// before slide load
-	float: none
-	display: inline-block
-	vertical-align: top
-	// before slide load end
-
-	.slick-initialized &
-		// after slide load
-		float: left
-		display: block
-		// after slide load end
-
 .news-grid-slider__slide
 	height: $news-item-lg-img-height
 	width: 100%
@@ -569,7 +578,7 @@
 	span
 		+hide-text
 
-	.home-page-new &
+	.home-page-01 &
 		height: auto
 
 /*news slider end*/
@@ -755,10 +764,10 @@
 			property: transform
 			duration: $animation-speed
 
-.tape-gallery__list a:hover .tape-gallery__img img
-	//opacity: 0.85
-	//transform: scale(1.2)
-	//transition-duration: 15s
+//.tape-gallery__list a:hover .tape-gallery__img img
+	opacity: 0.85
+	transform: scale(1.2)
+	transition-duration: 15s
 
 .tape-gallery
 	.swiper-button-prev, .swiper-button-next

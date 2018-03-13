@@ -739,7 +739,6 @@
 		& > span, & > i
 			+display-inline-block-middle
 			position: relative
-			margin-right: 6px
 			font-family: inherit
 			font-style: normal
 			font-weight: inherit
@@ -754,6 +753,7 @@
 
 		& > span
 			border-bottom: 1px dotted $text-color-alt
+			margin-right: 6px
 
 		.no-touchevents &:hover
 
@@ -774,8 +774,9 @@
 .years-drop
 	position: absolute
 	top: 100%
-	left: 0
-	width: calc(100% + 4px*2)
+	left: -10px
+	width: calc(100% + 20px)
+	+padding-horizontal(10px)
 	text-align: center
 	background: white
 	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15)
@@ -1022,6 +1023,9 @@
 		width: auto
 		padding-bottom: 0
 
+.save__sep
+	display: none
+
 .save__holder
 	position: absolute
 	left: 0
@@ -1098,6 +1102,10 @@
 	height: $news-item-height // Хардкод. Высота должна равняться блоку новостей с картинкой
 	overflow: hidden
 	background-color: white
+	opacity: 0
+
+	&.js-tabs-initialized, .no-js &
+		opacity: 1
 
 	+media('<desk-hd')
 		height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
@@ -1184,18 +1192,30 @@
 .events-sum__panels
 	height: calc(100% - #{$events-summary-nav-height}) // высота блока минус высота переключателей табов
 
+	white-space: nowrap
+	overflow: hidden
+
+	.js-tabs-initialized &, .no-js &
+		white-space: normal
+
 	.no-js &
 		height: auto
 
 .events-sum__panel
 	$events-sum-bottom: 50px // нижний отступ больше, чем верхний
 
-	display: block
+	display: inline-block
+	vertical-align: top
 	position: relative
+	top: 0
 	background-color: white
 	padding: 10px $grid-inside-horizontal-space $events-sum-bottom
 	height: 100%
 	overflow: hidden
+	white-space: normal
+
+	.js-tabs-initialized &, .no-js &
+		display: block
 
 	&::after
 		+pseudo()
@@ -1247,6 +1267,18 @@
 	z-index: 10
 	+truncate(100%)
 	line-height: 1
+
+.events-warn
+	width: 50px
+	height: 50px
+	margin-bottom: 10px
+	border-radius: 50%
+	font-weight: bold
+	font-size: 40px
+	line-height: 50px
+	color: #fff
+	text-align: center
+	background-color: #ff562f
 
 ///*=================*/
 /*events summary end*/
