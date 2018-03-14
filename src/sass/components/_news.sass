@@ -1180,6 +1180,10 @@
 			display: block
 			float: left
 
+			+media('<mob-md')
+				float: none
+				display: block
+
 			&:nth-child(1),
 			&:nth-child(2)
 				display: inline-block
@@ -1188,6 +1192,9 @@
 				+media('<desk-hd')
 					display: block
 					float: left
+
+				+media('<mob-md')
+					float: none
 
 			&:nth-child(4n-1)
 				clear: left
@@ -1209,8 +1216,6 @@
 
 				+media('<mob-md')
 					clear: none
-					float: none
-					display: block
 
 		.news-previews__item, .grid-sizer
 			width: 25.00%
@@ -1223,6 +1228,7 @@
 
 			+media('<mob-md')
 				width: 100%
+				margin-bottom: 25px
 
 		.news-previews__item--large
 			width: 50%
@@ -1239,6 +1245,25 @@
 			height: 100%
 			position: relative
 
+		.news-previews__img
+			position: relative
+			overflow: hidden
+
+			&::after
+				content: ""
+				display: block
+				position: absolute
+				left: 0
+				bottom: 0
+				width: 100%
+				height: 4px
+				background-color: $mark-color-alt
+				transform: translate(0, 100%)
+				will-change: transform
+				transition:
+					property: transform
+					duration: $animation-speed
+
 		.news-previews__content
 			position: static
 			+padding-horizontal(0)
@@ -1249,6 +1274,9 @@
 
 		.news-previews__text
 			margin-bottom: 10px
+			transition:
+				property: color
+				duration: $animation-speed
 
 		.news-previews__meta
 			position: absolute
@@ -1264,8 +1292,15 @@
 
 		//hover
 		.no-touchevents & .news-previews__inner:hover
+			.news-previews__img
+				&::after
+					transform: translate(0, 0)
+
 			.news-previews__text
-				color: $link-color
+				color: $mark-color-alt
+
+			.news-previews__meta
+				color: $text-color-light
 
 	//.news-grid__slider
 		background: none
@@ -1316,7 +1351,10 @@
 		//hover
 		.no-touchevents & .news-grid__inner:hover
 			.news-grid__content
-				color: $link-color
+				color: $mark-color-alt
+
+			.news-grid__meta
+				color: $text-color-light
 
 	.stamp1
 		right: 0
@@ -1335,6 +1373,15 @@
 		+media('<desk-hd')
 			height: auto
 
+	.events-sum__panel
+		height: calc(#{$news-item-lg-img-height} - #{$events-summary-nav-height})
+
+		+media('<desk-hd')
+			height: 200px
+
+		+media('<mob-lg')
+			height: auto
+
 	.save
 		display: flex
 		flex-direction: column
@@ -1342,25 +1389,40 @@
 		justify-content: space-between
 
 		+media('<desk-hd')
-			min-height: 100px
+			min-height: 260px
 			height: auto
+
+		+media('<mob-lg')
+			min-height: 0
+			padding: 0
 
 		&::after
 			background-color: #1782ce
 			opacity: 0.9
 
 	.save__header
+		padding: 24px 25px
+		font-weight: normal
+		line-height: 1.4
+
+		+media('<mob-lg')
+			padding: 14px 15px 5px
+
+	//.save__header
 		position: relative
 		left: auto
 		top: auto
 		width: auto
 		height: auto
-		font-weight: normal
-		text-align: left
 		padding: 24px 25px
+		text-align: left
+		font-weight: normal
 		line-height: 1.4
 
 	.save__sep
+		display: none
+
+	//.save__sep
 		padding: 0 25px
 		position: relative
 		display: block
@@ -1375,6 +1437,12 @@
 			border-top: 1px solid #fff
 
 	.save__holder
+		padding: 24px 25px
+
+		+media('<mob-lg')
+			padding: 0 15px 5px
+
+	//.save__holder
 		position: relative
 		left: auto
 		top: auto
@@ -1382,7 +1450,7 @@
 		height: auto
 		padding: 24px 25px
 
-	.save__align
+	//.save__align
 		position: relative
 		left: auto
 		top: auto
@@ -1465,6 +1533,12 @@
 
 				+media('<desk-lg')
 					content: ""
+
+
+			& > [class*="grid-col-"]
+				&:first-child
+					+media('<mob-lg')
+						margin-bottom: 20px
 
 	[class*="grid-col-"]
 		display: flex

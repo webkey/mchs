@@ -1269,16 +1269,29 @@
 	line-height: 1
 
 .events-warn
-	width: 50px
-	height: 50px
-	margin-bottom: 10px
-	border-radius: 50%
-	font-weight: bold
-	font-size: 40px
-	line-height: 50px
-	color: #fff
-	text-align: center
-	background-color: #ff562f
+	$size-warn: 76px
+	$size-warn--mob: 40px
+	//============
+	position: absolute
+	left: 50%
+	top: 50%
+	+size($size-warn)
+	margin: -#{round($size-warn*0.8)} 0 0 -#{round($size-warn/2)}
+	color: #ff562f
+	opacity: 0.25
+	z-index: -1
+
+	+media('<mob-lg')
+		+size($size-warn--mob)
+		margin: -$size-warn--mob 0 0 -#{round($size-warn--mob/2)}
+
+	svg
+		display: inline-block
+		vertical-align: top
+		+size(100%)
+
+	path
+		fill: currentColor
 
 ///*=================*/
 /*events summary end*/
