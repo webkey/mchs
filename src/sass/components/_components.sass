@@ -969,10 +969,12 @@
 /*save info*/
 ///*=================*/
 .save
-	display: block
 	position: relative
-	//margin-bottom: $grid-space
-	height: $news-item-height // Хардкод. Высота должна быть равно высоте элемета новостей
+	display: flex
+	flex-direction: column
+	align-items: stretch
+	justify-content: space-between
+	height: $news-item-lg-img-height // Хардкод. Высота должна быть равно высоте картинки в новостном слайдере
 	background-repeat: no-repeat
 	background-position: center center
 	background-size: cover
@@ -980,18 +982,16 @@
 	overflow: hidden
 
 	+media('<desk-hd')
-		height: $news-item-lg-img-height - $events-summary-nav-height - $grid-space // Хардкод. Высота должна равняться высоте изображения (или слайдера) большой новости минус высота переключателей табов блока ниже
+		//height: $news-item-lg-img-height - $events-summary-nav-height - $grid-space // Хардкод. Высота должна равняться высоте изображения (или слайдера) большой новости минус высота переключателей табов блока ниже
+		min-height: 260px
+		height: auto
 
-	+media('<desk-lg')
-		height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
+	//+media('<desk-lg')
+		//height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
 
 	+media('<mob-lg')
-		height: auto
-		+padding-vertical(10px)
-
-	//&::before
-		+pseudo($pos: relative)
-		+ratio(1, 1)
+		min-height: 0
+		padding: 0
 
 	&::after
 		+pseudo()
@@ -1005,7 +1005,7 @@
 .save__header
 	font-size: 14px
 	text-align: center
-	padding: 1rem
+	padding: 24px 25px
 	font-weight: 700
 	color: #fff
 	line-height: 1.1
@@ -1021,7 +1021,7 @@
 		top: auto
 		left: auto
 		width: auto
-		padding-bottom: 0
+		padding: 14px 15px 5px
 
 .save__sep
 	display: none
@@ -1033,13 +1033,14 @@
 	width: 100%
 	height: calc(100% - 4rem)
 	z-index: 1
-	+padding-horizontal($grid-inside-horizontal-space)
+	padding: 24px 25px
 
 	+media('<mob-lg')
 		position: relative
 		left: auto
 		top: auto
 		height: auto
+		padding: 0 15px 5px
 
 .save__box
 	height: 50%
@@ -1099,7 +1100,7 @@
 .events-sum
 	position: relative
 	margin-bottom: $bottom-space
-	height: $news-item-height // Хардкод. Высота должна равняться блоку новостей с картинкой
+	height: $news-item-lg-img-height // Хардкод. Высота должна равняться картинке в новостном слайдере
 	overflow: hidden
 	background-color: white
 	opacity: 0
@@ -1108,7 +1109,7 @@
 		opacity: 1
 
 	+media('<desk-hd')
-		height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
+		height: auto
 
 	.no-js &
 		height: auto
@@ -1210,7 +1211,7 @@
 	top: 0
 	background-color: white
 	padding: 10px $grid-inside-horizontal-space $events-sum-bottom
-	height: 100%
+	height: calc(#{$news-item-lg-img-height} - #{$events-summary-nav-height})
 	overflow: hidden
 	white-space: normal
 
@@ -1225,6 +1226,12 @@
 		height: $events-sum-bottom
 		+linear-gradient(to top, white 0, white 80%, rgba(255, 255, 255, 0) 100%)
 		z-index: 5
+
+	+media('<desk-hd')
+		height: 200px
+
+	+media('<mob-lg')
+		height: auto
 
 .events-sum__date
 	display: block
@@ -1279,6 +1286,8 @@
 	margin: -#{round($size-warn*0.8)} 0 0 -#{round($size-warn/2)}
 	color: #ff562f
 	opacity: 0.25
+	border-radius: 50%
+	overflow: hidden
 	z-index: -1
 
 	+media('<mob-lg')

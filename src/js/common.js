@@ -2191,34 +2191,6 @@ function datePickerInit() {
 	// 2) device.js (libs);
 	// 3) resizeByWidth (resize only width);
 
-	// add css style
-	// .before-extra-popup-open{
-	// 	width: 100%!important;
-	// 	height: 100%!important;
-	// 	max-width: 100%!important;
-	// 	max-height: 100%!important;
-	// 	margin: 0!important;
-	// 	padding: 0!important;
-	// 	overflow: hidden!important;
-	// }
-
-	// .before-extra-popup-open .wrapper{ z-index: 99; } // z-index of header must be greater than footer
-	//
-	// if nav need to hide
-	// @media only screen and (min-width: [example: 1280px]){
-	// .nav{
-	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 	}
-	// .nav-list > li{
-	// 		-webkit-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		-ms-transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		transform: translate(0, 0) matrix(1, 0, 0, 1, 0, 0) !important;
-	// 		opacity: 1 !important;
-	// 		visibility: visible !important;
-	// 	}
-	// }
 	var ExtraPopup = function (settings) {
 		var options = $.extend({
 			mainContainer: 'html', // container wrapping all elements
@@ -2244,6 +2216,7 @@ function datePickerInit() {
 			closeOnResize: true,
 			cssScrollBlocked: false, // add class to body for blocked scroll
 			closeEsc: true, // close popup on click Esc
+			closeOutside: true, // close popup on click outside
 			stopClose: null // элементы по клику на которые, НЕ закрывается попап
 		}, settings || {});
 
@@ -2277,6 +2250,7 @@ function datePickerInit() {
 		self.closeOnResize = options.closeOnResize;
 		self.cssScrollBlocked = options.cssScrollBlocked;
 		self.closeEsc = options.closeEsc;
+		self.closeOutside = options.closeOutside;
 
 		self.desktop = device.desktop();
 
@@ -2377,6 +2351,10 @@ function datePickerInit() {
 	// click outside menu
 	ExtraPopup.prototype.outsideClick = function () {
 		var self = this;
+
+		if(!self.closeOutside){
+			return;
+		}
 
 		$(document).on('click', function () {
 			if (self.navIsOpened) {
@@ -2829,7 +2807,9 @@ function popupsInit() {
 			animationType: 'surface',
 			animationSpeed: 300,
 			overlayAlpha: 0.35,
-			cssScrollBlocked: true
+			cssScrollBlocked: true,
+			closeEsc: false,
+			closeOutside: false
 		});
 
 	}

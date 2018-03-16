@@ -5,7 +5,7 @@
 	@@if(!context.slider){
 		<a href="#?" class="news-previews__inner">
 			@@if (context.label) { <div class="news__label news__label_@@label">@@label</div>}
-			@@if (context.src) { <div class="news-previews__img"><img src="@@src" alt="@@text" /></div>}
+			@@if (context.src) { <div class="news-previews__img" style="background-image: url(@@src);"><img src="@@src" alt="@@text" /><div class="line">&nbsp;</div></div>}
 			<div class="news-previews__content">
 				<div class="news-previews__text">@@text</div>
 				<div class="news-previews__meta">

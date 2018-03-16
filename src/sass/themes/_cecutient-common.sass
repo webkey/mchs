@@ -664,13 +664,22 @@
 
 	// save info
 	.save
+		display: block !important
+		left: auto
+		top: auto
 		height: $news-item-height
-		margin-bottom: $bottom-space-md
+		margin-bottom: 0
 		border: solid
-		border-width: #{$border-width} 1px
+		border-width: #{$border-width}
 
 		&::after
 			display: none
+
+	.save__header
+		position: relative
+		left: auto
+		top: auto
+		padding: 10px
 
 	.save__holder
 		+clear-spacing
@@ -686,7 +695,7 @@
 		height: auto
 		transform: none
 
-	.save__header
+	//.save__header
 		display: none
 
 	.save__box
@@ -704,9 +713,8 @@
 			width: 50%
 
 	.save__align
-		padding: 10px
-		border: solid
-		border-width: 0 1px
+		padding: 0 10px 10px
+		border: none
 
 		& > strong, & > span
 			+display-inline-block-middle
@@ -716,7 +724,19 @@
 	// events summary
 	.events-sum, .section__title.hide-tab-lg
 		height: $news-item-height
-		display: none
+		//display: none
+
+	.events-sum__date
+		color: #000
+
+	.events-warn
+		color: #000
+		position: relative
+		left: auto
+		top: auto
+		margin: 0 0 10px
+		z-index: auto
+		opacity: 1
 
 	.events-sum__nav
 		display: none
@@ -1676,3 +1696,8 @@
 	// to-mchs
 	.to-mchs a
 		font-size: 14px !important
+
+	.fl-w, .fl-r, .fl-l
+		display: block !important
+		float: none !important
+		width: 100% !important

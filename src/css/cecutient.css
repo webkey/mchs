@@ -783,14 +783,24 @@
 }
 
 .cecutient-version .save {
+	display: block !important;
+	left: auto;
+	top: auto;
 	height: auto;
-	margin-bottom: 4.5rem;
+	margin-bottom: 0;
 	border: solid;
-	border-width: 2px 1px;
+	border-width: 2px;
 }
 
 .cecutient-version .save::after {
 	display: none;
+}
+
+.cecutient-version .save__header {
+	position: relative;
+	left: auto;
+	top: auto;
+	padding: 10px;
 }
 
 .cecutient-version .save__holder {
@@ -812,10 +822,6 @@
 	        transform: none;
 }
 
-.cecutient-version .save__header {
-	display: none;
-}
-
 .cecutient-version .save__box {
 	height: auto;
 	display: inline-block;
@@ -835,9 +841,8 @@
 }
 
 .cecutient-version .save__align {
-	padding: 10px;
-	border: solid;
-	border-width: 0 1px;
+	padding: 0 10px 10px;
+	border: none;
 }
 
 .cecutient-version .save__align > strong, .cecutient-version .save__align > span {
@@ -849,7 +854,20 @@
 
 .cecutient-version .events-sum, .cecutient-version .section__title.hide-tab-lg {
 	height: auto;
-	display: none;
+}
+
+.cecutient-version .events-sum__date {
+	color: #000;
+}
+
+.cecutient-version .events-warn {
+	color: #000;
+	position: relative;
+	left: auto;
+	top: auto;
+	margin: 0 0 10px;
+	z-index: auto;
+	opacity: 1;
 }
 
 .cecutient-version .events-sum__nav {
@@ -1985,6 +2003,12 @@
 
 .cecutient-version .to-mchs a {
 	font-size: 14px !important;
+}
+
+.cecutient-version .fl-w, .cecutient-version .fl-r, .cecutient-version .fl-l {
+	display: block !important;
+	float: none !important;
+	width: 100% !important;
 }
 
 /*=========== cecutient common style end ===========*/
@@ -3709,6 +3733,10 @@
 
 .color-scheme-bw .nav-small-tabs a:first-child {
 	background-color: black;
+}
+
+.color-scheme-bw .save__header {
+	color: #000 !important;
 }
 
 /*=========== BLACK AND WHITE scheme end ===========*/

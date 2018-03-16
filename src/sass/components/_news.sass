@@ -6,36 +6,92 @@
 /*news previews*/
 ///*=================*/
 .news-previews
-	overflow: hidden
+	position: relative
 
 .news-previews__list
 	+grid-parent($grid-space)
 	+clear-spacing
-	margin-bottom: $bottom-space
+	margin-bottom: 0
+
+	+media('<mob-md')
+		+grid-parent(25px)
 
 .news-previews__item
 	+font($font-size-small, $line-height-small)
 	letter-spacing: normal
 
 	.news-previews &
-		+grid-item(4, $grid-space, $grid-space)
+		+grid-item-float(4, $grid-space)
+		display: block
+		vertical-align: top
+		float: left
 
-		+media('<desk-lg')
-			+grid-item(2, $grid-space)
+		+media('<desk-hd')
+			+grid-item-responsive(3, $grid-space)
 
-		//+media('<tab-lg')
-			+grid-item(2, $grid-space)
+		+media('<desk-ml')
+			+grid-item-responsive(2, $grid-space)
 
 		+media('<mob-md')
-			+grid-item(1, $grid-space)
+			+grid-item-responsive(1, 25px)
+			float: none
+			display: block
+
+		&:nth-child(1),
+		&:nth-child(2)
+			display: inline-block
+			float: none
+
+			+media('<desk-hd')
+				display: block
+				float: left
+
+			+media('<mob-md')
+				float: none
+
+			.news-previews__text
+				+media('>=desk-hd')
+					height: 80px
+
+		&:nth-child(4n-1)
+			clear: left
+
+			+media('<desk-hd')
+				clear: none
+
+		&:nth-child(3n+1)
+			+media('<desk-hd')
+				clear: left
+
+			+media('<desk-ml')
+				clear: none
+
+		&:nth-child(2n+1)
+			+media('<desk-ml')
+				clear: left
+
+			+media('<mob-md')
+				clear: none
+
+		&:nth-last-child(-n+2)
+			+media('<desk-hd', '>=desk-ml')
+				display: none
+
+	.news-previews &.news-previews__item--large
+		width: 50%
+
+		+media('<desk-hd')
+			width: 66.6%
+
+		+media('<desk-ml')
+			width: 100%
 
 .news-previews__inner
 	display: block
 	position: relative
 	text-decoration: none
 	color: $text-color
-	background-color: #fff
-	box-shadow: inset 0 -3px 0 $mark-color-alt
+	height: 100%
 
 .news__label
 	position: absolute
@@ -78,31 +134,58 @@
 	letter-spacing: normal
 	z-index: 5
 
-//.news-previews__img
-	min-height: $news-label-size
-	background-position: center top
-	background-repeat: no-repeat
-	-webkit-background-size: cover
-	background-size: cover
-	+ratio(1, 1)
-
-	+media('<mob-md')
-		+ratio(10, 6)
-
-	img
-		width: 100%
-
 .news-previews__img
-	img
-		width: 100%
-
-.news-previews__content
 	position: relative
 	overflow: hidden
-	padding: $grid-inside-vertical-space $grid-inside-horizontal-space
 
-	+media('<tab-lg')
-		+padding-horizontal(round($grid-inside-horizontal-space*0.7))
+	&::before
+		content: ""
+		position: absolute
+		left: -20px
+		top: -20px
+		width: calc(100% + 40px)
+		height: calc(100% + 40px)
+		background-repeat: no-repeat
+		background-position: center
+		background-size: cover
+		background-image: inherit
+		filter: blur(8px)
+
+	&::after
+		content: ""
+		display: block
+		+ratio(16, 9)
+
+	.line
+		display: block
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		height: 4px
+		text-indent: -9999px
+		overflow: hidden
+		background-color: $mark-color-alt
+		transform: translate(0, 100%)
+		will-change: transform
+		transition:
+			property: transform
+			duration: $animation-speed
+
+	img
+		position: absolute
+		display: block
+		margin: 0
+		left: -#{round($news-item-img-increase/2)}
+		top: -#{round($news-item-img-increase/2)}
+		width: calc(100% + #{$news-item-img-increase})
+		height: calc(100% + #{$news-item-img-increase})
+		max-width: none
+		+object-fit(contain)
+
+.news-previews__content
+	position: static
+	padding: $grid-inside-vertical-space 0
 
 	.news__label + &
 		padding-top: $grid-inside-vertical-space + $news-label-size
@@ -111,35 +194,24 @@
 		z-index: 2
 		position: relative
 
-	&::before
-		content: ''
-		position: absolute
-		left: 0
-		top: 0
-		height: 100%
-		width: 100%
-		background: $mark-color-alt
-		transform: translate(0, 100%)
-		+news-transition
-
-	.no-touchevents a.news-previews__inner:hover &
-		&::before
-			transform: translate(0, 0)
-			transition-duration: $animation-speed
-
 .news-previews__title
 	color: inherit
 	transition-property: color
 	transition-duration: $animation-speed
 
 .news-previews__text
-	margin-bottom: $grid-inside-vertical-space
+	margin-bottom: 10px
 	color: inherit
-	transition-property: color
-	transition-duration: $animation-speed
+	transition:
+		property: color
+		duration: $animation-speed
 
 .news-previews__meta
 	display: block
+	position: absolute
+	width: 100%
+	left: 0
+	bottom: 0
 	+font(1.2rem, 1.4)
 	color: $text-color-light
 	+news-transition
@@ -149,25 +221,35 @@
 		font-style: normal
 
 	.visit-view
+		display: none
 		float: right
-
-		path
-			transition:
-				property: fill
-				duration: $animation-speed
 
 		& > em
 			transition: none
 
-	.no-touchevents a.news-previews__inner:hover &
-		color: $text-color
+	path
+		transition:
+			property: fill
+			duration: $animation-speed
+
+.news-previews__footer
+	position: relative
+
+//hover
+.no-touchevents .news-previews__inner:hover
+	.news-previews__img
+		.line
+			transform: translate(0, 0)
+
+	.news-previews__text
+		color: $mark-color-alt
+
+	.news-previews__meta
+		color: $text-color-light
 
 		path
 			fill: $text-color
 			transition-duration: $animation-speed
-
-.news-previews__footer
-	position: relative
 
 ///*=================*/
 /*news previews end*/
@@ -176,9 +258,6 @@
 ///*=================*/
 /*news grid*/
 ///*=================*/
-//.news-grid
-	overflow: hidden
-
 .news-grid--main
 	//max-width: 850px
 	max-width: 1160px
@@ -383,62 +462,6 @@
 		right: round($grid-space/2)
 		width: auto
 
-.news-grid-slider
-	// !!! с лейзилоад плохо работает подстановка размытого дубликата изображения
-	// !!! мигает на копиях слайдов, которые используются для бесконечного листания
-	.news-grid__img
-		//background-color: #ddd
-		background-color: #fff
-
-		// для добавления размытого дубликата изображения
-		background-repeat: no-repeat // запрещаем повторение изображения
-		background-position: 250% 250% // выносим за границы видимой области
-		background-size: auto // обнуляем сайзинг фонового изображение
-
-		// создаем подложку с размытым дубликатом изображения
-		&::before
-			content: ""
-			position: absolute
-			left: -5%
-			top: -5%
-			width: 110%
-			height: 110%
-			background-repeat: no-repeat
-			background-position: center
-			background-size: cover
-			background-image: inherit
-			filter: blur(8px)
-		// если в слайдере включен lazyload, то до загрузки изображения нужно скрыть фон
-		//opacity: 0
-
-		img
-			// если есть прелоадер
-			//position: absolute
-			//display: block
-			//left: 50%
-			//top: 50%
-			//width: 48px
-			//height: 48px
-			//margin: -24px 0 0 -24px
-
-			//&.loaded
-			//===============
-			position: absolute
-			display: block
-			margin: 0
-			left: -#{round($news-item-img-increase/2)}
-			top: -#{round($news-item-img-increase/2)}
-			width: calc(100% + #{$news-item-img-increase})
-			height: calc(100% + #{$news-item-img-increase})
-			max-width: none
-			+object-fit(contain)
-
-// если в слайдере включен lazyload, то после загрузки изображения показываем фон
-//.loaded-img
-	.news-grid__img
-		&::before
-			opacity: 1
-
 .news-grid__content
 	position: relative
 	overflow: hidden
@@ -506,16 +529,6 @@
 			//height: calc(100% - #{$news-item-lg-img-height})
 			padding-top: calc(56.25% + #{$grid-inside-vertical-space})
 			padding-bottom: 100px
-
-			.news-grid__meta
-				bottom: 70px
-
-	//.news-grid__text
-		max-height: none
-
-		//+media('<mob-lg')
-			padding-top: $grid-inside-vertical-space + $news-item-lg-img-height-mob-lg
-			//height: calc(100% - #{$news-item-lg-img-height-mob-lg})
 
 	.news-simple &
 		padding: 0
@@ -699,6 +712,8 @@
 
 		+media('<mob-lg')
 			height: auto
+			padding-top: 30px
+			padding-bottom: 30px
 
 	.news-grid__text
 		overflow: hidden
@@ -1163,300 +1178,6 @@
 ///*=================*/
 /*news float end
 ///*=================*/
-
-
-
-
-
-
-.home-page-01
-	.news-previews
-		overflow: visible
-
-		.news-previews__list
-			margin-bottom: 0
-
-		.news-previews__item
-			display: block
-			float: left
-
-			+media('<mob-md')
-				float: none
-				display: block
-
-			&:nth-child(1),
-			&:nth-child(2)
-				display: inline-block
-				float: none
-
-				+media('<desk-hd')
-					display: block
-					float: left
-
-				+media('<mob-md')
-					float: none
-
-			&:nth-child(4n-1)
-				clear: left
-
-				+media('<desk-hd')
-					clear: none
-
-			&:nth-child(3n+1)
-
-				+media('<desk-hd')
-					clear: left
-
-				+media('<desk-lg')
-					clear: none
-
-			&:nth-child(2n+1)
-				+media('<desk-ml')
-					clear: left
-
-				+media('<mob-md')
-					clear: none
-
-		.news-previews__item, .grid-sizer
-			width: 25.00%
-
-			+media('<desk-hd')
-				width: 33.33%
-
-			+media('<desk-ml')
-				width: 50%
-
-			+media('<mob-md')
-				width: 100%
-				margin-bottom: 25px
-
-		.news-previews__item--large
-			width: 50%
-
-			+media('<desk-hd')
-				width: 66.6%
-
-			+media('<desk-ml')
-				width: 100%
-
-		.news-previews__inner
-			background: none
-			box-shadow: none
-			height: 100%
-			position: relative
-
-		.news-previews__img
-			position: relative
-			overflow: hidden
-
-			&::after
-				content: ""
-				display: block
-				position: absolute
-				left: 0
-				bottom: 0
-				width: 100%
-				height: 4px
-				background-color: $mark-color-alt
-				transform: translate(0, 100%)
-				will-change: transform
-				transition:
-					property: transform
-					duration: $animation-speed
-
-		.news-previews__content
-			position: static
-			+padding-horizontal(0)
-			overflow: visible
-
-			&::before
-				content: none
-
-		.news-previews__text
-			margin-bottom: 10px
-			transition:
-				property: color
-				duration: $animation-speed
-
-		.news-previews__meta
-			position: absolute
-			width: 100%
-			left: 0
-			bottom: 0
-
-		.stamp
-			position: absolute
-
-			.news-previews__inner
-				height: 100%
-
-		//hover
-		.no-touchevents & .news-previews__inner:hover
-			.news-previews__img
-				&::after
-					transform: translate(0, 0)
-
-			.news-previews__text
-				color: $mark-color-alt
-
-			.news-previews__meta
-				color: $text-color-light
-
-	//.news-grid__slider
-		background: none
-
-	.news-grid-slider__slide
-		//height: auto !important
-
-		.news-grid__inner
-			background: none
-			box-shadow: none
-
-		.news-grid__img
-			position: absolute
-			left: 0
-			top: 0
-			width: 100%
-
-		.news-grid__content
-			box-shadow: none
-			min-height: 297px
-			//+padding-horizontal(0)
-			padding-top: 20px
-			padding-bottom: 27px
-			margin-top: $news-item-lg-img-height
-
-			+media('<desk-lg')
-				padding-top: calc(56.25% + 20px)
-				padding-bottom: 34px
-				min-height: 0
-				height: 100%
-				margin-top: 0
-
-			&::before
-				content: none
-
-		.news-grid__text
-			margin-bottom: 10px
-
-			+media('<desk-lg')
-				margin-bottom: 10px
-
-		.news-grid__meta
-			bottom: 12px
-
-			+media('<desk-lg')
-				bottom: 20px
-
-		//hover
-		.no-touchevents & .news-grid__inner:hover
-			.news-grid__content
-				color: $mark-color-alt
-
-			.news-grid__meta
-				color: $text-color-light
-
-	.stamp1
-		right: 0
-		//top: 0
-		//height: 100px
-
-	.stamp2
-		right: 25.00%
-		//top: 130px
-		//height: 130px
-
-	.hide-tab-lg
-		display: block
-
-	.events-sum
-		+media('<desk-hd')
-			height: auto
-
-	.events-sum__panel
-		height: calc(#{$news-item-lg-img-height} - #{$events-summary-nav-height})
-
-		+media('<desk-hd')
-			height: 200px
-
-		+media('<mob-lg')
-			height: auto
-
-	.save
-		display: flex
-		flex-direction: column
-		align-items: stretch
-		justify-content: space-between
-
-		+media('<desk-hd')
-			min-height: 260px
-			height: auto
-
-		+media('<mob-lg')
-			min-height: 0
-			padding: 0
-
-		&::after
-			background-color: #1782ce
-			opacity: 0.9
-
-	.save__header
-		padding: 24px 25px
-		font-weight: normal
-		line-height: 1.4
-
-		+media('<mob-lg')
-			padding: 14px 15px 5px
-
-	//.save__header
-		position: relative
-		left: auto
-		top: auto
-		width: auto
-		height: auto
-		padding: 24px 25px
-		text-align: left
-		font-weight: normal
-		line-height: 1.4
-
-	.save__sep
-		display: none
-
-	//.save__sep
-		padding: 0 25px
-		position: relative
-		display: block
-		height: 1px
-		z-index: 5
-
-		&::before
-			content: ""
-			display: block
-			width: 50px
-			height: 0
-			border-top: 1px solid #fff
-
-	.save__holder
-		padding: 24px 25px
-
-		+media('<mob-lg')
-			padding: 0 15px 5px
-
-	//.save__holder
-		position: relative
-		left: auto
-		top: auto
-		width: auto
-		height: auto
-		padding: 24px 25px
-
-	//.save__align
-		position: relative
-		left: auto
-		top: auto
-		transform: none
-		width: auto
-		text-align: left
 
 .fl-w
 	position: relative

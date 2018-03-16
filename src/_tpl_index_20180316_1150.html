@@ -1,6 +1,6 @@
 @@include('_tpl_head.html', {
 	"title": "Главная",
-	"pageClass": "home-page home-page-01"
+	"pageClass": "home-page"
 })
 <div class="wrapper">
 	<!--HEADER-->
@@ -38,6 +38,7 @@
 						<!--SIDE end-->
 						<div class="content-layout">
 							@@include('_breadcrumbs.tpl')
+							<h1 class="hide">МЧС Республики Беларусь</h1>
 							<div class="promo">
 								<div class="promo-slider">
 									@@loop('_promo-slider-item.tpl', 'includes-json/promo-slider-item.json')
@@ -46,20 +47,18 @@
 							<div class="content-wrap">
 								<div class="content user-content">
 									<section class="section" id="main-new-anchor">
-
-										<div class="fl-w">
-
-											<div class="fl-r">
+										<div class="grid-row">
+											<div class="grid-col-3 grid-col-hd-4 grid-col-lg-12 grid-layout-right grid-col-md-width-auto">
 												<div class="section__holder">
 													<div class="grid-row">
-														<div class="grid-col-6 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
+														<div class="grid-col-12 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
 															<div class="section__title has-date">
 																<h2>Спасены в</h2>
 																@@include('_years-select.tpl')
 															</div>
 															@@include('_tpl_save-info.html')
 														</div>
-														<div class="grid-col-6 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
+														<div class="grid-col-12 grid-col-hd-12 grid-col-lg-6 grid-col-lt-12">
 															<div class="section__title hide-tab-lg">
 																<h2>Суточные сводки</h2>
 															</div>
@@ -68,8 +67,7 @@
 													</div>
 												</div>
 											</div>
-
-											<div class="fl-l">
+											<div class="grid-col-9 grid-col-hd-8 grid-col-lg-12 grid-col-width-auto">
 												<div class="section__title">
 													<h2>Главные новости,</h2>
 													<div class="news-date datepicker-alt">
@@ -80,35 +78,23 @@
 													<a href="#">Все новости</a>
 												</div>
 												<div class="section__holder">
-													<div class="news-grid__slider">
-														<div class="news-grid-slider">
-															@@loop('_tpl_news-grid-slider-item.html', 'includes-json/news-grid-slider-items--home-01-norm.json')
-														</div>
-														<div class="news-grid-thumbs"></div>
-													</div>
-												</div>
-											</div>
-
-										</div>
-
-										<div class="grid-row">
-											<div class="grid-col-6 grid-col-hd-8 grid-col-lg-12 grid-col-width-auto">
-												<div class="section__holder">
-													<div class="news-previews">
-														<div class="news-previews__list">
-															@@loop('_tpl_news-previews.html', 'includes-json/news-grid-items-main--home-01-norm.json')
+													<!--news grid-->
+													<div class="news-grid news-grid--main">
+														<div class="news-grid__list">
+															@@loop('_tpl_news-grid-item.html', 'includes-json/news-grid-items-main.json')
 														</div>
 													</div>
+													<!--news grid end-->
 												</div>
 											</div>
 										</div>
-
+										<!--tags list-->
 										<div class="tags-wrap">
 											<ul class="tags__list">
 												@@loop('_tags-list-item.tpl', 'includes-json/tags-list-02.json')
 											</ul>
 										</div>
-
+										<!--tags list end-->
 									</section>
 									<section class="section" id="multimedia-anchor">
 										<div class="section__title"><h2>Мультимедиа по ОБЖ</h2></div>

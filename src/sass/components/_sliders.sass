@@ -460,8 +460,76 @@
 		display: block
 		// after slide load end
 
+.news-grid__slider
 	.news-grid__inner
+		background: none
+		box-shadow: inset 0 -3px 0 #ff9a09
 		outline: none
+
+	// !!! с лейзилоад плохо работает подстановка размытого дубликата изображения
+	// !!! мигает на копиях слайдов, которые используются для бесконечного листания
+	.news-grid__img
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		background-color: #fff
+		// для добавления размытого дубликата изображения
+		background-repeat: no-repeat // запрещаем повторение изображения
+		background-position: 250% 250% // выносим за границы видимой области
+		background-size: auto // обнуляем сайзинг фонового изображение
+
+		// создаем подложку с размытым дубликатом изображения
+		&::before
+			content: ""
+			position: absolute
+			left: -5%
+			top: -5%
+			width: 110%
+			height: 110%
+			background-repeat: no-repeat
+			background-position: center
+			background-size: cover
+			background-image: inherit
+			filter: blur(8px)
+
+		img
+			position: absolute
+			display: block
+			margin: 0
+			left: -#{round($news-item-img-increase/2)}
+			top: -#{round($news-item-img-increase/2)}
+			width: calc(100% + #{$news-item-img-increase})
+			height: calc(100% + #{$news-item-img-increase})
+			max-width: none
+			+object-fit(contain)
+
+	.news-grid__content
+		box-shadow: none
+		min-height: 297px
+		padding-top: 20px
+		padding-bottom: 27px
+		margin-top: $news-item-lg-img-height
+
+		+media('<desk-lg')
+			padding-top: calc(56.25% + 20px)
+			padding-bottom: 34px
+			min-height: 0
+			height: 100%
+			margin-top: 0
+
+	.news-grid__text
+		margin-bottom: 10px
+
+		+media('<desk-lg')
+			margin-bottom: 10px
+
+	.news-grid__meta
+		bottom: 12px
+
+		+media('<desk-lg')
+			bottom: 20px
+
 
 .news-grid-thumbs
 	$thumb-size: 60px
@@ -544,15 +612,6 @@
 			property: transfrom
 			duration: $animation-speed
 
-		//+media('<desk-lg')
-			top: auto
-			bottom: 0
-			transform: none
-			margin: 0
-
-		//+media('<mob-lg')
-			top: $news-item-lg-img-height-mob-lg
-
 		.no-touchevents &:hover
 			transform: scale(1.2)
 
@@ -566,20 +625,14 @@
 			border-color: white
 
 .news-grid-slider__slide
-	height: $news-item-lg-img-height
+	//height: $news-item-lg-img-height
 	width: 100%
 	background-position: center center
 	background-repeat: no-repeat
 	background-size: cover
 
-	+media('<mob-lg')
-		height: $news-item-lg-img-height-mob-lg
-
 	span
 		+hide-text
-
-	.home-page-01 &
-		height: auto
 
 /*news slider end*/
 
