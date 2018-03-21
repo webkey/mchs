@@ -658,25 +658,39 @@
 
 /*news grid wide
 .news-grid__item--wide
-	height: 180px
+	$news-grid-wide__img-size: 180px, 180px
+	$news-grid-wide__img-size--sm: 120px, 120px
+	$news-grid-wide__img-size--mob: 90px, 90px
+	// =========
+	height: nth($news-grid-wide__img-size, 1)
 
 	+media('<mob-lg')
 		height: auto
 
 	.news-grid__inner
-		padding-left: 180px
+		padding-left: nth($news-grid-wide__img-size, 1)
 
 		+media('<mob-lg')
-			padding-left: 0
+			//padding-left: 0
+			padding-left: nth($news-grid-wide__img-size--sm, 1)
+
+		+media('<mob-md')
+			padding-left: nth($news-grid-wide__img-size--mob, 1)
 
 		&::before
 			+pseudo()
-			+cover(null, 0, 0, 180px, 180px)
+			+cover(null, 0, 0, nth($news-grid-wide__img-size, 1), nth($news-grid-wide__img-size, 1))
 			background: url(../../img/no-img.jpg) no-repeat center
 			background-size: cover
 
 			+media('<mob-lg')
-				content: none
+				//content: none
+				width: nth($news-grid-wide__img-size--sm, 1)
+				height: nth($news-grid-wide__img-size--sm, 1)
+
+			+media('<mob-md')
+				width: nth($news-grid-wide__img-size--mob, 1)
+				height: nth($news-grid-wide__img-size--mob, 1)
 
 	.news__label
 		+media('<mob-lg')
@@ -693,8 +707,8 @@
 		position: absolute
 		left: 0
 		top: 0
-		width: 180px
-		height: 180px
+		width: nth($news-grid-wide__img-size, 1)
+		height: nth($news-grid-wide__img-size, 1)
 		background-position: center
 		background-size: cover
 
@@ -705,15 +719,25 @@
 			content: none
 
 		+media('<mob-lg')
-			display: none
+			width: nth($news-grid-wide__img-size--sm, 1)
+			height: nth($news-grid-wide__img-size--sm, 1)
+
+		+media('<mob-md')
+			width: nth($news-grid-wide__img-size--mob, 1)
+			height: nth($news-grid-wide__img-size--mob, 1)
 
 	.news-grid__content
-		height: 180px
+		height: nth($news-grid-wide__img-size, 1)
 
 		+media('<mob-lg')
 			height: auto
-			padding-top: 30px
+			min-height: nth($news-grid-wide__img-size--sm, 1)
+			//padding-top: 30px
+			padding-top: 13px
 			padding-bottom: 30px
+
+		+media('<mob-md')
+			min-height: nth($news-grid-wide__img-size--mob, 1)
 
 	.news-grid__text
 		overflow: hidden
@@ -722,7 +746,8 @@
 
 		+media('<mob-lg')
 			height: auto
-			max-height: round-float($font-size-small*$line-height-small*4, 1) // костыль, чтобы высоты блоков были четко по дизу
+			//max-height: round-float($font-size-small*$line-height-small*4, 1) // костыль, чтобы высоты блоков были четко по дизу
+			max-height: none
 
 /*news grid view end
 /*news grid end*/
@@ -1269,7 +1294,7 @@
 		+media('<mob-lg')
 			display: block
 
-		& > .events-sum, & > .save
+		//& > .events-sum, & > .save
 			flex: 1 1
 
 	.section__title

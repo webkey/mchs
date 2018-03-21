@@ -970,10 +970,11 @@
 ///*=================*/
 .save
 	position: relative
-	display: flex
-	flex-direction: column
-	align-items: stretch
-	justify-content: space-between
+	display: block
+	//display: flex
+	//flex-direction: column
+	//align-items: stretch
+	//justify-content: space-between
 	height: $news-item-lg-img-height // Хардкод. Высота должна быть равно высоте картинки в новостном слайдере
 	background-repeat: no-repeat
 	background-position: center center
@@ -982,12 +983,8 @@
 	overflow: hidden
 
 	+media('<desk-hd')
-		//height: $news-item-lg-img-height - $events-summary-nav-height - $grid-space // Хардкод. Высота должна равняться высоте изображения (или слайдера) большой новости минус высота переключателей табов блока ниже
 		min-height: 260px
 		height: auto
-
-	//+media('<desk-lg')
-		//height: ($news-item-lg-height - $news-item-lg-img-height + $events-summary-nav-height) // Хардкод. Высота должна равняться высоте большой новости минус
 
 	+media('<mob-lg')
 		min-height: 0

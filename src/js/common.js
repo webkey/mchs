@@ -2084,16 +2084,24 @@ function datePickerInit() {
 		});
 
 		$resultDate.on('clearFlatpickr', function () {
-			calendarResult.clear();
-			$('#from').val('');
-			$('#to').val('');
+			calendarResult.forEach(function(item, i, arr) {
+				item.clear();
+				$(item.element).find('.result-date--from').val('');
+				$(item.element).find('.result-date--to').val('');
+			});
+			// calendarResult.clear();
+			// $('#from').val('');
+			// $('#to').val('');
 		})
 	}
 
 	$('body').on('click', '.datepicker-overlay', function () {
 		if ($('html').hasClass('extra-popup-opened')) {
 			calendar.close();
-			calendarResult.close();
+			// calendarResult.close();
+			calendarResult.forEach(function(item, i, arr) {
+				item.close();
+			});
 		}
 	});
 
@@ -2656,24 +2664,24 @@ function datePickerInit() {
 function popupsInit() {
 
 	/*search advanced*/
-	var popupSearchAdvanced = '.search-advanced-popup-js';
-
-	if ($(popupSearchAdvanced).length) {
-
-		new ExtraPopup({
-			container: popupSearchAdvanced,
-			btnMenu: '.btn-search-advanced-open-js',
-			btnMenuClose: '.btn-popup-close-js',
-			overlayAppendTo: 'body',
-			closeOnResize: false,
-			animationType: 'ltr',
-			animationSpeed: 300,
-			overlayAlpha: 0.35,
-			cssScrollBlocked: true,
-			stopClose: '.flatpickr-calendar, .datepicker-overlay'
-		});
-
-	}
+	// var popupSearchAdvanced = '.search-advanced-popup-js';
+	//
+	// if ($(popupSearchAdvanced).length) {
+	//
+	// 	new ExtraPopup({
+	// 		container: popupSearchAdvanced,
+	// 		btnMenu: '.btn-search-advanced-open-js',
+	// 		btnMenuClose: '.btn-popup-close-js',
+	// 		overlayAppendTo: 'body',
+	// 		closeOnResize: false,
+	// 		animationType: 'ltr',
+	// 		animationSpeed: 300,
+	// 		overlayAlpha: 0.35,
+	// 		cssScrollBlocked: true,
+	// 		stopClose: '.flatpickr-calendar, .datepicker-overlay'
+	// 	});
+	//
+	// }
 
 	/*site map popup*/
 	var siteMapPopupClass = '.site-map-js';
@@ -3309,31 +3317,31 @@ function toggleFormButtons() {
 	var $toggleButtonForm = $('.toggle-button-js');
 	var activeClass = 'is-checked-all';
 
-	if ($toggleButtonForm.length) {
-		$.each($toggleButtonForm, function () {
-			var $thisForm = $(this);
-			// var $btnSubmit = $('input[type=submit]', $thisForm);
-			var $btnReset = $('input[type=reset]', $thisForm);
-
-			disabledButton($thisForm, $btnReset);
-			// disabledButton($thisForm, $btnSubmit);
-
-			if (checkProp($thisForm)) {
-				enabledButton($thisForm, $btnReset);
-			}
-
-			var $toggle = $thisForm.find('.toggle-all-filters-js');
-			if (checkProp($thisForm, true)) {
-				$toggle.prop('checked', true);
-				checkedToggleBtn($toggle, activeClass);
-			} else {
-				$toggle.prop('checked', false);
-				uncheckedToggleBtn($toggle, activeClass);
-			}
-
-			setTotalCheckedInputs($thisForm);
-		});
-	}
+	// if ($toggleButtonForm.length) {
+	// 	$.each($toggleButtonForm, function () {
+	// 		var $thisForm = $(this);
+	// 		// var $btnSubmit = $('input[type=submit]', $thisForm);
+	// 		var $btnReset = $('input[type=reset]', $thisForm);
+	//
+	// 		disabledButton($thisForm, $btnReset);
+	// 		// disabledButton($thisForm, $btnSubmit);
+	//
+	// 		if (checkProp($thisForm)) {
+	// 			enabledButton($thisForm, $btnReset);
+	// 		}
+	//
+	// 		var $toggle = $thisForm.find('.toggle-all-filters-js');
+	// 		if (checkProp($thisForm, true)) {
+	// 			$toggle.prop('checked', true);
+	// 			checkedToggleBtn($toggle, activeClass);
+	// 		} else {
+	// 			$toggle.prop('checked', false);
+	// 			uncheckedToggleBtn($toggle, activeClass);
+	// 		}
+	//
+	// 		setTotalCheckedInputs($thisForm);
+	// 	});
+	// }
 
 	$toggleButtonForm.on('change', ':checkbox', function () {
 		var $thisForm = $(this).closest($toggleButtonForm);
@@ -3357,6 +3365,11 @@ function toggleFormButtons() {
 		}
 
 		setTotalCheckedInputs($thisForm);
+	});
+
+	$.each($toggleButtonForm.find(':checkbox'), function () {
+		var $curCheckbox = $(this);
+		$curCheckbox.is(':checked') && $curCheckbox.trigger('change');
 	});
 
 	$('.result-date-js').on('changeFlatpickr', function () {
@@ -4159,6 +4172,17 @@ function wrapTable() {
 /*wrap table to table-auto container end*/
 
 /**
+ * Object fit initial
+ * */
+function objectFitInit() {
+	objectFitImages('.img-fit-js');
+	objectFitImages('.news-previews img');
+	objectFitImages('.news-group img');
+	objectFitImages('.news-grid img');
+	objectFitImages('.news-grid-slider img');
+}
+
+/**
  * Lazy load images and iframes
  * */
 (function () {
@@ -4182,7 +4206,7 @@ $(window).on('load', function () {
 });
 
 $(document).ready(function () {
-	objectFitImages('.img-fit-js'); // object-fit-images initial
+	objectFitInit();
 	switchSpecialVersion();
 	checkCecutientVersionCookie();
 	placeholderInit();

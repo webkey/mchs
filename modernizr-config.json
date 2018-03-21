@@ -12,6 +12,7 @@
 		"test/svg",
 		"test/touchevents",
 		"test/css/backgroundsize",
+		"test/css/filters",
 		"test/css/flexbox",
 		"test/css/flexwrap",
 		"test/css/gradients",

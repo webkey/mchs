@@ -7986,23 +7986,7 @@ a:hover .side__text span {
 /*save info*/
 .save {
 	position: relative;
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: column;
-	    -ms-flex-direction: column;
-	        flex-direction: column;
-	-webkit-box-align: stretch;
-	-webkit-align-items: stretch;
-	    -ms-flex-align: stretch;
-	        align-items: stretch;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
+	display: block;
 	height: 315px;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -12974,7 +12958,13 @@ a:hover .side__text span {
 
 @media (max-width: 639px) {
 	.news-grid__item--wide .news-grid__inner {
-		padding-left: 0;
+		padding-left: 120px;
+	}
+}
+
+@media (max-width: 479px) {
+	.news-grid__item--wide .news-grid__inner {
+		padding-left: 90px;
 	}
 }
 
@@ -12992,7 +12982,15 @@ a:hover .side__text span {
 
 @media (max-width: 639px) {
 	.news-grid__item--wide .news-grid__inner::before {
-		content: none;
+		width: 120px;
+		height: 120px;
+	}
+}
+
+@media (max-width: 479px) {
+	.news-grid__item--wide .news-grid__inner::before {
+		width: 90px;
+		height: 90px;
 	}
 }
 
@@ -13032,7 +13030,15 @@ a:hover .side__text span {
 
 @media (max-width: 639px) {
 	.news-grid__item--wide .news-grid__img {
-		display: none;
+		width: 120px;
+		height: 120px;
+	}
+}
+
+@media (max-width: 479px) {
+	.news-grid__item--wide .news-grid__img {
+		width: 90px;
+		height: 90px;
 	}
 }
 
@@ -13043,8 +13049,15 @@ a:hover .side__text span {
 @media (max-width: 639px) {
 	.news-grid__item--wide .news-grid__content {
 		height: auto;
-		padding-top: 30px;
+		min-height: 120px;
+		padding-top: 13px;
 		padding-bottom: 30px;
+	}
+}
+
+@media (max-width: 479px) {
+	.news-grid__item--wide .news-grid__content {
+		min-height: 90px;
 	}
 }
 
@@ -13057,7 +13070,7 @@ a:hover .side__text span {
 @media (max-width: 639px) {
 	.news-grid__item--wide .news-grid__text {
 		height: auto;
-		max-height: 8rem;
+		max-height: none;
 	}
 }
 
@@ -13916,13 +13929,6 @@ a:hover .side__text span {
 	.fl-r [class*="grid-col-"] {
 		display: block;
 	}
-}
-
-.fl-r [class*="grid-col-"] > .events-sum, .fl-r [class*="grid-col-"] > .save {
-	-webkit-box-flex: 1;
-	-webkit-flex: 1 1;
-	    -ms-flex: 1 1;
-	        flex: 1 1;
 }
 
 @media (max-width: 639px) {
