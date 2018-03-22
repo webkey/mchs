@@ -7875,13 +7875,9 @@ a:hover .side__text span {
 	margin-right: 6px;
 }
 
-.sorting-select-drop {
-	width: calc(100% + 40px);
-}
-
 .sorting-select-drop, .user-content .sorting-select-drop {
 	padding: 10px 0;
-	margin: 0 0 0 -20px;
+	margin: 0 -20px;
 }
 
 .sorting-select-drop li, .user-content .sorting-select-drop li {
@@ -7896,7 +7892,7 @@ a:hover .side__text span {
 .sorting-select-drop {
 	position: absolute;
 	top: 100%;
-	left: 0;
+	right: 0;
 	min-width: 100%;
 	background: white;
 	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
@@ -8185,6 +8181,11 @@ a:hover .side__text span {
 
 .events-sum:last-child {
 	margin-bottom: 0;
+}
+
+.events-sum img {
+	display: block;
+	margin: 0 auto;
 }
 
 .events-sum__nav {

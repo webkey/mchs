@@ -863,12 +863,12 @@
 	margin-right: 6px
 
 .sorting-select-drop
-	&
+	//&
 		width: calc(100% + 40px)
 
 	&, .#{$user-content} &
 		padding: 10px 0
-		margin: 0 0 0 -20px
+		margin: 0 -20px
 
 		li
 			padding: 0
@@ -880,7 +880,7 @@
 .sorting-select-drop
 	position: absolute
 	top: 100%
-	left: 0
+	right: 0
 	min-width: 100%
 	background: white
 	box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15)
@@ -1113,6 +1113,10 @@
 
 	&:last-child
 		margin-bottom: 0
+
+	img
+		display: block
+		margin: 0 auto
 
 .events-sum__nav
 	height: $events-summary-nav-height
