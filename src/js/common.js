@@ -2084,24 +2084,33 @@ function datePickerInit() {
 		});
 
 		$resultDate.on('clearFlatpickr', function () {
-			calendarResult.forEach(function(item, i, arr) {
-				item.clear();
-				$(item.element).find('.result-date--from').val('');
-				$(item.element).find('.result-date--to').val('');
-			});
-			// calendarResult.clear();
-			// $('#from').val('');
-			// $('#to').val('');
+			if(calendarResult.length){
+				calendarResult.forEach(function(item, i, arr) {
+					item.clear();
+					$(item.element).find('.result-date--from').val('');
+					$(item.element).find('.result-date--to').val('');
+				});
+			} else {
+				calendarResult.clear();
+				var $cur = $(this);
+				$cur.find('.result-date--from').val('');
+				$cur.find('.result-date--to').val('');
+				// $('#from').val('');
+				// $('#to').val('');
+			}
 		})
 	}
 
 	$('body').on('click', '.datepicker-overlay', function () {
 		if ($('html').hasClass('extra-popup-opened')) {
 			calendar.close();
-			// calendarResult.close();
-			calendarResult.forEach(function(item, i, arr) {
-				item.close();
-			});
+			if(calendarResult.length){
+				calendarResult.forEach(function(item, i, arr) {
+					item.close();
+				});
+			} else {
+				calendarResult.close();
+			}
 		}
 	});
 
@@ -2121,7 +2130,7 @@ function datePickerInit() {
 
 	var $customDateRange = $('.custom-date--range');
 	if ($customDateRange) {
-		$customDateRange.flatpickr({
+		var calendarDateRange = $customDateRange.flatpickr({
 			"locale": _dataLocation,
 			// defaultDate: 'today',
 			mode: "range",
@@ -2136,8 +2145,21 @@ function datePickerInit() {
 			},
 			onClose: function () {
 				$('html').removeClass('scroll-fixed');
+			},
+			onChange: function () {
+				$(this.element).trigger('changeFlatpickr');
 			}
 		});
+
+		$customDateRange.on('clearFlatpickr', function () {
+			if(calendarDateRange.length){
+				calendarDateRange.forEach(function(item, i, arr) {
+					item.clear();
+				});
+			} else {
+				calendarDateRange.clear();
+			}
+		})
 	}
 
 	var $customDateFrom = $('.custom-date--from');
@@ -3372,10 +3394,9 @@ function toggleFormButtons() {
 		$curCheckbox.is(':checked') && $curCheckbox.trigger('change');
 	});
 
-	$('.result-date-js').on('changeFlatpickr', function () {
+	$('.filter-date-js').on('changeFlatpickr', function () {
 		var $this = $(this);
 		var $thisForm = $this.closest($toggleButtonForm);
-		// var $val = $this.find('.flatpickr-input').val();
 
 		enabledButton($thisForm, $thisForm.find('input[type=reset]'));
 		enabledButton($thisForm, $thisForm.find('input[type=submit]'));
@@ -3402,9 +3423,10 @@ function toggleFormButtons() {
 
 		var $thisContainer = $(this).closest($toggleButtonForm);
 
-		var $filterDate = $thisContainer.find('.result-date-js');
+		var $filterDate = $thisContainer.find('.filter-date-js');
 		if($filterDate.length) {
 			$filterDate.trigger('clearFlatpickr');
+			$($thisContainer.find(':checkbox')[0]).trigger('change');
 		}
 
 		$thisContainer.find(':checked').prop('checked', false).trigger('change');
@@ -3415,7 +3437,7 @@ function toggleFormButtons() {
 
 		var $thisContainer = $(this).closest('.search-area');
 
-		var $filterDate = $thisContainer.find('.result-date-js');
+		var $filterDate = $thisContainer.find('.filter-date-js');
 		if($filterDate.length) {
 			$filterDate.trigger('clearFlatpickr');
 		}

@@ -240,6 +240,8 @@ input {
 
 textarea, select, input[type="text"], input[type="email"], input[type="search"], input[type="submit"], input[type="button"], input[type="reset"], button {
 	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 	border-radius: 0;
 }
 
@@ -3254,6 +3256,19 @@ input[type="radio"]:disabled + span i::before {
 .form-buttons .add-function-link {
 	float: right;
 	padding-top: 28px;
+}
+
+@media (max-width: 479px) {
+	.form-buttons .add-function-link {
+		float: none;
+		display: block;
+		margin: 0 auto;
+		text-align: center;
+		padding-top: 15px;
+		-webkit-flex-basis: 100%;
+		    -ms-flex-preferred-size: 100%;
+		        flex-basis: 100%;
+	}
 }
 
 .add-function-link > a {
@@ -14084,6 +14099,24 @@ a:hover .side__text span {
 	background-color: #f3f3f3;
 }
 
+.search-area .popup-title {
+	margin-bottom: 2rem;
+}
+
+.search-area .js-tab-container {
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+
+.search-area .js-tab-content {
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: -1;
+}
+
 .search-form__field {
 	overflow: hidden;
 	position: relative;
@@ -17139,7 +17172,6 @@ html.before-extra-popup-open .wrapper {
 
 @media (max-width: 639px) {
 	.filters-form .form-buttons {
-		position: fixed;
 		display: -webkit-box;
 		display: -webkit-flex;
 		display: -ms-flexbox;
@@ -17148,6 +17180,15 @@ html.before-extra-popup-open .wrapper {
 		-webkit-justify-content: space-between;
 		    -ms-flex-pack: justify;
 		        justify-content: space-between;
+		-webkit-flex-wrap: wrap;
+		    -ms-flex-wrap: wrap;
+		        flex-wrap: wrap;
+	}
+}
+
+@media (max-width: 639px) {
+	.filters-popup .filters-form .form-buttons {
+		position: fixed;
 		left: 0;
 		bottom: 0;
 		z-index: 9999;
@@ -17176,7 +17217,10 @@ html.before-extra-popup-open .wrapper {
 	.filters-form .form-buttons input[type="submit"], .filters-form .form-buttons input[type="reset"] {
 		display: block;
 		float: none;
-		width: calc(50% - 10px);
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		    -ms-flex: 1;
+		        flex: 1;
 		margin: 0;
 	}
 }
@@ -17418,6 +17462,15 @@ span.flatpickr-weekday {
 	line-height: 32px;
 	padding-top: 0;
 	padding-bottom: 5px;
+}
+
+.custom-date--range .flatpickr-input {
+	font-size: 14px;
+	line-height: 18px;
+	padding: 8px 12px;
+	height: 36px;
+	width: 260px;
+	margin: 0;
 }
 
 /*flatpickr end */
