@@ -3719,7 +3719,7 @@ html.css-scroll-fixed {
 }
 
 .text-layout, .article-layout p, .article-layout ul, .article-layout ol {
-	max-width: 640px;
+	max-width: 840px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -9934,12 +9934,11 @@ a:hover .side__text span {
 .breadcrumbs-drop__item a {
 	display: block;
 	text-decoration: none;
-	color: #262626;
 	cursor: pointer;
 	position: relative;
 }
 
-.breadcrumbs-drop__item a > span {
+.breadcrumbs-drop__item span {
 	display: inline-block;
 	vertical-align: top;
 	border-bottom: 1px solid transparent;
@@ -9953,8 +9952,14 @@ a:hover .side__text span {
 	overflow: hidden;
 }
 
+@media (max-width: 639px) {
+	.breadcrumbs-drop__item span {
+		max-width: 240px;
+	}
+}
+
 .no-touchevents .breadcrumbs-drop__item a:hover > span {
-	border-bottom-color: #999;
+	border-bottom-color: #99c3e3;
 }
 
 /*breadcrumbs end*/

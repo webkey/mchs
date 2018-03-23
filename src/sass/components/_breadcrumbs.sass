@@ -146,19 +146,23 @@ $bread-space-vertical: 10px
 	a
 		display: block
 		text-decoration: none
-		color: $text-color
+		//color: $text-color
 		cursor: pointer
 		position: relative
 
-		& > span
-			display: inline-block
-			vertical-align: top
-			border-bottom: 1px solid transparent
-			transition-property: max-width, opacity, visibility, border-color
-			transition-duration: $animation-speed
-			+truncate($bread-item-max-width)
+	span
+		display: inline-block
+		vertical-align: top
+		border-bottom: 1px solid transparent
+		transition-property: max-width, opacity, visibility, border-color
+		transition-duration: $animation-speed
+		+truncate($bread-item-max-width)
 
-		.no-touchevents &:hover > span
-			border-bottom-color: $text-color-light
+		+media('<mob-lg')
+			max-width: 240px
+
+	.no-touchevents & a:hover > span
+		//border-bottom-color: $text-color-light
+		border-bottom-color: tint($text-color-alt, 40%)
 
 /*breadcrumbs end*/
