@@ -6,6 +6,8 @@
 /*sidebar top*/
 .sidebar-top
 	z-index: 30
+	transform: translate3d(0, 0, 0)
+	will-change: transform
 
 .sidebar-top__holder
 	position: relative
@@ -181,6 +183,8 @@
 	background-color: white
 	padding: round($sidebar-inner-space-horizontal*0.8) $sidebar-inner-space-horizontal
 	z-index: 10
+	transform: translate3d(0, 0, 0)
+	will-change: transform
 
 	//&:last-child
 		padding-bottom: 0
