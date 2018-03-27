@@ -2791,7 +2791,7 @@ function popupsInit() {
 
 		new ExtraPopup({
 			container: popupLang,
-			// btnMenu: '.btn-language-open-js',
+			btnMenu: '.btn-language-open-js',
 			btnMenuClose: '.btn-popup-close-js',
 			overlayAppendTo: 'body',
 			closeOnResize: false,

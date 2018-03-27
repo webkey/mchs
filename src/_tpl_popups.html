@@ -429,9 +429,16 @@
 				<div class="popup-label">Выберите пожалуйста язык:</div>
 				<div class="user-options-popup__content">
 					<ul class="lang__list">
+						@@if(context.lang != "eng" && context.lang != "by") {
 						<li><a href="javascript:void(0)" class="current"><i style="background-image: url(img/flag-russia.png);"></i><span>Русский</span></a></li>
 						<!--<li><a href="#"><i style="background-image: url(img/flag-belarus.png);"></i><span>Беларускi</span></a></li>-->
-						<li><a href="#"><i style="background-image: url(img/flag-britain.png);"></i><span>English</span></a></li>
+						<li><a href="index-eng.html"><i style="background-image: url(img/flag-britain.png);"></i><span>English</span></a></li>
+						}
+						@@if(context.lang == "eng") {
+						<li><a href="index.html"><i style="background-image: url(img/flag-russia.png);"></i><span>Русский</span></a></li>
+						<!--<li><a href="#"><i style="background-image: url(img/flag-belarus.png);"></i><span>Беларускi</span></a></li>-->
+						<li><a href="javascript:void(0)" class="current"><i style="background-image: url(img/flag-britain.png);"></i><span>English</span></a></li>
+						}
 					</ul>
 				</div>
 				<div class="popup-footer">

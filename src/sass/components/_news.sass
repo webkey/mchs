@@ -1289,7 +1289,12 @@
 	[class*="grid-col-"]
 		display: flex
 		flex-direction: column
-		margin-bottom: 0
+
+		+media('<desk-lg')
+			margin-bottom: 0
+
+		&:last-child
+			margin-bottom: 0
 
 		+media('<mob-lg')
 			display: block

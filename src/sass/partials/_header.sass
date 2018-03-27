@@ -38,7 +38,7 @@
 
 /*logo*/
 .logo-wrap
-	position: fixed
+	position: absolute
 	left: 0
 	top: 0
 	height: $header-height
@@ -46,6 +46,9 @@
 	background-color: white
 	border-bottom: 1px solid $bg-color
 	z-index: 20
+
+	.elements-is-transform &
+		position: fixed
 
 	+media('<desk-lg')
 		height: $header-height--md
@@ -123,8 +126,8 @@
 			opacity: 0
 			visibility: hidden
 			max-width: 0
-			transition-property: opacity, visibility
-			transition-duration: $animation-speed
+			//transition-property: opacity, visibility
+			//transition-duration: $animation-speed
 
 			//.logo-is-transform &
 			.elements-is-transform &

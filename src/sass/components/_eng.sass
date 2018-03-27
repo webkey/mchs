@@ -1,0 +1,109 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+/* eng version
+[lang*="en"]
+	.main-inside
+		margin: 0
+
+	.wrapper
+		&::before
+			content: none
+
+	.home-page .content-layout
+		+media('<desk-hd')
+			margin-right: 60px
+			right: auto
+			max-width: none
+
+		+media('<desk-md')
+			margin-right: 0
+
+	.header
+		box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05)
+
+	.header__frame
+		box-shadow: none
+
+	.logo-wrap
+		border-bottom: none
+		position: absolute
+
+	&.elements-is-transform .logo-wrap
+		position: fixed
+
+	.isBottoming .footer__holder
+		left: 0
+		width: 100%
+
+	.fl-w
+		+clear
+
+	.goals-text
+		+font(1.4rem, round-float(20/14, 2))
+
+		p
+			margin-bottom: 1.5rem
+
+			&:last-child
+				margin-bottom: 0
+
+	.events-map__iframe__wrap
+		position: relative
+
+		&::before
+			content: ""
+			display: block
+			padding-top: 80%
+
+			+media('<1874px')
+				padding-top: 1130px
+
+			+media('<1339px')
+				padding-top: 125%
+
+			+media('<1139px')
+				padding-top: 130%
+
+			+media('<569px')
+				padding-top: 150%
+
+			+media('<399px')
+				padding-top: 168%
+
+			+media('<359px')
+				padding-top: 182%
+
+	.fl-w
+		+media('<desk-hd')
+			display: block
+
+	.fl-l, .fl-r
+		margin-bottom: 0
+
+	.fl-l
+		+media('<desk-hd')
+			float: left
+			width: 50%
+
+		+media('<1439px')
+			float: none
+			width: 100%
+
+	.fl-r
+		+media('<desk-hd')
+			float: right
+			width: 50%
+
+		+media('<1439px')
+			float: none
+			width: 100%
+			margin-bottom: 20px
+
+		.section__holder
+			& > .grid-row
+				+media('<desk-hd')
+					display: block
+
+/* eng version end

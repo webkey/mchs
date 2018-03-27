@@ -1,7 +1,15 @@
 <!DOCTYPE html>
+
+@@if(context.lang != "eng" && context.lang != "by") {
 <!--[if lt IE 9]>      <html class="no-js old-ie" lang="ru"> <![endif]-->
 <!--[if IE 9]>         <html class="no-js ie9" lang="ru"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" lang="ru"> <!--<![endif]-->
+}
+@@if(context.lang == "eng") {
+<!--[if lt IE 9]>      <html class="no-js old-ie" lang="en"> <![endif]-->
+<!--[if IE 9]>         <html class="no-js ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+}
 <head>
 	<meta charset="UTF-8">
 	<title>@@title</title>

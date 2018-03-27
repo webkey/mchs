@@ -1,0 +1,145 @@
+@@include('_tpl_head.html', {
+	"title": "Главная",
+	"pageClass": "home-page",
+	"lang": "eng"
+})
+<div class="wrapper">
+	<!--HEADER-->
+	@@include('_tpl_header.html', {
+		"mainNavItemActive": "index",
+		"lang": "eng"
+	})
+	<!--HEADER end-->
+
+	<script>
+		var saveObject = {
+			"2017": {
+				"total": "27",
+				"children": "12"
+			},
+			"2016": {
+				"total": "370",
+				"children": "23"
+			},
+			"2015": {
+				"total": "8",
+				"children": "1"
+			}
+		}
+	</script>
+
+	<!--MAIN-->
+	<div class="main">
+		<div class="layout">
+			<div class="main-holder">
+				<!--CONTENT-->
+				<div class="main-frame">
+					<div class="main-inside">
+						<!--SIDE-->
+						@@include('_side.tpl')
+						<!--SIDE end-->
+						<div class="content-layout">
+							@@include('_tpl_breadcrumbs.html')
+							<h1 class="hide">МЧС Республики Беларусь</h1>
+							<div class="content-wrap">
+								<div class="content user-content">
+									<section class="section" id="main-new-anchor">
+
+										<div class="fl-w">
+
+											<div class="fl-r">
+												<div class="section__holder">
+													<div class="grid-row">
+														<div class="grid-col-6 grid-col-lg-6 grid-col-lt-12">
+															<div class="section__title">
+																<h2>Summaries</h2>
+															</div>
+															@@include('_tpl_events-summary.html')
+														</div>
+														<div class="grid-col-6 grid-col-lg-6 grid-col-lt-12">
+															<div class="section__title has-date">
+																<h2>Saved in</h2>
+																@@include('_years-select.tpl')
+															</div>
+															@@include('_tpl_save-info.html')
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="fl-l">
+												<div class="section__title">
+													<h2>Goals and objectives</h2>
+												</div>
+												<div class="section__holder">
+													<div class="goals-text">
+														<p>Her statement to Parliament came after Moscow rejected a British deadline for Russia to explain itself over this month’s nerve-agent attack on the former spy, Sergei V. Skripal, and his daughter. The two countries have engaged in a worsening clash in recent days, with Britain widening an investigation into the incident and courting friends and allies to increase pressure on Russia, while Moscow has threatened to retaliate over any punitive action.</p>
+														<p>“This represents an unlawful use of force by the Russian state against the United Kingdom,” Mrs. May said in an address to the House of Commons. “It must therefore be met with a full and robust response.”</p>
+														<p>She said she had agreed with Britain’s National Security Council to suspend all high-level contacts between her country and Russia, and to expel 23 Russian diplomats, who were given one week to leave. She described it as the biggest expulsion in more than 30 years.</p>
+														<p>The prime minister also said the government had agreed on new powers to crack down on the activities of foreign intelligence agents in Britain, that there was no place for “serious criminals and corrupt elites” in the country, and that an invitation for Foreign Minister Sergei V. Lavrov of Russia to visit had been withdrawn.</p>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</section>
+
+									<section class="section" id="map-anchor">
+										<div class="section__title"><h2>Map of Adverse Events</h2></div>
+										<div class="section__holder">
+											<!--events map-->
+											<div class="events-map">
+												<div class="events-map__main">
+													<div class="events-map__content">
+														<div class="events-map__iframe__wrap">
+															<iframe class="events-map__iframe" src="http://101.belta.by/ru" frameborder="0"></iframe>
+														</div>
+													</div>
+												</div>
+												<div class="events-map__side">
+													<div class="events-map__banner">
+														<!--<a href="#" title="Каждая гиперссылка должна содержать поясняющий текст для объекта на который она указывает">
+															<img src="img/_temp-map-events-banner.jpg" alt="Текст поясняющий содержание изображения">
+														</a>-->
+														<!--pogoda.by-->
+														<!--Информер распространяется свободно и на безвозмездной основе. Однако, в случае изменения кода информера (в частности, удаления ссылок), POGODA.BY снимает с себя ответственность за конечный результат.-->
+
+													</div>
+												</div>
+											</div>
+											<!--events map end-->
+										</div>
+									</section>
+
+									<section class="section" id="multimedia-anchor">
+										<div class="section__title"><h2>Multimedia on the Basics of Safety of Life Activities</h2></div>
+										<div class="section__holder">
+											@@include('_obzh.tpl')
+										</div>
+									</section>
+
+									<section class="section show-960">
+										<div class="get-minister">
+											<a href="#">
+												<img src="img/ava.png" alt="Министр" />
+												<span>Задать вопрос Министру</span>
+											</a>
+										</div>
+									</section>
+								</div>
+							</div>
+							<!--ASIDE-->
+							@@include('_aside.tpl', {"lang": "eng"})
+							<!--ASIDE end-->
+						</div>
+					</div>
+				</div>
+				<!--CONTENT end-->
+			</div>
+		</div>
+	</div>
+	<!--MAIN end-->
+
+
+</div>
+@@include('_tpl_foot.html', {"mainNavItemActive": "О министерстве", "subSiteMenu": "", "lang": "eng"})

@@ -14,37 +14,39 @@
 			</div>
 			<!--banners end-->
 		</div>
-		<div class="aside__widget">
-			<h3>сейчас читают</h3>
-			<!--news read-->
+		@@if(context.lang != "eng" && context.lang != "by") {
+       <div class="aside__widget">
+            <h3>сейчас читают</h3>
+            <!--news read-->
 
-				<div class="news-read">
-					@@loop('_news-read-list.tpl', [
-						{
-							"text": "Профессиональный праздник на уходящей неделе отметили белорусские спасатели (Центральный регион).",
-							"meta": "03.01.2017, 10:30"
-						},
-						{
-							"text": "Новогоднее поздравление Министра по чрезвычайным ситуациям Владимира Ващенко.",
-							"meta": "03.01.2017, 10:30"
-						},
-						{
-							"text": "Задачы на 2017 год: якасць, эфектыўнасць, аператыўнасць!",
-							"meta": "03.01.2017, 10:30"
-						},
-						{
-							"text": "Профессиональный праздник на уходящей неделе отметили белорусские спасатели (Центральный регион).",
-							"meta": "03.01.2017, 10:30"
-						},
-						{
-							"text": "Задачы на 2017 год: якасць, эфектыўнасць, аператыўнасць!",
-							"meta": "03.01.2017, 10:30"
-						}
-					])
-				</div>
+                <div class="news-read">
+                    @@loop('_news-read-list.tpl', [
+                        {
+                            "text": "Профессиональный праздник на уходящей неделе отметили белорусские спасатели (Центральный регион).",
+                            "meta": "03.01.2017, 10:30"
+                        },
+                        {
+                            "text": "Новогоднее поздравление Министра по чрезвычайным ситуациям Владимира Ващенко.",
+                            "meta": "03.01.2017, 10:30"
+                        },
+                        {
+                            "text": "Задачы на 2017 год: якасць, эфектыўнасць, аператыўнасць!",
+                            "meta": "03.01.2017, 10:30"
+                        },
+                        {
+                            "text": "Профессиональный праздник на уходящей неделе отметили белорусские спасатели (Центральный регион).",
+                            "meta": "03.01.2017, 10:30"
+                        },
+                        {
+                            "text": "Задачы на 2017 год: якасць, эфектыўнасць, аператыўнасць!",
+                            "meta": "03.01.2017, 10:30"
+                        }
+                    ])
+                </div>
 
-			<!--news links end-->
-		</div>
+            <!--news links end-->
+        </div>
+        }
 		<div class="aside__widget">
 			<iframe id="_view" class="forecast lazy" frameborder="0" scrolling="no" width="225" height="200" src="img/preloader.svg" data-src="http://pogoda.by/meteoinformer/preview.php?_type=3&_city=26850&_name=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA&_bgcl=%23f2f2f2&_brcl=%23cccccc&_size_W=225&_size_H=200&_font_color=%23000000&_font_style=Tahoma&_font_nsize=12&_link_color=%23003399&_link_style=Tahoma&_link_nsize=12"></iframe>
 			<!--<table width="300" height="180" style="background-color:#f2f2f2; border: #cccccc 1px solid; font-family:PT Sans; font-size:14px; color:#000000;" cellpadding="2" cellspacing="0">

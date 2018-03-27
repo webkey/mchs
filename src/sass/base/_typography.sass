@@ -72,7 +72,9 @@ h5, h6
 p
 	padding: 0
 	margin: 0 0 $bottom-space
-	text-indent: 1.5em
+
+	.#{$user-content} &
+		text-indent: 1.5em
 
 	+media('<desk-hd')
 		margin-bottom: $bottom-space-sm

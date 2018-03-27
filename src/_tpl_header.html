@@ -46,18 +46,19 @@
 							</a>
 						</li>
 						<li class="user-options__item lang">
-							<a href="#" class="btn-language-open-js" title="Выбрать язык">
+
+							@@if(context.lang != "eng" && context.lang != "by") {
+							<a href="index-eng.html" class="btn-language-open-js" title="Выбрать язык">
 								<span class="current">Рус</span>
-								<!--<i><span>Бел</span></i>-->
 								<span>Eng</span>
 							</a>
-							<!--
-							<ul class="lang__list js-choice-drop">
-								<li><a href="#"><span>Рус</span></a></li>
-								<li><a href="#"><span>Eng</span></a></li>
-								<li><a href="#"><span>Pol</span></a></li>
-							</ul>
-							-->
+							}
+							@@if(context.lang == "eng") {
+							<a href="index.html" class="btn-language-open-js" title="Select language">
+								<span>Рус</span>
+								<span class="current">Eng</span>
+							</a>
+							}
 						</li>
 						<li class="user-options__item banner-opener">
 							<a href="#" class="btn-banners-open-js current">
