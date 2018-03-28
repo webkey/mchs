@@ -17834,20 +17834,20 @@ html[lang*="en"] .fotorama__fullscreen-icon::before {
 /*ENG VERSION*/
 /*======================================================*/
 /* eng version */
-[lang*="en"] .main-inside {
+.en-special .main-inside {
 	margin: 0;
 }
 
-[lang*="en"] .wrapper::before {
+.en-special .wrapper::before {
 	content: none;
 }
 
-[lang*="en"] .text-layout, [lang*="en"] .article-layout p, .article-layout [lang*="en"] p, [lang*="en"] .article-layout ul, .article-layout [lang*="en"] ul, [lang*="en"] .article-layout ol, .article-layout [lang*="en"] ol {
+.en-special .text-layout, .en-special .article-layout p, .article-layout .en-special p, .en-special .article-layout ul, .article-layout .en-special ul, .en-special .article-layout ol, .article-layout .en-special ol {
 	max-width: 960px;
 }
 
 @media (max-width: 1919px) {
-	[lang*="en"] .home-page .content-layout {
+	.en-special .home-page .content-layout {
 		margin-right: 60px;
 		right: auto;
 		max-width: none;
@@ -17855,126 +17855,126 @@ html[lang*="en"] .fotorama__fullscreen-icon::before {
 }
 
 @media (max-width: 1279px) {
-	[lang*="en"] .home-page .content-layout {
+	.en-special .home-page .content-layout {
 		margin-right: 0;
 	}
 }
 
-[lang*="en"] .header {
+.en-special .header {
 	box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
 }
 
-[lang*="en"] .header__frame {
+.en-special .header__frame {
 	box-shadow: none;
 }
 
-[lang*="en"] .logo-wrap {
+.en-special .logo-wrap {
 	border-bottom: none;
 	position: absolute;
 }
 
-[lang*="en"].elements-is-transform .logo-wrap {
+.en-special.elements-is-transform .logo-wrap {
 	position: fixed;
 }
 
-[lang*="en"] .isBottoming .footer__holder {
+.en-special .isBottoming .footer__holder {
 	left: 0;
 	width: 100%;
 }
 
-[lang*="en"] .fl-w::after {
+.en-special .fl-w::after {
 	content: '';
 	display: table;
 	clear: both;
 }
 
-[lang*="en"] .goals-text p {
+.en-special .goals-text p {
 	margin-bottom: 0.8rem;
 }
 
-[lang*="en"] .goals-text p:last-child {
+.en-special .goals-text p:last-child {
 	margin-bottom: 0;
 }
 
-[lang*="en"] .events-map__iframe__wrap {
+.en-special .events-map__iframe__wrap {
 	position: relative;
 }
 
-[lang*="en"] .events-map__iframe__wrap::before {
+.en-special .events-map__iframe__wrap::before {
 	content: "";
 	display: block;
 	padding-top: 80%;
 }
 
 @media (max-width: 1873px) {
-	[lang*="en"] .events-map__iframe__wrap::before {
+	.en-special .events-map__iframe__wrap::before {
 		padding-top: 1130px;
 	}
 }
 
 @media (max-width: 1338px) {
-	[lang*="en"] .events-map__iframe__wrap::before {
+	.en-special .events-map__iframe__wrap::before {
 		padding-top: 125%;
 	}
 }
 
 @media (max-width: 1138px) {
-	[lang*="en"] .events-map__iframe__wrap::before {
+	.en-special .events-map__iframe__wrap::before {
 		padding-top: 130%;
 	}
 }
 
 @media (max-width: 568px) {
-	[lang*="en"] .events-map__iframe__wrap::before {
+	.en-special .events-map__iframe__wrap::before {
 		padding-top: 150%;
 	}
 }
 
 @media (max-width: 398px) {
-	[lang*="en"] .events-map__iframe__wrap::before {
+	.en-special .events-map__iframe__wrap::before {
 		padding-top: 168%;
 	}
 }
 
 @media (max-width: 358px) {
-	[lang*="en"] .events-map__iframe__wrap::before {
+	.en-special .events-map__iframe__wrap::before {
 		padding-top: 182%;
 	}
 }
 
 @media (max-width: 1919px) {
-	[lang*="en"] .fl-w {
+	.en-special .fl-w {
 		display: block;
 	}
 }
 
-[lang*="en"] .fl-l, [lang*="en"] .fl-r {
+.en-special .fl-l, .en-special .fl-r {
 	margin-bottom: 0;
 }
 
 @media (max-width: 1919px) {
-	[lang*="en"] .fl-l {
+	.en-special .fl-l {
 		float: left;
 		width: 50%;
 	}
 }
 
 @media (max-width: 1438px) {
-	[lang*="en"] .fl-l {
+	.en-special .fl-l {
 		float: none;
 		width: 100%;
 	}
 }
 
 @media (max-width: 1919px) {
-	[lang*="en"] .fl-r {
+	.en-special .fl-r {
 		float: right;
 		width: 50%;
 	}
 }
 
 @media (max-width: 1438px) {
-	[lang*="en"] .fl-r {
+	.en-special .fl-r {
 		float: none;
 		width: 100%;
 		margin-bottom: 20px;
@@ -17982,7 +17982,7 @@ html[lang*="en"] .fotorama__fullscreen-icon::before {
 }
 
 @media (max-width: 1919px) {
-	[lang*="en"] .fl-r .section__holder > .grid-row {
+	.en-special .fl-r .section__holder > .grid-row {
 		display: block;
 	}
 }
