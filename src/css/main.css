@@ -14052,7 +14052,13 @@ a:hover .side__text span {
 }
 
 .search-results__item {
-	margin-bottom: 4.5rem;
+	margin-bottom: 3.5rem;
+}
+
+@media (max-width: 1599px) {
+	.search-results__item {
+		margin-bottom: 2.5rem;
+	}
 }
 
 .search-results__item:last-child {
@@ -14074,6 +14080,10 @@ a:hover .side__text span {
 
 .search-result__date:last-child, .search-result__path:last-child {
 	margin-bottom: 0;
+}
+
+.search-result__path {
+	margin-bottom: 1rem;
 }
 
 .search-result__title {
@@ -14111,7 +14121,6 @@ a:hover .side__text span {
 	font-size: 1.4rem;
 	line-height: 1.7;
 	margin-bottom: 1.5rem;
-	max-height: calc(1.4rem * 1.7 * 3);
 }
 
 .search-result__text:last-child {

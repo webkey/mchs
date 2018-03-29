@@ -35,7 +35,10 @@
 		margin-bottom: 0
 
 .search-results__item
-	margin-bottom: $bottom-space-md
+	margin-bottom: 3.5rem
+
+	+media('<desk-lg')
+		margin-bottom: 2.5rem
 
 	&:last-child
 		margin-bottom: 0
@@ -52,6 +55,9 @@
 
 	&:last-child
 		margin-bottom: 0
+
+.search-result__path
+	margin-bottom: 1rem
 
 .search-result__title
 	display: block
@@ -80,7 +86,7 @@
 	overflow: hidden
 	+font(1.4rem, 1.7)
 	margin-bottom: $bottom-space-sm
-	max-height: calc(1.4rem * 1.7 * 3)
+	//max-height: calc(1.4rem * 1.7 * 3)
 
 	&:last-child
 		margin-bottom: 0
